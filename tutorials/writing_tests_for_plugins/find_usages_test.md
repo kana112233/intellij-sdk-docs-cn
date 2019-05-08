@@ -2,15 +2,23 @@
 title: 8. Find Usages Test
 ---
 
-In this test we will check if the find usages provider, implemented in the
-[Find Usages Provider](/tutorials/custom_language_support/find_usages_provider.md)
-section of the
-[Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md),
-works correctly.
+在这个测试中，我们将检查是否找到了发现用法提供程序
 
-### 8.1. Define test data
+[查找用户提供者](/tutorials/custom_language_support/find_usages_provider.md)
 
-Create a file *FindUsagesTestData.simple*.
+部分
+
+[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)，
+
+工作正常。
+
+
+### 8.1。
+定义测试数据
+
+
+创建一个文件* FindUsagesTestData.simple *。
+
 
 ```bash
 # You are reading the ".properties" entry.
@@ -28,7 +36,8 @@ key\ with\ spaces = This is the value that could be looked up with the key "key 
 tab : \u0009
 ```
 
-Create a file *FindUsagesTestData.java*.
+创建文件* FindUsagesTestData.java *。
+
 
 ```java
 public class Test {
@@ -38,7 +47,9 @@ public class Test {
 }
 ```
 
-### 8.2. Define a test method
+### 8.2。
+定义测试方法
+
 
 ```java
 public void testFindUsages() {
@@ -47,6 +58,10 @@ public void testFindUsages() {
 }
 ```
 
-### 8.3. Run the test
+### 8.3。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

@@ -2,16 +2,23 @@
 title: 10. Reference Test
 ---
 
+在这个测试中，我们将检查是否实现了引用
 
-In this test we will check if references, implemented in the
-[Reference Contributor](/tutorials/custom_language_support/reference_contributor.md)
-section of the
-[Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md),
-works as we expect.
+[参考文献贡献者](/tutorials/custom_language_support/reference_contributor.md)
 
-### 10.1. Define test data
+部分
 
-Create a file *ReferenceTestData.java*.
+[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)，
+
+按预期工作。
+
+
+### 10.1。
+定义测试数据
+
+
+创建一个文件* ReferenceTestData.java *。
+
 
 ```java
 public class Test {
@@ -21,7 +28,9 @@ public class Test {
 }
 ```
 
-### 10.2. Define a test method
+### 10.2。
+定义测试方法
+
 
 ```java
 public void testReference() {
@@ -31,6 +40,10 @@ public void testReference() {
 }
 ```
 
-### 10.3. Run the test
+### 10.3。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

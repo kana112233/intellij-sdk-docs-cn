@@ -113,7 +113,7 @@ public class EditorIllustration extends AnAction {
 ```
 
 **Note:**
-Editor allows to access different models of text representation. 
+Editor allows to access different models of text representation.
 Model classes are located in
 [editor](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor)
 subpackage of the
@@ -129,7 +129,7 @@ package and include:
 
 ## 1.4. Obtaining a Document
 
-The action is visible and available now. 
+The action is visible and available now.
 In order to make it do something we need to override its
 `public void actionPerformed(AnActionEvent anActionEvent)` method.
 

@@ -2,55 +2,79 @@
 title: 4. Lexer and Parser Definition
 ---
 
-The lexer defines how the contents of a file is broken into tokens.
-The easiest way to create a lexer is to use [JFlex](https://jflex.de/)
+词法分析器定义文件内容如何分解为令牌。
 
-### 4.1. Define a lexer
+创建词法分析器的最简单方法是使用[JFlex](https://jflex.de/)
 
-Define */com/simpleplugin/Simple.flex* file with rules for our lexer.
+
+### 4.1。
+定义词法分析器
+
+
+使用我们词法分析器的规则定义*/com/simpleplugin/Simple.flex *文件。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/Simple.flex %}
 ```
 
-### 4.2. Generate a lexer class
+### 4.2。
+生成词法分类器
 
-Now we can generate a lexer class via *JFlex Generator* from the context menu on `Simple.flex` file.
-The Grammar-Kit plugin uses JFlex lexer generation.
-If you run it for the first time, it offers you to choose a folder to download the JFlex library and skeleton to.
-Choose the project root directory.
 
-After that, the IDE generates the lexer: *com.simpleplugin.SimpleLexer*.
+现在我们可以从`Simple.flex`文件的上下文菜单中通过* JFlex Generator *生成一个词法分析器类。
 
-### 4.3. Define an adapter
+Grammar-Kit插件使用JFlex lexer生成。
+
+如果您是第一次运行它，它会让您选择一个文件夹来下载JFlex库和骨架。
+
+选择项目根目录。
+
+
+之后，IDE生成词法分析器:* com.simpleplugin.SimpleLexer *。
+
+
+### 4.3。
+定义适配器
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleLexerAdapter.java %}
 ```
 
-### 4.4. Define a root file
+### 4.4。
+定义根文件
 
-Create the class in the `com.simpleplugin.psi` namespace.
+
+在`com.simpleplugin.psi`命名空间中创建类。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/SimpleFile.java %}
 ```
 
-### 4.5. Define a parser definition
+### 4.5。
+定义解析器定义
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleParserDefinition.java %}
 ```
 
-### 4.6. Register the parser definition
+### 4.6。
+注册解析器定义
+
 
 ```xml
 <lang.parserDefinition language="Simple" implementationClass="com.simpleplugin.SimpleParserDefinition"/>
 ```
 
-### 4.7. Run the project
+### 4.7。
+运行该项目
 
-Create a properties file with the following content:
+
+使用以下内容创建属性文件:
+
 
 ```
 # You are reading the ".properties" entry.
@@ -67,6 +91,9 @@ key\ with\ spaces = This is the value that could be looked up with the key "key 
 tab : \u0009
 ```
 
-Now open the *PsiViewer* tool window and check how the lexer breaks the content of the file into tokens, and the parser parsed the tokens into PSI elements.
+现在打开* PsiViewer *工具窗口，检查词法分析器如何将文件内容分解为标记，解析器将标记解析为PSI元素。
 
-![PSI Elements](img/psi_elements.png)
+
+！[PSI Elements](img/psi_elements.png)
+
+

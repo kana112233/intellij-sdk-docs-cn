@@ -2,9 +2,12 @@
 title: 9. Commenter Test
 ---
 
-In this test we will check if the commenter, implemented in the [Commenter](/tutorials/custom_language_support/commenter.md) section of the [Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md), works as we expect.
+在此测试中，我们将检查在[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)的[Commenter](/tutorials/custom_language_support/commenter.md)部分中实现的评论者是否按预期工作。
 
-### 9.1. Define a test method
+
+### 9.1。
+定义测试方法
+
 
 ```java
 public void testCommenter() {
@@ -17,6 +20,10 @@ public void testCommenter() {
 }
 ```
 
-### 9.2. Run the test
+### 9.2。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

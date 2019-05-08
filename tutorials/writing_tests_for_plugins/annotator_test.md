@@ -2,15 +2,23 @@
 title: 4. Annotator Test
 ---
 
-In this test we will check if the annotator, implemented in the
-[Annotator](/tutorials/custom_language_support/annotator.md) section
-of the
-[Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md)
-works as expected.
+在这个测试中，我们将检查是否在注释器中实现了
 
-### 4.1. Define test data
+[Annotator](/tutorials/custom_language_support/annotator.md)部分
 
-Create a file *AnnotatorTestData.java*.
+的
+
+[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)
+
+按预期工作。
+
+
+### 4.1。
+定义测试数据
+
+
+创建一个文件* AnnotatorTestData.java *。
+
 
 ```java
 public class Test {
@@ -21,7 +29,9 @@ public class Test {
 }
 ```
 
-### 4.2. Define a test method
+### 4.2。
+定义测试方法
+
 
 ```java
 public void testAnnotator() {
@@ -30,6 +40,10 @@ public void testAnnotator() {
 }
 ```
 
-### 4.3. Run the test
+### 4.3。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

@@ -2,25 +2,34 @@
 title: 3. Grammar and Parser
 ---
 
-### 3.1. Define a token type
+### 3.1。
+定义令牌类型
 
-Create a file in the `com.simpleplugin.psi` package.
+
+在`com.simpleplugin.psi`包中创建一个文件。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/SimpleTokenType.java %}
 ```
 
-### 3.2. Define an element type
+### 3.2。
+定义元素类型
 
-Create a file in the `com.simpleplugin.psi` package.
+
+在`com.simpleplugin.psi`包中创建一个文件。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/SimpleElementType.java %}
 ```
 
-### 3.3. Define grammar
+### 3.3。
+定义语法
 
-Define a grammar for the properties language with */com/simpleplugin/Simple.bnf* file.
+
+使用*/com/simpleplugin/Simple.bnf *文件为属性语言定义语法。
+
 
 ```java
 {
@@ -45,18 +54,30 @@ private item_ ::= (property|COMMENT|CRLF)
 property ::= (KEY? SEPARATOR VALUE?) | KEY
 ```
 
-As you see a properties file can contain properties, comments and line breaks.
+如您所见，属性文件可以包含属性，注释和换行符。
 
-The grammar defines how flexible the support for a language can be.
-We specified that a property may have or may not have key and value.
-This lets the IDE still recognise incorrectly defined properties and provide corresponding code analysis and quick-fixes.
 
-Note that the `SimpleTypes` class in the `elementTypeHolderClass` field above specifies the name of a class that gets generated from the grammar, it doesn't exist at this point.
+语法定义了对语言的支持的灵活性。
 
-### 3.4. Generate a parser
+我们指定某个属性可能具有或不具有密钥和值。
 
-Now when the grammar is defined we can generate a parser with PSI classes via *Generate Parser Code* from the context menu on *Simple.bnf* file.
-This will generate a parser and PSI elements in *gen* folder.
-Mark this folder as *Generated Sources Root* and make sure everything is compiled without errors.
+这使IDE仍然可以识别错误定义的属性，并提供相应的代码分析和快速修复。
 
-![Parser](img/generated_parser.png)
+
+请注意，上面`elementTypeHolderClass`字段中的`SimpleTypes`类指定了从语法生成的类的名称，此时它不存在。
+
+
+### 3.4。
+生成解析器
+
+
+现在，当定义语法时，我们可以通过* Simple.bnf *文件中的上下文菜单中的* Generate Parser Code *生成带有PSI类的解析器。
+
+这将在* gen *文件夹中生成解析器和PSI元素。
+
+将此文件夹标记为* Generated Sources Root *并确保编译所有内容都没有错误。
+
+
+![分析器](IMG/generated_pa​​rser.png)
+
+

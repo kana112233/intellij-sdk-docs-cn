@@ -2,15 +2,23 @@
 title: Code Inspections
 ---
 
-The IntelliJ Platform provides tools designed for static code analysis called _code inspections_, which help the user maintain and clean up code without actually executing it.
-Custom code inspections can be implemented as IntelliJ Platform plugins.
-Examples of the plugin approach are the IntelliJ Platform SDK code samples [inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/inspection) and [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection).
-In addition, the comparing_references_inspection code sample demonstrates implementing a unit test.
+IntelliJ平台提供了专为静态代码分析而设计的工具，称为_code inspections_，它可以帮助用户维护和清理代码，而无需实际执行代码。
 
-You can also create custom inspections through the IntelliJ IDEA user interface.
-See [Code Inspection](https://www.jetbrains.com/idea/webhelp/code-inspection.html) and [Creating Custom Inspections](https://www.jetbrains.com/idea/help/creating-custom-inspections.html) for more information. 
+自定义代码检查可以作为IntelliJ平台插件实现。
 
-## Creating an Inspection Plugin
+插件方法的示例是IntelliJ Platform SDK代码示例[检查](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/inspection)和[comparison_references_inspection](https://github)
+的.com/JetBrains的/的IntelliJ-SDK-文档/树/主/code_samples/comparing_references_inspection)。
+
+此外，comparison_references_inspection代码示例演示了如何实现单元测试。
+
+
+您还可以通过IntelliJ IDEA用户界面创建自定义检查。
+
+请参阅[代码检查](https://www.jetbrains.com/idea/webhelp/code-inspection.html)和[创建自定义检查](https://www.jetbrains.com/idea/help/creating-custom-inspections.html)了解更多信息。
+
+
+##创建一个检查插件
+
 
 The [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection) code sample adds a new inspection to the **Java | Probable Bugs** group in the [Inspections list](https://www.jetbrains.com/help/idea/inspections-settings.html).
 The inspection reports when the `==` or `!=` operator is used between Java expressions of reference types.  
@@ -39,151 +47,253 @@ The overall approach works for inspections aimed at other languages as well.
   * From the inspection description entry find the `implementationClass` attribute value.
 * Use the `implementationClass` text as the [target of a class search](https://www.jetbrains.com/help/idea/searching-everywhere.html#Searching_Everywhere.xml) in the _intellij_community_ codebase to find the Java implementation file.
 
-## Creating an Inspection
-The [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection) code sample reports when the `==` or `!=` operators are used between Java expressions of reference types.
-The user can apply a quick fix to change `a==b` to `a.equals(b)`, or `a!=b` to `!a.equals(b)`.
-  
-The details of the `comparing_references_inspection` implementation illustrate the components of an inspection plugin.
+##创建检查
 
-### Plugin Configuration File
-The `comparing_references_inspection` is described as a `<localInspection>` type within the `<extensions>` elements in the `comparing_references_inspection` plugin configuration ([plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection/resources/META-INF/plugin.xml)) file.
-Under the hood, inspection types are described as an `<extensionPoint>` in [LangExtensionPoints.xml](upsource:///platform/platform-resources/src/META-INF/LangExtensionPoints.xml):
-* The `localInspection` type is used for inspections that operate on one file at a time, and also operate as the user edits the file.
-* The `globalInspection` type is used for inspections that operate across multiple files, and the associated fix might, for example, refactor code between files.
-* The `inspectionToolProvider` type is not deprecated but `localInspection` is preferred.
+[comparison_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection)代码示例报告在Java表达式之间使用`==`或`!=`运算符时
+参考类型。
 
-The minimum inspection description must contain the `implementationClass` attribute.
-As shown in the `comparing_references_inspection` plugin configuration file, other attributes can be defined in the `localInspection` element, either with or without localization. 
-In most cases, it is simplest to define the attributes in the plugin configuration file because the underlying parent classes handle most of the class responsibilities based on the configuration file description.
-Note that some attributes are not displayed to the user, so they are never localized.
+用户可以应用快速修复将`a == b`更改为'a.equals(b)`，或`a!= b`更改为`!a.equals(b)`。
+  
 
-As an alternative, inspections can define all of the attribute information (except `implementationClass`) by overriding methods in the inspection implementation class.
+`comparison_references_inspection`实现的细节说明了检查插件的组件。
 
-### Inspection Implementation Java Class  
-Inspection implementations for Java files, like [`ComparingReferencesInspection`](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection/source/com/intellij/codeInspection/ComparingReferencesInspection.java), are often based on the Java class [AbstractBaseJavaLocalInspectionTool](upsource:///java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java).
-The `AbstractBaseJavaLocalInspectionTool` implementation class offers methods to inspect Java classes, fields, and methods.
 
-More generally, `localInspection` types are based on the class [`LocalInspectionTool`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java).
-Examining the class hierarchy for `LocalInspectionTool` shows that the IntelliJ Platform provides many child inspection classes for a variety of languages and frameworks.
-One of these classes is a good basis for a new inspection implementation, but a bespoke implementation can also be based directly on `LocalInspectionTool`.
+###插件配置文件
 
-The primary responsibilities of the inspection implementation class are to provide:
-* A `PsiElementVisitor` object to traverse the `PsiTree` of the file being inspected.
-* A `LocalQuickFix` class to change the syntax of an identified problem.
-* A `JPanel` to be displayed in the _Inspections_ dialog.
+`comparison_references_inspection`在`comparison_references_inspection`插件配置中的`<extensions>`元素中被描述为`<localInspection>`类型([plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparison_references_inspection/resources/META-INF/plugin.xml))文件。
 
-Note that if an inspection's description in the plugin configuration file defines only the implementation class, then the other attribute information has to be supplied by overriding methods in the Java implementation.
+在幕后，检查类型被描述为[LangExtensionPoints.xml]中的`<extensionPoint>`(upsource:///platform/platform-resources/src/META-INF/LangExtensionPoints.xml):
 
-The `ComparingReferencesInspection` class defines two `String` fields:
-* `QUICK_FIX_NAME` defines the string users see when prompted to apply the quick fix.
-* `CHECKED_CLASSES` holds a list of class names of interest to the inspection.
+*`localInspection`类型用于一次操作一个文件的检查，也可以在用户编辑文件时运行。
 
-The overridden `ComparingReferencesInspection` methods are discussed in the sections below.
+*`globalInspection`类型用于跨多个文件操作的检查，相关的修复可能，例如，重构文件之间的代码。
 
-### Visitor Implementation Class
-The visitor class evaluates whether elements of the file's `PsiTree` are of interest to an inspection.
+*不推荐使用`inspectionToolProvider`类型，但首选`localInspection`。
 
-The `ComparingReferencesInspection.createOptionsPanel()` method creates an anonymous visitor class based on [`JavaElementVisitor`](upsource:///java/java-psi-api/src/com/intellij/psi/JavaElementVisitor.java) to traverse the `PsiTree` of the Java file being edited, inspecting for suspect syntax.
-The anonymous class overrides three methods in particular. 
-* `visitReferenceExpression()` to prevent any duplicate visitation of reference-type expressions.
-* `visitBinaryExpression()`, which does all the heavy lifting.
-  It is called to evaluate a `PsiBinaryExpression`, and it checks to see if the operands are `==` or `!=`, and if the operands are classes relevant to this inspection.
-* `isCheckedType()` evaluates the `PsiType` of the operands to determine if they are of interest to this inspection.
 
-### Quick Fix Implementation
-The quick fix class acts much like an intention, allowing the user to change the portion of `PsiTree` highlighted by the inspection.
-A quick fix is invoked when the inspection highlights a `PsiElement` of interest and the user elects to make a change.
+最小检查描述必须包含`implementationClass`属性。
 
-The `ComparingReferencesInspection` implementation uses the nested class `CriQuickFix` to implement a quick fix based on [`LocalQuickFix`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java).
-The `CriQuickFix` class gives a user the option to change the use of `a == b` and `a != b` expression to `a.equals(b)` and `!a.equals(b)` respectively.
+如`comparison_references_inspection`插件配置文件所示，可以在`localInspection`元素中定义其他属性，无论是否有本地化。
 
-The heavy lifting is done in `CriQuickFix.applyFix()`, which manipulates the `PsiTree` to convert the expressions.
-The change to the `PsiTree` is accomplished by the usual approach to modification:
-* Getting a `PsiElementFactory`.
-* Creating a new `PsiMethodCallExpression`.
-* Substituting the original left and right operands into the new `PsiMethodCallExpression`.
-* Replacing the original binary expression with the `PsiMethodCallExpression`.
+在大多数情况下，最简单的方法是在插件配置文件中定义属性，因为底层父类根据配置文件描述处理大部分类职责。
 
-### Inspection Preferences Panel
-The inspection preferences panel is used to display information about the inspection.
+请注意，某些属性不会显示给用户，因此它们永远不会本地化。
 
-The panel created by `ComparingReferencesInspection.createOptionsPanel()` just defines a single `JTextField` to display in a `JPanel`.
-This `JPanel` gets added to the default IntelliJ Platform _Inspections Preferences_ dialog when the `comparing_references_inspection` short name is selected.
-The `JTextField` allows editing of the `CHECKED_CLASSES` field while displayed in the panel.
 
-Note that the IntelliJ Platform provides most of the UI displayed in the _Inspections Preferences_ panel.
-As long as the inspection attributes and inspection description are defined correctly, the IntelliJ Platform displays the information in the _Inspections Preferences_ UI.
+作为替代方案，检查可以通过覆盖检查实现类中的方法来定义所有属性信息(“implementationClass”除外)。
 
-### Inspection Description
-The inspection description is an HTML file. 
-The description is displayed in the upper right panel of the _Inspections Preferences_ dialog when an inspection is selected from the list.
-  
-Implicit in using [`LocalInspectionTool`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java) in the class hierarchy of the inspection implementation means following some conventions.
-* The inspection description file is expected to be located under `<plugin root dir>/resources/inspectionDescriptions/`.
-  If the inspection description file is to be located elsewhere, override `getDescriptionUrl()` in the inspection implementation class.
-* The name of the description file is expected to be the inspection `<short name>.html` as provided by the inspection description or the inspection implementation class.
-  If a short name is not provided by the plugin, the IntelliJ Platform computes one.
-  
-### Inspection Unit Test
-The `comparing_references_inspection` code sample provides a unit test for the inspection.
-See the [Testing Plugins](/basics/testing_plugins.md) section for general information about plugin testing.
 
-The `comparing_references_inspection` test is based on the [`UsefulTestCase`](upsource:///platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java) class, part of the JUnit framework APIs.
-This class handles much of the underlying boilerplate for tests.
+###检查实现Java类
 
-By convention, the folder `<project root>/testSource/testPlugin/` contains the test source code and must be marked as a "Tests" folder.
-If it is not, a DevKit project cannot find the source code.
+Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection/source/com/intellij/codeInspection/ComparingReferencesInspection.java)，
+通常基于Java类[AbstractBaseJavaLocalInspectionTool](upsource:///java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java)。
 
-By convention, the folder `<project root>/testData/` contains the test files and must be marked as a "Test Resources" folder.
-The folder contains pairs of files for each test using the name convention `*.java` and `*.after.java`.
+`AbstractBaseJavaLocalInspectionTool`实现类提供了检查Java类，字段和方法的方法。
 
-In the case of `comparing_references_inspection` the test files are `before.java` and `before.after.java`, and `before1.java` and `before1.after.java`.
-The choice of `before` and `before1` is arbitrary.
 
-The `comparing_references_inspection` tests run the inspection on the `*.java files`, implement the quick fix, and compare the results with the respective `*.after.java` files.
+更一般地说，`localInspection`类型基于类[`LocalInspectionTool`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java)。
+
+检查`LocalInspectionTool`的类层次结构表明IntelliJ平台为各种语言和框架提供了许多子检查类。
+
+其中一个类是新检查实现的良好基础，但定制实现也可以直接基于`LocalInspectionTool`。
+
+
+检查实施类的主要职责是提供:
+
+*一个'PsiElementVisitor`对象，用于遍历被检查文件的“PsiTree”。
+
+*一个`LocalQuickFix`类，用于更改已识别问题的语法。
+
+*一个`JPanel`将显示在_Inspections_对话框中。
+
+
+请注意，如果插件配置文件中的检查描述仅定义实现类，则必须通过Java实现中的重写方法提供其他属性信息。
+
+
+`ComparingReferencesInspection`类定义了两个`String`字段:
+
+*`QUICK_FIX_NAME`定义用户在提示应用快速修复时看到的字符串。
+
+*`CHECKED_CLASSES`包含检查所关注的类名列表。
+
+
+重写的`ComparingReferencesInspection`方法将在下面的部分中讨论。
+
+
+###访客实施班
+
+访问者类评估文件的“PsiTree”的元素是否对检查感兴趣。
+
+
+`ComparingReferencesInspection.createOptionsPanel()`方法基于[`JavaElementVisitor`](upsource:///java/java-psi-api/src/com/intellij/psi/JavaElementVisitor.java)创建一个匿名访问者类来遍历
+正在编辑的Java文件的“PsiTree”，检查可疑语法。
+
+匿名类特别重写了三种方法。
+
+*`visitReferenceExpression()`以防止对引用类型表达式的任何重复访问。
+
+*`visitBinaryExpression()`，它完成了所有繁重的工作。
+  
+它被称为评估一个'PsiBinaryExpression`，它检查操作数是否是`==`或`!=`，以及操作数是否与此检查相关的类。
+
+*`isCheckedType()`计算操作数的'PsiType`，以确定它们是否对此检查感兴趣。
+
+
+###快速修复实施
+
+快速修复类的作用非常类似，允许用户更改检查突出显示的“PsiTree”部分。
+
+当检查突出显示感兴趣的“PsiElement”并且用户选择进行更改时，将调用快速修复。
+
+
+`ComparingReferencesInspection`实现使用嵌套类`CriQuickFix`来实现基于[`LocalQuickFix`]的快速修复(upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java)。
+
+`CriQuickFix`类为用户提供了将`a == b`和`a!= b`表达式分别改为'a.equals(b)`和`!a.equals(b)`的选项。
+
+
+繁重的工作在`CriQuickFix.applyFix()`中完成，它操纵`PsiTree`来转换表达式。
+
+对“PsiTree”的更改是通过通常的修改方法完成的:
+
+*获得'PsiElementFactory`。
+
+*创建一个新的'PsiMethodCallExpression`。
+
+*将原来的左右操作数替换为新的“PsiMethodCallExpression”。
+
+*用'PsiMethodCallExpression`替换原始二进制表达式。
+
+
+###检查首选项面板
+
+检查首选项面板用于显示有关检查的信息。
+
+
+由`ComparingReferencesInspection.createOptionsPanel()`创建的面板只定义了一个`JTextField`来显示在`JPanel`中。
+
+当选择`comparison_references_inspection`短名称时，这个`JPanel`被添加到默认的IntelliJ平台_Inspections Preferences_对话框中。
+
+`JTextField`允许在面板中显示时编辑`CHECKED_CLASSES`字段。
+
+
+请注意，IntelliJ平台提供了_Inspections Preferences_面板中显示的大部分UI。
+
+只要正确定义了检查属性和检查描述，IntelliJ平台就会在_Inspections Preferences_ UI中显示信息。
+
+
+###检验说明
+
+检查描述是HTML文件。
+
+从列表中选择检查时，描述将显示在_Inspections Preferences_对话框的右上方面板中。
+  
+
+在检查实现的类层次结构中使用[`LocalInspectionTool`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java)隐含意味着遵循一些约定。
+
+*检查描述文件应位于`<plugin root dir>/resources/inspectionDescriptions /`下。
+  
+如果检查描述文件位于其他位置，则在检查实现类中重写`getDescriptionUrl()`。
+
+*描述文件的名称应该是检查描述或检查实现类提供的检查`<短名称> .html`。
+  
+如果插件未提供短名称，则IntelliJ平台会计算一个。
+  
+
+###检查单元测试
+
+`comparison_references_inspection`代码示例为检查提供单元测试。
+
+有关插件测试的一般信息，请参阅[测试插件](/basics/testing_plugins.md)部分。
+
+
+`comparison_references_inspection`测试基于[`UsefulTestCase`](upsource:///platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java)类，它是JUnit框架API的一部分。
+
+该类处理许多用于测试的底层样板。
+
+
+按照惯例，文件夹`<project root>/testSource/testPlugin /`包含测试源代码，必须标记为“Tests”文件夹。
+
+如果不是，则DevKit项目无法找到源代码。
+
+
+按照惯例，文件夹`<project root>/testData /`包含测试文件，必须标记为“Test Resources”文件夹。
+
+该文件夹包含使用名称约定`* .java`和`* .after.java`的每个测试的文件对。
+
+
+在“comparison_references_inspection”的情况下，测试文件是`before.java`和`before.after.java`，以及`before1.java`和`before1.after.java`。
+
+`before`和`before1`的选择是任意的。
+
+
+`comparison_references_inspection`测试运行对`* .java文件`的检查，实现快速修复，并将结果与​​相应的`* .after.java`文件进行比较。
+
 
 
 ## Running the Comparing References Inspection Code Sample
 The [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection) code sample adds a new inspection to the **Java | Probable Bugs** group in the [Inspections list](https://www.jetbrains.com/help/idea/inspections-settings.html).
 The inspection reports when the `==` or `!=` operator is used between Java expressions of reference types.  
 
-To run the sample plugin:
-* Start **IntelliJ IDEA**, open the `intellij-sdk-docs` project, and highlight the [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection) module.
-* Open the [Project Structure](https://www.jetbrains.com/help/idea/project-structure-dialog.html) dialog and ensure that the project settings are valid for your environment.
-* If necessary, modify the [Run/Debug Configurations](https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html) for the `comparing_references_inspection` module.
-* Run the plugin by choosing **Run** on the main menu.
+要运行示例插件:
 
-### Configuring the Plugin
+*启动** IntelliJ IDEA **，打开`intellij-sdk-docs`项目，并突出显示[comparison_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection 
+)模块。
 
-Once the plugin is launched, you can set the plugin options. 
-You can specify the Java classes to participate in the code inspection and the severity level of the found probable bugs.
+*打开[项目结构](https://www.jetbrains.com/help/idea/project-structure-dialog.html)对话框，确保项目设置对您的环境有效。
+
+*如有必要，修改`comparison_references_inspection`模块的[运行/调试配置](https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html)。
+
+*在主菜单上选择** Run **运行插件。
+
+
+###配置插件
+
+
+启动插件后，您可以设置插件选项。
+
+您可以指定参与代码检查的Java类以及找到的可能错误的严重性级别。
+
 
 On the IDEA main menu, open the **Preferences | Editor | Inspections** dialog. 
 In the list of the IntelliJ IDEA _Java_ inspections, expand the _Probable bugs_ node, and then click _SDK: '==' or '!=' instead of 'equals()'_.  
 
-![](img/comparingReferences_options.png)
+![](IMG/comparingReferences_options.png)
 
-Under **Options**, you can specify the following plugin settings:
-* From the **Severity** list, select the severity level of probable bugs the plugin finds such as Warning, Info, etc.
-* In the text box under **Severity**, specify the semicolon separated list of Java classes to participate in this code inspection.
-* When finished, click **OK**.
 
-### How does it work?
+在**选项**下，您可以指定以下插件设置:
 
-The plugin inspects your code opened in the IntelliJ IDEA editor or the code you are typing. 
-The plugin highlights the code fragments where two variables of the reference type are separated by `==` or `!=` and proposes to replace this code fragment with `.equals()`:
+*从** Severity **列表中，选择插件找到的可能错误的严重性级别，例如警告，信息等。
 
-![](img/comparingReferences.png)
+*在** Severity **下的文本框中，指定以分号分隔的Java类列表以参与此代码检查。
 
-In this example, the `str1` and `str2` are variables of the String type. 
-Clicking _SDK: Use equals()_ replaces:
+*完成后，单击**确定**。
+
+
+＃＃＃ 它是如何工作的？
+
+
+该插件检查您在IntelliJ IDEA编辑器中打开的代码或您键入的代码。
+
+该插件突出显示了代码片段，其中引用类型的两个变量由`==`或`!=`分隔，并建议用`.equals()`替换此代码片段:
+
+
+![](IMG/comparingReferences.png)
+
+
+在这个例子中，`str1`和`str2`是String类型的变量。
+
+单击_SDK:使用equals()_替换:
+
 
 ```java
 return (str1==str2);
 ```
 
-with the code:
+用代码:
+
 
 ```java
 return (str1.equals(str2));
 ```
+
+

@@ -2,15 +2,23 @@
 title: 7. Folding Test
 ---
 
-In this test we will check if the folding builder, implemented in the
-[Folding Builder](/tutorials/custom_language_support/folding_builder.md)
-section of the
-[Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md),
-works as we expect.
+在这个测试中，我们将检查折叠构建器是否实现了
 
-### 7.1. Define test data
+[折叠生成器](/tutorials/custom_language_support/folding_builder.md)
 
-Create a file *FoldingTestData.java*.
+部分
+
+[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)，
+
+按预期工作。
+
+
+### 7.1。
+定义测试数据
+
+
+创建文件* FoldingTestData.java *。
+
 
 ```java
 public class Test {
@@ -20,7 +28,9 @@ public class Test {
 }
 ```
 
-### 7.2. Define a test
+### 7.2。
+定义一个测试
+
 
 ```java
 public void testFolding() {
@@ -29,6 +39,10 @@ public void testFolding() {
 }
 ```
 
-### 7.3. Run the test
+### 7.3。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

@@ -2,16 +2,23 @@
 title: 2. Parsing Test
 ---
 
+第一个测试将检查解析器是否实现了
 
-The first test will check if the parser, implemented in the
-[Lexer and Parser Definition](/tutorials/custom_language_support/lexer_and_parser_definition.md)
-section of the
-[Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md)
-works as we expect it.
+[Lexer和Parser定义](/tutorials/custom_language_support/lexer_and_parser_definition.md)
 
-### 2.1. Define input test data
+部分
 
-Create a file *ParsingTestData.simple* in *testData* folder.
+[自定义语言支持教程](/tutorials/custom_language_support_tutorial.md)
+
+像我们期望的那样工作。
+
+
+### 2.1。
+定义输入测试数据
+
+
+在* testData *文件夹中创建文件* ParsingTestData.simple *。
+
 
 ```bash
 # You are reading the ".properties" entry.
@@ -29,18 +36,28 @@ key\ with\ spaces = This is the value that could be looked up with the key "key 
 tab : \u0009
 ```
 
-### 2.2. Copy the expected PSI tree
+### 2.2。
+复制预期的PSI树
 
-The easiest way to get the expected PSI structure for any file is to use PSI Viewer.
-Run the project and call `Tools` &rarr; `View PSI Structure`.
 
-![PSI Tree Copy](img/plugin_copy_psi.png)
+获得任何文件的预期PSI结构的最简单方法是使用PSI Viewer。
 
-Use `Copy PSI` button to copy the expected PSI structure to the clipboard.
+运行项目并调用`Tools`＆rarr; 
+`查看PSI结构`。
 
-### 2.3. Define an output test data
 
-Create a file *ParsingTestData.txt* with the copied PSI tree.
+![PSI树复制](img/plugin_copy_psi.png)
+
+
+使用“复制PSI”按钮将预期的PSI结构复制到剪贴板。
+
+
+### 2.3。
+定义输出测试数据
+
+
+使用复制的PSI树创建文件* ParsingTestData.txt *。
+
 
 ```java
 Simple File(0,433)
@@ -93,12 +110,18 @@ Simple File(0,433)
     PsiElement(SimpleTokenType.VALUE)('\u0009')(427,433)
 ```
 
-### 2.4. Define a parsing test
+### 2.4。
+定义解析测试
+
 
 ```java
 {% include /code_samples/simple_language_plugin/tests/com/simpleplugin/SimpleParsingTest.java %}
 ```
 
-### 2.5. Run the test
+### 2.5。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

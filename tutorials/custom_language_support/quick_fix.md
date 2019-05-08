@@ -2,35 +2,49 @@
 title: 18. Quick Fix
 ---
 
+快速修复允许通过**显示意图操作**(Alt + Enter)对代码应用自动更改。
 
-A quick fix allows to apply an automatic changes to the code via **Show Intention Actions** (Alt + Enter).
 
-Let's add a quick fix which helps to define an unresolved property from its usage.
+让我们添加一个快速修复，它有助于根据其用法定义未解析的属性。
 
-### 18.1. Update the element factory
+
+### 18.1。
+更新元素工厂
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/SimpleElementFactory.java %}
 ```
 
-### 18.2. Define an intention action
+### 18.2。
+定义意图行动
 
-The quick fix will create a property in the file chosen by user, and navigate to this property after creation.
+
+快速修复将在用户选择的文件中创建属性，并在创建后导航到此属性。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/CreatePropertyQuickFix.java %}
 ```
 
-### 18.3. Update the annotator
+### 18.3。
+更新注释器
 
-Note the call to `registerFix`.
+
+注意对`registerFix`的调用。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleAnnotator.java %}
 ```
 
-### 18.4. Run the project
+### 18.4。
+运行该项目
 
-Now let's try to use a property which is not defined yet.
 
-![Quick Fix](img/quick_fix.png)
+现在让我们尝试使用尚未定义的属性。
+
+
+！[快速修复](img/quick_fix.png)
+
+

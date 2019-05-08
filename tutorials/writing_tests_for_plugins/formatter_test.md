@@ -2,15 +2,23 @@
 title: 5. Formatter Test
 ---
 
-In this test we will check if the formatter, implemented in the
+在这个测试中我们将检查格式化程序是否实现在
+
 [Formatter](/tutorials/custom_language_support/formatter.md)
-section of the
+
+部分
+
 [Custom Language Support Tutorial](/tutorials/custom_language_support_tutorial.md)
-works as we expect.
 
-### 5.1. Define test data
+按预期工作。
 
-Create a file *FormatterTestData.simple*.
+
+### 5.1。
+定义测试数据
+
+
+创建一个文件* FormatterTestData.simple *。
+
 
 ```bash
 # You are reading the ".properties" entry.
@@ -28,7 +36,9 @@ key\ with\ spaces = This is the value that could be looked up with the key "key 
 tab :\u0009
 ```
 
-### 5.2. Define a test method
+### 5.2。
+定义测试方法
+
 
 ```java
 public void testFormatter() {
@@ -45,6 +55,10 @@ public void testFormatter() {
 }
 ```
 
-### 5.3. Run the test
+### 5.3。
+运行测试
 
-Run the test and make sure it's green.
+
+运行测试并确保它是绿色的。
+
+

@@ -2,19 +2,28 @@
 title: Adding New Steps to Project Wizard
 ---
 
-This tutorial shows how to add a extra-step to the Project Wizard in order to provide additional project configuration settings.
+本教程介绍如何向项目向导添加额外步骤以提供其他项目配置设置。
 
-## Pre-requirements
 
-Create an empty plugin project.
-See 
-[Creating a Plugin Project](/basics/getting_started/creating_plugin_project.md)
-to know how to do it.
+##预先要求
 
-## 1. Register Module Builder
 
-Project configuration settings depend on the project's module type. 
-Register a new *moduleBuilder* extension point in the `plugin.xml` configuration file.
+创建一个空的插件项目。
+
+看到
+
+[创建插件项目](/basics/getting_started/creating_plugin_project.md)
+
+知道怎么做。
+
+
+## 1.注册模块构建器
+
+
+项目配置设置取决于项目的模块类型。
+
+在`plugin.xml`配置文件中注册一个新的* moduleBuilder *扩展点。
+
 
 
 ```xml
@@ -23,9 +32,11 @@ Register a new *moduleBuilder* extension point in the `plugin.xml` configuration
   </extensions>
 ```
 
-## 2. Create a Custom Module Builder
+## 2.创建自定义模块构建器
 
-Extend [`ModuleBuilder`](upsource:///platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java) class to provide custom configuration.
+
+扩展[`ModuleBuilder`](upsource:///platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java)类以提供自定义配置。
+
 
 ```java
 public class DemoModuleWizardStep extends ModuleBuilder {
@@ -39,9 +50,12 @@ public class DemoModuleWizardStep extends ModuleBuilder {
 }
 ```
 
-## 3. Define Module Type
+## 3.定义模块类型
 
-Set a module type you want to provide an extra wizard step for. In this example we choose an empty module type.
+
+设置要为其提供额外向导步骤的模块类型。
+在此示例中，我们选择一个空模块类型。
+
 
 
 ```java
@@ -56,10 +70,13 @@ public class DemoModuleWizardStep extends ModuleBuilder {
 }
 ```
 
-## 4. Design and Implement Wizard Steps
+## 4.设计和实现向导步骤
 
-Provide an implementation of a custom UI component to be added to the Wizard.
-In this case we leave it as a label.
+
+提供要添加到向导的自定义UI组件的实现。
+
+在这种情况下，我们将其留作标签。
+
 
 
 ```java
@@ -89,16 +106,23 @@ public class DemoModuleWizardStep extends ModuleBuilder {
 }
 ```
 
-## 5. Checking UI Appearance  
+## 5.检查UI外观
 
-After compiling and running the plugin create a new project using a source-compiled instance of *IntelliJ IDEA*.
 
-![New Project](img/empty_project.png)
+编译并运行插件后，使用* IntelliJ IDEA *的源编译实例创建一个新项目。
 
-Choose an *Empty Module* type, click next, and you get to the just added extra step.
- 
-![Extra Step](img/extra_step.png) 
 
-Modify and tune the UI component depending on your requirements.
+![新项目](img/empty_project.png)
+
+
+选择*空模块*类型，单击下一步，即可进入刚刚添加的额外步骤。
+ 
+
+![额外步骤](img/extra_step.png)
+
+
+根据您的要求修改和调整UI组件。
+
+
 
 

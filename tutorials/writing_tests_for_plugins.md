@@ -2,20 +2,43 @@
 title: Writing Tests For Plugins
 ---
 
+在本教程中，您将学习如何为插件编写和运行自动化测试。
 
-In this tutorial you will learn how to write and run automated tests for your plugin.
 
-As an example we will take the plugin implemented in the [Custom Language Support](/tutorials/custom_language_support_tutorial.md) and cover its code with functional tests.
+作为示例，我们将采用[自定义语言支持](/tutorials/custom_language_support_tutorial.md)中实现的插件，并通过功能测试覆盖其代码。
 
-*  [1. Tests Prerequisites](writing_tests_for_plugins/tests_prerequisites.md)
-*  [2. Parsing Test](writing_tests_for_plugins/parsing_test.md)
-*  [3. Completion Test](writing_tests_for_plugins/completion_test.md)
-*  [4. Annotator Test](writing_tests_for_plugins/annotator_test.md)
-*  [5. Formatter Test](writing_tests_for_plugins/formatter_test.md)
-*  [6. Rename Test](writing_tests_for_plugins/rename_test.md)
-*  [7. Folding Test](writing_tests_for_plugins/folding_test.md)
-*  [8. Find Usages Test](writing_tests_for_plugins/find_usages_test.md)
-*  [9. Commenter Test](writing_tests_for_plugins/commenter_test.md)
-*  [10. Reference Test](writing_tests_for_plugins/reference_test.md)
 
-The final code can be found on [GitHub](https://github.com/JetBrains/SimplePlugin).
+* [1。
+测试先决条件](writing_tests_for_plugins/tests_prerequisites.md)
+
+* [2。
+解析测试](writing_tests_for_plugins/parsing_test.md)
+
+* [3。
+完成测试](writing_tests_for_plugins/completion_test.md)
+
+* [4。
+注释器测试](writing_tests_for_plugins/annotator_test.md)
+
+* [5。
+格式化程序测试](writing_tests_for_plugins/formatter_test.md)
+
+* [6。
+重命名测试](writing_tests_for_plugins/rename_test.md)
+
+* [7。
+折叠测试](writing_tests_for_plugins/folding_test.md)
+
+* [8。
+查找用法测试](writing_tests_for_plugins/find_usages_test.md)
+
+* [9。
+评论者测试](writing_tests_for_plugins/commenter_test.md)
+
+* [10。
+参考测试](writing_tests_for_plugins/reference_test.md)
+
+
+最终代码可以在[GitHub](https://github.com/JetBrains/SimplePlugin)上找到。
+
+

@@ -2,18 +2,27 @@
 title: 2. Editor coordinates system. Positions and offsets
 ---
 
+编辑器中的每个插入符都有一组描述其坐标的属性。
 
-Every caret in the editor has a set of properties describing its coordinates.
-These properties can be accessed by obtaining a
-[caret model instance](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java).
-Working with caret positions and their logical and visual properties will be explained in the sample below.
+可以通过获取a来访问这些属性
 
-## 2.1. Pre-requirements
-Access to the Editor is performed through an action.
+[插入模型实例](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java)。
 
-## 2.2. Accessing caret positions
+下面的示例将解释使用插入位置及其逻辑和视觉属性。
 
-To get an access to caret positions an instance of `CaretModel` should be obtained.
+
+## 2.1。
+前要求
+
+通过操作执行对编辑器的访问。
+
+
+## 2.2。
+访问插入位置
+
+
+要获得对插入位置的访问，应该获得“CaretModel”的实例。
+
 
 ```java
 public class EditorAreaIllustration extends AnAction {
@@ -29,11 +38,17 @@ public class EditorAreaIllustration extends AnAction {
 }
 ```
 
-## 2.3. Logical position
+## 2.3。
+逻辑位置
+
 
 [LogicalPosition.java](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java)
-represents a line and a column of the current logical position of the caret. Logical positions ignore folding —
-for example, if the top 10 lines of the document are folded, the 10th line in the document will have the line number 10 in its logical position.
+
+表示插入符号的当前逻辑位置的行和列。
+逻辑位置忽略折叠 - 
+
+例如，如果文档的前10行被折叠，则文档中的第10行将在其逻辑位置具有行号10。
+
 
 ```java
 public class EditorAreaIllustration extends AnAction {
@@ -50,18 +65,30 @@ public class EditorAreaIllustration extends AnAction {
 }
 ```
 
-Logical position may store additional parameters that define its mapping to
-[VisualPosition.java](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java).
-Rationale is that a single logical pair matches a virtual space introduced by soft wrap, i.e. different visual positions
-may correspond to the same logical position. It's convenient to store exact visual location details within the logical
-position in order to simplify further 'logical position' -> 'visual position' mapping.
+逻辑位置可以存储定义其映射的其他参数
 
-## 2.4. Visual position
+[VisualPosition.java](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java)。
+
+基本原理是单个逻辑对匹配由软包装引入的虚拟空间，即不同的视觉位置
+
+可以对应于相同的逻辑位置。
+在逻辑中存储精确的视觉位置细节很方便
+
+位置是为了进一步简化“逻辑位置” - >“视觉位置”映射。
+
+
+## 2.4。
+视觉位置
+
 
 [VisualPosition.java](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java)
-represents a visual position and may differ from the corresponding logical position.
-Visual positions take folding into account — for example,
-if the top 10 lines of the document are folded, the 10th line in the document will have the line number 1 in its visual position.
+
+表示视觉位置并且可以与对应的逻辑位置不同。
+
+视觉位置考虑折叠 - 例如，
+
+如果文档的前10行被折叠，则文档中的第10行将在其视觉位置具有行号1。
+
 
 ```java
 public class EditorAreaIllustration extends AnAction {
@@ -79,9 +106,12 @@ public class EditorAreaIllustration extends AnAction {
 }
 ```
 
-## 2.5. Offset
+## 2.5。
+抵消
 
-An absolute offset for a given caret position is accessible through `CaretModel` as well:
+
+通过`CaretModel`也可以访问给定插入位置的绝对偏移量:
+
 
 ```java
 public class EditorAreaIllustration extends AnAction {
@@ -100,9 +130,13 @@ public class EditorAreaIllustration extends AnAction {
 }
 ```
 
-## 2.6. Displaying position values
-To display the actual values of logical and visual positions we add an
-`Messages.showInfoMessage()` call that will show them in form of notification after the action is performed.
+## 2.6。
+显示位置值
+
+要显示逻辑和视觉位置的实际值，我们添加一个
+
+`Messages.showInfoMessage()`调用将在执行操作后以通知的形式显示它们。
+
 
 ```java
 public class EditorAreaIllustration extends AnAction {
@@ -124,19 +158,29 @@ public class EditorAreaIllustration extends AnAction {
 }
 ```
 
-Check out, compile, and run the
-[Editor Basics Plugin](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/editor_basics),
-then move carets, invoke
+签出，编译和运行
+
+[Editor Basics Plugin](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/editor_basics)，
+
+然后移动插入符号，调用
+
 [EditorAreaIllustration](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/EditorAreaIllustration.java)
-action, and see how logical and visual positions are related dependently on folding.
 
-Find the action in the context menu:
+动作，并看看逻辑和视觉位置如何依赖于折叠。
 
-![Show coordinates action](img/coordinates_action.png)
 
-Perform the action to see caret positions:
+在上下文菜单中找到该操作:
 
-![Show coordinates action](img/coordinates_demo.png)
+
+![显示坐标动作](img/coordinates_action.png)
+
+
+执行操作以查看插入位置:
+
+
+![显示坐标动作](img/coordinates_demo.png)
+
+
 
 
 

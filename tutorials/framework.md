@@ -2,13 +2,18 @@
 title: Supporting Frameworks
 ---
 
-The following tutorial meant to show how to support a custom framework type for a project and make this framework type embedded in a project wizard as a UI component.
+以下教程旨在说明如何为项目支持自定义框架类型，并将此框架类型作为UI组件嵌入项目向导中。
 
-## 1. Creating a new framework
 
-In oder to make a custom framework available and configurable for a project
+## 1.创建一个新框架
+
+
+在oder中，为项目提供可配置的自定义框架
+
 [FrameworkTypeEx](upsource:///java/idea-ui/src/com/intellij/framework/FrameworkTypeEx.java)
-class needs to be extended:
+
+类需要扩展:
+
 
 
 ```java
@@ -16,11 +21,15 @@ public class DemoFramework extends FrameworkTypeEx {
 }
 ```
 
-## 2. Registering framework
+## 2.注册框架
 
-The newly created framework should be registered as an extension point by putting *framework.type* attribute into `<extensions>` section of
-[plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/framework/resources/META-INF/plugin.xml)
-configuration file:
+
+通过将* framework.type *属性放入到`<extensions>`部分，将新创建的框架注册为扩展点
+
+[plugin.xml中](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/framework/resources/META-INF/plugin.xml)
+
+配置文件:
+
 
 
 ```xml
@@ -29,9 +38,11 @@ configuration file:
 </extensions>
 ```
 
-## 3. Setting up mandatory attributes
+## 3.设置强制属性
 
-The framework component should have a unique name passed as a string literal to the constructor:
+
+框架组件应具有作为字符串文字传递给构造函数的唯一名称:
+
 
 
 ```java
@@ -43,7 +54,8 @@ public class DemoFramework extends FrameworkTypeEx {
 }
 ```
 
-*Presentable name* and *icon* define the appearance of visual components related to the framework:
+*可呈现的名称*和*图标*定义与框架相关的可视组件的外观:
+
 
 
 ```java
@@ -67,13 +79,19 @@ public class DemoFramework extends FrameworkTypeEx {
 }
 ```
 
-## 4. Creating provider for enabling framework support
+## 4.创建用于启用框架支持的提供程序
 
-To make framework set up available while executing project creating steps 
+
+在执行项目创建步骤时使框架设置可用
+
 `public FrameworkSupportInModuleProvider createProvider();`
-of the
+
+的
+
 [DemoFramework](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/framework/src/com/intellij/tutorials/framework/DemoFramework.java)
-must be implemented:
+
+必须实施:
+
 
 
 ```java
@@ -112,14 +130,13 @@ public FrameworkSupportInModuleProvider createProvider() {
 }
 ```
 
-After compiling and running the code sample above an extra option for configuring the newly created custom framework should be available in the Project Wizard:
-![Custom Framework Support](framework/img/custom_framework.png)
+编译并运行上面的代码示例后，应在项目向导中提供用于配置新创建的自定义框架的额外选项:
+
+![自定义框架支持](framework/img/custom_framework.png)
+
 
 ----------
 
-[Source code](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/framework/src/com/intellij/tutorials/framework)
-
-
-
+[源代码](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/framework/src/com/intellij/tutorials/framework)
 
 

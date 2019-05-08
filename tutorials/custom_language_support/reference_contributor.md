@@ -2,13 +2,17 @@
 title: 10. Reference Contributor
 ---
 
+引用是实现自定义语言支持中最重要和最棘手的部分之一。
 
-References is one of the most important and tricky parts in the implementation of a custom language support.
-Resolving references means the ability to go from the usage of an element to its declaration, completion, rename refactoring, find usages, etc.
+解析引用意味着能够从元素的使用转变为声明，完成，重命名重构，查找用法等。
 
-**Every element which can be renamed or referenced needs to implement `com.intellij.psi.PsiNamedElement` interface.**
 
-### 10.1. Define a base named element class
+**每个可以重命名或引用的元素都需要实现`com.intellij.psi.PsiNamedElement`接口。**
+
+
+### 10.1。
+定义一个名为element的基类
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/SimpleNamedElement.java %}
@@ -18,9 +22,12 @@ Resolving references means the ability to go from the usage of an element to its
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/psi/impl/SimpleNamedElementImpl.java %}
 ```
 
-### 10.2. Define helper methods for generated PSI elements
+### 10.2。
+为生成的PSI元素定义辅助方法
 
-Since we need to implement new methods in PSI class, we should define them in the `SimplePsiImplUtil` class:
+
+由于我们需要在PSI类中实现新方法，我们应该在`SimplePsiImplUtil`类中定义它们:
+
 
 ```java
 public class SimplePsiImplUtil {
@@ -55,9 +62,13 @@ public class SimplePsiImplUtil {
 }
 ```
 
-Note that the `SimpleElementFactory` class will show as an error. We'll create it next.
+请注意，`SimpleElementFactory`类将显示为错误。
+我们接下来会创建它。
 
-### 10.3. Define an element factory
+
+### 10.3。
+定义元素工厂
+
 
 ```java
 package com.simpleplugin.psi;
@@ -80,64 +91,93 @@ public class SimpleElementFactory {
 }
 ```
 
-### 10.4. Update grammar and regenerate the parser
+### 10.4。
+更新语法并重新生成解析器
 
-Now we need to make corresponding changes to the grammar file and regenerate parser and PSI classes.
+
+现在我们需要对语法文件进行相应的更改并重新生成解析器和PSI类。
+
 
 ```java
 property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.simpleplugin.psi.impl.SimpleNamedElementImpl"
   implements="com.simpleplugin.psi.SimpleNamedElement" methods=[getKey getValue getName setName getNameIdentifier]}
 ```
 
-Don't forget to regenerate the parser! Right click on the `Simple.bnf` file and select _Generate Parser Code_.
+不要忘记重新生成解析器！
+右键单击`Simple.bnf`文件并选择_Generate Parser Code_。
 
-### 10.5. Define a reference
 
-Now we need to define a reference class to resolve a property from it's usage.
+### 10.5。
+定义参考
+
+
+现在我们需要定义一个引用类来解析它的用法属性。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleReference.java %}
 ```
 
-### 10.6. Define a reference contributor
+### 10.6。
+定义参考贡献者
 
-A reference contributor allows you to provide references from elements in other languages such as Java to elements in your language.
-Let's contribute a reference to each usage of a property.
+
+引用参与者允许您提供从其他语言(如Java)中的元素到您所用语言中的元素的引用。
+
+让我们为每个属性的使用贡献一个参考。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleReferenceContributor.java %}
 ```
 
-### 10.7. Register the reference contributor
+### 10.7。
+注册参考贡献者
+
 
 ```xml
 <psi.referenceContributor implementation="com.simpleplugin.SimpleReferenceContributor"/>
 ```
 
-### 10.8. Run the project
+### 10.8。
+运行该项目
 
-As you see the IDE now resolves the property and provides completion.
 
-![Reference Contributor](img/reference_contributor.png)
+如您所见，IDE现在解析了该属性并提供了完成功能。
 
-*Rename* refactoring available from definition and usages.
 
-![Rename](img/rename.png)
+！[参考贡献者](img/reference_contributor.png)
 
-### 10.9. Define a refactoring support provider
 
-To allow in-place refactoring we should specify it explicitly in a refactoring support provider.
+*根据定义和用法重命名*重构。
+
+
+！[重命名](IMG/rename.png)
+
+
+### 10.9。
+定义重构支持提供程序
+
+
+为了允许就地重构，我们应该在重构支持提供程序中明确指定它。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleRefactoringSupportProvider.java %}
 ```
 
-### 10.10. Register the refactoring support provider
+### 10.10。
+注册重构支持提供程序
+
 
 ```xml
 <lang.refactoringSupport language="Simple" implementationClass="com.simpleplugin.SimpleRefactoringSupportProvider"/>
 ```
 
-### 10.11. Run the project
+### 10.11。
+运行该项目
 
-![In Place Rename](img/in_place_rename.png)
+
+！[原位重命名](img/in_place_rename.png)
+
+

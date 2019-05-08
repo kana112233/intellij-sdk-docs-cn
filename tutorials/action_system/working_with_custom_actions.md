@@ -2,39 +2,62 @@
 title: 1. Registering an Action
 ---
 
+一个动作在技术上是一个类，派生自
 
-An action is technically a class, derived from the
 [AnAction](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)
-class.
-To update the state of the action, the method `AnAction.update(AnActionEvent)` is called by the IntelliJ Platform framework.
-The object of type
+
+类。
+
+要更新操作的状态，IntelliJ Platform框架将调用方法`AnAction.update(AnActionEvent)`。
+
+类型的对象
+
 [AnActionEvent](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)
-passed to this method carries the information about the current context for the action,
-and in particular, the specific presentation which needs to be updated.
+
+传递给此方法携带有关操作的当前上下文的信息，
+
+特别是需要更新的具体表述。
 
 
-### 1.1. Creating actions
+### 1.1。
+创建动作
 
-To create a new action we need to extend the [AnAction](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)
-class. As an example we will do that in the `SimplePopDialogAction` class in the `register_actions` code sample.
+
+要创建一个新的动作，我们需要扩展[AnAction](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)
+
+类。
+作为一个例子，我们将在`register_actions`代码示例中的`SimplePopDialogAction`类中执行此操作。
+
 
 ```java
 public class SimplePopDialogAction extends AnAction {
 }
 ```
 
-**Note** the `SimplePopDialogAction` does not have class fields of any kind. This is because an instance of `AnAction` class
-exists for the entire lifetime of the application. If `AnAction` class uses a field to store data which has a shorter 
-lifetime, and doesn't clear this data promptly, the data will be leaked. For example, any `AnAction` data that exists 
-only within the context of a `Project` will cause the `Project` to be kept in memory after the user has closed it.
+**注意**`SimplePopDialogAction`没有任何类的类字段。
+这是因为`AnAction`类的一个实例
+
+存在于应用程序的整个生命周期中。
+如果`AnAction`类使用字段来存储更短的数据
+
+生命周期，并没有及时清除这些数据，数据将被泄露。
+例如，存在任何“AnAction”数据
+
+只有在`Project`的上下文中才会导致`Project`在用户关闭之后保存在内存中。
 
 
-### 1.2. Overriding actionPerformed()
+### 1.2。
+覆盖actionPerformed()
 
-The [AnAction](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)
-class is abstract, and classes that extend it must override the `AnAction.actionPerformed(AnActionEvent)` method.
-This method should contain the code to be executed when the action has been invoked.
-In this case `SimplePopDialogAction.actionPerformed(AnActionEvent)` doesn't do anything yet.
+
+[AnAction](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)
+
+class是抽象的，扩展它的类必须覆盖`AnAction.actionPerformed(AnActionEvent)`方法。
+
+此方法应包含在调用操作时要执行的代码。
+
+在这种情况下，`SimplePopDialogAction.actionPerformed(AnActionEvent)`还没有做任何事情。
+
 
 ```java
 public class SimplePopDialogAction extends AnAction {
@@ -45,24 +68,38 @@ public class SimplePopDialogAction extends AnAction {
 }
 ```
 
-### 1.3. Registering actions
+### 1.3。
+注册行动
 
-To register a newly created action, an `<action>` attribute should be added to the `<actions>` section of the plugin configuration file
-[plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml).
-IntelliJ IDEA has an embedded inspection that spots unregistered actions. Here is an example using the `SimplePopDialogAction` class:
 
-!["Action never used" inspection](img/action_never_used.png)
+要注册新创建的操作，应将“<action>”属性添加到插件配置文件的`<actions>`部分
 
-To register `SimplePopDialogAction` and set up its attributes press ***Alt + Enter*** while the caret is placed on the action's declaration.
+[plugin.xml中](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml)。
 
-Then fill out the **New Action** form to set up `SimplePopDialogAction`'s parameters such as: the action's name and description, 
-a UI component the action is bound to, the visual position of the menu item the action is bound to, and a shortcut for invoking the action.
-In this case `SimplePopDialogAction` would be available in the **Tools Menu**, it would be placed on top, and would have no shortcuts.
+IntelliJ IDEA具有嵌入式检查功能，可以发现未注册的操作。
+以下是使用`SimplePopDialogAction`类的示例:
 
-![New Action](img/new_action.png)
 
-In this example, after completing the **New Action** form and applying the changes, the `<actions>` section of the plugin's `plugins.xml` file
-would now contain:
+！[“动作从未使用过”检查](img/action_never_used.png)
+
+
+要注册`SimplePopDialogAction`并设置其属性，请将插入符号放在操作声明上时按*** Alt + Enter ***。
+
+
+然后填写** New Action **表单以设置`SimplePopDialogAction`的参数，例如:动作的名称和描述，
+
+动作绑定的UI组件，动作绑定的菜单项的可视位置，以及调用动作的快捷方式。
+
+在这种情况下，`SimplePopDialogAction`将在**工具菜单**中可用，它将被置于顶部，并且没有快捷方式。
+
+
+！[新动作](img/new_action.png)
+
+
+在这个例子中，在完成** New Action **表单并应用更改之后，插件的`plugins.xml`文件的`<actions>`部分
+
+现在包含:
+
 
 ```xml
 <actions>
@@ -76,16 +113,24 @@ would now contain:
 ```
 This declaration is adequate, but as we'll see in the next section there are more elements that can be added to the declaration.
 
+### 1.4。
+手动设置属性
 
-### 1.4. Setting attributes manually
 
-You can configure additional attributes of the action by adding them to the **New Action** form or by editing its registration in the plugin.xml file.
-Please refer to the [Action System documentation](../../basics/action_system.md#registering-actions) for the full list
-of supported attributes.
+您可以通过将操作添加到** New Action **表单或在plugin.xml文件中编辑其注册来配置操作的其他属性。
 
-The `<action>` declaration for `SimplePopDialogAction` in the register_actions 
-[plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml) 
-file actually contains elements for `<keyboard-shortcut>` and `<mouse-shortcut>`. The full declaration is:
+有关完整列表，请参阅[操作系统文档](../../basics/action_system.md#registrationing-actions)
+
+支持的属性。
+
+
+register_actions中`SimplePopDialogAction`的`<action>`声明
+
+[plugin.xml中](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml)
+
+file实际上包含`<keyboard-shortcut>`和`<mouse-shortcut>`的元素。
+完整的声明是:
+
 
 ```xml
 <action id="org.jetbrains.tutorials.actions.SimpleAction" class="org.jetbrains.tutorials.actions.SimplePopDialogAction"
@@ -98,20 +143,31 @@ file actually contains elements for `<keyboard-shortcut>` and `<mouse-shortcut>`
 The [plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml) 
 file contains copious comments about the declaration.
 
-After performing the steps described above we need to compile and run the plugin to the newly created action available as a Tools Menu item:
-
-!["Register action" quick fix](img/tools_menu_item_action.png)
+执行上述步骤后，我们需要编译并运行插件到新创建的操作，作为工具菜单项:
 
 
-### 1.5. Performing an action
+！[“注册动作”快速修复](img/tools_menu_item_action.png)
 
-In order to make the action do something we need to add code to the `SimplePopDialoigAction.actionPerformed(AnActionEvent)` method.
-The following code gets information from the `anActionEvent` input parameter and constructs a simple message dialog.
-A generic icon, and the `description` and `text` attributes from the invoking menu action are displayed.
 
-For demonstration purposes the `AnActionEvent.getData()` method tests if a [Navigatable](upsource:///platform/core-api/src/com/intellij/pom/Navigatable.java) 
-object is available, meaning e.g. an element has been selected in the editor. If so, information about 
-the selected element is opportunistically added to the dialog.
+### 1.5。
+执行一个动作
+
+
+为了使动作做一些事情，我们需要在`SimplePopDialoigAction.actionPerformed(AnActionEvent)`方法中添加代码。
+
+以下代码从`anActionEvent`输入参数获取信息，并构造一个简单的消息对话框。
+
+将显示一个通用图标，以及调用菜单操作中的`description`和`text`属性。
+
+
+出于演示目的，`AnActionEvent.getData()`方法测试是否[Navigatable](upsource:///platform/core-api/src/com/intellij/pom/Navigatable.java)
+
+对象是可用的，意味着例如
+已在编辑器中选择了一个元素。
+如果是这样，有关的信息
+
+将所选元素机会性地添加到对话框中。
+
 
 ```java
 @Override
@@ -129,15 +185,24 @@ Messages.showMessageDialog(currentProject, dlgMsg.toString(), dlgTitle, Messages
 }
 ```
 
-### 1.6. Setting up an action's visibility and availability
+### 1.6。
+设置操作的可见性和可用性
 
-To control the action's visibility and availability we need to override the `AnAction.update(AnActionEvent)` method.
-The default implementation of this method does nothing, which means the action is always disabled.
-Override this method to provide the ability to dynamically change action's state and(or) presentation depending on the context.
 
-In this example the `SimplePopDialogAction.actionPerformed(AnActionEvent)` method relies on a `Project`
-object being available. So the `SimplePopDialogAction.update(AnActionEvent)` method disables
-the action for contexts where a`Project` object isn't defined:
+要控制操作的可见性和可用性，我们需要覆盖`AnAction.update(AnActionEvent)`方法。
+
+此方法的默认实现不执行任何操作，这意味着始终禁用操作。
+
+重写此方法以提供根据上下文动态更改操作的状态和(或)显示的功能。
+
+
+在这个例子中，`SimplePopDialogAction.actionPerformed(AnActionEvent)`方法依赖于`Project`
+
+对象可用。
+因此`SimplePopDialogAction.update(AnActionEvent)`方法禁用
+
+对于没有定义`Project`对象的上下文的操作:
+
 
 ```java
 @Override
@@ -148,18 +213,32 @@ public void update(AnActionEvent anActionEvent) {
 }
 ```
 
-Parameter `anActionEvent` carries information on the invocation place and data available. Note the `update()` method does
-not check to see if a [Navigatable](upsource:///platform/core-api/src/com/intellij/pom/Navigatable.java) object is available
-before enabling `SimplePopDialogAction`. This is done for the purposes of demonstration code.  
+参数`anActionEvent`包含有关调用位置和可用数据的信息。
+注意`update()`方法
 
-**Note** This method can be called frequently: for instance, if an action is added to a toolbar, it will be updated twice a second.
-This means that this method is supposed to _work really fast_; no real work should be done at this phase.
-For example, checking selection in a tree or a list, is considered valid but working with the file system is not.
-If you cannot understand the state of the action fast you should do it in the
+不检查[Navigatable](upsource:///platform/core-api/src/com/intellij/pom/Navigatable.java)对象是否可用
+
+在启用`SimplePopDialogAction`之前。
+这是为了演示代码的目的。
+
+
+**注意**可以经常调用此方法:例如，如果将某个操作添加到工具栏，它将每秒更新两次。
+
+这意味着这个方法应该_work fast_;
+在这个阶段不应该做真正的工作。
+
+例如，检查树或列表中的选择被认为是有效的，但是不使用文件系统。
+
+如果你无法快速了解行动的状态，你应该在
+
 [AnActionEvent](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)
-method and notify the user that the action cannot be executed if it's the case.
+
+如果是这种情况，则通知用户该操作无法执行。
 
 
-After compiling and running the plugin project and invoking the action, the dialog will pop up:
+编译并运行插件项目并调用操作后，将弹出对话框:
 
-![Action performed](img/action_performed.png)
+
+！[已执行的操作](img/action_performed.png)
+
+

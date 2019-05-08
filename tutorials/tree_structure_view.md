@@ -2,24 +2,37 @@
 title: Tree Structure View
 ---
 
-This tutorial is meant to illustrate how the project tree structure view appearance can be modified programmatically. 
-If you need to know more about basic concepts of a project view in IntelliJ-based IDEs, please refer to
-[Exploring The Project Structure](https://www.jetbrains.com/idea/help/exploring-the-project-structure.html#d164891e120)
-of 
-[IntelliJ IDEA Web Help](https://www.jetbrains.com/idea/help/intellij-idea.html).
+本教程旨在说明如何以编程方式修改项目树结构视图外观。
 
-Series of step below show how to filter out and keep visible only text files and directories in the Project View Panel. 
+如果您需要了解有关基于IntelliJ的IDE中项目视图的基本概念的更多信息，请参阅
 
-## Pre-requirements
+[探索项目结构](https://www.jetbrains.com/idea/help/exploring-the-project-structure.html#d164891e120)
 
-Create an empty plugin project.
-See 
-[Creating a Plugin Project](/basics/getting_started/creating_plugin_project.md).
+的
 
-## 1. Register Custom TreeStructure Provider
+[IntelliJ IDEA Web帮助](https://www.jetbrains.com/idea/help/intellij-idea.html)。
 
-Add new *treeStructureProvider* extension to the
-[plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/tree_structure_provider/resources/META-INF/plugin.xml)
+
+下面的系列步骤显示了如何在项目视图面板中过滤掉并保持仅可见的文本文件和目录。
+
+
+##预先要求
+
+
+创建一个空的插件项目。
+
+看到
+
+[创建插件项目](/basics/getting_started/creating_plugin_project.md)。
+
+
+## 1.注册自定义TreeStructure Provider
+
+
+添加新的* treeStructureProvider *扩展名
+
+[plugin.xml中](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/tree_structure_provider/resources/META-INF/plugin.xml)
+
 
 ```java
 <extensions defaultExtensionNs="com.intellij">
@@ -27,9 +40,11 @@ Add new *treeStructureProvider* extension to the
 </extensions>
 ```
 
-## 2. Implement Custom TreeStructureProvider
+## 2.实现自定义TreeStructureProvider
 
-To provide custom Structure View behaviour you need to implement TreeStructureProvider interface.  
+
+要提供自定义结构视图行为，您需要实现TreeStructureProvider接口。
+
 
 ```java
 public class TextOnlyTreeStructureProvider implements TreeStructureProvider {
@@ -47,26 +62,38 @@ public class TextOnlyTreeStructureProvider implements TreeStructureProvider {
 }
 ```
 
-## 3. Override modify() method
+## 3.覆盖modify()方法
 
-To implement Tree Structure nodes filtering logic, override `modify()` method.
-The example below shows how to filter out all the Project View nodes except those which correspond to text files and directories.
+
+要实现树结构节点过滤逻辑，请覆盖`modify()`方法。
+
+下面的示例显示了如何筛选出除了与文本文件和目录对应的节点外的所有项目视图节点。
+
 
 ```java
 {% include /code_samples/tree_structure_provider/src/org/jetbrains/tutorials/tree/structure/TextOnlyTreeStructureProvider.java %}
 ```
 
-## 4. Compile and Run the Plugin
-
-Compile and run the code sample from this tutorial.
-Refer to 
-[Running and Debugging a Plugin](/basics/getting_started/running_and_debugging_a_plugin.md).
-
-After going through the steps described above you can see only text files and directories belonging to a project in the Project View.
-
-![Text Files](tree_structure_view/img/text_only.png)
+## 4.编译并运行插件
 
 
-Check out 
-[plugin source code](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/tree_structure_provider)
-and build the project to see how TreeStructureView provider works in practice.
+编译并运行本教程中的代码示例。
+
+参考
+
+[运行和调试插件](/basics/getting_started/running_and_debugging_a_plugin.md)。
+
+
+完成上述步骤后，您只能在项目视图中看到属于项目的文本文件和目录。
+
+
+![文件文件](tree_structure_view/img/text_only.png)
+
+
+查看
+
+[插件源代码](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/tree_structure_provider)
+
+并构建项目以了解TreeStructureView提供程序如何在实践中工作。
+
+

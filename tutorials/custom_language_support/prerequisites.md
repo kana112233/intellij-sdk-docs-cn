@@ -2,32 +2,54 @@
 title: 1. Prerequisites
 ---
 
+### 1.1。
+下载并安装IntelliJ IDEA
 
-### 1.1. Download and Install IntelliJ IDEA
 
-Download and install either IntelliJ IDEA Ultimate or IntelliJ IDEA Community Edition as described on the
-[Creating Your First Plugin](/basics/getting_started.md) page.
+下载并安装IntelliJ IDEA Ultimate或IntelliJ IDEA Community Edition，如上所述
 
-### 1.2. Check out Community Edition Source Files
+[创建您的第一个插件](/basics/getting_started.md)页面。
 
-Download the IntelliJ IDEA Community Edition source files as described in the IntelliJ IDEA Community Edition 
-[README](upsource:///README.md) file.
 
-### 1.3. Install Required Plugins
+### 1.2。
+查看Community Edition源文件
 
-Make sure that the bundled *Plugin DevKit* plugin is enabled.
-Install and enable
-[Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit)
-and
+
+按照IntelliJ IDEA社区版中的说明下载IntelliJ IDEA Community Edition源文件
+
+[README](upsource:///README.md)文件。
+
+
+### 1.3。
+安装必需的插件
+
+
+确保已启用捆绑的* Plugin DevKit *插件。
+
+安装并启用
+
+[语法-试剂盒](https://plugins.jetbrains.com/plugin/6606-grammar-kit)
+
+和
+
 [PsiViewer](https://plugins.jetbrains.com/plugin/227-psiviewer)
-plugins.
 
-### 1.4. Configure the SDK and Source Files
+插件。
 
-Configure a common [JDK](upsource:///README.md) 
-and an [IntelliJ Platform SDK](/basics/getting_started/setting_up_environment.md). 
 
-### 1.5. Create a Project
+### 1.4。
+配置SDK和源文件
 
-Create an [IntelliJ Platform Plugin project](/basics/getting_started/creating_plugin_project.md).
+
+配置公共[JDK](upsource:///README.md)
+
+和[IntelliJ平台SDK](/basics/getting_started/setting_up_environment.md)。
+
+
+### 1.5。
+创建一个项目
+
+
+创建[IntelliJ平台插件项目](/basics/getting_started/creating_plugin_project.md)。
+
 

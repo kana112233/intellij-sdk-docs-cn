@@ -2,24 +2,35 @@
 title: 12. Folding Builder
 ---
 
-A folding builder helps you to fold the code regions and replace it with specific text.
+折叠构建器可帮助您折叠代码区域并将其替换为特定文本。
 
-### 12.1. Define a folding builder
 
-Let's replace usages of properties with its values by default.
+### 12.1。
+定义折叠构建器
+
+
+我们默认使用其值替换属性的用法。
+
 
 ```java
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleFoldingBuilder.java %}
 ```
 
-### 12.2. Register the folding builder
+### 12.2。
+注册折叠构建器
+
 
 ```xml
 <lang.foldingBuilder language="JAVA" implementationClass="com.simpleplugin.SimpleFoldingBuilder"/>
 ```
 
-### 12.3. Run the project
+### 12.3。
+运行该项目
 
-Now when we open a Java file, it shows the property's value instead of the key.
 
-![Folding](img/folding.png)
+现在，当我们打开一个Java文件时，它会显示属性的值而不是键。
+
+
+！[折叠](IMG/folding.png)
+
+

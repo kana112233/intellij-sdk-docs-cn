@@ -2,24 +2,36 @@
 title: Run Configurations
 ---
 
+这一系列步骤显示了如何注册和实现简单的运行配置。
 
-These series of steps show how to register and implement a simple Run Configuration.
-Run Configurations are used to run internal and external processes from within *IntelliJ Platform* based products.
-To get familiar with the concept of a Run Configuration refer
-[Run/Debug Configuration](https://www.jetbrains.com/idea/help/run-debug-configuration.html)
-section of 
-[IntelliJ IDEA Web Help](https://www.jetbrains.com/idea/help/intellij-idea.html)
+运行配置用于从基于* IntelliJ Platform *的产品中运行内部和外部流程。
 
-## Pre-requirements
+要熟悉运行配置的概念，请参阅
 
-Create an empty plugin project.
-See 
-[Creating a Plugin Project](/basics/getting_started/creating_plugin_project.md).
+[运行/调试配置](https://www.jetbrains.com/idea/help/run-debug-configuration.html)
 
-## 1. Register a new ConfigurationType
+部分
 
-Add new *configurationType* extension to the 
-[plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/run_configuration/resources/META-INF/plugin.xml)
+[IntelliJ IDEA Web帮助](https://www.jetbrains.com/idea/help/intellij-idea.html)
+
+
+##预先要求
+
+
+创建一个空的插件项目。
+
+看到
+
+[创建插件项目](/basics/getting_started/creating_plugin_project.md)。
+
+
+## 1.注册一个新的ConfigurationType
+
+
+添加新的* configurationType *扩展名
+
+[plugin.xml中](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/run_configuration/resources/META-INF/plugin.xml)
+
 
 ```xml
 <extensions defaultExtensionNs="com.intellij">
@@ -27,11 +39,15 @@ Add new *configurationType* extension to the
 </extensions>
 ```
 
-## 2. Implement ConfigurationType
+## 2.实现ConfigurationType
 
-Implement 
-[ConfigurationType](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java) 
-interface registered in the Step 1.
+
+实行
+
+[ConfigurationType](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)
+
+在步骤1中注册的界面。
+
 
 ```java
 public class DemoRunConfigurationType implements ConfigurationType {
@@ -63,11 +79,15 @@ public class DemoRunConfigurationType implements ConfigurationType {
 }
 ```
 
-## 3. Implement a ConfigurationFactory
+## 3.实现ConfigurationFactory
 
-Implement a new
+
+实施新的
+
 [ConfigurationFactory](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)
-through which custom run configurations will be created.
+
+通过它创建自定义运行配置。
+
 
 ```java
 public class DemoConfigurationFactory extends ConfigurationFactory {
@@ -90,16 +110,24 @@ public class DemoConfigurationFactory extends ConfigurationFactory {
 
 ```
 
-## 4. Implement a Run Configuration
+## 4.实现运行配置
 
-To make your changes visible from the UI, implement a new Run Configuration.
 
-**Note:** In most of the cases you can derive a custom Run Configuration class from the
-[RunConfigurationBase](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java).
-If you need to implement specific settings externalization rules and I/O behaviour, 
-use 
+要通过UI显示更改，请实施新的运行配置。
+
+
+**注意:**在大多数情况下，您可以从中派生自定义运行配置类
+
+[RunConfigurationBase](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java)。
+
+如果需要实现特定设置外化规则和I/O行为，
+
+使用
+
 [RunConfiguration](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)
-interface.
+
+接口。
+
 
 ```java
 public class DemoRunConfiguration extends RunConfigurationBase {
@@ -126,18 +154,26 @@ public class DemoRunConfiguration extends RunConfigurationBase {
 }
 ```
 
-## 5. Create and Implement Run Configuration UI Form
+## 5.创建并实现运行配置UI表单
 
-Create a new 
-[UI form] 
-that defines, how an inner part of the new Run Configuration should look like.
-Default Run Configuration will be looking like this:
 
-![Default Run Configuration Look](run_configurations/img/ui_form.png)
+创建一个新的
 
-## 6. Bind the UI Form
+[UI形式]
 
-The UI Form should be bound with a Java class responsible for handling UI components logic.
+它定义了新的运行配置的内部部分应该是什么样子。
+
+默认运行配置将如下所示:
+
+
+![默认运行配置外观](run_configurations/img/ui_form.png)
+
+
+## 6.绑定UI表单
+
+
+UI表单应该与负责处理UI组件逻辑的Java类绑定。
+
 
 ```java
 public class DemoSettingsEditor extends SettingsEditor<DemoRunConfiguration> {
@@ -167,12 +203,19 @@ public class DemoSettingsEditor extends SettingsEditor<DemoRunConfiguration> {
 }
 ```
 
-## 7. Compile and Run the Plugin
+## 7.编译并运行插件
 
-Refer to 
-[Running and Debugging a Plugin](/basics/getting_started/running_and_debugging_a_plugin.md).
 
-After going through the steps described above you can create a custom Run Configuration
-from your plugin.
+参考
 
-![New Run Configuration Type](run_configurations/img/new_run_configuration.png)
+[运行和调试插件](/basics/getting_started/running_and_debugging_a_plugin.md)。
+
+
+完成上述步骤后，您可以创建自定义运行配置
+
+从你的插件。
+
+
+![新运行配置类型](run_configurations/img/new_run_configuration.png)
+
+
