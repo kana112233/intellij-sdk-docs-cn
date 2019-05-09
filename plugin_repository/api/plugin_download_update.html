@@ -1,0 +1,162 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Plugin Update API / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/plugin_repository/api/plugin_download_update.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Download Plugin Update API" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-13T14:39:37+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Download Plugin Update API" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="plugin_repository/api/plugin_download_update">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/api/plugin_details.html">Plugin Details API</a>
+                        <a class="navigation-links__next" href="/plugin_repository/api/maven_interface.html">Plugin Repository Maven Interface</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/plugin_repository/api/plugin_download_update.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Download Plugin Update API</h1>
+                    <p>有两种方法可以编程方式下载插件版本:</p>
+
+<p>##下载与某个产品兼容的最新插件更新</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">https://plugins.jetbrains.com/pluginManager?action=download&amp;id=&lt;pluginXmlId&gt;&amp;build=&lt;productCode&gt;-&lt;buildNumber&gt;
+</code></div>
+
+<p>哪里</p>
+
+<ul>
+  <li>
+    <p>** pluginXmlId <em>*被指定为插件的单个更新页面右侧和plugin.xml中的</em> Plugin XML ID *参数;</p>
+  </li>
+  <li>
+    <p>** productCode **是一个双字符产品代码.
+可以是空白的.</p>
+  </li>
+  <li>
+    <p>** buildNumber **是IDE的内部版本号(在产品的“关于对话框”和发行说明中指定).</p>
+  </li>
+</ul>
+
+<p>例如
+<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala插件</span></a>(<code class="code highlight language-text">pluginXmlId = org.intellij.scala</code>)＆IntelliJ IDEA 2017.1(<code class="code highlight language-text">productCode = IU</code>,<code class="code highlight language-text">buildNumber = 171.3780.107 
+</code>):</p>
+
+<p><code class="code highlight language-text">的https://plugins.jetbrains.com/pluginManager行动=下载＆ID = org.intellij.scala及建立= IU-171.3780.107</code></p>
+
+<p>##下载指定版本的插件</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">https://plugins.jetbrains.com/plugin/download?pluginId=&lt;pluginXmlId&gt;&amp;version=&lt;version&gt;
+</code></div>
+
+<p>哪里</p>
+
+<ul>
+  <li>
+    <p>** pluginXmlId <em>*被指定为插件的单个更新页面右侧和plugin.xml中的</em> Plugin XML ID *参数;</p>
+  </li>
+  <li>
+    <p>** version **是插件更新的一个版本.</p>
+  </li>
+</ul>
+
+<p>例如
+<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala插件</span></a>(<code class="code highlight language-text">pluginXmlId = org.intellij.scala</code>)和版本<code class="code highlight language-text">2017.1.15</code>:</p>
+
+<p><code class="code highlight language-text">的https://plugins.jetbrains.com/plugin/download pluginId = org.intellij.scala＆版本= 2017.1.15</code></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/api/plugin_details.html">Plugin Details API</a>
+                        <a class="navigation-links__next" href="/plugin_repository/api/maven_interface.html">Plugin Repository Maven Interface</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 13 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

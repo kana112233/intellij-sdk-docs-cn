@@ -1,0 +1,204 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>File-based Indexes / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/indexing_and_psi_stubs/file_based_indexes.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="File-based Indexes" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-04-09T19:39:32+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="File-based Indexes" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/indexing_and_psi_stubs/file_based_indexes">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/indexing_and_psi_stubs/stub_indexes.html">Stub Indexes</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/indexing_and_psi_stubs/file_based_indexes.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>File-based Indexes</h1>
+                    <p>基于文件的索引基于Map/Reduce架构.
+每个索引都有某种类型的键和某种类型的值.</p>
+
+<p>关键是后来用于从索引中检索数据的内容.</p>
+
+<p><em>示例:</em>在单词索引中,键是单词本身.</p>
+
+<p>该值是与索引中的键相关联的任意数据.</p>
+
+<p><em>示例:</em>在单词索引中,值是一个掩码,指示单词出现在哪个上下文中(代码,字符串文字或注释).</p>
+
+<p>在最简单的情况下,当我们只需要知道某些数据存在于哪些文件中时,该值的类型为“Void”并且不存储在索引中.</p>
+
+<p>当索引实现索引文件时,它接收文件的内容并将文件中找到的键的映射返回到关联的值.</p>
+
+<p>当您访问索引时,指定您感兴趣的密钥并返回密钥出现的文件列表以及与每个文件关联的值.</p>
+
+<p>##实现基于文件的索引</p>
+
+<p>一个相当简单的基于文件的索引实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java" data-bypass="yes" target="_blank"><span>UI Designer绑定表单索引</span></a>.
+请参考它作为一个例子来更好地理解这个主题.</p>
+
+<p>每个特定的索引实现都是一个扩展[FileBasedIndexExtension]的类(upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndexExtension.java).
+基于文件的索引应该在<code class="code highlight language-text">&lt;fileBasedIndex&gt;</code>扩展点中注册.</p>
+
+<p>基于文件的索引的实现包括以下主要部分:</p>
+
+<p>*<code class="code highlight language-text">getIndexer()</code>返回实际负责根据文件内容构建一组键/值对的索引器类.</p>
+
+<p>*<code class="code highlight language-text">getKeyDescriptor()</code>返回密钥描述符,负责比较密钥并以序列化二进制格式存储它们.</p>
+
+<p>可能最常用的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/io/KeyDescriptor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">KeyDescriptor</code></span></a>实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/io/EnumeratorStringDescriptor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">EnumeratorStringDescriptor</code></span></a>,用于以有效的方式存储标识符.</p>
+
+<p>*<code class="code highlight language-text">getValueExternalizer()</code>返回值序列化器,负责以序列化二进制格式存储值.</p>
+
+<p>*<code class="code highlight language-text">getInputFilter()</code>允许将索引限制为仅限于某组文件.</p>
+
+<p>*<code class="code highlight language-text">getVersion()</code>返回索引实现的版本.
+如果当前版本与用于构建索引的索引实现的版本不同,则会自动重建索引.</p>
+
+<p>如果您不需要将任何值与文件相关联(即您的值类型为Void),则可以使用[ScalarIndexExtension]简化实现(upsource:///platform/indexing-impl/src/com/intellij/util/indexing/ScalarIndexExtension.java)作为基类.</p>
+
+<aside class="注意">
+  <p><code class="code highlight language-text">DataIndexer.map()</code>返回的数据必须仅依赖于传递给方法的输入数据,并且不能依赖于任何外部文件.
+否则,当外部数据发生更改时,您的索引将无法正确更新,并且索引中将包含过时数据.</p>
+</aside>
+
+<aside class="注意">
+  <p>请参阅<code class="code highlight language-text">com.intellij.util.indexing.DebugAssertions</code>,了解如何在开发期间启用其他调试断言以断言正确的索引实现.</p>
+</aside>
+
+<p>##访问基于文件的索引</p>
+
+<p>通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java" data-bypass="yes" target="_blank"><span>FileBasedIndex</span></a>类访问基于文件的索引.</p>
+
+<p>支持以下主要操作:</p>
+
+<p>*<code class="code highlight language-text">getAllKeys()</code>和<code class="code highlight language-text">processAllKeys()</code>允许获取在作为指定项目一部分的文件中找到的所有键的列表.</p>
+
+<aside class="注意">
+  <p>返回的数据保证包含在最新项目内容中找到的所有密钥,但也可能包含当前未在项目中找到的其他密钥.</p>
+</aside>
+
+<p>*<code class="code highlight language-text">getValues()</code>允许获取与特定键相关联的所有值,但不能获取找到它们的文件.</p>
+
+<p>*<code class="code highlight language-text">getContainingFiles()</code>允许获取遇到特定键的所有文件.</p>
+
+<p>*<code class="code highlight language-text">processValues()</code>允许迭代遇到特定键的所有文件,并同时访问关联的值.</p>
+
+<aside class="注意">
+  <p>禁止嵌套索引访问,因为它可能导致死锁.
+首先从索引A收集所有必要的数据,然后在访问索引B时处理结果.</p>
+</aside>
+
+<p>##标准索引</p>
+
+<ul>
+  <li>IntelliJ Platform *包含许多基于标准文件的索引.
+插件开发人员最有用的索引是:</li>
+</ul>
+
+<p>*词索引</p>
+
+<p>*文件名索引</p>
+
+<p>通常,应使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiSearchHelper</code></span></a>类的辅助方法间接访问单词索引.</p>
+
+<p>第二个索引是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">FilenameIndex</code></span></a>.
+它提供了一种快速查找与特定文件名匹配的文件的方法. 
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FileTypeIndex.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">FileTypeIndex</code></span></a>提供了类似的目标:它允许快速查找某种文件类型的所有文件.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/indexing_and_psi_stubs/stub_indexes.html">Stub Indexes</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 9 April 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

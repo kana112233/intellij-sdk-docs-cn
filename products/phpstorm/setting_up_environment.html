@@ -1,0 +1,152 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting-up the Environment for PhpStorm Plugin Development / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/products/phpstorm/setting_up_environment.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Setting-up the Environment for PhpStorm Plugin Development" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-15T11:36:38+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Setting-up the Environment for PhpStorm Plugin Development" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="products/phpstorm/setting_up_environment">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/products/phpstorm/php_open_api.html">PHP Open API</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/products/phpstorm/setting_up_environment.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Setting-up the Environment for PhpStorm Plugin Development</h1>
+                    <a name="section" class="elem-anchor"></a>
+<h3>一般信息<a href="#section" class="anchor-link"><span></span></a></h3>
+
+<p>请熟悉<a href="/intellij/sdk/docsbasics/getting_started.html"><span>插件开发入门</span></a></p>
+
+<p>本指南的一节.</p>
+
+<p>如果您使用的是<a href="/intellij/sdk/docsbasics/getting_started/using_dev_kit.html"><span>DevKit</span></a></p>
+
+<p>为PhpStorm开发插件的工作流程,推荐的方法是将插件项目SDK基于安装</p>
+
+<p>PhpStorm.
+另一种方法是使用PHP插件将插件项目SDK基于IntelliJ IDEA Ultimate的安装.</p>
+
+<p>但是,这会冒着意外使用PhpStorm中没有的某些API的风险.</p>
+
+<p>###如何使用PhpStorm OpenAPI库进行插件开发</p>
+
+<aside class="注意">
+  <p> OpenAPI可用于PhpStorm 6及更高版本.</p>
+</aside>
+
+<p><a href="/intellij/sdk/docsbasics/plugin_structure/plugin_dependencies.html"><span>Plugin Dependencies</span></a>页面描述了向依赖项添加依赖项</p>
+
+<p>DevKit以及Gradle开发环境.
+按照说明:</p>
+
+<p>*将PHP OpenAPI类添加到插件的类路径中:
+  
+*对于基于Gradle的插件开发,请将<code class="code highlight language-text">com.jetbrains.php</code>插件ID添加到build.gradle文件中.
+  
+*对于基于DevKit的插件开发,将<code class="code highlight language-text">php-openapi.jar</code>和<code class="code highlight language-text">php.jar</code>库添加到项目SDK的类路径中.
+    
+这些库位于<code class="code highlight language-text">&lt;your_installation_of_PhpStorm&gt;/plugins/php/lib</code>目录中.</p>
+
+<p>*添加<code class="code highlight language-text">com.jetbrains.php</code>和<code class="code highlight language-text">com.intellij.modules.platform</code>依赖项
+  
+到你的插件项目的’plugin.xml`文件.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/products/phpstorm/php_open_api.html">PHP Open API</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 15 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

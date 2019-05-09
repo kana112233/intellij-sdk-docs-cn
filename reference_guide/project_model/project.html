@@ -1,0 +1,247 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Project / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/project_model/project.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Project" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-21T11:05:22+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Project" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/project_model/project">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/project_structure.html">Project Structure</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/module.html">Module</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/project_model/project.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Project</h1>
+                    <p>在* IntelliJ Platform *中,项目将所有源代码,库,构建指令封装到单个组织单元中.
+您在IDE中执行的所有操作都是在项目的上下文中完成的.
+项目定义了一些称为模块和库的集合.
+根据项目的逻辑和功能要求,您可以创建单模块或多模块项目.</p>
+
+<p>##使用项目</p>
+
+<ul>
+  <li>IntelliJ Platform *将项目配置数据存储在XML文件中.
+这些文件的列表取决于插件<a href="https://www.jetbrains.com/help/idea/about-projects.html" data-bypass="yes" target="_blank"><span>project</span></a>格式.</li>
+</ul>
+
+<p>对于基于文件的格式项目,项目本身的信息核心(例如组件模块的位置,编译器设置等)存储在<code class="code highlight language-text">％project_name％.ipr</code>文件中.
+有关项目包含的模块的信息存储在<code class="code highlight language-text">％module_name％.iml</code>文件中.
+为每个模块创建模块文件.</p>
+
+<p>对于基于目录的格式项目,项目和工作区设置存储在<code class="code highlight language-text">％project_home_directory％/.idea</code>目录下的许多XML文件中.
+每个XML文件都负责其自己的一组设置,并且可以通过其名称识别:<code class="code highlight language-text">projectCodeStyle.xml</code>,<code class="code highlight language-text">encodings.xml</code>,<code class="code highlight language-text">vcs.xml</code>等.至于基于文件的格式项目,<code class="code highlight language-text">.iml 
+</code>文件描述模块.</p>
+
+<p>请注意,您无需直接访问项目文件即可加载或保存设置.
+有关详细信息,请参阅<a href="../../basics/persisting_state_of_components.html"><span>持久性组件状态</span></a>.</p>
+
+<p>要使用项目和项目文件,可以使用以下类和接口:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>界面.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProjectRootManager</code></span></a>抽象类.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProjectManager</code></span></a>抽象类.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProjectFileIndex</code></span></a>界面.</p>
+  </li>
+</ul>
+
+<p>其他用于处理项目模型的类位于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi" data-bypass="yes" target="_blank"><span>projectModel-api.openapi</span></a>包中. 
+[project]概念的基本API类和接口(upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java),<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span>module</span></a>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/application/Application.java" data-bypass="yes" target="_blank"><span>application</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>
+组件</span></a>放在[core-api.openapi]中(upsource:///platform/core-api/src/com/intellij/openapi)包.</p>
+
+<p>###如何获取项目中所有模块的源根列表？</p>
+
+<p>使用<code class="code highlight language-text">ProjectRootManager.getContentSourceRoots()</code>方法.
+为了澄清这一点,请考虑以下代码段:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">String</span> <span class="n">projectName</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="n">VirtualFile</span><span class="o">[]</span> <span class="n">vFiles</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getContentSourceRoots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">sourceRootsList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">vFiles</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">VirtualFile:</span><span class="o">:</span><span class="n">getUrl</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">"\n"</span><span class="o">));</span>
+
+<span class="n">Messages</span><span class="o">.</span><span class="na">showInfoMessage</span><span class="o">(</span><span class="s">"Source roots for the "</span> <span class="o">+</span> <span class="n">projectName</span> <span class="o">+</span> <span class="s">" plugin:\n"</span> <span class="o">+</span> <span class="n">sourceRootsList</span><span class="o">,</span> <span class="s">"Project Properties"</span><span class="o">);</span>
+</code></div>
+
+<p>###检查文件是否属于项目</p>
+
+<p>Use <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java" data-bypass="yes" target="_blank"><span>ProjectFileIndex.java</span></a> to get this information:</p>
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">ProjectFileIndex</span> <span class="n">projectFileIndex</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getFileIndex</span><span class="o">();</span>
+</code></div>
+
+<p>###如何获取指定文件或目录所属的内容或源根目录？</p>
+
+<p>使用<code class="code highlight language-text">ProjectFileIndex.getContentRootForFile</code>和<code class="code highlight language-text">ProjectFileIndex.getSourceRootForFile</code>方法.
+例如:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span> <span class="n">moduleContentRoot</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getFileIndex</span><span class="o">().</span><span class="na">getContentRootForFile</span><span class="o">(</span><span class="n">virtualFileOrDirectory</span><span class="o">);</span>
+<span class="n">VirtualFile</span> <span class="n">moduleSourceRoot</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getFileIndex</span><span class="o">().</span><span class="na">getSourceRootForFile</span><span class="o">(</span><span class="n">virtualFileOrDirectory</span><span class="o">);</span>
+</code></div>
+
+<p>请注意,如果文件或目录不属于项目中任何模块的源根,则此方法返回“null”.
+ </p>
+
+<p>###如何检查文件或目录是否与项目库相关？</p>
+
+<p><code class="code highlight language-text">ProjectFileIndex</code>接口实现了许多方法,可用于检查指定的文件是属于项目库类还是库源.</p>
+
+<p>您可以使用以下方法:</p>
+
+<p>*<code class="code highlight language-text">ProjectFileIndex.**</code>isLibraryClassFile<code class="code highlight language-text"> **</code>(virtualFile)<code class="code highlight language-text">:如果指定的</code>virtualFile<code class="code highlight language-text">是编译的类文件,则返回</code>true`.</p>
+
+<p>*<code class="code highlight language-text">ProjectFileIndex.**</code>isInLibraryClasses<code class="code highlight language-text"> **</code>(virtualFileorDirectory)<code class="code highlight language-text">:如果指定的</code>virtualFileorDirectory<code class="code highlight language-text">属于库类,则返回</code>true`.</p>
+
+<p>*<code class="code highlight language-text">ProjectFileIndex.**</code>isInLibrarySource<code class="code highlight language-text"> **</code>(virtualFileorDirectory)<code class="code highlight language-text">:如果指定的</code>virtualFileorDirectory<code class="code highlight language-text">属于库源,则返回</code>true`.</p>
+
+<p>###如何获得项目SDK？</p>
+
+<p>*获取项目级SDK:<code class="code highlight language-text">Sdk projectSdk = ProjectRootManager.getInstance(project).getProjectSdk();</code></p>
+
+<p>*获取项目级SDK名称:<code class="code highlight language-text">String projectSdkName = ProjectRootManager.getInstance(project).getProjectSdkName();</code></p>
+
+<p>###如何设置项目SDK？</p>
+
+<p>*设置项目级SDK:<code class="code highlight language-text">ProjectRootManager.getInstance(project).setProjectSdk(Sdk jdk);</code></p>
+
+<p>*设置项目级SDK名称:<code class="code highlight language-text">ProjectRootManager.getInstance(project).setProjectSdkName(String name);</code></p>
+
+<p>请注意,默认情况下,项目模块使用项目SDK. 
+(可选)您可以为每个模块配置单独的SDK.</p>
+
+<p>##更改项目结构</p>
+
+<p>可以在包<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi" data-bypass="yes" target="_blank"><span>projectModel-impl.openapi</span></a>中找到可用于修改项目结构的实用程序类.
+它的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi/roots/" data-bypass="yes" target="_blank"><span>根</span></a>子包包含用于处理项目和模块源根的实例和实用程序,包括<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java" data-bypass="yes" target="_blank"><span>ModuleRootModificationUtil.java</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi/projectRoots/IMPL/ProjectRootUtil.java" data-bypass="yes" target="_blank"><span>ProjectRootUtil.java</span></a>.
+项目结构</p>
+
+<p>需要在[write action]中执行更改(/basics/architectural_overview/general_threading_rules.md #readwrite-lock).</p>
+
+<p>请参阅上面的<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/project_model/src/com/intellij/tutorials/project/model/ModificationAction.java" data-bypass="yes" target="_blank"><span>基本示例</span></a></p>
+<ul>
+  <li>飞行项目结构修改,以了解如何实施.</li>
+</ul>
+
+<p>##接收有关项目结构更改的通知</p>
+
+<p>要接收有关项目结构更改的通知(要添加或删除的模块或库,更改模块依赖项等),</p>
+
+<p>使用<a href="/intellij/sdk/docsreference_guide/messaging_infrastructure.html"><span>消息总线</span></a>和<code class="code highlight language-text">ProjectTopics.PROJECT_ROOTS</code>主题:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">project</span><span class="o">.</span><span class="na">getMessageBus</span><span class="o">().</span><span class="na">connect</span><span class="o">().</span><span class="na">subscribe</span><span class="o">(</span><span class="n">ProjectTopics</span><span class="o">.</span><span class="na">PROJECT_ROOTS</span><span class="o">,</span> <span class="k">new</span> <span class="n">ModuleRootListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rootsChanged</span><span class="o">(</span><span class="n">ModuleRootEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></div>
+
+<p>该事件只会通知您某些事情已发生变化;
+如果你需要详细了解发生了什么变化,你</p>
+
+<p>需要保留与您相关的项目结构模型的状态副本,并与之进行比较</p>
+
+<p>改变后的当前状态.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/project_structure.html">Project Structure</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/module.html">Module</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 21 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

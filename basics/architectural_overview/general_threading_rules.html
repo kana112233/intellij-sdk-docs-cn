@@ -1,0 +1,222 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>General Threading Rules / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/architectural_overview/general_threading_rules.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="General Threading Rules" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-08-18T17:58:12+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="General Threading Rules" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/architectural_overview/general_threading_rules">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/reference_guide/messaging_infrastructure.html">Messaging infrastructure</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/architectural_overview/general_threading_rules.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>General Threading Rules</h1>
+                    <p>##读/写锁</p>
+
+<p>通常,* IntelliJ Platform *中与代码相关的数据结构由单个读取器/写入器锁覆盖.
+这适用于PSI,VFS和项目根模型.</p>
+
+<p>允许从任何线程读取数据.
+从UI线程读取数据不需要任何特殊的努力.
+但是,从任何其他线程执行的读取操作需要使用<code class="code highlight language-text">ApplicationManager.getApplication().runReadAction()</code>或更短的<code class="code highlight language-text">ReadAction.run/compute</code>包装在读取操作中.</p>
+
+<p>只允许从UI线程写入数据,并且写操作总是需要用<code class="code highlight language-text">ApplicationManager.getApplication().runWriteAction()</code>或更短的<code class="code highlight language-text">WriteAction.run/compute</code>包装在一个写操作中.</p>
+
+<p>此外,只允许从写安全上下文修改模型,其中包括用户操作,来自它们的<code class="code highlight language-text">invokeLater</code>调用(参见下一节)和事务(<code class="code highlight language-text">TransactionGuard.submitTransaction</code>).
+您不能从UI渲染器或“SwingUtilities.invokeLater”调用中修改PSI,VFS或项目模型.
+有关详细信息,请参阅<code class="code highlight language-text">TransactionGuard</code>文档.</p>
+
+<p>您不得在读取或写入操作之外访问模型.
+不保证相应的对象在几个连续的读取动作之间存活.
+因此,根据经验,每当您开始执行读取操作时,都应检查PSI/VFS/项目/模块是否仍然有效.</p>
+
+<p>##<code class="code highlight language-text">invokeLater</code></p>
+
+<p>要将控制从后台线程传递到事件调度线程,而不是标准的<code class="code highlight language-text">SwingUtilities.invokeLater()</code>,插件应该使用<code class="code highlight language-text">ApplicationManager.getApplication().invokeLater()</code>.
+后一种API允许为调用指定_modality state_,即允许执行调用的模式对话框的堆栈.</p>
+
+<p>*传递<code class="code highlight language-text">ModalityState.NON_MODAL</code>意味着在关闭所有模态对话框后将执行操作.
+请注意,如果任何打开(不相关)项目显示每个项目模式对话框,则在关闭对话框后将执行该操作.</p>
+
+<p>*传递<code class="code highlight language-text">ModalityState.stateForComponent()</code>意味着当最顶层显示的对话框是包含指定组件的对话框,或者是其父对话框之一时,可以执行该操作.</p>
+
+<p>*如果没有传递模态状态,将使用<code class="code highlight language-text">ModalityState.defaultModalityState()</code>.
+在大多数情况下,这是最佳选择,在从UI线程调用时使用当前模态状态,并且具有对使用<code class="code highlight language-text">ProgressManager</code>启动的后台进程的特殊处理:来自这样的进程的<code class="code highlight language-text">invokeLater</code>可以在与该进程相同的对话框中运行
+过程开始了.</p>
+
+<p>*<code class="code highlight language-text">ModalityState.any()</code>表示无论模态对话框如何,都会尽快执行runnable.
+请注意,此类runnables禁止修改PSI,VFS或项目模型.
+有关详细信息,请参阅<code class="code highlight language-text">TransactionGuard</code>文档.</p>
+
+<p>如果您的UI线程活动需要访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围PSI分析,解析引用等),请使用<code class="code highlight language-text">DumbService#smartInvokeLater</code>.
+这样,您的活动将在所有可能的索引过程完成后运行.</p>
+
+<p>##后台进程和<code class="code highlight language-text">ProcessCanceledException</code></p>
+
+<p>后台进程由<code class="code highlight language-text">ProgressManager</code>类管理,它有很多方法来执行给定的代码</p>
+
+<p>使用模态(对话框),非模态(在状态栏中可见)或不可见的进度.
+在所有情况下,代码都是</p>
+
+<p>在与“ProgressIndicator”对象关联的后台线程上执行.</p>
+
+<p>可以通过<code class="code highlight language-text">ProgressIndicatorProvider#getGlobalProgressIndicator</code>随时检索当前线程的指示符.</p>
+
+<p>对于可见的进展,线程可以使用<code class="code highlight language-text">ProgressIndicator</code>来通知用户当前状态:</p>
+
+<p>例如
+设置完成工作的文本或可见部分.</p>
+
+<p>进度指示器还提供了用户处理取消后台进程的方法(按“取消”按钮),</p>
+
+<p>或者来自代码(例如,当前操作由于项目中的某些变化而变得过时).</p>
+
+<p>通过调用“ProgressIndicator#cancelout”可以将进度标记为取消.</p>
+
+<p>该过程通过调用<code class="code highlight language-text">ProgressIndicator#checkCanceled</code>(或者如果你手头没有指标实例,则为’ProgressManager#checkCanceled`)对此作出反应.</p>
+
+<p>如果后台进程已被取消,则此调用将抛出一个特殊的未经检查的<code class="code highlight language-text">ProcessCanceledException</code>.</p>
+
+<p>使用PSI或其他类型的后台进程的所有代码都应该准备好从任何一点抛出的<code class="code highlight language-text">ProcessCanceledException</code>.</p>
+
+<p>永远不应该记录此异常,应该重新抛出它,并且它将在启动该过程的基础结构中处理.</p>
+
+<p>应该经常调用<code class="code highlight language-text">checkCanceled</code>以确保顺利取消该过程. 
+PSI内部</p>
+
+<p>内部有很多<code class="code highlight language-text">checkCanceled</code>调用.
+但是,如果您的过程执行冗长的非PSI活动,您可能需要</p>
+
+<p>插入明确的<code class="code highlight language-text">checkCanceled</code>调用,以便它经常发生,例如
+在每个第N次循环迭代.</p>
+
+<p>##防止UI冻结</p>
+
+<p>后台线程不应该长时间执行读取操作.
+原因是如果UI线程需要写操作(例如用户键入某些内容),它必须尽快获取它,否则UI将冻结,直到所有后台线程都已释放其读取操作.</p>
+
+<p>最着名的方法是在出现写入操作时取消后台读取操作,然后从头开始重新启动后台读取操作.
+编辑器突出显示,代码完成,Goto类/文件/等操作都像这样工作.</p>
+
+<p>为了实现这一点,使用<code class="code highlight language-text">ProgressIndicator</code>和一个特殊的监听器启动冗长的后台操作</p>
+
+<p>写入操作开始时取消该指示符.</p>
+
+<p>下一次后台线程调用<code class="code highlight language-text">checkCanceled</code>时,将抛出<code class="code highlight language-text">ProcessCanceledException</code>,</p>
+
+<p>并且线程应该尽快停止其操作(并完成读取操作).
+ </p>
+
+<p>有两种建议的方法:</p>
+
+<p>*如果您使用的是UI线程,请创建一个<code class="code highlight language-text">ReadTask</code>并将其传递给<code class="code highlight language-text">ProgressIndicatorUtils.schedule *</code>方法之一.
+在<code class="code highlight language-text">onCanceled</code>方法内部,如果应该重新启动活动,请再次安排它.</p>
+
+<p>*如果您已经在后台线程中,请在循环中使用<code class="code highlight language-text">ProgressManager.getInstance().runInReadActionWithWriteActionPriority()</code>,直到它通过或整个活动变得过时.</p>
+
+<p>在这两种方法中,您应始终检查每个读取操作的开始,如果您正在使用的对象仍然有效,并且整个操作仍然有意义(即未被用户取消,则项目未关闭
+等)</p>
+
+<p>如果您正在进行的活动必须访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围的PSI分析,解析引用等),您应该重写<code class="code highlight language-text">ReadTask#runBackgroundProcess 
+</code>并在那里使用“智能模式”读取操作:<code class="code highlight language-text">DumbService.getInstance(project).runReadActionInSmartMode(() - &gt; performInReadAction(indicator))</code></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/reference_guide/messaging_infrastructure.html">Messaging infrastructure</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 18 August 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

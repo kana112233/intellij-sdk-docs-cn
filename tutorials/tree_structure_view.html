@@ -1,0 +1,232 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree Structure View / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/tree_structure_view.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Tree Structure View" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Tree Structure View" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/tree_structure_view">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/tree_structure_view.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Tree Structure View</h1>
+                    <p>本教程旨在说明如何以编程方式修改项目树结构视图外观。</p>
+
+<p>如果您需要了解有关基于IntelliJ的IDE中项目视图的基本概念的更多信息，请参阅</p>
+
+<p><a href="https://www.jetbrains.com/idea/help/exploring-the-project-structure.html#d164891e120" data-bypass="yes" target="_blank"><span>探索项目结构</span></a></p>
+
+<p>的</p>
+
+<p><a href="https://www.jetbrains.com/idea/help/intellij-idea.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA Web帮助</span></a>。</p>
+
+<p>下面的系列步骤显示了如何在项目视图面板中过滤掉并保持仅可见的文本文件和目录。</p>
+
+<p>##预先要求</p>
+
+<p>创建一个空的插件项目。</p>
+
+<p>看到</p>
+
+<p><a href="/intellij/sdk/docsbasics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>。</p>
+
+<a name="treestructure-provider" class="elem-anchor"></a>
+<h2>1.注册自定义TreeStructure Provider<a href="#treestructure-provider" class="anchor-link"><span></span></a></h2>
+
+<p>添加新的* treeStructureProvider *扩展名</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/tree_structure_provider/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a></p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="o">&lt;</span><span class="n">extensions</span> <span class="n">defaultExtensionNs</span><span class="o">=</span><span class="s">"com.intellij"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">treeStructureProvider</span> <span class="n">implementation</span><span class="o">=</span><span class="s">"org.jetbrains.tutorials.tree.structure.TextOnlyTreeStructureProvider"</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">extensions</span><span class="o">&gt;</span>
+</code></div>
+
+<a name="treestructureprovider" class="elem-anchor"></a>
+<h2>2.实现自定义TreeStructureProvider<a href="#treestructureprovider" class="anchor-link"><span></span></a></h2>
+
+<p>要提供自定义结构视图行为，您需要实现TreeStructureProvider接口。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextOnlyTreeStructureProvider</span> <span class="kd">implements</span> <span class="n">TreeStructureProvider</span> <span class="o">{</span>
+    <span class="nd">@NotNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="nf">modify</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AbstractTreeNode</span> <span class="n">parent</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="n">children</span><span class="o">,</span> <span class="n">ViewSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Nullable</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getData</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">,</span> <span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="modify" class="elem-anchor"></a>
+<h2>3.覆盖modify()方法<a href="#modify" class="anchor-link"><span></span></a></h2>
+
+<p>要实现树结构节点过滤逻辑，请覆盖<code class="code highlight language-text">modify()</code>方法。</p>
+
+<p>下面的示例显示了如何筛选出除了与文本文件和目录对应的节点外的所有项目视图节点。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">jetbrains</span><span class="o">.</span><span class="na">tutorials</span><span class="o">.</span><span class="na">tree</span><span class="o">.</span><span class="na">structure</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.ide.projectView.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.ide.projectView.impl.nodes.PsiFileNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.ide.util.treeView.AbstractTreeNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.fileTypes.PlainTextFileType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.vfs.VirtualFile</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * @author Anna Bulenkova
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextOnlyTreeStructureProvider</span> <span class="kd">implements</span> <span class="n">TreeStructureProvider</span> <span class="o">{</span>
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="nf">modify</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AbstractTreeNode</span> <span class="n">parent</span><span class="o">,</span>
+                                             <span class="nd">@NotNull</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="n">children</span><span class="o">,</span>
+                                             <span class="n">ViewSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="n">nodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">AbstractTreeNode</span> <span class="n">child</span> <span class="o">:</span> <span class="n">children</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">child</span> <span class="k">instanceof</span> <span class="n">PsiFileNode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">VirtualFile</span> <span class="n">file</span> <span class="o">=</span> <span class="o">((</span><span class="n">PsiFileNode</span><span class="o">)</span> <span class="n">child</span><span class="o">).</span><span class="na">getVirtualFile</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">file</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!(</span><span class="n">file</span><span class="o">.</span><span class="na">getFileType</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">PlainTextFileType</span><span class="o">))</span> <span class="o">{</span>
+          <span class="k">continue</span><span class="o">;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="n">nodes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">child</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">nodes</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Nullable</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getData</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">AbstractTreeNode</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">,</span> <span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section" class="elem-anchor"></a>
+<h2>4.编译并运行插件<a href="#section" class="anchor-link"><span></span></a></h2>
+
+<p>编译并运行本教程中的代码示例。</p>
+
+<p>参考</p>
+
+<p><a href="/intellij/sdk/docsbasics/getting_started/running_and_debugging_a_plugin.html"><span>运行和调试插件</span></a>。</p>
+
+<p>完成上述步骤后，您只能在项目视图中看到属于项目的文本文件和目录。</p>
+
+<p><img src="tree_structure_view/img/text_only.png" alt="文件文件" /></p>
+
+<p>查看</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/tree_structure_provider" data-bypass="yes" target="_blank"><span>插件源代码</span></a></p>
+
+<p>并构建项目以了解TreeStructureView提供程序如何在实践中工作。</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

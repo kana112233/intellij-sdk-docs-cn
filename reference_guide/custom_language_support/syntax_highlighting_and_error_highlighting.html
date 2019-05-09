@@ -1,0 +1,278 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Syntax Highlighting and Error Highlighting / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Syntax Highlighting and Error Highlighting" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2015-12-21T13:40:09+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Syntax Highlighting and Error Highlighting" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/implementing_parser_and_psi.html">Implementing a Parser and PSI</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/references_and_resolve.html">References and Resolve</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Syntax Highlighting and Error Highlighting</h1>
+                    <p>用于指定应如何突出显示特定范围的文本的类被调用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a>.</p>
+
+<p>为每个应突出显示的不同类型的项目(关键字,数字,字符串等)创建此类的实例.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a></p>
+
+<p>定义应用于相应类型的项的默认属性(例如,关键字为粗体,数字为蓝色,字符串为粗体和绿色).</p>
+
+<p>的映射</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a></p>
+
+<p>编辑器中使用的特定属性由</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java" data-bypass="yes" target="_blank"><span>EditorColorsScheme</span></a></p>
+
+<p>如果插件提供了适当的配置界面,则可以由用户配置.</p>
+
+<p>从多个突出显示</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a></p>
+
+<p>项可以分层 - 例如,一个键可以定义项的粗体,另一个键可以定义其颜色.</p>
+
+<p><strong>注意:</strong></p>
+
+<p>关于语言默认值的新功能以及对其他颜色方案的支持,详见</p>
+
+<p><a href="/intellij/sdk/docsreference_guide/color_scheme_management.html"><span>配色方案管理</span></a>.</p>
+
+<a name="lexer" class="elem-anchor"></a>
+<h3>Lexer<a href="#lexer" class="anchor-link"><span></span></a></h3>
+
+<p>语法和错误突出显示在多个级别上执行.</p>
+
+<p>第一级语法突出显示基于词法分析器输出,并通过</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java" data-bypass="yes" target="_blank"><span>SyntaxHighlighter的</span></a></p>
+
+<p>接口.</p>
+
+<p>语法高亮显示返回</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a></p>
+
+<p>每种令牌类型的实例需要特殊突出显示.</p>
+
+<p>用于突出显示词法错误,标准</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java" data-bypass="yes" target="_blank"><span>TextAttributesKey</span></a></p>
+
+<p>对于坏人物</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/HighlighterColors.java" data-bypass="yes" target="_blank"><span>HighlighterColors.BAD_CHARACTER</span></a></p>
+
+<p>可以使用.</p>
+
+<p><strong>例:</strong></p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesHighlighter.java" data-bypass="yes" target="_blank"><span>SyntaxHighlighter的</span></a></p>
+
+<p>实施</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<a name="parser" class="elem-anchor"></a>
+<h3>Parser<a href="#parser" class="anchor-link"><span></span></a></h3>
+
+<p>在解析期间发生第二级错误突出显示.</p>
+
+<p>如果特定的令牌序列根据语言的语法无效,则</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder.error()</span></a></p>
+
+<p>方法可用于突出显示无效令牌并显示错误消息,说明它们无效的原因.</p>
+
+<a name="annotator" class="elem-anchor"></a>
+<h3>Annotator<a href="#annotator" class="anchor-link"><span></span></a></h3>
+
+<p>第三级突出显示是通过</p>
+
+<p>[注释器(upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java)</p>
+
+<p>接口.</p>
+
+<p>插件可以在<code class="code highlight language-text">com.intellij.annotator</code>扩展点中注册一个或多个注释器,并且在后台突出显示传递期间调用这些注释器以处理自定义语言的PSI树中的元素.</p>
+
+<p>注释器不仅可以使用PSI分析语法,还可以分析语义,因此可以提供更复杂的语法和错误突出显示逻辑.</p>
+
+<p>注释器还可以为其检测到的问题提供快速修复.</p>
+
+<p>更改文件时,将逐步调用注释器以仅处理PSI树中已更改的元素.</p>
+
+<p>要将文本区域突出显示为警告或错误,注释器会调用“createErrorAnnotation()”或“createWarningAnnotation()”.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java" data-bypass="yes" target="_blank"><span>AnnotationHolder</span></a></p>
+
+<p>对象传递给它,并可选择在返回的上调用<code class="code highlight language-text">registerFix()</code></p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/Annotation.java" data-bypass="yes" target="_blank"><span>注释</span></a></p>
+
+<p>对象为错误或警告添加快速修复.</p>
+
+<p>要应用其他语法突出显示,注释器可以调用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java" data-bypass="yes" target="_blank"><span>AnnotationHolder.createInfoAnnotation()</span></a></p>
+
+<p>用空消息然后调用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/Annotation.java" data-bypass="yes" target="_blank"><span>Annotation.setTextAttributes()</span></a></p>
+
+<p>指定突出显示的文本属性键.</p>
+
+<p><strong>例:</strong></p>
+
+<p>[注释器(upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/PropertiesAnnotator.java)</p>
+
+<p>对于</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<p>###外部工具</p>
+
+<p>最后,如果自定义语言使用外部工具来验证语言中的文件(例如,使用Xerces库进行XML模式验证),它可以提供实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java" data-bypass="yes" target="_blank"><span>ExternalAnnotator</span></a></p>
+
+<p>接口并将其注册到<code class="code highlight language-text">com.intellij.externalAnnotator</code>扩展点.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java" data-bypass="yes" target="_blank"><span>ExternalAnnotator</span></a></p>
+
+<p>突出显示具有最低优先级,仅在所有其他后台处理完成后才会调用.</p>
+
+<p>它使用相同的</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java" data-bypass="yes" target="_blank"><span>AnnotationHolder</span></a></p>
+
+<p>用于将外部工具的输出转换为编辑器突出显示的界面.</p>
+
+<p>###颜色设置</p>
+
+<p>该插件还可以提供配置界面,以允许用户配置用于突出显示特定项目的颜色.</p>
+
+<p>为了做到这一点,它应该提供一个实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java" data-bypass="yes" target="_blank"><span>ColorSettingPage</span></a></p>
+
+<p>并将其注册到<code class="code highlight language-text">com.intellij.colorSettingsPage</code>扩展点.</p>
+
+<p><strong>例</strong>:</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/src/com/intellij/openapi/options/colors/pages/PropertiesColorsPage.java" data-bypass="yes" target="_blank"><span>ColorSettingsPage</span></a></p>
+
+<p>对于</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<p>“导出到HTML”功能使用与编辑器相同的语法突出显示机制,因此它将自动为提供语法高亮显示的自定义语言工作.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/implementing_parser_and_psi.html">Implementing a Parser and PSI</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/references_and_resolve.html">References and Resolve</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 21 December 2015
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

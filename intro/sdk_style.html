@@ -1,0 +1,411 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Style Guide for SDK Documents / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/intro/sdk_style.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Style Guide for SDK Documents" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-23T18:28:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Style Guide for SDK Documents" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="intro/sdk_style">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/intro/sdk_code_guidelines.html">Guidelines for Creating IntelliJ Platform SDK Code Samples</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/intro/sdk_style.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Style Guide for SDK Documents</h1>
+                    <p>This document describes the writing style used in authoring open source IntelliJ Platform SDK documentation.
+Before you begin, please read this page thoroughly as well as the <a href="/intellij/sdk/docsCODE_OF_CONDUCT.html"><span>Code of Conduct</span></a> and <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>License</span></a> documents.
+For information about contributing to the IntelliJ Platform itself, please visit <a href="/intellij/sdk/docsbasics/platform_contributions.html"><span>Contributing to the IntelliJ Platform</span></a>.</p>
+
+<p>First and foremost, we should keep in mind our audience and their objectives:
+<em>Someone reading technical content is usually looking to answer a specific question.
+That question might be broad or narrowly-focused, but either way, our goal is to provide answers without distraction.</em></p>
+
+<p>The style of the <em>Intellij Platform SDK</em> documentation is captured by using a markup language named <a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span><em>Markdown</em></span></a>.
+The following sections describe the SDK documentation style in terms of the Markdown formats:</p>
+<ul>
+  <li><a href="#documentation-markup-style"><span>Documentation Markup Style</span></a>
+    <ul>
+      <li><a href="#page-format"><span>Page Format</span></a></li>
+      <li><a href="#redirects"><span>Redirects</span></a></li>
+      <li><a href="#table-of-contents-for-a-page"><span>Table of Contents for a Page</span></a></li>
+      <li><a href="#text-format-conventions"><span>Text Format Conventions</span></a></li>
+      <li><a href="#liquid-tags-and-filters"><span>Liquid tags and filters</span></a></li>
+      <li><a href="#syntax-highlighting"><span>Syntax highlighting</span></a></li>
+      <li><a href="#tables"><span>Tables</span></a></li>
+      <li><a href="#links"><span>Links</span></a></li>
+      <li><a href="#notes-and-callouts"><span>Callouts</span></a></li>
+      <li><a href="#images"><span>Images</span></a></li>
+    </ul>
+  </li>
+  <li><a href="#summary-site-table-of-contents"><span>_SUMMARY.md Site Table of Contents</span></a></li>
+  <li><a href="#repository-submodules"><span>Repository Submodules</span></a></li>
+</ul>
+
+<a name="documentation-markup-style" class="elem-anchor"></a>
+<h2>Documentation Markup Style<a href="#documentation-markup-style" class="anchor-link"><span></span></a></h2>
+<p>By default, when building the site, all files are copied to the destination <code class="code highlight language-text">_site</code> folder.
+Some files are excluded in the <code class="code highlight language-text">_config.yml</code> and <code class="code highlight language-text">sdkdocs-template/jekyll/_config-defaults.yml</code> files.
+The documentation files themselves are <a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span>Markdown</span></a> files (<code class="code highlight language-text">*.md</code>) that get automatically converted to HTML when the site is built.</p>
+
+<a name="page-format" class="elem-anchor"></a>
+<h3>Page Format<a href="#page-format" class="anchor-link"><span></span></a></h3>
+<p>Only Markdown files beginning with a <a href="https://yaml.org" data-bypass="yes" target="_blank"><span>YAML</span></a> header are converted to HTML.
+If the Markdown file doesn’t contain a header, it won’t be converted.
+In other words, to convert a <code class="code highlight language-text">.md</code> file to HTML, it should look like this:</p>
+
+<div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
+<span class="nn">---</span>
+
+<span class="s">Lorem ipsum...</span>
+</code></div>
+
+<p>The two lines at the top of the file are the markers of the YAML <em>front matter</em>.
+Fields can be added in between these markers, and are used when generating the HTML.
+Typically, this header is empty, although it is required by Jekyll (if omitted, the file isn’t converted).</p>
+
+<p>The YAML header can contain data that is used when generating the site.
+For example, the page title can be specified as a simple piece of Markdown - <code class="code highlight language-text"># Title</code>, or it can be specified in the YAML, and the page template displays it appropriately:</p>
+
+<div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">The Title Of The Page</span>
+<span class="nn">---</span>
+
+<span class="s">Lorem ipsum...</span>
+</code></div>
+
+<p>The YAML header can also include <a href="#redirects"><span>redirect</span></a> information.</p>
+
+<p>Line spacing around headings in Markdown files generally doesn’t affect the HTML conversion, but it does make MD pages more readable for authors:</p>
+<ul>
+  <li>No space between a heading and the first content below it.</li>
+  <li>One space before a heading if it is the same level or a sub-heading of the previous section.</li>
+  <li>Two spaces before a heading that is higher-level than the heading of the previous section.</li>
+</ul>
+
+<a name="redirects" class="elem-anchor"></a>
+<h3>Redirects<a href="#redirects" class="anchor-link"><span></span></a></h3>
+<p>The documentation site is set up to include the <a href="https://github.com/jekyll/jekyll-redirect-from" data-bypass="yes" target="_blank"><span>jekyll-redirect-from</span></a> plugin, which will generate “dummy” pages that automatically redirect to a given page.
+For example, to specify that the <code class="code highlight language-text">index.html</code> page be generated to redirect to <code class="code highlight language-text">README.md</code>, the <code class="code highlight language-text">README.md</code> file should include the following in the YAML header:</p>
+
+<div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
+<span class="na">redirect_from</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">/index.html</span>
+<span class="nn">---</span>
+
+<span class="s">Lorem ipsum...</span>
+</code></div>
+
+<p>The redirect will create an <code class="code highlight language-text">index.html</code> file that will automatically redirect to the generated <code class="code highlight language-text">README.html</code> file.
+Redirects enable the site URL to automatically show the <code class="code highlight language-text">README.html</code> file - <code class="code highlight language-text">http://localhost:4001/foo-test/</code> will try to load <code class="code highlight language-text">index.html</code>, which will automatically redirect to <code class="code highlight language-text">README.html</code>.</p>
+
+<p>It is also useful to redirect when renaming or moving files.
+Multiple redirects can be added to the YAML header.</p>
+
+<a name="table-of-contents-for-a-page" class="elem-anchor"></a>
+<h3>Table of Contents for a Page<a href="#table-of-contents-for-a-page" class="anchor-link"><span></span></a></h3>
+<p>The site is configured to use the <a href="http://kramdown.gettalong.org" data-bypass="yes" target="_blank"><span>Kramdown Markdown converter</span></a>, which adds some extra features over traditional Markdown.
+For example, “attribute lists” that can apply attributes to the generated elements.</p>
+
+<p>One useful attribute is <code class="code highlight language-text">{:toc}</code>, which can be applied to a list item, which will get replaced with a list of links to header items.
+E.g. the following list item will be replaced by links to all of the header items in the page:</p>
+
+<div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="p">*</span> Dummy list item
+{:toc}
+</code></div>
+
+<p>Further Kramdown features are described on the <a href="https://kramdown.gettalong.org/converter/html.html" data-bypass="yes" target="_blank"><span>converter page</span></a>, and attribute lists are described on the <a href="http://kramdown.gettalong.org/syntax.html" data-bypass="yes" target="_blank"><span>syntax page</span></a>.
+Note that source code formatting is configured to use <a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavoured Mardown</span></a> and “code fences”, see below.</p>
+
+<a name="liquid-tags-and-filters" class="elem-anchor"></a>
+<h3>Liquid tags and filters<a href="#liquid-tags-and-filters" class="anchor-link"><span></span></a></h3>
+<p>Jekyll uses the <a href="https://shopify.github.io/liquid/" data-bypass="yes" target="_blank"><span>Liquid</span></a> templating language to process files.
+This process means standard Liquid tags and filters are available.
+There should be little need to use them, however, as the Markdown format is already quite rich.
+See the <a href="http://jekyllrb.com/docs/templates/" data-bypass="yes" target="_blank"><span>Jekyll site</span></a> for more details.</p>
+
+<a name="text-format-conventions" class="elem-anchor"></a>
+<h3>Text Format Conventions<a href="#text-format-conventions" class="anchor-link"><span></span></a></h3>
+<p>Consistent text styles are used to standardize references and keywords:</p>
+<ul>
+  <li>Menu paths are formatted as bold with pipe characters separating each level: **Preferences \| Editor** (<strong>Preferences | Editor</strong>)</li>
+  <li>Keywords and quotations are formatted as italic: _UI Theme_ (<em>UI Theme</em>)</li>
+  <li>File names and paths, in-paragraph code fragments, and language keywords are formatted as code: `interface` (<code class="code highlight language-text">interface</code>),</li>
+  <li>File formats are shown as all capital letters: PNG and XML.</li>
+  <li>File name extensions are not capitalized when part of a full file name, path, or URL: <code class="code highlight language-text">filename.ext</code>.</li>
+  <li><a href="#links"><span>Links</span></a> have a particular format depending on the type of link.</li>
+</ul>
+
+<p>Consistent terminology helps the reader grasp new concepts more quickly:</p>
+<ul>
+  <li>The open source code in the GitHub repository <code class="code highlight language-text">intellij-community</code> is known as the <em>IntelliJ Platform</em>.
+Use the full phrase in SDK documentation.</li>
+  <li>IDEs based on the IntelliJ Platform are described as <em>IntelliJ Platform-based IDEs</em>.
+Once that term is used on a page, after that authors may use IDEs</li>
+  <li>When referring to JetBrains products always use the full name such as <em>IntelliJ IDEA</em>.</li>
+</ul>
+
+<a name="syntax-highlighting" class="elem-anchor"></a>
+<h3>Syntax highlighting<a href="#syntax-highlighting" class="anchor-link"><span></span></a></h3>
+<p>Source code can be represented by using <a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavoured Markdown</span></a> code fences, which are three backticks:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">```
+// Source code goes here...
+```
+</code></div>
+
+<p>Syntax highlighting can be applied by specifying the language after the first set of ticks:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">```csharp
+// Some C# code
+```
+
+```java
+// Some Java code
+```
+</code></div>
+
+<p>Here is the list of <a href="https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers" data-bypass="yes" target="_blank"><span>supported languages</span></a>, and also <a href="https://kotlinlang.org" data-bypass="yes" target="_blank"><span>Kotlin</span></a>, of course.</p>
+
+<p>Please keep code samples concise and avoid any unnecessary “surrounding” code or import statements.</p>
+
+<!-- //TODO: Not currently supported by rouge, or by the site's CSS
+
+The site is also configured to highlight a range of files in the source code, by specifying `{start-end}` which is the start and end line of the highlighting:
+
+    ```java{2-3}
+    // Not highlighted
+    // Highlighted
+    // Highlighted
+    // Not highlighted
+    ```
+-->
+
+<a name="tables" class="elem-anchor"></a>
+<h3>Tables<a href="#tables" class="anchor-link"><span></span></a></h3>
+<p>The Kramdown parser also supports tables.
+The syntax is to use the pipe (<code class="code highlight language-text">|</code>) and minus symbols:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">```md
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Blah     | Blah     | Blah     |
+```
+</code></div>
+
+<a name="links" class="elem-anchor"></a>
+<h3>Links<a href="#links" class="anchor-link"><span></span></a></h3>
+<p>Links are handled as normal Markdown links and can be anchored to external sites, pages within the sites, or headings in the sites.
+When a Markdown header is converted to an HTML header, it is assigned an ID so that it can be linked.
+For example, <code class="code highlight language-text">## Introduction</code> will get the ID of <code class="code highlight language-text">introduction</code>, and can be linked either in the same page or cross-page as described below.</p>
+
+<p>Links to files in the IntelliJ Platform (<code class="code highlight language-text">intellij-community</code>) repository use <code class="code highlight language-text">upsource:///</code> instead of the full URL to the repository.
+The <code class="code highlight language-text">upsource:///</code> URI effectively points to the root of the <code class="code highlight language-text">intellij-community</code> repository.</p>
+<ul>
+  <li><code class="code highlight language-text">[README.md](upsource:///README.md)</code> for links to general files in the repository.</li>
+  <li><code class="code highlight language-text">[</code>`AnAction`<code class="code highlight language-text">](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)</code> for links to source code files for interfaces and classes.
+Note the use of `` characters surrounding the class name in the link.</li>
+</ul>
+
+<p>General links have one of the following formats:</p>
+<ul>
+  <li><code class="code highlight language-text">[External site](http://example.org)</code> links to an external site.</li>
+  <li>Linking to pages in the SDK documentation:
+    <ul>
+      <li><code class="code highlight language-text">[SDK doc page in current directory](Page2.md)</code> links to an SDK doc page in the same directory as the current page.
+Note that the extension is <code class="code highlight language-text">.md</code>, <em>NOT</em> <code class="code highlight language-text">.html</code>.</li>
+      <li><code class="code highlight language-text">[SDK page in another folder](/Folder2/Page2.md)</code> links to a page in another folder.
+Note that the URL is navigating from the project root - this works even if the site is hosted in a sub-folder (e.g. this link will work for <code class="code highlight language-text">http://localhost:4000/devguide/Folder2/Page2.html</code>).
+Relative links also work (<code class="code highlight language-text">../Folder2/Page2.md</code>).</li>
+    </ul>
+  </li>
+  <li>Linking to specific <em>sections</em> on pages in the SDK documentation.
+The anchor name will be all lower case, and spaces are replaced with <code class="code highlight language-text">-</code>, e.g. <code class="code highlight language-text">## Page setup</code> becomes <code class="code highlight language-text">#page-setup</code>.
+    <ul>
+      <li><code class="code highlight language-text">[Link to a section on the current page](#another-section)</code> links to a heading on the current page.</li>
+      <li><code class="code highlight language-text">[Link to the section on another page](Page2.md#another-section)</code> links to a heading on another page.</li>
+    </ul>
+  </li>
+</ul>
+
+<a name="notes-and-callouts" class="elem-anchor"></a>
+<h3>Notes and callouts<a href="#notes-and-callouts" class="anchor-link"><span></span></a></h3>
+<p>Notes and callouts can be specified using the blockquote syntax.
+The converter looks at the first following word to see if it is bold.
+If so, it applies a callout style.
+The example below will be displayed as a callout, styled as a “note”:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">&gt; **NOTE** This is a note
+</code></div>
+
+<aside class="note">
+  <p> This is a note</p>
+</aside>
+
+<p>The styles available for callouts are:</p>
+<ul>
+  <li>TODO - Generally not used in SDK documentation.
+Embed <code class="code highlight language-text">&lt;--! //TODO: explanation... --&gt;</code> instead, which is not visible in published documentation.</li>
+  <li>TIP - Information that makes the reader more productive.</li>
+  <li>NOTE - Information that is important for the reader to understand.
+This callout is reserved for key points and concepts.</li>
+  <li>WARNING - Information critical to the user.
+Use this callout for information that prevents failures or errors.</li>
+</ul>
+
+<a name="images" class="elem-anchor"></a>
+<h3>Images<a href="#images" class="anchor-link"><span></span></a></h3>
+<p>Images can be included by adding the file directly to the <code class="code highlight language-text">intellij-sdk-docs</code> repository.
+Each subject directory typically has an <code class="code highlight language-text">img</code> subdirectory.
+Keep images close to the corresponding documentation file in the repository directory structure.</p>
+
+<p>Images in this documentation are generally screenshots.
+The preferred image format is PNG at 144 DPI resolution.
+A resolution of 72 DPI is acceptable but may look blurry on high-resolution monitors.</p>
+
+<p>It is important to reduce the size of image files to prevent bloating the repository and impacting the performance of the documentation site.
+Resize an image to be nearly the desired width on a documentation page.
+Reducing an image’s dimensions is the most effective way to reduce image file size.
+Also optimize the image files using a tool such as the <a href="https://plugins.jetbrains.com/plugin/7942-png-optimizer" data-bypass="yes" target="_blank"><span>PNG optimizer</span></a>.</p>
+
+<p>Images are embedded in a document by adding a Markdown link to the image like so:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">![Alt text](path-to-img.png)
+</code></div>
+
+<p>If the width of an image needs to be adjusted, use Kramdown markup:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">![Alt text](path-to-img.png){:width="42px"}
+</code></div>
+
+<a name="summary-site-table-of-contents" class="elem-anchor"></a>
+<h2>_SUMMARY Site Table of Contents<a href="#summary-site-table-of-contents" class="anchor-link"><span></span></a></h2>
+<p>The table of contents for the site is displayed in the tree view on the left-hand side of the site, and it is generated from the <code class="code highlight language-text">_SUMMARY.md</code> file.
+It is a simple Markdown list, with each item in the list being a link to another Markdown page, either in the root folder, or sub-folders.
+The list can have nested items, which are displayed as child items in the table of contents.</p>
+
+<aside class="warning">
+  <p> Every Markdown (<code class="code highlight language-text">*.md</code>) document within the SDK repository (<code class="code highlight language-text">intellij-sdk-docs</code>) must have an entry in <code class="code highlight language-text">_SUMMARY.md</code>.</p>
+</aside>
+
+<div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="gh"># Summary</span>
+<span class="p">
+*</span> <span class="p">[</span><span class="nv">Introduction</span><span class="p">](</span><span class="sx">README.md</span><span class="p">)</span>
+<span class="p">*</span> <span class="p">[</span><span class="nv">About This Guide</span><span class="p">](</span><span class="sx">Intro/About.md</span><span class="p">)</span>
+<span class="p">    *</span> <span class="p">[</span><span class="nv">Key Topics</span><span class="p">](</span><span class="sx">Intro/KeyTopics.md</span><span class="p">)</span>
+</code></div>
+
+<p>The contents can be split into “parts” by separating the list into several lists, each new list starting with a level 2 heading (<code class="code highlight language-text">##</code>).</p>
+
+<div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="gh"># Summary</span>
+<span class="p">
+*</span> <span class="p">[</span><span class="nv">Introduction</span><span class="p">](</span><span class="sx">README.md</span><span class="p">)</span>
+<span class="p">*</span> <span class="p">[</span><span class="nv">About This Guide</span><span class="p">](</span><span class="sx">Intro/About.md</span><span class="p">)</span>
+<span class="p">    *</span> <span class="p">[</span><span class="nv">Key Topics</span><span class="p">](</span><span class="sx">Intro/KeyTopics.md</span><span class="p">)</span>
+
+<span class="gu">## Part I - Extending the Platform</span>
+<span class="p">*</span> <span class="p">[</span><span class="nv">Getting Started</span><span class="p">](</span><span class="sx">Docs/GettingStarted.md</span><span class="p">)</span>
+<span class="p">*</span> ...
+</code></div>
+
+<p>If a node doesn’t have a link but is just plain text, it will still appear in the table of contents but will be greyed out and not clickable.
+It acts as a placeholder for a documentation item.
+A placeholder is useful to keep track of what should be documented, but hasn’t yet, and can be useful to show readers that the topic exists, but isn’t yet documented (Pull Requests always welcome!).</p>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/intro/sdk_code_guidelines.html">Guidelines for Creating IntelliJ Platform SDK Code Samples</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 23 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,207 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Stub Indexes / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/indexing_and_psi_stubs/stub_indexes.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Stub Indexes" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2016-11-01T14:17:56+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Stub Indexes" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/indexing_and_psi_stubs/stub_indexes">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/indexing_and_psi_stubs/file_based_indexes.html">File-based Indexes</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/indexing_and_psi_stubs/stub_indexes.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Stub Indexes</h1>
+                    <a name="stub-trees" class="elem-anchor"></a>
+<h2>Stub Trees<a href="#stub-trees" class="anchor-link"><span></span></a></h2>
+
+<p>存根树是文件的PSI树的子集;
+它以紧凑的序列化二进制格式存储.
+文件的PSI树可以由AST(通过解析文件的文本构建)或从磁盘反序列化的存根树来支持.
+在两者之间切换是透明的.</p>
+
+<p>存根树仅包含节点的子集.
+通常,它仅包含从外部文件解析此文件中包含的声明所需的节点.
+试图访问不属于存根树的任何节点,或者执行存根树无法满足的任何操作,例如:
+访问PSI元素的文本,导致文件解析并将PSI切换到AST支持.</p>
+
+<p>存根树中的每个存根都只是一个没有行为的bean类.
+存根存储相应PSI元素状态的子集,如元素的名称,修饰符标志,如public或final等.存根还包含指向树中父节点的指针及其子节点的列表.</p>
+
+<p>要支持自定义语言的存根,首先需要确定PSI树的哪些元素应存储为存根.
+通常,您需要具有方法或字段之类的存根,这些存根可从其他文件中看到.
+您通常不需要存在诸如语句或局部变量之类的存根,这些存根在外部是不可见的.</p>
+
+<p>对于要存储在存根树中的每种元素类型,需要执行以下步骤:</p>
+
+<p>*定义存根的接口,派生自<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/stubs/StubElement.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">StubElement</code></span></a>接口(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/psi/PropertyStub.java" data-bypass="yes" target="_blank"><span>示例</span></a>).</p>
+
+<p>*提供接口的实现(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyStubImpl.java" data-bypass="yes" target="_blank"><span>示例</span></a>).</p>
+
+<p>*确保PSI元素的接口扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/StubBasedPsiElement.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">StubBasedPsiElement</code></span></a>由存根接口的类型参数化(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-api/src/com/intellij/lang/properties/psi/Property.java" data-bypass="yes" target="_blank"><span>
+示例</span></a>).</p>
+
+<p>*确保PSI元素的实现类扩展了<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/extapi/psi/StubBasedPsiElementBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">StubBasedPsiElementBase</code></span></a>参数化的存根类型
+interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>示例</span></a>&lt;! -#L45–&gt;).
+提供接受<code class="code highlight language-text">ASTNode</code>的构造函数和接受存根的构造函数.</p>
+
+<p>*创建一个实现<code class="code highlight language-text">IStubElementType</code>的类,并使用存根接口和实际的PSI元素接口进行参数化(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertyStubElementType.java" data-bypass="yes" target="_blank"><span>example</span></a>).
+实现<code class="code highlight language-text">createPsi()</code>和<code class="code highlight language-text">createStub()</code>方法,用于从存根创建PSI,反之亦然.
+实现<code class="code highlight language-text">serialize()</code>和<code class="code highlight language-text">deserialize()</code>方法,用于将数据存储在二进制流中.</p>
+
+<p>*解析时使用实现<code class="code highlight language-text">IStubElementType</code>的类作为元素类型常量(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesElementTypes.java" data-bypass="yes" target="_blank"><span>示例</span></a>).</p>
+
+<p>*确保PSI元素接口中的所有方法在适当时访问存根数据而不是PSI树(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>example:Property.getKey()implementation</span></a>&lt;! -#L95  - &gt;).</p>
+
+<p>对于支持存根的每种语言,只需执行以下步骤一次:</p>
+
+<p>*将您的语言的文件元素类型(从<code class="code highlight language-text">ParserDefinition.getFileNodeType()</code>返回的元素类型)更改为扩展<code class="code highlight language-text">IStubFileElementType</code>的类.</p>
+
+<p>*在你的<code class="code highlight language-text">plugin.xml</code>中,定义<code class="code highlight language-text">&lt;stubElementTypeHolder&gt;</code>扩展并指定包含语言解析器使用的<code class="code highlight language-text">IElementType</code>常量的接口(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/src/META" data-bypass="yes" target="_blank"><span>示例</span></a> 
+-INF/plugin.xml中)&lt;! -#L55  - &gt;).</p>
+
+<p>对于序列化字符串数据,例如
+元素名称,在存根中,我们建议使用<code class="code highlight language-text">StubOutputStream.writeName()</code>和<code class="code highlight language-text">StubInputStream.readName()</code>方法.
+这些方法确保每个唯一标识符仅在数据流中存储一次.
+这减小了序列化存根树数据的大小.</p>
+
+<p>如果您需要更改存根的存储二进制格式(例如,如果您想存储一些其他数据或一些新元素),请确保提升从您的语言<code class="code highlight language-text">IStubFileElementType.getStubVersion()</code>返回的存根版本
+.
+这将导致重建存根和存根索引,并避免存储的数据格式与尝试加载它的代码之间的不匹配.</p>
+
+<p>默认情况下,如果PSI元素扩展了“StubBasedPsiElement”,则该类型的所有元素都将存储在存根树中.
+如果您需要更精确地控制存储哪些元素,请覆盖<code class="code highlight language-text">IStubElementType.shouldCreateStub()</code>并为不应包含在存根树中的元素返回<code class="code highlight language-text">false</code>.</p>
+
+<aside class="注意">
+  <p>排除不是递归的:如果您返回false的元素的某些元素也是基于存根的PSI元素,它们将包含在存根树中.</p>
+</aside>
+
+<p>确保存根树中存储的所有信息仅依赖于正在构建存根的文件的内容,并且不依赖于任何外部文件,这一点至关重要.
+否则,当外部依赖关系发生更改时,将不会重建存根树,并且存根树中将存在过时且不正确的数据.</p>
+
+<p>##存根索引</p>
+
+<p>构建存根树时,您可以同时将关于存根元素的一些数据放入多个索引中,然后可以使用相应的键来查找PSI元素.
+与基于文件的索引不同,存根索引不支持将自定义数据存储为值;
+该值始终是PSI元素.
+存根索引中的键通常是字符串(例如类名);
+如果需要,还支持其他数据类型.</p>
+
+<p>存根索引是扩展[<code class="code highlight language-text">AbstractStubIndex</code>]的类(upsource:///platform/indexing-api/src/com/intellij/psi/stubs/AbstractStubIndex.java).
+在最常见的情况下,当键类型为<code class="code highlight language-text">String</code>时,使用更具体的基类,即<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/psi/stubs/StringStubIndexExtension.java" data-bypass="yes" target="_blank"><span>StringStubIndexExtension</span></a>.
+存根索引实现类在<code class="code highlight language-text">&lt;stubIndex&gt;</code>扩展点中注册.</p>
+
+<p>要将数据放入索引,请实现方法<code class="code highlight language-text">IStubElementType.indexStub()</code>(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java" data-bypass="yes" target="_blank"><span>example:JavaClassElementType.indexStub()</span></a>&lt;! -#L189  - &gt;).
+此方法接受<code class="code highlight language-text">IndexSink</code>作为参数,并为应存储元素的每个索引放入索引ID和键.</p>
+
+<p>要从索引访问数据,请使用以下两种方法:</p>
+
+<p>*<code class="code highlight language-text">AbstractStubIndex.getAllKeys()</code>返回指定项目的指定索引中所有键的列表(例如,项目中找到的所有类名列表).</p>
+
+<p>*<code class="code highlight language-text">AbstractStubIndex.get()</code>返回与指定范围内的某个键(例如,具有指定短名称的类)对应的PSI元素的集合.</p>
+
+<p>##相关论坛讨论</p>
+
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206121959-Lifecycle-of-stub-creation/comments/206143885" data-bypass="yes" target="_blank"><span>存根创建的生命周期</span></a></li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/indexing_and_psi_stubs/file_based_indexes.html">File-based Indexes</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 1 November 2016
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

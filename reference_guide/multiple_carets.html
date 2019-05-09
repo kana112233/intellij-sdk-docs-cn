@@ -1,0 +1,249 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Supporting multiple carets / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/multiple_carets.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Supporting multiple carets" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-04-08T15:45:15+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Supporting multiple carets" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/multiple_carets">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/editor_basics.html">Basics of working with the Editor</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/multiple_carets.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Supporting multiple carets</h1>
+                    <p>＃＃ 介绍</p>
+
+<p>IDEA 13.1中的编辑器实现增加了对多个独立插入符的支持.</p>
+
+<p>大多数编辑器操作(键盘导航,文本插入和删除等)将独立应用于每个插入符号.</p>
+
+<p>每个插入符号都有自己的关联选择,这是一系列连续的文档字符(可以为空).</p>
+
+<p>当在一些动作之后,两个或更多个插入符号最终处于相同的视觉位置时,它们被合并为单个插入符号,其相关联的选择合并为单个插入符号.
+当几个插入符号的选择重叠时会发生类似的事情:只剩下一个插入符号,并且选择将被合并.</p>
+
+<p>有一个“主要”插入符号的概念 - 非多插入符号感知操作和需要单点文档上下文(如代码完成)的操作将在其中运行.</p>
+
+<p>目前,最新的插入符号被认为是主要的插入符号.</p>
+
+<p>##核心功能</p>
+
+<p>可以通过以下方式获得与多插入符号实现相关的核心逻辑,例如访问当前存在的插入符号,添加和删除插入符号</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java" data-bypass="yes" target="_blank"><span>CaretModel</span></a></p>
+
+<p>界面,也有一些变化</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java" data-bypass="yes" target="_blank"><span>selectionModel的</span></a></p>
+
+<p>接口.</p>
+
+<p>检查这些接口的Javadoc以获取详细信息.</p>
+
+<p>旧行为的显着变化:</p>
+
+<p>*以前在<code class="code highlight language-text">CaretModel</code>和<code class="code highlight language-text">SelectionModel</code>中存在的方法来查询和修改插入符号和选择位置现在默认在主插入符号上工作.
+但是,在<code class="code highlight language-text">CaretModel.runForEachCaret</code>方法的上下文中,它们在当前的插入符号上运行.</p>
+
+<p>因此遗留代码(不使用Caret接口)的行为将取决于其调用的上下文.</p>
+
+<p>*块选择不再作为单独的概念存在.</p>
+
+<p>相应地,SelectionModel接口中与块选择相关的方法已经改变了行为 - “hasBlockSelection()”将始终返回false,<code class="code highlight language-text">setBlockSelection()</code>将创建一个等同于所请求的块选择的多插入符号选择.</p>
+
+<p><code class="code highlight language-text">getBlockSelectionStarts()</code>和<code class="code highlight language-text">getBlockSelectionEnds()</code>方法在多插入符号状态下工作,返回所有选定的区域.</p>
+
+<p>##编辑器动作</p>
+
+<a name="editoractioneditoractionhandler" class="elem-anchor"></a>
+<h3>EditorAction和EditorActionHandler<a href="#editoractioneditoractionhandler" class="anchor-link"><span></span></a></h3>
+
+<p>什么时候</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/EditorActionHandler.java" data-bypass="yes" target="_blank"><span>EditorActionHandler</span></a>被调用,一个额外的参数将被传递给它 - 一个它应该在它上面的插入符实例
+如果在没有任何插入符号的情况下调用它,则操作或“null”.</p>
+
+<p>如果处理程序调用另一个处理程序(同一个<code class="code highlight language-text">actionId</code>的委托处理程序或一个完全不相关的处理程序),那么该参数通常应该传递给委托不变(除非没有向处理程序提供上下文插入符,但它需要调用另一个
+特定插入符号的处理程序).</p>
+
+<p>当然,如果处理程序的功能与插入符号/选择位置无关,则处理程序可以忽略该插入符号参数.</p>
+
+<p>如果处理程序需要实现多插入符功能,它可以在重写的<code class="code highlight language-text">doExecute</code>方法中显式地执行,但是如果它只需要为每个插入符号调用该方法,则将参数传递给<code class="code highlight language-text">EditorActionHandler</code>构造函数就足够了
+在没有特定插入符上下文的情况下调用处理程序时,<code class="code highlight language-text">doExecute</code>为每个插入符号调用.</p>
+
+<p>###编辑动作代表</p>
+
+<p>以下代表可用:</p>
+
+<p>*<code class="code highlight language-text">EnterHandlerDelegate</code></p>
+
+<p>*<code class="code highlight language-text">BackspaceHandlerDelegate</code></p>
+
+<p>*<code class="code highlight language-text">JoinLinesHandlerDelegate</code></p>
+
+<p>*<code class="code highlight language-text">EditorNavigationDelegate</code></p>
+
+<p>*<code class="code highlight language-text">SmartEnterProcessor</code></p>
+
+<p>*<code class="code highlight language-text">CommentCompleteHandler</code></p>
+
+<p>*<code class="code highlight language-text">StatementUpDownMover</code></p>
+
+<p>*<code class="code highlight language-text">CodeBlockProvider</code></p>
+
+<p>目前,无需对处理程序进行任何更改以支持多个插入符号 - 它们已针对每个插入符号进行调用.</p>
+
+<p>##打字行动</p>
+
+<a name="typedactionhandlertypedhandlerdelegate" class="elem-anchor"></a>
+<h3>TypedActionHandler,TypedHandlerDelegate<a href="#typedactionhandlertypedhandlerdelegate" class="anchor-link"><span></span></a></h3>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java" data-bypass="yes" target="_blank"><span>TypedActionHandler</span></a></p>
+
+<p>和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/editorActions/TypedHandlerDelegate.java" data-bypass="yes" target="_blank"><span>TypedHandlerDelegate</span></a></p>
+
+<p>对于每个键入的字符,仅调用一次实现.</p>
+
+<p>如果这些处理程序需要支持多个插入符号,则需要明确地实现它.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/editor/EditorModificationUtil.java" data-bypass="yes" target="_blank"><span>EditorModificationUtil</span></a>.</p>
+
+<p>在这种情况下,<em>typeInStringAtCaretHonorMultipleCarets</em> utility方法可用于执行最常见的任务 - 将相同的文本插入所有插入位置和/或相对于其当前位置移动所有插入符号.</p>
+
+<p>其用法示例:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedAction.java" data-bypass="yes" target="_blank"><span>TypedAction</span></a>.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/xml/impl/src/com/intellij/codeInsight/editorActions/XmlGtTypedHandler.java" data-bypass="yes" target="_blank"><span>XmlGtTypedHandler</span></a>.</p>
+  </li>
+</ul>
+
+<hr />
+<p><strong>Note</strong>:
+Starting from IDEA 14,
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/editorActions/TypedHandlerDelegate.java" data-bypass="yes" target="_blank"><span>TypedHandlerDelegate</span></a>
+implementations are invoked automatically for each caret. If one wants to implement custom multicaret behaviour on typing,
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/editor/actionSystem/TypedActionHandler.java" data-bypass="yes" target="_blank"><span>TypedActionHandler</span></a>
+needs to be provided instead.</p>
+
+<hr />
+
+<p>##代码洞察行动</p>
+
+<p>继承自的现有操作</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/actions/CodeInsightAction.java" data-bypass="yes" target="_blank"><span>CodeInsightAction</span></a>仅适用于主插入符号.</p>
+
+<p>为了支持多个插入符,我们应该继承</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/codeInsight/actions/MultiCaretCodeInsightAction.java" data-bypass="yes" target="_blank"><span>MultiCaretCodeInsightAction</span></a></p>
+
+<p>相反(每个插入符可能有不同的编辑器和PSI实例,因此不可能使用旧的API).</p>
+
+<p>自IDEA 14开始提供.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/editor_basics.html">Basics of working with the Editor</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 April 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

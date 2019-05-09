@@ -1,0 +1,311 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Run Configurations / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/run_configurations.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Run Configurations" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Run Configurations" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/run_configurations">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/run_configurations.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Run Configurations</h1>
+                    <p>这一系列步骤显示了如何注册和实现简单的运行配置。</p>
+
+<p>运行配置用于从基于* IntelliJ Platform *的产品中运行内部和外部流程。</p>
+
+<p>要熟悉运行配置的概念，请参阅</p>
+
+<p><a href="https://www.jetbrains.com/idea/help/run-debug-configuration.html" data-bypass="yes" target="_blank"><span>运行/调试配置</span></a></p>
+
+<p>部分</p>
+
+<p><a href="https://www.jetbrains.com/idea/help/intellij-idea.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA Web帮助</span></a></p>
+
+<p>##预先要求</p>
+
+<p>创建一个空的插件项目。</p>
+
+<p>看到</p>
+
+<p><a href="/intellij/sdk/docsbasics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>。</p>
+
+<a name="configurationtype" class="elem-anchor"></a>
+<h2>1.注册一个新的ConfigurationType<a href="#configurationtype" class="anchor-link"><span></span></a></h2>
+
+<p>添加新的* configurationType *扩展名</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/run_configuration/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a></p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;configurationType</span> <span class="na">implementation=</span><span class="s">"org.jetbrains.tutorials.run.configuration.DemoRunConfigurationType"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/extensions&gt;</span>
+</code></div>
+
+<a name="configurationtype-1" class="elem-anchor"></a>
+<h2>2.实现ConfigurationType<a href="#configurationtype-1" class="anchor-link"><span></span></a></h2>
+
+<p>实行</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span>ConfigurationType</span></a></p>
+
+<p>在步骤1中注册的界面。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoRunConfigurationType</span> <span class="kd">implements</span> <span class="n">ConfigurationType</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDisplayName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Demo"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getConfigurationTypeDescription</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Demo Run Configuration Type"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Icon</span> <span class="nf">getIcon</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">AllIcons</span><span class="o">.</span><span class="na">General</span><span class="o">.</span><span class="na">Information</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@NotNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"DEMO_RUN_CONFIGURATION"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">ConfigurationFactory</span><span class="o">[]</span> <span class="nf">getConfigurationFactories</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ConfigurationFactory</span><span class="o">[]{</span><span class="k">new</span> <span class="n">DemoConfigurationFactory</span><span class="o">(</span><span class="k">this</span><span class="o">)};</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="configurationfactory" class="elem-anchor"></a>
+<h2>3.实现ConfigurationFactory<a href="#configurationfactory" class="anchor-link"><span></span></a></h2>
+
+<p>实施新的</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span>ConfigurationFactory</span></a></p>
+
+<p>通过它创建自定义运行配置。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoConfigurationFactory</span> <span class="kd">extends</span> <span class="n">ConfigurationFactory</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FACTORY_NAME</span> <span class="o">=</span> <span class="s">"Demo configuration factory"</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">DemoConfigurationFactory</span><span class="o">(</span><span class="n">ConfigurationType</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">type</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">RunConfiguration</span> <span class="nf">createTemplateConfiguration</span><span class="o">(</span><span class="n">Project</span> <span class="n">project</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DemoRunConfiguration</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="s">"Demo"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">FACTORY_NAME</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></div>
+
+<a name="section" class="elem-anchor"></a>
+<h2>4.实现运行配置<a href="#section" class="anchor-link"><span></span></a></h2>
+
+<p>要通过UI显示更改，请实施新的运行配置。</p>
+
+<p><strong>注意:</strong>在大多数情况下，您可以从中派生自定义运行配置类</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java" data-bypass="yes" target="_blank"><span>RunConfigurationBase</span></a>。</p>
+
+<p>如果需要实现特定设置外化规则和I/O行为，</p>
+
+<p>使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java" data-bypass="yes" target="_blank"><span>RunConfiguration</span></a></p>
+
+<p>接口。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoRunConfiguration</span> <span class="kd">extends</span> <span class="n">RunConfigurationBase</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nf">DemoRunConfiguration</span><span class="o">(</span><span class="n">Project</span> <span class="n">project</span><span class="o">,</span> <span class="n">ConfigurationFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">factory</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@NotNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">SettingsEditor</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">RunConfiguration</span><span class="o">&gt;</span> <span class="nf">getConfigurationEditor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">DemoSettingsEditor</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkConfiguration</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RuntimeConfigurationException</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Nullable</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">RunProfileState</span> <span class="nf">getState</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">Executor</span> <span class="n">executor</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">ExecutionEnvironment</span> <span class="n">executionEnvironment</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ExecutionException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="ui" class="elem-anchor"></a>
+<h2>5.创建并实现运行配置UI表单<a href="#ui" class="anchor-link"><span></span></a></h2>
+
+<p>创建一个新的</p>
+
+<p>[UI形式]</p>
+
+<p>它定义了新的运行配置的内部部分应该是什么样子。</p>
+
+<p>默认运行配置将如下所示:</p>
+
+<p><img src="run_configurations/img/ui_form.png" alt="默认运行配置外观" /></p>
+
+<a name="ui-1" class="elem-anchor"></a>
+<h2>6.绑定UI表单<a href="#ui-1" class="anchor-link"><span></span></a></h2>
+
+<p>UI表单应该与负责处理UI组件逻辑的Java类绑定。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoSettingsEditor</span> <span class="kd">extends</span> <span class="n">SettingsEditor</span><span class="o">&lt;</span><span class="n">DemoRunConfiguration</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">JPanel</span> <span class="n">myPanel</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">LabeledComponent</span><span class="o">&lt;</span><span class="n">ComponentWithBrowseButton</span><span class="o">&gt;</span> <span class="n">myMainClass</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">resetEditorFrom</span><span class="o">(</span><span class="n">DemoRunConfiguration</span> <span class="n">demoRunConfiguration</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">applyEditorTo</span><span class="o">(</span><span class="n">DemoRunConfiguration</span> <span class="n">demoRunConfiguration</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConfigurationException</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@NotNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">JComponent</span> <span class="nf">createEditor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">myPanel</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">createUIComponents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">myMainClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LabeledComponent</span><span class="o">&lt;</span><span class="n">ComponentWithBrowseButton</span><span class="o">&gt;();</span>
+        <span class="n">myMainClass</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="k">new</span> <span class="n">TextFieldWithBrowseButton</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-1" class="elem-anchor"></a>
+<h2>7.编译并运行插件<a href="#section-1" class="anchor-link"><span></span></a></h2>
+
+<p>参考</p>
+
+<p><a href="/intellij/sdk/docsbasics/getting_started/running_and_debugging_a_plugin.html"><span>运行和调试插件</span></a>。</p>
+
+<p>完成上述步骤后，您可以创建自定义运行配置</p>
+
+<p>从你的插件。</p>
+
+<p><img src="run_configurations/img/new_run_configuration.png" alt="新运行配置类型" /></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

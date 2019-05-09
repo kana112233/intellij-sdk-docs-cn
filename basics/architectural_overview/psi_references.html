@@ -1,0 +1,275 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>PSI References / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/architectural_overview/psi_references.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="PSI References" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-18T14:38:18+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="PSI References" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/architectural_overview/psi_references">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/navigating_psi.html">Navigating the PSI</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/modifying_psi.html">Modifying the PSI</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/architectural_overview/psi_references.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>PSI References</h1>
+                    <p>PSI树中的* reference <em>是一个对象,表示代码中某个元素的</em> usage *的链接</p>
+
+<p>到相应的<em>声明</em>. 
+<em>解析</em>引用意味着找到特定用法的声明</p>
+
+<p>指.</p>
+
+<p>最常见的引用类型由语言语义定义.
+例如,考虑一个简单的Java方法:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+<span class="o">}</span>
+</code></div>
+
+<p>这个简单的代码片段包含五个引用.
+由标识符<code class="code highlight language-text">String</code>,<code class="code highlight language-text">System</code>,<code class="code highlight language-text">out</code>和.创建的引用</p>
+
+<p><code class="code highlight language-text">println</code>可以解析为JDK中的相应声明:<code class="code highlight language-text">String</code>和<code class="code highlight language-text">System</code>类,<code class="code highlight language-text">out</code>字段和</p>
+
+<p><code class="code highlight language-text">println</code>方法.
+由<code class="code highlight language-text">println(message)</code>中第二次出现的<code class="code highlight language-text">message</code>标识符创建的引用可以解析为</p>
+
+<p><code class="code highlight language-text">message</code>参数,由方法头中的<code class="code highlight language-text">String message</code>声明.</p>
+
+<p>请注意,<code class="code highlight language-text">String message</code>不是引用,无法解析.
+相反,它是_declaration_.
+它不是</p>
+
+<p>指其他地方定义的任何名称;
+相反,它自己定义一个名称.</p>
+
+<p>引用是实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiReference</code></span></a>接口的类的实例.</p>
+
+<p>请注意,引用与PSI元素不同.
+您可以通过调用获取PSI元素创建的引用</p>
+
+<p><code class="code highlight language-text">PsiElement.getReferences()</code>,可以通过调用<code class="code highlight language-text">PsiReference.getElement()</code>从引用返回到元素.</p>
+
+<p>要<em>解析</em>引用 - 找到被引用的声明 - 你调用<code class="code highlight language-text">PsiReference.resolve()</code>.
+这是很</p>
+
+<p>理解<code class="code highlight language-text">PsiReference.getElement()</code>和<code class="code highlight language-text">PsiReference.resolve()</code>之间的区别很重要.
+前一个方法返回_source_</p>
+
+<p>引用,而后者返回其_target_.
+在上面的例子中,对于<code class="code highlight language-text">message</code>引用,<code class="code highlight language-text">getElement()</code></p>
+
+<p>将在代码片段的第二行返回<code class="code highlight language-text">message</code>标识符,<code class="code highlight language-text">resolve()</code>将返回<code class="code highlight language-text">message</code>标识符</p>
+
+<p>在第一行(在参数列表内).</p>
+
+<p>解析引用的过程与解析不同,并且不会同时执行.
+而且,它是</p>
+
+<p>并不总是成功.
+如果IDE中当前打开的代码无法编译,或者在其他情况下,这是正常的</p>
+
+<p>对于<code class="code highlight language-text">PsiReference.resolve()</code>来返回<code class="code highlight language-text">null</code>,如果你使用引用,你需要能够在你的代码中处理它.</p>
+
+<p>##贡献参考文献</p>
+
+<p>除了由编程语言的语义定义的引用之外,IntelliJ IDEA还可识别许多引用</p>
+
+<p>这取决于代码中使用的API和框架的语义.
+请考虑以下示例:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"foo.txt"</span><span class="o">);</span>
+</code></div>
+
+<p>在这里,“foo.txt”从Java语法的角度来看没有特殊含义 - 它只是一个字符串文字.
+然而,</p>
+
+<p>如果您在IntelliJ IDEA中打开此示例,并且如果您在同一目录中有一个名为“foo.txt”的文件,您会注意到</p>
+
+<p>您可以按住Ctrl键并单击“foo.txt”并导航到该文件.
+这是有效的,因为IntelliJ IDEA识别出</p>
+
+<p><code class="code highlight language-text">new File(...)</code>的语义和_将reference_contribute到作为参数传递给方法的字符串文字中.</p>
+
+<p>通常,引用可以贡献给没有自己引用的元素,例如字符串文字</p>
+
+<p>和评论.
+引用也经常被贡献到非代码文件中,例如XML或JSON.</p>
+
+<p>贡献引用是扩展现有语言的最常用方法之一.
+例如,您的插件可以</p>
+
+<p>提供对Java代码的引用,即使Java PSI是平台的一部分而未在您的插件中定义.</p>
+
+<p>要提供您自己的参考资料,请参阅<a href="/intellij/sdk/docstutorials/custom_language_support/reference_contributor.html"><span>参考贡献者教程</span></a>.</p>
+
+<p>##带有可选或多个解析结果的引用</p>
+
+<p>在最简单的情况下,引用解析为单个元素,如果解析失败,则表示该引用</p>
+
+<p>代码不正确,IDE需要将其突出显示为错误.
+但是,有些情况不同.</p>
+
+<p>第一种情况是<em>软参考</em>.
+考虑上面的<code class="code highlight language-text">new File(“foo.txt”)</code>示例.
+如果IntelliJ IDEA找不到</p>
+
+<p>文件“foo.txt”,并不意味着需要突出显示错误 - 可能该文件仅在运行时可用.</p>
+
+<p>这样的引用从<code class="code highlight language-text">PsiReference.isSoft()</code>方法返回<code class="code highlight language-text">true</code>.</p>
+
+<p>第二种情况是<em>多变量引用</em>.
+考虑一下JavaScript程序的情况. 
+JavaScript是动态的</p>
+
+<p>键入的语言,因此IDE无法始终精确地确定在特定位置调用哪个方法.</p>
+
+<p>为了解决这个问题,它提供了一个可以解析为多个可能元素的引用.</p>
+
+<p>这些引用实现了<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiPolyVariantReference</code></span></a>接口.</p>
+
+<p>要解析<code class="code highlight language-text">PsiPolyVariantReference</code>,可以调用它的<code class="code highlight language-text">multiResolve()</code>方法.
+该调用返回一个数组</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiResolveResult.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ResolveResult</code></span></a>对象.
+每一个</p>
+
+<p>objects标识PSI元素,并指定结果是否有效.
+例如,如果您有多个</p>
+
+<p>Java方法重载和一个参数不匹配任何重载的调用,你会得到</p>
+
+<p>返回所有重载的<code class="code highlight language-text">ResolveResult</code>对象,<code class="code highlight language-text">isValidResult()</code>将为所有重载返回false.</p>
+
+<p>##搜索参考文献</p>
+
+<p>如您所知,解析引用意味着从使用到相应的声明.
+执行</p>
+
+<p>在相反的方向导航 - 从声明到其用法 - 您需要执行<strong>参考搜索</strong>.</p>
+
+<p>要执行引用搜索,请使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/com/intellij/psi/search/searches/ReferencesSearch.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ReferencesSearch</code></span></a>类.</p>
+
+<p>要执行搜索,您需要指定要搜索的<em>元素</em>,以及可选的其他参数</p>
+
+<p>需要搜索引用的范围.
+你得到一个* query *对象,它允许你获得所有结果</p>
+
+<p>作为一个数组,或逐个迭代结果.
+如果您不需要收集所有结果,则效率更高</p>
+
+<p>使用迭代,因为它允许您在找到所需元素后停止处理.</p>
+
+<p>##实现参考</p>
+
+<p>上述文档涵盖了访问引用的关键点.
+如果您需要创建自己的参考</p>
+
+<p>(如果您正在为现有语言实现自定义语言或参考贡献者),</p>
+
+<p>请参阅<a href="/intellij/sdk/docsreference_guide/custom_language_support/references_and_resolve.html"><span>指南</span></a>和</p>
+
+<p><a href="/intellij/sdk/docstutorials/custom_language_support/reference_contributor.html"><span>tutorial</span></a>用于实现引用.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/navigating_psi.html">Navigating the PSI</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/modifying_psi.html">Modifying the PSI</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 18 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

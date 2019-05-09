@@ -1,0 +1,374 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Inspections / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/code_inspections.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Code Inspections" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Code Inspections" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/code_inspections">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/code_inspections.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Code Inspections</h1>
+                    <p>IntelliJ平台提供了专为静态代码分析而设计的工具，称为_code inspections_，它可以帮助用户维护和清理代码，而无需实际执行代码。</p>
+
+<p>自定义代码检查可以作为IntelliJ平台插件实现。</p>
+
+<p>插件方法的示例是IntelliJ Platform SDK代码示例<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/inspection" data-bypass="yes" target="_blank"><span>检查</span></a>和<a href="https://github" data-bypass="yes" target="_blank"><span>comparison_references_inspection</span></a>
+的.com/JetBrains的/的IntelliJ-SDK-文档/树/主/code_samples/comparing_references_inspection)。</p>
+
+<p>此外，comparison_references_inspection代码示例演示了如何实现单元测试。</p>
+
+<p>您还可以通过IntelliJ IDEA用户界面创建自定义检查。</p>
+
+<p>请参阅<a href="https://www.jetbrains.com/idea/webhelp/code-inspection.html" data-bypass="yes" target="_blank"><span>代码检查</span></a>和<a href="https://www.jetbrains.com/idea/help/creating-custom-inspections.html" data-bypass="yes" target="_blank"><span>创建自定义检查</span></a>了解更多信息。</p>
+
+<p>##创建一个检查插件</p>
+
+<p>The <a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection" data-bypass="yes" target="_blank"><span>comparing_references_inspection</span></a> code sample adds a new inspection to the <strong>Java | Probable Bugs</strong> group in the <a href="https://www.jetbrains.com/help/idea/inspections-settings.html" data-bypass="yes" target="_blank"><span>Inspections list</span></a>.
+The inspection reports when the <code class="code highlight language-text">==</code> or <code class="code highlight language-text">!=</code> operator is used between Java expressions of reference types.<br />
+It illustrates the components for a custom inspection plugin:</p>
+<ul>
+  <li>Describing an <a href="#plugin-configuration-file"><span>inspection</span></a> in the plugin configuration file.</li>
+  <li>Implementing a <a href="#inspection-implementation-java-class"><span>local inspection class</span></a> to inspect Java code in the IntelliJ Platform-based IDE editor.</li>
+  <li>Creating a <a href="#visitor-implementation-class"><span>visitor</span></a> to traverse the <code class="code highlight language-text">PsiTree</code> of the Java file being edited, inspecting for problematic syntax.</li>
+  <li>Implementing a <a href="#quick-fix-implementation"><span>quick fix</span></a> class to correct syntax problems by altering the <code class="code highlight language-text">PsiTree</code> as needed.
+Quick fixes are displayed to the user like <a href="code_intentions.html"><span>intentions</span></a>.</li>
+  <li>Implementing an <a href="#inspection-preferences-panel"><span>inspection preferences panel</span></a> to display information about the inspection.</li>
+  <li>Writing an HTML <a href="#inspection-description"><span>description</span></a> of the inspection for display in the inspection preferences panel.</li>
+  <li>Optionally, create a <a href="#inspection-unit-test"><span>unit test</span></a> for the plugin.</li>
+</ul>
+
+<p>Although the IntelliJ Platform SDK code samples illustrate implementations of these components, it is often useful to see examples of inspections implemented in the <em>intellij_community</em> code base.
+This process can help find inspection descriptions and implementations based on what is visible in the IDE UI.
+The overall approach works for inspections aimed at other languages as well.</p>
+<ul>
+  <li>Find an existing inspection that is similar to the one you want to implement in the <strong>Preferences | Editor | Inspections</strong> panel.
+Note the display name of the inspection.
+For example, the Java/Probable Bugs inspection “Object comparison using ‘==’, instead of ‘equals()’” is very similar to <code class="code highlight language-text">comparing_references_inspection</code>.</li>
+  <li>Use the display name text as the <a href="https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-project.html" data-bypass="yes" target="_blank"><span>target for a search</span></a> within the <em>intellij_community</em> project.
+This will identify a bundle file if the display name is localized.
+If it is not localized, the search finds either the plugin configuration (<code class="code highlight language-text">plugin.xml</code>) file where it is an attribute in the inspection description, or the Java implementation file where it provided by an overridden method.</li>
+  <li>In the case of localization, copy the key from the bundle file identified by the search.
+    <ul>
+      <li>Use the key text as the target for a search within the <em>intellij_community</em> project.
+This search locates the plugin configuration file that describes the inspection.</li>
+      <li>From the inspection description entry find the <code class="code highlight language-text">implementationClass</code> attribute value.</li>
+    </ul>
+  </li>
+  <li>Use the <code class="code highlight language-text">implementationClass</code> text as the <a href="https://www.jetbrains.com/help/idea/searching-everywhere.html#Searching_Everywhere.xml" data-bypass="yes" target="_blank"><span>target of a class search</span></a> in the <em>intellij_community</em> codebase to find the Java implementation file.</li>
+</ul>
+
+<p>##创建检查</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection" data-bypass="yes" target="_blank"><span>comparison_references_inspection</span></a>代码示例报告在Java表达式之间使用<code class="code highlight language-text">==</code>或<code class="code highlight language-text">!=</code>运算符时
+参考类型。</p>
+
+<p>用户可以应用快速修复将<code class="code highlight language-text">a == b</code>更改为’a.equals(b)<code class="code highlight language-text">，或</code>a!= b<code class="code highlight language-text">更改为</code>!a.equals(b)`。
+  </p>
+
+<p><code class="code highlight language-text">comparison_references_inspection</code>实现的细节说明了检查插件的组件。</p>
+
+<p>###插件配置文件</p>
+
+<p><code class="code highlight language-text">comparison_references_inspection</code>在<code class="code highlight language-text">comparison_references_inspection</code>插件配置中的<code class="code highlight language-text">&lt;extensions&gt;</code>元素中被描述为<code class="code highlight language-text">&lt;localInspection&gt;</code>类型(<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparison_references_inspection/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a>)文件。</p>
+
+<p>在幕后，检查类型被描述为[LangExtensionPoints.xml]中的<code class="code highlight language-text">&lt;extensionPoint&gt;</code>(upsource:///platform/platform-resources/src/META-INF/LangExtensionPoints.xml):</p>
+
+<p>*<code class="code highlight language-text">localInspection</code>类型用于一次操作一个文件的检查，也可以在用户编辑文件时运行。</p>
+
+<p>*<code class="code highlight language-text">globalInspection</code>类型用于跨多个文件操作的检查，相关的修复可能，例如，重构文件之间的代码。</p>
+
+<p>*不推荐使用<code class="code highlight language-text">inspectionToolProvider</code>类型，但首选<code class="code highlight language-text">localInspection</code>。</p>
+
+<p>最小检查描述必须包含<code class="code highlight language-text">implementationClass</code>属性。</p>
+
+<p>如<code class="code highlight language-text">comparison_references_inspection</code>插件配置文件所示，可以在<code class="code highlight language-text">localInspection</code>元素中定义其他属性，无论是否有本地化。</p>
+
+<p>在大多数情况下，最简单的方法是在插件配置文件中定义属性，因为底层父类根据配置文件描述处理大部分类职责。</p>
+
+<p>请注意，某些属性不会显示给用户，因此它们永远不会本地化。</p>
+
+<p>作为替代方案，检查可以通过覆盖检查实现类中的方法来定义所有属性信息(“implementationClass”除外)。</p>
+
+<p>###检查实现Java类</p>
+
+<p>Java文件的检查实现，如<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection/source/com/intellij/codeInspection/ComparingReferencesInspection.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ComparingReferencesInspection</code></span></a>，
+通常基于Java类<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java" data-bypass="yes" target="_blank"><span>AbstractBaseJavaLocalInspectionTool</span></a>。</p>
+
+<p><code class="code highlight language-text">AbstractBaseJavaLocalInspectionTool</code>实现类提供了检查Java类，字段和方法的方法。</p>
+
+<p>更一般地说，<code class="code highlight language-text">localInspection</code>类型基于类<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LocalInspectionTool</code></span></a>。</p>
+
+<p>检查<code class="code highlight language-text">LocalInspectionTool</code>的类层次结构表明IntelliJ平台为各种语言和框架提供了许多子检查类。</p>
+
+<p>其中一个类是新检查实现的良好基础，但定制实现也可以直接基于<code class="code highlight language-text">LocalInspectionTool</code>。</p>
+
+<p>检查实施类的主要职责是提供:</p>
+
+<p>*一个’PsiElementVisitor`对象，用于遍历被检查文件的“PsiTree”。</p>
+
+<p>*一个<code class="code highlight language-text">LocalQuickFix</code>类，用于更改已识别问题的语法。</p>
+
+<p>*一个<code class="code highlight language-text">JPanel</code>将显示在_Inspections_对话框中。</p>
+
+<p>请注意，如果插件配置文件中的检查描述仅定义实现类，则必须通过Java实现中的重写方法提供其他属性信息。</p>
+
+<p><code class="code highlight language-text">ComparingReferencesInspection</code>类定义了两个<code class="code highlight language-text">String</code>字段:</p>
+
+<p>*<code class="code highlight language-text">QUICK_FIX_NAME</code>定义用户在提示应用快速修复时看到的字符串。</p>
+
+<p>*<code class="code highlight language-text">CHECKED_CLASSES</code>包含检查所关注的类名列表。</p>
+
+<p>重写的<code class="code highlight language-text">ComparingReferencesInspection</code>方法将在下面的部分中讨论。</p>
+
+<p>###访客实施班</p>
+
+<p>访问者类评估文件的“PsiTree”的元素是否对检查感兴趣。</p>
+
+<p><code class="code highlight language-text">ComparingReferencesInspection.createOptionsPanel()</code>方法基于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-api/src/com/intellij/psi/JavaElementVisitor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JavaElementVisitor</code></span></a>创建一个匿名访问者类来遍历
+正在编辑的Java文件的“PsiTree”，检查可疑语法。</p>
+
+<p>匿名类特别重写了三种方法。</p>
+
+<p>*<code class="code highlight language-text">visitReferenceExpression()</code>以防止对引用类型表达式的任何重复访问。</p>
+
+<p>*<code class="code highlight language-text">visitBinaryExpression()</code>，它完成了所有繁重的工作。
+  
+它被称为评估一个’PsiBinaryExpression<code class="code highlight language-text">，它检查操作数是否是</code>==<code class="code highlight language-text">或</code>!=`，以及操作数是否与此检查相关的类。</p>
+
+<p>*<code class="code highlight language-text">isCheckedType()</code>计算操作数的’PsiType`，以确定它们是否对此检查感兴趣。</p>
+
+<p>###快速修复实施</p>
+
+<p>快速修复类的作用非常类似，允许用户更改检查突出显示的“PsiTree”部分。</p>
+
+<p>当检查突出显示感兴趣的“PsiElement”并且用户选择进行更改时，将调用快速修复。</p>
+
+<p><code class="code highlight language-text">ComparingReferencesInspection</code>实现使用嵌套类<code class="code highlight language-text">CriQuickFix</code>来实现基于[<code class="code highlight language-text">LocalQuickFix</code>]的快速修复(upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalQuickFix.java)。</p>
+
+<p><code class="code highlight language-text">CriQuickFix</code>类为用户提供了将<code class="code highlight language-text">a == b</code>和<code class="code highlight language-text">a!= b</code>表达式分别改为’a.equals(b)<code class="code highlight language-text">和</code>!a.equals(b)`的选项。</p>
+
+<p>繁重的工作在<code class="code highlight language-text">CriQuickFix.applyFix()</code>中完成，它操纵<code class="code highlight language-text">PsiTree</code>来转换表达式。</p>
+
+<p>对“PsiTree”的更改是通过通常的修改方法完成的:</p>
+
+<p>*获得’PsiElementFactory`。</p>
+
+<p>*创建一个新的’PsiMethodCallExpression`。</p>
+
+<p>*将原来的左右操作数替换为新的“PsiMethodCallExpression”。</p>
+
+<p>*用’PsiMethodCallExpression`替换原始二进制表达式。</p>
+
+<p>###检查首选项面板</p>
+
+<p>检查首选项面板用于显示有关检查的信息。</p>
+
+<p>由<code class="code highlight language-text">ComparingReferencesInspection.createOptionsPanel()</code>创建的面板只定义了一个<code class="code highlight language-text">JTextField</code>来显示在<code class="code highlight language-text">JPanel</code>中。</p>
+
+<p>当选择<code class="code highlight language-text">comparison_references_inspection</code>短名称时，这个<code class="code highlight language-text">JPanel</code>被添加到默认的IntelliJ平台_Inspections Preferences_对话框中。</p>
+
+<p><code class="code highlight language-text">JTextField</code>允许在面板中显示时编辑<code class="code highlight language-text">CHECKED_CLASSES</code>字段。</p>
+
+<p>请注意，IntelliJ平台提供了_Inspections Preferences_面板中显示的大部分UI。</p>
+
+<p>只要正确定义了检查属性和检查描述，IntelliJ平台就会在_Inspections Preferences_ UI中显示信息。</p>
+
+<p>###检验说明</p>
+
+<p>检查描述是HTML文件。</p>
+
+<p>从列表中选择检查时，描述将显示在_Inspections Preferences_对话框的右上方面板中。
+  </p>
+
+<p>在检查实现的类层次结构中使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LocalInspectionTool</code></span></a>隐含意味着遵循一些约定。</p>
+
+<p>*检查描述文件应位于<code class="code highlight language-text">&lt;plugin root dir&gt;/resources/inspectionDescriptions /</code>下。
+  
+如果检查描述文件位于其他位置，则在检查实现类中重写<code class="code highlight language-text">getDescriptionUrl()</code>。</p>
+
+<p>*描述文件的名称应该是检查描述或检查实现类提供的检查<code class="code highlight language-text">&lt;短名称&gt; .html</code>。
+  
+如果插件未提供短名称，则IntelliJ平台会计算一个。
+  </p>
+
+<p>###检查单元测试</p>
+
+<p><code class="code highlight language-text">comparison_references_inspection</code>代码示例为检查提供单元测试。</p>
+
+<p>有关插件测试的一般信息，请参阅<a href="/intellij/sdk/docsbasics/testing_plugins.html"><span>测试插件</span></a>部分。</p>
+
+<p><code class="code highlight language-text">comparison_references_inspection</code>测试基于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/UsefulTestCase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">UsefulTestCase</code></span></a>类，它是JUnit框架API的一部分。</p>
+
+<p>该类处理许多用于测试的底层样板。</p>
+
+<p>按照惯例，文件夹<code class="code highlight language-text">&lt;project root&gt;/testSource/testPlugin /</code>包含测试源代码，必须标记为“Tests”文件夹。</p>
+
+<p>如果不是，则DevKit项目无法找到源代码。</p>
+
+<p>按照惯例，文件夹<code class="code highlight language-text">&lt;project root&gt;/testData /</code>包含测试文件，必须标记为“Test Resources”文件夹。</p>
+
+<p>该文件夹包含使用名称约定<code class="code highlight language-text">* .java</code>和<code class="code highlight language-text">* .after.java</code>的每个测试的文件对。</p>
+
+<p>在“comparison_references_inspection”的情况下，测试文件是<code class="code highlight language-text">before.java</code>和<code class="code highlight language-text">before.after.java</code>，以及<code class="code highlight language-text">before1.java</code>和<code class="code highlight language-text">before1.after.java</code>。</p>
+
+<p><code class="code highlight language-text">before</code>和<code class="code highlight language-text">before1</code>的选择是任意的。</p>
+
+<p><code class="code highlight language-text">comparison_references_inspection</code>测试运行对<code class="code highlight language-text">* .java文件</code>的检查，实现快速修复，并将结果与​​相应的<code class="code highlight language-text">* .after.java</code>文件进行比较。</p>
+
+<a name="running-the-comparing-references-inspection-code-sample" class="elem-anchor"></a>
+<h2>Running the Comparing References Inspection Code Sample<a href="#running-the-comparing-references-inspection-code-sample" class="anchor-link"><span></span></a></h2>
+<p>The <a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection" data-bypass="yes" target="_blank"><span>comparing_references_inspection</span></a> code sample adds a new inspection to the <strong>Java | Probable Bugs</strong> group in the <a href="https://www.jetbrains.com/help/idea/inspections-settings.html" data-bypass="yes" target="_blank"><span>Inspections list</span></a>.
+The inspection reports when the <code class="code highlight language-text">==</code> or <code class="code highlight language-text">!=</code> operator is used between Java expressions of reference types.</p>
+
+<p>要运行示例插件:</p>
+
+<p>*启动** IntelliJ IDEA **，打开<code class="code highlight language-text">intellij-sdk-docs</code>项目，并突出显示<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection" data-bypass="yes" target="_blank"><span>comparison_references_inspection</span></a>模块。</p>
+
+<p>*打开<a href="https://www.jetbrains.com/help/idea/project-structure-dialog.html" data-bypass="yes" target="_blank"><span>项目结构</span></a>对话框，确保项目设置对您的环境有效。</p>
+
+<p>*如有必要，修改<code class="code highlight language-text">comparison_references_inspection</code>模块的<a href="https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html" data-bypass="yes" target="_blank"><span>运行/调试配置</span></a>。</p>
+
+<p>*在主菜单上选择** Run **运行插件。</p>
+
+<p>###配置插件</p>
+
+<p>启动插件后，您可以设置插件选项。</p>
+
+<p>您可以指定参与代码检查的Java类以及找到的可能错误的严重性级别。</p>
+
+<p>On the IDEA main menu, open the <strong>Preferences | Editor | Inspections</strong> dialog. 
+In the list of the IntelliJ IDEA <em>Java</em> inspections, expand the <em>Probable bugs</em> node, and then click <em>SDK: ‘==’ or ‘!=’ instead of ‘equals()’</em>.</p>
+
+<p><img src="IMG/comparingReferences_options.png" alt="" /></p>
+
+<p>在<strong>选项</strong>下，您可以指定以下插件设置:</p>
+
+<p>*从** Severity **列表中，选择插件找到的可能错误的严重性级别，例如警告，信息等。</p>
+
+<p>*在** Severity **下的文本框中，指定以分号分隔的Java类列表以参与此代码检查。</p>
+
+<p>*完成后，单击<strong>确定</strong>。</p>
+
+<p>＃＃＃ 它是如何工作的？</p>
+
+<p>该插件检查您在IntelliJ IDEA编辑器中打开的代码或您键入的代码。</p>
+
+<p>该插件突出显示了代码片段，其中引用类型的两个变量由<code class="code highlight language-text">==</code>或<code class="code highlight language-text">!=</code>分隔，并建议用<code class="code highlight language-text">.equals()</code>替换此代码片段:</p>
+
+<p><img src="IMG/comparingReferences.png" alt="" /></p>
+
+<p>在这个例子中，<code class="code highlight language-text">str1</code>和<code class="code highlight language-text">str2</code>是String类型的变量。</p>
+
+<p>单击_SDK:使用equals()_替换:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="k">return</span> <span class="o">(</span><span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">);</span>
+</code></div>
+
+<p>用代码:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="k">return</span> <span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">));</span>
+</code></div>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

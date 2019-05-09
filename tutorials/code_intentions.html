@@ -1,0 +1,213 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Intentions / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/code_intentions.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Code Intentions" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Code Intentions" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/code_intentions">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/code_intentions.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Code Intentions</h1>
+                    <p>本主题描述了<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/conditional_operator_intention" data-bypass="yes" target="_blank"><span>conditional_operator_intention</span></a>，这是一个添加新[意图行动]的示例插件(https://www 
+.jetbrains.com/help/idea/intention-actions.html)到IntelliJ平台意图列表。</p>
+
+<p>此外，示例插件包含基于JUnit的测试。</p>
+
+<p>##关于意向行动</p>
+
+<p>** IntelliJ平台**分析您的代码并帮助处理可能导致错误的情况。</p>
+
+<p>当怀疑存在可能的问题时，IDE会建议适当的意图操作，用特殊图标表示。</p>
+
+<p>有关更多信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/intention-actions.html" data-bypass="yes" target="_blank"><span>意图操作</span></a>。</p>
+
+<p>您可以使用IDE提供的<a href="https://www.jetbrains.com/help/idea/intention-actions.html#intention-settings" data-bypass="yes" target="_blank"><span>注意列表</span></a>查看所有可用意图操作的列表。</p>
+
+<p><strong>显示意向清单</strong></p>
+
+<p>1.打开<strong>设置</strong>对话框。</p>
+
+<p>2.在** IDE Settings <strong>下，单击</strong> Intentions <strong>。
+这将显示</strong> IntelliJ IDEA **中当前可用的所有意图操作的列表。</p>
+
+<ul>
+  <li>
+    <p>意图行动根据其使用区域分组。</p>
+  </li>
+  <li>
+    <p>要启用/禁用意图操作，请选中/取消选中其左侧的复选框。</p>
+  </li>
+</ul>
+
+<p>##使用的技术</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/conditional_operator_intention" data-bypass="yes" target="_blank"><span>conditional_operator_intention</span></a>示例插件说明了以下技术的使用:</p>
+
+<ul>
+  <li>
+    <p>如何分析<a href="/intellij/sdk/docsbasics/architectural_overview/psi_files.html"><span>PSI树</span></a>。</p>
+  </li>
+  <li>
+    <p>如何在PSI树中查找感兴趣的Java令牌。</p>
+  </li>
+  <li>
+    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/intention/PsiElementBaseIntentionAction.java" data-bypass="yes" target="_blank"><span>PsiElementBaseIntentionAction</span></a>类为游标下的标记元素调用快速修复操作。</p>
+  </li>
+  <li>
+    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java" data-bypass="yes" target="_blank"><span>IdeaTestFixtureFactory</span></a>类为此插件创建JUnit测试。</p>
+  </li>
+</ul>
+
+<p>##示例插件</p>
+
+<p>** ConditionalOperatorConverter **示例插件位于<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中。</p>
+
+<p>启动时，此插件将<strong>转换三元运算符if语句</strong>项添加到IDEA意图列表中的<strong>条件运算符</strong>节点:</p>
+
+<p><img src="IMG/IntentionsList.png" alt="" /></p>
+
+<p>####运行插件</p>
+
+<p><strong>运行示例插件</strong></p>
+
+<p>1.启动** IntelliJ IDEA <strong>并打开保存在<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中的</strong> conditionalOperatorConvertor **插件项目。</p>
+
+<p>2.打开<a href="https://www.jetbrains.com/help/idea/project-structure-dialog.html" data-bypass="yes" target="_blank"><span>项目结构</span></a>对话框，确保项目设置对您的环境有效。</p>
+
+<p>3.如有必要，修改<a href="https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html" data-bypass="yes" target="_blank"><span>运行/调试配置</span></a>并选择** Run **运行插件
+在主菜单上。</p>
+
+<p>＃＃＃＃ 它是如何工作的？</p>
+
+<p>该插件分析在IDEA编辑器中打开的代码中光标下的符号。</p>
+
+<p>如果光标位于“？”
+条件运算符，** IntelliJ IDEA **建议用“if-then-else”语句替换此条件(三元)运算符:</p>
+
+<p><img src="IMG/TernaryOperator.png" alt="" /></p>
+
+<p>在这个例子中，代码:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="k">return</span> <span class="o">(</span><span class="n">n</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">)</span> <span class="o">?</span> <span class="n">n</span> <span class="o">:</span> <span class="o">-</span><span class="n">n</span><span class="o">;</span>
+</code></div>
+
+<p>将替换为代码:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="k">if</span> <span class="o">((</span><span class="n">n</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">n</span><span class="o">;</span>
+<span class="o">}</span>
+</code></div>
+
+<p>#####测试插件</p>
+
+<p>示例插件包含<code class="code highlight language-text">testSource/testPlugin /</code>包中的<code class="code highlight language-text">YourTest</code> Java类和<code class="code highlight language-text">testData /</code>目录中的测试数据。</p>
+
+<p>要执行插件测试，请运行<code class="code highlight language-text">YourTest.test()</code>方法。</p>
+
+<p>有关测试和所有相关过程的详细信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/performing-tests.html" data-bypass="yes" target="_blank"><span>测试</span></a>。</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

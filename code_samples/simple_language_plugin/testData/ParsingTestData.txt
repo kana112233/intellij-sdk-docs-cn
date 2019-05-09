@@ -1,0 +1,133 @@
+简单文件（0,492）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃您正在阅读“.properties”条目。'）（0,42）
+  
+PsiWhiteSpace（ '\ n'）（42,43）
+  
+PsiComment（SimpleTokenType.COMMENT）（'！感叹号也可以将文本标记为注释。'）（43,47）
+  
+PsiWhiteSpace（ '\ n'）（97,98）
+  
+SimplePropertyImpl（PROPERTY）（98132）
+    
+PsiElement（SimpleTokenType.KEY）（ '网站'）（98105）
+    
+PsiWhiteSpace（''）（105,106）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（106107）
+    
+PsiWhiteSpace（''）（107,108）
+    
+PsiElement（SimpleTokenType.VALUE）（ 'http://en.wikipedia.org/'）（108132）
+  
+PsiWhiteSpace（ '\ n \ n'）（132134）
+  
+SimplePropertyImpl（PROPERTY）（134152）
+    
+PsiElement（SimpleTokenType.KEY）（ '语言'）（134142）
+    
+PsiWhiteSpace（''）（142,143）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（143144）
+    
+PsiWhiteSpace（''）（144,145）
+    
+PsiElement（SimpleTokenType.VALUE）（ '英语'）（145152）
+  
+PsiWhiteSpace（ '\ n'）（152153）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃下面的反斜杠告诉应用程序继续读取'）（153,216）
+  
+PsiWhiteSpace（ '\ n'）（216217）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃下一行的值。'）（217,248）
+  
+PsiWhiteSpace（ '\ n'）（248249）
+  
+SimplePropertyImpl（PROPERTY）（249292）
+    
+PsiElement（SimpleTokenType.KEY）（ '信息'）（249256）
+    
+PsiWhiteSpace（''）（256,257）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（257258）
+    
+PsiWhiteSpace（''）（258,259）
+    
+PsiElement（SimpleTokenType.VALUE）（'欢迎来到\\ n Wikipedia！'）（259,292）
+  
+PsiWhiteSpace（ '\ n'）（292293）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃为键添加空格'）（293,316）
+  
+PsiWhiteSpace（ '\ n'）（316317）
+  
+SimplePropertyImpl（PROPERTY）（317410）
+    
+PsiElement（SimpleTokenType.KEY）（'key \ with \ spaces'）（317,334）
+    
+PsiWhiteSpace（''）（334,335）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（335336）
+    
+PsiWhiteSpace（''）（336,337）
+    
+PsiElement（SimpleTokenType.VALUE）（'这是可以使用键“key with space”查找的值。'）（337,410）
+  
+PsiWhiteSpace（ '\ n'）（410411）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃Unicode'）（411,420）
+  
+PsiWhiteSpace（ '\ n'）（420421）
+  
+SimplePropertyImpl（PROPERTY）（421433）
+    
+PsiElement（SimpleTokenType.KEY）（ '标签'）（421424）
+    
+PsiWhiteSpace（''）（424,425）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '：'），（425426）
+    
+PsiWhiteSpace（''）（426,427）
+    
+PsiElement（SimpleTokenType.VALUE）（ '\ u0009'），（427433）
+  
+PsiWhiteSpace（ '\ n'）（433434）
+  
+PsiComment（SimpleTokenType.COMMENT）（'非法密钥尝试的测试'）（434,464）
+  
+PsiWhiteSpace（ '\ n'）（464465）
+  
+SimplePropertyImpl（PROPERTY）（465469）
+    
+PsiElement（SimpleTokenType.KEY）（ '密钥'）（465468）
+    
+PsiErrorElement：预期的SimpleTokenType.SEPARATOR，得到'\'（468,469）
+      
+PsiElement（BAD_CHARACTER）（ '\'），（468469）
+  
+PsiWhiteSpace（ '\ n'）（469470）
+  
+SimplePropertyImpl（PROPERTY）（470,475）
+    
+PsiElement（SimpleTokenType.KEY）（ '与'）（470474）
+    
+PsiErrorElement：预期的SimpleTokenType.SEPARATOR，得到'\'（474,475）
+      
+PsiElement（BAD_CHARACTER）（ '\'），（474475）
+  
+PsiWhiteSpace（ '\ n'）（475476）
+  
+SimplePropertyImpl（PROPERTY）（476492）
+    
+PsiElement（SimpleTokenType.KEY）（ '行尾'）（476485）
+    
+PsiWhiteSpace（''）（485,486）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（486487）
+    
+PsiWhiteSpace（''）（487,488）
+    
+PsiElement（SimpleTokenType.VALUE）（ '测试'）（488492）
+
+

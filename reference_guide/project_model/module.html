@@ -1,0 +1,262 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Module / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/project_model/module.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Module" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:44:02+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Module" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/project_model/module">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/project_model/project.html">Project</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/sdk.html">SDK</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/project_model/module.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Module</h1>
+                    <p>_module_是一个独立的功能单元,可以独立运行,测试和调试.
+模块包括源代码,构建脚本,单元测试,部署描述符等.</p>
+
+<p>模块的关键组件是:
+  </p>
+<ul>
+  <li><strong>内容根</strong>  - 属于该模块的文件的目录(源代码,资源等)
+    
+存储.
+每个目录可以属于一个且只有一个模块;
+共享内容根目录是不可能的
+    
+多个模块之间.
+  </li>
+  <li><strong>源根</strong>  - 内容根可以在其下面有多个<strong>源根</strong>.
+源根可以有不同的类型:
+   
+常规源根,测试源根,资源根等.在IntelliJ IDEA中,源根用作包层次结构的根
+   
+结构(源根目录下的Java类将位于根包中).
+源根也可以用来
+   
+实现更细粒度的依赖性检查(常规源根目录下的代码不能依赖于测试下的代码
+   
+源根).
+并非所有其他基于IntelliJ平台的IDE都使用源根.
+  </li>
+  <li><strong>订单输入</strong>  - 模块的依赖关系,存储在有序列表中.
+依赖可以作为参考
+    
+到<a href="sdk.html"><span>SDK</span></a>,<a href="library.html"><span>library</span></a>或其他模块.
+  </li>
+  <li>** <a href="facet.html"><span>Facets</span></a>**  - 特定于框架的配置条目列表.</li>
+</ul>
+
+<p>除此之外,模块还可以存储其他设置,例如特定于模块的<a href="sdk.html"><span>SDK</span></a>,编译输出路径</p>
+
+<p>设置,等等.
+插件可以通过创建构面或模块级组件来存储与模块关联的其他数据.</p>
+
+<ul>
+  <li>
+    <p>IntelliJ Platform *提供了许多可用于处理模块的Java类和接口:</p>
+  </li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/module/ModuleManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleManager</code></span></a> abstract class.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Module</code></span></a> interface.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleRootManager</code></span></a> abstract class.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModel.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleRootModel</code></span></a> interface.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/module/ModuleUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleUtil</code></span></a> class.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/module/ModifiableModuleModel.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModifiableModuleModel</code></span></a> interface.</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModifiableRootModel.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModifiableRootModel</code></span></a> interface.</li>
+</ul>
+
+<p>本节讨论如何完成与模块管理相关的一些常见任务.</p>
+
+<p>###如何获得项目包含的模块列表？</p>
+
+<p>使用<code class="code highlight language-text">ModuleManager.getModules()</code>方法.</p>
+
+<p>###如何获取模块的依赖关系和类路径？</p>
+
+<p>_Order entries_包括模块使用的SDK,库和其他模块.
+使用* IntelliJ IDEA * UI,您可以在* Project Structure *对话框的<a href="https://www.jetbrains.com/help/idea/dependencies-tab.html" data-bypass="yes" target="_blank"><span>Dependencies</span></a>选项卡上查看模块的订单条目
+框.</p>
+
+<p>要探索<a href="https://www.jetbrains.com/help/idea/dependencies-tab.html" data-bypass="yes" target="_blank"><span>模块依赖关系</span></a>,请使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/OrderEnumerator.java" data-bypass="yes" target="_blank"><span>OrderEnumerator</span></a>类.</p>
+
+<p>以下代码片段说明了如何获取模块的类路径(所有依赖项的类根):</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span><span class="o">[]</span> <span class="n">roots</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">).</span><span class="na">orderEntries</span><span class="o">().</span><span class="na">classes</span><span class="o">().</span><span class="na">getRoots</span><span class="o">();</span>
+</code></div>
+
+<p>###如何获取模块使用的SDK？</p>
+
+<p>使用<code class="code highlight language-text">ModuleRootManager.getSdk()</code>方法.
+此方法返回<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java" data-bypass="yes" target="_blank"><span>Sdk</span></a>类型的值.</p>
+
+<p>以下代码段说明了如何获取指定模块使用的SDK的详细信息:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">ModuleRootManager</span> <span class="n">moduleRootManager</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">);</span>
+<span class="n">Sdk</span> <span class="n">SDK</span> <span class="o">=</span> <span class="n">moduleRootManager</span><span class="o">.</span><span class="na">getSdk</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">jdkInfo</span> <span class="o">=</span> <span class="s">"Module: "</span> <span class="o">+</span> <span class="n">module</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" SDK: "</span> <span class="o">+</span> <span class="n">SDK</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" SDK version: "</span>
+                 <span class="o">+</span> <span class="n">SDK</span><span class="o">.</span><span class="na">getVersionString</span><span class="o">()</span> <span class="o">+</span> <span class="s">" SDK home directory: "</span> <span class="o">+</span> <span class="n">SDK</span><span class="o">.</span><span class="na">getHomePath</span><span class="o">();</span>
+</code></div>
+
+<p>###如何获得该模块直接依赖的模块列表？</p>
+
+<p>使用<code class="code highlight language-text">ModuleRootManager.getDependencies()</code>方法获取<code class="code highlight language-text">Module</code>类型值的数组或<code class="code highlight language-text">ModuleRootManager.getDependencyModuleNames()</code>以获取模块名称数组.
+为了澄清,请考虑以下代码段:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">ModuleRootManager</span> <span class="n">moduleRootManager</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">);</span>
+<span class="n">Module</span><span class="o">[]</span> <span class="n">dependentModules</span> <span class="o">=</span> <span class="n">moduleRootManager</span><span class="o">.</span><span class="na">getDependencies</span><span class="o">();</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">dependentModulesNames</span> <span class="o">=</span> <span class="n">moduleRootManager</span><span class="o">.</span><span class="na">getDependencyModuleNames</span><span class="o">();</span>
+</code></div>
+
+<p>###如何获取依赖于该模块的模块列表？</p>
+
+<p>使用<code class="code highlight language-text">ModuleManager.getModuleDependentModules(module)</code>方法.</p>
+
+<p>请注意,您还可以通过以下方式使用<code class="code highlight language-text">ModuleManager.isModuleDependent</code>方法检查模块(* module1 <em>)是否依赖于另一个指定的模块(</em> module2 *):</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kt">boolean</span> <span class="n">isDependent</span> <span class="o">=</span> <span class="n">ModuleManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">isModuleDependent</span><span class="o">(</span><span class="n">module1</span><span class="o">,</span><span class="n">module2</span><span class="o">);</span>
+</code></div>
+
+<p>###如何获取指定文件或PSI元素所属的模块？</p>
+
+<p>*要获取指定文件所属的项目模块,请使用<code class="code highlight language-text">ModuleUtil.findModuleForFile()</code>静态方法.</p>
+
+<p>为了澄清,请考虑以下代码段:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">String</span> <span class="n">pathToFile</span> <span class="o">=</span> <span class="s">"C:\\users\\firstName.LastName\\plugins\\myPlugin\src\MyAction.java"</span><span class="o">;</span>
+<span class="n">VirtualFile</span> <span class="n">virtualFile</span> <span class="o">=</span> <span class="n">LocalFileSystem</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">findFileByPath</span><span class="o">(</span><span class="n">pathToFile</span><span class="o">);</span>
+<span class="n">Module</span> <span class="n">module</span> <span class="o">=</span> <span class="n">ModuleUtil</span><span class="o">.</span><span class="na">findModuleForFile</span><span class="o">(</span><span class="n">virtualFile</span><span class="o">,</span><span class="n">myProject</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">moduleName</span> <span class="o">=</span> <span class="n">module</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">"Module not found"</span> <span class="o">:</span> <span class="n">module</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+</code></div>
+
+<p>*要获取指定的<a href="../../basics/architectural_overview/psi_elements.html"><span>PSI元素</span></a>所属的项目模块,请使用<code class="code highlight language-text">ModuleUtil.findModuleForPsiElement(psiElement)</code>方法.</p>
+
+<p>###访问模块根目录</p>
+
+<p>可以通过类<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java" data-bypass="yes" target="_blank"><span>ModuleRootManager.java</span></a>访问有关模块根的信息.</p>
+
+<p>例如,以下代码段显示了如何访问模块的内容根:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span><span class="o">[]</span> <span class="n">contentRoots</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">).</span><span class="na">getContentRoots</span><span class="o">();</span>
+</code></div>
+
+<p>###检查属于模块源根目录</p>
+
+<p>要检查虚拟文件或目录是否属于模块源根目录,请使用<code class="code highlight language-text">ProjectFileIndex.getSourceRootForFile</code>方法.
+如果文件或目录不属于项目中任何模块的源根,则此方法返回null.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span> <span class="n">moduleSourceRoot</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getFileIndex</span><span class="o">().</span><span class="na">getSourceRootForFile</span><span class="o">(</span><span class="n">virtualFileOrDirectory</span><span class="o">);</span>
+</code></div>
+
+<p>##接收有关模块更改的通知</p>
+
+<p>要接收有关模块更改的通知(要添加,删除或重命名的模块),</p>
+
+<p>使用<a href="/intellij/sdk/docsreference_guide/messaging_infrastructure.html"><span>message bus</span></a>和<code class="code highlight language-text">ProjectTopics.MODULES</code>主题:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">project</span><span class="o">.</span><span class="na">getMessageBus</span><span class="o">().</span><span class="na">connect</span><span class="o">().</span><span class="na">subscribe</span><span class="o">(</span><span class="n">ProjectTopics</span><span class="o">.</span><span class="na">MODULES</span><span class="o">,</span> <span class="k">new</span> <span class="n">ModuleListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">moduleAdded</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">Project</span> <span class="n">project</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">Module</span> <span class="n">module</span><span class="o">)</span> <span class="o">{</span>
+
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></div>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/project_model/project.html">Project</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/sdk.html">SDK</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

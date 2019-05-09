@@ -1,0 +1,188 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>7. Annotator / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/custom_language_support/annotator.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="7. Annotator" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="7. Annotator" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/custom_language_support/annotator">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/psi_helper_and_utilities.html">6. PSI Helpers and Utilities</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/line_marker_provider.html">8. Line Marker Provider</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/custom_language_support/annotator.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>7. Annotator</h1>
+                    <p>注释器有助于根据特定规则突出显示和注释任何代码。</p>
+
+<a name="section" class="elem-anchor"></a>
+<h3>7.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<p>定义注释器</p>
+
+<p>在本教程中，我们将在Java代码中注释我们的属性的用法。</p>
+
+<p>让我们考虑一个以<em>“simple:”</em>开头的文字作为我们财产的用法。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.lang.annotation.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.editor.DefaultLanguageHighlighterColors</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.project.Project</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.util.TextRange</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.psi.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.simpleplugin.psi.SimpleProperty</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.NotNull</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleAnnotator</span> <span class="kd">implements</span> <span class="n">Annotator</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">annotate</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="kd">final</span> <span class="n">PsiElement</span> <span class="n">element</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">AnnotationHolder</span> <span class="n">holder</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">element</span> <span class="k">instanceof</span> <span class="n">PsiLiteralExpression</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">PsiLiteralExpression</span> <span class="n">literalExpression</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiLiteralExpression</span><span class="o">)</span> <span class="n">element</span><span class="o">;</span>
+      <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">literalExpression</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">String</span> <span class="o">?</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">literalExpression</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">:</span> <span class="kc">null</span><span class="o">;</span>
+
+      <span class="k">if</span> <span class="o">(</span><span class="n">value</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">value</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"simple"</span> <span class="o">+</span> <span class="s">":"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">SimpleProperty</span><span class="o">&gt;</span> <span class="n">properties</span> <span class="o">=</span> <span class="n">SimpleUtil</span><span class="o">.</span><span class="na">findProperties</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">key</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">properties</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">TextRange</span> <span class="n">range</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextRange</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getStartOffset</span><span class="o">()</span> <span class="o">+</span> <span class="mi">7</span><span class="o">,</span>
+                                          <span class="n">element</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getStartOffset</span><span class="o">()</span> <span class="o">+</span> <span class="mi">7</span><span class="o">);</span>
+          <span class="n">Annotation</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">holder</span><span class="o">.</span><span class="na">createInfoAnnotation</span><span class="o">(</span><span class="n">range</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+          <span class="n">annotation</span><span class="o">.</span><span class="na">setTextAttributes</span><span class="o">(</span><span class="n">DefaultLanguageHighlighterColors</span><span class="o">.</span><span class="na">LINE_COMMENT</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">properties</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">TextRange</span> <span class="n">range</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextRange</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getStartOffset</span><span class="o">()</span> <span class="o">+</span> <span class="mi">8</span><span class="o">,</span>
+                                          <span class="n">element</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getEndOffset</span><span class="o">());</span>
+          <span class="n">holder</span><span class="o">.</span><span class="na">createErrorAnnotation</span><span class="o">(</span><span class="n">range</span><span class="o">,</span> <span class="s">"Unresolved property"</span><span class="o">);</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-1" class="elem-anchor"></a>
+<h3>7.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<p>注册注释器</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;annotator</span> <span class="na">language=</span><span class="s">"JAVA"</span> <span class="na">implementationClass=</span><span class="s">"com.simpleplugin.SimpleAnnotator"</span><span class="nt">/&gt;</span>
+</code></div>
+
+<a name="section-2" class="elem-anchor"></a>
+<h3>7.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>运行该项目</p>
+
+<p>让我们定义以下Java文件并检查IDE是否解析了属性。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"simple:website"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>！[注释器(IMG/annotator.png)</p>
+
+<p>如果我们键入未定义的属性名称，它将使用错误注释代码。</p>
+
+<p>！<a href="img/unresolved_property.png"><span>未解决的属性</span></a></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/psi_helper_and_utilities.html">6. PSI Helpers and Utilities</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/line_marker_provider.html">8. Line Marker Provider</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

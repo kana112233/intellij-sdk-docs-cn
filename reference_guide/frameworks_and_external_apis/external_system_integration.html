@@ -1,0 +1,218 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>External System Integration / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/frameworks_and_external_apis/external_system_integration.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="External System Integration" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:44:02+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="External System Integration" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/frameworks_and_external_apis/external_system_integration">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/project_model/facet.html">Facet</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/psi.html">Program Structure Interface (PSI)</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/frameworks_and_external_apis/external_system_integration.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>External System Integration</h1>
+                    <p>＃目的</p>
+
+<p>此页面提供<em>外部系统</em>子系统的高级概述.</p>
+
+<p>#Rationale</p>
+
+<p>有多个项目管理系统(<a href="https://maven.apache.org/" data-bypass="yes" target="_blank"><span>maven</span></a>,<a href="http://www.gradle.org/" data-bypass="yes" target="_blank"><span>gradle</span></a>,<a href="http://www.scala-sbt.org/" data-bypass="yes" target="_blank"><span>sbt</span></a>etc)并且很高兴在IDE上支持它们.
+幸运的是,从集成的角度来看,它们都提供了类似的设施:</p>
+
+<p>*从外部系统配置(pom.xml,build.gradle等)构建IDE项目;</p>
+
+<p>*提供可用任务列表;</p>
+
+<p>*允许执行特定任务;</p>
+
+<ul>
+  <li>……</li>
+</ul>
+
+<p>这意味着我们可以将外部系统特定逻辑和一般IDE处理分开. 
+<em>‘外部系统’</em>子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.</p>
+
+<p>＃ 项目管理</p>
+
+<p>##项目数据域</p>
+
+<p><strong>一般</strong></p>
+
+<p>外部系统包装器需要能够根据给定的外部系统配置构建项目信息.
+该信息是根据 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-api/src/com/intellij/openapi/externalSystem/model/DataNode.java" data-bypass="yes" target="_blank"><span>DataNode</span></a>, <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-api/src/com/intellij/openapi/externalSystem/model/Key.java" data-bypass="yes" target="_blank"><span>Key</span></a> and <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-api/src/com/intellij/openapi/externalSystem/model/project/ProjectEntityData.java" data-bypass="yes" target="_blank"><span>ProjectEntityData</span></a>.</p>
+
+<p><img src="/intellij/sdk/docsreference_guide/img/data-node.png" alt="数据管理部" /></p>
+
+<p>这里* DataNode <em>类只是目标数据的持有者(数据类型由</em> Key *定义).
+可以在有向图中组织多个DataNode对象,其中每个边都标识父子关系.</p>
+
+<p>例如,简单的单模块项目可能如下所示:
+ </p>
+
+<p><img src="/intellij/sdk/docsreference_guide/img/data-node-example.png" alt="DataNode示例" /></p>
+
+<p><strong>后果</strong></p>
+
+<p>IDE提供了一组内置的* Key <em>和</em> ProjectEntityData <em>,但任何外部系统集成或第三方插件开发人员都可以通过定义自己的</em> Key <em>和</em> ProjectEntityData <em>并将其存储在子项中来增强项目数据
+适当的</em> DataNode *.</p>
+
+<p>##管理项目数据</p>
+
+<p>我们需要处理项目数据是建立在外部系统配置的基础上的.
+这里有<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/manage/ProjectDataService.java" data-bypass="yes" target="_blank"><span>ProjectDataService</span></a>.
+这是一种知道如何管理特定* ProjectEntityData <em>的策略.
+例如,当我们想要从外部模型导入项目时,我们可以从引用项目信息的顶级</em> DataNode *开始,然后使用相应的服务导入其数据.</p>
+
+<p>可以通过<em>‘externalProjectDataService’</em>扩展名定义自定义服务.</p>
+
+<p>好处是我们可以在这里分离项目解析和管理.
+这意味着可以为特定技术引入一组* DataNode <em>,</em> Key <em>和</em> ProjectDataServices *,然后每个外部系统集成可以在必要时使用它来构建相应的数据.</p>
+
+<p>##从外部模型导入</p>
+
+<p>IntelliJ平台为此提供标准API.
+即,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/projectImport/ProjectImportBuilder.java" data-bypass="yes" target="_blank"><span>ProjectImportBuilder</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/projectImport/ProjectImportProvider.java" data-bypass="yes" target="_blank"><span>ProjectImportProvider</span></a>.
+在* template method * pattern上构建了两个类 -  <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java" data-bypass="yes" target="_blank"><span>AbstractExternalProjectImportBuilder</span></a><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportProvider.java" data-bypass="yes" target="_blank"><span>AbstractExternalProjectImportProvider</span></a>.
+它们可能是子类,具体实现应该在IoC描述符(plugin.xml)中注册.</p>
+
+<p>以下是gradle集成插件的示例:</p>
+
+<p>&lt;projectImportProvider implementation =“org.jetbrains.plugins.gradle.service.settings.GradleProjectImportProvider”/&gt;
+    
+&lt;projectImportBuilder implementation =“org.jetbrains.plugins.gradle.service.settings.GradleProjectImportBuilder”/&gt;</p>
+
+<p>请注意,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java" data-bypass="yes" target="_blank"><span>AbstractExternalProjectImportBuilder</span></a>构建于“外部系统设置”之上
+控制.</p>
+
+<p>##自动导入</p>
+
+<p>当外部项目的配置文件被修改时,可以配置外部系统集成以自动刷新项目结构.
+基本上,最终用户应在外部系统设置中检查相应的框:</p>
+
+<p><img src="/intellij/sdk/docsreference_guide/IMG /使用-自动import.png" alt="自动导入" /></p>
+
+<p>内置支持仅涵盖链接外部项目的根配置文件.
+但是,可能存在这样的情况:特定外部项目具有另一个配置文件,这些配置文件也会影响生成的项目结构(例如,它可能是一个多项目,其中每个子项目都有自己的配置文件).
+这就是为什么通过使目标外部系统实现(* ExternalSystemManager <em>)实现</em> ExternalSystemAutoImportAware *来增强该处理的原因.
+这允许提供自定义逻辑,用于将文件修改事件映射到受其影响的目标外部项目.</p>
+
+<p><strong>注意:</strong> * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()<em>经常被调用,这就是为什么它应该尽快返回控制. 
+Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即</em> ExternalSystemManager <em>实现</em> ExternalSystemAutoImportAware <em>可以有一个字段,如</em>‘new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* <em>委托</em> ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.</p>
+
+<p>＃设置</p>
+
+<p>一般的想法是所有外部系统设置控件都由[ExternalSettingsControl]的实现表示(upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java)
+接口.
+还有外部系统项目本地设置和全局外部系统设置.
+因此,基本上特定的外部系统设置UI如下所示:</p>
+
+<p><img src="/intellij/sdk/docsreference_guide/IMG/configurable.png" alt="配置" /></p>
+
+<p>建议从<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractExternalProjectSettingsControl.java" data-bypass="yes" target="_blank"><span>AbstractExternalProjectSettingsControl</span></a>进行扩展,以实现项目级设置控制,因为它已经
+处理其中一些.</p>
+
+<p>类似的方法用于提供“从外部系统导入”UI  - 实现有望扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractImportFromExternalSystemControl.java" data-bypass="yes" target="_blank"><span>AbstractImportFromExternalSystemControl</span></a>并且它没有链接外部项目列表但是目标外部项目路径控制:</p>
+
+<p><img src="/intellij/sdk/docsreference_guide/img/import.png" alt="从外部系统导入" /></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/project_model/facet.html">Facet</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/psi.html">Program Structure Interface (PSI)</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

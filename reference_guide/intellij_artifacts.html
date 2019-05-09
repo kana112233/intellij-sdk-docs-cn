@@ -1,0 +1,233 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>IntelliJ Platform Artifacts Repositories / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/intellij_artifacts.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="IntelliJ Platform Artifacts Repositories" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-24T11:31:26+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="IntelliJ Platform Artifacts Repositories" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/intellij_artifacts">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure.html">Plugin Structure</a>
+                        <a class="navigation-links__next" href="/tutorials/kotlin.html">Kotlin for Plugin Developers</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/intellij_artifacts.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>IntelliJ Platform Artifacts Repositories</h1>
+                    <p>JetBrains维护公共存储库,用于托管与IntelliJ平台相关的工件,例如二进制文件和源代码.
+这些</p>
+
+<p>存储库使插件开发人员更容易访问工件.</p>
+
+<p>IntelliJ平台工件存储库是:</p>
+
+<ul>
+  <li>
+    <p><a href="https://www.jetbrains.com/intellij-repository/releases/" data-bypass="yes" target="_blank"><span>发布存储库</span></a>了解发行版和EAP版本.</p>
+  </li>
+  <li>
+    <p><a href="https://www.jetbrains.com/intellij-repository/snapshots/" data-bypass="yes" target="_blank"><span>快照存储库</span></a>用于EAP候选人和每个分支的最新EAP.</p>
+  </li>
+</ul>
+
+<p>Releases和Snapshots存储库都有两种类型的内容:</p>
+
+<p>*基于IntelliJ平台的IDE的跨平台ZIP分发的二进制和源代码工件,例如IntelliJ IDEA,CLion,Rider和MPS.</p>
+
+<p>这些工件不是直接从插件项目的<code class="code highlight language-text">build.gradle</code>文件中访问的.</p>
+
+<p><code class="code highlight language-text">gradle-intellij-plugin</code>将根据插件项目的需要访问它们.</p>
+
+<ul>
+  <li>IntelliJ平台中各个模块的工件.</li>
+</ul>
+
+<p>这些可以下载,或直接从<code class="code highlight language-text">build.gradle</code>文件访问,如下所述.
+  </p>
+
+<p>IntelliJ平台第三方依赖项的工件托管在<a href="https://jetbrains.bintray.com/intellij-third-party-dependencies" data-bypass="yes" target="_blank"><span>Bintray存储库</span></a>.</p>
+
+<p>当使用IntelliJ平台工件库中的各个模块时,应将此存储库的链接添加到<code class="code highlight language-text">pom.xml</code> /<code class="code highlight language-text">build.gradle</code>文件中.</p>
+
+<p>##使用IntelliJ平台模块工件</p>
+
+<p>通过向项目的“build.gradle”文件添加信息来利用IntelliJ平台模块工件.</p>
+
+<p>有关<a href="https://www.jetbrains.com/help/idea/gradle.html" data-bypass="yes" target="_blank"><span>Gradle支持</span></a>的更多信息,请参见IntelliJ IDEA帮助文档.</p>
+
+<p>要设置模块的依赖关系,需要两种类型的信息:</p>
+
+<p>1.指定工件的相应存储库URL.</p>
+
+<p>2.指定工件的Maven坐标.
+ </p>
+
+<p>###指定存储库URL</p>
+
+<p>需要将所需工件的URL添加到Maven或Gradle脚本中:</p>
+
+<p>*对于发行版或EAP版,请使用“https://www.jetbrains.com/intellij-repository/releases”</p>
+
+<p>*对于EAP候选快照,请使用“https://www.jetbrains.com/intellij-repository/snapshots”</p>
+
+<p>*对于IntelliJ平台中各个模块的依赖关系,也可以使用<code class="code highlight language-text">https://jetbrains.bintray.com/intellij-third-party-dependencies</code></p>
+
+<p>###指定工件</p>
+
+<p>使用Maven坐标描述所需的IntelliJ平台模块工件.</p>
+
+<p>例如,要指定<code class="code highlight language-text">jps-model-serialization</code>模块:
+  </p>
+<ul>
+  <li><em>groupId</em> =<code class="code highlight language-text">com.jetbrains.intellij.platform</code>
+  </li>
+  <li><em>artifactId</em> =<code class="code highlight language-text">jps-model-serialization</code>
+  </li>
+  <li><em>classifier</em> =<code class="code highlight language-text">“”</code>
+  </li>
+  <li><em>packaging</em> =<code class="code highlight language-text">jar</code></li>
+</ul>
+
+<p>对于每个工件<a href="#signate-the-repository-url"><span>在存储库URL</span></a>,有多个版本可用.
+可以通过以下几种方式之一指定版本:</p>
+
+<p>*分支构建指定为_BRANCH.BUILD [.FIX] _.
+例如,一个分支构建,例如<code class="code highlight language-text">141.233</code>,或一个分支构建,例如<code class="code highlight language-text">139.555.1</code></p>
+
+<p>*版本号指定为_MAJOR [.MINOR] [.FIX] _.
+例如<code class="code highlight language-text">14</code>,或<code class="code highlight language-text">14.1</code>,或<code class="code highlight language-text">14.1.1</code></p>
+
+<p>*将生成下一个EAP /发布版本的分支的快照指定为_BRANCH-EAP-SNAPSHOT_.
+例如<code class="code highlight language-text">141-EAP-SNAPSHOT</code></p>
+
+<a name="intellijgradle" class="elem-anchor"></a>
+<h2>IntelliJ平台的单个模块的Gradle示例<a href="#intellijgradle" class="anchor-link"><span></span></a></h2>
+
+<p>本节介绍使用Gradle脚本将IntelliJ平台模块和存储库合并到<code class="code highlight language-text">build.gradle</code>文件中的示例.</p>
+
+<p>该示例说明了声明<code class="code highlight language-text">jps-model-serialization</code>模块工件的工件URL,Maven坐标和版本.</p>
+
+<p>该示例分为两部分:存储库和依赖关系部分.</p>
+
+<a name="repositories-section" class="elem-anchor"></a>
+<h3>Repositories Section<a href="#repositories-section" class="anchor-link"><span></span></a></h3>
+<p>This code snippet selects the release repository with the first URL, and repository of IntelliJ Platform dependencies with the second URL.
+The second URL is needed because this example selects individual modules.</p>
+<div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">repositories</span> <span class="o">{</span>
+	<span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s2">"https://www.jetbrains.com/intellij-repository/releases"</span> <span class="o">}</span>
+	<span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="s2">"https://jetbrains.bintray.com/intellij-third-party-dependencies"</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="dependencies-section" class="elem-anchor"></a>
+<h3>Dependencies Section<a href="#dependencies-section" class="anchor-link"><span></span></a></h3>
+<p>This code snippet specifies the desired module artifacts.</p>
+<div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">dependencies</span> <span class="o">{</span>
+	<span class="n">compile</span> <span class="s2">"com.jetbrains.intellij.platform:jps-model-serialization:182.2949.4"</span>
+	<span class="n">compile</span> <span class="s2">"com.jetbrains.intellij.platform:jps-model-impl:182.2949.4"</span>
+<span class="o">}</span>
+</code></div>
+<p>Note:</p>
+<ul>
+  <li>The artifact version (<code class="code highlight language-text">182.2949.4</code>) must match in both statements.</li>
+  <li>In this example <code class="code highlight language-text">jps-model-serialization</code> declares the APIs and <code class="code highlight language-text">jps-model-impl</code> provides the implementation, so both
+are required dependencies.</li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure.html">Plugin Structure</a>
+                        <a class="navigation-links__next" href="/tutorials/kotlin.html">Kotlin for Plugin Developers</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 24 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

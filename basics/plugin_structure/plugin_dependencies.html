@@ -1,0 +1,209 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Dependencies / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/plugin_structure/plugin_dependencies.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Dependencies" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-24T15:05:48+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Dependencies" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/plugin_structure/plugin_dependencies">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_icon_file.html">Plugin Icon</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/plugin_structure/plugin_dependencies.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Dependencies</h1>
+                    <p>您的插件可能依赖于其他插件的类,无论是捆绑,第三方还是您自己的插件.
+为了表达这样的</p>
+
+<p>依赖项(例如Kotlin),您需要执行以下步骤:</p>
+
+<p>*如果没有捆绑插件,请运行目标IDE的沙箱实例并在那里安装插件.</p>
+
+<p>*如果您使用Gradle和Kotlin构建脚本来构建插件,请在<code class="code highlight language-text">intellij</code>块中使用<code class="code highlight language-text">setPlugins()</code>[^ gradleplugin],例如:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">intellij</span> <span class="p">{</span>
+        <span class="n">setPlugins</span><span class="p">(</span><span class="s">"org.jetbrains.kotlin:1.3.11-release-IJ2018.3-1"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></div>
+<ul>
+  <li>If you’re using Gradle with a groovy build script to build your plugin,  add the dependency to the <code class="code highlight language-text">plugins</code><sup id="fnref:gradleplugin"><a href="#fn:gradleplugin" class="footnote">1</a></sup> parameter of the <code class="code highlight language-text">intellij</code> block in your build.gradle, for example:</li>
+</ul>
+
+<div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">intellij</span> <span class="o">{</span>
+    <span class="n">plugins</span> <span class="s1">'org.jetbrains.kotlin:1.3.11-release-IJ2018.3-1'</span>
+<span class="o">}</span>
+</code></div>
+<ul>
+  <li>If you aren’t using Gradle, add the jars of the plugin you’re depending on to the classpath of your <em>IntelliJ Platform SDK</em>.
+In order to do that, open the Project Structure dialog, select the SDK you’re using, press the + button in the Classpath tab, and
+select the plugin jar file or files.
+    <ul>
+      <li>For bundled plugins, the plugin jar files are located in <code class="code highlight language-text">plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">plugins/&lt;pluginname&gt;/lib</code> under the main installation directory.
+If you’re not sure which jar to add, you can add all of them.</li>
+      <li>For non-bundled plugins, the plugin jar files are located in <code class="code highlight language-text">config/plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">config/plugins/&lt;pluginname&gt;/lib</code> under the directory specified as “Sandbox Home” in the IntelliJ Platform Plugin SDK settings.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="img/add_plugin_dependency.png" alt="将插件添加到类路径" /></p>
+
+<aside class="警告">
+  <p>不要将插件jar添加为库:这将在运行时失败,因为IntelliJ平台将加载两个独立的依赖插件类副本.</p>
+</aside>
+
+<p>*在plugin.xml中添加一个<code class="code highlight language-text">&lt;depends&gt;</code>标签,添加你所依赖的插件的ID作为标签的内容.</p>
+
+<p>例如:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;depends&gt;</span>org.jetbrains.kotlin<span class="nt">&lt;/depends&gt;</span>
+</code></div>
+
+<p>要查找您所依赖的插件的ID,请在其jar中找到<code class="code highlight language-text">META-INF/plugin.xml</code>文件并检查<code class="code highlight language-text">&lt;id&gt;</code>标记的内容.</p>
+
+<p>##可选插件依赖项</p>
+
+<p>您还可以指定可选的插件依赖项.
+在这种情况下,即使您依赖的插件,您的插件也会加载</p>
+
+<p>未安装或启用,但插件的部分功能将不可用.
+为了做到这一点,</p>
+
+<p>将<code class="code highlight language-text">optional =“true”config-file =“otherconfig.xml”添加到</code><depends>`标签中.</depends></p>
+
+<p>例如,</p>
+
+<p>如果您正在处理为Java和Kotlin文件添加额外突出显示的插件,则可以使用以下内容</p>
+
+<p>建立.
+您的主plugin.xml将为Java定义一个注释器,并指定对Kotlin插件的可选依赖项:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
+   ...
+   <span class="nt">&lt;depends</span> <span class="na">optional=</span><span class="s">"true"</span> <span class="na">config-file=</span><span class="s">"withKotlin.xml"</span><span class="nt">&gt;</span>org.jetbrains.kotlin<span class="nt">&lt;/depends&gt;</span>
+
+   <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;annotator</span> <span class="na">language=</span><span class="s">"JAVA"</span> <span class="na">implementationClass=</span><span class="s">"com.example.MyJavaAnnotator"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/extensions&gt;</span>
+<span class="nt">&lt;/idea-plugin&gt;</span>
+</code></div>
+
+<p>然后,在与主plugin.xml文件相同的目录中创建一个名为withKotlin.xml的文件.
+在那个文件中,你</p>
+
+<p>为Kotlin定义一个注释器:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
+   <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;annotator</span> <span class="na">language=</span><span class="s">"kotlin"</span> <span class="na">implementationClass=</span><span class="s">"com.example.MyKotlinAnnotator"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/extensions&gt;</span>
+<span class="nt">&lt;/idea-plugin&gt;</span>
+</code></div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:gradleplugin">
+      <p>See the <code class="code highlight language-text">plugins</code> attribute <a href="https://github.com/JetBrains/gradle-intellij-plugin#configuration" data-bypass="yes" target="_blank"><span>gradle-intellij-plugin: Configuration</span></a> for acceptable values. <a href="#fnref:gradleplugin" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_icon_file.html">Plugin Icon</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 24 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

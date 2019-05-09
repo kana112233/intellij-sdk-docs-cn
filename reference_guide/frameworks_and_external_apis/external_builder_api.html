@@ -1,0 +1,273 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>External Builder API and Plugins / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/frameworks_and_external_apis/external_builder_api.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="External Builder API and Plugins" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:44:02+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="External Builder API and Plugins" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/frameworks_and_external_apis/external_builder_api">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/frameworks_and_external_apis/external_builder_api.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>External Builder API and Plugins</h1>
+                    <p>###外部构建流程工作流程</p>
+
+<p>当用户调用涉及执行外部构建(Make,Build Artifacts等)的操作时,会发生以下步骤:</p>
+
+<p>*在IDE过程中执行编译前任务.</p>
+
+<p>*在IDE过程中执行依赖于PSI的某些源生成任务(例如,UI设计器表单到源编译).</p>
+
+<p>调用* <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">BuildTargetScopeProvider</code></span></a>扩展来计算外部构建的范围(构建目标的集合)
+基于目标模块进行编译以及已知的一组更改).</p>
+
+<p>*生成外部构建过程(或重用现有构建过程后台进程).</p>
+
+<p>*外部构建过程加载项目模型(.idea,.iml文件等),由[<code class="code highlight language-text">JpsModel</code>]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model 
+/JpsModel.java)实例.</p>
+
+<p>*根据要编译的每个构建目标的依赖关系,计算要构建的完整目标树.</p>
+
+<p>*对于每个目标,计算能够构建此目标的构建器集.</p>
+
+<p>*对于每个目标和每个构建器,都会调用<code class="code highlight language-text">build()</code>方法.
+如果在设置中启用了“并行编译独立模块”选项,则可以并行执行此操作.
+对于模块级构建器,为单个目标调用构建器的顺序由其类别决定;
+对于其他构建者,订单未定义.</p>
+
+<p>*保存用于记录编译状态的缓存.</p>
+
+<p><em>通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/CompileContext.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">CompileContext</code></span></a>API报告的编译消息被传输到IDE进程并显示在UI中(
+在</em> Messages *视图中).</p>
+
+<p>*后编译任务在IDE过程中执行.</p>
+
+<p>###增量构建</p>
+
+<p>为了支持增量构建,构建过程使用许多缓存,这些缓存在构建调用之间保持不变.
+即使您的编译器不支持增量构建,您仍需要报告正确的信息,以便增量构建可以正常地用于其他编译器.</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">SourceToOutputMapping</code></span></a>是源文件和输出文件之间的多对多关系(“
+哪些源文件用于生成指定的输出文件“).
+它通过调用<code class="code highlight language-text">BuildOutputConsumer.registerOutputFile()</code>和<code class="code highlight language-text">ModuleLevelBuilder.OutputConsumer.registerOutputFile()</code>来填充.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/storage/Timestamps.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Timestamps</code></span></a>记录每个源文件在每个构建目标编译时的时间戳. 
+(如果使用不同的范围多次调用编译并且同时更改了文件,则不同构建目标的最后编译时间戳可能会有所不同.)它由JPS自动更新.</p>
+  </li>
+</ul>
+
+<p>IDE监视项目内容的更改,并使用这些缓存中的信息为每个编译生成一组脏文件和已删除文件. 
+(需要重新编译脏文件,删除的文件需要删除其输出).
+构建器还可以将其他文件报告为脏(例如,如果删除方法,构建器可以使用此方法将类报告为脏.)模块级构建器可以将一些文件添加到脏范围;
+如果发生这种情况,并且构建器从其<code class="code highlight language-text">build()</code>方法返回<code class="code highlight language-text">ADDITIONAL_PASS_REQUIRED</code>,则将使用新的脏范围启动针对同一模块块的另一轮构建器执行.</p>
+
+<p>构建器还可能希望使其自定义高速缓存存储其他信息以支持目标的部分重新编译(例如,模块中Java文件之间的依赖关系).
+要存储此数据,您可以将任意文件存储在从<code class="code highlight language-text">BuildDataManager.getDataPaths().getTargetDataRoot()</code>返回的目录中,或者使用更高级别的API:<code class="code highlight language-text">BuildDataManager.getStorage()</code></p>
+
+<p>要在多个目标之间调用同一构建器之间传递自定义数据,可以使用<code class="code highlight language-text">CompileContext.getUserData()</code>和<code class="code highlight language-text">CompileContext.putUserData()</code>.</p>
+
+<p>###外部构建器中的服务和扩展</p>
+
+<p>外部构建器进程使用标准Java</p>
+
+<p>[服务(https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html)</p>
+
+<p>支持插件的机制.
+有几个服务接口(例如<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">BuilderService</code></span></a>,可以在插件中实现以扩展构建器功能.
+需要通过创建包含实现类的限定名称的“META-INF/services/<service-interface-fqn>”文件来注册服务的实现.例如``BuilderService`实现在`META-INF/services中注册
+/org.jetbrains.jps.incremental.BuilderService`文件.这些文件没有扩展名,因此您需要将相应的模式映射到IDE设置中的文本文件.</service-interface-fqn></p>
+
+<p>###注册外部构建器的插件</p>
+
+<p>Sources of a plugin for External Builder should be put in a separate module. By convention such module has name ‘…-jps-plugin’ and its sources are placed under ‘jps-plugin’ directory in the main plugin directory. Use <code class="code highlight language-text">&lt;compileServer.plugin&gt;</code> extension to add the plugin to classpath of external build process, the plugin jar should be named <code class="code highlight language-text">&lt;jps module name&gt;.jar</code>. ‘Build’ | ‘Prepare Plugin Module for deployment’ action will automatically pack ‘jps-plugin’ part to a separate jar accordingly.</p>
+
+<p>###调试外部构建器的插件</p>
+
+<p><strong>如果您的测试IDE是IntelliJ IDEA 16.0或更高版本</strong></p>
+
+<p>在测试IDE中打开“调试构建过程”切换操作(可通过“查找操作”获得).
+在每次运行编译之后,构建过程将等待某个(随机)端口上的调试器连接,并在状态栏中显示端口号.
+在IDE的工作副本中,应创建“远程”运行配置并指向此端口.
+如果您经常需要调试外部构建器并希望重用创建的“远程”运行配置,则可以通过向插件运行配置添加以下VM选项来修复端口号:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">-Dcompiler.process.debug.port=&lt;port-number&gt;
+</code></div>
+
+<p><strong>如果您的测试IDE是IntelliJ IDEA 15.0或更早版本</strong></p>
+
+<p>使用以下VM选项启动带有插件的IDE</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">-Dcompiler.process.debug.port=&lt;port-number&gt;
+</code></div>
+
+<p>之后,每次在测试IDE中运行编译时,构建过程将等待此端口上的调试器连接,然后才继续.
+在IDE的工作副本中,应创建“远程”运行配置并指向此端口.
+指定端口“-1”将禁用调试模式.</p>
+
+<p>###分析外部构建过程</p>
+
+<p>构建过程具有内置的自我分析功能.
+要启用它们,请执行以下操作:</p>
+
+<p>1.将<code class="code highlight language-text">&lt;ide-home&gt;/lib/yjp-controller-api-redist.jar</code>和<code class="code highlight language-text">&lt;ide-home&gt;/bin/yjpagent.*</code>文件复制到<code class="code highlight language-text">&lt;ide-system-dir&gt;/compile-server 
+</code></p>
+
+<ol>
+  <li>In “Settings | Compiler | Additional compiler process VM options” field enter <code class="code highlight language-text">-Dprofiling.mode=true</code></li>
+</ol>
+
+<p>3.确保自动make已关闭</p>
+
+<p>在此之后,每次构建过程运行都应该导致CPU快照存储在<code class="code highlight language-text">&lt;user-home&gt;</code>/Snapshots目录中.</p>
+
+<p>快照的名称类似于“ExternalBuild \  -  \ {date } .snapshot”.</p>
+
+<p>指定<code class="code highlight language-text">-Dprofiling.mode = false</code>将关闭分析.</p>
+
+<p>请捕获几个快照,以了解您认为构建应该比它更快地工作的情况.</p>
+
+<p>请在问题跟踪器中创建问题,并将生成的\ * .snapshot文件附加到其中或将其上载到</p>
+
+<p><a href="ftp://ftp.intellij.net/.uploads" data-bypass="yes" target="_blank"><span>ftp://ftp.intellij.net/.uploads</span></a>并指定问题中的链接.</p>
+
+<p>还请提供有关您正在使用的构建过程的内存和其他VM设置的详细信息.</p>
+
+<p>###访问外部构建过程的日志</p>
+
+<p>日志文件位于目录下</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">&lt;ide-system-directory&gt;/log/build-log
+</code></div>
+
+<p>可以找到<code class="code highlight language-text">build-log.log</code>和<code class="code highlight language-text">build-log.properties</code>文件.</p>
+
+<p><code class="code highlight language-text">build-log.properties</code>是一个log4j配置文件,可以调整日志级别和所需的日志记录类别.</p>
+
+<p>此文件包含来自所有构建会话的日志记录,包括来自auto-make的会话.</p>
+
+<p>在版本14.1之前的IntelliJ平台版本中,log4j配置存储在<code class="code highlight language-text">build-log.xml</code>中.</p>
+
+<p>###从External Build访问项目模型和配置</p>
+
+<p>外部构建过程中的项目模型由JPS(* JetBrains Project System *)提供.</p>
+
+<p>项目由<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/model-api/src/org/jetbrains/jps/model/JpsProject.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JpsProject</code></span></a>表示,模块由[<code class="code highlight language-text">JpsModule</code>]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsProject.java)等等.</p>
+
+<p>如果您的编译器依赖于尚未添加到模型中的内容(例如某些构面设置),</p>
+
+<p>你需要扩展JPS模型(使用<code class="code highlight language-text">JpsGwtModuleExtension</code>作为参考实现)并提供实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JpsModelSerializerExtension</code></span></a>从项目文件加载配置.</p>
+
+<p>####实施构建器</p>
+
+<p>如果您的编译器不参与编译现有的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">BuildTarget</code></span></a>,您需要创建一个新的实现
+<code class="code highlight language-text">BuildTarget</code>和<code class="code highlight language-text">BuildTargetType</code>.
+还在IDE端注册<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">BuildTargetScopeProvider</code></span></a>扩展的实现,以将所需目标添加到构建范围.</p>
+
+<p>构建器实现应该扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">TargetBuilder</code></span></a>或<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleLevelBuilder</code></span></a>类,应该使用[<code class="code highlight language-text">BuilderService</code>]创建(upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java)扩展.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

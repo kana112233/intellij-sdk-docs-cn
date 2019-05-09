@@ -1,0 +1,328 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Implementing a Parser and PSI / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/custom_language_support/implementing_parser_and_psi.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Implementing a Parser and PSI" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:06:35+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Implementing a Parser and PSI" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/custom_language_support/implementing_parser_and_psi">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/implementing_lexer.html">Implementing Lexer</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html">Syntax Highlighting and Error Highlighting</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/custom_language_support/implementing_parser_and_psi.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Implementing a Parser and PSI</h1>
+                    <p>在IntelliJ平台中解析文件分为两步.</p>
+
+<p>首先,构建抽象语法树(AST),定义程序的结构.</p>
+
+<p>AST节点由IDE在内部创建,由实例表示</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ASTNode.java" data-bypass="yes" target="_blank"><span>ASTNode</span></a></p>
+
+<p>类.</p>
+
+<p>每个AST节点都有一个关联的元素类型</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/tree/IElementType.java" data-bypass="yes" target="_blank"><span>IElementType</span></a></p>
+
+<p>实例,元素类型由语言插件定义.</p>
+
+<p>文件的AST树的顶级节点需要具有特殊的元素类型,实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/tree/IFileElementType.java" data-bypass="yes" target="_blank"><span>IFileElementType</span></a></p>
+
+<p>接口.</p>
+
+<p>AST节点直接映射到底层文档中的文本范围.</p>
+
+<p>AST的最底部节点匹配词法分析器返回的各个令牌,而更高级别的节点匹配多个令牌片段.</p>
+
+<p>在AST树的节点上执行的操作(例如插入,移除,重新排序节点等)立即反映为对基础文档的文本的更改.</p>
+
+<p>其次,PSI或程序结构接口树构建在AST之上,添加了用于操纵特定语言结构的语义和方法.</p>
+
+<p>PSI树的节点由实现该节点的类表示</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a></p>
+
+<p>接口,由语言插件创建</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition.createElement()</span></a></p>
+
+<p>方法.</p>
+
+<p>文件的PSI树的顶级节点需要实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiFile.java" data-bypass="yes" target="_blank"><span>PsiFile</span></a></p>
+
+<p>接口,并在.中创建</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition.createFile()</span></a></p>
+
+<p>方法.</p>
+
+<p><strong>例</strong>:</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition</span></a></p>
+
+<p>对于</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<p>PSI的生命周期在<a href="/intellij/sdk/docsplatform/fundamentals.html"><span>Fundamentals</span></a>中有更详细的描述.</p>
+
+<p>PSI实现的基类,包括</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/extapi/psi/PsiFileBase.java" data-bypass="yes" target="_blank"><span>PsiFileBase</span></a>,</p>
+
+<p>基础实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiFile.java" data-bypass="yes" target="_blank"><span>PsiFile</span></a>,</p>
+
+<p>和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java" data-bypass="yes" target="_blank"><span>ASTWrapperPsiElement</span></a>,</p>
+
+<p>基础实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a>,</p>
+
+<p>由* IntelliJ Platform *提供.</p>
+
+<p>目前还没有现成的方法来重用现有的语言语法,例如,从ANTLR,用于创建自定义语言解析器.</p>
+
+<p>解析器需要手动编码.</p>
+
+<p>可以使用语法生成自定义语言解析器和PSI类</p>
+
+<p><a href="https://plugins.jetbrains.com/plugin/6606-grammar-kit" data-bypass="yes" target="_blank"><span>Grammar-Kit</span></a>插件.</p>
+
+<p>除了代码生成,它还提供了各种编辑语法文件的功能:语法高亮,快速导航,重构等.</p>
+
+<p>Grammar-Kit插件使用自己的引擎构建,其源代码可以在上面找到</p>
+
+<p><a href="https://github.com/JetBrains/Grammar-Kit" data-bypass="yes" target="_blank"><span>GitHub的</span></a>.</p>
+
+<p>语言插件提供了解析器实现作为的实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiParser.java" data-bypass="yes" target="_blank"><span>PsiParser</span></a></p>
+
+<p>界面,从中返回</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition.createParser()</span></a>.</p>
+
+<p>解析器接收一个实例</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder</span></a></p>
+
+<p>class,用于从词法分析器获取标记流并保持正在构建的AST的中间状态.</p>
+
+<p>解析器必须处理词法分析器返回的所有标记,直到流的末尾,换句话说直到</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder.getTokenType()</span></a></p>
+
+<p>返回<code class="code highlight language-text">null</code>,即使令牌根据语言语法无效.</p>
+
+<p><strong>例</strong>:</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesParser.java" data-bypass="yes" target="_blank"><span>PsiParser</span></a></p>
+
+<p>实施</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a>.</p>
+
+<p>解析器通过设置标记对来工作(</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder.Marker</span></a></p>
+
+<p>实例)从词法分析器收到的令牌流中.</p>
+
+<p>每对标记定义AST树中单个节点的词法分析器标记的范围.</p>
+
+<p>如果一对标记嵌套在另一对中(在其开始之后开始并在结束之前结束),它将成为外部对的子节点.</p>
+
+<p>设置结束标记时,将指定标记对和从中创建的AST节点的元素类型,这通过调用来完成</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder.Marker.done()</span></a>.</p>
+
+<p>此外,可以在设置结束标记之前删除开始标记.</p>
+
+<p><code class="code highlight language-text">drop()</code>方法只丢弃一个开始标记而不影响其后添加的任何标记,并且<code class="code highlight language-text">rollbackTo()</code>方法删除开始标记和在其后添加的所有标记,并将词法分析器位置恢复为开始标记.</p>
+
+<p>解析时,这些方法可用于实现前瞻.</p>
+
+<p>方法</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder.Marker.precede()</span></a></p>
+
+<p>当您在读取更多输入之前不知道在某个位置需要多少个标记时,从右到左解析很有用.</p>
+
+<p>例如,二进制表达式“a + b + c”需要解析为<code class="code highlight language-text">((a + b)+ c)</code>.</p>
+
+<p>因此,在令牌“a”的位置处需要两个开始标记,但是直到读取令牌“c”才知道.</p>
+
+<p>当解析器到达’b’后的’+’标记时,它可以调用<code class="code highlight language-text">precede()</code>来复制’a’位置的开始标记,然后将其匹配的结束标记放在’c’之后.</p>
+
+<p>一个重要的特征</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder</span></a></p>
+
+<p>是处理空白和评论.</p>
+
+<p>被视为空格或注释的标记类型由方法<code class="code highlight language-text">getWhitespaceTokens()</code>和<code class="code highlight language-text">getCommentTokens()</code>定义.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition</span></a></p>
+
+<p>类.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiBuilder.java" data-bypass="yes" target="_blank"><span>PsiBuilder</span></a></p>
+
+<p>从它传递给的标记流中自动省略空格和注释标记</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/PsiParser.java" data-bypass="yes" target="_blank"><span>PsiParser</span></a>,</p>
+
+<p>并调整AST节点的令牌范围,以便前导和尾随空格令牌不包含在节点中.</p>
+
+<p>从中返回的令牌集</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/ParserDefinition.java" data-bypass="yes" target="_blank"><span>ParserDefinition.getCommentTokens()</span></a></p>
+
+<p>也用于搜索TODO项目.</p>
+
+<p>为了更好地理解为简单表达式构建PSI树的过程,可以参考下图:</p>
+
+<p><img src="IMG/PsiBuilder.gif" alt="PsiBuilder" /></p>
+
+<p>一般来说,没有一种正确的方法可以为自定义语言实现PSI,插件作者可以选择PSI结构和方法集,这些方法对于使用PSI的代码最为方便(错误分析,重构等等)
+上).</p>
+
+<p>但是,有一个基本接口需要由自定义语言PSI实现使用,以支持重命名和查找用法等功能.</p>
+
+<p>可以重命名或引用的每个元素(类定义,方法定义等)都需要实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a></p>
+
+<p>接口,使用<code class="code highlight language-text">getName()</code>和<code class="code highlight language-text">setName()</code>方法.</p>
+
+<p>可以在<code class="code highlight language-text">com.intellij.psi.util</code>包中找到许多可用于实现和使用PSI的函数,特别是在</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java" data-bypass="yes" target="_blank"><span>PsiUtil</span></a></p>
+
+<p>和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java" data-bypass="yes" target="_blank"><span>PsiTreeUtil</span></a></p>
+
+<p>类.</p>
+
+<p>调试PSI实现的一个非常有用的工具是</p>
+
+<p><a href="https://plugins.jetbrains.com/plugin/227-psiviewer" data-bypass="yes" target="_blank"><span>PsiViewer插件</span></a>.</p>
+
+<p>它可以显示您的插件构建的PSI的结构,每个PSI元素的属性并突出显示其文本范围.</p>
+
+<p>请参阅</p>
+
+<p><a href="/intellij/sdk/docsbasics/indexing_and_psi_stubs.html"><span>索引和PSI存根</span></a></p>
+
+<p>对于高级主题.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/implementing_lexer.html">Implementing Lexer</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html">Syntax Highlighting and Error Highlighting</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

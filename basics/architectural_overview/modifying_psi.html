@@ -1,0 +1,263 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifying the PSI / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/architectural_overview/modifying_psi.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Modifying the PSI" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-05T17:29:52+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Modifying the PSI" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/architectural_overview/modifying_psi">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/psi_references.html">PSI References</a>
+                        <a class="navigation-links__next" href="/basics/psi_cookbook.html">PSI Cookbook</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/architectural_overview/modifying_psi.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Modifying the PSI</h1>
+                    <p>PSI是源代码的读写表示,作为对应于源结构的元素树</p>
+
+<p>文件.
+您可以通过<em>添加</em>,<em>替换</em>和<em>删除</em> PSI元素来修改PSI.</p>
+
+<p>要执行这些操作,可以使用诸如<code class="code highlight language-text">PsiElement.add()</code>,<code class="code highlight language-text">PsiElement.delete()</code>和<code class="code highlight language-text">PsiElement.replace()</code>之类的方法,</p>
+
+<p>以及在<code class="code highlight language-text">PsiElement</code>接口中定义的其他方法,它允许您在一个单元中处理多个元素</p>
+
+<p>操作,或指定树中需要添加元素的确切位置.</p>
+
+<p>就像文档操作一样,PSI修改需要包含在写入操作和命令中(因此</p>
+
+<p>只能在事件派发线程中执行).
+参见<a href="documents.html#the-are-the-rules-of-working-with-documents"><span>文件文章</span></a></p>
+
+<p>有关命令和写入操作的更多信息.</p>
+
+<p>##创建新的PSI</p>
+
+<p>要添加到树中或替换现有PSI元素的PSI元素通常是从文本*创建的.</p>
+
+<p>在最常见的情况下,使用[<code class="code highlight language-text">PsiFileFactory</code>]的<code class="code highlight language-text">createFileFromText</code>方法(upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java)</p>
+
+<p>创建一个新文件,其中包含您需要添加到树中或用作替换的代码构造</p>
+
+<p>对于现有元素,遍历生成的树以找到所需的特定元素,然后传递它</p>
+
+<p>元素到<code class="code highlight language-text">add()</code>或<code class="code highlight language-text">replace()</code>.</p>
+
+<p>大多数语言都提供工厂方法,使您可以更轻松地创建特定的代码构造.
+例如,</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiJavaParserFacade</code></span></a>类</p>
+
+<p>包含诸如<code class="code highlight language-text">createMethodFromText</code>之类的方法,它从给定文本创建Java方法.</p>
+
+<p>当您实现与现有代码一起使用的重构,意图或检查quickfix时,文本</p>
+
+<p>你传递给各种<code class="code highlight language-text">createFromText</code>方法将结合硬编码片段和从中获取的代码片段</p>
+
+<p>现有文件.
+对于小代码片段(单个标识符),您只需附加现有文本即可</p>
+
+<p>代码到您正在构建的代码片段的文本.
+在这种情况下,您需要确保生成的文本是</p>
+
+<p>语法正确,否则<code class="code highlight language-text">createFromText</code>方法将抛出异常.</p>
+
+<p>对于较大的代码片段,最好分几步执行修改:</p>
+
+<p>*从文本创建替换树片段,留下用户代码片段的占位符;
+ 
+*用用户代码片段替换占位符;
+ 
+*用替换树替换原始源文件中的元素.</p>
+
+<p>这可确保保留用户代码的格式,并且修改不会引入任何不需要的内容</p>
+
+<p>空白变化.</p>
+
+<p>作为此方法的示例,请参阅“ComparingReferencesInspection”示例中的quickfix:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="c1">// binaryExpression holds a PSI expression of the form "x == y", which needs to be replaced with "x.equals(y)"</span>
+<span class="n">PsiBinaryExpression</span> <span class="n">binaryExpression</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiBinaryExpression</span><span class="o">)</span> <span class="n">descriptor</span><span class="o">.</span><span class="na">getPsiElement</span><span class="o">();</span>
+<span class="n">IElementType</span> <span class="n">opSign</span> <span class="o">=</span> <span class="n">binaryExpression</span><span class="o">.</span><span class="na">getOperationTokenType</span><span class="o">();</span>
+<span class="n">PsiExpression</span> <span class="n">lExpr</span> <span class="o">=</span> <span class="n">binaryExpression</span><span class="o">.</span><span class="na">getLOperand</span><span class="o">();</span>
+<span class="n">PsiExpression</span> <span class="n">rExpr</span> <span class="o">=</span> <span class="n">binaryExpression</span><span class="o">.</span><span class="na">getROperand</span><span class="o">();</span>
+
+<span class="c1">// Step 1: Create a replacement fragment from text, with "a" and "b" as placeholders</span>
+<span class="n">PsiElementFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">JavaPsiFacade</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getElementFactory</span><span class="o">();</span>
+<span class="n">PsiMethodCallExpression</span> <span class="n">equalsCall</span> <span class="o">=</span>
+    <span class="o">(</span><span class="n">PsiMethodCallExpression</span><span class="o">)</span> <span class="n">factory</span><span class="o">.</span><span class="na">createExpressionFromText</span><span class="o">(</span><span class="s">"a.equals(b)"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="c1">// Step 2: replace "a" and "b" with elements from the original file</span>
+<span class="n">equalsCall</span><span class="o">.</span><span class="na">getMethodExpression</span><span class="o">().</span><span class="na">getQualifierExpression</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="n">lExpr</span><span class="o">);</span>
+<span class="n">equalsCall</span><span class="o">.</span><span class="na">getArgumentList</span><span class="o">().</span><span class="na">getExpressions</span><span class="o">()[</span><span class="mi">0</span><span class="o">].</span><span class="na">replace</span><span class="o">(</span><span class="n">rExpr</span><span class="o">);</span>
+
+<span class="c1">// Step 3: replace a larger element in the original file with the replacement tree</span>
+<span class="n">PsiExpression</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiExpression</span><span class="o">)</span> <span class="n">binaryExpression</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">equalsCall</span><span class="o">);</span>
+</code></div>
+
+<p>就像IntelliJ Platform API中的其他地方一样,文本传递给<code class="code highlight language-text">createFileFromText</code>和其他<code class="code highlight language-text">createFromText</code></p>
+
+<p>方法必须只使用<code class="code highlight language-text">\ n</code>作为行分隔符.</p>
+
+<p>##维护树结构一致性</p>
+
+<p>PSI修改方法不会限制您构建结果树结构的方式.
+例如,</p>
+
+<p>使用Java类时,可以添加<code class="code highlight language-text">for</code>语句作为<code class="code highlight language-text">PsiMethod</code>元素的直接子元素,即使</p>
+
+<p>Java解析器永远不会产生这样的结构(<code class="code highlight language-text">for</code>语句将始终是<code class="code highlight language-text">PsiCodeBlock</code>的子句)</p>
+
+<p>代表方法体).
+产生错误树结构的修改似乎可行,但它们会起作用</p>
+
+<p>以后会导致问题和例外.
+因此,您始终需要确保使用PSI构建的结构</p>
+
+<p>修改操作与解析您构建的代码时解析器生成的操作相同.</p>
+
+<p>为了确保不引入不一致,可以在测试中调用<code class="code highlight language-text">PsiTestUtil.checkFileStructure()</code></p>
+
+<p>你修改PSI的动作.
+此方法可确保您构建的结构与解析器生成的结构相同.</p>
+
+<p>##空白和进口</p>
+
+<p>使用PSI修改函数时,永远不应创建单独的空白节点(空格或换行符)</p>
+
+<p>来自文字.
+相反,所有空格修改都由格式化程序执行,格式化程序遵循代码样式设置</p>
+
+<p>由用户选择.
+格式化在每个命令结束时自动执行,如果需要,可以</p>
+
+<p>也可以使用<code class="code highlight language-text">中的</code>reformat(PsiElement)`方法手动执行它</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/codeStyle/CodeStyleManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">CodeStyleManager</code></span></a>类.</p>
+
+<p>此外,在使用Java代码(或使用类似导入机制(如Groovy或Python)的其他语言中的代码时),</p>
+
+<p>你永远不应该手动创建导入.
+相反,您应该将完全限定的名称插入到您的代码中</p>
+
+<p>生成,然后在中调用<code class="code highlight language-text">shortenClassReferences()</code>方法</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-api/src/com/intellij/psi/codeStyle/JavaCodeStyleManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JavaCodeStyleManager</code></span></a></p>
+
+<p>(或您正在使用的语言的等效API).
+这可以确保根据导入创建</p>
+
+<p>用户的代码样式设置并插入到文件的正确位置.</p>
+
+<p>##结合PSI和文档修改</p>
+
+<p>在某些情况下,您需要执行PSI修改,然后对您刚才的文档执行操作</p>
+
+<p>通过PSI修改(例如,启动实时模板).
+在这种情况下,您需要调用一个特殊的方法</p>
+
+<p>完成基于PSI的后处理(例如格式化)并将更改提交到文档.
+方法</p>
+
+<p>你需要调用的是<code class="code highlight language-text">doPostponedOperationsAndUnblockDocument</code>,它的定义是</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiDocumentManager</code></span></a>类.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/psi_references.html">PSI References</a>
+                        <a class="navigation-links__next" href="/basics/psi_cookbook.html">PSI Cookbook</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 5 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

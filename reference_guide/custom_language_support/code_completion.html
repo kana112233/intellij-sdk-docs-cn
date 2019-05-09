@@ -1,0 +1,207 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Completion / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/custom_language_support/code_completion.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Code Completion" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2016-06-13T22:35:19+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Code Completion" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/custom_language_support/code_completion">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/references_and_resolve.html">References and Resolve</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/find_usages.html">Find Usages</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/custom_language_support/code_completion.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Code Completion</h1>
+                    <p>自定义语言插件可以提供两种主要类型的代码完成:引用完成和基于贡献者的完成.</p>
+
+<p>参考完成更容易实现,但仅支持基本完成操作.</p>
+
+<p>基于贡献者的完成提供了更多功能,支持所有三种完成类型(基本,智能和类名),并且可用于实现关键字完成.</p>
+
+<p>###参考完成</p>
+
+<p>要填写完成列表,IDE会调用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference.getVariants()</span></a></p>
+
+<p>要么在插入符号位置的参考,要么在放置在插入符号的虚拟参考上.</p>
+
+<p>此方法需要返回包含字符串的对象数组,</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a></p>
+
+<p>实例或实例</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/lookup/LookupElement.java" data-bypass="yes" target="_blank"><span>LookupElement</span></a></p>
+
+<p>类.</p>
+
+<p>如果一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a></p>
+
+<p>实例在数组中返回,完成列表显示元素的图标.</p>
+
+<p>实现<code class="code highlight language-text">getVariants()</code>的最常用方法是使用相同的函数来向上移动树</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference.resolve()</span></a>,</p>
+
+<p>和不同的实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a></p>
+
+<p>它收集传递给它的<code class="code highlight language-text">processDeclarations()</code>方法的所有声明,并将它们作为数组返回以填充完成列表.</p>
+
+<p>###基于贡献者的完成</p>
+
+<p>实施</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/completion/CompletionContributor.java" data-bypass="yes" target="_blank"><span>CompletionContributor</span></a></p>
+
+<p>界面使您可以最大程度地控制语言的代码完成操作.</p>
+
+<p>请注意,该类的JavaDoc包含用于实现代码完成的详细FAQ.</p>
+
+<p>使用的核心方案</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/completion/CompletionContributor.java" data-bypass="yes" target="_blank"><span>CompletionContributor</span></a></p>
+
+<p>包括调用<code class="code highlight language-text">extend()</code>方法并传入* pattern <em>,指定适用此完成变量的上下文,以及生成要在完成列表中显示的项目的</em> completion provider *.</p>
+
+<p><strong>例</strong>:</p>
+
+<p><a href="https://github.com/JetBrains/intellij-plugins/blob/master/osmorc/src/org/osmorc/manifest/completion/OsgiManifestCompletionContributor.java" data-bypass="yes" target="_blank"><span>CompletionContributor</span></a></p>
+
+<p>用于在MANIFEST.MF文件中完成关键字.</p>
+
+<p>请记住,针对叶PSI元素检查模式.
+如果你</p>
+
+<p>想要匹配复合元素,使用<code class="code highlight language-text">withParent</code>或<code class="code highlight language-text">withSuperParent</code></p>
+
+<p>方法.</p>
+
+<p>完成列表中显示的项目由实例表示</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/lookup/LookupElement.java" data-bypass="yes" target="_blank"><span>LookupElement</span></a></p>
+
+<p>接口.</p>
+
+<p>这些实例通常是通过</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/lookup/LookupElementBuilder.java" data-bypass="yes" target="_blank"><span>LookupElementBuilder</span></a></p>
+
+<p>类.</p>
+
+<p>对于每个查找元素,您可以指定以下属性:</p>
+
+<p>*文本,尾部文本和文本类型.
+尾部文本显示在主项目文本旁边,不用于前缀匹配,例如,可用于显示方法的参数列表.
+例如,类型文本在查找列表中右对齐显示,可用于显示返回类型或包含方法的类.</p>
+
+<p>*图标</p>
+
+<p>*文字属性(粗体,删除线等)</p>
+
+<p>*插入处理程序. 
+insert处理程序是在选择项时调用的回调函数,可用于执行文本的其他修改(例如,放入方法调用的括号中)</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/references_and_resolve.html">References and Resolve</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/find_usages.html">Find Usages</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 13 June 2016
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

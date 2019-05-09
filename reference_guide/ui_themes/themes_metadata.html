@@ -1,0 +1,461 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Exposing Theme Metadata / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/ui_themes/themes_metadata.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Exposing Theme Metadata" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-03T10:30:09+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Exposing Theme Metadata" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/ui_themes/themes_metadata">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_extras.html">UI Themes - Editor Schemes and Background Images</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/ui_themes/themes_metadata.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Exposing Theme Metadata</h1>
+                    <style>
+  table {
+    width:100%;
+  }
+  th:first-child, td:first-child {
+    width: 15%;
+  }
+  th:last-child, td:last-child {
+    width: 30%;
+  }
+</style>
+
+<p>可以在<a href="themes_customize.html"><span>自定义主题</span></a>中使用的所有可用UI自定义键必须在专用的<code class="code highlight language-text">* .themeMetadata.json</code>文件中定义,该文件通过<code class="code highlight language-text">com.intellij.themeMetadataProvider</code>扩展点注册.</p>
+
+<p>以下最小示例演示了在公开插件UI的UI自定义键时所需的所有详细信息.</p>
+
+<p><code class="code highlight language-text">/resources/META-INF/plugin.xml</code>:</p>
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span> 
+  [...]
+  <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;themeMetadataProvider</span> <span class="na">path=</span><span class="s">"/META-INF/MyPlugin.themeMetadata.json"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/extensions&gt;</span>    
+  [...]
+<span class="nt">&lt;/idea-plugin&gt;</span>
+
+</code></div>
+
+<p><code class="code highlight language-text">/resources/META-INF/MyPlugin.themeMetadata.json</code>:</p>
+<div class="code-block" data-lang="json"><code class="code-block__wrapper"><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Plugin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fixed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ui"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyComponent.border"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The border for my component. Not used anymore."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deprecated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.myplugin.MyComponent"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="p">[</span><span class="err">more</span><span class="w"> </span><span class="err">keys...</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></div>
+
+<ul>
+  <li>
+    <p><code class="code highlight language-text">name</code>  - 人类可读的名称,例如插件名称</p>
+  </li>
+  <li>
+    <p>如果元数据描述外部元素,例如UI库,则默认为“fixed” - “false”,“true”</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">ui</code>  - 列出所有自定义键的根元素:</p>
+  </li>
+  <li><code class="code highlight language-text">key</code>  - 自定义密钥名称(参见<a href="#key-naming-scheme"><span>密钥命名方案</span></a>)
+    </li>
+  <li><code class="code highlight language-text">description</code>  - 向主题作者编辑<code class="code highlight language-text">* .theme.json</code>文件显示的描述
+    </li>
+  <li>当不推荐使用密钥时,“弃用” - “true”,如果可用,请在“说明”中提供说明和/或替换
+    </li>
+  <li><code class="code highlight language-text">source</code>  - 底层UI组件实现的FQN
+  </li>
+</ul>
+
+<aside class="提示">
+  <p>强烈建议始终提供<code class="code highlight language-text">description</code>条目,因此主题作者可以理解用法.</p>
+</aside>
+
+<p>Color keys can be used via <code class="code highlight language-text">JBColor#namedColor</code> providing defaults for Light and Dark theme:</p>
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Color</span> <span class="n">SECTION_HEADER_FOREGROUND</span> <span class="o">=</span>
+  <span class="n">JBColor</span><span class="o">.</span><span class="na">namedColor</span><span class="o">(</span><span class="s">"Plugins.SectionHeader.foreground"</span><span class="o">,</span> <span class="k">new</span> <span class="n">JBColor</span><span class="o">(</span><span class="mh">0x787878</span><span class="o">,</span> <span class="mh">0x999999</span><span class="o">));</span>
+</code></div>
+
+<p>其他键可以通过<code class="code highlight language-text">javax.swing.UIManager#getXXX()</code>方法获得.</p>
+
+<p>##密钥命名方案</p>
+
+<p>所有键必须遵循此命名模式:</p>
+
+<p>**<code class="code highlight language-text">对象[.SubObject] [状态] [部分] Property</code> **</p>
+
+<p><img src="img/keys-naming.png" alt="键命名模式" /></p>
+
+<p>####财产</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Use for</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><code class="code highlight language-text">foreground</code></strong></td>
+      <td>Text color.</td>
+      <td><code class="code highlight language-text">Label.foreground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">background</code></strong></td>
+      <td>Background color for objects with text.</td>
+      <td><code class="code highlight language-text">Label.foreground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">&lt;part&gt;Color</code></strong></td>
+      <td>Objects with a single color (do not have foreground/background). Do not use the word “Color” separately, always use with the “part” word. <br /><br /><em>The word “Color” shows that this is a color property. Otherwise, it can be confused with a property of another type.</em></td>
+      <td><code class="code highlight language-text">Popup.borderColor</code> <br /> <code class="code highlight language-text">Group.separatorColor</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>####状态</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Use for</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><del><strong><code class="code highlight language-text">Active</code></strong></del></td>
+      <td>Enabled components, default state. Omit this word. The default state does not need explicit naming.</td>
+      <td><code class="code highlight language-text">Notification.background</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Inactive</code></strong></td>
+      <td>Enabled components that might be perceived as interactive but are actually not. Example: a tree with visible selection but not in focus. Goes after other state words.</td>
+      <td><code class="code highlight language-text">Tree.inactiveBackground</code> <br /> <code class="code highlight language-text">ToolWindow.HeaderTab.hoverInactiveBackground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Focused</code></strong></td>
+      <td>The current focused component.</td>
+      <td><code class="code highlight language-text">Button.focusedBorderColor</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Selected</code></strong></td>
+      <td>A selected tab or any other control that has equally meaningful selected and inactive states.</td>
+      <td><code class="code highlight language-text">ToolWindow.HeaderTab.selectedBackground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Hover</code></strong> <br /> <strong><code class="code highlight language-text">Pressed</code></strong></td>
+      <td>An action as indicated in states.</td>
+      <td><code class="code highlight language-text">Link.hoverForeground</code> <br /> <code class="code highlight language-text">Link.pressedForeground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Error</code></strong> <br /> <strong><code class="code highlight language-text">Warning</code></strong> <br /> <strong><code class="code highlight language-text">Success</code></strong></td>
+      <td>Validation states. <a href="https://jetbrains.github.io/ui/principles/validation_errors/" data-bypass="yes" target="_blank"><span>See example</span></a> in the guide article.</td>
+      <td><code class="code highlight language-text">ValidationTooltip.errorBackground</code> <br /> <code class="code highlight language-text">ValidationTooltip.warningBorderColor</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Disabled</code></strong></td>
+      <td>Unavailable components.</td>
+      <td><code class="code highlight language-text">Label.disabledForeground</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>####部分</p>
+
+<p>部件是组件的内部元件,例如组合框中的箭头按钮.
+如果零件的属性与父对象不同,则为零件创建单独的密钥.</p>
+
+<p>如果某个部件在多个组件中很常见,请使用相同的名称.
+常见部分的显着例子:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Common parts</th>
+      <th>Use for</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><code class="code highlight language-text">Accelerator</code></strong> <br /> <strong><code class="code highlight language-text">Shortcut</code></strong></td>
+      <td>Shortcut foreground.</td>
+      <td><code class="code highlight language-text">Menu.acceleratorForeground</code> <br /> <code class="code highlight language-text">Editor.shortcutForeground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Border</code></strong></td>
+      <td>A line around a component.</td>
+      <td><code class="code highlight language-text">NavBar.borderColor</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Caret</code></strong></td>
+      <td>The vertical line that denotes typing place.</td>
+      <td><code class="code highlight language-text">TextField.caretForeground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">ModifiedItem</code></strong></td>
+      <td>An object that has been modified but not yet saved. <br /><br /><em>Example: change anything in the Settings dialog, the setting group name in the tree becomes blue.</em></td>
+      <td><code class="code highlight language-text">Tree.modifiedItemForeground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Focus</code></strong></td>
+      <td>Wide focus border around a component.</td>
+      <td><code class="code highlight language-text">Component.focusColor</code> <br /><br /><em>“Component” is a special key that sets common properties for several basic input components.</em></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Info</code></strong></td>
+      <td>Secondary labels with additional useful information. Usually appear in gray color to the right or below a regular label.</td>
+      <td><code class="code highlight language-text">CompletionPopup.infoForeground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Icon</code></strong></td>
+      <td>An icon that is created with a source code (not an image file).</td>
+      <td><code class="code highlight language-text">Table.sortIconColor</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Selection</code></strong></td>
+      <td>The focus place in a component with selectable text. Can be in a typed text or in a list or tree. <br /> Goes before other state words (for historical reasons).</td>
+      <td><code class="code highlight language-text">TextField.selectionForeground</code> <br /> <code class="code highlight language-text">Tree.selectionInactiveBackground</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Separator</code></strong></td>
+      <td>A horizontal or vertical line inside a component. Can be with a label.</td>
+      <td><code class="code highlight language-text">Menu.separatorColor</code></td>
+    </tr>
+    <tr>
+      <td><strong><code class="code highlight language-text">Shadow</code></strong></td>
+      <td>A shadow below a component.</td>
+      <td><code class="code highlight language-text">Button.shadowColor</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="subobject" class="elem-anchor"></a>
+<h4>SubObject</h4>
+
+<p>在为以下某项创建密钥时使用子对象:</p>
+
+<ul>
+  <li>实施变化.
+通常具有与父对象类似的一组UI属性键.
+例子:
+  </li>
+  <li>默认按钮:<code class="code highlight language-text">Button.Default.background</code>
+  </li>
+  <li>
+    <p>工具窗口通知:<code class="code highlight language-text">Notification.ToolWindow.errorBackground</code></p>
+  </li>
+  <li>具有自己的UI和行为的复杂组件的内部较小组件.
+例子:
+  </li>
+  <li>工具窗口选项卡:<code class="code highlight language-text">ToolWindow.HeaderTab.inactiveBackground</code>
+  </li>
+  <li>弹出窗口底部的提示文本:<code class="code highlight language-text">Popup.Advertiser.background</code></li>
+</ul>
+
+<p>####渐变色</p>
+
+<p>如果组件具有渐变颜色,请为渐变的开头和结尾添加单词“start”和“end”.
+例子:</p>
+
+<ul>
+  <li>
+    <p><code class="code highlight language-text">Button.startBorderColor</code> /<code class="code highlight language-text">Button.endBorderColor</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">SearchMatch.startBackground</code> /<code class="code highlight language-text">SearchMatch.endBackground</code></p>
+  </li>
+</ul>
+
+<p>####资本化</p>
+
+<p>大写对象和子对象.
+使用lowerCamelCase作为属性.</p>
+
+<a name="section" class="elem-anchor"></a>
+<h4>不使用</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Do not use</th>
+      <th>Use instead</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="code highlight language-text">Color</code> <em>as a separate word</em></td>
+      <td><code class="code highlight language-text">&lt;Part&gt;Color</code></td>
+    </tr>
+    <tr>
+      <td><code class="code highlight language-text">Outline</code></td>
+      <td><code class="code highlight language-text">borderColor</code></td>
+    </tr>
+    <tr>
+      <td><code class="code highlight language-text">Text</code></td>
+      <td><code class="code highlight language-text">Foreground</code></td>
+    </tr>
+    <tr>
+      <td><code class="code highlight language-text">darcula</code> <em>and other look-and-feel names</em></td>
+      <td><em>Omit</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>####摆动遗产</p>
+
+<p>某些颜色键未根据上述规则命名.
+此类密钥继承自Java Swing,并且出于兼容性原因无法重命名.</p>
+
+<p>请勿使用旧密钥中的命名模式.</p>
+
+<p>Swing键的示例:</p>
+
+<ul>
+  <li>
+    <p><code class="code highlight language-text">activeCaption</code>正确:<code class="code highlight language-text">WindowsDialogHeader.background</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">Button.disabledText</code>正确:<code class="code highlight language-text">Button.disabledForeground</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">TableHeader.background</code>正确:<code class="code highlight language-text">Table.Header.background</code></p>
+  </li>
+</ul>
+
+<a name="intellij" class="elem-anchor"></a>
+<h2>IntelliJ平台元数据<a href="#intellij" class="anchor-link"><span></span></a></h2>
+
+<aside class="注意">
+  <p>本节仅适用于IntelliJ平台开发人员.</p>
+</aside>
+
+<p>元数据分为以下几种:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">IntelliJPlatform.themeMetadata.json</code></span></a> -  IntelliJ平台和自定义UI组件的所有键</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JDK.themeMetadata.json</code></span></a> - 来自Swing组件的所有键</p>
+  </li>
+</ul>
+
+<p>新密钥应仅添加到<code class="code highlight language-text">IntelliJPlatform.themeMetadata.json</code>(或相应的“本地”<code class="code highlight language-text">* .themeMetadata.json</code>文件中,如果适用).</p>
+
+<p>请确保遵守<a href="#key-naming-scheme"><span>密钥命名方案</span></a>并按字母顺序排列密钥.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_extras.html">UI Themes - Editor Schemes and Background Images</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 3 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,224 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Incompatible Changes in IntelliJ Platform and Plugins API / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/api_changes_list.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Incompatible Changes in IntelliJ Platform and Plugins API" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-12T17:54:53+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Incompatible Changes in IntelliJ Platform and Plugins API" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/api_changes_list">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/appendix/resources/consulting.html">Consulting</a>
+                        <a class="navigation-links__next" href="/reference_guide/api_notable/api_notable.html">Notable Changes and Features in IntelliJ Platform and Plugins API</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/api_changes_list.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Incompatible Changes in IntelliJ Platform and Plugins API</h1>
+                    <p>&lt;! -</p>
+
+<p>在记录API更改之前,请确保无法避免更改</p>
+
+<p>以下文档中的另一种方式说明:</p>
+
+<p>API兼容性政策:https://confluence.jetbrains.com/display/IDEA/IntelliJ+Platform+API+compatibility+policy</p>
+
+<p>API兼容性常见问题解答:https://confluence.jetbrains.com/display/IDEA/IntelliJ+API+Compatibility+Policy+FAQ</p>
+
+<p>标有ApiStatus.@ Experimental的地方不需要记录.</p>
+
+<p>要记录新的不兼容更改,请添加带有问题模式的新行</p>
+
+<p>然后是第二行,带有“:” - 前缀的人类可读描述和推荐的修复/操作.</p>
+
+<p>支持以下问题模式:</p>
+
+<package name="">包已删除
+
+删除了<class name="">类
+
+<class name="">重命名为<new class="" name="">
+
+
+<类名>.<方法名称>(<人类可读参数>)方法已删除
+
+<类名>.<方法名称>(<人类可读参数>)方法返回类型从<before>更改为<after>
+
+<类名>.<方法名称>(<人类可读参数>)方法参数<type>已删除
+
+<class name="">.<方法名称>(<人类可读参数>)方法参数类型从<before>更改为<after>
+
+<class name="">.<方法名称>(<人类可读参数>)方法可见性从<before>更改为<after>
+
+<class name="">.<方法名称>(<human-readable parameters="">)方法标记为final
+
+
+删除了<class name="">(<human-readable parameters="">)构造函数
+
+删除<class name="">(<human-readable parameters="">)构造函数参数<type>
+
+<class name="">(<human-readable parameters="">)构造函数参数类型已从<before>更改为<after>
+
+<class name="">(<human-readable parameters="">)构造函数可见性从<before>更改为<after>
+
+
+删除了<class name="">.<field name="">字段
+
+<class name="">.<field name="">字段类型从<before>更改为<after>
+
+<class name="">.<field name="">字段可见性从<before>更改为<after>
+
+
+<类名>.<方法名称>(<人类可读参数>)添加了抽象方法
+
+<class name="">类移动到包<package name="">
+
+
+其中<class name="">是该类的完全限定名称,例如
+com.intellij.openapi.actionSystem.AnAction $将InnerClass.
+
+<method name="">是确切方法的名称.
+请注意,构造函数具有专用模式.
+
+<human-readable parameters="">是表示参数的字符串,不一定是完全限定的.
+它们不会影响解析器.
+例如,您可以自由编写(Object,List <String>,int)而不是(java.lang.Object,java.util.List,int).
+
+
+注意:如果您尝试记录的更改与上述任何模式都不匹配,请在YouTrack中填写故障单.
+
+票证的一个例子是https://youtrack.jetbrains.com/issue/PR-1218.
+在支持之前,您可以根据需要记录更改,稍后我会更正.
+
+
+注意:您可以使用markdown-features对图案进行美化:
+ 
+1)代码引号:`org.example.Foo.methodName`
+ 
+2)links [org.example.Foo](upsource:///platform/core-api/src/org/example/Foo)
+ 
+3)代码引号和链接:[`org.example.Foo`](upsource:///platform/core-api/src/org/example/Foo)
+
+ - &gt;
+
+
+在版本之间偶尔会更改IntelliJ API,导致现有插件与较新的IDE版本不兼容.
+
+
+使用内置[插件验证程序](https://blog.jetbrains.com/platform/2018/)可以轻松验证[JetBrains插件存储库](../plugin_repository/index.md)上托管的插件与新IDE的兼容性
+07 /插件存储库,现已集成与 - 的 - 插件验证工具/).
+  
+
+以下页面列出了IDE版本中的重大更改以及插件作者需要采取的建议步骤.
+
+
+* [** 2019年的变化.***](api_changes/api_changes_list_2019.md)
+
+* [** 2018年的变化.***](api_changes/api_changes_list_2018.md)
+
+* [** 2017年的变化.***](api_changes/api_changes_list_2017.md)
+
+* [** 2016年的变化.***](api_changes/api_changes_list_2016.md)
+
+
+&gt; **注意**未列出标有[`org.jetbrains.annotations.ApiStatus.@ Experimental`]的API的更改(upsource:///platform/util/src/org/jetbrains/annotations/ApiStatus.java)
+在这里,因为预期会出现不兼容的变化.
+
+
+</String></human-readable></method></class></package></class></人类可读参数></方法名称></类名></after></before></field></class></after></before></field></class></field></class></after></before></human-readable></class></after></before></human-readable></class></type></human-readable></class></human-readable></class></human-readable></方法名称></class></after></before></人类可读参数></方法名称></class></after></before></人类可读参数></方法名称></class></type></人类可读参数></方法名称></类名></after></before></人类可读参数></方法名称></类名></人类可读参数></方法名称></类名></new></class></class></package>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/appendix/resources/consulting.html">Consulting</a>
+                        <a class="navigation-links__next" href="/reference_guide/api_notable/api_notable.html">Notable Changes and Features in IntelliJ Platform and Plugins API</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

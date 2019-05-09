@@ -1,0 +1,517 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Build Number Ranges / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/getting_started/build_number_ranges.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Build Number Ranges" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-03T14:48:16+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Build Number Ranges" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/getting_started/build_number_ranges">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started/plugin_compatibility.html">Plugin Compatibility with IntelliJ Platform Products</a>
+                        <a class="navigation-links__next" href="/products/idea.html">IntelliJ IDEA</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/getting_started/build_number_ranges.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Build Number Ranges</h1>
+                    <style>
+  table {
+    width:100%;
+  }
+  th:first-child, td:first-child {
+    width: 10%;
+  }
+</style>
+
+<p>使用此编译范围的引用来指定插件描述符中正确的<code class="code highlight language-text">since-build</code>和<code class="code highlight language-text">until-build</code>值.</p>
+
+<p>从IntelliJ IDEA 9 beta开始,使用多部分内部版本号,例如<code class="code highlight language-text">IU-162.94</code>.</p>
+
+<p>该号码由以下部分组成:</p>
+
+<p>*产品ID(IDEA社区的<code class="code highlight language-text">IC</code>,IDEA Ultimate的’IU<code class="code highlight language-text">,RubyMine的</code>RM<code class="code highlight language-text">,PyCharm的'PY</code>等)</p>
+
+<p>*分行号码(<code class="code highlight language-text">162</code>)</p>
+
+<p>*分支中的内部编号(<code class="code highlight language-text">94</code>)</p>
+
+<p>从* IntelliJ Platform *的2016.2版本开始,分支编号基于<code class="code highlight language-text">YYYY.R</code> <a href="https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/" data-bypass="yes" target="_blank"><span>IDE release version numbers</span></a>.
+分支编号采用年份的最后两位数字和“R”发布编号.
+例如,2016年的“162”,2016年的“163”,2017年的“171”.
+在这个方案中,“IU-162.94”对应于2016.2版本.</p>
+
+<p>从2016.2开始,内部版本号也可能有多个组件:<code class="code highlight language-text">IU-162.94</code>,<code class="code highlight language-text">IU-162.94.11</code>,<code class="code highlight language-text">IU-162.94.11.256.42</code>.
+这为第三方插件和IDE开发人员提供了更大的灵活性.
+插件可以更精确地指定兼容版本; 
+IDE供应商可能具有基于特定* IntelliJ Platform *版本的内部版本号,并且还指定了其他内部版本(例如,“XX-162.94.11.256.42”中的“256.42”),以允许插件开发人员为其IDE指定兼容性.</p>
+
+<p>多部分构建号也可以用在<code class="code highlight language-text">idea-version</code>的<code class="code highlight language-text">since-build</code>和<code class="code highlight language-text">until-build</code>属性中.
+通常,您应该省略产品ID并仅使用分支编号和内部版本号,例如:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"94.539"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"162.539.11"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;idea-version</span> <span class="na">until-build=</span><span class="s">"162"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- any build until 162, not inclusive!--&gt;</span>
+<span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"162"</span> <span class="na">until-build=</span><span class="s">"162.*"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- any 162-based version, 162.94, 162.94.11, etc.--&gt;</span>
+</code></div>
+
+<p>以下分支编号用于基于* IntelliJ Platform *的产品,并构建最新IDE版本的编号:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Branch number</th>
+      <th>IntelliJ Platform version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/191" data-bypass="yes" target="_blank"><span>191</span></a></td>
+      <td>2019.1</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/183" data-bypass="yes" target="_blank"><span>183</span></a></td>
+      <td>2018.3</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/182" data-bypass="yes" target="_blank"><span>182</span></a></td>
+      <td>2018.2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/181" data-bypass="yes" target="_blank"><span>181</span></a></td>
+      <td>2018.1</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/173" data-bypass="yes" target="_blank"><span>173</span></a></td>
+      <td>2017.3</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/172" data-bypass="yes" target="_blank"><span>172</span></a></td>
+      <td>2017.2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/171" data-bypass="yes" target="_blank"><span>171</span></a></td>
+      <td>2017.1</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/163" data-bypass="yes" target="_blank"><span>163</span></a></td>
+      <td>2016.3</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/162" data-bypass="yes" target="_blank"><span>162</span></a></td>
+      <td>2016.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>请注意,没有’170<code class="code highlight language-text">.
+在</code>YYYY.R<code class="code highlight language-text">版本控制方案中,</code>R`部分从1开始.</p>
+
+<a name="intellij" class="elem-anchor"></a>
+<h2>2016年之前IntelliJ平台的分支和内部版本号<a href="#intellij" class="anchor-link"><span></span></a></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Branch number</th>
+      <th>Product version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/145" data-bypass="yes" target="_blank"><span>145</span></a></td>
+      <td>IntelliJ IDEA 2016.1, AppCode 2016.1, CLion 2016.1, DataGrip 2016.1, PhpStorm 2016.1, PyCharm 2016.1, RubyMine 2016.1, WebStorm 2016.1</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/143" data-bypass="yes" target="_blank"><span>143</span></a></td>
+      <td>IntelliJ IDEA 15, AppCode 3.3, CLion 1.2, DataGrip 1.0, PhpStorm 10, PyCharm 5, RubyMine 8, WebStorm 11</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/141" data-bypass="yes" target="_blank"><span>141</span></a></td>
+      <td>IntelliJ IDEA 14.1, Android Studio 1.3, PyCharm 4.1, WebStorm 10</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/139" data-bypass="yes" target="_blank"><span>139</span></a></td>
+      <td>IntelliJ IDEA 14, PhpStorm 8, PyCharm 4, RubyMine 7, WebStorm 9</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/135" data-bypass="yes" target="_blank"><span>135</span></a></td>
+      <td>IntelliJ IDEA 13.1, WebStorm 8</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/133" data-bypass="yes" target="_blank"><span>133</span></a></td>
+      <td>IntelliJ IDEA 13, PhpStorm 7, PyCharm 3.1, WebStorm 7</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/131" data-bypass="yes" target="_blank"><span>131</span></a></td>
+      <td>PhpStorm 7, PyCharm 3.0, WebStorm 7</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/129" data-bypass="yes" target="_blank"><span>129</span></a></td>
+      <td>IntelliJ IDEA 12.1, bug-fix updates for PyCharm 2.7 and PhpStorm/WebStorm 6.0</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/127" data-bypass="yes" target="_blank"><span>127</span></a></td>
+      <td>AppCode 2.0, PhpStorm/WebStorm 6.0</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/125" data-bypass="yes" target="_blank"><span>125</span></a></td>
+      <td>PyCharm 2.7, RubyMine 5.0</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/123" data-bypass="yes" target="_blank"><span>123</span></a></td>
+      <td>IntelliJ IDEA 12</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/121" data-bypass="yes" target="_blank"><span>121</span></a></td>
+      <td>AppCode 1.6, PyCharm 2.6, PhpStorm/WebStorm 5.0</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/119" data-bypass="yes" target="_blank"><span>119</span></a></td>
+      <td>RubyMine 4.5</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/JetBrains/intellij-community/tree/117" data-bypass="yes" target="_blank"><span>117</span></a></td>
+      <td>IntelliJ IDEA 11.1, AppCode 1.5, PyCharm 2.5, RubyMine 4.0.x, PhpStorm/WebStorm 4.0</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>IntelliJ IDEA 11.0</td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>IDEA 10.5</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>IDEA 10.0.2+</td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>IDEA 10.0+</td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>IDEA 9.0.2+</td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>IDEA 9.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>IntelliJ IDEA版本的内部版本号:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IntelliJ IDEA version</th>
+      <th>Build number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12.0</td>
+      <td>123.72</td>
+    </tr>
+    <tr>
+      <td>11.1.3</td>
+      <td>117.798</td>
+    </tr>
+    <tr>
+      <td>11.1.2</td>
+      <td>117.418</td>
+    </tr>
+    <tr>
+      <td>11.1.1</td>
+      <td>117.117</td>
+    </tr>
+    <tr>
+      <td>11.1</td>
+      <td>117.105</td>
+    </tr>
+    <tr>
+      <td>11.0.2</td>
+      <td>111.277</td>
+    </tr>
+    <tr>
+      <td>11.0.1</td>
+      <td>111.167</td>
+    </tr>
+    <tr>
+      <td>11.0</td>
+      <td>111.69</td>
+    </tr>
+    <tr>
+      <td>10.5.2</td>
+      <td>107.587</td>
+    </tr>
+    <tr>
+      <td>10.5.1</td>
+      <td>107.322</td>
+    </tr>
+    <tr>
+      <td>10.5</td>
+      <td>107.105</td>
+    </tr>
+    <tr>
+      <td>10.0.3</td>
+      <td>103.255</td>
+    </tr>
+    <tr>
+      <td>10.0.2</td>
+      <td>103.72</td>
+    </tr>
+    <tr>
+      <td>10.0.1</td>
+      <td>99.32</td>
+    </tr>
+    <tr>
+      <td>10.0</td>
+      <td>99.18</td>
+    </tr>
+    <tr>
+      <td>9.0.4</td>
+      <td>95.627</td>
+    </tr>
+    <tr>
+      <td>9.0.3</td>
+      <td>95.429</td>
+    </tr>
+    <tr>
+      <td>9.0.2</td>
+      <td>95.66</td>
+    </tr>
+    <tr>
+      <td>9.0.1</td>
+      <td>93.94</td>
+    </tr>
+    <tr>
+      <td>9.0</td>
+      <td>93.13</td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="intellij-idea-90" class="elem-anchor"></a>
+<h2>IntelliJ IDEA 9.0之前的内部版本号<a href="#intellij-idea-90" class="anchor-link"><span></span></a></h2>
+
+<p>在IntelliJ IDEA 9.0之前,使用了线性内部版本号,具有以下范围:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IntelliJ IDEA version</th>
+      <th>Build number range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8.1.x</td>
+      <td>9500-9999</td>
+    </tr>
+    <tr>
+      <td>8.0.x</td>
+      <td>9100-9499</td>
+    </tr>
+    <tr>
+      <td>8.0</td>
+      <td>8000-9099</td>
+    </tr>
+    <tr>
+      <td>7.0.2+</td>
+      <td>7500-7999</td>
+    </tr>
+    <tr>
+      <td>7.0 final</td>
+      <td>7200-7499</td>
+    </tr>
+    <tr>
+      <td>7.0 pre-M2</td>
+      <td>6900-7199</td>
+    </tr>
+    <tr>
+      <td>7.0 pre-M1</td>
+      <td>6500-6899</td>
+    </tr>
+    <tr>
+      <td>6.0.2 branch</td>
+      <td>6000-6499</td>
+    </tr>
+    <tr>
+      <td>6.0 branch</td>
+      <td>5000-5999</td>
+    </tr>
+    <tr>
+      <td>5.1 branch</td>
+      <td>4000-4999</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>每个版本的内部版本号:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IntelliJ IDEA version</th>
+      <th>Build number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8.1</td>
+      <td>9732</td>
+    </tr>
+    <tr>
+      <td>8.0.1</td>
+      <td>9164</td>
+    </tr>
+    <tr>
+      <td>8.0</td>
+      <td>9013</td>
+    </tr>
+    <tr>
+      <td>8.0M1</td>
+      <td>8664</td>
+    </tr>
+    <tr>
+      <td>7.0.5</td>
+      <td>7971</td>
+    </tr>
+    <tr>
+      <td>7.0.3</td>
+      <td>7757</td>
+    </tr>
+    <tr>
+      <td>7.0.2</td>
+      <td>7590</td>
+    </tr>
+    <tr>
+      <td>7.0 final</td>
+      <td>7361</td>
+    </tr>
+    <tr>
+      <td>7.0 M2</td>
+      <td>7126</td>
+    </tr>
+    <tr>
+      <td>7.0 M1</td>
+      <td>6813</td>
+    </tr>
+    <tr>
+      <td>6.0.6</td>
+      <td>6197</td>
+    </tr>
+    <tr>
+      <td>6.0.5</td>
+      <td>6180</td>
+    </tr>
+    <tr>
+      <td>6.0.1</td>
+      <td>5784</td>
+    </tr>
+    <tr>
+      <td>5.1.2</td>
+      <td>4267</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started/plugin_compatibility.html">Plugin Compatibility with IntelliJ Platform Products</a>
+                        <a class="navigation-links__next" href="/products/idea.html">IntelliJ IDEA</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 3 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

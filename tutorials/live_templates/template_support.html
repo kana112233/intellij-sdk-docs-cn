@@ -1,0 +1,227 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Adding Live Template Support / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/live_templates/template_support.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="1. Adding Live Template Support" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="1. Adding Live Template Support" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/live_templates/template_support">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/live_templates/template_support.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>1. Adding Live Template Support</h1>
+                    <p>##模板创建</p>
+
+<p>最初，您需要从头开始<a href="https://www.jetbrains.com/idea/help/creating-and-editing-live-templates.html#d1476224e158" data-bypass="yes" target="_blank"><span>创建新的实时模板</span></a>。
+添加新模板组“Markdown”并在此组下创建新的实时模板。
+然后给模板一个缩写(例如“[”)和描述(例如“New markdown link”)。
+将以下代码段粘贴到<em>模板文本</em>中:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">[$TEXT$]($LINK$)$END$
+</code></div>
+
+<p>可以在* Edit variables *对话框中进一步配置变量<code class="code highlight language-text">$ TEXT $</code>和<code class="code highlight language-text">$ LINK $</code>，以重新排序它们的优先级并绑定到将在适当的时间调用自动完成的函数，以及许多其他[有用的函数] 
+](https://www.jetbrains.com/idea/help/creating-and-editing-template-variables.html)。
+在实现插件中的任何特殊功能之前，开发人员应熟悉所提供的功能，以防所需功能作为[预定义功能]提供(https://www.jetbrains.com/idea/help/creating-and-editing 
+-template-variables.html＃predefined_functions)。</p>
+
+<p>最后，为您的新实时模板提供适用的上下文(即“Everywhere”或“Other”)。</p>
+
+<p>##导出实时模板</p>
+
+<p>Once confident the Live Template produces the expected result (consider testing it inside the current editor to minimize debugging later), export the Live Template (<strong>File | Export Settings | ☑ Live Templates</strong>). Unpack the resulting archive, and inside a directory <code class="code highlight language-text">./templates/</code> there will be a file  called <code class="code highlight language-text">Markdown.xml</code> with the following contents:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;templateSet</span> <span class="na">group=</span><span class="s">"Markdown"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"["</span> <span class="na">value=</span><span class="s">"[$TEXT$]($LINK$)$END$"</span> <span class="na">description=</span><span class="s">"New link reference."</span> <span class="na">toReformat=</span><span class="s">"false"</span> <span class="na">toShortenFQNames=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"TEXT"</span> <span class="na">expression=</span><span class="s">""</span> <span class="na">defaultValue=</span><span class="s">""</span> <span class="na">alwaysStopAt=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"LINK"</span> <span class="na">expression=</span><span class="s">"complete()"</span> <span class="na">defaultValue=</span><span class="s">""</span> <span class="na">alwaysStopAt=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;context&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"OTHER"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/context&gt;</span>
+  <span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;/templateSet&gt;</span>
+</code></div>
+
+<p>将此文件复制到插件的资源中(例如<code class="code highlight language-text">project/resource/liveTemplates/Markdown.xml</code>。</p>
+
+<p>##实现DefaultLiveTemplatesProvider</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/codeInsight/template/impl/DefaultLiveTemplatesProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">DefaultLiveTemplatesProvider</code></span></a>告诉我们在哪里可以找到实时模板设置文件。
+确保包含相对于资源目录的文件的完整路径，不包括文件名。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">import</span> <span class="nn">com.intellij.codeInsight.template.impl.DefaultLiveTemplatesProvider</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.Nullable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MarkdownTemplateProvider</span> <span class="kd">implements</span> <span class="n">DefaultLiveTemplatesProvider</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getDefaultLiveTemplateFiles</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"liveTemplates/Markdown"</span><span class="o">};</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Nullable</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getHiddenLiveTemplateFiles</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></div>
+
+<p>##实现TemplateContextType</p>
+
+<p>A <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">TemplateContextType</code></span></a>告诉我们实时模板的适用位置。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">import</span> <span class="nn">com.intellij.codeInsight.template.TemplateContextType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.psi.PsiFile</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.NotNull</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MarkdownContext</span> <span class="kd">extends</span> <span class="n">TemplateContextType</span> <span class="o">{</span>
+  <span class="kd">protected</span> <span class="nf">MarkdownContext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="s">"MARKDOWN"</span><span class="o">,</span> <span class="s">"Markdown"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isInContext</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">PsiFile</span> <span class="n">file</span><span class="o">,</span> <span class="kt">int</span> <span class="n">offset</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">endsWith</span><span class="o">(</span><span class="s">".md"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></div>
+
+<p>定义<code class="code highlight language-text">TemplateContextType</code>后，请务必将分配的上下文类型添加到先前创建的实时模板设置文件中。
+在<code class="code highlight language-text">&lt;template&gt; ... &lt;/template&gt;</code>下添加以下上下文:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;context&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"MARKDOWN"</span> <span class="na">value=</span><span class="s">true</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/context&gt;</span>
+</code></div>
+
+<p>并不总是需要定义自己的<code class="code highlight language-text">TemplateContextType</code>，因为IntelliJ平台中已经定义了许多现有的模板上下文。
+如果要增加对现有区域的语言支持，请考虑重复使用[许多现有模板上下文]之一(upsource:///platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java)。</p>
+
+<p>##注册扩展点</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
+  <span class="nt">&lt;id&gt;</span>live_templates<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Live Templates<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;vendor&gt;</span>JetBrains<span class="nt">&lt;/vendor&gt;</span>
+
+  <span class="nt">&lt;description&gt;</span>Provides live templates for Markdown language<span class="nt">&lt;/description&gt;</span>
+
+  <span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"141.0"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;defaultLiveTemplatesProvider</span> <span class="na">implementation=</span><span class="s">"MarkdownTemplateProvider"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;liveTemplateContext</span> <span class="na">implementation=</span><span class="s">"MarkdownContext"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;/extensions&gt;</span>
+
+<span class="nt">&lt;/idea-plugin&gt;</span>
+</code></div>
+
+<p>##检查插件</p>
+
+<p>Now check that the plugin is working correctly. Run the plugin and verify there is a new entry under <em>File | Settings | Live Templates | Markdown | [</em>. Finally, create a new file <code class="code highlight language-text">Test.md</code> and confirm that the Live Template works.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

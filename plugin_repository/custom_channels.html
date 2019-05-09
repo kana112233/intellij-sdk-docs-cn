@@ -1,0 +1,173 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Release Channels / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/plugin_repository/custom_channels.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Custom Release Channels" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:23:05+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Custom Release Channels" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="plugin_repository/custom_channels">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/feature_extractor.html">Plugin Recommendations</a>
+                        <a class="navigation-links__next" href="/appendix/resources/useful_links.html">Useful Links</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/plugin_repository/custom_channels.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Custom Release Channels</h1>
+                    <p>##将插件更新上传到自定义发布渠道</p>
+
+<p>您可以通过插件存储库Web界面,<a href="../tutorials/build_system/deployment.html"><span>Gradle插件</span></a>或<a href="api/plugin_upload.html"><span>API</span></a>将插件部署到您选择的特定频道.</p>
+
+<p>当为空时,这将使用默认的插件存储库通道(* Stable *),可供所有JetBrains插件存储库用户使用,但是,您可以发布到任意命名的通道.</p>
+
+<p>使用非默认发布渠道时,用户需要添加新的自定义插件存储库来安装插件.</p>
+
+<p>在插件存储库中,所有频道都将显示在插件页面上:</p>
+
+<p><img src="img/plugin_repository_custom_channels.png" alt="自定义渠道" /></p>
+
+<p>您可以在插件<em>编辑</em>页面(以及通过Gradle插件和API)上添加自定义渠道并将更新上传到频道:</p>
+
+<p><img src="img/plugin_repository_add_custom_channel.png" alt="添加频道" /></p>
+
+<p>##在基于IntelliJ平台的IDE中配置自定义通道</p>
+
+<p>使用非默认发布通道时,基于IntelliJ Platform的IDE用户需要添加新的<a href="https://www.jetbrains.com/idea/help/managing-enterprise-plugin-repositories.html" data-bypass="yes" target="_blank"><span>自定义插件存储库</span></a>
+从指定的频道安装插件.</p>
+
+<p>例如,如果指定“eap”作为发布通道,则用户需要添加“https://plugins.jetbrains.com/plugins/eap/list”存储库来安装插件并接收更新.
+所有意图和目的都将这些通道视为单独的存储库.</p>
+
+<p>热门频道名称包括:</p>
+
+<p>*<code class="code highlight language-text">eap</code>:https://plugins.jetbrains.com/plugins/eap/list</p>
+
+<p>*<code class="code highlight language-text">alpha</code>:https://plugins.jetbrains.com/plugins/alpha/list</p>
+
+<p>*<code class="code highlight language-text">beta</code>:https://plugins.jetbrains.com/plugins/beta/list</p>
+
+<p>也可以托管<a href="https://www.jetbrains.com/idea/help/adding-plugins-to-enterprise-repositories.html" data-bypass="yes" target="_blank"><span>Enterprise Plugin Repository</span></a>,在这种情况下,URL结构将取决于您的
+托管地址.
+有关详细信息,请参阅<a href="https://www.jetbrains.com/idea/help/managing-plugins.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA文档</span></a>.</p>
+
+<p>作为一个选项,您可以添加一个自定义存储库,指定插件ID(插件ID是插件的数字ID,可以从插件存储库URL中检索.例如<a href="https://plugins.jetbrains.com/plugin" data-bypass="yes" target="_blank"><span>Scala</span></a> 
+/1347-scala)插件ID为* 1347 *):</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">https://plugins.jetbrains.com/plugins/&lt;channel&gt;/&lt;pluginId&gt;
+</code></div>
+<p>(e.g. <code class="code highlight language-text">https://plugins.jetbrains.com/plugins/eap/1347</code>)</p>
+
+<p>有关如何在基于IntelliJ平台的IDE中指定自定义插件存储库的更多信息,请参阅<a href="https://www.jetbrains.com/help/idea/managing-plugins.html" data-bypass="yes" target="_blank"><span>管理企业插件存储库</span></a>帮助文章.
+从自定义发布渠道接收插件和更新:</p>
+
+<p><img src="img/intellij_custom_plugin_repository.png" alt="在IntelliJ IDEA中添加自定义插件存储库" /></p>
+
+<p>##频道优先通知</p>
+
+<p>请注意,自定义存储库优先于默认通道.
+当未提供自定义通道名称时,更新将上载到默认通道,默认通道也称为稳定通道或释放通道.
+这意味着来自自定义渠道(例如EAP渠道)的插件/更新会“覆盖”来自主存储库(默认渠道)的插件/更新.</p>
+
+<p>如果用户订阅了EAP自定义渠道,他们将无法在没有渠道的情况下看到插件更新(因此他们将无法在默认渠道中看到新的更新).</p>
+
+<p>因此,如果您希望用户获得此更新,建议您在将自定义频道添加到默认(稳定)频道时将其添加到自定义频道.</p>
+
+<p>这种行为是暂时的,将来会进行大量的重新设计.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/feature_extractor.html">Plugin Recommendations</a>
+                        <a class="navigation-links__next" href="/appendix/resources/useful_links.html">Useful Links</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

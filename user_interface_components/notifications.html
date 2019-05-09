@@ -1,0 +1,172 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/user_interface_components/notifications.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Notifications" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-10-30T10:32:07+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Notifications" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="user_interface_components/notifications">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/user_interface_components/popups.html">Popups</a>
+                        <a class="navigation-links__next" href="/user_interface_components/file_and_class_choosers.html">File and Class Choosers</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/user_interface_components/notifications.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Notifications</h1>
+                    <a name="notifications" class="elem-anchor"></a>
+<h2>Notifications<a href="#notifications" class="anchor-link"><span></span></a></h2>
+
+<p>One of the leading design principles is avoiding the use of modal message boxes for notifying the user about errors and other situations that may warrant the user’s attention.
+As a replacement, the <em>IntelliJ Platform</em> provides multiple non-modal notification UI options.</p>
+
+<a name="dialogs" class="elem-anchor"></a>
+<h3>Dialogs<a href="#dialogs" class="anchor-link"><span></span></a></h3>
+
+<p>When working in a modal dialog, instead of checking the validity of the input when the <code class="code highlight language-text">OK</code> button is pressed and notifying the user about invalid data with a modal dialog, the recommended approach is to use
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java" data-bypass="yes" target="_blank"><span>DialogBuilder.doValidate()</span></a>,
+which was described previously.</p>
+
+<a name="editor-hints" class="elem-anchor"></a>
+<h3>Editor Hints<a href="#editor-hints" class="anchor-link"><span></span></a></h3>
+
+<p>For actions invoked from the editor (such as refactorings, navigation actions and different code insight features), the best way to notify the user about the inability to perform an action is to use the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java" data-bypass="yes" target="_blank"><span>HintManager</span></a>
+class.
+Its method <code class="code highlight language-text">showErrorHint()</code> displays a floating popup above the editor which is automatically hidden when the user starts performing another action in the editor.
+Other
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java" data-bypass="yes" target="_blank"><span>HintManager</span></a>
+methods can be used for displaying other kinds of non-modal notification hints over an editor.</p>
+
+<a name="top-level-notifications" class="elem-anchor"></a>
+<h3>Top-Level Notifications<a href="#top-level-notifications" class="anchor-link"><span></span></a></h3>
+
+<p>The most general way to display non-modal notifications is to use the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notifications</span></a>
+class.</p>
+
+<p>It has two main advantages:</p>
+
+<ul>
+  <li>
+    <p>The user can control the way each notification type is displayed under <code class="code highlight language-text">Settings | Notifications</code></p>
+  </li>
+  <li>
+    <p>All displayed notifications are gathered in the Event Log tool window and can be reviewed later</p>
+  </li>
+</ul>
+
+<p>The specific method used to display a notification is
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notifications.Bus.notify()</span></a>.
+The text of the notification can include HTML tags.
+You can allow the user to interact with the notification by including hyperlink tags in the notification text and passing a
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/NotificationListener.java" data-bypass="yes" target="_blank"><span>NotificationListener</span></a>
+instance to the constructor of the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notification</span></a>
+class.</p>
+
+<p>The <code class="code highlight language-text">groupDisplayId</code> parameter of the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notification</span></a>
+constructor specifies a notification type.
+The user can choose the display type corresponding to each notification type under <code class="code highlight language-text">Settings | Notifications</code>.
+To specify the preferred display type, you need to call
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notifications.Bus.register()</span></a>
+before displaying any notifications.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/user_interface_components/popups.html">Popups</a>
+                        <a class="navigation-links__next" href="/user_interface_components/file_and_class_choosers.html">File and Class Choosers</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 30 October 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

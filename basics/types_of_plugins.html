@@ -1,0 +1,179 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Types of Plugins / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/types_of_plugins.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Main Types of Plugins" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2015-11-23T17:36:39+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Main Types of Plugins" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/types_of_plugins">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/types_of_plugins.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Main Types of Plugins</h1>
+                    <p>基于* IntelliJ Platform *的产品可以通过添加插件进行修改和调整以用于自定义目的.
+所有可下载的插件都可以在<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>JetBrains Plugin Repository</span></a>上找到.</p>
+
+<p>最常见的插件类型包括:</p>
+
+<p>*自定义语言支持</p>
+
+<p>*框架集成</p>
+
+<p>*工具集成</p>
+
+<p>*用户界面附加组件</p>
+
+<p>##自定义语言支持</p>
+
+<p>自定义语言支持提供了使用特定编程语言的基本功能.
+这包括:</p>
+
+<p>*文件类型识别</p>
+
+<p>*词法分析</p>
+
+<p>*语法突出显示</p>
+
+<p>*格式化</p>
+
+<p>*代码洞察和代码完成</p>
+
+<p>*检查和快速修复</p>
+
+<p>*意图行动</p>
+
+<p>请参阅<a href="/intellij/sdk/docstutorials/custom_language_support_tutorial.html"><span>自定义语言支持教程</span></a>以了解有关该主题的更多信息.</p>
+
+<p>##框架集成</p>
+
+<p>框架集成包括改进的代码洞察功能,这些功能对于给定的框架是典型的,以及直接从IDE使用框架特定功能的选项.
+有时它还包括自定义语法或DSL的语言支持元素.</p>
+
+<p>*具体的代码洞察力</p>
+
+<p>*直接访问特定于框架的功能</p>
+
+<p>请参阅<a href="https://plugins.jetbrains.com/plugin/1698" data-bypass="yes" target="_blank"><span>Struts 2插件</span></a>作为框架集成的示例.</p>
+
+<p>##工具集成</p>
+
+<p>通过工具集成,可以直接从IDE操作第三方工具和组件,而无需切换上下文.
+ </p>
+
+<p>这意味着:</p>
+
+<p>*实施其他行动</p>
+
+<p>*相关的UI组件</p>
+
+<p>*访问外部资源</p>
+
+<p>请参阅<a href="https://plugins.jetbrains.com/plugin/7272?pr=idea" data-bypass="yes" target="_blank"><span>Gerrit集成</span></a>插件作为示例.</p>
+
+<p>##用户界面附加组件</p>
+
+<p>此类别中的插件会对IDE的标准用户界面应用各种更改.
+一些新添加的组件是交互式的并提供新功能,而其他组件仅限于视觉修改. 
+<a href="https://plugins.jetbrains.com/plugin/72" data-bypass="yes" target="_blank"><span>背景图片</span></a>插件可以作为一个例子.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 23 November 2015
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

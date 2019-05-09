@@ -1,0 +1,315 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Working with text / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/editor_basics/working_with_text.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="1. Working with text" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="1. Working with text" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/editor_basics/working_with_text">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/tutorials/editor_basics/coordinates_system.html">2. Editor coordinates system. Positions and offsets</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/editor_basics/working_with_text.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>1. Working with text</h1>
+                    <p>The following set of steps will show how to access a text selection and change it.</p>
+
+<a name="pre-requirements" class="elem-anchor"></a>
+<h2>1.1. Pre-requirements<a href="#pre-requirements" class="anchor-link"><span></span></a></h2>
+
+<a name="creating-a-new-action" class="elem-anchor"></a>
+<h3>1.1.1 Creating a new action<a href="#creating-a-new-action" class="anchor-link"><span></span></a></h3>
+
+<p>In this example we access the editor from an action.
+To create an action we need to extend the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction.java</span></a>
+class.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="registering-an-action" class="elem-anchor"></a>
+<h3>1.1.2. Registering an action<a href="#registering-an-action" class="anchor-link"><span></span></a></h3>
+
+<p>To register the action we should add the corresponding tag to the <code class="code highlight language-text">&lt;actions&gt;</code> section of the plugin configuration file
+<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a></p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
+    <span class="nt">&lt;action</span> <span class="na">id=</span><span class="s">"EditorBasics.EditorIllustration"</span> <span class="na">class=</span><span class="s">"EditorIllustration"</span> <span class="na">text=</span><span class="s">"Editor Basics"</span>
+        <span class="na">description=</span><span class="s">"Illustrates how to plug an action in"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">"EditorPopupMenu"</span> <span class="na">anchor=</span><span class="s">"last"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/action&gt;</span>
+<span class="nt">&lt;/actions&gt;</span>
+</code></div>
+
+<p>If an action is registered in the group <code class="code highlight language-text">EditorPopupMenu</code>, like the sample above shows,
+it will be available from the context menu when the focus is located in the editor.</p>
+
+<a name="defining-actions-visibility" class="elem-anchor"></a>
+<h3>1.1.3. Defining action’s visibility<a href="#defining-actions-visibility" class="anchor-link"><span></span></a></h3>
+
+<p>To determine conditions by which the action will be visible and available for being executed we need to override its
+<code class="code highlight language-text">public void update(AnActionEvent e)</code> method.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>If we want to work with a selected part of the text, it’s reasonable to make the action available only when the following requirements are met:</p>
+
+<ul>
+  <li>There is a project open</li>
+  <li>There is an instance of the Editor available</li>
+  <li>There is a text selection in the Editor</li>
+</ul>
+
+<p>Further steps will show how to check these conditions through obtaining instances of Project and Editor and how to show or hide the action based on them.</p>
+
+<a name="getting-an-instance-of-the-active-editor" class="elem-anchor"></a>
+<h2>1.2. Getting an instance of the active Editor<a href="#getting-an-instance-of-the-active-editor" class="anchor-link"><span></span></a></h2>
+
+<p>A reference to an instance of the Editor can be obtained by calling <code class="code highlight language-text">getData(CommonDataKeys.EDITOR)</code>.
+To obtain a project reference, we use the <code class="code highlight language-text">getProject()</code> method.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//Get required data keys</span>
+        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+        <span class="c1">//Set visibility only in case of existing project and editor</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="n">project</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p><strong>Note:</strong></p>
+
+<p>To access an Editor instance, other ways can also be used:</p>
+
+<ul>
+  <li>
+    <p>If <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/DataContext.java" data-bypass="yes" target="_blank"><span>DataContext</span></a>
+object is available: <code class="code highlight language-text">final Editor editor = CommonDataKeys.EDITOR.getData(context);</code></p>
+  </li>
+  <li>
+    <p>If only a <code class="code highlight language-text">Project</code> is available, you can use <code class="code highlight language-text">FileEditorManager.getInstance(project).getSelectedTextEditor()</code></p>
+  </li>
+</ul>
+
+<a name="obtaining-a-caret-model-and-selection" class="elem-anchor"></a>
+<h2>1.3. Obtaining a caret model and selection<a href="#obtaining-a-caret-model-and-selection" class="anchor-link"><span></span></a></h2>
+
+<p>After making sure we have a project open and an instance of the Editor we need to check if any selection is available and set action’s visibility according to these conditions.
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java" data-bypass="yes" target="_blank"><span>SelectionModel</span></a>
+accessed from the Editor allows to do it by calling its <code class="code highlight language-text">hasSelection()</code> method.
+Here’s how our <code class="code highlight language-text">update(AnActionEvent e)</code> method should look like in the end:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//Get required data keys</span>
+        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+        <span class="c1">//Set visibility only in case of existing project and editor and if some text in the editor is selected</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="n">project</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span>
+            <span class="n">editor</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">hasSelection</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p><strong>Note:</strong>
+Editor allows to access different models of text representation.
+Model classes are located in
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor" data-bypass="yes" target="_blank"><span>editor</span></a>
+subpackage of the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api" data-bypass="yes" target="_blank"><span>editor-ui-api</span></a>
+package and include:</p>
+
+<ul>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java" data-bypass="yes" target="_blank"><span>CaretModel.java</span></a>,</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/FoldingModel.java" data-bypass="yes" target="_blank"><span>FoldingModel.java</span></a>,</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/IndentsModel.java" data-bypass="yes" target="_blank"><span>IndentsModel.java</span></a>,</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/ScrollingModel.java" data-bypass="yes" target="_blank"><span>ScrollingModel.java</span></a>,</li>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SoftWrapModel.java" data-bypass="yes" target="_blank"><span>SoftWrapModel.java</span></a></li>
+</ul>
+
+<a name="obtaining-a-document" class="elem-anchor"></a>
+<h2>1.4. Obtaining a Document<a href="#obtaining-a-document" class="anchor-link"><span></span></a></h2>
+
+<p>The action is visible and available now.
+In order to make it do something we need to override its
+<code class="code highlight language-text">public void actionPerformed(AnActionEvent anActionEvent)</code> method.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//code here</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">anActionEvent</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>To modify the text an instance of the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/Document.java" data-bypass="yes" target="_blank"><span>Document</span></a>
+needs to be accessed. <a href="/intellij/sdk/docsbasics/architectural_overview/documents.html"><span>Document</span></a> represents the contents of a text file loaded into memory and possibly opened in an IDEA text editor.
+The instance of a Document will be used later when a text replacement is performed.
+We also need to figure out where the selected part of the text is located.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="kd">final</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//Get all the required data from data keys</span>
+    <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+    <span class="c1">//Access document, caret, and selection</span>
+    <span class="kd">final</span> <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getDocument</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="n">SelectionModel</span> <span class="n">selectionModel</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">selectionModel</span><span class="o">.</span><span class="na">getSelectionStart</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">selectionModel</span><span class="o">.</span><span class="na">getSelectionEnd</span><span class="o">();</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="modifying-text" class="elem-anchor"></a>
+<h2>1.5. Modifying text<a href="#modifying-text" class="anchor-link"><span></span></a></h2>
+
+<p>Generally replacement can be done by calling
+<code class="code highlight language-text">void replaceString(int startOffset, int endOffset, @NotNull CharSequence s);</code> of the Document, however,
+the operation of replacement must be executed safely, this means the Document must be locked and
+any changes should be performed in a <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java" data-bypass="yes" target="_blank"><span>write action</span></a><!--#L172-->.
+See the <a href="/intellij/sdk/docsbasics/architectural_overview/general_threading_rules.html"><span>Threading Issues</span></a> section to learn more about synchronization issues and changes safety on the IntelliJ Platform.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="kd">final</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//Get all the required data from data keys</span>
+    <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+    <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+    <span class="c1">//Access document, caret, and selection</span>
+    <span class="kd">final</span> <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getDocument</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="n">SelectionModel</span> <span class="n">selectionModel</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">();</span>
+
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">selectionModel</span><span class="o">.</span><span class="na">getSelectionStart</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">selectionModel</span><span class="o">.</span><span class="na">getSelectionEnd</span><span class="o">();</span>
+    <span class="c1">//Making the replacement</span>
+    <span class="n">WriteCommandAction</span><span class="o">.</span><span class="na">runWriteCommandAction</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span>
+        <span class="n">document</span><span class="o">.</span><span class="na">replaceString</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="s">"Replacement"</span><span class="o">)</span>
+    <span class="o">);</span>
+    <span class="n">selectionModel</span><span class="o">.</span><span class="na">removeSelection</span><span class="o">();</span>
+<span class="o">}</span>
+</code></div>
+
+<hr />
+
+<p><img src="img/basics.png" alt="String replacement action" /></p>
+
+<hr />
+
+<p>The source code is located in
+<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/EditorIllustration.java" data-bypass="yes" target="_blank"><span>EditorIllustration.java</span></a>.
+To see how text replacement works, check out
+<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/" data-bypass="yes" target="_blank"><span>Editor Basics</span></a>
+plugin, make the project, run it, then invoke the <em>EditorIllustration</em> action which is available in the context menu of the editor.</p>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/tutorials/editor_basics/coordinates_system.html">2. Editor coordinates system. Positions and offsets</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

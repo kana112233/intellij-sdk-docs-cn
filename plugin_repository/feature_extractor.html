@@ -1,0 +1,208 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Recommendations / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/plugin_repository/feature_extractor.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Recommendations" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-15T15:23:01+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Recommendations" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="plugin_repository/feature_extractor">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/api/api_reference.html">Plugin Repository API Reference</a>
+                        <a class="navigation-links__next" href="/plugin_repository/custom_channels.html">Custom Release Channels</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/plugin_repository/feature_extractor.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Recommendations</h1>
+                    <p>IntelliJ平台IDE将推荐一个插件,以便在以下某种情况下进行安装:</p>
+
+<p>*如果项目包含运行的IDE不支持但受插件支持的类型的文件
+   
+在插件存储库中可用;
+ 
+*如果项目是在安装了插件的其他IDE安装中创建的,并且包含共享
+   
+使用插件配置的设置(模块,构面,工件或运行配置).</p>
+
+<p>IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们对用户有意义.</p>
+
+<p><a href="https://github.com/JetBrains/intellij-plugin-verifier/tree/master/intellij-feature-extractor/" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">feature extractor</code></span></a>工具</p>
+
+<p>为插件编目这些类型的功能.
+它通过静态分析插件的字节码来提取值</p>
+
+<p>传递给IntelliJ Platform API,支持扩展上面列表中的功能.</p>
+
+<p>但是,如果在插件中动态评估值,则“特征提取器”可能会返回不完整的结果.</p>
+
+<p>如果您在<a href="https://plugins.jetbrains.com/feature/" data-bypass="yes" target="_blank"><span>功能列表</span></a>中找不到您的插件,您可以编写代码</p>
+
+<p>更容易进行分析,或要求JetBrains手动添加任何遗漏的要素类型.</p>
+
+<a name="section" class="elem-anchor"></a>
+<h2>文件类型<a href="#section" class="anchor-link"><span></span></a></h2>
+
+<p>插件可以支持特定的文件类型(文件扩展名).
+当在IDE中打开具有特定扩展名的文件时,将向用户显示提示,提示他们安装插件.</p>
+
+<p>你应该扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileTypes/FileTypeFactory.java" data-bypass="yes" target="_blank"><span>FileTypeFactory</span></a></p>
+
+<p>并在<code class="code highlight language-text">createFileTypes(FileTypeConsumer)</code>中提供支持的文件扩展名. 
+<code class="code highlight language-text">FileTypeConsumer</code>的值由<code class="code highlight language-text">feature extractor</code>分析.</p>
+
+<p>建议安装支持_ \ * .d_扩展类型的插件:</p>
+
+<p><img src="img/feature_extractor_extensions.png" alt="文件扩展名功能" /></p>
+
+<p>请参阅<a href="/intellij/sdk/docsreference_guide/custom_language_support/registering_file_type.html"><span>注册文件类型</span></a>以在插件中提供此功能.</p>
+
+<p>##运行配置类型</p>
+
+<p>如果希望IDE显示您的插件支持“运行配置类型”,则需要实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span>ConfigurationType</span></a></p>
+
+<p>并实现<code class="code highlight language-text">getId()</code>方法. 
+<code class="code highlight language-text">feature extractor</code>分析<code class="code highlight language-text">getId()</code>的值.</p>
+
+<p>建议安装支持* Run D App *配置类型的插件:</p>
+
+<p><img src="img/feature_extractor_configuration.png" alt="配置功能类型" /></p>
+
+<p>请参阅<a href="/intellij/sdk/docsbasics/run_configurations.html"><span>运行配置</span></a>以获取有关如何在插件中声明此功能的更多信息.</p>
+
+<a name="facet-type" class="elem-anchor"></a>
+<h2>Facet Type<a href="#facet-type" class="anchor-link"><span></span></a></h2>
+
+<p>要支持Facet Type功能,您应该扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/facet/FacetType.java" data-bypass="yes" target="_blank"><span>FacetType</span></a>,</p>
+
+<p>并将<code class="code highlight language-text">stringId</code>传递给它的构造函数. 
+<code class="code highlight language-text">stringId</code>参数的值将由`feature extractor’分析.</p>
+
+<p>安装支持* jangaroo * Facet类型的插件的通知:</p>
+
+<p><img src="img/feature_extractor_facet.png" alt="Facet Type of Feature" /></p>
+
+<p>有关其他信息,请参阅<a href="/intellij/sdk/docsreference_guide/project_model/facet.html"><span>Facet</span></a>.</p>
+
+<p>##模块类型</p>
+
+<p>如果您希望IDE显示您的插件可以支持创建特定模块类型的提示,则应该扩展</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/module/ModuleType.java" data-bypass="yes" target="_blank"><span>ModuleType</span></a></p>
+
+<p>并将Module Type的<code class="code highlight language-text">id</code>参数传递给它的构造函数. 
+<code class="code highlight language-text">feature extractor</code>将评估<code class="code highlight language-text">id</code>的值.</p>
+
+<p>参见<a href="/intellij/sdk/docsreference_guide/project_model/module.html"><span>Module</span></a>和<a href="/intellij/sdk/docstutorials/project_wizard/module_types.html"><span>Supporting Module Types</span></a></p>
+
+<p>有关支持模块类型的更多信息.</p>
+
+<p>##神器类型</p>
+
+<p>要支持特定的工件类型,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/compiler/openapi/src/com/intellij/packaging/artifacts/ArtifactType.java" data-bypass="yes" target="_blank"><span>ArtifactType</span></a>,</p>
+
+<p>并将<code class="code highlight language-text">id</code>参数传递给它的构造函数. 
+<code class="code highlight language-text">id</code>参数的值由`feature extractor’分析.</p>
+
+<p>启用支持* dm.bundle *插件类型的插件的示例建议:</p>
+
+<p><img src="img/feature_extractor_artifacts.png" alt="Artifact Type of Feature" /></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/plugin_repository/api/api_reference.html">Plugin Repository API Reference</a>
+                        <a class="navigation-links__next" href="/plugin_repository/custom_channels.html">Custom Release Channels</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 15 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

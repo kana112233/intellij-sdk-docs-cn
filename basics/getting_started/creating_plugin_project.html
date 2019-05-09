@@ -1,0 +1,160 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating a Plugin Project / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/getting_started/creating_plugin_project.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Creating a Plugin Project" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-03T10:17:12+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Creating a Plugin Project" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/getting_started/creating_plugin_project">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started/setting_up_environment.html">Setting Up a Development Environment</a>
+                        <a class="navigation-links__next" href="/basics/getting_started/creating_an_action.html">Creating an action</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/getting_started/creating_plugin_project.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Creating a Plugin Project</h1>
+                    <aside class="注意">
+  <p>对于新项目,建议使用<a href="/intellij/sdk/docstutorials/build_system.html"><span>Gradle</span></a>.</p>
+</aside>
+
+<p>本节介绍如何使用“新建项目”向导从头开始创建新的插件项目. 
+(可选)您可以导入现有项目或从外部模型导入项目.
+您还可以将新插件模块添加到现有的* IntelliJ Platform *项目中.</p>
+
+<p>有关更多信息,请参阅<a href="https://www.jetbrains.com/idea/help/new-project-wizard.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA Web帮助</span></a>.</p>
+
+<p>###创建IntelliJ平台插件项目:</p>
+
+<ul>
+  <li>On the main menu, choose <strong>File | New | Project</strong>. The <em>New Project</em>
+wizard starts.</li>
+</ul>
+
+<p><img src="img/new_project_wizard.png" alt="新建项目向导" /></p>
+
+<ul>
+  <li>Set <em>IntelliJ Platform Plugin</em> project type</li>
+  <li>Click <strong>Next</strong></li>
+  <li>Set desired project name</li>
+  <li>Click <strong>Finish</strong> to generate project structure files</li>
+  <li>Go to <strong>File | Project Structure</strong> to customize project settings if required</li>
+</ul>
+
+<a name="to-create-an-intellij-platform-plugin-module" class="elem-anchor"></a>
+<h3>To Create an IntelliJ Platform Plugin Module<a href="#to-create-an-intellij-platform-plugin-module" class="anchor-link"><span></span></a></h3>
+<ul>
+  <li>Select <strong>File | New | Module</strong> and choose the <em>IntelliJ Platform Plugin</em> module type</li>
+</ul>
+
+<p><img src="img/intellij_platform_plugin_module.png" alt="IntelliJ平台插件模块" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>*输入您想要的插件名称.</p>
+
+<ul>
+  <li>Go to <strong>File | Project Structure</strong> and select the newly created <em>IntelliJ Platform SDK</em> as the default SDK for the plugin module:</li>
+</ul>
+
+<p><img src="img/set_plugin_module_sdk.png" alt="设置插件模块SDK" /></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started/setting_up_environment.html">Setting Up a Development Environment</a>
+                        <a class="navigation-links__next" href="/basics/getting_started/creating_an_action.html">Creating an action</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 3 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

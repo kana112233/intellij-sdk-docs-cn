@@ -1,0 +1,295 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Contributing to the IntelliJ Platform SDK / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/CONTRIBUTING.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Contributing to the IntelliJ Platform SDK" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-25T10:32:43+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Contributing to the IntelliJ Platform SDK" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="CONTRIBUTING">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/intro/key_topics.html">Key Topics</a>
+                        <a class="navigation-links__next" href="/CODE_OF_CONDUCT.html">Code of Conduct</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/CONTRIBUTING.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Contributing to the IntelliJ Platform SDK</h1>
+                    <p>This document describes our contribution guidelines for the open source IntelliJ Platform SDK documentation and sample code.
+Before you begin contributing content to the SDK, please read this page thoroughly as well as the <a href="/intellij/sdk/docsCODE_OF_CONDUCT.html"><span>Code of Conduct</span></a> and <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>License</span></a> documents.
+For information about contributing to the IntelliJ Platform itself, please visit <a href="/intellij/sdk/docsbasics/platform_contributions.html"><span>Contributing to the IntelliJ Platform</span></a>.</p>
+
+<p>Here are some useful things to know before authoring SDK content and submitting your Pull Request.</p>
+<ul id="markdown-toc">
+  <li><a href="#setting-up-the-documentation-build-environment" id="markdown-toc-setting-up-the-documentation-build-environment"><span>Setting Up the Documentation Build Environment</span></a>    <ul>
+      <li><a href="#developing-documentation-with-docker" id="markdown-toc-developing-documentation-with-docker"><span>Developing Documentation with Docker</span></a></li>
+      <li><a href="#developing-documentation-locally" id="markdown-toc-developing-documentation-locally"><span>Developing Documentation Locally</span></a>        <ul>
+          <li><a href="#macos" id="markdown-toc-macos"><span>macOS</span></a></li>
+          <li><a href="#windows" id="markdown-toc-windows"><span>Windows</span></a></li>
+        </ul>
+      </li>
+      <li><a href="#bootstrapping-the-documentation-build-environment" id="markdown-toc-bootstrapping-the-documentation-build-environment"><span>Bootstrapping the Documentation Build Environment</span></a></li>
+      <li><a href="#building-and-previewing-the-site" id="markdown-toc-building-and-previewing-the-site"><span>Building and Previewing the Site</span></a></li>
+    </ul>
+  </li>
+  <li><a href="#documentation-repository-submodules" id="markdown-toc-documentation-repository-submodules"><span>Documentation Repository Submodules</span></a></li>
+  <li><a href="#creating-intellij-platform-sdk-content" id="markdown-toc-creating-intellij-platform-sdk-content"><span>Creating IntelliJ Platform SDK Content</span></a></li>
+</ul>
+
+<a name="setting-up-the-documentation-build-environment" class="elem-anchor"></a>
+<h2>Setting Up the Documentation Build Environment<a href="#setting-up-the-documentation-build-environment" class="anchor-link"><span></span></a></h2>
+
+<p>This site runs via <a href="https://jekyllrb.com" data-bypass="yes" target="_blank"><span>Jekyll</span></a>, which is a popular static site generator, written in Ruby. It can be hosted locally to ensure that any changes are correct. Once set up, running the site is as easy as calling <code class="code highlight language-text">rake preview</code>.</p>
+
+<p>Alternatively, the site can also be hosted in a <a href="https://www.docker.com" data-bypass="yes" target="_blank"><span>Docker container</span></a>. On Mac and Windows, this means the site is hosted in a virtual machine. Docker maintains this container, building it based on the instructions in the <a href="Dockerfile"><span><code class="code highlight language-text">Dockerfile</code></span></a>. All dependencies (Ruby, etc.) are automatically installed when building the image, which reduces the manual configuration steps. The Docker image is also used to build the <a href="https://www.jetbrains.org/intellij/sdk/docs/index.html" data-bypass="yes" target="_blank"><span>published site</span></a>, so it is a known working environment.</p>
+
+<a name="developing-documentation-with-docker" class="elem-anchor"></a>
+<h3>Developing Documentation with Docker<a href="#developing-documentation-with-docker" class="anchor-link"><span></span></a></h3>
+
+<p>Follow these steps to work with Docker:</p>
+
+<ul>
+  <li>Firstly, install Docker, using the <a href="https://www.docker.com/docker-toolbox" data-bypass="yes" target="_blank"><span>Docker Toolbox</span></a>.</li>
+  <li>On Windows and Mac, start the Docker host virtual machine (start the “Docker Quickstart terminal” or run “Kitematic.” See the Getting Started guides on <a href="https://www.docker.com" data-bypass="yes" target="_blank"><span>docker.com</span></a> for more details).</li>
+  <li>Clone the <a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">intellij-sdk-docs</code></span></a> repo to the local machine, and <a href="#a-word-on-submodules"><span>initialise the <code class="code highlight language-text">sdkdocs-template</code> submodule</span></a>.</li>
+  <li>Change the current directory to the parent directory of the git repo.</li>
+  <li>Run <code class="code highlight language-text">docker build -t intellij-sdk-docs .</code> to build the docker image from the current folder, and give it the tag <code class="code highlight language-text">intellij-sdk-docs</code>.
+    <ul>
+      <li>Note that this must be run from a command prompt that has the various <code class="code highlight language-text">DOCKER_*</code> environment variables set up, such as the Docker Quickstart Terminal.</li>
+    </ul>
+  </li>
+  <li>Run <code class="code highlight language-text">docker run -p 4000:4000 -v $PWD:/usr/src/app intellij-sdk-docs</code>. This command will:
+    <ul>
+      <li>Start the docker container called <code class="code highlight language-text">intellij-sdk-docs</code>.</li>
+      <li>Forward port 4000 from the docker container to port 4000 on the docker client.</li>
+    </ul>
+
+    <aside class="note">
+      <p> For Windows and Mac, this means port 4000 of the docker container is forwarded to port 4000 of the docker virtual machine, not <code class="code highlight language-text">localhost</code>. For Linux, the docker client is the host machine, so <code class="code highlight language-text">localhost:4000</code> is forwarded to port 4000 on the docker container.</p>
+
+      <p>To hit the container’s port 4000 from Windows or the Mac, it is necessary to hit the IP address of the docker client (virtual machine). Use <code class="code highlight language-text">docker-machine ip default</code> to get the IP address of the docker client. Use <code class="code highlight language-text">X.X.X.X:4000</code> to hit the client in the virtual machine, which is in turn mapped to the container’s port 4000.</p>
+
+      <p>Alternatively, modify the virtual machine’s settings to automatically forward port 4000 to <code class="code highlight language-text">localhost</code>. See this <a href="https://acaird.github.io/computers/2014/11/16/docker-virtualbox-host-networking" data-bypass="yes" target="_blank"><span>blog post</span></a> for more details.</p>
+    </aside>
+
+    <ul>
+      <li>Mount the current directory (<code class="code highlight language-text">$PWD</code> is a Unix style environment variable. You can use <code class="code highlight language-text">%CD%</code> on Windows, or specify the full path) as <code class="code highlight language-text">/usr/src/app</code> inside the docker container. The docker image will see the <code class="code highlight language-text">intellij-sdk-docs</code> repo as the folder <code class="code highlight language-text">/usr/src/app</code>.</li>
+    </ul>
+
+    <aside class="note">
+      <p> If running on Windows in an MSYS bash script (e.g. the “Docker Quickstart terminal”), the path to the local folder needs to be properly escaped, or the MSYS environment will translate the paths to standard Windows path, and causing an error such as <code class="code highlight language-text">invalid value "C:\\Users\\...;C:\\Program Files\\Git\\usr\\src\\app" for flag -v</code>. To fix this problem, prefix the full path with double slashes, e.g. <code class="code highlight language-text">-v //c/Users/...</code>, or <code class="code highlight language-text">docker run -p 4000:4000 -v /$PWD:/usr/src/app intellij-sdk-docs</code> (note the leading slash before <code class="code highlight language-text">$PWD</code>).</p>
+    </aside>
+
+    <ul>
+      <li>Run the commands in the Dockerfile’s <code class="code highlight language-text">CMD</code> instruction to execute:</li>
+      <li><code class="code highlight language-text">rake bootstrap</code>, which ensures all of the prerequisites are installed,</li>
+      <li><code class="code highlight language-text">rake preview</code>, which builds the site and starts to host it.</li>
+    </ul>
+  </li>
+  <li>Finally, you can access the newly created site by visiting <a href="http://localhost:4000/intellij/sdk/docs/" data-bypass="yes" target="_blank"><span>http://localhost:4000/intellij/sdk/docs/</span></a>, or by using the IP address of the docker client virtual machine (see the note above).</li>
+</ul>
+
+<a name="developing-documentation-locally" class="elem-anchor"></a>
+<h3>Developing Documentation Locally<a href="#developing-documentation-locally" class="anchor-link"><span></span></a></h3>
+
+<p>To build the documentation site, you need:</p>
+
+<ul>
+  <li>Ruby 2 - Jekyll is a Ruby application.</li>
+  <li>Ruby 2 DevKit (for Windows) - Some of Jekyll’s dependencies need to be compiled, and require the DevKit to be installed.</li>
+  <li><code class="code highlight language-text">gem install bundler</code> - the site uses <a href="https://bundler.io" data-bypass="yes" target="_blank"><span>Bundler</span></a> to manage gem dependencies within the repo, rather than globally installing to the local operating system. Run this command to install the Bundler toolset globally.</li>
+</ul>
+
+<a name="macos" class="elem-anchor"></a>
+<h4>macOS</h4>
+
+<p>macOS comes with Ruby already installed. The only steps required are:</p>
+
+<ul>
+  <li><code class="code highlight language-text">gem install bundler</code></li>
+</ul>
+
+<a name="windows" class="elem-anchor"></a>
+<h4>Windows</h4>
+
+<ul>
+  <li>Install <a href="https://rubyinstaller.org" data-bypass="yes" target="_blank"><span>Ruby 2</span></a> and the <a href="http://rubyinstaller.org/downloads/" data-bypass="yes" target="_blank"><span>Ruby 2 DevKit</span></a> (one of the gems needs to build a native component)
+    <ul>
+      <li>After installing the DevKit, make sure to edit the <code class="code highlight language-text">config.yml</code> file to point to the Ruby installation</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This installation is easier if you use <a href="https://chocolatey.org" data-bypass="yes" target="_blank"><span>Chocolatey</span></a>, a package manager for Windows:</p>
+
+<ul>
+  <li><code class="code highlight language-text">choco install ruby</code></li>
+  <li><code class="code highlight language-text">choco install ruby2.devkit</code>
+    <ul>
+      <li>After installing the DevKit, make sure to edit the <code class="code highlight language-text">config.yml</code> file to point to the Ruby installation.</li>
+      <li>By default, this is <code class="code highlight language-text">C:\tools\DevKit\config.yml</code></li>
+      <li>Add the line <code class="code highlight language-text">- C:\tools\ruby21</code> (including the leading minus sign)</li>
+    </ul>
+  </li>
+</ul>
+
+<aside class="note">
+  <p> Before running the <code class="code highlight language-text">rake bootstrap</code> step listed below, please run the <code class="code highlight language-text">devkitvars.bat</code> file from the DevKit. E.g. <code class="code highlight language-text">C:\tools\DevKit\devkitvars.bat</code></p>
+</aside>
+
+<a name="bootstrapping-the-documentation-build-environment" class="elem-anchor"></a>
+<h3>Bootstrapping the Documentation Build Environment<a href="#bootstrapping-the-documentation-build-environment" class="anchor-link"><span></span></a></h3>
+
+<ol>
+  <li>Ensure Bundler is installed - <code class="code highlight language-text">gem install bundler</code>.</li>
+  <li>On Windows, ensure the <code class="code highlight language-text">devkitvars.bat</code> file has been run in the current command prompt (e.g. <code class="code highlight language-text">c:\tools\DevKit\devkitvars.bat</code>).</li>
+  <li>Clone the documentation site.</li>
+  <li>Initialize and update the <code class="code highlight language-text">sdkdocs-template</code> submodule - <code class="code highlight language-text">git submodule init</code> and <code class="code highlight language-text">git submodule update</code></li>
+  <li><code class="code highlight language-text">rake bootstrap</code> - this uses Bundler to download all required gems.</li>
+  <li><code class="code highlight language-text">rake preview</code> - this will build the site, and host it in a local webserver.</li>
+</ol>
+
+<a name="building-and-previewing-the-site" class="elem-anchor"></a>
+<h3>Building and Previewing the Site<a href="#building-and-previewing-the-site" class="anchor-link"><span></span></a></h3>
+
+<p>To build and test the site, run <code class="code highlight language-text">rake preview</code>. This will build the site and host it, using the config provided. The URL of the hosted site is displayed on the screen and depends on the <code class="code highlight language-text">baseurl</code> field defined in <code class="code highlight language-text">_config.yml</code>.</p>
+
+<aside class="note">
+  <p> You must use <code class="code highlight language-text">localhost</code> as hostname, <em>NOT</em> 0.0.0.0, otherwise fonts fail to load.</p>
+</aside>
+
+<a name="documentation-repository-submodules" class="elem-anchor"></a>
+<h2>Documentation Repository Submodules<a href="#documentation-repository-submodules" class="anchor-link"><span></span></a></h2>
+<p>The <code class="code highlight language-text">sdkdocs-template</code> directory is actually a Git submodule, and it contains a submodule to the private <code class="code highlight language-text">webhelp-template</code> repository. 
+The <code class="code highlight language-text">sdkdocs-template</code> repository contains build scripts and compiled and minified JS and CSS that allow the site to run. 
+The private <code class="code highlight language-text">webhelp-template</code> repository contains the code to build the JS and CSS. 
+It is currently closed source, but the plan is to make it open source at some point, in which case it is likely the two repositories will be merged.</p>
+
+<p>After cloning, a submodule needs to be initialized and updated:</p>
+
+<div class="code-block" data-lang="sh"><code class="code-block__wrapper">git submodule init
+git submodule update
+</code></div>
+
+<p>Initialization creates a <code class="code highlight language-text">.gitmodules</code> file, register a submodule in the <code class="code highlight language-text">sdkdocs-template</code> folder and check out the files. 
+Note that when a repo is added as a submodule, it doesn’t get a <code class="code highlight language-text">.git</code> folder, but instead gets a <code class="code highlight language-text">.git</code> file that points to the actual location of the <code class="code highlight language-text">.git</code> folder.</p>
+
+<p>A submodule can be updated using normal git commands such as <code class="code highlight language-text">git pull</code>. 
+It can be switched to a different branch using <code class="code highlight language-text">git checkout</code>, and any changes to the currently checked out revision need to be committed back into the main repository using git commands. 
+A submodule is initially cloned at a specific revision, and not as part of a branch.update</p>
+
+<p>If changes are made to the submodule, they should be made on a branch to a clone, and a Pull Request sent. 
+Changes can be made and committed, and the hosting repository will need to commit a pointer to the current version of the submodule.</p>
+
+<p>If there are any problems with the <code class="code highlight language-text">sdkdocs-template</code>, please <a href="https://github.com/JetBrains/sdkdocs-template/issues" data-bypass="yes" target="_blank"><span>raise an issue</span></a>.</p>
+
+<a name="creating-intellij-platform-sdk-content" class="elem-anchor"></a>
+<h2>Creating IntelliJ Platform SDK Content<a href="#creating-intellij-platform-sdk-content" class="anchor-link"><span></span></a></h2>
+<p>Content contributions to the IntelliJ Platform SDK are welcome.
+Please download or clone the open source SDK project from <a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span>GitHub</span></a>, make additions or changes, and submit a pull request.
+Before creating or altering content, please consult these guides:</p>
+<ul>
+  <li><a href="intro/sdk_style.html"><span>SDK Documentation Style Guide</span></a>. 
+This guide describes documentation conventions in terms of Markdown syntax.
+Always test documentation changes using a <a href="#building-and-previewing-the-site"><span>preview</span></a> of the site.</li>
+  <li><a href="intro/sdk_code_guidelines.html"><span>SDK Code Sample Guidelines</span></a>. 
+Conventions for code sample organization, project settings, and naming conventions are described in this document.
+Always test code changes by building and testing the SDK code sample.</li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/intro/key_topics.html">Key Topics</a>
+                        <a class="navigation-links__next" href="/CODE_OF_CONDUCT.html">Code of Conduct</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 25 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

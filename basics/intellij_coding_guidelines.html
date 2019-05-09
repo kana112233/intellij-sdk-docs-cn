@@ -1,0 +1,197 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>IntelliJ Platform Coding Guidelines / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/intellij_coding_guidelines.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="IntelliJ Platform Coding Guidelines" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-23T18:28:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="IntelliJ Platform Coding Guidelines" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/intellij_coding_guidelines">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/platform_contributions.html">Contributing to the IntelliJ Platform</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/intellij_coding_guidelines.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>IntelliJ Platform Coding Guidelines</h1>
+                    <p>如果您要编写想要为IntelliJ平台贡献的代码(作为补丁或插件),遵循这些指导原则将使JetBrains开发团队更容易查看和接受您的更改.</p>
+
+<p>####遵循最新源代码</p>
+
+<p>如果您提交补丁,我们强烈建议您根据Git存储库中的最新版本的代码构建补丁.
+最简单的方法是克隆JetBrains Git存储库,在Git中跟踪您的工作,并使用“git format-patch”命令创建补丁.</p>
+
+<p>####一般建筑原理</p>
+
+<p>请尽力遵循常见的Java架构原则.
+约书亚布洛赫的“有效Java”是一个很好的起点.</p>
+
+<p>####测试</p>
+
+<p>IntelliJ IDEA的大多数现有功能都包含在功能测试中.
+如果要修改的区域由测试覆盖,则必须运行测试并确保更改不会引入任何新的测试失败.
+还强烈建议您提供新的功能测试,以涵盖您修复的错误或您添加的新功能.</p>
+
+<p>####代码格式</p>
+
+<p>我们对代码格式化一般都很松懈,但至少必须遵守以下约定:</p>
+
+<ul>
+  <li>
+    <p>源文件中有2个空格缩进</p>
+  </li>
+  <li>
+    <p><strong>实例变量的</strong>前缀和类变量的<strong>我们的</strong>前缀</p>
+  </li>
+  <li>
+    <p>新的源代码文件必须包含带有Apache 2许可证和贡献者名称的版权声明.</p>
+  </li>
+</ul>
+
+<p>遵循我们的代码格式化指南的最简单方法是使用共享代码样式重新格式化代码提交,该代码样式包含在IntelliJ IDEA Community Edition项目目录中.</p>
+
+<p>####检查</p>
+
+<p>IntelliJ IDEA Community Edition项目包括共享检查配置文件.
+我们强烈建议您确保所提交的代码不包含该检查配置文件中配置的检查突出显示的任何警告.</p>
+
+<a name="javadoc" class="elem-anchor"></a>
+<h4>JavaDoc评论</h4>
+
+<p>如果您的代码添加了新的OpenAPI接口,类,方法或扩展点,则必须提供描述API的参数和预期用法的JavaDoc注释.
+为代码的其他部分提供JavaDoc或其他注释是个好主意,但不是必需的.</p>
+
+<p>####承诺</p>
+
+<p>在查看更改时,为避免不必要的工作,请遵循以下准则:</p>
+
+<ul>
+  <li>
+    <p>在提交给我们之前,查看补丁或拉取请求中的所有更改.
+确保你改变的一切都是有原因的.</p>
+  </li>
+  <li>
+    <p>请不要在补丁中包含未完成的工作.
+确保它不包含任何TODO注释.
+如果您添加了一些代码但最终不需要它,请确保在提交补丁之前将其删除.</p>
+  </li>
+  <li>
+    <p>请不要包含任何影响格式的更改,修复“黄色代码”(警告)或代码样式以及修复错误或实现功能的实际更改.
+没有人愿意留下糟糕的代码,但请记住,将这些变化相互混合会使审查过程变得复杂.</p>
+  </li>
+  <li>
+    <p>请不要在单个补丁或拉取请求中修复多个问题.</p>
+  </li>
+  <li>
+    <p>请不要对配置文件(runConfigurations/IDEA.xml,codeStyleSettings.xml,misc.xml等)进行个人更改,除非它对修复本身至关重要.</p>
+  </li>
+  <li>
+    <p>除非有必要修复,否则请避免移动或重命名课程.</p>
+  </li>
+</ul>
+
+<p>理想的pull请求将包含1个提交,其中包含修复bug或实现某个功能所需的所有内容,但没有其他内容. 
+“提前提交,经常提交”完全适用于本地提交,但这种“公共提交”很难审核(审核人员需要花费更多时间来审核正在进行的工作或审核所有更改
+立即丢失存储在提交消息中的有价值信息).</p>
+
+<p>最好的方法是尽早提交,然后将所有提交压缩成一个带有描述性提交消息的提交.</p>
+
+<p>有时单个问题的几个提交也是可以接受的,但是每个提交都需要是自包含的“步骤”来解决问题.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/platform_contributions.html">Contributing to the IntelliJ Platform</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 23 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

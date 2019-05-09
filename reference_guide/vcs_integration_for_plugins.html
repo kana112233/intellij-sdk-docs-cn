@@ -1,0 +1,393 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>VCS Integration Plugins / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/vcs_integration_for_plugins.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="VCS Integration Plugins" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:44:02+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="VCS Integration Plugins" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/vcs_integration_for_plugins">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations.html">Run Configurations</a>
+                        <a class="navigation-links__next" href="/reference_guide/localization_guide.html">Localization Guide</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/vcs_integration_for_plugins.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>VCS Integration Plugins</h1>
+                    <p>此页面概述了IntelliJ IDEA 7.0中的版本控制集成API.</p>
+
+<p>此处描述的大多数概念也适用于IntelliJ IDEA 6.0.</p>
+
+<p>VCS API在版本6.0中进行了重大重构,本文档未描述旧版本的API.</p>
+
+<p>＃＃ 关键概念</p>
+
+<p>＃＃＃ 文件路径</p>
+
+<p>A <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java" data-bypass="yes" target="_blank"><span>FilePath</span></a></p>
+
+<p>表示磁盘或VCS存储库中文件或目录的路径.</p>
+
+<p>不像</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java" data-bypass="yes" target="_blank"><span>VirtualFile</span></a>,</p>
+
+<p>一个</p>
+
+<p>[文件路径(upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java)</p>
+
+<p>可以表示磁盘上不存在的文件的路径.</p>
+
+<p>一个主要区别</p>
+
+<p>[文件路径(upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java)</p>
+
+<p>和a</p>
+
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html" data-bypass="yes" target="_blank"><span>java.io.File的</span></a></p>
+
+<p>是那个</p>
+
+<p>[文件路径(upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java)</p>
+
+<p>缓存</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java" data-bypass="yes" target="_blank"><span>VirtualFile</span></a></p>
+
+<p>对应于路径,因此可以在不进行VFS搜索的情况下检索它.</p>
+
+<p>创建实例</p>
+
+<p>[文件路径(upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java),</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/actions/VcsContextFactory.java" data-bypass="yes" target="_blank"><span>VcsContextFactory</span></a></p>
+
+<p>使用API​​.</p>
+
+<p>它可以作为<code class="code highlight language-text">PeerFactory.getInstance()访问.getVcsContextFactory()</code></p>
+
+<p>[文件路径(upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java)</p>
+
+<p>表示使用VCS存储库而不是本地路径中的路径</p>
+
+<p><code class="code highlight language-text">VcsContextFactory.createFilePathOnNonLocal()</code>. 
+<code class="code highlight language-text">FilePath.isNonLocal()</code>为这些文件返回true.</p>
+
+<p>###修订号</p>
+
+<p>一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/history/VcsRevisionNumber.java" data-bypass="yes" target="_blank"><span>VcsRevisionNumber</span></a></p>
+
+<p>表示文件的修订号.</p>
+
+<p>如果VCS将修订号存储为简单整数,则为标准</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/history/VcsRevisionNumber.java" data-bypass="yes" target="_blank"><span>VcsRevisionNumber</span></a>.</p>
+
+<p>可以使用Int实现.</p>
+
+<p>如果VCS具有更复杂的版本号格式(如CVS,它使用一系列用点分隔的数字),则插件可以提供自定义实现.</p>
+
+<a name="contentrevision" class="elem-anchor"></a>
+<h3>ContentRevision<a href="#contentrevision" class="anchor-link"><span></span></a></h3>
+
+<p>一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/changes/ContentRevision.java" data-bypass="yes" target="_blank"><span>ContentRevision</span></a></p>
+
+<p>表示文件的特定修订,它存在于本地或VCS存储库中.</p>
+
+<p>它有三个主要属性:</p>
+
+<p>*<code class="code highlight language-text">FilePath</code>指定这是一个修订版的文件.
+如果本地存在某个版本的文件,则应该是本地路径.</p>
+
+<ul>
+  <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/history/VcsRevisionNumber.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">VcsRevisionNumber</code></span></a>指定修订版的修订号,或者<code class="code highlight language-text">
+如果修订仅在本地存在,则为VcsRevisionNumber.NULL</code>.</li>
+</ul>
+
+<p>*修订内容.</p>
+
+<p>内容以字符串形式返回,VCS插件负责将二进制文件内容转换为正确的编码.</p>
+
+<p>要根据IDE设置和字节顺序标记自动检测编码,可以使用方法<code class="code highlight language-text">CharsetToolkit.bytesToString()</code>(此API是IDEA 7.0.2中的新增功能).</p>
+
+<p>二进制文件的修订版也可以表示为BinaryContentRevision,它是ContentRevision的子类.</p>
+
+<p>对于二进制修订版,getContent()的结果是未定义的,并且getBinaryContent()可用于将内容检索为字节数组.</p>
+
+<p>可用于表示特定文件的当前磁盘版本的有用类是</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/CurrentContentRevision.java" data-bypass="yes" target="_blank"><span>CurrentContentRevision</span></a>.</p>
+
+<a name="filestatus" class="elem-anchor"></a>
+<h3>FileStatus<a href="#filestatus" class="anchor-link"><span></span></a></h3>
+
+<p>一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/vcs/FileStatus.java" data-bypass="yes" target="_blank"><span>时间filestatus</span></a></p>
+
+<p>表示与VCS相关的文件状态(未版本控制,未更改,添加,修改等).</p>
+
+<p>它确定用于在UI中呈现文件名称的颜色.</p>
+
+<p>###改变</p>
+
+<p>一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/changes/Change.java" data-bypass="yes" target="_blank"><span>变更</span></a></p>
+
+<p>从VCS的角度来看,表示单个文件操作(创建,修改,移动/重命名或删除).</p>
+
+<p>变更可以表示用户在本地执行但尚未提交的修改,已提交的修改或某种其他类型的修改(例如,搁置的更改或两个任意修订之间的差异).</p>
+
+<p>一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/changes/Change.java" data-bypass="yes" target="_blank"><span>变更</span></a></p>
+
+<p>基本上由两个内容修订组成:</p>
+
+<p><em>修订前(如果</em> Change *表示文件创建,则为“null”)</p>
+
+<p><em>修订后(如果</em> Change *代表文件删除,则为“null”)</p>
+
+<p>移动或重命名由更改表示,其中修订前和修订后具有不同的文件路径.</p>
+
+<p>可以为a指定自定义文件状态</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/changes/Change.java" data-bypass="yes" target="_blank"><span>变更</span></a></p>
+
+<p>如果它表示文件的非标准修改(例如,已与冲突合并的文件).</p>
+
+<p>如果尚未指定自定义文件状态,则会根据更改类型自动计算状态.</p>
+
+<p>＃＃＃ 更改列表</p>
+
+<p>一个</p>
+
+<p>[变更表(upsource:///platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangeList.java)</p>
+
+<p>表示一组命名的相关更改.</p>
+
+<p>有两种主要的变更清单:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/LocalChangeList.java" data-bypass="yes" target="_blank"><span>LocalChangeList</span></a>表示用户在本地完成的一组修改.
+   
+如果VCS也支持更改列表的概念(如Perforce那样),则VCS插件可以将IDEA的本地更改列表结构与VCS的结构同步.
+   
+否则,本地更改列表只是用户签出或修改的文件的子集.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/versionBrowser/CommittedChangeList.java" data-bypass="yes" target="_blank"><span>CommittedChangeList</span></a>
+   
+表示签入VCS存储库的一组修改.
+   
+对于支持原子提交的VCS,每个提交的修订都由CommittedChangeList表示.
+   
+对于使用每个文件提交的VCS(如CVS),插件可以使用启发式方法将一系列单个文件提交分组为
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/versionBrowser/CommittedChangeList.java" data-bypass="yes" target="_blank"><span>CommittedChangeList</span></a></p>
+  </li>
+</ul>
+
+<aside class="注意">
+  <p> * Changes <em>视图中的</em> Unversioned Files <em>,</em> Locally Deleted Files *等节点实际上不是更改列表,并且Change对象不表示这些节点下的文件.</p>
+</aside>
+
+<p>##插件组件</p>
+
+<p>本节描述构成VCS集成插件的不同组件,大致与它们应实现的顺序相同.</p>
+
+<a name="abstractvcs" class="elem-anchor"></a>
+<h3>AbstractVcs<a href="#abstractvcs" class="anchor-link"><span></span></a></h3>
+
+<p>这是VCS插件的主要入口点,IntelliJ平台使用该插件来检索插件提供的所有其他服务.</p>
+
+<p>注册AbstractVcs实现的推荐方法是向plugin.xml添加扩展声明,如以下示例所示:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
+  ...
+  <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;vcs</span> <span class="na">name=</span><span class="s">"svn"</span> <span class="na">vcsClass=</span><span class="s">"org.jetbrains.idea.svn.SvnVcs"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/extensions&gt;</span>
+<span class="nt">&lt;/idea-plugin&gt;</span>
+</code></div>
+
+<p>这里<code class="code highlight language-text">name</code>是VCS的唯一名称(这必须匹配你的<code class="code highlight language-text">AbstractVcs.getName()</code>实现返回的字符串),* vcsClass *是你的实现类.</p>
+
+<a name="changeprovider" class="elem-anchor"></a>
+<h3>ChangeProvider<a href="#changeprovider" class="anchor-link"><span></span></a></h3>
+
+<p>该组件负责跟踪用户对工作副本的更改,并将这些更改报告给IntelliJ Platform核心.</p>
+
+<p>从此返回此类的实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/AbstractVcs.java" data-bypass="yes" target="_blank"><span>AbstractVcs.getChangeProvider()</span></a>.</p>
+
+<p>ChangeProvider与之协同工作</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/VcsDirtyScopeManager.java" data-bypass="yes" target="_blank"><span>VcsDirtyScopeManager</span></a>,</p>
+
+<p>这是IntelliJ平台核心中的一个组件.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/VcsDirtyScopeManager.java" data-bypass="yes" target="_blank"><span>VcsDirtyScopeManager</span></a></p>
+
+<p>跟踪“脏范围” -  VCS文件状态可能已过期的文件集.</p>
+
+<p>无论是在磁盘上修改文件还是通过显式调用使其VCS状态无效,都会将文件添加到脏范围</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/VcsDirtyScopeManager.java" data-bypass="yes" target="_blank"><span>VcsDirtyScopeManager.fileDirty()</span></a></p>
+
+<p>要么</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/VcsDirtyScopeManager.java" data-bypass="yes" target="_blank"><span>VcsDirtyScopeManager.dirDirtyRecursively()</span></a>.</p>
+
+<p>将一些文件添加到脏范围后,将传递脏范围</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangeProvider.java" data-bypass="yes" target="_blank"><span>ChangeProvider.getChanges()</span></a>,</p>
+
+<p>随着一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangelistBuilder.java" data-bypass="yes" target="_blank"><span>ChangelistBuilder</span></a></p>
+
+<p>实例,它作为一个接收器</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangeProvider.java" data-bypass="yes" target="_blank"><span>ChangeProvider</span></a></p>
+
+<p>提供有关已更改文件的数据.</p>
+
+<p>此处理在后台线程中异步发生.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangeProvider.java" data-bypass="yes" target="_blank"><span>ChangeProvider</span></a></p>
+
+<p>可以使用遍历脏范围内的所有文件</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/VcsDirtyScope.java" data-bypass="yes" target="_blank"><span>VcsDirtyScope.iterate()</span></a>,</p>
+
+<p>或者使用<code class="code highlight language-text">getDirtyFiles()</code>和<code class="code highlight language-text">getDirtyDirectoriesRecursively()</code>方法检索有关其内容的信息.</p>
+
+<p>如果可以批量检索VCS中有关本地更改的信息,则最好使用第二种方法,因为它可以更好地扩展到大型工作副本.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/vcs-api/src/com/intellij/openapi/vcs/changes/ChangeProvider.java" data-bypass="yes" target="_blank"><span>ChangeProvider</span></a></p>
+
+<p>使用以下方法将数据报告给ChangelistBuilder:</p>
+
+<p>*<code class="code highlight language-text">processChange()</code>用于已检出(或在VCS不使用显式检出模型时修改),计划添加或删除,移动或重命名的文件.</p>
+
+<p><em><code class="code highlight language-text">processUnversionedFile()</code>用于存在于磁盘上的文件,但不由VCS管理,未安排添加,也不通过</em> .cvsignore *或类似机制忽略.</p>
+
+<p>*<code class="code highlight language-text">processLocallyDeletedFile()</code>用于存在于VCS存储库中的文件,但不存在于磁盘上且未计划删除.</p>
+
+<p><em><code class="code highlight language-text">processIgnoredFile()</code>是针对不由VCS管理但通过</em> .cvsignore *或类似机制忽略的文件调用的.</p>
+
+<p>*<code class="code highlight language-text">processSwitchedFile()</code>用于文件或目录,对于这些文件或目录,工作副本对应于与其父目录的工作副本相比的不同分支.
+   
+可以为已调用processSwitchedFile()的相同文件调用此方法.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations.html">Run Configurations</a>
+                        <a class="navigation-links__next" href="/reference_guide/localization_guide.html">Localization Guide</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,214 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Plugin API / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/plugin_repository/api/plugin_upload.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Upload Plugin API" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-21T19:31:12+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Upload Plugin API" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="plugin_repository/api/plugin_upload">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/plugin_repository/api/plugins_list.html">Plugins List API</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/plugin_repository/api/plugin_upload.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Upload Plugin API</h1>
+                    <p>Please note that maximum allowed plugin size is <em>200 MB</em>.</p>
+
+<p>你应该在[JetBrains Hub]创建一个<a href="https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html" data-bypass="yes" target="_blank"><span>** hubPermanentToken **</span></a>(https://hub.jetbrains.com/
+users/me？tab = authentification)并在Scope中指定插件存储库.</p>
+
+<p><img src="img/hub_token.png" alt="Hub Token" /></p>
+
+<p>其他参数:</p>
+
+<ul>
+  <li>
+    <p>** pluginId <em>*是插件的数字ID,可以从插件存储库URL中检索.
+例如
+<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala</span></a>插件ID为</em> 1347 <em>. 
+(</em>可以使用* pluginXmlId *)</p>
+  </li>
+  <li>
+    <p>** pluginXmlId **是plugin.xml中指定为<id>的插件的唯一标识符.
+可以在插件的单个更新页面右侧和plugin.xml中找到* Plugin XML ID *参数. 
+(*可以使用* pluginId *代替)</id></p>
+  </li>
+  <li>
+    <p><strong>频道</strong>是发布更新的发布频道(空频道表示默认<em>稳定</em>频道)(可选)</p>
+  </li>
+</ul>
+
+<a name="post" class="elem-anchor"></a>
+<h2>POST<a href="#post" class="anchor-link"><span></span></a></h2>
+
+<p>**使用pluginId **</p>
+
+<p>提供文件作为文件内容.
+卷曲命令模板:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">curl -i --header "Authorization: Bearer &lt;hubPermanentToken&gt;" -F pluginId=&lt;pluginId&gt; -F file=@&lt;path to plugin .jar/.zip file&gt; -F channel=&lt;channel&gt; https://plugins.jetbrains.com/plugin/uploadPlugin
+</code></div>
+
+<p>卷曲命令示例:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">curl -i --header "Authorization: Bearer perm:qwertyasdfghzxcvb" -F pluginId=5047 -F file=@Go-0.11.1197.zip -F channel=nightly https://plugins.jetbrains.com/plugin/uploadPlugin
+</code></div>
+
+<p>**使用pluginXmlId **</p>
+
+<p>提供文件作为文件内容.
+卷曲命令模板:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">curl -i --header "Authorization: Bearer &lt;hubPermanentToken&gt;" -F xmlId=&lt;pluginXmlId&gt; -F file=@&lt;path to plugin .jar/.zip file&gt; -F channel=&lt;channel&gt; https://plugins.jetbrains.com/plugin/uploadPlugin
+</code></div>
+
+<p>卷曲命令示例:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">curl -i --header "Authorization: Bearer perm:qwertyasdfghzxcvb" -F xmlId=ro.redeul.google.go -F file=@Go-0.11.1197.zip -F channel=nightly https://plugins.jetbrains.com/plugin/uploadPlugin
+</code></div>
+<a name="net" class="elem-anchor"></a>
+<h2>.NET<a href="#net" class="anchor-link"><span></span></a></h2>
+
+<p>您可以使用* NuGet CLI <em>的</em> push *命令上传.NET的插件.</p>
+
+<p>您应该使用<a href="https://www.jetbrains.com/help/hub/Manage-Permanent-Tokens.html" data-bypass="yes" target="_blank"><span>hubPermanentToken</span></a></p>
+
+<p>使用范围内的插件存储库,如上所示.</p>
+
+<p>推送命令模板:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">nuget push &lt;path to plugin .nupkg file&gt; &lt;hubPermanentToken&gt; -Source https://plugins.jetbrains.com/
+</code></div>
+
+<p>推送命令示例:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">nuget push angularjs.1.9.0.nupkg perm:qwertyasdfghzxcvb -Source https://plugins.jetbrains.com/
+</code></div>
+
+<p><strong>组态</strong></p>
+
+<p>NuGet的配置位于<code class="code highlight language-text">％AppData％\ NuGet \ NuGet.Config</code>(Windows)中,</p>
+
+<p><code class="code highlight language-text">〜/.config/NuGet/NuGet.Config</code>或<code class="code highlight language-text">〜/.nuget/NuGet/NuGet.Config</code>(Mac/Linux).</p>
+
+<p>您可以使用<a href="https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file" data-bypass="yes" target="_blank"><span>NuGet CLI命令</span></a>修改此文件.</p>
+
+<p>例如,您可以为源设置密钥并将* plugins site *添加到默认推送源:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper"># Set hub token for plugins site
+nuget setApiKey perm:qwertyasdfghzxcvb -Source https://plugins.jetbrains.com/
+
+# Set plugins site as default for push
+nuget config -set defaultPushSource=https://plugins.jetbrains.com/
+
+# Push if the key and the default source are set
+nuget push angularjs.1.9.0.nupkg
+</code></div>
+<p>In addition to the fact that you can change NuGet’s default configuration, 
+you can apply your own configuration file using <code class="code highlight language-text">ConfigFile</code> option in <em>push</em> command. 
+For example:</p>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">nuget push angularjs.1.9.0.nupkg -ConfigFile ~/my.Config
+</code></div>
+
+<p>要获取有关NuGet配置的更多信息,请参阅<a href="https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior" data-bypass="yes" target="_blank"><span>此页面</span></a>.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/plugin_repository/api/plugins_list.html">Plugins List API</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 21 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

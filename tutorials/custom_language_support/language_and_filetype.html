@@ -1,0 +1,236 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Language and File Type / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/custom_language_support/language_and_filetype.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="2. Language and File Type" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="2. Language and File Type" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/custom_language_support/language_and_filetype">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/prerequisites.html">1. Prerequisites</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/grammar_and_parser.html">3. Grammar and Parser</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/custom_language_support/language_and_filetype.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>2. Language and File Type</h1>
+                    <a name="section" class="elem-anchor"></a>
+<h3>2.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<p>定义一种语言</p>
+
+<p>注意语言名称的情况 - “简单”。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.lang.Language</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleLanguage</span> <span class="kd">extends</span> <span class="n">Language</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SimpleLanguage</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleLanguage</span><span class="o">();</span>
+
+  <span class="kd">private</span> <span class="nf">SimpleLanguage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="s">"Simple"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-1" class="elem-anchor"></a>
+<h3>2.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<p>定义一个图标</p>
+
+<p>复制</p>
+
+<p><a href="https://raw.githubusercontent.com/JetBrains/intellij-sdk-docs/master/code_samples/simple_language_plugin/src/com/simpleplugin/icons/jar-gray.png" data-bypass="yes" target="_blank"><span>ICON</span></a></p>
+
+<p>到** com.simpleplugin.icons **包。</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.util.IconLoader</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleIcons</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Icon</span> <span class="n">FILE</span> <span class="o">=</span> <span class="n">IconLoader</span><span class="o">.</span><span class="na">getIcon</span><span class="o">(</span><span class="s">"/com/simpleplugin/icons/jar-gray.png"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-2" class="elem-anchor"></a>
+<h3>2.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>定义文件类型</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.fileTypes.LanguageFileType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleFileType</span> <span class="kd">extends</span> <span class="n">LanguageFileType</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SimpleFileType</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleFileType</span><span class="o">();</span>
+
+  <span class="kd">private</span> <span class="nf">SimpleFileType</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">SimpleLanguage</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"Simple file"</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"Simple language file"</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDefaultExtension</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"simple"</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Nullable</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Icon</span> <span class="nf">getIcon</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">SimpleIcons</span><span class="o">.</span><span class="na">FILE</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-3" class="elem-anchor"></a>
+<h3>2.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<p>定义文件类型工厂</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.fileTypes.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.NotNull</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleFileTypeFactory</span> <span class="kd">extends</span> <span class="n">FileTypeFactory</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createFileTypes</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">FileTypeConsumer</span> <span class="n">fileTypeConsumer</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">fileTypeConsumer</span><span class="o">.</span><span class="na">consume</span><span class="o">(</span><span class="n">SimpleFileType</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></div>
+
+<a name="section-4" class="elem-anchor"></a>
+<h3>2.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<p>注册文件类型工厂</p>
+
+<p>在plugin.xml中添加:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fileTypeFactory</span> <span class="na">implementation=</span><span class="s">"com.simpleplugin.SimpleFileTypeFactory"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/extensions&gt;</span>
+</code></div>
+
+<a name="section-5" class="elem-anchor"></a>
+<h3>2.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<p>运行该项目</p>
+
+<p>创建扩展名为* .simple *的文件</p>
+
+<p>和IntelliJ IDEA会自动将其与我们的语言相关联。</p>
+
+<p>！<a href="img/file_type_factory.png"><span>文件类型工厂</span></a></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/prerequisites.html">1. Prerequisites</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/grammar_and_parser.html">3. Grammar and Parser</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,162 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Indexing and PSI Stubs / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/indexing_and_psi_stubs.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Indexing and PSI Stubs" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-01-19T10:48:49+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Indexing and PSI Stubs" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/indexing_and_psi_stubs">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/psi_cookbook.html">PSI Cookbook</a>
+                        <a class="navigation-links__next" href="/reference_guide/frameworks_and_external_apis/xml_dom_api.html">XML DOM API</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/indexing_and_psi_stubs.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Indexing and PSI Stubs</h1>
+                    <p>##指数</p>
+
+<p>索引框架提供了一种定位某些元素的快捷方法,例如
+在大型代码库中包含特定单词或具有特定名称的方法的文件.
+插件开发人员可以使用IDE本身构建的现有索引,以及构建和使用自己的索引.</p>
+
+<p>它支持两种主要类型的索引:</p>
+
+<ul>
+  <li>
+    <p><a href="/intellij/sdk/docsbasics/indexing_and_psi_stubs/file_based_indexes.html"><span>基于文件的索引</span></a></p>
+  </li>
+  <li>
+    <p><a href="/intellij/sdk/docsbasics/indexing_and_psi_stubs/stub_indexes.html"><span>存根索引</span></a></p>
+  </li>
+</ul>
+
+<p>基于文件的索引直接构建在文件内容上.
+存根索引是在序列化的<em>存根树</em>上构建的.
+源文件的存根树是其PSI树的子集,其仅包含外部可见的声明,并以紧凑的二进制格式序列化.</p>
+
+<p>查询基于文件的索引可以获得符合特定条件的文件集.
+查询存根索引可以获得匹配的PSI元素集.
+因此,自定义语言插件开发人员通常应在其插件实现中使用存根索引.</p>
+
+<p>##哑模式</p>
+
+<p>索引是一个潜在的漫长过程.
+它是在后台执行的,在此期间,IDE的功能仅限于不需要索引的功能:基本文本编辑,版本控制等.此限制由<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/DumbService.java" data-bypass="yes" target="_blank"><span>DumbService</span></a>.</p>
+
+<p><code class="code highlight language-text">DumbService</code>提供API来查询IDE当前是处于“哑”模式(不允许索引访问)还是“智能”模式(所有索引都已构建并可以使用).
+它还提供了延迟代码执行的方法,直到索引准备就绪.
+有关更多详细信息,请参阅其javadoc.</p>
+
+<a name="gists" class="elem-anchor"></a>
+<h2>Gists<a href="#gists" class="anchor-link"><span></span></a></h2>
+
+<p>有时,以下条件成立:</p>
+
+<p>*不需要基于文件的索引的聚合功能.
+只需要根据特定文件的内容计算一些数据,并将其缓存在磁盘上</p>
+
+<p>*不需要在索引期间急切地计算整个项目的数据(例如,它会降低索引速度,和/或所有项目文件的次要子集可能都需要此数据)</p>
+
+<p>*可以根据要求懒散地重新计算数据,而不会造成重大的性能损失</p>
+
+<p>在这种情况下,可以使用基于文件的索引,但文件列表提供了一种懒惰地执行数据计算,在磁盘上缓存以及更轻量级API的方法.
+请参阅<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java" data-bypass="yes" target="_blank"><span>VirtualFileGist</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java" data-bypass="yes" target="_blank"><span>PsiFileGist</span></a>文档.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/psi_cookbook.html">PSI Cookbook</a>
+                        <a class="navigation-links__next" href="/reference_guide/frameworks_and_external_apis/xml_dom_api.html">XML DOM API</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 19 January 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

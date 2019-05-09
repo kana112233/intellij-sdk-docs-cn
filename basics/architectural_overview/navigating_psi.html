@@ -1,0 +1,206 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigating the PSI / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/architectural_overview/navigating_psi.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Navigating the PSI" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-04-23T15:33:47+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Navigating the PSI" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/architectural_overview/navigating_psi">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/psi_elements.html">PSI Elements</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/psi_references.html">PSI References</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/architectural_overview/navigating_psi.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Navigating the PSI</h1>
+                    <p>导航PSI有三种主要方式:<em>自上而下</em>,<em>自下而上</em>,以及使用<em>引用</em>.
+在第一个场景中,</p>
+
+<p>你有一个PSI文件或另一个更高级别的元素(例如,一个方法),你需要找到所有匹配的元素</p>
+
+<p>指定的条件(例如,所有变量声明).
+在第二种情况中,您有一个特定的观点</p>
+
+<p>在PSI树中(例如,插入符号中的元素),需要找出有关其上下文的内容(例如,</p>
+
+<p>它已被声明的元素).
+最后,* references *允许您从元素的使用中导航</p>
+
+<p>(例如,方法调用)声明(被调用的方法)和返回.
+参考文献描述于</p>
+
+<p><a href="psi_references.html"><span>单独主题</span></a>.</p>
+
+<p>##自上而下导航</p>
+
+<p>执行自上而下导航的最常用方法是使用* visitor *.
+要使用访问者,您需要创建一个类</p>
+
+<p>(通常是一个匿名内部类)扩展基本访问者类,覆盖处理元素的方法</p>
+
+<p>你感兴趣,并将访问者实例传递给<code class="code highlight language-text">PsiElement.accept()</code>.</p>
+
+<p>访问者的基类是特定于语言的.
+例如,如果您需要处理Java文件中的元素,</p>
+
+<p>扩展<code class="code highlight language-text">JavaRecursiveElementVisitor</code>并覆盖与您所使用的Java元素类型相对应的方法</p>
+
+<p>有兴趣.</p>
+
+<p>以下代码段显示了使用visitor查找所有Java局部变量声明:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">file</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="k">new</span> <span class="n">JavaRecursiveElementVisitor</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">visitLocalVariable</span><span class="o">(</span><span class="n">PsiLocalVariable</span> <span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">visitLocalVariable</span><span class="o">(</span><span class="n">variable</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Found a variable at offset "</span> <span class="o">+</span> <span class="n">variable</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getStartOffset</span><span class="o">());</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></div>
+
+<p>在许多情况下,您还可以使用更具体的API进行自上而下导航.
+例如,如果您需要获取列表</p>
+
+<p>Java类中的所有方法都可以使用访问者来实现,但更容易实现的方法是调用<code class="code highlight language-text">PsiClass.getMethods()</code>.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java" data-bypass="yes" target="_blank"><span>PsiTreeUtil类</span></a>包含多个</p>
+
+<p>用于PSI树导航的通用,与语言无关的函数,其中一些(例如,<code class="code highlight language-text">findChildrenOfType</code>)</p>
+
+<p>执行自上而下的导航.</p>
+
+<p>##自下而上的导航</p>
+
+<p>自下而上导航的起点是PSI树中的特定元素(例如,结果)</p>
+
+<p>解析引用)或偏移量.
+如果您有偏移量,则可以通过调用找到相应的PSI元素</p>
+
+<p><code class="code highlight language-text">PsiFile.findElementAt()</code>.
+此方法返回树的最低级别的元素(例如,标识符),</p>
+
+<p>如果要确定更广泛的上下文,则需要在树中导航.</p>
+
+<p>在大多数情况下,通过调用<code class="code highlight language-text">PsiTreeUtil.getParentOfType()</code>来执行自下而上的导航.
+这种方法上升了</p>
+
+<p>树,直到找到您指定的类型的元素.
+例如,要查找包含方法,请调用</p>
+
+<p><code class="code highlight language-text">PsiTreeUtil.getParentOfType(element,PsiMethod.class)</code>.</p>
+
+<p>在某些情况下,您还可以使用特定的导航方法.
+例如,要查找包含方法的类,</p>
+
+<p>你调用<code class="code highlight language-text">PsiMethod.getContainingClass()</code>.</p>
+
+<p>以下代码段显示了如何一起使用这些调用:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
+<span class="n">PsiElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">psiFile</span><span class="o">.</span><span class="na">findElementAt</span><span class="o">(</span><span class="n">offset</span><span class="o">);</span>
+<span class="n">PsiMethod</span> <span class="n">containingMethod</span> <span class="o">=</span> <span class="n">PsiTreeUtil</span><span class="o">.</span><span class="na">getParentOfType</span><span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">PsiMethod</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">PsiClass</span> <span class="n">containingClass</span> <span class="o">=</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getContainingClass</span><span class="o">();</span>
+</code></div>
+
+<p>要了解导航在实践中的工作原理,请参阅</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/psi_demo/src/com/intellij/tutorials/psi/PsiNavigationDemoAction.java" data-bypass="yes" target="_blank"><span>代码示例</span></a>.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/psi_elements.html">PSI Elements</a>
+                        <a class="navigation-links__next" href="/basics/architectural_overview/psi_references.html">PSI References</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 23 April 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

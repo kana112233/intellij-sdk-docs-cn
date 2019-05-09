@@ -1,0 +1,256 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>List and Tree Controls / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/user_interface_components/lists_and_trees.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="List and Tree Controls" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-12T11:44:02+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="List and Tree Controls" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="user_interface_components/lists_and_trees">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/user_interface_components/editor_components.html">Editor Components</a>
+                        <a class="navigation-links__next" href="/user_interface_components/misc_swing_components.html">Miscellaneous Swing Components</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/user_interface_components/lists_and_trees.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>List and Tree Controls</h1>
+                    <a name="jblisttree" class="elem-anchor"></a>
+<h3>JBList和Tree<a href="#jblisttree" class="anchor-link"><span></span></a></h3>
+
+<p>每当你通常使用标准时</p>
+
+<p><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html" data-bypass="yes" target="_blank"><span>Swing JList</span></a></p>
+
+<p>组件，建议使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/components/JBList.java" data-bypass="yes" target="_blank"><span>JBList</span></a></p>
+
+<p>作为直接替换的类。</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/components/JBList.java" data-bypass="yes" target="_blank"><span>JBList</span></a></p>
+
+<p>支持以下附加功能</p>
+
+<p><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html" data-bypass="yes" target="_blank"><span>JList的</span></a>:</p>
+
+<p>*如果项目不适合列表框宽度，则绘制带有项目完整文本的工具提示。</p>
+
+<p>*当列表框中不包含任何项目时，在列表框中间绘制一条灰色文本消息。
+   
+可以通过调用<code class="code highlight language-text">getEmptyText()。setText()</code>来定制文本。</p>
+
+<p>*在列表框的右上角绘制一个忙碌图标，表示正在执行后台操作。
+   
+这可以通过调用<code class="code highlight language-text">setPaintBusy()</code>来启用。</p>
+
+<p>同样，</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/treeStructure/Tree.java" data-bypass="yes" target="_blank"><span>树</span></a></p>
+
+<p>class提供了标准的替代品</p>
+
+<p><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JTree.html" data-bypass="yes" target="_blank"><span>JTree的</span></a></p>
+
+<p>类。</p>
+
+<p>除了功能</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/components/JBList.java" data-bypass="yes" target="_blank"><span>JBList</span></a>，</p>
+
+<p>它支持宽选画(Mac风格)和拖放自动滚动。</p>
+
+<a name="coloredlistcellrenderercoloredtreecellrenderer" class="elem-anchor"></a>
+<h3>ColoredListCellRenderer和ColoredTreeCellRenderer<a href="#coloredlistcellrenderercoloredtreecellrenderer" class="anchor-link"><span></span></a></h3>
+
+<p>当您需要自定义列表框或树中的项目的表示时，建议使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/ColoredListCellRenderer.java" data-bypass="yes" target="_blank"><span>ColoredListCellRenderer</span></a></p>
+
+<p>要么</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/ColoredTreeCellRenderer.java" data-bypass="yes" target="_blank"><span>ColoredTreeCellRenderer</span></a></p>
+
+<p>类作为单元格渲染器。</p>
+
+<p>这些类允许您通过调用<code class="code highlight language-text">append()</code>从具有不同属性的多个文本片段中组合演示文稿，并通过调用<code class="code highlight language-text">setIcon</code>为该项设置可选图标。</p>
+
+<p>渲染器自动负责为所选项目和许多其他特定于平台的渲染详细信息设置正确的文本颜色。</p>
+
+<a name="listspeedsearchtreespeedsearch" class="elem-anchor"></a>
+<h3>ListSpeedSearch和TreeSpeedSearch<a href="#listspeedsearchtreespeedsearch" class="anchor-link"><span></span></a></h3>
+
+<p>为了便于在列表框或树中选择项目的基于键盘，您可以使用它在其上安装速度搜索处理程序</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/ListSpeedSearch.java" data-bypass="yes" target="_blank"><span>ListSpeedSearch</span></a></p>
+
+<p>和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/TreeSpeedSearch.java" data-bypass="yes" target="_blank"><span>TreeSpeedSearch</span></a>。</p>
+
+<p>这可以通过调用<code class="code highlight language-text">new ListSpeedSearch(list)</code>或<code class="code highlight language-text">new TreeSpeedSearch(tree)</code>来完成。</p>
+
+<p>如果需要自定义用于定位元素的文本，可以覆盖<code class="code highlight language-text">getElementText()</code>方法。</p>
+
+<p>或者，您可以传递一个函数将项目转换为字符串。</p>
+
+<p>函数需要作为<code class="code highlight language-text">elementTextDelegate</code>传递给</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/ListSpeedSearch.java" data-bypass="yes" target="_blank"><span>ListSpeedSearch</span></a></p>
+
+<p>构造函数或作为<code class="code highlight language-text">toString</code>来</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/TreeSpeedSearch.java" data-bypass="yes" target="_blank"><span>TreeSpeedSearch</span></a></p>
+
+<p>构造函数。</p>
+
+<a name="toolbardecorator" class="elem-anchor"></a>
+<h3>ToolbarDecorator<a href="#toolbardecorator" class="anchor-link"><span></span></a></h3>
+
+<p>插件开发中一个非常常见的任务是显示一个列表或树，允许用户添加，删除，编辑或重新排序项目。</p>
+
+<p>该任务的实施极大地促进了</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java" data-bypass="yes" target="_blank"><span>ToolbarDecorator</span></a></p>
+
+<p>类。</p>
+
+<p>此类提供了一个工具栏，其中包含对项目的操作，并且如果基础列表模型支持，则会自动启用对列表框中项目的拖放重新排序。</p>
+
+<p>列表上方或下方的工具栏位置取决于运行IDE的平台。</p>
+
+<p>要使用工具栏装饰器:</p>
+
+<p>*如果您需要支持删除和重新排序列表框中的项目，请确保列表的模型实现
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/ui/EditableModel.java" data-bypass="yes" target="_blank"><span>EditableModel</span></a>
+   
+接口。
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/CollectionListModel.java" data-bypass="yes" target="_blank"><span>CollectionListModel</span></a>
+   
+是一个实现此接口的方便模型类。</p>
+
+<p>*打电话
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java" data-bypass="yes" target="_blank"><span>ToolbarDecorator.createDecorator</span></a>
+   
+创建装饰器实例。</p>
+
+<p>*如果需要支持添加和/或删除项目，请调用<code class="code highlight language-text">setAddAction()</code>和/或<code class="code highlight language-text">setRemoveAction()</code>。</p>
+
+<p>*如果你需要除标准按钮之外的其他按钮，请调用<code class="code highlight language-text">addExtraAction()</code>或<code class="code highlight language-text">setActionGroup()</code>。</p>
+
+<p>*调用<code class="code highlight language-text">createPanel()</code>并将它返回的组件添加到面板中。</p>
+
+<p>&lt;! -</p>
+
+<a name="abstracttreebuilderabstracttreestructure" class="elem-anchor"></a>
+<h3>AbstractTreeBuilder和AbstractTreeStructure<a href="#abstracttreebuilderabstracttreestructure" class="anchor-link"><span></span></a></h3>
+
+<p>TODO链接到教程</p>
+
+<ul>
+  <li>
+    <aside>
+
+    </aside>
+  </li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/user_interface_components/editor_components.html">Editor Components</a>
+                        <a class="navigation-links__next" href="/user_interface_components/misc_swing_components.html">Miscellaneous Swing Components</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 12 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

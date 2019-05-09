@@ -1,0 +1,308 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Wizard. Adding Support for Creating New Project Types. / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/project_wizard.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Project Wizard. Adding Support for Creating New Project Types." />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-25T15:13:22+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Project Wizard. Adding Support for Creating New Project Types." />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/project_wizard">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/tutorials/project_wizard.html">Project Wizard</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/project_wizard.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Project Wizard. Adding Support for Creating New Project Types.</h1>
+                    <p>##项目向导</p>
+
+<p>使用项目向导可以使用</p>
+
+<p><a href="https://github.com/bulenkov/RedlineSmalltalk" data-bypass="yes" target="_blank"><span>RedLine SmallTalk插件</span></a></p>
+
+<p>##实现新模块类型</p>
+
+<p>通常通过实现附加到项目的某些模块类型来完成对特定工具和技术的额外支持.</p>
+
+<p>新模块类型应该从类派生</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/module/ModuleType.java" data-bypass="yes" target="_blank"><span>ModuleType</span></a>.</p>
+
+<p>##项目向导</p>
+
+<p>可以在包中找到配置自定义项目向导的主要实用程序</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard" data-bypass="yes" target="_blank"><span>lang-api.ide.util.projectWizard</span></a>.</p>
+
+<p>这些类和接口用于以下目的:</p>
+
+<p>*修改配置向导视图</p>
+
+<p>*向向导添加新步骤</p>
+
+<p>*为项目创建提供额外设置</p>
+
+<p>*项目创建期间的处理活动</p>
+
+<p>*初始环境配置</p>
+
+<p>###模块类型</p>
+
+<p>创建新模块类型和扩展名</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;moduleType</span> <span class="na">id=</span><span class="s">"MY_MODULE"</span> <span class="na">implementationClass=</span><span class="s">"st.redline.smalltalk.module.MyModuleType"</span><span class="nt">/&gt;</span>
+</code></div>
+<p>to the
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a>.
+A custom module type should extend the
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/module/ModuleType.java" data-bypass="yes" target="_blank"><span>ModuleType</span></a>
+generic from
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java" data-bypass="yes" target="_blank"><span>ModuleBuilder</span></a>.
+The following
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java" data-bypass="yes" target="_blank"><span>module type implementation</span></a>
+of a custom module type show how this instance can be registered and implemented.</p>
+
+<p>###实现Module Builder</p>
+
+<p>设置新模块环境</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java" data-bypass="yes" target="_blank"><span>ModuleBuilder</span></a></p>
+
+<p>class应该被扩展并注册为扩展点,如下面的代码段所示:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions&gt;</span>
+    <span class="c">&lt;!--Place your extensions here--&gt;</span>
+    <span class="nt">&lt;moduleBuilder</span> <span class="na">builderClass=</span><span class="s">"org.jetbrains.plugins.ruby.rails.facet.versions.MyModuleBuilder"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/extensions&gt;</span>
+</code></div>
+
+<p>强制实施的功能包括:</p>
+
+<p>*通过覆盖为新模块设置根模型</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">setupRootModel</span><span class="o">(</span><span class="n">ModifiableRootModel</span> <span class="n">modifiableRootModel</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConfigurationException</span><span class="o">;</span>
+</code></div>
+
+<p>*获取模块类型</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">abstract</span> <span class="n">ModuleType</span> <span class="nf">getModuleType</span><span class="o">();</span>
+</code></div>
+
+<p>看到</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java" data-bypass="yes" target="_blank"><span>JavaModuleBuilder</span></a></p>
+
+<p>更好地了解如何实现模块构建器.</p>
+
+<p>如果您的模块类型基于java模块并且也意味着支持Java,那么扩展</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java" data-bypass="yes" target="_blank"><span>JavaModuleBuilder</span></a></p>
+
+<p>足够.</p>
+
+<p>不需要注册扩展点.</p>
+
+<p>参考</p>
+
+<p><a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java" data-bypass="yes" target="_blank"><span>SmallTalk模块类型</span></a></p>
+
+<p>看怎么样</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java" data-bypass="yes" target="_blank"><span>JavaModuleBuilder</span></a></p>
+
+<p>可以派生出来.</p>
+
+<p>###实现Module Builder Listener</p>
+
+<p>模块构建器侦听器对新模块创建做出反应,这可以作为项目创建过程的一部分来完成,</p>
+
+<p>或者将新模块添加到现有项目中.</p>
+
+<p>要在创建模块后立即提供某种行为,模块构建器应该实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilderListener.java" data-bypass="yes" target="_blank"><span>ModuleBuilderListener</span></a></p>
+
+<p>方法</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">moduleCreated</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="kd">final</span> <span class="n">Module</span> <span class="n">module</span><span class="o">);</span>
+</code></div>
+<p>executed tasks right after a module has been created,
+these may include configuring roots looking up for an SDK and setting it up, adding a specific facet if required and others.
+For more details please see the following
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java" data-bypass="yes" target="_blank"><span>SmallTalk custom module type</span></a>
+implementation.</p>
+
+<p>###添加新向导步骤</p>
+
+<p>可以通过覆盖模块向导来添加新步骤</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="n">ModuleWizardStep</span><span class="o">[]</span> <span class="nf">createWizardSteps</span><span class="o">(</span><span class="n">WizardContext</span> <span class="n">wizardContext</span><span class="o">,</span> <span class="n">ModulesProvider</span> <span class="n">modulesProvider</span><span class="o">);</span>
+</code></div>
+<p>method in a custom
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleBuilder.java" data-bypass="yes" target="_blank"><span>module builder</span></a>.
+If this method returns a non-empty array of ModuleWizardStep objects, new steps will be shown in their indexing order while creating a new module.
+The following
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleWizardStep.java" data-bypass="yes" target="_blank"><span>implementation</span></a>
+for the SmallTalk project type illustrates how a custom wizard step can be created.
+The
+<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleWizardStep.java" data-bypass="yes" target="_blank"><span>RsModuleWizardStep</span></a>
+class is derived from
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleWizardStep.java" data-bypass="yes" target="_blank"><span>ModuleWizardStep</span></a>,
+which has two methods to be overridden:</p>
+
+<ul>
+  <li>
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="n">JComponent</span> <span class="nf">getComponent</span><span class="o">();</span>
+</code></div>
+    <p>defines how the step will look like</p>
+  </li>
+  <li>
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateDataModel</span><span class="o">();</span>
+</code></div>
+    <p>commits data from UI into ModuleBuilder and WizardContext</p>
+  </li>
+</ul>
+
+<p>##方面</p>
+
+<p>IntelliJ中的构面是存储多种特定于模块的设置的方式,例如,在某些给定模块中提供语言支持或框架.</p>
+
+<p>要从最终用户的角度更好地理解方面,请参阅</p>
+
+<p><a href="/intellij/sdk/docsreference_guide/project_model/facet.html"><span>刻面</span></a></p>
+
+<p>文档部分.</p>
+
+<p>##实现项目结构检测器</p>
+
+<p>要在从现有源导入项目时支持模块的创建,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/idea-ui/src/com/intellij/ide/util/projectWizard/importSources/ProjectStructureDetector.java" data-bypass="yes" target="_blank"><span>ProjectStructureDetector</span></a> 
+.</p>
+
+<p>要检测文件,模块支持实现</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">abstract</span> <span class="n">DirectoryProcessingResult</span> <span class="nf">detectRoots</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">File</span> <span class="n">dir</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">File</span><span class="o">[]</span> <span class="n">children</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">File</span> <span class="n">base</span><span class="o">,</span>
+                                                        <span class="nd">@NotNull</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">DetectedProjectRoot</span><span class="o">&gt;</span> <span class="n">result</span><span class="o">);</span>
+</code></div>
+
+<p>请参阅<a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsProjectStructureDetector.java" data-bypass="yes" target="_blank"><span>Smalltalk项目结构检测器</span></a></p>
+
+<p>但是检测文件是不够的,你还需要通过实现<code class="code highlight language-text">setupProjectStructure()</code>来为项目创建一个模块.
+以下是在项目结构中不存在其他模块时创建模块的示例.</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setupProjectStructure</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="kd">final</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">DetectedProjectRoot</span><span class="o">&gt;</span> <span class="n">roots</span><span class="o">,</span>
+        <span class="nd">@NotNull</span> <span class="kd">final</span> <span class="n">ProjectDescriptor</span> <span class="n">projectDescriptor</span><span class="o">,</span>
+        <span class="nd">@NotNull</span> <span class="kd">final</span> <span class="n">ProjectFromSourcesBuilder</span> <span class="n">builder</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">ModuleDescriptor</span><span class="o">&gt;</span> <span class="n">modules</span> <span class="o">=</span> <span class="n">projectDescriptor</span><span class="o">.</span><span class="na">getModules</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">modules</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">modules</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">DetectedProjectRoot</span> <span class="n">root</span> <span class="o">:</span> <span class="n">roots</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">modules</span><span class="o">.</span><span class="na">add</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="nf">ModuleDescriptor</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">getDirectory</span><span class="o">(),</span> <span class="n">MyModuleType</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(),</span>
+                        <span class="n">ContainerUtil</span><span class="o">.</span><span class="na">emptyList</span><span class="o">()));</span>
+            <span class="o">}</span>
+            <span class="n">projectDescriptor</span><span class="o">.</span><span class="na">setModules</span><span class="o">(</span><span class="n">modules</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></div>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/tutorials/project_wizard.html">Project Wizard</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 25 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

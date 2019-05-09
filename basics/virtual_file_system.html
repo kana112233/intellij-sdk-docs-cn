@@ -1,0 +1,222 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual File System / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/virtual_file_system.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Virtual File System" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-05-04T13:22:07+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Virtual File System" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/virtual_file_system">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/architectural_overview/virtual_file.html">Virtual Files</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/virtual_file_system.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Virtual File System</h1>
+                    <p>虚拟文件系统(VFS)是* IntelliJ Platform *的一个组件,它封装了用于处理文件的大部分活动.
+它有以下主要用途:</p>
+
+<p>*提供用于处理文件的通用API,无论其实际位置如何(在磁盘上,存档中,在HTTP服务器上等)</p>
+
+<p>*在检测到修改时跟踪文件修改并提供文件内容的新旧版本.</p>
+
+<p>*提供将附加持久数据与VFS中的文件相关联的可能性.</p>
+
+<p>为了提供最后两个功能,VFS管理用户硬盘的某些内容的_peristent snapshot_.
+快照仅存储通过VFS API至少请求过一次的文件,并且异步更新以匹配磁盘上发生的更改.</p>
+
+<p>快照是应用程序级别,而不是项目级别 - 因此,如果某个文件(例如,JDK中的某个类)被多个项目引用,则其内容的一个副本将存储在VFS中.</p>
+
+<p>所有VFS访问操作都通过快照.</p>
+
+<p>如果通过VFS API请求某些信息但快照中没有这些信息,则会从磁盘加载并存储到快照中.
+如果快照中有可用信息,则返回快照数据.
+仅当访问了特定信息时,文件的内容和目录中的文件列表才存储在快照中 - 否则,仅存储名称,长度,时间戳,属性等文件元数据.</p>
+
+<aside class="注意">
+  <p>这意味着IntelliJ平台UI中显示的文件系统状态和文件内容来自快照,快照可能并不总是与磁盘的实际内容相匹配.</p>
+</aside>
+
+<aside>
+
+</aside>
+
+<aside>
+  <p>例如,在某些情况下,在IntelliJ平台选择删除之前,已删除的文件仍可在UI中显示一段时间.</p>
+</aside>
+
+<p>在_refresh operations_期间,快照从磁盘更新,这通常是异步发生的.
+通过VFS进行的所有写操作都是同步的 - 即内容立即保存到磁盘.</p>
+
+<p>刷新操作将VFS的一部分状态与实际磁盘内容同步.
+刷新操作由* IntelliJ Platform *或插件代码显式调用 - 即,当IDE运行时在磁盘上更改文件时,VFS不会立即获取更改. 
+VFS将在下一次刷新操作期间更新,其中包括其范围内的文件.</p>
+
+<p><em>IntelliJ Platform</em> refreshes the entire project contents asynchronously on startup. By default, it performs a refresh operation when the user switches to it from another app, but users can turn this off via <strong>Settings | Appearance &amp; Behavior | System Settings | Synchronize files on frame activation</strong>.</p>
+
+<p>在Windows,Mac和Linux上,* IntelliJ Platform <em>启动本机文件监视器进程,该进程从文件系统接收文件更改通知并将其报告给</em> IntelliJ Platform *.
+如果文件观察程序可用,则刷新操作仅查看文件观察程序已报告已更改的文件.
+如果不存在文件观察程序,则刷新操作将遍历刷新范围中的所有目录和文件.</p>
+
+<p>刷新操作基于文件时间戳.
+如果文件的内容已更改但其时间戳保持不变,则* IntelliJ Platform *将不会获取更新的内容.</p>
+
+<p>目前没有用于从快照中删除文件的工具.
+如果一个文件被加载一次,它将永远保留在那里,除非它从磁盘中删除并且在其父目录之一上调用了刷新操作.</p>
+
+<p>The VFS itself does not honor ignored files listed in <strong>Settings | File Types | Files</strong> and folders to ignore and excluded folders listed in <strong>Project Structure | Modules | Sources | Excluded</strong>. If the application code accesses them, the VFS will load and return their contents. In most cases, the ignored files and excluded folders must be skipped from processing by higher level code.</p>
+
+<p>在IntelliJ平台IDE的运行实例的生命周期中,多个<code class="code highlight language-text">VirtualFile</code>实例可能对应于同一磁盘文件.
+它们是相同的,具有相同的<code class="code highlight language-text">hashCode</code>并共享用户数据.</p>
+
+<p>##同步和异步刷新</p>
+
+<p>从调用者的角度来看,刷新操作可以是同步的也可以是异步的.
+实际上,刷新操作是根据它们自己的线程策略执行的,而同步标志只是意味着调用线程将被阻塞,直到刷新操作(很可能在不同的线程上运行)完成.</p>
+
+<p>同步刷新和异步刷新都可以从任何线程启动.
+如果从后台线程启动刷新,则调用线程不能保持读取操作,否则会发生死锁.
+有关线程模型和读/写操作的更多详细信息,请参阅<a href="/intellij/sdk/docsbasics/architectural_overview/general_threading_rules.html"><span>IntelliJ平台架构概述</span></a>.</p>
+
+<p>相同的线程要求也适用于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/vfs/LocalFileSystem.java" data-bypass="yes" target="_blank"><span>LocalFileSystem.refreshAndFindFileByPath()</span></a>等函数,如果执行部分刷新,则执行部分刷新
+快照中找不到具有指定路径的文件.</p>
+
+<p>几乎在所有情况下,强烈使用异步刷新.
+如果在刷新完成后需要执行某些代码,则应将代码作为<code class="code highlight language-text">postRunnable</code>参数传递给其中一个刷新方法:
+ </p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/vfs/newvfs/RefreshQueue.java" data-bypass="yes" target="_blank"><span>RefreshQueue.createSession()</span></a>&lt;! -#L36–&gt;</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java" data-bypass="yes" target="_blank"><span>VirtualFile.refresh()</span></a>&lt;! -#L681–&gt;
+ </p>
+  </li>
+</ul>
+
+<p>在某些情况下,同步刷新可能会导致死锁,具体取决于调用刷新操作的线程所持有的锁.</p>
+
+<p>##虚拟文件系统事件</p>
+
+<p>虚拟文件系统中发生的所有更改(由于刷新操作或由用户的操作引起)都会报告为_virtual file system events_. 
+VFS事件始终在事件派发线程和写入操作中触发.</p>
+
+<p>监听VFS事件的最有效方法是实现<code class="code highlight language-text">BulkFileListener</code>接口并将其订阅到<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java" data-bypass="yes" target="_blank"><span>VirtualFileManager.VFS_CHANGES</span></a>&lt;! - #L34  - &gt;主题.</p>
+
+<p>此API为您提供在一个列表中刷新操作期间检测到的所有更改,并允许您批量处理它们.
+或者,您可以实现<code class="code highlight language-text">VirtualFileListener</code>接口并使用[VirtualFileManager.addVirtualFileListener()]注册它(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)&lt;!–#L113  - &gt;.
+这将让您逐个处理事件.</p>
+
+<aside class="注意">
+  <p> VFS监听器是应用程序级别,并将接收用户打开的* all *项目中发生的更改的事件.
+您可能需要过滤掉与您的任务无关的事件.</p>
+</aside>
+
+<p>在每次更改之前和之后都会发送VFS事件,您可以在之前的事件中访问该文件的旧内容.
+请注意,刷新后发生的事件是在磁盘上发生更改后发送的 - 因此,当您处理<code class="code highlight language-text">beforeFileDeletion</code>事件时,例如,该文件已从磁盘中删除.
+但是,它仍然存在于VFS快照中,您可以使用VFS API访问其最后的内容.</p>
+
+<p>请注意,刷新操作仅针对已在快照中加载的文件中的更改触发事件.
+例如,如果您访问了一个目录的<code class="code highlight language-text">VirtualFile</code>但从未使用[VirtualFile.getChildren()]加载其内容(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)&lt;! -#L135  - &gt;,在该目录中创建文件时,可能无法获得<code class="code highlight language-text">fileCreated</code>通知.</p>
+
+<p>如果使用<code class="code highlight language-text">VirtualFile.findChild()</code>仅在目录中加载单个文件,您将收到有关该文件更改的通知,但您可能无法获得同一目录中其他文件的创建/删除通知.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/architectural_overview/virtual_file.html">Virtual Files</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 4 May 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

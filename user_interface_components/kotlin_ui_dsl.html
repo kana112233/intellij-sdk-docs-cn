@@ -1,0 +1,371 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Kotlin UI DSL / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/user_interface_components/kotlin_ui_dsl.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Kotlin UI DSL" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-03T14:51:25+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Kotlin UI DSL" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="user_interface_components/kotlin_ui_dsl">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/color_scheme_management.html">Color Scheme Management in IntelliJ IDEA 12.1+</a>
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/user_interface_components/kotlin_ui_dsl.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Kotlin UI DSL</h1>
+                    <aside class="注意">
+  <p>本文档涵盖IntelliJ IDEA 2019.2中的Kotlin UI DSL。
+本文档中描述的许多功能不适用于针对早期IntelliJ IDEA版本的插件。</p>
+</aside>
+
+<p>##布局结构</p>
+
+<p>使用<code class="code highlight language-text">panel</code>创建UI:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">panel</span> <span class="p">{</span>
+  <span class="n">row</span> <span class="p">{</span>
+    <span class="c1">// child components</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>行从上到下垂直创建，顺序与调用<code class="code highlight language-text">row</code>的代码行相同。</p>
+
+<p>在一行内部，您可以按相同的顺序向工厂方法添加从左到右的组件，或者在每行中显示<code class="code highlight language-text">()</code>。</p>
+
+<p>每个组件都有效地放置在自己的网格单元中。</p>
+
+<p>可以将行的标签指定为<code class="code highlight language-text">row</code>方法的参数:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span><span class="p">(</span><span class="s">"Parameters"</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+</code></div>
+
+<p>行可以嵌套。
+嵌套行块中的组件被视为从属于包含行，并相应地缩进。</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span> <span class="p">{</span>
+  <span class="n">checkBox</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+  <span class="n">row</span> <span class="p">{</span>
+    <span class="n">textField</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span> <span class="c1">// indented relatively to the checkbox above</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>要将多个组件放在同一个网格单元格中，请将它们包装在<code class="code highlight language-text">cell</code>方法中:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span> <span class="p">{</span>
+  <span class="c1">// These two components will occupy two columns in the grid</span>
+  <span class="n">label</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+  <span class="n">textField</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+
+  <span class="c1">// These two components will be placed in the same grid cell</span>
+  <span class="n">cell</span> <span class="p">{</span>
+    <span class="n">label</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+    <span class="n">textField</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>要将组件放在网格行的右侧，请使用“right”方法:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span> <span class="p">{</span>
+  <span class="n">rememberCheckBox</span><span class="p">()</span>
+  <span class="n">right</span> <span class="p">{</span>
+    <span class="n">link</span><span class="p">(</span><span class="s">"Forgot password"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>##添加组件</p>
+
+<p>There are two ways to add child components. The recommended way is to use factory methods <code class="code highlight language-text">label</code>, <code class="code highlight language-text">button</code>, <code class="code highlight language-text">radioButton</code>, <code class="code highlight language-text">hint</code>, <code class="code highlight language-text">link</code>, etc. It allows you to create consistent UI and reuse common patterns.</p>
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">note</span><span class="p">(</span><span class="s">"""Do not have an account? &lt;a href="https://account.jetbrains.com/login"&gt;Sign Up&lt;/a&gt;"""</span><span class="p">,</span> <span class="n">span</span><span class="p">,</span> <span class="n">wrap</span><span class="p">)</span>
+</code></div>
+
+<p>These method also support <strong>property bindings</strong>, allowing you to automatically load the value displayed in the component from a property and to store it back. The easiest way to do that is to pass a reference to a Kotlin bound property:</p>
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span><span class="s">"Show tabs in single row"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">scrollTabLayoutInEditor</span><span class="p">)</span>
+</code></div>
+
+<p>或者，许多工厂方法支持在属性映射更复杂的情况下指定getter/setter对:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span>
+  <span class="s">"Show file extensions in editor tabs"</span><span class="p">,</span>
+  <span class="p">{</span> <span class="p">!</span><span class="n">uiSettings</span><span class="p">.</span><span class="n">hideKnownExtensionInTabs</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">uiSettings</span><span class="p">.</span><span class="n">hideKnownExtensionInTabs</span> <span class="p">=</span> <span class="p">!</span><span class="n">it</span> <span class="p">}</span>
+</code></div>
+
+<p>If you want to add a component for which there are no factory methods, you can simply invoke an instance of your component, using the <code class="code highlight language-text">()</code> overloaded operator:</p>
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="kd">val</span> <span class="py">userField</span> <span class="p">=</span> <span class="n">JTextField</span><span class="p">(</span><span class="n">credentials</span><span class="o">?.</span><span class="n">userName</span><span class="p">)</span>
+<span class="n">panel</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">userField</span><span class="p">(</span><span class="n">grow</span><span class="p">,</span> <span class="n">wrap</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// use userField variable somehow</span>
+</code></div>
+
+<p>##支持的组件</p>
+
+<p>＃＃＃ 标签</p>
+
+<p>使用<code class="code highlight language-text">label</code>方法:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">label</span><span class="p">(</span><span class="s">"Sample text"</span><span class="p">)</span>
+</code></div>
+
+<p>###复选框</p>
+
+<p>见上面的例子。</p>
+
+<p>###单选按钮</p>
+
+<p>单选按钮组使用<code class="code highlight language-text">buttonGroup</code>块创建。
+有两种方法可以使用它。
+如果所选单选按钮对应于单个特定值</p>
+
+<p>property，将属性绑定传递给<code class="code highlight language-text">buttonGroup</code>方法，将特定值传递给<code class="code highlight language-text">radioButton</code>函数:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">buttonGroup</span><span class="p">(</span><span class="n">mySettings</span><span class="o">::</span><span class="n">providerType</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">radioButton</span><span class="p">(</span><span class="s">"In native Keychain"</span><span class="p">,</span> <span class="n">ProviderType</span><span class="p">.</span><span class="n">KEYCHAIN</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">radioButton</span><span class="p">(</span><span class="s">"In KeePass"</span><span class="p">,</span> <span class="n">ProviderType</span><span class="p">.</span><span class="n">KEEPASS</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>如果所选单选按钮由多个布尔属性控制，则使用不带绑定的<code class="code highlight language-text">buttonGroup</code>，并为除一个单选按钮之外的所有按钮指定属性绑定:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">buttonGroup</span> <span class="p">{</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">radioButton</span><span class="p">(</span><span class="s">"The tab on the left"</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">radioButton</span><span class="p">(</span><span class="s">"The tab on the right"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">activeRightEditorOnClose</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">radioButton</span><span class="p">(</span><span class="s">"Most recently opened tab"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">activeMruEditorOnClose</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>###文本字段</p>
+
+<p>将<code class="code highlight language-text">textField</code>方法用于简单的文本字段:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span><span class="p">(</span><span class="s">"Parameters:"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">textField</span><span class="p">(</span><span class="n">settings</span><span class="o">::</span><span class="n">mergeParameters</span><span class="p">)</span>
+<span class="p">}</span>
+</code></div>
+
+<p>要输入数字，请使用<code class="code highlight language-text">intTextField</code>:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">intTextField</span><span class="p">(</span><span class="n">uiSettings</span><span class="o">::</span><span class="n">editorTabLimit</span><span class="p">,</span> <span class="n">columns</span> <span class="p">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">range</span> <span class="p">=</span> <span class="n">EDITOR_TABS_RANGE</span><span class="p">)</span>
+</code></div>
+
+<p>对于密码文本字段，没有可用的工厂函数，因此您需要使用<code class="code highlight language-text">()</code>:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="kd">val</span> <span class="py">passwordField</span> <span class="p">=</span> <span class="n">JPasswordField</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">panel</span> <span class="p">=</span> <span class="n">panel</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">passwordField</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>要指定文本字段的大小，请传递<code class="code highlight language-text">columns</code>参数，如上面的<code class="code highlight language-text">intTextField</code>示例所示，或指定<code class="code highlight language-text">growPolicy</code>参数:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="kd">val</span> <span class="py">userField</span> <span class="p">=</span> <span class="n">JTextField</span><span class="p">(</span><span class="n">credentials</span><span class="o">?.</span><span class="n">userName</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">panel</span> <span class="p">=</span> <span class="n">panel</span> <span class="p">{</span>
+    <span class="n">row</span><span class="p">(</span><span class="s">"Username:"</span><span class="p">)</span> <span class="p">{</span> <span class="n">userField</span><span class="p">(</span><span class="n">growPolicy</span> <span class="p">=</span> <span class="n">GrowPolicy</span><span class="p">.</span><span class="n">SHORT_TEXT</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>###组合框</p>
+
+<p>将<code class="code highlight language-text">comboBox</code>方法与bound属性或getter/setter对一起使用:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">comboBox</span><span class="p">(</span><span class="n">DefaultComboBoxModel</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;(</span><span class="n">tabPlacements</span><span class="p">),</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">editorTabPlacement</span><span class="p">)</span>
+
+<span class="n">comboBox</span><span class="p">&lt;</span><span class="n">PgpKey</span><span class="p">&gt;(</span>
+  <span class="n">pgpListModel</span><span class="p">,</span>
+  <span class="p">{</span> <span class="n">getSelectedPgpKey</span><span class="p">()</span> <span class="o">?:</span> <span class="n">pgpListModel</span><span class="p">.</span><span class="n">items</span><span class="p">.</span><span class="n">firstOrNull</span><span class="p">()</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">mySettings</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">pgpKeyId</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">usePgpKey</span><span class="p">.</span><span class="n">isSelected</span><span class="p">)</span> <span class="n">it</span><span class="o">?.</span><span class="n">keyId</span> <span class="k">else</span> <span class="k">null</span> <span class="p">})</span>
+</code></div>
+
+<p>###纺纱厂</p>
+
+<p>使用<code class="code highlight language-text">spinner</code>方法:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">spinner</span><span class="p">(</span><span class="n">retypeOptions</span><span class="o">::</span><span class="n">retypeDelay</span><span class="p">,</span> <span class="n">minValue</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">=</span> <span class="m">5000</span><span class="p">,</span> <span class="n">step</span> <span class="p">=</span> <span class="m">50</span><span class="p">)</span>
+</code></div>
+
+<p>###链接标签</p>
+
+<p>使用<code class="code highlight language-text">link</code>方法:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">link</span><span class="p">(</span><span class="s">"Forgot password?"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">BrowserUtil</span><span class="p">.</span><span class="n">browse</span><span class="p">(</span><span class="s">"https://account.jetbrains.com/forgot-password"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></div>
+
+<p>###分隔符</p>
+
+<p>使用<code class="code highlight language-text">titledRow</code>方法并将分隔符下的控件放入嵌套块中:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">titledRow</span><span class="p">(</span><span class="s">"Appearance"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">row</span> <span class="p">{</span> <span class="n">checkBox</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></div>
+
+<p>###解释性文字</p>
+
+<p>使用<code class="code highlight language-text">comment</code>参数:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span><span class="n">message</span><span class="p">(</span><span class="s">"checkbox.smart.tab.reuse"</span><span class="p">),</span>
+       <span class="n">uiSettings</span><span class="o">::</span><span class="n">reuseNotModifiedTabs</span><span class="p">,</span>
+       <span class="n">comment</span> <span class="p">=</span> <span class="n">message</span><span class="p">(</span><span class="s">"checkbox.smart.tab.reuse.inline.help"</span><span class="p">))</span>
+</code></div>
+
+<p>##使用属性绑定集成面板</p>
+
+<p><code class="code highlight language-text">panel</code>方法返回的面板是<code class="code highlight language-text">DialogPanel</code>的实例。
+该基类支持标准的<code class="code highlight language-text">apply</code>，<code class="code highlight language-text">reset</code>和<code class="code highlight language-text">isModified</code>方法。</p>
+
+<p>如果您使用此面板作为<code class="code highlight language-text">DialogWrapper</code>的主面板，则在使用OK操作关闭对话框时将自动调用<code class="code highlight language-text">apply</code>方法。
+在这种情况下，其他方法未使用。</p>
+
+<p>如果您使用此面板实现<code class="code highlight language-text">Configurable</code>，请使用<code class="code highlight language-text">BoundConfigurable</code>作为基类。
+在这种情况下，<code class="code highlight language-text">Configurable</code>方法将自动委托给面板。</p>
+
+<p>##启用和禁用控件</p>
+
+<p>使用<code class="code highlight language-text">enableIf</code>方法将控件的启用状态绑定到在其他控件中输入的值。
+该方法的参数是<strong>谓词</strong>。</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span><span class="s">"Show tabs in single row"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">scrollTabLayoutInEditor</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">enableIf</span><span class="p">(</span><span class="n">myEditorTabPlacement</span><span class="p">.</span><span class="n">selectedValueIs</span><span class="p">(</span><span class="n">SwingConstants</span><span class="p">.</span><span class="n">TOP</span><span class="p">))</span>
+</code></div>
+
+<p>可用的谓词是:
+  
+*<code class="code highlight language-text">selected</code>检查复选框或单选按钮的选定状态
+  
+*<code class="code highlight language-text">selectedValueIs</code>和<code class="code highlight language-text">selectedValueMatches</code>来检查组合框中的选定项目。
+  </p>
+
+<p>谓词可以与<code class="code highlight language-text">和</code>以及`或’中缀函数结合使用:</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span><span class="s">"Hide tabs if there is no space"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">hideTabsIfNeed</span><span class="p">)</span>
+  <span class="p">.</span><span class="n">enableIf</span><span class="p">(</span><span class="n">myEditorTabPlacement</span><span class="p">.</span><span class="n">selectedValueMatches</span> <span class="p">{</span> <span class="n">it</span> <span class="p">!=</span> <span class="n">UISettings</span><span class="p">.</span><span class="n">TABS_NONE</span> <span class="p">}</span> <span class="n">and</span>
+              <span class="n">myScrollTabLayoutInEditorCheckBox</span><span class="p">.</span><span class="n">selected</span><span class="p">)</span>
+</code></div>
+
+<p>##示例</p>
+
+<div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="kd">val</span> <span class="py">panel</span> <span class="p">=</span> <span class="n">panel</span> <span class="p">{</span>
+  <span class="n">noteRow</span><span class="p">(</span><span class="s">"Login to get notified when the submitted\nexceptions are fixed."</span><span class="p">)</span>
+  <span class="n">row</span><span class="p">(</span><span class="s">"Username:"</span><span class="p">)</span> <span class="p">{</span> <span class="n">userField</span><span class="p">()</span> <span class="p">}</span>
+  <span class="n">row</span><span class="p">(</span><span class="s">"Password:"</span><span class="p">)</span> <span class="p">{</span> <span class="n">passwordField</span><span class="p">()</span> <span class="p">}</span>
+  <span class="n">row</span> <span class="p">{</span>
+    <span class="n">rememberCheckBox</span><span class="p">()</span>
+    <span class="n">right</span> <span class="p">{</span>
+      <span class="n">link</span><span class="p">(</span><span class="s">"Forgot password?"</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* custom action */</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">noteRow</span><span class="p">(</span><span class="s">"""Do not have an account? &lt;a href="https://account.jetbrains.com/login"&gt;Sign Up&lt;/a&gt;"""</span><span class="p">)</span>
+<span class="p">}</span>
+</code></div>
+
+<p>＃＃ 常问问题</p>
+
+<p>###一个单元格最小，第二个单元格最大</p>
+
+<p>为第二个单元格中的某个组件设置<code class="code highlight language-text">CCFlags.growX</code>和<code class="code highlight language-text">CCFlags.pushX</code>。</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/color_scheme_management.html">Color Scheme Management in IntelliJ IDEA 12.1+</a>
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 3 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

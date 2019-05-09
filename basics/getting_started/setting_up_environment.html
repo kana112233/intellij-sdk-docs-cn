@@ -1,0 +1,204 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting Up a Development Environment / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/getting_started/setting_up_environment.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Setting Up a Development Environment" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-15T15:18:59+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Setting Up a Development Environment" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/getting_started/setting_up_environment">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/getting_started/creating_plugin_project.html">Creating a Plugin Project</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/getting_started/setting_up_environment.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Setting Up a Development Environment</h1>
+                    <p>###预备步骤</p>
+
+<p>使用以下清单确保您已准备好开发自定义插件.</p>
+
+<ul>
+  <li>
+    <p><strong>在本地计算机上获取IntelliJ IDEA CE源代码</strong>.
+获取IntelliJ IDEA CE源代码不是插件开发的必要条件,但拥有它可以使调试插件变得更加容易.
+有关详细说明,请参阅[检出并构建社区版]的_Getting IntelliJ IDEA社区版源代码_部分(upsource:///README.md).
+请注意,插件开发不需要从源代码构建IntelliJ IDEA CE.</p>
+  </li>
+  <li>
+    <p>**插件DevKit **插件必须<a href="https://www.jetbrains.com/help/idea/managing-plugins.html" data-bypass="yes" target="_blank"><span>在IntelliJ IDEA中启用</span></a></p>
+  </li>
+  <li>
+    <p>**必须为您的IDEA项目配置IntelliJ Platform SDK **.
+有关更多信息,请参阅下文.
+  </p>
+  </li>
+</ul>
+
+<p>###配置IntelliJ Platform SDK
+  </p>
+
+<p>要设置插件开发环境:</p>
+
+<ul>
+  <li>Create a new <em>IntelliJ Platform SDK</em> under <strong>File | Project Structure</strong>:</li>
+</ul>
+
+<p><img src="img/create_intellij_idea_sdk.png" alt="创建IntelliJ平台SDK" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p><em>指定</em> IntelliJ IDEA Community Edition *的安装文件夹作为主目录.</p>
+
+<aside class="警告">
+  <p>您可以使用IntelliJ IDEA Ultimate作为替代方案,但调试核心代码仅适用于* Community Edition *.</p>
+</aside>
+
+<p><img src="img/set_home_directory.png" alt="设置主目录" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>*选择** 1.8 <strong>作为默认Java SDK.
+有关创建</strong> 1.8 ** JSDK的说明,请参阅[Check Out And Build Community Edition]的_IntelliJ Build Configuration_部分(upsource:///README.md).</p>
+
+<p><img src="img/set_java_sdk.png" alt="设置IDEA JDK" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p><em>在SDK设置的Sourcepath选项卡中,单击</em> Add *按钮:</p>
+
+<p><img src="img/add_sourcepath.png" alt="添加源路径" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p><em>指定</em> IntelliJ IDEA Community Edition *的源代码目录:</p>
+
+<p><img src="img/community_sources_directory.png" alt="指定源路径" /></p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>*指定** Sandbox Home **目录.
+   </p>
+<ul>
+  <li>Sandbox Home <em>目录存储从插件项目的** Run ** configration启动的IDE开发实例的设置.
+   
+下面显示的是Mac OS X上用户的默认</em> Sandbox Home <em>目录.可以选择任何目录作为</em> Sandbox Home *位置.
+   
+使用省略号按钮(如下所示)定义自定义位置.
+   
+   
+有关default * Sandbox Home *目录的更多信息,请参见<a href="/intellij/sdk/docsbasics/ide_development_instance.html"><span>IDE开发实例</span></a>页面
+   
+地点和内容.
+  
+   
+<img src="img/plugins-sandbox.png" alt="指定沙盒路径" /></li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/getting_started/creating_plugin_project.html">Creating a Plugin Project</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 15 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

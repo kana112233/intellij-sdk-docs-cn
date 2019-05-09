@@ -1,0 +1,15 @@
+<idea-plugin>
+  <id>com.intellij.demo.framework</id>
+  <name>Framework example</name>
+  <version>1.0</version>
+  <vendor>JetBrains</vendor>
+
+  <description>Demonstrates basic Framework support with custom Configurable</description>
+
+  <idea-version since-build="131"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <framework.type implementation="com.intellij.tutorials.framework.DemoFramework"/>
+  </extensions>
+
+</idea-plugin>

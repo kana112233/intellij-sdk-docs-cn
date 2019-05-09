@@ -1,0 +1,176 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Documents / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/architectural_overview/documents.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Documents" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-04-19T11:23:38+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Documents" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/architectural_overview/documents">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/files.html">Files</a>
+                        <a class="navigation-links__next" href="/reference_guide/editors.html">Editors</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/architectural_overview/documents.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Documents</h1>
+                    <p>文档是可编辑的Unicode字符序列,通常对应于虚拟文件的文本内容.
+文档中的换行符_always_规范化为<code class="code highlight language-text">\ n</code>.</p>
+<ul>
+  <li>IntelliJ Platform *在透明地加载和保存文档时处理编码和换行符转换.</li>
+</ul>
+
+<p>##如何获取文件？</p>
+
+<p>*来自一个动作:<code class="code highlight language-text">e.getData(PlatformDataKeys.EDITOR).getDocument()</code></p>
+
+<p>*来自虚拟文件:<code class="code highlight language-text">FileDocumentManager.getDocument()</code>.
+如果之前未加载文档内容,则此调用会强制从磁盘加载文档内容;
+如果您只对打开的文档或可能已修改的文档感兴趣,请使用<code class="code highlight language-text">FileDocumentManager.getCachedDocument()</code>.</p>
+
+<p>*来自PSI文件:<code class="code highlight language-text">PsiDocumentManager.getInstance().getDocument()</code>或<code class="code highlight language-text">PsiDocumentManager.getInstance().getCachedDocument()</code></p>
+
+<p>##我可以用文件做什么？</p>
+
+<p>您可以执行在“纯文本”级别上访问或修改文件内容的任何操作(作为字符序列,而不是Java元素树).</p>
+
+<p>##文件来自何处？</p>
+
+<p>当某些操作需要访问文件的文本内容时,会创建文档实例(特别是,需要为文件构建PSI).
+此外,可以临时创建未链接到任何虚拟文件的文档实例,例如,表示对话框中文本编辑器字段的内容.</p>
+
+<p>##文档持续多长时间？</p>
+
+<p>来自<code class="code highlight language-text">VirtualFile</code>实例的文档实例被弱引用.
+因此,未经修改的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/Document.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Document</code></span></a>实例可以被垃圾收集,如果它没有被任何人引用,
+如果稍后再次访问文档内容,将创建一个新实例.
+在插件的长期数据结构中存储<code class="code highlight language-text">Document</code>引用将导致内存泄漏.</p>
+
+<p>##如何创建文档？</p>
+
+<p>如果你需要在磁盘上创建一个新文件,你不要创建一个<code class="code highlight language-text">Document</code>:你创建一个PSI文件然后得到它的<code class="code highlight language-text">Document</code>.
+如果你需要创建一个没有绑定任何东西的<code class="code highlight language-text">Document</code>实例,你可以使用<code class="code highlight language-text">EditorFactory.createDocument</code>.</p>
+
+<p>##如何在文档更改时收到通知？</p>
+
+<p>*<code class="code highlight language-text">Document.addDocumentListener</code>允许您接收有关特定<code class="code highlight language-text">Document</code>实例中的更改的通知.</p>
+
+<p>*<code class="code highlight language-text">EditorFactory.getEventMulticaster().addDocumentListener</code>允许您接收有关所有打开文档中的更改的通知.</p>
+
+<p>*在任何级别总线上订阅<code class="code highlight language-text">AppTopics#FILE_DOCUMENT_SYNC</code>,以便在从磁盘保存或重新加载任何<code class="code highlight language-text">Document</code>时接收通知.</p>
+
+<p>##使用Documents有哪些规则？</p>
+
+<p>一般读/写操作规则有效.
+除此之外,任何修改文档内容的操作都必须包装在一个命令中(<code class="code highlight language-text">CommandProcessor.getInstance().executeCommand()</code>).
+可以嵌套<code class="code highlight language-text">executeCommand()</code>调用,并将最外面的<code class="code highlight language-text">executeCommand</code>调用添加到撤消堆栈中.
+如果在命令中修改了多个文档,则撤消此命令将默认向用户显示确认对话框.</p>
+
+<p>如果对应于“Document”的文件是只读的(例如,未从版本控制系统中检出),则文档修改将失败.
+因此,在修改<code class="code highlight language-text">Document</code>之前,必须调用<code class="code highlight language-text">ReadonlyStatusHandler.getInstance(project).ensureFilesWritable()</code>来检查文件.</p>
+
+<p>传递给<code class="code highlight language-text">Document</code>修改方法(<code class="code highlight language-text">setText</code>,<code class="code highlight language-text">insertString</code>,<code class="code highlight language-text">replaceString</code>)的所有文本字符串必须只使用\ n作为行分隔符.</p>
+
+<p>##是否有可用于处理文档的实用程序？</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/util/DocumentUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">DocumentUtil</code></span></a>包含<code class="code highlight language-text">D​​ocument</code>处理的实用程序方法.
+这允许您获取特定行的文本偏移等信息.
+当您需要有关给定PsiElement的文本位置/偏移量信息时,这尤其有用.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/architectural_overview/files.html">Files</a>
+                        <a class="navigation-links__next" href="/reference_guide/editors.html">Editors</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 19 April 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

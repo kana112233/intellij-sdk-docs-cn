@@ -1,0 +1,144 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>IntelliJ Platform SDK / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/welcome.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="IntelliJ Platform SDK" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-03-11T11:22:43+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="IntelliJ Platform SDK" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="welcome">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/intro/intellij_platform.html">What is the IntelliJ Platform?</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/welcome.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>IntelliJ Platform SDK</h1>
+                    <p><a href="https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub" data-bypass="yes" target="_blank"><span><img src="https://jb.gg/badges/official-flat-square.svg" alt="official JetBrains project" /></span></a>
+<a href="https://gitter.im/IntelliJ-Plugin-Developers/Lobby" data-bypass="yes" target="_blank"><span><img src="https://badges.gitter.im/JetBrains/intellij-sdk-docs.svg" alt="Join the chat at https://gitter.im/JetBrains/gradle-intellij-plugin" /></span></a></p>
+
+<p>Welcome to the <em>IntelliJ Platform</em> SDK. This is the primary source of documentation for extending the <em>IntelliJ Platform</em>, by creating plugins, custom language support or building a custom IDE.</p>
+
+<a name="getting-started" class="elem-anchor"></a>
+<h2>Getting Started<a href="#getting-started" class="anchor-link"><span></span></a></h2>
+
+<ul>
+  <li><a href="intro/intellij_platform.html"><span><strong>What is the IntelliJ Platform?</strong></span></a></li>
+  <li><a href="intro/about.html"><span><strong>About this Guide</strong></span></a>
+    <ul>
+      <li><a href="intro/key_topics.html"><span><strong>Key Topics</strong></span></a></li>
+    </ul>
+  </li>
+  <li><a href="intro/getting_help.html"><span><strong>Getting Help</strong></span></a></li>
+  <li><a href="/intellij/sdk/docsbasics/getting_started.html"><span><strong>Getting Started</strong></span></a></li>
+  <li><a href="/intellij/sdk/docsappendix/resources/useful_links.html"><span><strong>Useful Links</strong></span></a></li>
+</ul>
+
+<a name="open-source" class="elem-anchor"></a>
+<h2>Open Source<a href="#open-source" class="anchor-link"><span></span></a></h2>
+
+<p>This guide is Open Source, and licensed under Apache 2.0. The source (as Markdown) is <a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span>hosted on GitHub</span></a>. 
+Please see <a href="CONTRIBUTING.html"><span>CONTRIBUTING.md</span></a> for details on how to host the docs locally and contribute.</p>
+
+<p>Please see <a href="/intellij/sdk/docsintro/getting_help.html"><span>Getting Help</span></a> if you encounter bugs in this guide or require help with missing content.</p>
+
+<a name="updates" class="elem-anchor"></a>
+<h2>Updates<a href="#updates" class="anchor-link"><span></span></a></h2>
+<p>See <a href="recently_updated.html"><span>Recently Updated</span></a> for latest changes. Follow <a href="https://twitter.com/JBPlatform/" data-bypass="yes" target="_blank"><span>JBPlatform</span></a> on Twitter and visit <a href="https://blog.jetbrains.com/platform/" data-bypass="yes" target="_blank"><span>JetBrains Platform Blog</span></a> for latest announcements.</p>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/intro/intellij_platform.html">What is the IntelliJ Platform?</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 11 March 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

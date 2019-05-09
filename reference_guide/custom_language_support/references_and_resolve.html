@@ -1,0 +1,255 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>References and Resolve / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/custom_language_support/references_and_resolve.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="References and Resolve" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-08-20T20:48:01+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="References and Resolve" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/custom_language_support/references_and_resolve">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html">Syntax Highlighting and Error Highlighting</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/code_completion.html">Code Completion</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/custom_language_support/references_and_resolve.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>References and Resolve</h1>
+                    <p>实现自定义语言PSI最重要和最棘手的部分之一是解析引用.</p>
+
+<p>解析引用使用户能够从PSI元素用法(访问变量,调用方法等)导航到该元素的声明(变量的定义,方法声明等).</p>
+
+<p>需要此功能才能支持** Ctrl-B <strong>和</strong> Ctrl-Click **调用的“Go to Declaration”操作,这是实现<code class="code highlight language-text">Find Usages</code>操作的先决条件,<code class="code highlight language-text">Rename 
+</code>重构和代码完成.</p>
+
+<p>所有作为参考的PSI元素(适用于“Go to Declaration”操作)都需要实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement.getReference()</span></a></p>
+
+<p>方法并返回一个</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a></p>
+
+<p>从该方法实现.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a></p>
+
+<p>接口可以由同一个类实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a>,</p>
+
+<p>或者由另一个班级.
+元素也可以包含多个引用(例如,字符串文字可以包含多个子字符串,这些子字符串是有效的完全限定类名),在这种情况下它可以实现</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement.getReferences()</span></a></p>
+
+<p>并将引用作为数组返回.</p>
+
+<p>主要方法是</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a></p>
+
+<p>interface是<code class="code highlight language-text">resolve()</code>,它返回引用指向的元素,如果无法解析对有效元素的引用,则返回“null”(例如,它应该指向未定义的类).
+已解析的元素应实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>接口.</p>
+
+<aside class="注意">
+  <p>虽然引用元素和引用元素都有一个名称,但只有<strong>引入</strong>名称的元素(例如定义<code class="code highlight language-text">int x = 42</code>)需要实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>界面.
+使用时的引用元素(例如表达式“x + 1”中的<code class="code highlight language-text">x</code>)不必实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a> 
+/psi/PsiNamedElement.java).</p>
+</aside>
+
+<aside class="提示">
+  <p>为了启用更高级的IntelliJ功能,更喜欢在[PsiNamedElement]上实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java" data-bypass="yes" target="_blank"><span>PsiNameIdentifierOwner</span></a>(upsource 
+:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)尽可能.</p>
+</aside>
+
+<p><code class="code highlight language-text">resolve()</code>方法的对应部分是<code class="code highlight language-text">isReferenceTo()</code>,它检查引用是否解析为指定的元素.
+后一种方法可以通过调用<code class="code highlight language-text">resolve()</code>并将结果与​​传递的PSI元素进行比较来实现,但是可以进行额外的优化(例如,仅当元素文本等于引用的文本时才执行树遍历) 
+.</p>
+
+<p><strong>例</strong>:</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/src/com/intellij/lang/properties/ResourceBundleReference.java" data-bypass="yes" target="_blank"><span>参考文献</span></a></p>
+
+<p>到了一个ResourceBundle</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<p>有一组接口可以作为实现解析支持的基础,即</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>界面和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement.processDeclarations()</span></a></p>
+
+<p>方法.</p>
+
+<p>这些接口具有许多额外的复杂性,这些复杂性对于大多数自定义语言来说不是必需的(例如支持替换Java泛型类型),但如果自定义语言可以引用Java代码,则它们是必需的.</p>
+
+<p>如果不需要Java互操作性,插件可以放弃标准接口并提供自己的,不同的解析实现.</p>
+
+<p>基于标准辅助类的resolve的实现包含以下组件:</p>
+
+<p>*一个实现的类
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>
+   
+接口,它收集引用的可能声明,并在成功完成后停止解析过程.
+   
+需要实现的主要方法是<code class="code highlight language-text">execute()</code>,它被调用来处理在解析期间遇到的每个声明,如果需要继续解析则返回“true”,如果找到声明则返回“false”.
+   
+方法<code class="code highlight language-text">getHint()</code>和<code class="code highlight language-text">handleEvent()</code>用于内部优化,可以留空
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>
+   
+自定义语言的实现.</p>
+
+<p>*一个函数,它从参考位置向上走PSI树,直到成功完成解析或直到达到解析范围的末尾.
+   
+如果引用的目标位于不同的文件中,则可以定位文件,例如,使用
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java" data-bypass="yes" target="_blank"><span>FilenameIndex.getFilesByName()</span></a>
+   
+(如果文件名已知)或者通过迭代项目中的所有自定义语言文件(<code class="code highlight language-text">iterateContent()</code>
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java" data-bypass="yes" target="_blank"><span>FileIndex</span></a>
+   
+界面获得
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java" data-bypass="yes" target="_blank"><span>ProjectRootManager.getFileIndex()</span></a>
+   
+).</p>
+
+<p>*各个PSI元素,在PSI树步行期间调用<code class="code highlight language-text">processDeclarations()</code>方法.
+   
+如果PSI元素是一个声明,它会将自身传递给.的<code class="code highlight language-text">execute()</code>方法
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>
+   
+传递给它.
+   
+此外,根据语言范围规则,如果需要,PSI元素可以通过
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>
+   
+它的子元素.</p>
+
+<p>延伸的</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a></p>
+
+<p>接口,允许引用解析为多个目标,是</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiPolyVariantReference.java" data-bypass="yes" target="_blank"><span>PsiPolyVariantReference</span></a></p>
+
+<p>接口.</p>
+
+<p>引用解析的目标从<code class="code highlight language-text">multiResolve()</code>方法返回.</p>
+
+<p>针对此类引用的“转至声明”操作允许用户选择导航目标.</p>
+
+<p><code class="code highlight language-text">multiResolve()</code>的实现也可以基于</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java" data-bypass="yes" target="_blank"><span>PsiScopeProcessor</span></a>,</p>
+
+<p>并且可以收集所有有效目标以供参考,而不是在找到第一个有效目标时停止.</p>
+
+<p>“快速定义查找”操作基于与“转到声明”相同的机制,因此它可以自动用于语言插件可以解析的所有引用.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html">Syntax Highlighting and Error Highlighting</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/code_completion.html">Code Completion</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 20 August 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

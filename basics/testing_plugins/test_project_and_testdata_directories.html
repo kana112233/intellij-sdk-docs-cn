@@ -1,0 +1,168 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Project and Testdata Directories / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/testing_plugins/test_project_and_testdata_directories.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Test Project and Testdata Directories" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-02-22T16:56:17+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Test Project and Testdata Directories" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/testing_plugins/test_project_and_testdata_directories">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/testing_plugins/light_and_heavy_tests.html">Light and Heavy Tests</a>
+                        <a class="navigation-links__next" href="/basics/testing_plugins/writing_tests.html">Writing Tests</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/testing_plugins/test_project_and_testdata_directories.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Test Project and Testdata Directories</h1>
+                    <p>测试夹具创建一个<em>测试项目</em>环境.
+除非您自定义项目创建,否则测试项目将有一个模块,其中一个源根名为<code class="code highlight language-text">src</code>.
+测试项目的文件存在于临时目录或内存文件系统中,具体取决于[<code class="code highlight language-text">TempDirTestFixture</code>]的实现(upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures
+使用/TempDirTestFixture.java).</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/fixtures/LightPlatformCodeInsightFixtureTestCase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LightPlatformCodeInsightFixtureTestCase</code></span></a>使用内存实现;
+如果通过调用<code class="code highlight language-text">IdeaTestFixtureFactory.createCodeInsightFixture</code>来设置测试环境,则可以指定要使用的实现.</p>
+
+<aside class="注意">
+  <p>如果您的测试使用内存实现,并且中止测试的执行,则持久化文件系统缓存可能与内存结构不同步,并且您可能会在测试中出现虚假错误
+.</p>
+</aside>
+
+<aside>
+
+</aside>
+
+<aside>
+  <p>如果在一系列成功运行后遇到意外错误,<strong>尝试再次运行测试</strong>,如果这没有帮助,<strong>删除沙箱目录中的“system”子目录</strong>(通过<code class="code highlight language-text">
+用于Gradle设置的sandboxDirectory</code>或用于Devkit设置的* IntelliJ Platform * SDK设置).</p>
+</aside>
+
+<p>在您的插件中,您通常会在<code class="code highlight language-text">testdata</code>目录中存储测试的测试数据(例如将在其上执行插件功能的文件和预期的输出文件).
+这只是插件内容根目录下的一个目录,但不在源根目录下. 
+<code class="code highlight language-text">testdata</code>中的文件通常不是有效的源代码,不得编译.</p>
+
+<p>要指定<code class="code highlight language-text">testdata</code>的位置,必须覆盖<code class="code highlight language-text">LightPlatformCodeInsightFixtureTestCase.getTestDataPath()</code>方法.
+默认实现假定作为* IntelliJ Platform *源代码树的一部分运行,不适用于第三方插件.</p>
+
+<aside class="注意">
+  <p> * IntelliJ Platform *测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建<code class="code highlight language-text">testdata</code>文件路径的基础.
+这允许在测试相同功能的不同方面的不同测试方法之间重用大多数代码,并且还建议将此方法用于第三方插件测试.
+可以使用<code class="code highlight language-text">UsefulTestCase.getTestName()</code>检索测试方法的名称.</p>
+</aside>
+
+<p>要将文件或目录从<code class="code highlight language-text">testdata</code>目录复制到测试项目目录,可以使用[<code class="code highlight language-text">CodeInsightTestFixture</code>]中的<code class="code highlight language-text">copyFileToProject()</code>和<code class="code highlight language-text">copyDirectoryToProject()</code>方法(upsource:///platform/testFramework/
+src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)类.</p>
+
+<p>插件测试中的大多数操作都需要在内存编辑器中打开文件,其中将执行突出显示,完成和其他操作.
+内存编辑器实例由<code class="code highlight language-text">CodeInsightTestFixture.getEditor()</code>返回.
+要将文件从<code class="code highlight language-text">testdata</code>目录复制到测试项目目录并立即在编辑器中打开它,可以使用<code class="code highlight language-text">CodeInsightTestFixture.configureByFile()</code>或<code class="code highlight language-text">configureByFiles()</code>方法.
+后者将多个文件复制到测试项目目录,并在内存编辑器中打开它们的* first *.</p>
+
+<p>或者,您可以使用其他方法之一,这些方法带有用@@ TestDataFile注释的参数.
+这些方法将指定文件从<code class="code highlight language-text">testdata</code>目录复制到测试项目目录,打开内存编辑器中的第一个指定文件,然后执行请求的操作,如突出显示或代码完成.</p>
+
+<p>在内存编辑器中打开文件时,文件内容中的特殊标记可用于指定插入符号位置或选择.
+您可以使用以下标记之一:</p>
+
+<p>*<code class="code highlight language-text">&lt;caret&gt;</code>指定插入符号的位置.</p>
+
+<p>*<code class="code highlight language-text">&lt;selection&gt;</code>和<code class="code highlight language-text">&lt;/selection&gt;</code>指定要选择的文本范围的开始和结束.</p>
+
+<p>*<code class="code highlight language-text">&lt;block&gt;</code>和<code class="code highlight language-text">&lt;/block&gt;</code>指定列选择的起点和终点.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/testing_plugins/light_and_heavy_tests.html">Light and Heavy Tests</a>
+                        <a class="navigation-links__next" href="/basics/testing_plugins/writing_tests.html">Writing Tests</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 22 February 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

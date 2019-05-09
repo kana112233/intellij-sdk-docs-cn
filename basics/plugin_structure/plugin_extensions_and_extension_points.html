@@ -1,0 +1,236 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Extensions and Extension Points / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/plugin_structure/plugin_extensions_and_extension_points.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Extensions and Extension Points" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-02T16:38:20+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Extensions and Extension Points" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/plugin_structure/plugin_extensions_and_extension_points">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_components.html">Plugin Components</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_actions.html">Plugin Actions</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/plugin_structure/plugin_extensions_and_extension_points.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Extensions and Extension Points</h1>
+                    <ul>
+  <li>IntelliJ Platform *提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.</li>
+</ul>
+
+<p>##扩展点</p>
+
+<p>如果您希望插件允许其他插件扩展其功能,则在插件中,您必须声明一个或多个_extension points_.
+每个扩展点定义允许访问此点的类或接口.</p>
+
+<p>##扩展</p>
+
+<p>如果您希望插件扩展其他插件或* IntelliJ Platform *的功能,则必须声明一个或多个_extensions_.</p>
+
+<p>##如何声明扩展和扩展点</p>
+
+<p>您可以分别在插件配置文件<code class="code highlight language-text">plugin.xml</code>中声明扩展和扩展点,分别在<code class="code highlight language-text">&lt;extensions&gt;</code>和<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分中.</p>
+
+<p><strong>申报延期点</strong></p>
+
+<p>在<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分中,插入一个子元素<code class="code highlight language-text">&lt;extensionPoint&gt;</code>,它定义了扩展点名称和bean类的名称,或者允许在<code class="code highlight language-text">name</code>中扩展插件功能的接口,<code class="code highlight language-text">beanClass 
+</code>和<code class="code highlight language-text">interface</code>属性.</p>
+
+<p>要澄清此过程,请考虑plugin.xml文件的以下示例部分:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensionPoints&gt;</span>
+  <span class="nt">&lt;extensionPoint</span> <span class="na">name=</span><span class="s">"MyExtensionPoint1"</span> <span class="na">beanClass=</span><span class="s">"MyPlugin.MyBeanClass1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;extensionPoint</span> <span class="na">name=</span><span class="s">"MyExtensionPoint2"</span> <span class="na">interface=</span><span class="s">"MyPlugin.MyInterface"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/extensionPoints&gt;</span>
+</code></div>
+
+<p>*<code class="code highlight language-text">interface</code>属性设置一个接口,该插件有助于扩展点必须实现.</p>
+
+<p>*<code class="code highlight language-text">beanClass</code>属性设置一个bean类,它指定一个或多个用[@Attribute]注释的属性(upsource:///platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java)注释
+.</p>
+
+<p>有助于扩展点的插件将从<code class="code highlight language-text">plugin.xml</code>文件中读取这些属性.</p>
+
+<p>为了澄清这一点,请考虑以下<code class="code highlight language-text">plugin.xml</code>文件中使用的示例<code class="code highlight language-text">MyBeanClass1</code> bean类:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBeanClass1</span> <span class="kd">extends</span> <span class="n">AbstractExtensionPointBean</span> <span class="o">{</span>
+  <span class="nd">@Attribute</span><span class="o">(</span><span class="s">"key"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">key</span><span class="o">;</span>
+
+  <span class="nd">@Attribute</span><span class="o">(</span><span class="s">"implementationClass"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">implementationClass</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getKey</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">key</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getClass</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">implementationClass</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>要声明一个用于访问<code class="code highlight language-text">MyExtensionPoint1</code>扩展点的扩展,你的<code class="code highlight language-text">plugin.xml</code>文件必须包含<code class="code highlight language-text">&lt;MyExtensionPoint1&gt;</code>标签,其中<code class="code highlight language-text">key</code>和<code class="code highlight language-text">implementationClass</code>属性设置为适当的值(见下面的示例).</p>
+
+<p><strong>申报延期</strong></p>
+
+<aside class="提示">
+  <p>所有这些步骤均可使用自动完成功能.</p>
+</aside>
+
+<p>1.对于<code class="code highlight language-text">&lt;extensions&gt;</code>元素,将<code class="code highlight language-text">defaultExtensionNs</code>属性设置为以下值之一:
+    
+*<code class="code highlight language-text">com.intellij</code>,如果你的插件扩展了IntelliJ平台的核心功能.
+    
+*`{插件的ID},如果你的插件扩展了另一个插件的功能.</p>
+
+<p>2.在<code class="code highlight language-text">&lt;extensions&gt;</code>元素中添加一个新的子元素.
+子元素名称必须与您希望扩展程序访问的扩展点的名称相匹配.</p>
+
+<p>3.根据扩展点的类型,执行以下操作之一:
+    
+*如果使用<code class="code highlight language-text">interface</code>属性声明扩展点,则对于新添加的子元素,将<code class="code highlight language-text">implementation</code>属性设置为实现指定接口的类的名称.
+    
+*如果使用<code class="code highlight language-text">beanClass</code>属性声明扩展点,则对于新添加的子元素,设置所有使用[@Attribute]注释的属性(upsource:///xml/dom-openapi/src/com/intellij/util/指定bean类中的xml/Attribute.java)注释.</p>
+
+<p>为了澄清这个过程,请考虑<code class="code highlight language-text">plugin.xml</code>文件的以下示例部分,它定义了两个扩展,旨在访问* IntelliJ Platform *中的<code class="code highlight language-text">appStarter</code>和<code class="code highlight language-text">applicationConfigurable</code>扩展点,以及一个访问`MyExtensionPoint1的扩展名.
+测试插件中的扩展点:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="c">&lt;!-- Declare extensions to access extension points in the IntelliJ Platform.
+     These extension points have been declared using the "interface" attribute.
+ --&gt;</span>
+  <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;appStarter</span> <span class="na">implementation=</span><span class="s">"MyTestPackage.MyTestExtension1"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;applicationConfigurable</span> <span class="na">implementation=</span><span class="s">"MyTestPackage.MyTestExtension2"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/extensions&gt;</span>
+
+<span class="c">&lt;!-- Declare extensions to access extension points in a custom plugin
+     The MyExtensionPoint1 extension point has been declared using *beanClass* attribute.
+--&gt;</span>
+  <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"MyPluginID"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;MyExtensionPoint1</span> <span class="na">key=</span><span class="s">"keyValue"</span> <span class="na">implementationClass=</span><span class="s">"MyTestPackage.MyClassImpl"</span><span class="nt">&gt;&lt;/MyExtensionPoint1&gt;</span>
+  <span class="nt">&lt;/extensions&gt;</span>
+</code></div>
+<a name="extension-default-properties" class="elem-anchor"></a>
+<h3>Extension default properties<a href="#extension-default-properties" class="anchor-link"><span></span></a></h3>
+<p>The following properties are available always:</p>
+
+<ul>
+  <li><code class="code highlight language-text">id</code> - unique ID</li>
+  <li><code class="code highlight language-text">order</code> - allows to order all defined extensions using <code class="code highlight language-text">first</code>, <code class="code highlight language-text">last</code> or <code class="code highlight language-text">before|after [id]</code> respectively</li>
+  <li><code class="code highlight language-text">os</code> - allows to restrict extension to given OS, e.g., <code class="code highlight language-text">os="windows"</code> registers the extension on Windows only</li>
+</ul>
+
+<p>##如何获得扩展点列表？</p>
+
+<p>要获取* IntelliJ Platform *核心中可用的扩展点列表,请参阅以下XML配置文件的<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/META-INF/LangExtensionPoints.xml" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LangExtensionPoints.xml</code></span></a></p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/META-INF/PlatformExtensionPoints.xml" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PlatformExtensionPoints.xml</code></span></a></p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/META-INF/VcsExtensionPoints.xml" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">VcsExtensionPoints.xml</code></span></a></p>
+  </li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_components.html">Plugin Components</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_actions.html">Plugin Actions</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 2 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

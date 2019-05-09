@@ -1,0 +1,240 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Components / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/plugin_structure/plugin_components.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Components" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-07-13T17:32:44+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Components" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/plugin_structure/plugin_components">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_class_loaders.html">Plugin Class Loaders</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_extensions_and_extension_points.html">Plugin Extensions and Extension Points</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/plugin_structure/plugin_components.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Components</h1>
+                    <p>组件是插件集成的基本概念.
+有三种组件:</p>
+
+<ul>
+  <li>
+    <p><strong>在IDE启动时创建并初始化应用程序级组件</strong>.
+可以使用<code class="code highlight language-text">getComponent(Class)</code>方法从<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/application/Application.java" data-bypass="yes" target="_blank"><span>Application</span></a>实例中获取它们.</p>
+  </li>
+  <li>
+    <p><strong>为IDE中的每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>实例创建项目级组件</strong>. 
+(请注意,即使未打开的项目也可以创建组件.)可以使用<code class="code highlight language-text">getComponent(Class)</code>方法从<code class="code highlight language-text">Project</code>实例获取它们.</p>
+  </li>
+  <li>
+    <p><strong>在IDE中加载的每个项目中为每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Module</code></span></a>创建模块级组件</strong> 
+.</p>
+  </li>
+</ul>
+
+<p>可以使用<code class="code highlight language-text">getComponent(Class)</code>方法从<code class="code highlight language-text">Module</code>实例获取模块级组件.</p>
+
+<p>每个组件都应该具有配置文件中指定的接口和实现类.
+接口类将用于从其他组件检索组件,实现类将用于组件实例化.</p>
+
+<p>注意同一级别的两个组件(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/application/Application.java" data-bypass="yes" target="_blank"><span>Application</span></a>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span>Project</span></a>或<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span>Module</span></a>)不能
+具有相同的接口类.
+可以为接口和实现指定相同的类.</p>
+
+<p>每个组件都有一个唯一的名称,用于其外部化和其他内部需求.
+组件的名称由其<code class="code highlight language-text">getComponentName()</code>方法返回.</p>
+
+<p>##组件命名表示法</p>
+
+<p>建议以“<plugin_name>.<component_name>”的形式命名组件.</component_name></plugin_name></p>
+
+<p>##应用程序级组件</p>
+
+<p>可选地,应用程序级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span>ApplicationComponent</span></a>接口.</p>
+
+<p>没有依赖项的应用程序组件应该有一个没有参数的构造函数,它将用于实例化.
+如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数.</p>
+<ul>
+  <li>IntelliJ Platform *将确保以正确的顺序实例化组件以满足依赖性.</li>
+</ul>
+
+<p>应用程序级组件必须在plugin.xml文件的<code class="code highlight language-text">&lt;application-components&gt;</code>部分中注册(请参阅<a href="plugin_configuration_file.html"><span>插件配置文件</span></a>).</p>
+
+<p>##项目级组件</p>
+
+<p>可选地,项目级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>ProjectComponent</span></a>接口.</p>
+
+<p>如果需要项目实例,项目级组件的构造函数可以具有<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span>Project</span></a>类型的参数. 
+.
+如果依赖于这些组件,它还可以将其他应用程序级或项目级组件指定为参数.</p>
+
+<p>项目级组件必须在<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;project-components&gt;</code>部分中注册(参见<a href="plugin_configuration_file.html"><span>Plugin Configuration File</span></a>).</p>
+
+<p>##模块级组件</p>
+
+<p>可选地,模块级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/module/ModuleComponent.java" data-bypass="yes" target="_blank"><span>ModuleComponent</span></a>接口.</p>
+
+<p>如果需要模块实例,则模块级组件的构造函数可以具有Module类型的参数.
+如果它依赖于那些组件,它还可以将其他应用程序级别,项目级别或模块级别组件指定为参数.</p>
+
+<p>模块级组件必须在<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;module-components&gt;</code>部分中注册(参见<a href="plugin_configuration_file.html"><span>Plugin Configuration File</span></a>).</p>
+
+<p>##持久化组件的状态</p>
+
+<p>如果组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>(不建议使用)或[PersistentStateComponent],则会自动保存和加载每个组件的状态. 
+](upsource:///platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java)界面.</p>
+
+<p>当组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" data-bypass="yes" target="_blank"><span>PersistentStateComponent</span></a>接口时,组件状态将保存在您可以指定的XML文件中
+使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/State.java" data-bypass="yes" target="_blank"><span>@State</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/Storage.java" data-bypass="yes" target="_blank"><span>@Storage</span></a>Java代码中的注释.</p>
+
+<p>当组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>接口时,组件将其状态保存在以下文件中:</p>
+
+<p>*项目级组件将其状态保存到项目(<code class="code highlight language-text">.ipr</code>)文件中.
+ 
+  
+但是,如果<code class="code highlight language-text">plugin.xml</code>文件中的workspace选项设置为<code class="code highlight language-text">true</code>,则组件将其配置保存到工作空间(<code class="code highlight language-text">.iws</code>)文件中.</p>
+
+<p>*模块级组件将其状态保存到模块(<code class="code highlight language-text">.iml</code>)文件中.</p>
+
+<p>有关更多信息和示例,请参阅<a href="/intellij/sdk/docsbasics/persisting_state_of_components.html"><span>持久性组件状态</span></a>.</p>
+
+<p>##默认值</p>
+
+<p>默认值(组件的预定义设置)应放在<code class="code highlight language-text">&lt;component_name&gt; .xml</code>文件中.
+将此文件放在与默认包对应的文件夹中的插件的类路径中. 
+<code class="code highlight language-text">readExternal()</code>方法将在<code class="code highlight language-text">&lt;component&gt;</code>root标签上调用.</p>
+
+<p>如果组件有默认值,则会调用<code class="code highlight language-text">readExternal()</code>方法两次:</p>
+
+<p>*第一次默认</p>
+
+<p>*第二次保存配置</p>
+
+<p>##插件组件生命周期</p>
+
+<p>组件按以下顺序加载:</p>
+
+<ul>
+  <li>Creation  - 调用构造函数.</li>
+</ul>
+
+<p>*初始化 - 调用<code class="code highlight language-text">initComponent</code>方法(如果组件实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span>ApplicationComponent</span></a>接口).</p>
+
+<p>*配置 - 调用<code class="code highlight language-text">readExternal</code>方法(如果组件实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>接口)或<code class="code highlight language-text">loadState</code>
+调用方法(如果组件实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" data-bypass="yes" target="_blank"><span>PersistentStateComponent</span></a>并且具有非默认持久化状态).</p>
+
+<p>*对于模块组件,调用[ModuleComponent]的“moduleAdded”方法(upsource:///platform/projectModel-api/src/com/intellij/openapi/module/ModuleComponent.java)接口以通知模块具有
+已添加到项目中.</p>
+
+<p>*对于项目组件,调用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>ProjectComponent</span></a>接口的<code class="code highlight language-text">projectOpened</code>方法来通知项目有
+已装载.</p>
+
+<p>按以下顺序卸载组件:</p>
+
+<p>*保存配置 - 调用<code class="code highlight language-text">writeExternal</code>方法(如果组件实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>接口),或者<code class="code highlight language-text">
+调用getState</code>方法(如果组件实现PersistentStateComponent).</p>
+
+<ul>
+  <li>Disposal  - 调用<code class="code highlight language-text">disposeComponent</code>方法.</li>
+</ul>
+
+<p>请注意,您不应该在组件的构造函数中使用<code class="code highlight language-text">getComponent()</code>方法请求任何其他组件,否则您将得到一个断言.
+如果在初始化组件时需要访问其他组件,则可以将它们指定为构造函数参数,或者在<code class="code highlight language-text">initComponent</code>方法中访问它们.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_class_loaders.html">Plugin Class Loaders</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_extensions_and_extension_points.html">Plugin Extensions and Extension Points</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 13 July 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

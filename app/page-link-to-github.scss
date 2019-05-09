@@ -1,0 +1,54 @@
+@import '_adaptive.scss';
+
+$base-color: #333333 !global;
+$base-link-color: #497BB7 !global;
+$base-link-hover-color: #F47810 !global;
+
+.page-link-to-github {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+    color: #828282;
+    font-size: 12px;
+    padding: 4px 10px;
+    text-decoration: none;
+    line-height: 20px;
+
+    &:hover {
+        color: $base-color;
+        border-color: $base-color;
+        text-decoration: none;
+    }
+
+    &:visited {
+        color: #828282;
+    }
+
+    &:visited:hover {
+        color: $base-color;
+    }
+
+    .github-icon {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-image: url('main-sprite.png');
+        background-repeat: no-repeat;
+        background-position: -50px 0;
+
+        @include adapt_retina {
+            background-image: url('main-sprite@2x.png');
+            background-size: 150px auto;
+        }
+    }
+    &:hover .github-icon {
+        background-position: 0 0;
+    }
+
+    .text {
+        padding-left: 27px;
+    }
+}

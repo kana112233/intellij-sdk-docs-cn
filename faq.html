@@ -1,0 +1,303 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Development FAQ / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/faq.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Development FAQ" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-17T15:41:28+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Development FAQ" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="faq">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/ide_development_instance.html">IDE Development Instances - Settings, Caches, Logs, and Plugins</a>
+                        <a class="navigation-links__next" href="/platform/fundamentals.html">Fundamentals</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/faq.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Development FAQ</h1>
+                    <p>This FAQ is a topical index of questions that have been asked (and answered) on our
+<a href="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200366979-IntelliJ-IDEA-Open-API-and-Plugin-Development" data-bypass="yes" target="_blank"><span>OpenAPI forum</span></a>.</p>
+
+<a name="open-source-plugins" class="elem-anchor"></a>
+<h2>Open-Source Plugins<a href="#open-source-plugins" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://github.com/jetbrains/intellij-scala#setting-up-the-project" data-bypass="yes" target="_blank"><span>How do I compile the Scala plugin?</span></a></li>
+</ul>
+
+<a name="action-system" class="elem-anchor"></a>
+<h2>Action System<a href="#action-system" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206130119-Triggering-AnAction-instances-" data-bypass="yes" target="_blank"><span>How do I trigger actions programmatically?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206750335-Add-new-Main-menu-option-for-plugin" data-bypass="yes" target="_blank"><span>How do I add a main menu item?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206765055-Overriding-the-New-context-menu-in-the-Project-view" data-bypass="yes" target="_blank"><span>How do I customize the “New…” menu?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142169-How-to-add-a-menu-item-below-Exclude-From-Compile-" data-bypass="yes" target="_blank"><span>How do I customize the compiler output context menu?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206756455-Question-about-Actions" data-bypass="yes" target="_blank"><span>How do I get the context of an action (selected file, active project etc.)?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206763405-How-to-dynamically-change-icons-in-the-tool-bar-" data-bypass="yes" target="_blank"><span>How do I change the icon of an action dynamically?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206151289-How-to-add-icons-to-the-toolbar-" data-bypass="yes" target="_blank"><span>How do I add icons to the IDEA toolbar?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206126699-List-of-built-in-action-ID-s-" data-bypass="yes" target="_blank"><span>Where do I get the list of built-in action IDs?</span></a></li>
+</ul>
+
+<a name="accessing-and-modifying-the-source-code" class="elem-anchor"></a>
+<h2>Accessing and Modifying the Source Code<a href="#accessing-and-modifying-the-source-code" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="/intellij/sdk/docsbasics/architectural_overview/psi.html"><span>PSI Architectural Overview</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791895-finding-all-derived-class-given-parent-class" data-bypass="yes" target="_blank"><span>How do I find all subclasses of a class?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206792205-How-to-find-anonymous-classes-in-PsiClass-" data-bypass="yes" target="_blank"><span>How do I find all anonymous classes created in a class?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139829-How-to-evaluate-the-value-of-PsiJavaToken-of-STRING-LITERAL-type" data-bypass="yes" target="_blank"><span>How do I calculate the value of a string literal token?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791825-How-to-rename-a-class-" data-bypass="yes" target="_blank"><span>How do I rename or move a Java class?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139469-Using-DependencyValidationManager-to-Get-Required-Classes" data-bypass="yes" target="_blank"><span>How do I build the list of all classes used by a given class or package?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143839-Adding-PsiElements-to-a-PsiFile" data-bypass="yes" target="_blank"><span>How do I insert whitespace into the PSI?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142279-Dynamically-add-new-properties-to-properties-files" data-bypass="yes" target="_blank"><span>How do I add properties to a .properties file?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143579-finding-a-statement-within-a-PsiMethod" data-bypass="yes" target="_blank"><span>How do I find specific method calls inside a PsiMethod?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206796015-What-is-the-lifecycle-of-a-PsiElement-" data-bypass="yes" target="_blank"><span>What is the lifecycle of a PSI element?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206768795-How-to-search-file-by-file-name-in-project-s-root-directory-" data-bypass="yes" target="_blank"><span>How do I find a file given its name (but no path)?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206771665-Creating-a-new-class" data-bypass="yes" target="_blank"><span>How do I create a new class in the given package?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206794255-How-to-make-a-PsiClass-derive-from-another-one-" data-bypass="yes" target="_blank"><span>How do I make a PsiClass extend another PsiClass?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800695-How-to-obtain-the-references-to-a-class-from-non-java-files-" data-bypass="yes" target="_blank"><span>How do I find references to a class from non-Java files?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800595-How-to-find-the-source-for-a-class-file" data-bypass="yes" target="_blank"><span>How do I find the source file given the path to a .class file?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206146759-How-to-resolve-unqualified-name-to-possible-PsiClasses-" data-bypass="yes" target="_blank"><span>How do I find classes with the specified non-qualified name?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206103859-How-to-get-Module-from-PsiClass-" data-bypass="yes" target="_blank"><span>How do I find the module in which a class is located?</span></a></li>
+  <li><a href="/intellij/sdk/docsbasics/psi_cookbook.html"><span>PSI Cookbook</span></a></li>
+</ul>
+
+<a name="working-with-xml-and-xml-dom" class="elem-anchor"></a>
+<h2>Working with XML and XML DOM<a href="#working-with-xml-and-xml-dom" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139639-Change-xml-attribute-value" data-bypass="yes" target="_blank"><span>How do I change the value of an XML attribute through the PSI?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206795875-XmlTagValue-reference-to-Java-methods" data-bypass="yes" target="_blank"><span>How do I add custom references to Java elements in XML files?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206795425-How-to-register-DTD-with-idea" data-bypass="yes" target="_blank"><span>How do I programmatically register a DTD or schema?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791535-DOM-DomElement-getParentOfType" data-bypass="yes" target="_blank"><span>What is the “strict” parameter in DomElement.getParentOfType()?</span></a></li>
+</ul>
+
+<a name="code-completion" class="elem-anchor"></a>
+<h2>Code Completion<a href="#code-completion" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206133529-How-to-determine-what-type-of-code-completion-was-invoked" data-bypass="yes" target="_blank"><span>How do I determine what type of code completion was invoked?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139729-Custom-completion-in-editor" data-bypass="yes" target="_blank"><span>How do I provide additional code completion in specific places of a Java file?</span></a></li>
+</ul>
+
+<a name="refactoring" class="elem-anchor"></a>
+<h2>Refactoring<a href="#refactoring" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206795955-Refactoring-Listeners" data-bypass="yes" target="_blank"><span>How can I receive notifications about refactoring events?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800005-How-to-invoke-refactoring-dialog-not-refactoring-itself-" data-bypass="yes" target="_blank"><span>How do I show a refactoring dialog programmatically?</span></a></li>
+</ul>
+
+<a name="rundebug" class="elem-anchor"></a>
+<h2>Run/Debug<a href="#rundebug" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143009-Creating-a-Run-type-" data-bypass="yes" target="_blank"><span>How do I implement a custom run configuration?</span></a></li>
+</ul>
+
+<a name="makecompile" class="elem-anchor"></a>
+<h2>Make/Compile<a href="#makecompile" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800625-Implementing-a-ClassInstrumentingCompiler-how-to-get-the-generated-class-files" data-bypass="yes" target="_blank"><span>How do I get access to class files generated by javac?</span></a></li>
+</ul>
+
+<a name="version-control-integration" class="elem-anchor"></a>
+<h2>Version Control Integration<a href="#version-control-integration" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791585-Editor-diff-functionality-for-custom-file-system" data-bypass="yes" target="_blank"><span>Can I provide line status markers for files in a custom file system?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791975-VCS-context-menu" data-bypass="yes" target="_blank"><span>How do I update the state of VCS actions depending on file status?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206792195-Module-for-deleted-file-" data-bypass="yes" target="_blank"><span>How can I find out the module of a deleted file?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139549-Is-it-possible-to-decorate-change-lists-" data-bypass="yes" target="_blank"><span>Can I provide additional decorations for changelists in the Changes view?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791775-VCS-OpenAPI-what-to-do-with-files-detected-as-out-of-date-" data-bypass="yes" target="_blank"><span>How do I report out-of-date files?</span></a></li>
+</ul>
+
+<a name="test-framework" class="elem-anchor"></a>
+<h2>Test Framework<a href="#test-framework" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143599-New-Testing-Framework" data-bypass="yes" target="_blank"><span>How can I use the new test framework?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791555-library-depndency-in-InspectionTestCase" data-bypass="yes" target="_blank"><span>How do I create a library dependency in my test module?</span></a></li>
+</ul>
+
+<a name="plugin-architecture" class="elem-anchor"></a>
+<h2>Plugin Architecture<a href="#plugin-architecture" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206138949-plugin-dtd-and-fileEditorProvider-element" data-bypass="yes" target="_blank"><span>Why are the extension elements in my plugin.xml red?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206796695-how-to-read-the-plugin-xml-file-from-within-plugin" data-bypass="yes" target="_blank"><span>How can I read the plugin descriptor of my plugin from code?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206793965-Custom-exception-reporting" data-bypass="yes" target="_blank"><span>How do I provide a custom exception reporter for my plugin?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206760095-how-do-i-plug-into-the-main-idea-help-system-" data-bypass="yes" target="_blank"><span>How can I add the help topics of my plugin to the IntelliJ Platform help system?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800275-How-to-get-the-idea-version" data-bypass="yes" target="_blank"><span>How do I get the version of IntelliJ Platform under which my plugin is running?</span></a></li>
+</ul>
+
+<a name="editors-documents-and-files" class="elem-anchor"></a>
+<h2>Editors, Documents and Files<a href="#editors-documents-and-files" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791625-Action-doesn-t-see-changes-in-xml-file" data-bypass="yes" target="_blank"><span>Why doesn’t the file change on disk after I changed it through the PSI?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206790685-Can-you-tie-into-the-file-save-logic-" data-bypass="yes" target="_blank"><span>Can I hook into the file save logic?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/207042355-Read-only-section-in-editor" data-bypass="yes" target="_blank"><span>Can I mark a part of a file as read-only?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791375-Using-locked-regions" data-bypass="yes" target="_blank"><span>How do I control what happens when the user tries to edit such a part?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143969-Rough-guide-to-xml-gui-editor-type-plugin-" data-bypass="yes" target="_blank"><span>How do I implement a custom editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206795495-Alternative-Editors-ala-HTML-Preview" data-bypass="yes" target="_blank"><span>How can I show several editors for a single file in tabs?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206135449-Create-an-Editor-for-a-non-physical-file" data-bypass="yes" target="_blank"><span>Can I open an editor which has no underlying file on disk?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206792085-Catching-the-Save-All-action" data-bypass="yes" target="_blank"><span>How do I save the content of my custom editor when the user saves all documents?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143909-MarkupModel-navigate-highlighted-elements" data-bypass="yes" target="_blank"><span>How do I highlight elements in a source code editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143879-HighlightManager-how-to-enable-F3-functionality" data-bypass="yes" target="_blank"><span>How do I allow to navigate between highlighted elements using Find Next?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143679-Forcing-an-annotator-to-update-status-of-a-file" data-bypass="yes" target="_blank"><span>How do I force code to be re-analyzed?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206141119-how-to-get-the-Editor-from-PsiElement-" data-bypass="yes" target="_blank"><span>How do I get the active editor instance?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206794335-How-to-get-cursor-position-in-the-current-editor-" data-bypass="yes" target="_blank"><span>How do I get the cursor position in the current editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142039-Clear-read-only-status" data-bypass="yes" target="_blank"><span>How do I clear the read-only status of a file?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206146719-HintManager-API-question" data-bypass="yes" target="_blank"><span>How do I show a popup hint in an editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800165-How-to-%C3%A7reate-live-template-like-red-box-edit-regions-in-an-editor" data-bypass="yes" target="_blank"><span>How do I create live template-like red box edit regions in an editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206146679-Error-highlighting-in-Editors" data-bypass="yes" target="_blank"><span>How can I show an editor with error highlighting in a tool window?</span></a></li>
+</ul>
+
+<a name="inspections" class="elem-anchor"></a>
+<h2>Inspections<a href="#inspections" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139579-LocalInspectionTool-for-XML-files-/comments/206204765" data-bypass="yes" target="_blank"><span>Can I build an inspection that processes XML files?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142489-visitXmlAttribute-question" data-bypass="yes" target="_blank"><span>Why are the inspection results shown multiple times?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142769-Triggering-Create-Method-intention" data-bypass="yes" target="_blank"><span>How can I provide a quick fix that creates a method?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800645-How-to-inspect-only-the-elements-modified-since-the-last-class-inspection" data-bypass="yes" target="_blank"><span>Is it possible to inspect only the elements that have been modified after the last full inspection?</span></a></li>
+</ul>
+
+<a name="project-structure" class="elem-anchor"></a>
+<h2>Project Structure<a href="#project-structure" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206137859-Dependency-storage-formats-" data-bypass="yes" target="_blank"><span>Can I add a new module dependency storage format?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143559-Usage-of-class-Pair-A-B-" data-bypass="yes" target="_blank"><span>What is the Pair to be passed to JavaModuleBuilder.setSourcePaths()?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206141569-selecting-a-configured-jdk" data-bypass="yes" target="_blank"><span>How do I access all configured JDKs?</span></a></li>
+</ul>
+
+<a name="custom-languages" class="elem-anchor"></a>
+<h2>Custom Languages<a href="#custom-languages" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791995-Parameter-Info" data-bypass="yes" target="_blank"><span>How do I provide Parameter Info support for my language?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139359-Autopopup-code-completion-in-custom-language" data-bypass="yes" target="_blank"><span>How do I provide auto-popup code completion in my language?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206797085-Custom-Language-How-to-make-a-closing-brace-unindent-" data-bypass="yes" target="_blank"><span>How to make a closing brace unindent?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206144059-How-the-insertion-of-closing-quote-works-in-Javascript-plugin-" data-bypass="yes" target="_blank"><span>How to automatically insert closing quotes?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206797015-Ctrl-mouse" data-bypass="yes" target="_blank"><span>How do I provide Ctrl+mouse popups for my language?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206786875-Debugging-custom-languages-" data-bypass="yes" target="_blank"><span>How do I enable debugging for my custom language which is compiled into Java?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143749-Custom-languages-masquarding-as-a-java-source-file-within-IntelliJ" data-bypass="yes" target="_blank"><span>How do I generate virtual Java classes mirroring the classes of my language?</span></a></li>
+</ul>
+
+<a name="user-interface" class="elem-anchor"></a>
+<h2>User Interface<a href="#user-interface" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206791945-IDE-Notifications" data-bypass="yes" target="_blank"><span>How do I provide animated status bar notifications?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139509-Combobox-with-Browse-Button-and-Autocompletion-" data-bypass="yes" target="_blank"><span>How do I enable file name completion in a combobox?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139049-popup-menu-with-left-and-right-aligned-items" data-bypass="yes" target="_blank"><span>How do I show a popup with left-aligned and right-aligned parts for each item?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206351479-Using-Browser-Component" data-bypass="yes" target="_blank"><span>Can I use an embedded Web browser from my plugin?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143779-Is-it-possible-to-change-icon-of-file-in-Project-view-" data-bypass="yes" target="_blank"><span>How do I provide a custom icon for files/PSI elements?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206139159-WriteActions-and-ProgressIndicator" data-bypass="yes" target="_blank"><span>Can I show a progress indicator for WriteActions?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206143999-DEMETRA-how-to-contribute-to-searchable-dialog-options-" data-bypass="yes" target="_blank"><span>How do I make it possible to search the options of my plugin in the Settings dialog?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142679-Opening-a-customised-StructureView" data-bypass="yes" target="_blank"><span>How do I show a custom window or popup based on Structure View?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206141229-is-it-possible-to-extend-the-project-tree-" data-bypass="yes" target="_blank"><span>Is it possible to extend the Project View tree?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206141379-Showing-Project-Strucuture-dialog-programmatically" data-bypass="yes" target="_blank"><span>How do I show the “Project Structure” dialog programmatically?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206141419-Putting-messages-into-console-window-" data-bypass="yes" target="_blank"><span>How do I print messages in the console view?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206794265-Package-selector-dialog" data-bypass="yes" target="_blank"><span>How do I show the package selector dialog programmatically?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800495-EditorTextField-in-3403-How-to-get-an-Editor-that-does-error-highlighting-" data-bypass="yes" target="_blank"><span>How do I provide syntax and error highlighting in a combo box editor?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206800405-How-can-i-run-some-code-when-a-ToolWindow-activates" data-bypass="yes" target="_blank"><span>How can I get notified when my tool window is activated?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206146779-How-to-get-a-Close-button-in-an-own-Usage-View-" data-bypass="yes" target="_blank"><span>How can I provide Close and Rerun buttons in my Usage View window?</span></a></li>
+</ul>
+
+<a name="general" class="elem-anchor"></a>
+<h2>General<a href="#general" class="anchor-link"><span></span></a></h2>
+<ul>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206763335-Getting-active-project-" data-bypass="yes" target="_blank"><span>How do I get the currently active project outside of an AnAction?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206792155-Detecting-frame-project-closing" data-bypass="yes" target="_blank"><span>How do I detect when a project is closing?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206142959-Stack-Analyzer-extension" data-bypass="yes" target="_blank"><span>How can I implement a custom stack trace analyzer?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206794095-Where-is-ApplicationComponent-state-stored-in-" data-bypass="yes" target="_blank"><span>Where is the state of an ApplicationComponent stored?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206146969-how-to-open-a-project-" data-bypass="yes" target="_blank"><span>How do I open a project programmatically?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206121889-How-to-get-the-folder-of-currenctly-selected-file" data-bypass="yes" target="_blank"><span>How do I get the folder of the currently selected file?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206147039-JDOMExternalizable-and-encrypting-" data-bypass="yes" target="_blank"><span>How do I encrypt some values in the configuration data of my plugin?</span></a></li>
+  <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206762245-How-can-I-track-plugin-s-exceptions-/comments/206112345" data-bypass="yes" target="_blank"><span>How can I track exceptions from my plugin?</span></a></li>
+</ul>
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/ide_development_instance.html">IDE Development Instances - Settings, Caches, Logs, and Plugins</a>
+                        <a class="navigation-links__next" href="/platform/fundamentals.html">Fundamentals</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 17 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

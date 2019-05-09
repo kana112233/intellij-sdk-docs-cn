@@ -1,0 +1,268 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Usages / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/reference_guide/custom_language_support/find_usages.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Find Usages" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-29T11:08:31+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Find Usages" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="reference_guide/custom_language_support/find_usages">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/code_completion.html">Code Completion</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/rename_refactoring.html">Rename Refactoring</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/reference_guide/custom_language_support/find_usages.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Find Usages</h1>
+                    <p>“查找用法”操作是一个多步骤的过程,该过程的每个步骤都需要自定义语言插件的参与.</p>
+
+<p>语言插件通过注册实现来参与Find Usages过程</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider</span></a></p>
+
+<p>在<code class="code highlight language-text">com.intellij.lang.findUsagesProvider</code>扩展点,并通过PSI实现使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a></p>
+
+<p>和</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a></p>
+
+<p>接口.</p>
+
+<p><strong>例</strong>:</p>
+
+<p>实施</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/findUsages/PropertiesFindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider</span></a></p>
+
+<p>在</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<p>“查找用法”操作的步骤如下:</p>
+
+<p>*在调用“查找用法”操作之前,IDE会构建自定义语言中每个文件中存在的单词索引.
+   
+使用
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/cacheBuilder/WordsScanner.java" data-bypass="yes" target="_blank"><span>WordsScanner</span></a>
+   
+实现返回
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider.getWordsScanner()</span></a>,
+   
+加载每个文件的内容并将其传递给单词scanner,以及单词consumer.
+   
+单词scanner scan将文本分成单词,定义每个单词的上下文(代码,注释或文字)并将单词传递给消费者.
+   
+实现单词扫描程序的最简单方法是使用
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java" data-bypass="yes" target="_blank"><span>DefaultWordsScanner</span></a>
+   
+实现,传递lexer令牌类型的集合,这些类型被视为标识符,文字和注释.
+   
+默认单词scanner scan将使用词法分析器将文本分解为标记,并将处理注释和文字标记的文本分成单个单词.</p>
+
+<p>*当用户调用Find Usages操作时,IDE将找到要搜索的引用的PSI元素.
+   
+游标处的PSI元素(光标位置处令牌的直接树父)必须是a
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>
+   
+或者a
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a>
+   
+哪个解决了
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>.
+   
+单词缓存将用于搜索从中返回的文本
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement.getName()</span></a>
+   
+方法.
+   
+另外,如果是文本范围的话
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>
+   
+除了从<code class="code highlight language-text">getName()</code>返回的标识符之外还包括一些其他文本(例如,如果是
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>
+   
+代表一个JavaScript函数,它的文本范围除了包含函数名称之外还包含“<code class="code highlight language-text">function</code>”关键字,必须覆盖<code class="code highlight language-text">getTextOffset()</code>方法.
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>,
+   
+并且必须在元素的文本范围内返回名称标识符的起始偏移量.</p>
+
+<p>*找到元素后,IDE会调用
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider.canFindUsagesFor()</span></a>
+   
+如果Find Usages操作适用于特定元素,请询问插件.</p>
+
+<p>*向用户显示“查找用户”对话框时,
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider.getType()</span></a>
+   
+和
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider.getDescriptiveName()</span></a>
+   
+被调用以确定如何将元素呈现给用户.</p>
+
+<p>*对于包含搜索词的每个文件,IDE构建PSI树并递归地下降该树.
+   
+每个元素的文本被分成单词然后被扫描.
+   
+如果元素被索引为标识符,则每个单词都被检查为a
+   
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiReference.java" data-bypass="yes" target="_blank"><span>PsiReference</span></a>
+   
+解析搜索其用法的元素.
+   
+如果元素被索引为注释或文字,并且启用了注释或文字中的搜索,则会检查该单词是否等于搜索元素的名称.</p>
+
+<p>*收集使用后,结果将显示在用法窗格中.</p>
+
+<p>为每个找到的元素显示的文本取自</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java" data-bypass="yes" target="_blank"><span>FindUsagesProvider.getNodeText()</span></a></p>
+
+<p>方法.</p>
+
+<p>要在Find Usages工具窗口的标题中正确显示找到的元素的标题,您需要提供</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java" data-bypass="yes" target="_blank"><span>ElementDescriptionProvider</span></a></p>
+
+<p>接口.</p>
+
+<p>该</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/ElementDescriptionLocation.java" data-bypass="yes" target="_blank"><span>ElementDescriptionLocation</span></a></p>
+
+<p>在这种情况下传递给提供者将是一个实例</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/usageView/UsageViewLongNameLocation.java" data-bypass="yes" target="_blank"><span>UsageViewLongNameLocation</span></a>.</p>
+
+<p><strong>例:</strong></p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/src/com/intellij/lang/properties/PropertiesDescriptionProvider.java" data-bypass="yes" target="_blank"><span>ElementDescriptionProvider</span></a></p>
+
+<p>对于</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/" data-bypass="yes" target="_blank"><span>属性语言插件</span></a></p>
+
+<aside class="提示">
+  <p>在函数参数和局部变量等情况下,请考虑覆盖</p>
+</aside>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement＃getUseScope</span></a>返回较窄的范围.</p>
+
+<p>例如,您可能只返回最近函数定义的范围.
+这种优化可以大大减少</p>
+
+<p>重命名函数参数时需要解析的文件数 - 以及需要解析的引用</p>
+
+<p>或局部变量.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/custom_language_support/code_completion.html">Code Completion</a>
+                        <a class="navigation-links__next" href="/reference_guide/custom_language_support/rename_refactoring.html">Rename Refactoring</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 29 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

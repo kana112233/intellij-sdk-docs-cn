@@ -1,0 +1,292 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Persisting State of Components / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/persisting_state_of_components.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Persisting State of Components" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-03T10:17:12+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Persisting State of Components" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/persisting_state_of_components">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/persisting_state_of_components.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Persisting State of Components</h1>
+                    <ul>
+  <li>IntelliJ Platform *提供了一个API,允许组件或服务在重新启动IDE之间保持其状态.
+您可以使用简单的API来保留一些值,也可以使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/PersistentStateComponent" data-bypass="yes" target="_blank"><span>PersistentStateComponent</span></a>来保持更复杂组件的状态. 
+java)接口.</li>
+</ul>
+
+<aside class="警告">
+  <p>如果您需要保留密码等敏感数据,请参阅<a href="persisting_sensitive_data.html"><span>持久敏感数据</span></a>.</p>
+</aside>
+
+<p>##使用PropertiesComponent进行简单的非可扩展持久化</p>
+
+<p>如果您的插件唯一需要保留的是一些简单的值,最简单的方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/ide/util/PropertiesComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">com.intellij.ide.util.PropertiesComponent</code></span></a>服务.
+它可用于保存应用程序级值和项目级值(存储在工作区文件中).
+对于<code class="code highlight language-text">PropertiesComponent</code>禁用漫游,因此仅将其用于临时的,不可漫游的属性.</p>
+
+<p>使用<code class="code highlight language-text">PropertiesComponent.getInstance()</code>方法存储应用程序级值,使用<code class="code highlight language-text">PropertiesComponent.getInstance(Project)</code>方法存储项目级值.</p>
+
+<p>由于所有插件共享相同的命名空间,因此强烈建议为键名称添加前缀(例如,使用插件ID).</p>
+
+<p>##使用PersistentStateComponent</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">com.intellij.openapi.components.PersistentStateComponent</code></span></a>界面为您提供了定义值的最大灵活性
+要坚持,他们的格式和存储位置.</p>
+
+<p>要使用它:</p>
+
+<ul>
+  <li>
+    <p>将<a href="plugin_structure/plugin_services.html"><span>service</span></a>或<a href="plugin_structure/plugin_components.html"><span>component</span></a>标记为实现<code class="code highlight language-text">PersistentStateComponent</code>接口</p>
+  </li>
+  <li>
+    <p>定义州级</p>
+  </li>
+  <li>
+    <p>使用<code class="code highlight language-text">@ com.intellij.openapi.components.State</code>指定存储位置</p>
+  </li>
+</ul>
+
+<p>请注意,扩展实例不能通过实现<code class="code highlight language-text">PersistentStateComponent</code>来保持其状态.
+如果您的扩展需要具有持久状态,则需要定义一个负责管理该状态的单独服务.</p>
+
+<p>###实现PersistentStateComponent接口</p>
+
+<p>“PersistentStateComponent”的实现需要使用状态类的类型进行参数化.
+状态类可以是单独的JavaBean类,也可以是实现<code class="code highlight language-text">PersistentStateComponent</code>本身的类.</p>
+
+<p>在前一种情况下,状态类的实例通常存储为<code class="code highlight language-text">PersistentStateComponent</code>类中的字段:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@State</span><span class="o">(...)</span>
+<span class="kd">class</span> <span class="nc">MyService</span> <span class="kd">implements</span> <span class="n">PersistentStateComponent</span><span class="o">&lt;</span><span class="n">MyService</span><span class="o">.</span><span class="na">State</span><span class="o">&gt;</span> <span class="o">{</span>
+  
+  <span class="kd">static</span> <span class="kd">class</span> <span class="nc">State</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="n">State</span> <span class="n">myState</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">State</span> <span class="nf">getState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">myState</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadState</span><span class="o">(</span><span class="n">State</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">myState</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>在后一种情况下,您可以使用以下模式来实现<code class="code highlight language-text">getState()</code>和<code class="code highlight language-text">loadState()</code>方法:</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@State</span><span class="o">(...)</span>
+<span class="kd">class</span> <span class="nc">MyService</span> <span class="kd">implements</span> <span class="n">PersistentStateComponent</span><span class="o">&lt;</span><span class="n">MyService</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="n">stateValue</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">MyService</span> <span class="nf">getState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadState</span><span class="o">(</span><span class="n">MyService</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">XmlSerializerUtil</span><span class="o">.</span><span class="na">copyBean</span><span class="o">(</span><span class="n">state</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<p>###实现状态类</p>
+
+<p>“PersistentStateComponent”的实现通过将公共字段,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/xmlb/annotations" data-bypass="yes" target="_blank"><span>annotated</span></a>私有字段和bean属性序列化为XML格式来实现.</p>
+
+<p>可以保留以下类型的值:</p>
+
+<p>*数字(两种原始类型,如<code class="code highlight language-text">int</code>和盒装类型,如<code class="code highlight language-text">Integer</code>)</p>
+
+<p>*布尔</p>
+
+<p>*字符串</p>
+
+<p>*收藏品</p>
+
+<p>*地图</p>
+
+<p>*枚举</p>
+
+<p>要从序列化中排除公共字段或bean属性,请使用<code class="code highlight language-text">@ com.intellij.util.xmlb.annotations.Transient</code>注释字段或getter.</p>
+
+<p>请注意,状态类必须具有默认构造函数.
+它应该返回组件的默认状态(如果XML文件中没有任何内容,则使用该状态).</p>
+
+<p>State类应该有一个<code class="code highlight language-text">equals</code>方法,但如果没有实现,状态对象将按字段进行比较.
+使用Kotlin时,请使用<a href="https://kotlinlang.org/docs/reference/data-classes.html" data-bypass="yes" target="_blank"><span>数据类</span></a>.</p>
+
+<p>###定义存储位置</p>
+
+<p>要指定存储的确切位置,需要在<code class="code highlight language-text">PersistentStateComponent</code>类中添加一个<code class="code highlight language-text">@ State</code>注释.</p>
+
+<p>它有以下字段:</p>
+
+<p>*<code class="code highlight language-text">name</code>(必需) - 指定状态的名称(XML中根标记的名称).</p>
+
+<p>*<code class="code highlight language-text">storages</code>  - 一个或多个<code class="code highlight language-text">@ com.intellij.openapi.components.Storage</code>注释,用于指定存储位置.
+项目级值的可选项 - 在这种情况下将使用标准项目文件.</p>
+
+<p>*<code class="code highlight language-text">reloadable</code>(可选) - 如果设置为false,则在外部更改XML文件并且状态已更改时,需要完成项目(或应用程序)重新加载.</p>
+
+<p>指定<code class="code highlight language-text">@ Storage</code>注释的最简单方法如下(自2016.x起;对于以前的版本,请参阅<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/5dcb02991cf828a7d4680d125ce56b4c10234146/basics/persisting_state_of_components.md" data-bypass="yes" target="_blank"><span>old version</span></a>:</p>
+
+<p>*<code class="code highlight language-text">@Storage(“yourName.xml”)</code>如果组件是项目级的 - 对于基于<code class="code highlight language-text">.ipr</code>的项目,将自动使用标准项目文件;
+你不需要指定任何东西.</p>
+
+<p>*<code class="code highlight language-text">@Storage(StoragePathMacros.WORKSPACE_FILE)</code>用于存储在工作区文件中的值.</p>
+
+<p>通过为<code class="code highlight language-text">value</code>参数指定不同的值(2016.x之前的<code class="code highlight language-text">file</code>),状态将保存在不同的文件中.</p>
+
+<aside class="注意">
+  <p>对于应用程序级组件,强烈建议使用自定义文件,不推荐使用<code class="code highlight language-text">other.xml</code>.</p>
+</aside>
+
+<p><code class="code highlight language-text">@Storage</code>注释的<code class="code highlight language-text">roamingType</code>参数指定使用Settings Repository插件时的漫游类型.</p>
+
+<p>##自定义持久值的XML格式</p>
+
+<p>请考虑仅使用注释参数来实现向后兼容性.
+否则随意提交有关序列化妆品的问题.</p>
+
+<p>如果要使用默认的bean序列化但需要自定义XML中的存储格式(例如,为了兼容以前版本的插件或外部定义的XML格式),可以使用<code class="code highlight language-text">@Tag</code>,<code class="code highlight language-text">@ Attribute</code> 
+,<code class="code highlight language-text">@ Property</code>,<code class="code highlight language-text">@ MapAnnotation</code>,<code class="code highlight language-text">@ AbstractCollection</code>注释.</p>
+
+<p>有关更多信息,请参阅<code class="code highlight language-text">com.intellij.util.xmlb.annotations</code>的<code class="code highlight language-text">package.html</code>.</p>
+
+<p>如果需要序列化的状态不能完全映射到JavaBean,则可以使用<code class="code highlight language-text">org.jdom.Element</code>作为状态类.
+在这种情况下,您可以使用<code class="code highlight language-text">getState()</code>方法构建具有任意结构的XML元素,然后将其直接保存在状态XML文件中.
+在<code class="code highlight language-text">loadState()</code>方法中,您可以使用任何自定义逻辑反序列化JDOM元素树.
+请注意,不建议这样做,应尽可能避免.</p>
+
+<p>##持久性组件生命周期</p>
+
+<p>在创建组件之后调用<code class="code highlight language-text">loadState()</code>方法(仅当组件持有一些非默认状态时),并且在外部更改具有持久状态的XML文件后(例如,如果项目)
+文件已从版本控制系统更新).
+在后一种情况下,组件负责根据改变的状态更新UI和其他相关组件.</p>
+
+<p>每次保存设置时都会调用<code class="code highlight language-text">getState()</code>方法(例如,在帧停用或关闭IDE时).
+如果从<code class="code highlight language-text">getState()</code>返回的状态等于默认状态(通过使用默认构造函数创建状态类获得),则XML中不会保留任何内容.
+否则,返回的状态将以​​XML格式化并存储.</p>
+
+<a name="legacy-apijdomexternalizable" class="elem-anchor"></a>
+<h2>Legacy API(JDOMExternalizable)<a href="#legacy-apijdomexternalizable" class="anchor-link"><span></span></a></h2>
+
+<p>较旧的组件使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JDOMExternalizable</code></span></a>接口来保持状态.
+它使用<code class="code highlight language-text">readExternal()</code>方法从JDOM元素中读取状态,使用<code class="code highlight language-text">writeExternal()</code>将状态写入它.</p>
+
+<p>实现可以手动将状态存储在属性和子元素中,或使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/DefaultJDOMExternalizer.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">DefaultJDOMExternalizer</code></span></a>类来存储值
+自动的所有公共领域.</p>
+
+<p>组件将其状态保存在以下文件中:</p>
+
+<p>*项目级:项目(<code class="code highlight language-text">.ipr</code>)文件.
+但是,如果<code class="code highlight language-text">plugin.xml</code>文件中的workspace选项设置为<code class="code highlight language-text">true</code>,则将使用workspace(<code class="code highlight language-text">.iws</code>)文件.</p>
+
+<p>*模块级:模块(<code class="code highlight language-text">.iml</code>)文件.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 3 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

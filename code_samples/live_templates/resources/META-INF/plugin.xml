@@ -1,0 +1,17 @@
+<idea-plugin>
+  <id>live_templates</id>
+  <name>Live Templates</name>
+  <version>1.0</version>
+  <vendor>JetBrains</vendor>
+
+  <description>Provides live templates for Markdown language</description>
+
+  <idea-version since-build="141.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <defaultLiveTemplatesProvider implementation="MarkdownTemplateProvider"/>
+    <liveTemplateContext implementation="MarkdownContext"/>
+
+  </extensions>
+
+</idea-plugin>

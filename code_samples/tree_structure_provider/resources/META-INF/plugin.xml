@@ -1,0 +1,16 @@
+<idea-plugin>
+  <id>org.jetbrains.plugins.sample.TreeStructure</id>
+  <name>Tree Structure Provider Demo</name>
+  <version>1.0</version>
+  <vendor>JetBrains</vendor>
+
+  <description>Tree Structure Provider Demo showing only plain text files</description>
+
+  <idea-version since-build="131"/>
+  <depends>com.intellij.modules.lang</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <treeStructureProvider implementation="org.jetbrains.tutorials.tree.structure.TextOnlyTreeStructureProvider"/>
+  </extensions>
+
+</idea-plugin>

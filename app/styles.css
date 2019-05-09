@@ -1,0 +1,145 @@
+.article h1 .anchor-link,
+.article h2 .anchor-link,
+.article h3 .anchor-link {
+  position: relative;
+  display: inline-block;
+  top: 1px;
+  padding: 5px 8px 0;
+  text-decoration: none;
+}
+.article h1 .anchor-link:after,
+.article h2 .anchor-link:after,
+.article h3 .anchor-link:after {
+  position: absolute;
+  display: none;
+  bottom: 50%;
+  margin-top: -8px;
+  opacity: 0.5;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAACxQAAAsUBidZ/7wAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEqSURBVDiNjdM9S1xRFIXhB8QoihZ+DRoJjlPYWAy2qQSbBFv/gOlT2CuKf0BSphe0EAVBBAvRJlYxghrRQqNgFXEQK5tr4Wa4XO44t9jNXme9h732OZIk0azQigVc4wFr+JQkiSLmduwiyVQNlSKA72G4xzTK2IneZhHAGH6ikupVAvC/KaAB9HMAbhodmMUv3GEdgymtB8cB+JE1dmAjJ7Ct0HtT5nN0pc2d2K/PxgxGsIxJ9OEk9DOU6msM80GItxFSFd9ijV9xEfopBlIX+4DDEP9hNITt6D2nRvmN/szYFuuJUk4J4/gT2hNW0JYTuMs49KXBRkpoeWelagEYypjmMVzgTdgLwCo+Ygp/ozdXBDCBl5zdH6G7KSAoVW8/7hFXWMoLLK9eAaRNvta9bjm9AAAAAElFTkSuQmCC937405abf7d2fa1cd5d9079c2e5160ac");
+  background-repeat: no-repeat;
+  content: "";
+}
+
+.page-link-to-github {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  border: 1px solid #b5b5b5;
+  border-radius: 5px;
+  color: #828282;
+  font-size: 12px;
+  padding: 4px 10px;
+  text-decoration: none;
+  line-height: 20px;
+}
+.page-link-to-github:hover {
+  color: #333333;
+  border-color: #333333;
+  text-decoration: none;
+}
+.page-link-to-github:visited {
+  color: #828282;
+}
+.page-link-to-github:visited:hover {
+  color: #333333;
+}
+.page-link-to-github .github-icon {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("main-sprite.png");
+  background-repeat: no-repeat;
+  background-position: -50px 0;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .page-link-to-github .github-icon {
+    background-image: url("main-sprite@2x.png");
+    background-size: 150px auto;
+  }
+}
+.page-link-to-github:hover .github-icon {
+  background-position: 0 0;
+}
+.page-link-to-github .text {
+  padding-left: 27px;
+}
+
+@-webkit-keyframes header-highlighting {
+  0% {
+    background-color: #FFFFCC;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+@-moz-keyframes header-highlighting {
+  0% {
+    background-color: #FFFFCC;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+@-o-keyframes header-highlighting {
+  0% {
+    background-color: #FFFFCC;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+@keyframes header-highlighting {
+  0% {
+    background-color: #FFFFCC;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+.article h1:hover .anchor-link:after,
+.article h2:hover .anchor-link:after,
+.article h3:hover .anchor-link:after {
+  display: block;
+  opacity: 1;
+}
+.article .elem-anchor:target + h1,
+.article .elem-anchor:target + h2,
+.article .elem-anchor:target + h3 {
+  -webkit-animation: header-highlighting 1.5s;
+  -moz-animation: header-highlighting 1.5s;
+  -o-animation: header-highlighting 1.5s;
+  animation: header-highlighting 1.5s;
+}
+.article .page-link-to-github {
+  float: right;
+  top: 4px;
+}
+.article img {
+  max-width: 100%;
+}
+.article pre {
+  margin-bottom: 20px !important;
+}
+.article .code-block__wrapper {
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  line-height: normal;
+}
+.article .hll {
+  display: block;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #FFFFCC;
+}
+.article table {
+  width: 100%;
+}
+.article hr {
+    border-color: #e0e2e3;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+}

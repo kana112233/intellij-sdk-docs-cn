@@ -1,0 +1,262 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Run Configuration Management / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/run_configurations/run_configuration_management.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Run Configuration Management" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2016-11-01T14:17:56+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Run Configuration Management" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/run_configurations/run_configuration_management">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/run_configurations/run_configuration_management.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Run Configuration Management</h1>
+                    <p>本文档描述了使用运行配置和常见用例的主要类.</p>
+
+<p>*虚拟目录</p>
+
+<p>##配置类型</p>
+
+<p>实现任何运行配置类型的起点是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ConfigurationType</code></span></a>接口.
+当用户打开_‘Edit运行配置’对话框并执行_‘Add’_动作时,将显示可用配置类型列表:</p>
+
+<p><img src="/intellij/sdk/docs基础/IMG/创建-1.png" alt="创建" /></p>
+
+<p>每种类型都表示为[<code class="code highlight language-text">ConfigurationType</code>]的实例(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java),注册如下:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;configurationType</span> <span class="na">implementation=</span><span class="s">"org.jetbrains.plugins.gradle.service.execution.GradleExternalTaskConfigurationType"</span> <span class="nt">/&gt;</span>
+</code></div>
+
+<p>实现此接口的最简单方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ConfigurationTypeBase</code></span></a>基类.
+为了使用它,您需要继承它并提供配置类型参数(ID,名称,描述和图标)作为构造函数参数.
+除此之外,你需要调用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">addFactory()</code></span></a>&lt;! - #L46-</p>
+<ul>
+  <li>
+    <aside>
+      <p>添加配置工厂的方法.</p>
+    </aside>
+  </li>
+</ul>
+
+<p>##配置工厂</p>
+
+<p>所有运行配置都是由为特定<code class="code highlight language-text">ConfigurationType</code>注册的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ConfigurationFactory</code></span></a>创建的.
+有一个<code class="code highlight language-text">ConfigurationType</code> <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span>有多个</span></a>&lt;! - #L34–&gt;<code class="code highlight language-text">ConfigurationFactory 
+</code>:</p>
+
+<p><img src="/intellij/sdk/docsbasics/img/create-3.png" alt="配置工厂" /></p>
+
+<p>[<code class="code highlight language-text">ConfigurationFactory</code>]的关键API(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java),以及您需要实现的唯一方法是
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">createTemplateConfiguration</code></span></a>&lt;! - #L45–&gt;方法.
+每个项目调用此方法一次以创建模板运行配置.</p>
+
+<p>通过[<code class="code highlight language-text">createConfiguration</code>]克隆模板来调用所有实际运行配置(从工作空间加载或由用户创建)(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)&lt;! - #L39  - &gt;方法.</p>
+
+<p>您可以通过覆盖[<code class="code highlight language-text">getIcon</code>]来自定义配置工厂的其他方面(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)&lt;! -#L59-</p>
+<ul>
+  <li>
+    <aside>
+      <p>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">getAddIcon</code></span></a>&lt;! -#L55–&gt;,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">getName</code></span></a> &lt;! - #L51–&gt;和默认设置方法.
+这些额外的覆盖是可选的.</p>
+    </aside>
+  </li>
+</ul>
+
+<p>##运行配置</p>
+
+<p>运行配置本身由<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunConfiguration</code></span></a>接口表示.
+这里的“运行配置”是一些可以执行的命名配置文件,例如,
+应用程序通过<code class="code highlight language-text">main()</code>类,测试,远程调试启动到特定的机器/端口等.</p>
+
+<p>以下是为特定项目定义的Java运行配置示例:</p>
+
+<p><img src="/intellij/sdk/docsbasics/img/create-2.png" alt="运行配置" /></p>
+
+<p>实现运行配置时,您可能希望使用其中一个公共基类:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunConfigurationBase</code></span></a>是一个通用超类,包含运行配置的最基本实现.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LocatableConfigurationBase</code></span></a>是一个公共基类,应该用于可以从上下文创建的配置
+一个<code class="code highlight language-text">RunConfigurationProducer</code>.
+它支持从其设置自动生成配置名称,并跟踪用户是否更改了名称.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ModuleBasedConfiguration.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleBasedConfiguration</code></span></a>是与特定模块关联的配置的基类(例如, 
+Java运行配置使用选定的模块来确定运行类路径.</p>
+  </li>
+</ul>
+
+<p>##设置编辑器</p>
+
+<p>可以通过以下方式修改常见的运行配置设置:</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunConfiguration</code>特定的UI</span></a>&lt;! - #L48–&gt;.
+这由[<code class="code highlight language-text">SettingsEditor</code>]处理(upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)&lt;! - #L97–&gt;:</p>
+
+<ul>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">getComponent()</code></span></a>&lt;! - #L97–&gt;方法由IDE调用
+显示运行配置特定UI.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">resetFrom()</code></span></a>&lt;! - #L83–&gt;被调用以丢弃所有非
+确认用户通过该UI进行的更改.</p>
+  </li>
+  <li>
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">applyTo()</code></span></a>调用&lt;! -#L93–&gt;确认更改,
+即将当前UI状态复制到目标设置对象中.</p>
+  </li>
+</ul>
+
+<p>##持久性</p>
+
+<p>该运行配置设置是持久的,即它们存储在文件系统中并在IDE启动时加载回来.
+这是通过[<code class="code highlight language-text">writeExternal()</code>]执行的(upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)&lt;! - #L27–&gt;和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">readExternal() 
+</code></span></a>&lt;! -#L26–&gt; [RunConfiguration`]的方法(upsource:///platform/
+lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)相应的类.</p>
+
+<ul>
+  <li>IntelliJ Platform *存储的实际配置由<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunnerAndConfigurationSettings</code></span></a>类的实例表示,该类结合了
+使用特定于运行程序的设置运行配置,以及跟踪某些运行配置标志,例如“临时”或“单例”.</li>
+</ul>
+
+<p>当您需要从代码创建运行配置时,需要处理此类的实例.
+这是通过以下两个步骤完成的:</p>
+
+<p>*<code class="code highlight language-text">RunManager.createConfiguration()</code>创建一个<code class="code highlight language-text">RunnerAndConfigurationSettings</code>的实例.</p>
+
+<p>*<code class="code highlight language-text">RunManager.addConfiguration()</code>通过将其添加到项目中存储的共享配置列表或工作空间文件中存储的本地配置列表来使其持久化.</p>
+
+<p>##重构支持</p>
+
+<p>大多数运行配置包含对其设置中的类,文件或目录的引用,并且通常需要在重命名或移动相应元素时更新这些设置.</p>
+
+<p>为了支持这一点,您的运行配置需要实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RefactoringListenerProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RefactoringListenerProvider</code></span></a>接口.</p>
+
+<p>在你的<code class="code highlight language-text">getRefactoringElementListener()</code>的实现中,你需要检查被重构的元素是否是你的运行配置所引用的元素,如果是,你返回一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/refactoring/listeners/RefactoringElementListener.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RefactoringElementListener</code></span></a>根据元素的新名称和位置更新配置.</p>
+
+<p>##从上下文创建配置</p>
+
+<p>许多插件支持从上下文自动创建运行配置,以便用户可以单击(例如)应用程序或测试类,并使用正确的运行配置类型自动运行它.
+为了支持这一点,您需要提供[<code class="code highlight language-text">RunConfigurationProducer</code>]的实现(upsource:///platform/lang-api/src/com/intellij/execution/actions/RunConfigurationProducer.java)</p>
+
+<p>接口并在``plugin.xml<code class="code highlight language-text">中将其注册为</code><runConfigurationProducer>`. 
+(请注意,此API已在IntelliJ IDEA 13中重新设计;旧的[`RuntimeConfigurationProducer`](upsource:///platform/lang-api/src/com/intellij/execution/junit/RuntimeConfigurationProducer.java)是一个更多
+混淆版本的相同API).</runConfigurationProducer></p>
+
+<p>您需要实现的两个主要方法是:</p>
+
+<p>*<code class="code highlight language-text">setupConfigurationFromContext</code>接收您的类型的空白配置和<code class="code highlight language-text">ConfigurationContext</code>,其中包含有关源代码位置的信息(可通过调用<code class="code highlight language-text">getLocation()</code>或<code class="code highlight language-text">getPsiLocation()</code>来访问).
+您的实现需要检查该位置是否适用于您的配置类型(例如,如果它位于您支持的语言的文件中).
+如果没有,则需要返回false,如果是,则需要将正确的特定于上下文的设置放入运行配置中并返回true.</p>
+
+<p>*<code class="code highlight language-text">isConfigurationFromContext</code>检查您的类型的指定配置是否是从指定的上下文创建的.
+通过实现此方法,您可以重用现有的运行配置,该配置适用于当前上下文,而不是创建新的配置,并可能忽略用户在现有环境中执行的自定义.</p>
+
+<p>请注意,为了支持从上下文创建的配置的自动命名,您的配置应该使用</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">LocatableConfigurationBase</code></span></a>作为基类.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        
+                        <a class="navigation-links__next" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 1 November 2016
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

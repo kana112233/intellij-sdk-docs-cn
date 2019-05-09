@@ -1,0 +1,185 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Plugin Icon / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/plugin_structure/plugin_icon_file.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Plugin Icon" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-01-23T09:29:21+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Plugin Icon" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/plugin_structure/plugin_icon_file">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_configuration_file.html">Plugin Configuration File - plugin.xml</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_dependencies.html">Plugin Dependencies</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/plugin_structure/plugin_icon_file.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Plugin Icon</h1>
+                    <p>从版本2019.1开始,IntelliJ平台支持使用图标表示插件.</p>
+
+<p>_Plugin Icon_旨在成为插件功能,技术或的独特表示</p>
+
+<p>公司.</p>
+
+<p>插件图标显示在设置/首选项<a href="https://www.jetbrains.com/help/idea/managing-plugins.html" data-bypass="yes" target="_blank"><span>插件管理器</span></a>UI中</p>
+
+<p>在JetBrains的产品中.
+插件图标也出现在<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>Plugins Repository</span></a>中,</p>
+
+<p>以及<a href="https://plugins.jetbrains.com/marketplace" data-bypass="yes" target="_blank"><span>MarketPlace</span></a>.</p>
+
+<p><strong>注意:</strong>插件中使用的图标和图像有不同的要求.</p>
+
+<p>请参阅<a href="/intellij/sdk/docsreference_guide/work_with_icons_and_images.html"><span>使用图标和图像</span></a></p>
+
+<p>欲获得更多信息.</p>
+
+<p>###插件图标文件格式</p>
+
+<p>所有插件图标图像必须以SVG格式提供.</p>
+
+<p>插件图标将以40px x 40px和80px x 80px大小显示.
+但是,只有一个</p>
+
+<p>应提供size icon_,因为它会自动生成</p>
+
+<p>规模.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon Size</th>
+      <th>Example SVG Icon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>40x40</td>
+      <td><img src="img/kotlin40.svg" alt="Kotlin Plugin Icon" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>###插件图标文件命名约定</p>
+
+<p>插件图标文件根据以下约定命名:</p>
+
+<p>*<code class="code highlight language-text">pluginIcon.svg</code>用于默认(轻量)JetBrains IDE主题</p>
+
+<p>*<code class="code highlight language-text">pluginIcon_dark.svg</code>用于Darcula JetBrains IDE主题</p>
+
+<p>###将插件图标添加到插件项目中</p>
+
+<p>插件图标文件必须位于插件分发文件的“META-INF”文件夹中,</p>
+
+<p>即您上传到插件存储库并安装到的<code class="code highlight language-text">* .jar</code>或<code class="code highlight language-text">* .zip</code>文件</p>
+
+<p>JetBrains IDE.</p>
+
+<p>要在分发文件中包含插件图标,请放置插件图标文件</p>
+
+<p>进入插件项目的<code class="code highlight language-text">resources/META-INF</code>文件夹.
+注意这个要求</p>
+
+<p>无论使用DevKit还是Gradle开发插件,都是一样的.
+例如:
+ </p>
+
+<p><img src="img/resource_directory_structure.png" alt="META-INF文件夹中的插件图标" /></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_configuration_file.html">Plugin Configuration File - plugin.xml</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure/plugin_dependencies.html">Plugin Dependencies</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 23 January 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

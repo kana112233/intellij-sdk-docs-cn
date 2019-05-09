@@ -1,0 +1,202 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Structure / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/project_structure.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Project Structure" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-04-08T15:59:57+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Project Structure" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/project_structure">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/localization_guide.html">Localization Guide</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/project.html">Project</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/project_structure.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Project Structure</h1>
+                    <p>&lt;! -  TODO根据目录分成部分 - &gt;</p>
+
+<p>本主题考虑基于* IntelliJ Platform *和相关主题的项目概念,例如_modules_,<em>facets</em>,<em>libraries</em>,<em>SDK</em>.
+已经考虑了可用于管理项目和模块的项目结构和Java类.</p>
+
+<p>##项目及其组件</p>
+
+<p>本节简要讨论IDEA项目结构,项目组件和相关术语.
+有关项目及其组件的更多信息,请参阅<a href="https://www.jetbrains.com/help/idea/about-projects.html" data-bypass="yes" target="_blank"><span>项目</span></a>,<a href="https://www.jetbrains.com/help/idea/configurations-projects.html#working-with-modules" data-bypass="yes" target="_blank"><span>模块</span></a>,<a href="https://www.jetbrains.com/help/idea/working-with-libraries.html" data-bypass="yes" target="_blank"><span>Library</span></a>,<a href="https://www.jetbrains.com/help/idea/adding-support-for-frameworks-and-technologies.html#facets" data-bypass="yes" target="_blank"><span>Facet</span></a>在* IntelliJ IDEA * Web帮助中.</p>
+
+<p>###项目</p>
+
+<p>在* IntelliJ Platform <em>中,_project_将所有源代码,库和构建指令封装到单个组织单元中.
+使用</em> IntelliJ Platform SDK *所做的一切都是在项目的上下文中完成的.
+项目定义称为_modules_和_libraries_的集合.
+根据项目的逻辑和功能要求,您可以创建_single-module_或_multi-module_项目.</p>
+
+<p>###模块</p>
+
+<p>_module_是一个独立的功能单元,可以独立运行,测试和调试.
+模块包括源代码,构建脚本,单元测试,部署描述符等.在项目中,每个模块可以使用特定的SDK或继承项目级别定义的SDK(参见<a href="/intellij/sdk/docsreference_guide/project_model"><span>SDK</span></a> 
+/sdk.md)本文档下面的部分).
+模块可以依赖于项目的其他模块.</p>
+
+<a name="section" class="elem-anchor"></a>
+<h3>图书馆<a href="#section" class="anchor-link"><span></span></a></h3>
+
+<p>_library_是模块所依赖的已编译代码(例如JAR文件)的存档.</p>
+<ul>
+  <li>
+    <p>IntelliJ Platform *支持三种类型的库:</p>
+  </li>
+  <li>
+    <p><strong>模块库</strong>:库类仅在此模块中可见,库信息记录在模块的<code class="code highlight language-text">.iml</code>文件中.</p>
+  </li>
+  <li>
+    <p><strong>项目库</strong>:库类在项目中可见,库信息记录在项目的<code class="code highlight language-text">.ipr</code>文件或<code class="code highlight language-text">.idea/libraries</code>中.</p>
+  </li>
+  <li>
+    <p><strong>全局库</strong>:库信息记录在<code class="code highlight language-text">〜/.IntelliJIdea/config/options</code>目录的<code class="code highlight language-text">applicationLibraries.xml</code>文件中.
+全局库与项目库类似,但对于不同的项目是可见的.</p>
+  </li>
+</ul>
+
+<p>有关库的更多信息,请参阅<a href="https://www.jetbrains.com/help/idea/working-with-libraries.html" data-bypass="yes" target="_blank"><span>Library</span></a>.</p>
+
+<a name="sdk" class="elem-anchor"></a>
+<h3>SDK<a href="#sdk" class="anchor-link"><span></span></a></h3>
+
+<p>每个项目都使用软件开发工具包(<em>SDK</em>).
+对于Java项目,SDK称为JDK(Java Development Kit).</p>
+
+<p>SDK确定用于构建项目的API库.
+如果您的项目是多模块,则默认情况下项目SDK对于项目中的所有模块都是通用的.</p>
+
+<p>(可选)您可以为每个模块配置单独的SDK.</p>
+
+<p>有关SDK的更多信息,请参阅* IntelliJ IDEA * Web帮助中的<a href="https://www.jetbrains.com/help/idea/working-with-sdks.html" data-bypass="yes" target="_blank"><span>使用SDK</span></a>.</p>
+
+<a name="facet" class="elem-anchor"></a>
+<h3>Facet<a href="#facet" class="anchor-link"><span></span></a></h3>
+
+<p>_facet_表示特定配置,特定于与模块相关联的特定框架/技术.
+模块可以有多个方面.
+例如. 
+Spring特定配置存储在Spring facet中.</p>
+
+<p>方面记录在<a href="https://www.jetbrains.com/help/idea/adding-support-for-frameworks-and-technologies.html#facets" data-bypass="yes" target="_blank"><span>Facet</span></a>和<a href="https://www.jetbrains.com/help/idea/language-and-framework-specific-guidelines.html" data-bypass="yes" target="_blank"><span>语言和框架特定指南</span></a>.</p>
+
+<p>有关每个实体的更多信息,请参阅:</p>
+
+<ul>
+  <li>
+    <p><a href="/intellij/sdk/docsreference_guide/project_model/project.html"><span>项目</span></a></p>
+  </li>
+  <li>
+    <p><a href="/intellij/sdk/docsreference_guide/project_model/module.html"><span>Module</span></a></p>
+  </li>
+  <li>
+    <p><a href="/intellij/sdk/docsreference_guide/project_model/sdk.html"><span>SDK</span></a></p>
+  </li>
+  <li>
+    <p><a href="/intellij/sdk/docsreference_guide/project_model/facet.html"><span>图书馆</span></a></p>
+  </li>
+  <li>
+    <p><a href="/intellij/sdk/docsreference_guide/frameworks_and_external_apis/external_system_integration.html"><span>外部系统集成</span></a>(适用于从Gradle或类似构建系统导入的项目)</p>
+  </li>
+</ul>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/reference_guide/localization_guide.html">Localization Guide</a>
+                        <a class="navigation-links__next" href="/reference_guide/project_model/project.html">Project</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 April 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

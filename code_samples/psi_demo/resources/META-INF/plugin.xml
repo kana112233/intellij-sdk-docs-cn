@@ -1,0 +1,15 @@
+<idea-plugin>
+  <id>com.jetbrains.psidemo</id>
+  <name>PSI demo</name>
+  <version>1.0</version>
+  <vendor>JetBrains</vendor>
+
+  <idea-version since-build="173.0"/>
+
+  <actions>
+    <action class="com.intellij.tutorials.psi.PsiNavigationDemoAction" id="PsiNavigationDemo" text="PSI Navigation Demo...">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+
+</idea-plugin>

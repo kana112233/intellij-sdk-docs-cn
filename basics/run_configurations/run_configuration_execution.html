@@ -1,0 +1,190 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Execution / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/run_configurations/run_configuration_execution.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Execution" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2017-10-30T10:32:07+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Execution" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/run_configurations/run_configuration_execution">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_management.html">Run Configuration Management</a>
+                        <a class="navigation-links__next" href="/tutorials/run_configurations.html">Run Configurations</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/run_configurations/run_configuration_execution.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Execution</h1>
+                    <p>标准执行运行操作将执行以下步骤:</p>
+
+<p><em>用户选择</em>运行配置<em>(例如,通过从运行配置组合框中选择一个)和</em>执行器*(例如,通过按执行器创建的工具栏按钮).</p>
+
+<p><em>通过轮询所有已注册的程序运行程序并询问是否可以使用指定的执行程序ID运行指定的运行配置文件,选择将实际执行该进程的</em>程序运行器*.</p>
+
+<p>*创建<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/runners/ExecutionEnvironment.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ExecutionEnvironment</code></span></a>对象.
+此对象聚合执行该过程所需的所有设置,以及所选的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/runners/ProgramRunner.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProgramRunner</code></span></a>.</p>
+
+<p>*调用<code class="code highlight language-text">ProgramRunner.execute()</code>,接收执行程序和执行环境.</p>
+
+<p><code class="code highlight language-text">ProgramRunner.execute()</code>的实现通过以下步骤来执行该过程:</p>
+
+<p>*调用<code class="code highlight language-text">RunProfile.getState()</code>方法创建<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunProfileState.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunProfileState</code></span></a>对象,描述一个过程
+即将开始.
+在此阶段,初始化命令行参数,环境变量和启动过程所需的其他信息.</p>
+
+<p>*``RunProfileState.execute()<code class="code highlight language-text">被调用.
+它启动进程,将一个</code>ProcessHandler<code class="code highlight language-text">附加到它的输入和输出流,创建一个控制台来显示进程输出,并返回一个[</code>ExecutionResult`](upsource:///platform/lang-api/src/com/intellij/execution/ExecutionResult.java)聚合控制台和进程处理程序的对象.</p>
+
+<p>*创建并调用<code class="code highlight language-text">RunContentBuilder</code>对象,以在Run或Debug工具窗口的选项卡中显示执行控制台.</p>
+
+<p>##执行人</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/Executor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Executor</code></span></a>接口描述了执行任何可能的运行配置的特定方式.</p>
+
+<p>默认情况下,* IntelliJ Platform *提供的三个默认执行程序是_Run _,_Debug_和带有Coverage_的_Run.
+每个执行程序都有自己的工具栏按钮,它使用此执行程序启动选定的运行配置,以及使用此执行程序启动配置的自己的上下文菜单项.</p>
+
+<p>作为插件开发人员,通常不需要实现<code class="code highlight language-text">Executor</code>接口.
+但是,它可能很有用,例如,如果您正在实现探查器集成并希望提供使用性能分析执行任何配置的可能性.</p>
+
+<p>##运行一个进程</p>
+
+<p>每个运行配置实现都会出现<code class="code highlight language-text">RunProfileState</code>接口,作为返回值<code class="code highlight language-text">RunProfile.getState()</code>.
+它描述了一个准备启动的进程,并保存了诸如命令行,当前工作目录和要启动的进程的环境变量之类的信息. 
+(作为执行流程中单独步骤的<code class="code highlight language-text">RunProfileState</code>的存在允许运行配置扩展和其他组件修补配置并在执行之前修改参数.)</p>
+
+<p>用作<code class="code highlight language-text">RunProfileState</code>实现的标准基类是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/CommandLineState.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">CommandLineState</code></span></a>.
+它包含将正在运行的进程和控制台放在[<code class="code highlight language-text">ExecutionResult</code>]中的逻辑(upsource:///platform/lang-api/src/com/intellij/execution/ExecutionResult.java),但不知道
+这个过程实际上是如何开始的.
+要启动该过程,最好使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/execution/configurations/GeneralCommandLine.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">GeneralCommandLine</code></span></a>类,该类负责设置
+命令行参数和执行过程.</p>
+
+<p>或者,如果您需要运行的进程是基于JVM的进程,则可以使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/execution/openapi/src/com/intellij/execution/configurations/JavaCommandLineState.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JavaCommandLineState</code></span></a>基类.
+它了解JVM的命令行参数,并可以处理计算JVM的类路径等细节.</p>
+
+<p>要监视进程的执行并捕获其输出,通常使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/execution/process/OSProcessHandler.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">OSProcessHandler</code></span></a>类.
+一旦从命令行或Process对象创建了“OSProcessHandler”实例,就需要调用<code class="code highlight language-text">startNotify()</code>方法来开始捕获其输出.
+您可能还想将一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/execution/process/ProcessTerminatedListener.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProcessTerminatedListener</code></span></a>附加到<code class="code highlight language-text">OSProcessHandler</code>,以便退出状态为
+该过程将显示在控制台中.</p>
+
+<p>##显示流程输出</p>
+
+<p>如果您正在使用<code class="code highlight language-text">CommandLineState</code>,将自动创建一个控制台视图并将其附加到该进程的输出.
+或者,您可以自己安排:</p>
+
+<p>*<code class="code highlight language-text">TextConsoleBuilderFactory.createBuilder(project).getConsole()</code>创建一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/ui/ConsoleView.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ConsoleView</code></span></a>实例</p>
+
+<p>*<code class="code highlight language-text">ConsoleView.attachToProcess()</code>将它附加到进程的输出.</p>
+
+<p>如果您运行的进程使用ANSI转义码为其输出着色,则<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/execution/process/ColoredProcessHandler.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ColoredProcessHandler</code></span></a>类将
+解析它并在IntelliJ控制台中显示颜色.</p>
+
+<p>Console <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/filters/Filter.java" data-bypass="yes" target="_blank"><span>filters</span></a>允许您将流程输出中找到的某些字符串转换为可单击的超链接.
+要将过滤器附加到控制台,请使用<code class="code highlight language-text">CommandLineState.addConsoleFilters()</code>,或者,如果您手动创建控制台,请使用<code class="code highlight language-text">TextConsoleBuilder.addFilter()</code>.</p>
+
+<p>您可能想要重用的两个常见过滤器实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/filters/RegexpFilter.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RegexpFilter</code></span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/filters/UrlFilter.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">UrlFilter</code></span></a>.</p>
+
+<p>##从代码开始运行配置</p>
+
+<p>如果您有一个需要执行的现有运行配置,最简单的方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/execution/ProgramRunnerUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProgramRunnerUtil.executeConfiguration()</code></span></a>&lt;! -#L110  - &gt;.
+该方法采用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunnerAndConfigurationSettings</code></span></a>,以及<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/Executor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Executor</code></span></a>
+.
+要获取现有配置的<code class="code highlight language-text">RunnerAndConfigurationSettings</code>,您可以使用,例如,<code class="code highlight language-text">RunManager.getConfigurationSettings(ConfigurationType)</code>.
+作为最后一个参数,您通常会传递<code class="code highlight language-text">DefaultRunExecutor.getRunExecutorInstance()</code>或<code class="code highlight language-text">DefaultDebugExecutor.getDebugExecutorInstance()</code>.</p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_management.html">Run Configuration Management</a>
+                        <a class="navigation-links__next" href="/tutorials/run_configurations.html">Run Configurations</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 30 October 2017
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

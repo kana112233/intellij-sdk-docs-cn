@@ -1,0 +1,231 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Publishing a Plugin to a Custom Plugin Repository / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/getting_started/update_plugins_format.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="Publishing a Plugin to a Custom Plugin Repository" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2018-11-27T09:57:12+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="Publishing a Plugin to a Custom Plugin Repository" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="basics/getting_started/update_plugins_format">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started.html">Creating Your First Plugin</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure.html">Plugin Structure</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/basics/getting_started/update_plugins_format.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>Publishing a Plugin to a Custom Plugin Repository</h1>
+                    <p>如果您打算使用插件存储库_ <a href="https://plugins.jetbrains.com" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>,</p>
+
+<p>你需要:</p>
+
+<p>*在用于自定义存储库的HTTPS Web服务器上创建和维护<code class="code highlight language-text">updatePlugins.xml</code>文件.
+  
+此文件描述了自定义存储库中可用的所有插件以及每个插件的下载URL.</p>
+
+<p>*将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
+这可以是您用于自定义存储库的同一Web服务器
+  
+或者不同的HTTPS Web服务器.</p>
+
+<p>*将自定义存储库的URL添加到JetBrains IDE <a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
+
+<p>##在updatePlugins文件中描述您的插件</p>
+
+<p>每个自定义插件存储库必须至少有一个<code class="code highlight language-text">updatePlugins.xml</code>文件来描述最新的可用版本</p>
+
+<p>对于每个托管插件. 
+JetBrains IDE使用<code class="code highlight language-text">updatePlugins.xml</code>中的描述来按属性定位插件</p>
+
+<p>例如id,IDE版本和插件版本. 
+JetBrains IDE显示这些属性,以帮助用户选择或升级插件.</p>
+
+<p>该描述还告诉JetBrains IDE在哪里下载插件本身.</p>
+
+<p>自定义插件存储库的<code class="code highlight language-text">updatePlugins.xml</code>文件由管理员构建和维护</p>
+
+<p>存储库.
+如果自定义存储库的使用者使用更多,则可能需要多个<code class="code highlight language-text">updatePlugins.xml</code>文件</p>
+
+<p>比一个版本的JetBrains IDE.
+例如,对于IntelliJ IDEA 2018.2和2018.3,分别为<code class="code highlight language-text">updatePlugins-182.xml</code>,<code class="code highlight language-text">updatePlugins-183.xml</code>.</p>
+
+<p>每个<code class="code highlight language-text">updatePlugins  -  *.xml</code>文件都有一个添加到JetBrains IDE的唯一URL</p>
+
+<p><a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
+
+<a name="updateplugins" class="elem-anchor"></a>
+<h3>updatePlugins文件的格式<a href="#updateplugins" class="anchor-link"><span></span></a></h3>
+
+<p><code class="code highlight language-text">updatePlugins.xml</code>文件的格式只是描述每个插件的顺序元素列表:</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- 
+  The &lt;plugins&gt; element contains the description of the plugins available at this repository. Required. 
+--&gt;</span>
+<span class="nt">&lt;plugins&gt;</span>
+  <span class="c">&lt;!-- 
+    Each &lt;plugin&gt; element describes one plugin in the repository. Required.
+    id - used by JetBrains IDEs to uniquely identify a plugin. Required. Must match &lt;id&gt; in plugin.xml
+    url - path to download the plugin JAR/ZIP file. Required. Must be HTTPS
+    version - version of this plugin. Required. Must match &lt;version&gt; in plugin.xml
+  --&gt;</span>
+  <span class="nt">&lt;plugin</span> <span class="na">id=</span><span class="s">"fully.qualified.id.of.this.plugin"</span> <span class="na">url=</span><span class="s">"https://www.mycompany.com/my_repository/mypluginname.jar"</span> <span class="na">version=</span><span class="s">"major.minor.update"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--
+      The &lt;idea-version&gt; element must match the same element in plugin.xml. Required.
+    --&gt;</span>
+    <span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"181.3"</span> <span class="na">until-build=</span><span class="s">"191.*"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+  <span class="nt">&lt;plugin</span> <span class="na">id=</span><span class="s">"id.of.different.plugin"</span> <span class="na">url=</span><span class="s">"https://www.otherserver.com/other_repository/differentplugin.jar"</span> <span class="na">version=</span><span class="s">"major.minor"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"181.3"</span> <span class="na">until-build=</span><span class="s">"191.*"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+  <span class="nt">&lt;plugin&gt;</span>
+    <span class="c">&lt;!-- And so on for other plugins... --&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+</code></div>
+<p><br />
+<strong>Note:</strong></p>
+<ul>
+  <li>An <code class="code highlight language-text">updatePlugins.xml</code> file must contain at least one set of <code class="code highlight language-text">&lt;plugin&gt;&lt;/plugin&gt;</code> elements.</li>
+  <li>A plugin <code class="code highlight language-text">id</code> may be listed only once in an <code class="code highlight language-text">updatePlugins.xml</code> file.</li>
+  <li>Multiple plugins with the same <code class="code highlight language-text">id</code> but different <code class="code highlight language-text">idea-version</code> attributes must be split into separate <code class="code highlight language-text">updatePlugins-*.xml</code> files.</li>
+</ul>
+
+<p>###可选的updatePlugin元素</p>
+
+<p>可以在<code class="code highlight language-text">updatePlugins.xml</code>中添加其他元素吗？
+是的,但仅在需要时才建议.
+额外的元素将有</p>
+
+<p>与每个插件的<code class="code highlight language-text">plugin.xml</code>文件同步.</p>
+
+<p>在插件安装期间,JetBrains IDE读取插件JAR/ZIP文件,然后显示有关插件的更多信息.</p>
+
+<p>哪些附加信息可能有助于用户在何时选择插件</p>
+
+<p><a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>浏览自定义插件存储库</span></a></p>
+
+<p>安装前？
+答案取决于插件和存储库使用者.
+以下是候选元素:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Element</th>
+      <th style="text-align: left">Effects &amp; Requirements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="code highlight language-text">&lt;name&gt;</code><br />My Plugin Name<br /><code class="code highlight language-text">&lt;/name&gt;</code></td>
+      <td style="text-align: left">By default the name of the plugin JAR/ZIP file is displayed before installation. <br />Using the <code class="code highlight language-text">&lt;name&gt;</code> element displays the name of the plugin. <br />Contents should match the <code class="code highlight language-text">&lt;name&gt;</code> element contents in the plugins’s <code class="code highlight language-text">plugin.xml</code> file to avoid confusion.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="code highlight language-text">&lt;description&gt;</code><br />My plugin is awesome<br /><code class="code highlight language-text">&lt;/description&gt;</code></td>
+      <td style="text-align: left">By default no description for the plugin is displayed before installation. <br />Using the <code class="code highlight language-text">&lt;description&gt;</code> element will cause a description to be displayed before installation. <br />Contents should match the <code class="code highlight language-text">&lt;description&gt;</code> element contents in the plugins’s <code class="code highlight language-text">plugin.xml</code> file to avoid confusion. <br />Optionally, an enclosing <code class="code highlight language-text">&lt;![CDATA[ ]]&gt;</code> element can be used if the description needs to contain HTML tags.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="code highlight language-text">&lt;change-notes&gt;</code><br />Added cool feature<br /><code class="code highlight language-text">&lt;/change-notes&gt;</code></td>
+      <td style="text-align: left">By default no change notes for the plugin are displayed before installation. <br />Using the <code class="code highlight language-text">&lt;change-notes&gt;</code> element will cause a description of changes to be displayed before installation. <br />Contents should match the <code class="code highlight language-text">&lt;change-notes&gt;</code> element contents in the plugin’s <code class="code highlight language-text">plugin.xml</code> file to avoid confusion. <br />Optionally, an enclosing <code class="code highlight language-text">&lt;![CDATA[ ]]&gt;</code> element can be used if the change notes need to contain HTML tags.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/basics/getting_started.html">Creating Your First Plugin</a>
+                        <a class="navigation-links__next" href="/basics/plugin_structure.html">Plugin Structure</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 27 November 2018
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+

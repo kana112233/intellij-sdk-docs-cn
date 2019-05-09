@@ -1,0 +1,243 @@
+
+
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>16. Code Style Setting / IntelliJ Platform SDK  DevGuide</title>
+    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/tutorials/custom_language_support/code_style_settings.html" />
+    <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
+    <meta property="og:title" content="16. Code Style Setting" />
+    <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <!-- <meta property="article:section" content="" /> 
+    <meta property="article:tag" content="" /> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@JBPlatform" />
+    <meta name="twitter:title" content="16. Code Style Setting" />
+    <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+<body data-id="tutorials/custom_language_support/code_style_settings">
+<div class="wrapper">
+    <section class="panel _nav">
+        <header class="panel__header">
+            <div class="container">
+                <form class="search-box">
+                    <label for="search-box__input" class="search-box__label">
+                        <input type="text" class="search-box__input" id="search-box__input" placeholder="Search IntelliJ Platform SDK  DevGuide">
+                    </label>
+                    <div class="search-box__clear" title="Clear"></div>
+                </form>
+            </div>
+        </header>
+        <nav class="panel__content">
+            <div class="container _nav">
+                <menu class="nav-tree"></menu>
+            </div>
+            <div class="container _footer panel__footer">
+                <p><a data-bypass="true" href="//youtrack.jetbrains.com/issues/IJSDK">Send feedback</a></p>
+                <p>&copy; 2000&ndash;2019 <a href="//www.jetbrains.com">JetBrains</a> s.r.o.<br>
+                    All rights reserved.</p>
+            </div>
+        </nav>
+    </section>
+
+    <main class="panel _main" role="main">
+        <header class="panel__header">
+            <div class="container">
+                <h3>IntelliJ Platform SDK DevGuide</h3>
+                
+                <div class="panel-trigger"></div>
+            </div>
+        </header>
+        <section class="panel__content">
+            <div class="container">
+                <article class="article" data-shortcut-switcher="false">
+                    <div class="navigation-links _top" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/formatter.html">15. Formatter</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/commenter.html">17. Commenter</a>
+                    </div>
+                    <a data-bypass="true" href="https://github.com/JetBrains/intellij-sdk-docs/edit/master/tutorials/custom_language_support/code_style_settings.md" class="page-link-to-github" target="_blank" title="Edit this page on GitHub">
+                        <i class="github-icon"></i>
+                        <span class="text">Edit page</span>
+                    </a>
+
+                    <h1>16. Code Style Setting</h1>
+                    <p>代码样式设置允许定义格式选项。
+代码样式设置提供程序将创建设置的实例，还可以创建选项页面以进行编辑。
+在此示例中，我们将创建一个页面，该页面使用由语言代码样式设置提供程序自定义的默认语言代码样式设置。</p>
+
+<a name="section" class="elem-anchor"></a>
+<h3>16.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<p>定义代码样式设置</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.psi.codeStyle.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleCodeStyleSettings</span> <span class="kd">extends</span> <span class="n">CustomCodeStyleSettings</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nf">SimpleCodeStyleSettings</span><span class="o">(</span><span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="s">"SimpleCodeStyleSettings"</span><span class="o">,</span> <span class="n">settings</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-1" class="elem-anchor"></a>
+<h3>16.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<p>定义代码样式设置提供程序</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.application.options.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.openapi.options.Configurable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.psi.codeStyle.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleCodeStyleSettingsProvider</span> <span class="kd">extends</span> <span class="n">CodeStyleSettingsProvider</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">CustomCodeStyleSettings</span> <span class="nf">createCustomSettings</span><span class="o">(</span><span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleCodeStyleSettings</span><span class="o">(</span><span class="n">settings</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Nullable</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getConfigurableDisplayName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"Simple"</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  
+  <span class="nd">@NotNull</span>
+  <span class="kd">public</span> <span class="n">CodeStyleConfigurable</span> <span class="nf">createConfigurable</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">CodeStyleSettings</span> <span class="n">modelSettings</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">CodeStyleAbstractConfigurable</span><span class="o">(</span><span class="n">settings</span><span class="o">,</span> <span class="n">modelSettings</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getConfigurableDisplayName</span><span class="o">())</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">protected</span> <span class="n">CodeStyleAbstractPanel</span> <span class="nf">createPanel</span><span class="o">(</span><span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">SimpleCodeStyleMainPanel</span><span class="o">(</span><span class="n">getCurrentSettings</span><span class="o">(),</span> <span class="n">settings</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">};</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SimpleCodeStyleMainPanel</span> <span class="kd">extends</span> <span class="n">TabbedLanguageCodeStylePanel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SimpleCodeStyleMainPanel</span><span class="o">(</span><span class="n">CodeStyleSettings</span> <span class="n">currentSettings</span><span class="o">,</span> <span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">SimpleLanguage</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">,</span> <span class="n">currentSettings</span><span class="o">,</span> <span class="n">settings</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></div>
+
+<a name="section-2" class="elem-anchor"></a>
+<h3>16.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>注册代码样式设置提供程序</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;codeStyleSettingsProvider</span> <span class="na">implementation=</span><span class="s">"com.simpleplugin.SimpleCodeStyleSettingsProvider"</span><span class="nt">/&gt;</span>
+</code></div>
+
+<a name="section-3" class="elem-anchor"></a>
+<h3>16.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<p>定义语言代码样式设置提供者</p>
+
+<div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.intellij.lang.Language</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.intellij.psi.codeStyle.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jetbrains.annotations.NotNull</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleLanguageCodeStyleSettingsProvider</span> <span class="kd">extends</span> <span class="n">LanguageCodeStyleSettingsProvider</span> <span class="o">{</span>
+  <span class="nd">@NotNull</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">Language</span> <span class="nf">getLanguage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">SimpleLanguage</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">customizeSettings</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">CodeStyleSettingsCustomizable</span> <span class="n">consumer</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">SettingsType</span> <span class="n">settingsType</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">settingsType</span> <span class="o">==</span> <span class="n">SettingsType</span><span class="o">.</span><span class="na">SPACING_SETTINGS</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">consumer</span><span class="o">.</span><span class="na">showStandardOptions</span><span class="o">(</span><span class="s">"SPACE_AROUND_ASSIGNMENT_OPERATORS"</span><span class="o">);</span>
+      <span class="n">consumer</span><span class="o">.</span><span class="na">renameStandardOption</span><span class="o">(</span><span class="s">"SPACE_AROUND_ASSIGNMENT_OPERATORS"</span><span class="o">,</span> <span class="s">"Separator"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">settingsType</span> <span class="o">==</span> <span class="n">SettingsType</span><span class="o">.</span><span class="na">BLANK_LINES_SETTINGS</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">consumer</span><span class="o">.</span><span class="na">showStandardOptions</span><span class="o">(</span><span class="s">"KEEP_BLANK_LINES_IN_CODE"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCodeSample</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">SettingsType</span> <span class="n">settingsType</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"# You are reading the \".properties\" entry.\n"</span> <span class="o">+</span>
+           <span class="s">"! The exclamation mark can also mark text as comments.\n"</span> <span class="o">+</span>
+           <span class="s">"website = http://en.wikipedia.org/\n"</span> <span class="o">+</span>
+           <span class="s">"\n"</span> <span class="o">+</span>
+           <span class="s">"\n"</span> <span class="o">+</span>
+           <span class="s">"\n"</span> <span class="o">+</span>
+           <span class="s">"language = English\n"</span> <span class="o">+</span>
+           <span class="s">"# The backslash below tells the application to continue reading\n"</span> <span class="o">+</span>
+           <span class="s">"# the value onto the next line.\n"</span> <span class="o">+</span>
+           <span class="s">"message = Welcome to \\\n"</span> <span class="o">+</span>
+           <span class="s">"          Wikipedia!\n"</span> <span class="o">+</span>
+           <span class="s">"# Add spaces to the key\n"</span> <span class="o">+</span>
+           <span class="s">"key\\ with\\ spaces = This is the value that could be looked up with the key \"key with spaces\".\n"</span> <span class="o">+</span>
+           <span class="s">"# Unicode\n"</span> <span class="o">+</span>
+           <span class="s">"tab : \\u0009"</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></div>
+
+<a name="section-4" class="elem-anchor"></a>
+<h3>16.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<p>注册语言代码样式设置提供程序</p>
+
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;langCodeStyleSettingsProvider</span> <span class="na">implementation=</span><span class="s">"com.simpleplugin.SimpleLanguageCodeStyleSettingsProvider"</span><span class="nt">/&gt;</span>
+</code></div>
+
+<a name="section-5" class="elem-anchor"></a>
+<h3>16.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<p>运行该项目</p>
+
+<p>！<a href="img/code_style_settings.png"><span>代码样式设置</span></a></p>
+
+
+
+                    <div class="navigation-links _bottom" data-swiftype-index="false">
+                        <a class="navigation-links__prev" href="/tutorials/custom_language_support/formatter.html">15. Formatter</a>
+                        <a class="navigation-links__next" href="/tutorials/custom_language_support/commenter.html">17. Commenter</a>
+                    </div>
+                    <div class="last-modified">
+                        Last modified: 8 May 2019
+                    </div>
+                </article>
+
+                <section class="disqus">
+                    <div id="disqus_thread"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+
+</body>
+</html>
+
