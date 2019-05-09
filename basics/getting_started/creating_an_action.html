@@ -6,31 +6,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Creating an action / IntelliJ Platform SDK  DevGuide</title>
-    <link rel="stylesheet" href="/intellij/sdk/docsapp/app.css">
-    <link rel="shortcut icon" href="/intellij/sdk/docsfavicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docsapple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docsapple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docsapple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docsapple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docsapple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docsapple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docsapple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docsapple-touch-icon-180x180.png">
-    <link rel="mask-icon" href="/intellij/sdk/docsapple-mask-icon.svg" color="black">
+    <link rel="stylesheet" href="/intellij/sdk/docs/app/app.css">
+    <link rel="shortcut icon" href="/intellij/sdk/docs/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij/sdk/docs/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij/sdk/docs/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij/sdk/docs/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij/sdk/docs/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij/sdk/docs/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij/sdk/docs/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij/sdk/docs/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij/sdk/docs/apple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij/sdk/docs/apple-mask-icon.svg" color="black">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docsmstile-70x70.png">
-    <meta name="msapplication-TileImage" content="/intellij/sdk/docsmstile-144x144.png">
-    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docsmstile-150x150.png">
-    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docsmstile-310x150.png">
-    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docsmstile-310x310.png">
+    <meta name="msapplication-square70x70logo" content="/intellij/sdk/docs/mstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij/sdk/docs/mstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij/sdk/docs/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij/sdk/docs/mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij/sdk/docs/mstile-310x310.png">
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kana112233.github.io/intellij/sdk/docs/basics/getting_started/creating_an_action.html" />
+    <meta property="og:url" content="http://0.0.0.0:4000/intellij/sdk/docs//basics/getting_started/creating_an_action.html" />
     <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
     <meta property="og:title" content="Creating an action" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
-    <meta property="og:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
+    <meta property="og:image" content="http://0.0.0.0:4000/intellij/sdk/docs/jetbrains.png" />
     <meta property="article:modified_time" content="2018-03-11T21:42:15+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
@@ -38,9 +38,9 @@
     <meta name="twitter:site" content="@JBPlatform" />
     <meta name="twitter:title" content="Creating an action" />
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
-    <meta name="twitter:image" content="https://kana112233.github.io/intellij/sdk/docsjetbrains.png" />
-    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs"></meta>
-<link  rel="stylesheet" href="/intellij/sdk/docsapp/styles.css"></head>
+    <meta name="twitter:image" content="http://0.0.0.0:4000/intellij/sdk/docs/jetbrains.png" />
+    <meta class="swiftype" name="product" data-type="string" content="/intellij/sdk/docs/"></meta>
+<link  rel="stylesheet" href="/intellij/sdk/docs/app/styles.css"></head>
 <body data-id="basics/getting_started/creating_an_action">
 <div class="wrapper">
     <section class="panel _nav">
@@ -98,7 +98,7 @@ IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea
 <p>2.注册您的行动.</p>
 
 <p>本主题概述了上述步骤.
-有关详细信息和示例,请参阅<a href="/intellij/sdk/docsbasics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
+有关详细信息和示例,请参阅<a href="/intellij/sdk/docs/basics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
 
 <p>###定义动作</p>
 
@@ -138,7 +138,7 @@ IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea
 <p>*从Java代码注册操作.</p>
 
 <p>本节提供了一些说明如何注册操作的示例.
-有关更多信息,请参阅<a href="/intellij/sdk/docsbasics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
+有关更多信息,请参阅<a href="/intellij/sdk/docs/basics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
 
 <p>####在plugin.xml文件中注册操作</p>
 
@@ -156,12 +156,12 @@ IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea
 </code></div>
 
 <p>plugin.xml文件的这个片段只演示了一些可以在<code class="code highlight language-text">&lt;actions&gt;</code>部分中使用的元素来注册你的动作.
-有关用于注册操作的所有元素的信息,请参阅<a href="/intellij/sdk/docsbasics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
+有关用于注册操作的所有元素的信息,请参阅<a href="/intellij/sdk/docs/basics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
 
 <p>####从Java代码注册操作</p>
 
 <p>或者,您可以从Java代码注册您的操作.
-有关如何从Java代码注册操作的更多信息和示例,请参阅<a href="/intellij/sdk/docsbasics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
+有关如何从Java代码注册操作的更多信息和示例,请参阅<a href="/intellij/sdk/docs/basics/action_system.html"><span>IntelliJ平台操作系统</span></a>.</p>
 
 <p>###快速创建动作</p>
 
@@ -210,9 +210,9 @@ IDEA状态栏在聚焦动作时指示此描述.</p>
 <a name="section" class="elem-anchor"></a>
 <h2>更多信息<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>有关使用操作的更多信息,请查看<a href="/intellij/sdk/docsbasics/action_system.html"><span>操作系统文档</span></a></p>
+<p>有关使用操作的更多信息,请查看<a href="/intellij/sdk/docs/basics/action_system.html"><span>操作系统文档</span></a></p>
 
-<p>和<a href="/intellij/sdk/docstutorials/action_system.html"><span>动作教程</span></a>.</p>
+<p>和<a href="/intellij/sdk/docs/tutorials/action_system.html"><span>动作教程</span></a>.</p>
 
 
 
@@ -233,7 +233,7 @@ IDEA状态栏在聚焦动作时指示此描述.</p>
     </main>
 </div>
 
-<script src="/intellij/sdk/docsapp/app.js" data-baseurl="/intellij/sdk/docs"></script>
+<script src="/intellij/sdk/docs/app/app.js" data-baseurl="/intellij/sdk/docs/"></script>
 
 </body>
 </html>
