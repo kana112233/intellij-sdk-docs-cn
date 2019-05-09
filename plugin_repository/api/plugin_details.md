@@ -12,14 +12,25 @@ or
 https://plugins.jetbrains.com/plugins/list?pluginId=<pluginId>
 ```
 
-Where
+哪里
 
-* **pluginXmlId** is specified as a *Plugin XML ID* parameter on the right of the plugin's individual update page and in the plugin.xml;
 
-* **pluginId** is a numeric ID of the plugin, can be retrieved from the plugin repository URL. e.g. [Scala](https://plugins.jetbrains.com/plugin/1347-scala) plugin ID is *1347*.
+* ** pluginXmlId **被指定为插件的单个更新页面右侧和plugin.xml中的* Plugin XML ID *参数;
 
-e.g. for [Scala Plugin](https://plugins.jetbrains.com/plugin/1347-scala):
+
+* ** pluginId **是插件的数字ID,可以从插件存储库URL中检索.
+例如
+[Scala](https://plugins.jetbrains.com/plugin/1347-scala)插件ID为* 1347 *.
+
+
+例如
+[Scala插件](https://plugins.jetbrains.com/plugin/1347-scala):
+
 
 [https://plugins.jetbrains.com/plugins/list?pluginId=org.intellij.scala](https://plugins.jetbrains.com/plugins/list?pluginId=org.intellij.scala)
-or
+
+要么
+
 [https://plugins.jetbrains.com/plugins/list?pluginId=1347](https://plugins.jetbrains.com/plugins/list?pluginId=1347)
+
+

@@ -1,66 +1,133 @@
-Simple File(0,492)
-  PsiComment(SimpleTokenType.COMMENT)('# You are reading the ".properties" entry.')(0,42)
-  PsiWhiteSpace('\n')(42,43)
-  PsiComment(SimpleTokenType.COMMENT)('! The exclamation mark can also mark text as comments.')(43,97)
-  PsiWhiteSpace('\n')(97,98)
-  SimplePropertyImpl(PROPERTY)(98,132)
-    PsiElement(SimpleTokenType.KEY)('website')(98,105)
-    PsiWhiteSpace(' ')(105,106)
-    PsiElement(SimpleTokenType.SEPARATOR)('=')(106,107)
-    PsiWhiteSpace(' ')(107,108)
-    PsiElement(SimpleTokenType.VALUE)('http://en.wikipedia.org/')(108,132)
-  PsiWhiteSpace('\n\n')(132,134)
-  SimplePropertyImpl(PROPERTY)(134,152)
-    PsiElement(SimpleTokenType.KEY)('language')(134,142)
-    PsiWhiteSpace(' ')(142,143)
-    PsiElement(SimpleTokenType.SEPARATOR)('=')(143,144)
-    PsiWhiteSpace(' ')(144,145)
-    PsiElement(SimpleTokenType.VALUE)('English')(145,152)
-  PsiWhiteSpace('\n')(152,153)
-  PsiComment(SimpleTokenType.COMMENT)('# The backslash below tells the application to continue reading')(153,216)
-  PsiWhiteSpace('\n')(216,217)
-  PsiComment(SimpleTokenType.COMMENT)('# the value onto the next line.')(217,248)
-  PsiWhiteSpace('\n')(248,249)
-  SimplePropertyImpl(PROPERTY)(249,292)
-    PsiElement(SimpleTokenType.KEY)('message')(249,256)
-    PsiWhiteSpace(' ')(256,257)
-    PsiElement(SimpleTokenType.SEPARATOR)('=')(257,258)
-    PsiWhiteSpace(' ')(258,259)
-    PsiElement(SimpleTokenType.VALUE)('Welcome to \\n          Wikipedia!')(259,292)
-  PsiWhiteSpace('\n')(292,293)
-  PsiComment(SimpleTokenType.COMMENT)('# Add spaces to the key')(293,316)
-  PsiWhiteSpace('\n')(316,317)
-  SimplePropertyImpl(PROPERTY)(317,410)
-    PsiElement(SimpleTokenType.KEY)('key\ with\ spaces')(317,334)
-    PsiWhiteSpace(' ')(334,335)
-    PsiElement(SimpleTokenType.SEPARATOR)('=')(335,336)
-    PsiWhiteSpace(' ')(336,337)
-    PsiElement(SimpleTokenType.VALUE)('This is the value that could be looked up with the key "key with spaces".')(337,410)
-  PsiWhiteSpace('\n')(410,411)
-  PsiComment(SimpleTokenType.COMMENT)('# Unicode')(411,420)
-  PsiWhiteSpace('\n')(420,421)
-  SimplePropertyImpl(PROPERTY)(421,433)
-    PsiElement(SimpleTokenType.KEY)('tab')(421,424)
-    PsiWhiteSpace(' ')(424,425)
-    PsiElement(SimpleTokenType.SEPARATOR)(':')(425,426)
-    PsiWhiteSpace(' ')(426,427)
-    PsiElement(SimpleTokenType.VALUE)('\u0009')(427,433)
-  PsiWhiteSpace('\n')(433,434)
-  PsiComment(SimpleTokenType.COMMENT)('# test for illegal key attempt')(434,464)
-  PsiWhiteSpace('\n')(464,465)
-  SimplePropertyImpl(PROPERTY)(465,469)
-    PsiElement(SimpleTokenType.KEY)('key')(465,468)
-    PsiErrorElement:SimpleTokenType.SEPARATOR expected, got '\'(468,469)
-      PsiElement(BAD_CHARACTER)('\')(468,469)
-  PsiWhiteSpace('\n')(469,470)
-  SimplePropertyImpl(PROPERTY)(470,475)
-    PsiElement(SimpleTokenType.KEY)('with')(470,474)
-    PsiErrorElement:SimpleTokenType.SEPARATOR expected, got '\'(474,475)
-      PsiElement(BAD_CHARACTER)('\')(474,475)
-  PsiWhiteSpace('\n')(475,476)
-  SimplePropertyImpl(PROPERTY)(476,492)
-    PsiElement(SimpleTokenType.KEY)('endofline')(476,485)
-    PsiWhiteSpace(' ')(485,486)
-    PsiElement(SimpleTokenType.SEPARATOR)('=')(486,487)
-    PsiWhiteSpace(' ')(487,488)
-    PsiElement(SimpleTokenType.VALUE)('test')(488,492)
+简单文件（0,492）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃您正在阅读“.properties”条目。'）（0,42）
+  
+PsiWhiteSpace（ '\ n'）（42,43）
+  
+PsiComment（SimpleTokenType.COMMENT）（'！感叹号也可以将文本标记为注释。'）（43,47）
+  
+PsiWhiteSpace（ '\ n'）（97,98）
+  
+SimplePropertyImpl（PROPERTY）（98132）
+    
+PsiElement（SimpleTokenType.KEY）（ '网站'）（98105）
+    
+PsiWhiteSpace（''）（105,106）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（106107）
+    
+PsiWhiteSpace（''）（107,108）
+    
+PsiElement（SimpleTokenType.VALUE）（ 'http://en.wikipedia.org/'）（108132）
+  
+PsiWhiteSpace（ '\ n \ n'）（132134）
+  
+SimplePropertyImpl（PROPERTY）（134152）
+    
+PsiElement（SimpleTokenType.KEY）（ '语言'）（134142）
+    
+PsiWhiteSpace（''）（142,143）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（143144）
+    
+PsiWhiteSpace（''）（144,145）
+    
+PsiElement（SimpleTokenType.VALUE）（ '英语'）（145152）
+  
+PsiWhiteSpace（ '\ n'）（152153）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃下面的反斜杠告诉应用程序继续读取'）（153,216）
+  
+PsiWhiteSpace（ '\ n'）（216217）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃下一行的值。'）（217,248）
+  
+PsiWhiteSpace（ '\ n'）（248249）
+  
+SimplePropertyImpl（PROPERTY）（249292）
+    
+PsiElement（SimpleTokenType.KEY）（ '信息'）（249256）
+    
+PsiWhiteSpace（''）（256,257）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（257258）
+    
+PsiWhiteSpace（''）（258,259）
+    
+PsiElement（SimpleTokenType.VALUE）（'欢迎来到\\ n Wikipedia！'）（259,292）
+  
+PsiWhiteSpace（ '\ n'）（292293）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃为键添加空格'）（293,316）
+  
+PsiWhiteSpace（ '\ n'）（316317）
+  
+SimplePropertyImpl（PROPERTY）（317410）
+    
+PsiElement（SimpleTokenType.KEY）（'key \ with \ spaces'）（317,334）
+    
+PsiWhiteSpace（''）（334,335）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（335336）
+    
+PsiWhiteSpace（''）（336,337）
+    
+PsiElement（SimpleTokenType.VALUE）（'这是可以使用键“key with space”查找的值。'）（337,410）
+  
+PsiWhiteSpace（ '\ n'）（410411）
+  
+PsiComment（SimpleTokenType.COMMENT）（'＃Unicode'）（411,420）
+  
+PsiWhiteSpace（ '\ n'）（420421）
+  
+SimplePropertyImpl（PROPERTY）（421433）
+    
+PsiElement（SimpleTokenType.KEY）（ '标签'）（421424）
+    
+PsiWhiteSpace（''）（424,425）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '：'），（425426）
+    
+PsiWhiteSpace（''）（426,427）
+    
+PsiElement（SimpleTokenType.VALUE）（ '\ u0009'），（427433）
+  
+PsiWhiteSpace（ '\ n'）（433434）
+  
+PsiComment（SimpleTokenType.COMMENT）（'非法密钥尝试的测试'）（434,464）
+  
+PsiWhiteSpace（ '\ n'）（464465）
+  
+SimplePropertyImpl（PROPERTY）（465469）
+    
+PsiElement（SimpleTokenType.KEY）（ '密钥'）（465468）
+    
+PsiErrorElement：预期的SimpleTokenType.SEPARATOR，得到'\'（468,469）
+      
+PsiElement（BAD_CHARACTER）（ '\'），（468469）
+  
+PsiWhiteSpace（ '\ n'）（469470）
+  
+SimplePropertyImpl（PROPERTY）（470,475）
+    
+PsiElement（SimpleTokenType.KEY）（ '与'）（470474）
+    
+PsiErrorElement：预期的SimpleTokenType.SEPARATOR，得到'\'（474,475）
+      
+PsiElement（BAD_CHARACTER）（ '\'），（474475）
+  
+PsiWhiteSpace（ '\ n'）（475476）
+  
+SimplePropertyImpl（PROPERTY）（476492）
+    
+PsiElement（SimpleTokenType.KEY）（ '行尾'）（476485）
+    
+PsiWhiteSpace（''）（485,486）
+    
+PsiElement（SimpleTokenType.SEPARATOR）（ '='）（486487）
+    
+PsiWhiteSpace（''）（487,488）
+    
+PsiElement（SimpleTokenType.VALUE）（ '测试'）（488492）
+
+

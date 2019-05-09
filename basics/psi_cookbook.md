@@ -2,49 +2,72 @@
 title: PSI Cookbook
 ---
 
-This page gives a list of recipes for the most common operations for working with the PSI (Program Structure Interface). Unlike [Developing Custom Language Plugins](/reference_guide/custom_language_support.md), it talks about working with the PSI of existing languages (such as Java).
+此页面提供了使用PSI(程序结构接口)的最常见操作的配方列表.
+与[开发自定义语言插件](/reference_guide/custom_language_support.md)不同,它讨论了使用现有语言(例如Java)的PSI.
 
-## How do I find a file if I know its name but don't know the path?
+
+##如果我知道它的名字但是不知道路径,我如何找到文件？
+
 
 `FilenameIndex.getFilesByName()`
 
-## How do I find where a particular PSI element is used?
+
+##如何找到特定PSI元素的使用位置？
+
 
 `ReferencesSearch.search()`
 
-## How do I rename a PSI element?
+
+##如何重命名PSI元素？
+
 
 `RefactoringFactory.createRename()`
 
-## How can I cause the PSI for a virtual file to be rebuilt?
+
+##如何重建虚拟文件的PSI？
+
 
 `FileContentUtil.reparseFiles()`
 
+
 ## Java Specific
 
-### How do I find all inheritors of a class?
+
+###如何找到类的所有继承者？
+
 
 `ClassInheritorsSearch.search()`
 
-### How do I find a class by qualified name?
+
+###如何通过限定名称查找课程？
+
 
 `JavaPsiFacade.findClass()`
 
-### How do I find a class by short name?
+
+###如何通过短名称找到课程？
+
 
 `PsiShortNamesCache.getInstance().getClassesByName()`
 
-### How do I find a superclass of a Java class?
+
+###如何找到Java类的超类？
+
 
 `PsiClass.getSuperClass()`
 
-### How do I get a reference to the containing package of a Java class?
+
+###如何获取对Java类的包含的引用？
+
 
 ```java
 PsiJavaFile javaFile = (PsiJavaFile) psiClass.getContaningFile();
 PsiPackage pkg = JavaPsiFacade.getInstance(project).findPackage(javaFile.getPackageName());
 ```
 
-### How do I find the methods overriding a specific method?
+###如何找到覆盖特定方法的方法？
+
 
 `OverridingMethodsSearch.search()`
+
+

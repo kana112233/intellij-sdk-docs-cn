@@ -2,26 +2,49 @@
 title: Testing Plugins
 ---
 
-Most of the tests in the *IntelliJ Platform* codebase are *model level functional tests*. What this means is the following:
+* IntelliJ Platform *代码库中的大多数测试都是*模型级功能测试*.
+这意味着以下内容:
 
-* The tests run in a headless environment which uses real production implementations for the majority of components, except for a number of UI components.
-* The tests usually test a feature as a whole, rather than individual functions that comprise its implementation.
-* The tests do not test the Swing UI and work directly with the underlying model instead.
-* Most of the tests take a source file or a set of source files as input data, execute a feature, and then compare the output with expected results. Results can be specified as another set of source files, as special markup in the input file, or directly in the test code.
 
-The biggest benefit of this test approach is that tests are very stable and require very little maintenance once they have been written, no matter how much the underlying implementation is refactored or rewritten.
+*测试在无头环境中运行,该环境使用大多数组件的实际生产实现,但许多UI组件除外.
 
-In a product with 15+ years of lifetime that has gone through a large number of internal refactorings, we find that this benefit greatly outweighs the downsides of slower test execution and more difficult debugging of failures being compared to more isolated unit tests.
+*测试通常测试整个功能,而不是构成其实现的单个功能.
 
-Another consequence of our testing approach is what our test framework does not provide:
+*测试不会测试Swing UI,而是直接使用底层模型.
 
-* We do not provide a recommended approach to mocking. We have a few tests in our codebase that use JMock, but in general, we find it difficult to mock all of the interactions with *IntelliJ Platform* components that your plugin class will need to have, and we recommend working with real components instead.
-* We do not provide a general-purpose framework for Swing UI testing. You can try using tools such as [FEST](https://code.google.com/p/fest/) or [Sikuli](http://sikulix.com/) for plugin UI testing, but we don't use either of them and cannot provide any guidelines for their use. Internally, we use manual testing for testing our Swing UIs.
+*大多数测试将源文件或一组源文件作为输入数据,执行一项功能,然后将输出与预期结果进行比较.
+结果可以指定为另一组源文件,作为输入文件中的特殊标记,或直接指定在测试代码中.
 
-* [Tests and Fixtures](/basics/testing_plugins/tests_and_fixtures.md)
-* [Light and Heavy Tests](/basics/testing_plugins/light_and_heavy_tests.md)
-* [Test Project and Testdata Directories](/basics/testing_plugins/test_project_and_testdata_directories.md)
-* [Writing Tests](/basics/testing_plugins/writing_tests.md)
-* [Testing Highlighting](/basics/testing_plugins/testing_highlighting.md)
 
-Check out [this step-by-step tutorial](/tutorials/writing_tests_for_plugins.md) teaching how to write and run automated tests for your custom language plugin (source code included).
+这种测试方法的最大好处是测试非常稳定,一旦编写完成就需要很少的维护,无论底层实现被重构或重写多少.
+
+
+在经历了大量内部重构的15年以上的产品中,我们发现这种好处大大超过了测试执行速度较慢的缺点,并且与更加孤立的单元测试相比,更难以调试故障.
+
+
+我们的测试方法的另一个结果是我们的测试框架没有提供:
+
+
+*我们不提供推荐的模拟方法.
+我们的代码库中有一些使用JMock的测试,但总的来说,我们发现很难模拟插件类需要具有的* IntelliJ Platform *组件的所有交互,我们建议使用实际组件.
+
+*我们不提供Swing UI测试的通用框架.
+您可以尝试使用[FEST](https://code.google.com/p/fest/)或[Sikuli](http://sikulix.com/)等工具进行插件用户界面测试,但我们不会
+使用其中任何一种,不能提供任何使用指南.
+在内部,我们使用手动测试来测试我们的Swing UI.
+
+
+* [测试和夹具](/basics/testing_plugins/tests_and_fixtures.md)
+
+* [轻型和重型测试](/basics/testing_plugins/light_and_heavy_tests.md)
+
+* [测试项目和测试数据目录](/basics/testing_plugins/test_project_and_testdata_directories.md)
+
+* [编写测试](/basics/testing_plugins/writing_tests.md)
+
+* [测试突出显示](/basics/testing_plugins/testing_highlighting.md)
+
+
+查看[本分步教程](/tutorials/writing_tests_for_plugins.md),教授如何编写和运行自定义语言插件的自动化测试(包括源代码).
+
+

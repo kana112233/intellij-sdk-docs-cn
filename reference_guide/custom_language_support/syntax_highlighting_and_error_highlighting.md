@@ -2,104 +2,183 @@
 title: Syntax Highlighting and Error Highlighting
 ---
 
-The class used to specify how a particular range of text should be highlighted is called
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
-An instance of this class is created for every distinct type of item which should be highlighted (keyword, number, string and so on).
-The
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
-defines the default attributes which are applied to items of the corresponding type (for example, keywords are bold, numbers are blue, strings are bold and green).
-The mapping of the
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
-to specific attributes used in an editor is defined by the
-[EditorColorsScheme](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java)
-class, and can be configured by the user if the plugin provides an appropriate configuration interface.
-Highlighting from multiple
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
-items can be layered - for example, one key may define an item's boldness and another its color.
+用于指定应如何突出显示特定范围的文本的类被调用
 
-**Note:**
-New functionality about Language Defaults and support for additional color schemes as detailed in
-[Color Scheme Management](/reference_guide/color_scheme_management.md).
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java).
+
+为每个应突出显示的不同类型的项目(关键字,数字,字符串等)创建此类的实例.
+
+该
+
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
+
+定义应用于相应类型的项的默认属性(例如,关键字为粗体,数字为蓝色,字符串为粗体和绿色).
+
+的映射
+
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
+
+编辑器中使用的特定属性由
+
+[EditorColorsScheme](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/colors/EditorColorsScheme.java)
+
+如果插件提供了适当的配置界面,则可以由用户配置.
+
+从多个突出显示
+
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
+
+项可以分层 - 例如,一个键可以定义项的粗体,另一个键可以定义其颜色.
+
+
+**注意:**
+
+关于语言默认值的新功能以及对其他颜色方案的支持,详见
+
+[配色方案管理](/reference_guide/color_scheme_management.md).
 
 
 ### Lexer
 
-The syntax and error highlighting is performed on multiple levels.
-The first level of syntax highlighting is based on the lexer output, and is provided through the
-[SyntaxHighlighter](upsource:///platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java)
-interface.
-The syntax highlighter returns the
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
-instances for each token type which needs special highlighting.
-For highlighting lexer errors, the standard
-[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
-for bad characters
-[HighlighterColors.BAD_CHARACTER](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/HighlighterColors.java)
-can be used.
 
-**Example:**
-[SyntaxHighlighter](upsource:///plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesHighlighter.java)
-implementation for
-[Properties language plugin](upsource:///plugins/properties/)
+语法和错误突出显示在多个级别上执行.
+
+第一级语法突出显示基于词法分析器输出,并通过
+
+[SyntaxHighlighter的](upsource:///platform/editor-ui-api/src/com/intellij/openapi/fileTypes/SyntaxHighlighter.java)
+
+接口.
+
+语法高亮显示返回
+
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
+
+每种令牌类型的实例需要特殊突出显示.
+
+用于突出显示词法错误,标准
+
+[TextAttributesKey](upsource:///platform/core-api/src/com/intellij/openapi/editor/colors/TextAttributesKey.java)
+
+对于坏人物
+
+[HighlighterColors.BAD_CHARACTER](upsource:///platform/editor-ui-api/src/com/intellij/openapi/editor/HighlighterColors.java)
+
+可以使用.
+
+
+**例:**
+
+[SyntaxHighlighter的](upsource:///plugins/properties/properties-psi-api/src/com/intellij/lang/properties/PropertiesHighlighter.java)
+
+实施
+
+[属性语言插件](upsource:///plugins/properties/)
 
 
 ### Parser
 
-The second level of error highlighting happens during parsing.
-If a particular sequence of tokens is invalid according to the grammar of the language, the
+
+在解析期间发生第二级错误突出显示.
+
+如果特定的令牌序列根据语言的语法无效,则
+
 [PsiBuilder.error()](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-method can be used to highlight the invalid tokens and display an error message showing why they are not valid.
+
+方法可用于突出显示无效令牌并显示错误消息,说明它们无效的原因.
+
 
 ### Annotator
 
-The third level of highlighting is performed through the
-[Annotator](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java)
-interface.
-A plugin can register one or more annotators in the `com.intellij.annotator` extension point, and these annotators are called during the background highlighting pass to process the elements in the PSI tree of the custom language.
-Annotators can analyze not only the syntax, but also the semantics using PSI, and thus can provide much more complex syntax and error highlighting logic.
-The annotator can also provide quick fixes to problems it detects.
 
-When the file is changed, the annotator is called incrementally to process only changed elements in the PSI tree.
+第三级突出显示是通过
 
-To highlight a region of text as a warning or error, the annotator calls `createErrorAnnotation()` or `createWarningAnnotation()` on the
+[注释器(upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java)
+
+接口.
+
+插件可以在`com.intellij.annotator`扩展点中注册一个或多个注释器,并且在后台突出显示传递期间调用这些注释器以处理自定义语言的PSI树中的元素.
+
+注释器不仅可以使用PSI分析语法,还可以分析语义,因此可以提供更复杂的语法和错误突出显示逻辑.
+
+注释器还可以为其检测到的问题提供快速修复.
+
+
+更改文件时,将逐步调用注释器以仅处理PSI树中已更改的元素.
+
+
+要将文本区域突出显示为警告或错误,注释器会调用“createErrorAnnotation()”或“createWarningAnnotation()”.
+
 [AnnotationHolder](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java)
-object passed to it, and optionally calls `registerFix()` on the returned
-[Annotation](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotation.java)
-object to add a quick fix for the error or warning.
-To apply additional syntax highlighting, the annotator can call
+
+对象传递给它,并可选择在返回的上调用`registerFix()`
+
+[注释](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotation.java)
+
+对象为错误或警告添加快速修复.
+
+要应用其他语法突出显示,注释器可以调用
+
 [AnnotationHolder.createInfoAnnotation()](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java)
-with an empty message and then call
+
+用空消息然后调用
+
 [Annotation.setTextAttributes()](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotation.java)
-to specify the text attributes key for the highlighting.
 
-**Example:**
-[Annotator](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/PropertiesAnnotator.java)
-for
-[Properties language plugin](upsource:///plugins/properties/)
+指定突出显示的文本属性键.
 
 
-### External tool
+**例:**
 
-Finally, if the custom language employs external tools for validating files in the language (for example, uses the Xerces library for XML schema validation), it can provide an implementation of the
+[注释器(upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/PropertiesAnnotator.java)
+
+对于
+
+[属性语言插件](upsource:///plugins/properties/)
+
+
+###外部工具
+
+
+最后,如果自定义语言使用外部工具来验证语言中的文件(例如,使用Xerces库进行XML模式验证),它可以提供实现
+
 [ExternalAnnotator](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java)
-interface and register it in `com.intellij.externalAnnotator` extension point.
-The
+
+接口并将其注册到`com.intellij.externalAnnotator`扩展点.
+
+该
+
 [ExternalAnnotator](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/ExternalAnnotator.java)
-highlighting has the lowest priority and is invoked only after all other background processing has completed.
-It uses the same
+
+突出显示具有最低优先级,仅在所有其他后台处理完成后才会调用.
+
+它使用相同的
+
 [AnnotationHolder](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/AnnotationHolder.java)
-interface for converting the output of the external tool into editor highlighting.
 
-### Color settings
+用于将外部工具的输出转换为编辑器突出显示的界面.
 
-The plugin can also provide a configuration interface to allow the user to configure the colors used for highlighting specific items.
-In order to do that, it should provide an implementation of
+
+###颜色设置
+
+
+该插件还可以提供配置界面,以允许用户配置用于突出显示特定项目的颜色.
+
+为了做到这一点,它应该提供一个实现
+
 [ColorSettingPage](upsource:///platform/lang-api/src/com/intellij/openapi/options/colors/ColorSettingsPage.java)
-and register it in the `com.intellij.colorSettingsPage` extension point.
 
-**Example**:
+并将其注册到`com.intellij.colorSettingsPage`扩展点.
+
+
+**例**:
+
 [ColorSettingsPage](upsource:///plugins/properties/src/com/intellij/openapi/options/colors/pages/PropertiesColorsPage.java)
-for
-[Properties language plugin](upsource:///plugins/properties/)
 
-The `Export to HTML` feature uses the same syntax highlighting mechanism as the editor, so it will work automatically for custom languages which provide a syntax highlighter.
+对于
+
+[属性语言插件](upsource:///plugins/properties/)
+
+
+“导出到HTML”功能使用与编辑器相同的语法突出显示机制,因此它将自动为提供语法高亮显示的自定义语言工作.
+
+

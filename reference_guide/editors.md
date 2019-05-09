@@ -2,5 +2,8 @@
 title: Editors
 ---
 
-* [Editor basics tutorial](/tutorials/editor_basics.md)
-* [Multiple carets](multiple_carets.md)
+* [编辑基础教程](/tutorials/editor_basics.md)
+
+* [多个插入符号](multiple_carets.md)
+
+

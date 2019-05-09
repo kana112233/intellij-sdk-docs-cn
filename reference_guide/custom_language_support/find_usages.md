@@ -2,91 +2,168 @@
 title: Find Usages
 ---
 
-The `Find Usages` action is a multi-step process, and each step of the process requires involvement from the custom language plugin.
-The language plugin participates in the Find Usages process by registering an implementation of
+“查找用法”操作是一个多步骤的过程,该过程的每个步骤都需要自定义语言插件的参与.
+
+语言插件通过注册实现来参与Find Usages过程
+
 [FindUsagesProvider](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
-in the `com.intellij.lang.findUsagesProvider` extension point, and through the PSI implementation using
+
+在`com.intellij.lang.findUsagesProvider`扩展点,并通过PSI实现使用
+
 [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-and
+
+和
+
 [PsiReference](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
-interfaces.
 
-**Example**:
-Implementation of
+接口.
+
+
+**例**:
+
+实施
+
 [FindUsagesProvider](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/findUsages/PropertiesFindUsagesProvider.java)
-in
-[Properties language plugin](upsource:///plugins/properties/)
+
+在
+
+[属性语言插件](upsource:///plugins/properties/)
 
 
-The steps of the `Find Usages` action are the following:
+“查找用法”操作的步骤如下:
 
-*  Before the `Find Usages` action can be invoked, the IDE builds an index of words present in every file in the custom language.
-   Using the
-   [WordsScanner](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/WordsScanner.java)
-   implementation returned from
-   [FindUsagesProvider.getWordsScanner()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java),
-   the contents of every file are loaded and passes it to the words scanner, along with the words consumer.
-   The words scanner breaks the text into words, defines the context for each word (code, comments or literals) and passes the word to the consumer.
-   The simplest way to implement the words scanner is to use the
-   [DefaultWordsScanner](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java)
-   implementation, passing to it the sets of lexer token types which are treated as identifiers, literals and comments.
-   The default words scanner will use the lexer to break the text into tokens, and will handle breaking the text of comment and literal tokens into individual words.
 
-*  When the user invokes the Find Usages action, the IDE locates the PSI element the references to which will be searched.
-   The PSI element at the cursor (the direct tree parent of the token at the cursor position) must be either a
-   [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-   or a
-   [PsiReference](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
-   which resolves to a
-   [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java).
-   The word cache will be used to search for the text returned from the
-   [PsiNamedElement.getName()](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-   method.
-   Also, if the text range of the
-   [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-   includes some other text besides the identifier returned from `getName()` (for example, if the
-   [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-   represents a JavaScript function and its text range includes the "`function`" keyword in addition to the name of the function), the method `getTextOffset()` must be overridden for the
-   [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java),
-   and must return the start offset of the name identifier within the text range of the element.
+*在调用“查找用法”操作之前,IDE会构建自定义语言中每个文件中存在的单词索引.
+   
+使用
+   
+[WordsScanner](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/WordsScanner.java)
+   
+实现返回
+   
+[FindUsagesProvider.getWordsScanner()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java),
+   
+加载每个文件的内容并将其传递给单词scanner,以及单词consumer.
+   
+单词scanner scan将文本分成单词,定义每个单词的上下文(代码,注释或文字)并将单词传递给消费者.
+   
+实现单词扫描程序的最简单方法是使用
+   
+[DefaultWordsScanner](upsource:///platform/indexing-api/src/com/intellij/lang/cacheBuilder/DefaultWordsScanner.java)
+   
+实现,传递lexer令牌类型的集合,这些类型被视为标识符,文字和注释.
+   
+默认单词scanner scan将使用词法分析器将文本分解为标记,并将处理注释和文字标记的文本分成单个单词.
 
-*  Once the element is located, the IDE calls
-   [FindUsagesProvider.canFindUsagesFor()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
-   to ask the plugin if the Find Usages action is applicable to the specific element.
 
-*  When showing the Find Usages dialog to the user,
-   [FindUsagesProvider.getType()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
-   and
-   [FindUsagesProvider.getDescriptiveName()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
-   are called to determine how the element should be presented to the user.
+*当用户调用Find Usages操作时,IDE将找到要搜索的引用的PSI元素.
+   
+游标处的PSI元素(光标位置处令牌的直接树父)必须是a
+   
+[PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
+   
+或者a
+   
+[PsiReference](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
+   
+哪个解决了
+   
+[PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java).
+   
+单词缓存将用于搜索从中返回的文本
+   
+[PsiNamedElement.getName()](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
+   
+方法.
+   
+另外,如果是文本范围的话
+   
+[PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
+   
+除了从`getName()`返回的标识符之外还包括一些其他文本(例如,如果是
+   
+[PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
+   
+代表一个JavaScript函数,它的文本范围除了包含函数名称之外还包含“`function`”关键字,必须覆盖`getTextOffset()`方法.
+   
+[PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java),
+   
+并且必须在元素的文本范围内返回名称标识符的起始偏移量.
 
-*  For every file containing the searched words, the IDE builds the PSI tree and recursively descends that tree.
-   The text of each element is broken into words and then scanned.
-   If the element was indexed as an identifier, every word is checked to be a
-   [PsiReference](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
-   resolving to the element the usages of which are searched.
-   If the element was indexed as a comment or literal and the search in comments or literals is enabled, it checks if the word is equal to the name of the searched element.
 
-*  After the usages are collected, results are shown in the usages pane.
-The text shown for each found element is taken from the
+*找到元素后,IDE会调用
+   
+[FindUsagesProvider.canFindUsagesFor()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
+   
+如果Find Usages操作适用于特定元素,请询问插件.
+
+
+*向用户显示“查找用户”对话框时,
+   
+[FindUsagesProvider.getType()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
+   
+和
+   
+[FindUsagesProvider.getDescriptiveName()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
+   
+被调用以确定如何将元素呈现给用户.
+
+
+*对于包含搜索词的每个文件,IDE构建PSI树并递归地下降该树.
+   
+每个元素的文本被分成单词然后被扫描.
+   
+如果元素被索引为标识符,则每个单词都被检查为a
+   
+[PsiReference](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
+   
+解析搜索其用法的元素.
+   
+如果元素被索引为注释或文字,并且启用了注释或文字中的搜索,则会检查该单词是否等于搜索元素的名称.
+
+
+*收集使用后,结果将显示在用法窗格中.
+
+为每个找到的元素显示的文本取自
+
 [FindUsagesProvider.getNodeText()](upsource:///platform/indexing-api/src/com/intellij/lang/findUsages/FindUsagesProvider.java)
-method.
 
-To have the title of the found element be correctly displayed in the title of the Find Usages tool window, you need to provide an implementation of the
+方法.
+
+
+要在Find Usages工具窗口的标题中正确显示找到的元素的标题,您需要提供
+
 [ElementDescriptionProvider](upsource:///platform/core-api/src/com/intellij/psi/ElementDescriptionProvider.java)
-interface.
-The
+
+接口.
+
+该
+
 [ElementDescriptionLocation](upsource:///platform/core-api/src/com/intellij/psi/ElementDescriptionLocation.java)
-passed to the provider in this case will be an instance of
+
+在这种情况下传递给提供者将是一个实例
+
 [UsageViewLongNameLocation](upsource:///platform/lang-impl/src/com/intellij/usageView/UsageViewLongNameLocation.java).
 
-**Example:**
-[ElementDescriptionProvider](upsource:///plugins/properties/src/com/intellij/lang/properties/PropertiesDescriptionProvider.java)
-for
-[Properties language plugin](upsource:///plugins/properties/)
 
-> **TIP** In cases like function parameters and local variables, consider overriding 
-[PsiElement#getUseScope](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java) to return a narrower scope. 
-For instance, you might return just the scope of the nearest function definition. This optimization can greatly reduce 
-the number of files that need to be parsed--and references that need to be resolved--when renaming a function parameter
-or local variable.
+**例:**
+
+[ElementDescriptionProvider](upsource:///plugins/properties/src/com/intellij/lang/properties/PropertiesDescriptionProvider.java)
+
+对于
+
+[属性语言插件](upsource:///plugins/properties/)
+
+
+> **提示**在函数参数和局部变量等情况下,请考虑覆盖
+
+[PsiElement＃getUseScope](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)返回较窄的范围.
+
+例如,您可能只返回最近函数定义的范围.
+这种优化可以大大减少
+
+重命名函数参数时需要解析的文件数 - 以及需要解析的引用
+
+或局部变量.
+
+

@@ -2,11 +2,16 @@
 title: Internal Actions - UI Submenu
 ---
 
-The Internal Actions UI submenu provides IntelliJ Platform plugin developers with a suite of tools to help develop, debug, and test their IntelliJ Platform project UI.
+Internal Actions UI子菜单为IntelliJ Platform插件开发人员提供了一套工具,可帮助他们开发,调试和测试他们的IntelliJ Platform项目UI.
+
 
 If the menu item **Tools \| Internal Actions \| UI** is not available in IntelliJ IDEA, then the first step is to [enable internal mode](enabling_internal.md)
 
-## The Tools Available on the UI Submenu
+## UI子菜单上的可用工具
+
 
 * [UI Inspector](internal_uii.md)
-* [LaF Defaults](internal_ui_lafd.md)
+
+* [LaF默认值](internal_ui_lafd.md)
+
+

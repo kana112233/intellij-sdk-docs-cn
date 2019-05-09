@@ -2,28 +2,52 @@
 title: Publishing a Plugin to a Custom Plugin Repository
 ---
 
-If you intend to use a plugin repository _other than_ the [JetBrains Plugin Repository](https://plugins.jetbrains.com), 
-you will need to:
-* Create and maintain an `updatePlugins.xml` file on the HTTPS web server you are using for your custom repository. 
-  This file describes all the plugins available in your custom repository and each plugin's download URL.
-* Upload your plugin JAR/ZIP file to an HTTPS web server. This can be the same web server you are using for the custom repository
-  or a different HTTPS web server.
-* Add the URL for the custom repository to the JetBrains IDE [Repository Settings/Preferences](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
+如果您打算使用插件存储库_ [JetBrains插件存储库](https://plugins.jetbrains.com),
 
-## Describing Your Plugins in an updatePlugins File
-Every custom plugin repository must have at least one `updatePlugins.xml` file to describe the latest available version 
-for every hosted plugin. The description in `updatePlugins.xml` is used by JetBrains IDEs to locate plugins by attributes 
-such as id, IDE version, and plugin version. These attributes are displayed by JetBrains IDEs to help users select or upgrade plugins.
-The description also tells the JetBrains IDE where to download the plugin itself.
+你需要:
 
-A custom plugin repository's `updatePlugins.xml` file is constructed and maintained by the administrator of
-the repository. More than one `updatePlugins.xml` file may be required if consumers of the custom repository are using more
-than one version of a JetBrains IDE. For example `updatePlugins-182.xml`, `updatePlugins-183.xml` for IntelliJ IDEA 2018.2 and 2018.3 respectively.
-Each `updatePlugins-*.xml` file will have a unique URL that is added to the JetBrains IDE 
-[Repository Settings/Preferences](https://www.jetbrains.com/help/idea/managing-plugins.html#repos). 
+*在用于自定义存储库的HTTPS Web服务器上创建和维护`updatePlugins.xml`文件.
+  
+此文件描述了自定义存储库中可用的所有插件以及每个插件的下载URL.
 
-### The Format of an updatePlugins File
-The format of an `updatePlugins.xml` file is simply a list of sequential elements that describe each plugin:
+*将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
+这可以是您用于自定义存储库的同一Web服务器
+  
+或者不同的HTTPS Web服务器.
+
+*将自定义存储库的URL添加到JetBrains IDE [存储库设置/首选项](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
+
+
+##在updatePlugins文件中描述您的插件
+
+每个自定义插件存储库必须至少有一个`updatePlugins.xml`文件来描述最新的可用版本
+
+对于每个托管插件. 
+JetBrains IDE使用`updatePlugins.xml`中的描述来按属性定位插件
+
+例如id,IDE版本和插件版本. 
+JetBrains IDE显示这些属性,以帮助用户选择或升级插件.
+
+该描述还告诉JetBrains IDE在哪里下载插件本身.
+
+
+自定义插件存储库的`updatePlugins.xml`文件由管理员构建和维护
+
+存储库.
+如果自定义存储库的使用者使用更多,则可能需要多个`updatePlugins.xml`文件
+
+比一个版本的JetBrains IDE.
+例如,对于IntelliJ IDEA 2018.2和2018.3,分别为`updatePlugins-182.xml`,`updatePlugins-183.xml`.
+
+每个`updatePlugins  -  *.xml`文件都有一个添加到JetBrains IDE的唯一URL
+
+[存储库设置/首选项](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
+
+
+### updatePlugins文件的格式
+
+`updatePlugins.xml`文件的格式只是描述每个插件的顺序元素列表:
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -57,14 +81,25 @@ The format of an `updatePlugins.xml` file is simply a list of sequential element
 * A plugin `id` may be listed only once in an `updatePlugins.xml` file.  
 * Multiple plugins with the same `id` but different `idea-version` attributes must be split into separate `updatePlugins-*.xml` files. 
 
-### Optional updatePlugin Elements
-Can additional elements be added to `updatePlugins.xml`? Yes, but it's advisable only if needed. The additional elements will have
-to be synchronized with each plugin's `plugin.xml` file.
+###可选的updatePlugin元素
 
-During plugin installation the JetBrains IDE reads the plugin JAR/ZIP file, and thereafter displays more information about the plugin.
-What additional information might help a user select a plugin when 
-[browsing the custom plugin repository](https://www.jetbrains.com/help/idea/managing-plugins.html#repos)
-before installation? The answer depends on the plugins and repository consumers. Here are the candidate elements:
+可以在`updatePlugins.xml`中添加其他元素吗？
+是的,但仅在需要时才建议.
+额外的元素将有
+
+与每个插件的`plugin.xml`文件同步.
+
+
+在插件安装期间,JetBrains IDE读取插件JAR/ZIP文件,然后显示有关插件的更多信息.
+
+哪些附加信息可能有助于用户在何时选择插件
+
+[浏览自定义插件存储库](https://www.jetbrains.com/help/idea/managing-plugins.html#repos)
+
+安装前？
+答案取决于插件和存储库使用者.
+以下是候选元素:
+
 
 | Element                                                      |  Effects & Requirements     |
 |:-------------------------------------------------------------|:----------------------------| 

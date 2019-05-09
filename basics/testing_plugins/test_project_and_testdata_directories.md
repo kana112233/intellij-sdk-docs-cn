@@ -2,28 +2,61 @@
 title: Test Project and Testdata Directories
 ---
 
-The test fixture creates a *test project* environment. Unless you customize the project creation, the test project will have one module with one source root called `src`. The files for the test project exist either in a temporary directory or in an in-memory file system, depending on which implementation of [`TempDirTestFixture`](upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures/TempDirTestFixture.java) is used.
+测试夹具创建一个*测试项目*环境.
+除非您自定义项目创建,否则测试项目将有一个模块,其中一个源根名为`src`.
+测试项目的文件存在于临时目录或内存文件系统中,具体取决于[`TempDirTestFixture`]的实现(upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures
+使用/TempDirTestFixture.java).
 
-[`LightPlatformCodeInsightFixtureTestCase`](upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures/LightPlatformCodeInsightFixtureTestCase.java) uses an in-memory implementation; if you set up the test environment by calling `IdeaTestFixtureFactory.createCodeInsightFixture`, you can specify the implementation to use.
 
-> **Note** If your tests use the in-memory implementation, and you abort the execution of your tests, the persisted filesystem caches may get out of sync with the in-memory structures, and you may get spurious errors in your tests.
+[`LightPlatformCodeInsightFixtureTestCase`](upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures/LightPlatformCodeInsightFixtureTestCase.java)使用内存实现;
+如果通过调用`IdeaTestFixtureFactory.createCodeInsightFixture`来设置测试环境,则可以指定要使用的实现.
+
+
+> **注意**如果您的测试使用内存实现,并且中止测试的执行,则持久化文件系统缓存可能与内存结构不同步,并且您可能会在测试中出现虚假错误
+.
+
 >
-> If you get an unexpected error after a series of successful runs, **try running the test again**, and if that doesn't help, **delete the "system" subdirectory** in your sandbox directory (specified via `sandboxDirectory` for Gradle setups or in the *IntelliJ Platform* SDK settings for Devkit setups) .
 
-In your plugin, you normally store the test data for your tests (such as files on which plugin features will be executed and expected output files) in the `testdata` directory. This is just a directory under the content root of your plugin, but not under a source root. Files in `testdata` are normally not valid source code and must not be compiled.
+>如果在一系列成功运行后遇到意外错误,**尝试再次运行测试**,如果这没有帮助,**删除沙箱目录中的“system”子目录**(通过`
+用于Gradle设置的sandboxDirectory`或用于Devkit设置的* IntelliJ Platform * SDK设置).
 
-To specify the location of `testdata`, you must override the `LightPlatformCodeInsightFixtureTestCase.getTestDataPath()` method. The default implementation assumes running as part of the *IntelliJ Platform* source tree and is not appropriate for third-party plugins.
 
-> **Note** A very common pattern in *IntelliJ Platform* tests is to use the name of the test method being executed as the base for building the `testdata` file paths. This allows to reuse most of the code between different test methods that test different aspects of the same feature, and this approach is also recommended for third-party plugin tests. The name of the test method can be retrieved using `UsefulTestCase.getTestName()`.
+在您的插件中,您通常会在`testdata`目录中存储测试的测试数据(例如将在其上执行插件功能的文件和预期的输出文件).
+这只是插件内容根目录下的一个目录,但不在源根目录下. 
+`testdata`中的文件通常不是有效的源代码,不得编译.
 
-To copy files or directories from your `testdata` directory to the test project directory, you can use the `copyFileToProject()` and `copyDirectoryToProject()` methods in the [`CodeInsightTestFixture`](upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java) class.
 
-Most operations in plugin tests require a file open in the in-memory editor, in which highlighting, completion and other operations will be performed. The in-memory editor instance is returned by `CodeInsightTestFixture.getEditor()`. To copy a file from the `testdata` directory to the test project directory and immediately open it in the editor, you can use the `CodeInsightTestFixture.configureByFile()` or `configureByFiles()` methods. The latter copies multiple files to the test project directory and opens the *first* of them in the in-memory editor.
+要指定`testdata`的位置,必须覆盖`LightPlatformCodeInsightFixtureTestCase.getTestDataPath()`方法.
+默认实现假定作为* IntelliJ Platform *源代码树的一部分运行,不适用于第三方插件.
 
-Alternatively, you can use one of the other methods which take parameters annotated with `@TestDataFile`. These methods copy the specified files from the `testdata` directory to the test project directory, open the first of the specified files in the in-memory editor, and then perform the requested operation such as highlighting or code completion.
 
-When a file is opened in the in-memory editor, special markup in the file content can be used to specify the caret position or selection. You can use one of the following markers:
+> **注意** * IntelliJ Platform *测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建`testdata`文件路径的基础.
+这允许在测试相同功能的不同方面的不同测试方法之间重用大多数代码,并且还建议将此方法用于第三方插件测试.
+可以使用`UsefulTestCase.getTestName()`检索测试方法的名称.
 
-* `<caret>` specifies the position where the caret should be placed.
-* `<selection>` and `</selection>` specify the start and end of the text range to be selected.
-* `<block>` and `</block>` specify the start and end points of the column selection.
+
+要将文件或目录从`testdata`目录复制到测试项目目录,可以使用[`CodeInsightTestFixture`]中的`copyFileToProject()`和`copyDirectoryToProject()`方法(upsource:///platform/testFramework/
+src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)类.
+
+
+插件测试中的大多数操作都需要在内存编辑器中打开文件,其中将执行突出显示,完成和其他操作.
+内存编辑器实例由`CodeInsightTestFixture.getEditor()`返回.
+要将文件从`testdata`目录复制到测试项目目录并立即在编辑器中打开它,可以使用`CodeInsightTestFixture.configureByFile()`或`configureByFiles()`方法.
+后者将多个文件复制到测试项目目录,并在内存编辑器中打开它们的* first *.
+
+
+或者,您可以使用其他方法之一,这些方法带有用@@ TestDataFile注释的参数.
+这些方法将指定文件从`testdata`目录复制到测试项目目录,打开内存编辑器中的第一个指定文件,然后执行请求的操作,如突出显示或代码完成.
+
+
+在内存编辑器中打开文件时,文件内容中的特殊标记可用于指定插入符号位置或选择.
+您可以使用以下标记之一:
+
+
+*`<caret>`指定插入符号的位置.
+
+*`<selection>`和`</selection>`指定要选择的文本范围的开始和结束.
+
+*`<block>`和`</block>`指定列选择的起点和终点.
+
+

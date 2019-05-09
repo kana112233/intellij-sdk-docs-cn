@@ -2,33 +2,47 @@
 title: Plugin Repository Maven Interface
 ---
 
-You can download a plugin update from the [plugin repository](https://plugins.jetbrains.com) using a Maven interface available at `https://plugins.jetbrains.com/maven`.
+您可以使用https://plugins.jetbrains.com/maven`上提供的Maven界面从[plugin repository](https://plugins.jetbrains.com)下载插件更新.
 
-URL format is the following:
+
+URL格式如下:
+
 
 ```
 https://plugins.jetbrains.com/maven/<channel>/com/jetbrains/plugins/<plugin_xml_id>/<version>/<plugin_xml_id>-<version>.<extension>
 ```
 
-Where
+哪里
 
-* **plugin_xml_id** is an unique Plugin XML ID specified on the right of the plugin's individual updade page or in the *plugin.xml*; 
 
-* **version** is a full update version;
+* ** plugin_xml_id **是插件的单个updade页面右侧或* plugin.xml *中指定的唯一插件XML ID;
 
-* **channel** is a release channel the update is published to (empty channel means default *Stable* channel);
 
-* **extension** is a plugin update package extension (*.jar* or *.zip*).
+* **版本**是完整更新版本;
 
-E.g. to download *[VueJs plugin version 1.0.1](https://plugins.jetbrains.com/plugin/8057-vue-js/update/23034)* you should send request at [https://plugins.jetbrains.com/maven/com/jetbrains/plugins/vue.js/1.0.1/vue.js-1.0.1.jar](https://plugins.jetbrains.com/maven/com/jetbrains/plugins/vue.js/1.0.1/vue.js-1.0.1.jar).
 
-Also, you can use Gradle or Maven to retrieve a plugin as a maven-dependency:
+* **频道**是发布更新的发布频道(空频道表示默认*稳定*频道);
 
-* **groupId** is either **\<channel>.com.jetbrains.plugins** or **com.jetbrains.plugins** for *Stable* channel;
 
-* **artifactId** is **pluginXmlId** (pluginXmlId is specified as a *Plugin XML ID* parameter on the right of the plugin's individual update page);
+* ** extension **是一个插件更新包扩展名(* .jar *或* .zip *).
 
-**build.gradle**
+
+例如.
+下载* [VueJs插件版本1.0.1](https://plugins.jetbrains.com/plugin/8057-vue-js/update/23034)*您应该发送请求[https://plugins.jetbrains.com 
+/maven/com/jetbrains/plugins/vue.js/1.0.1/vue.js-1.0.1.jar](https://plugins.jetbrains.com/maven/com/jetbrains/plugins/vue.js/1.0.1/vue.js-1.0.1.jar).
+
+
+此外,您可以使用Gradle或Maven将插件检索为maven依赖项:
+
+
+* ** groupId **是** \ <channel> .com.jetbrains.plugins **或** com.jetbrains.plugins ** for * Stable * channel;
+
+
+* ** artifactId **是** pluginXmlId **(pluginXmlId被指定为插件的个人更新页面右侧的*插件XML ID *参数);
+
+
+** **的build.gradle
+
 
 ```
 repositories {
@@ -41,4 +55,6 @@ dependencies {
 }
 ```
 
-(please see parameters description above)
+(请参阅上面的参数说明)
+
+

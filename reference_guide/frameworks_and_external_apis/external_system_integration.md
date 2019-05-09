@@ -2,77 +2,138 @@
 title: External System Integration
 ---
 
-# Purpose
-
-This page provides high-level overview of *External System* sub-system.
-
-# Rationale
-
-There are multiple project management systems ([maven](https://maven.apache.org/), [gradle](http://www.gradle.org/), [sbt](http://www.scala-sbt.org/) etc) and it's good to support them at the IDE. Luckily, they all provide a similar set of facilities from the integration point of view:
-
-*   build IDE project from external system config (pom.xml, build.gradle etc);
-*   provide a list of available tasks;
-*   allow to execute a particular task;
-*   ...
-
-That means that we can separate external system-specific logic and general IDE processing. *'External system'* sub-system provides simple api for wrapping external system and extensible IDE-specific processing logic.
-
-# Project management
-
-## Project data domain
-
-**General**  
-External system wrapper is required to be able to build project info on the basis of the given external system config. That information is built using in terms of [DataNode](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/DataNode.java), [Key](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/Key.java) and [ProjectEntityData](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/project/ProjectEntityData.java).
-
-![DataNode](/reference_guide/img/data-node.png)
-
-Here *DataNode* class is just a holder for the target data (data type is defined by the *Key*). Multiple DataNode objects might be organized in directed graph where every edge identifies parent-child relation.
-
-For example, simple one-module project might look as below: 
- 
-![DataNode Example](/reference_guide/img/data-node-example.png)
+＃目的
 
 
-**Consequence**  
-The IDE provides a set of built-in *Key*s and *ProjectEntityData*s but any external system integration or third-party plugin developer might enhance project data by defining her own *Key* and *ProjectEntityData* and storing them at a child of appropriate *DataNode*.
+此页面提供*外部系统*子系统的高级概述.
 
-## Managing project data
 
-We need to process project data is built on external system config basis. Here comes [ProjectDataService](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/manage/ProjectDataService.java). It is a strategy which knows how to manage particular *ProjectEntityData*. For example, when we want to import a project from external model, we can start by the top level *DataNode* which references project info and then import its data using corresponding service.
+#Rationale
 
-Custom services can be defined via *'externalProjectDataService'* extension.
 
-The good thing is that we can separate project parsing and management here. That means that a set of *DataNode*, *Key* and *ProjectDataServices* can be introduced for particular technology and then every external system integration can build corresponding data if necessary using it.
+有多个项目管理系统([maven](https://maven.apache.org/),[gradle](http://www.gradle.org/),[sbt](http://www.scala-sbt.org/)etc)并且很高兴在IDE上支持它们.
+幸运的是,从集成的角度来看,它们都提供了类似的设施:
 
-## Importing from external model
 
-IntelliJ platform provides standard api for that. Namely, [ProjectImportBuilder](upsource:///projectImport/ProjectImportBuilder.java) and [ProjectImportProvider](upsource:///projectImport/ProjectImportProvider.java). There are two classes built on *template method* pattern - [AbstractExternalProjectImportBuilder](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java) and [AbstractExternalProjectImportProvider](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportProvider.java). They might be sub-classes and that concrete implementations should be registered at IoC descriptor (plugin.xml).
+*从外部系统配置(pom.xml,build.gradle等)构建IDE项目;
 
-Here is an example from the gradle integration plugin:
+*提供可用任务列表;
 
-    <projectImportProvider implementation="org.jetbrains.plugins.gradle.service.settings.GradleProjectImportProvider"/>
-    <projectImportBuilder implementation="org.jetbrains.plugins.gradle.service.settings.GradleProjectImportBuilder"/>
+*允许执行特定任务;
 
-Note that [AbstractExternalProjectImportBuilder](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java) is built on top of the 'external system settings' controls.
+* ......
 
-## Auto-import
 
-It's possible to configure external system integration to automatically refresh project structure when external project's config file is modified. Basically, end-user should check corresponding box at external system settings for that:
+这意味着我们可以将外部系统特定逻辑和一般IDE处理分开. 
+*'外部系统'*子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.
 
-![Auto-import](/reference_guide/img/use-auto-import.png)
 
-Built-in support covers only root config files of linked external projects. However, there is a possible situation that particular external project has another config files which affect resulting project structure as well (for example, it might be a multi-project where every sub-project has its own config file). That's why it's possible to enhance that processing by making target external system implementation (*ExternalSystemManager*) implement *ExternalSystemAutoImportAware*. That allows to provide custom logic for mapping file modification events to the target external project affected by that.
+＃ 项目管理
 
-**Note:** *ExternalSystemAutoImportAware.getAffectedExternalProjectPath()* is called quite often, that's why it's expected to return control as soon as possible. Helper *CachingExternalSystemAutoImportAware* class might be used for caching, i.e. *ExternalSystemManager* which implements *ExternalSystemAutoImportAware* can have a field like *'new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())'* and delegate *ExternalSystemAutoImportAware.getAffectedExternalProjectPath()* calls to it.
 
-# Settings
+##项目数据域
 
-The general idea is that all external system settings controls are represented by implementations of [ExternalSettingsControl](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java) interface. There are also external system project-local settings and global external system settings. So, basically particular external system settings UI looks as below:
 
-![Configurable](/reference_guide/img/configurable.png)
+**一般**
 
-It's recommended to extend from [AbstractExternalProjectSettingsControl](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractExternalProjectSettingsControl.java) for implementing project-level settings control as it already handles some of them.
+外部系统包装器需要能够根据给定的外部系统配置构建项目信息.
+该信息是根据 [DataNode](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/DataNode.java), [Key](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/Key.java) and [ProjectEntityData](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/model/project/ProjectEntityData.java).
 
-Similar approach is used for providing 'import from external system' UI - implementation is expected to extended [AbstractImportFromExternalSystemControl](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractImportFromExternalSystemControl.java) and it has not linked external projects list but target external project path control:
+![数据管理部](/reference_guide/img/data-node.png)
 
-![Import from external system](/reference_guide/img/import.png)
+
+这里* DataNode *类只是目标数据的持有者(数据类型由* Key *定义).
+可以在有向图中组织多个DataNode对象,其中每个边都标识父子关系.
+
+
+例如,简单的单模块项目可能如下所示:
+ 
+
+![DataNode示例](/reference_guide/img/data-node-example.png)
+
+
+**后果**
+
+IDE提供了一组内置的* Key *和* ProjectEntityData *,但任何外部系统集成或第三方插件开发人员都可以通过定义自己的* Key *和* ProjectEntityData *并将其存储在子项中来增强项目数据
+适当的* DataNode *.
+
+
+##管理项目数据
+
+
+我们需要处理项目数据是建立在外部系统配置的基础上的.
+这里有[ProjectDataService](upsource:///platform/external-system-api/src/com/intellij/openapi/externalSystem/service/project/manage/ProjectDataService.java).
+这是一种知道如何管理特定* ProjectEntityData *的策略.
+例如,当我们想要从外部模型导入项目时,我们可以从引用项目信息的顶级* DataNode *开始,然后使用相应的服务导入其数据.
+
+
+可以通过*'externalProjectDataService'*扩展名定义自定义服务.
+
+
+好处是我们可以在这里分离项目解析和管理.
+这意味着可以为特定技术引入一组* DataNode *,* Key *和* ProjectDataServices *,然后每个外部系统集成可以在必要时使用它来构建相应的数据.
+
+
+##从外部模型导入
+
+
+IntelliJ平台为此提供标准API.
+即,[ProjectImportBuilder](upsource:///projectImport/ProjectImportBuilder.java)和[ProjectImportProvider](upsource:///projectImport/ProjectImportProvider.java).
+在* template method * pattern上构建了两个类 -  [AbstractExternalProjectImportBuilder](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java)[AbstractExternalProjectImportProvider](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportProvider.java).
+它们可能是子类,具体实现应该在IoC描述符(plugin.xml)中注册.
+
+
+以下是gradle集成插件的示例:
+
+
+<projectImportProvider implementation =“org.jetbrains.plugins.gradle.service.settings.GradleProjectImportProvider”/>
+    
+<projectImportBuilder implementation =“org.jetbrains.plugins.gradle.service.settings.GradleProjectImportBuilder”/>
+
+
+请注意,[AbstractExternalProjectImportBuilder](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java)构建于“外部系统设置”之上
+控制.
+
+
+##自动导入
+
+
+当外部项目的配置文件被修改时,可以配置外部系统集成以自动刷新项目结构.
+基本上,最终用户应在外部系统设置中检查相应的框:
+
+
+![自动导入](/reference_guide/IMG /使用-自动import.png)
+
+
+内置支持仅涵盖链接外部项目的根配置文件.
+但是,可能存在这样的情况:特定外部项目具有另一个配置文件,这些配置文件也会影响生成的项目结构(例如,它可能是一个多项目,其中每个子项目都有自己的配置文件).
+这就是为什么通过使目标外部系统实现(* ExternalSystemManager *)实现* ExternalSystemAutoImportAware *来增强该处理的原因.
+这允许提供自定义逻辑,用于将文件修改事件映射到受其影响的目标外部项目.
+
+
+**注意:** * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*经常被调用,这就是为什么它应该尽快返回控制. 
+Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即* ExternalSystemManager *实现* ExternalSystemAutoImportAware *可以有一个字段,如*'new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* *委托* ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.
+
+
+＃设置
+
+
+一般的想法是所有外部系统设置控件都由[ExternalSettingsControl]的实现表示(upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java)
+接口.
+还有外部系统项目本地设置和全局外部系统设置.
+因此,基本上特定的外部系统设置UI如下所示:
+
+
+![配置](/reference_guide/IMG/configurable.png)
+
+
+建议从[AbstractExternalProjectSettingsControl](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractExternalProjectSettingsControl.java)进行扩展,以实现项目级设置控制,因为它已经
+处理其中一些.
+
+
+类似的方法用于提供“从外部系统导入”UI  - 实现有望扩展[AbstractImportFromExternalSystemControl](upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/AbstractImportFromExternalSystemControl.java)并且它没有链接外部项目列表但是目标外部项目路径控制:
+
+
+![从外部系统导入](/reference_guide/img/import.png)
+
+

@@ -2,41 +2,71 @@
 title: Plugin Icon
 ---
 
-Beginning in version 2019.1, the IntelliJ Platform supports representing a plugin with an icon.
-A _Plugin Icon_ is intended to be a unique representation of a plugin's functionality, technology, or 
-company. 
+从版本2019.1开始,IntelliJ平台支持使用图标表示插件.
 
-Plugin Icons are shown in the Settings/Preferences [Plugin Manager](https://www.jetbrains.com/help/idea/managing-plugins.html) UI
-in JetBrains' products. Plugin Icons also appear in the [Plugins Repository](https://plugins.jetbrains.com/),
-and also in [MarketPlace](https://plugins.jetbrains.com/marketplace).
+_Plugin Icon_旨在成为插件功能,技术或的独特表示
 
-**Note:** icons and images that are used within a plugin have different requirements. 
-See [Working with Icons and Images](/reference_guide/work_with_icons_and_images.md)
-for more information.
+公司.
 
-### Plugin Icon File Format
-All Plugin Icon images must be provided in SVG format. 
-Plugin Icons will be displayed in 40px by 40px and 80px by 80px size. However, _only one
-size icon_ should be supplied because it will automatically
-scale.
+
+插件图标显示在设置/首选项[插件管理器](https://www.jetbrains.com/help/idea/managing-plugins.html)UI中
+
+在JetBrains的产品中.
+插件图标也出现在[Plugins Repository](https://plugins.jetbrains.com/)中,
+
+以及[MarketPlace](https://plugins.jetbrains.com/marketplace).
+
+
+**注意:**插件中使用的图标和图像有不同的要求.
+
+请参阅[使用图标和图像](/reference_guide/work_with_icons_and_images.md)
+
+欲获得更多信息.
+
+
+###插件图标文件格式
+
+所有插件图标图像必须以SVG格式提供.
+
+插件图标将以40px x 40px和80px x 80px大小显示.
+但是,只有一个
+
+应提供size icon_,因为它会自动生成
+
+规模.
+
 
 | Icon Size  | Example SVG Icon                            |
 | ------------- | -------------                            |
 | 40x40         | ![Kotlin Plugin Icon](img/kotlin40.svg)  |
 
-### Plugin Icon File Naming Convention
-Plugin Icon files are named according to the following conventions:
-* `pluginIcon.svg` for use with the default (light) JetBrains IDE theme
-* `pluginIcon_dark.svg` for use with the Darcula JetBrains IDE theme
+###插件图标文件命名约定
 
-### Adding Plugin Icons to a Plugin Project
-The Plugin Icon files must be in the `META-INF` folder of the plugin distribution file, 
-i.e. the `*.jar` or `*.zip` file you upload to the plugin repository and install into
-a JetBrains IDE.
+插件图标文件根据以下约定命名:
 
-To include Plugin Icons in your distribution file, place the Plugin Icon files 
-into a plugin project's `resources/META-INF` folder. Note this requirement
-is the same regardless of using DevKit or Gradle for developing a plugin. For example:
- 
-![Plugin Icons in META-INF folder](img/resource_directory_structure.png)
+*`pluginIcon.svg`用于默认(轻量)JetBrains IDE主题
+
+*`pluginIcon_dark.svg`用于Darcula JetBrains IDE主题
+
+
+###将插件图标添加到插件项目中
+
+插件图标文件必须位于插件分发文件的“META-INF”文件夹中,
+
+即您上传到插件存储库并安装到的`* .jar`或`* .zip`文件
+
+JetBrains IDE.
+
+
+要在分发文件中包含插件图标,请放置插件图标文件
+
+进入插件项目的`resources/META-INF`文件夹.
+注意这个要求
+
+无论使用DevKit还是Gradle开发插件,都是一样的.
+例如:
+ 
+
+![META-INF文件夹中的插件图标](img/resource_directory_structure.png)
+
 

@@ -2,53 +2,95 @@
 title: Virtual Files
 ---
 
-A virtual file [com.intellij.openapi.vfs.VirtualFile](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java) is the *IntelliJ Platform's* representation of a file in a file system (VFS). Most commonly, a virtual file is a file in your local file system. However, the *IntelliJ Platform* supports multiple pluggable file system implementations, so virtual files can also represent classes in a JAR file, old revisions of files loaded from a version control repository, and so on.
+虚拟文件[com.intellij.openapi.vfs.VirtualFile](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)是* IntelliJ平台的*文件表示
+在文件系统(VFS)中.
+最常见的是,虚拟文件​​是本地文件系统中的文件.
+但是,* IntelliJ Platform *支持多个可插入文件系统实现,因此虚拟文件也可以表示JAR文件中的类,从版本控制存储库加载的文件的旧版本,等等.
 
-The VFS level deals only with binary content. You can get or set the contents of a `VirtualFile` as a stream of bytes, but concepts like encodings and line separators are handled on higher system levels.
 
-## How do I get a virtual file?
+VFS级别仅处理二进制内容.
+您可以将“VirtualFile”的内容作为字节流获取或设置,但编码和行分隔符等概念在较高的系统级别上处理.
 
-* From an action: `e.getData(PlatformDataKeys.VIRTUAL_FILE)`. If you are interested in multiple selection, you can also use `e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY)`.
-* From a path in the local file system: `LocalFileSystem.getInstance().findFileByIoFile()`
-* From a PSI file: `psiFile.getVirtualFile()` (may return null if the PSI file exists only in memory)
-* From a document: `FileDocumentManager.getInstance().getFile()`
 
-## What can I do with it?
+##如何获取虚拟文件？
 
-Typical file operations are available, such as traverse the file system, get file contents, rename, move, or delete. Recursive iteration should be performed using `VfsUtilCore.iterateChildrenRecursively` to prevent endless loops caused by recursive symlinks.
 
-## Where does it come from?
+*来自一个动作:`e.getData(PlatformDataKeys.VIRTUAL_FILE)`.
+如果您对多重选择感兴趣,还可以使用`e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY)`.
 
-The VFS is built incrementally, by scanning the file system up and down starting from the project root. New files appearing in the file system are detected by VFS _refreshes_. A refresh operation can be initiated programmatically using (`VirtualFileManager.getInstance().refresh()` or `VirtualFile.refresh()`). VFS refreshes are also triggered whenever file system watchers receive file system change notifications (available on the Windows and Mac operating systems).
+*来自本地文件系统中的路径:`LocalFileSystem.getInstance().findFileByIoFile()`
 
-As a plugin developer, you may want to invoke a VFS refresh if you need to access a file that has just been created by an external tool through the IntelliJ Platform APIs.
+*来自PSI文件:`psiFile.getVirtualFile()`(如果PSI文件仅存在于内存中,则可能返回null)
 
-## How long does a virtual file persist?
+*来自文档:`FileDocumentManager.getInstance().getFile()`
 
-A particular file on disk is represented by equal `VirtualFile` instances for the entire lifetime of the IDEA process. There may be several instances corresponding to the same file, and they can be garbage-collected. The file is a `UserDataHolder`, and the user data is shared between those equal instances. If a file is deleted, its corresponding VirtualFile instance becomes invalid (the `isValid()` method returns `false` and operations cause exceptions).
 
-## How do I create a virtual file?
+##我能用它做什么？
 
-Usually you don't. As a rule, files are created either through the PSI API or through the regular java.io.File API.
 
-If you do need to create a file through VFS, you can use the `VirtualFile.createChildData()` method to create a `VirtualFile` instance and the `VirtualFile.setBinaryContent()` method to write some data to the file.
+可以使用典型的文件操作,例如遍历文件系统,获取文件内容,重命名,移动或删除.
+应使用`VfsUtilCore.iterateChildrenRecursively`执行递归迭代,以防止由递归符号链接引起的无限循环.
 
-## How do I get notified when VFS changes?
 
-The `VirtualFileManager.addVirtualFileListener()` method allows you to receive notifications about all changes in the VFS.
+## 它从何而来？
 
-## Are there any utilities for analyzing and manipulating virtual files?
 
-[`VfsUtil`](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VfsUtil.java) and [`VfsUtilCore`](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VfsUtilCore.java) provide utility methods for analyzing files in the Virtual File System.
+通过从项目根目录开始上下扫描文件系统,可以逐步构建VFS. 
+VFS _refreshes_检测到文件系统中出现的新文件.
+可以使用(`VirtualFileManager.getInstance().refresh()`或`VirtualFile.refresh()`以编程方式启动刷新操作.
+每当文件系统观察者收到文件系统更改通知时(Windows和Mac操作系统上都可用),也会触发VFS刷新.
 
-You can use [`ProjectLocator`](upsource:///platform/core-api/src/com/intellij/openapi/project/ProjectLocator.java) to find the projects that contain a given virtual file.
 
-## How do I extend VFS?
+作为插件开发人员,如果需要访问刚通过IntelliJ Platform API由外部工具创建的文件,则可能需要调用VFS刷新.
 
-To provide an alternative file system implementation (for example, an FTP file system), implement the [VirtualFileSystem](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java) class (most likely you'll also need to implement `VirtualFile`), and register your implementation as an [application component](/basics/plugin_structure/plugin_components.md).
 
-To hook into operations performed in the local file system (for example, if you are developing a version control system integration that needs custom rename/move handling), implement the [LocalFileOperationsHandler](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/LocalFileOperationsHandler.java) interface and register it through the`LocalFileSystem.registerAuxiliaryFileOperationsHandler` method.
+##虚拟文件持续多长时间？
 
-## What are the rules for working with VFS?
 
-See [IntelliJ Platform Virtual File System](/basics/virtual_file_system.md) for a detailed description of the VFS architecture and usage guidelines.
+在IDEA流程的整个生命周期中,磁盘上的特定文件由相同的`VirtualFile`实例表示.
+可能存在与同一文件相对应的多个实例,并且它们可以被垃圾收集.
+该文件是一个`UserDataHolder`,用户数据在这些相等的实例之间共享.
+如果删除了一个文件,其对应的VirtualFile实例将变为无效(`isValid()`方法返回`false`,操作导致异常).
+
+
+##如何创建虚拟文件？
+
+
+通常你没有.
+通常,文件是通过PSI API或通过常规java.io.File API创建的.
+
+
+如果确实需要通过VFS创建文件,可以使用`VirtualFile.createChildData()`方法创建`VirtualFile`实例,使用`VirtualFile.setBinaryContent()`方法将一些数据写入文件.
+
+
+##如何在VFS更改时收到通知？
+
+
+`Virtual FileManager.addVirtual File Listener()`方法允许您接收有关VFS中所有更改的通知.
+
+
+##是否有用于分析和操作虚拟文件的实用程序？
+
+
+[`VfsUtil`](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VfsUtil.java)和[`VfsUtilCore`](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VfsUtilCore.java)提供用于分析虚拟文件系统中的文件的实用程序方法.
+
+
+您可以使用[`ProjectLocator`](upsource:///platform/core-api/src/com/intellij/openapi/project/ProjectLocator.java)查找包含给定虚拟文件的项目.
+
+
+##如何扩展VFS？
+
+
+要提供备用文件系统实现(例如,FTP文件系统),请实现[VirtualFileSystem](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java)类(
+您很可能还需要实现`VirtualFile`),并将您的实现注册为[应用程序组件](/basics/plugin_structure/plugin_components.md).
+
+
+要挂钩在本地文件系统中执行的操作(例如,如果您正在开发需要自定义重命名/移动处理的版本控制系统集成),请实现[LocalFileOperationsHandler](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/LocalFileOperationsHandler.java)接口并通过`LocalFileSystem.registerAuxiliaryFileOperationsHandler`方法注册它.
+
+
+##使用VFS有哪些规则？
+
+
+有关VFS体系结构和使用指南的详细说明,请参阅[IntelliJ平台虚拟文件系统](/basics/virtual_file_system.md).
+
+

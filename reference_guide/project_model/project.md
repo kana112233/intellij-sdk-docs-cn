@@ -2,30 +2,56 @@
 title: Project
 ---
 
-In the *IntelliJ Platform*, a project encapsulates all your source code, libraries, build instructions into a single organizational unit. Everything you do in the IDE is done within the context of a project. A project defines some collections referred to as modules and libraries. Depending on the logical and functional requirements for the project, you can create a single-module or a multi-module project.
+在* IntelliJ Platform *中,项目将所有源代码,库,构建指令封装到单个组织单元中.
+您在IDE中执行的所有操作都是在项目的上下文中完成的.
+项目定义了一些称为模块和库的集合.
+根据项目的逻辑和功能要求,您可以创建单模块或多模块项目.
 
-## Working with projects
 
-The *IntelliJ Platform* stores the project configuration data in XML files. The list of those files depends on the plugin [project](https://www.jetbrains.com/help/idea/about-projects.html) format.
+##使用项目
 
-For file-based format projects, the information core to the project itself (e.g. location of the component modules, compiler settings, etc.) is stored in the `%project_name%.ipr` file. The information about modules the project includes is stored in `%module_name%.iml` files. Module files are created for each module.
 
-For directory-based format projects, the project and workspace settings are stored in a number of XML files under the `%project_home_directory%/.idea` directory. Each XML file is responsible for its own set of settings and can be recognized by its name: `projectCodeStyle.xml`, `encodings.xml`, `vcs.xml` etc. As for the file-based format projects, `.iml` files describe modules.
+* IntelliJ Platform *将项目配置数据存储在XML文件中.
+这些文件的列表取决于插件[project](https://www.jetbrains.com/help/idea/about-projects.html)格式.
 
-Note that you don't need to access project files directly to load or save settings. See [Persisting State of Components](../../basics/persisting_state_of_components.md) for more information.
 
-To work with projects and project files, you can use the following classes and interfaces:
+对于基于文件的格式项目,项目本身的信息核心(例如组件模块的位置,编译器设置等)存储在`％project_name％.ipr`文件中.
+有关项目包含的模块的信息存储在`％module_name％.iml`文件中.
+为每个模块创建模块文件.
 
-* [`Project`](upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java) interface.
-* [`ProjectRootManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java) abstract class.
-* [`ProjectManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java) abstract class.
-* [`ProjectFileIndex`](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) interface.
 
-Other classes for working with the project model are located in the [projectModel-api.openapi](upsource:///platform/projectModel-api/src/com/intellij/openapi) package. Basic API classes and interfaces for the concepts of [project](upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java), [module](upsource:///platform/core-api/src/com/intellij/openapi/module/Module.java), [application](upsource:///platform/core-api/src/com/intellij/openapi/application/Application.java) and [component](upsource:///platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java) are placed in the [core-api.openapi](upsource:///platform/core-api/src/com/intellij/openapi) package.
+对于基于目录的格式项目,项目和工作区设置存储在`％project_home_directory％/.idea`目录下的许多XML文件中.
+每个XML文件都负责其自己的一组设置,并且可以通过其名称识别:`projectCodeStyle.xml`,`encodings.xml`,`vcs.xml`等.至于基于文件的格式项目,`.iml 
+`文件描述模块.
 
-### How do I get a list of source roots for all modules in my project?
 
-Use the `ProjectRootManager.getContentSourceRoots()` method. To clarify this, consider the following code snippet:
+请注意,您无需直接访问项目文件即可加载或保存设置.
+有关详细信息,请参阅[持久性组件状态](../../basics/persisting_state_of_components.md).
+
+
+要使用项目和项目文件,可以使用以下类和接口:
+
+
+* [`Project`](upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java)界面.
+
+* [`ProjectRootManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java)抽象类.
+
+* [`ProjectManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/project/ProjectManager.java)抽象类.
+
+* [`ProjectFileIndex`](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java)界面.
+
+
+其他用于处理项目模型的类位于[projectModel-api.openapi](upsource:///platform/projectModel-api/src/com/intellij/openapi)包中. 
+[project]概念的基本API类和接口(upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java),[module](upsource:///platform/core-api/src/com/intellij/openapi/module/Module.java),[application](upsource:///platform/core-api/src/com/intellij/openapi/application/Application.java)和[
+组件](upsource:///platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java)放在[core-api.openapi]中(upsource:///platform/core-api/src/com/intellij/openapi)包.
+
+
+###如何获取项目中所有模块的源根列表？
+
+
+使用`ProjectRootManager.getContentSourceRoots()`方法.
+为了澄清这一点,请考虑以下代码段:
+
 
 ```java
 String projectName = project.getName();
@@ -35,57 +61,86 @@ String sourceRootsList = Arrays.stream(vFiles).map(VirtualFile::getUrl).collect(
 Messages.showInfoMessage("Source roots for the " + projectName + " plugin:\n" + sourceRootsList, "Project Properties");
 ```
 
-### Checking if a file belongs to a project
+###检查文件是否属于项目
+
 
 Use [ProjectFileIndex.java](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java) to get this information:
 ```java
 ProjectFileIndex projectFileIndex = ProjectRootManager.getInstance(project).getFileIndex();
 ```
 
-### How do I get the content or source root to which the specified file or directory belongs?
+###如何获取指定文件或目录所属的内容或源根目录？
 
-Use the `ProjectFileIndex.getContentRootForFile` and `ProjectFileIndex.getSourceRootForFile` methods. For example:
+
+使用`ProjectFileIndex.getContentRootForFile`和`ProjectFileIndex.getSourceRootForFile`方法.
+例如:
+
 
 ```java
 VirtualFile moduleContentRoot = ProjectRootManager.getInstance(project).getFileIndex().getContentRootForFile(virtualFileOrDirectory);
 VirtualFile moduleSourceRoot = ProjectRootManager.getInstance(project).getFileIndex().getSourceRootForFile(virtualFileOrDirectory);
 ```
 
-Note that this method returns `null` if the file or directory does not belong to any source root of modules in the project.
- 
-### How do I check whether a file or directory is related to the project libraries?
+请注意,如果文件或目录不属于项目中任何模块的源根,则此方法返回“null”.
+ 
 
-The `ProjectFileIndex` interface implements a number of methods you can use to check whether the specified file belongs to the project library classes or library sources.
+###如何检查文件或目录是否与项目库相关？
 
-You can use the following methods:
 
-* `ProjectFileIndex.`**`isLibraryClassFile`**`(virtualFile)`: Returns `true` if the specified `virtualFile` is a compiled class file.
-* `ProjectFileIndex.`**`isInLibraryClasses`**`(virtualFileorDirectory)`: Returns `true` if the specified `virtualFileorDirectory` belongs to library classes.
-* `ProjectFileIndex.`**`isInLibrarySource`**`(virtualFileorDirectory)`: Returns `true` if the specified `virtualFileorDirectory` belongs to library sources.
+`ProjectFileIndex`接口实现了许多方法,可用于检查指定的文件是属于项目库类还是库源.
 
-### How do I get the project SDK?
 
-* To get the project-level SDK: `Sdk projectSdk = ProjectRootManager.getInstance(project).getProjectSdk();`
-* To get the project-level SDK name: `String projectSdkName = ProjectRootManager.getInstance(project).getProjectSdkName();`
+您可以使用以下方法:
 
-### How do I set the project SDK?
 
-* To set the project-level SDK: `ProjectRootManager.getInstance(project).setProjectSdk(Sdk jdk);`
-* To set the project-level SDK name: `ProjectRootManager.getInstance(project).setProjectSdkName(String name);`
+*`ProjectFileIndex.**`isLibraryClassFile` **`(virtualFile)`:如果指定的`virtualFile`是编译的类文件,则返回`true`.
 
-Note that by default, the project modules use the project SDK. Optionally, you can configure an individual SDK for each module.
+*`ProjectFileIndex.**`isInLibraryClasses` **`(virtualFileorDirectory)`:如果指定的`virtualFileorDirectory`属于库类,则返回`true`.
 
-## Changing the project structure
+*`ProjectFileIndex.**`isInLibrarySource` **`(virtualFileorDirectory)`:如果指定的`virtualFileorDirectory`属于库源,则返回`true`.
 
-Utility classes which can be used for modifying a project structure can be found in the package [projectModel-impl.openapi](upsource:///platform/projectModel-impl/src/com/intellij/openapi). Its [roots](upsource:///platform/projectModel-impl/src/com/intellij/openapi/roots/) subpackage contains instances and utilities intended for work with project and module source roots, including [ModuleRootModificationUtil.java](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java) and [ProjectRootUtil.java](upsource:///platform/projectModel-impl/src/com/intellij/openapi/projectRoots/impl/ProjectRootUtil.java). Project structure
-changes need to be performed in a [write action](/basics/architectural_overview/general_threading_rules.md#readwrite-lock).
 
-Refer to the [basic example](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/project_model/src/com/intellij/tutorials/project/model/ModificationAction.java) of on-the-fly project structure modification to learn how it can be implemented.
+###如何获得项目SDK？
 
-## Receiving notifications about project structure changes
 
-To receive notifications about changes in project structure (modules or libraries being added or removed, module dependencies being changed, and so on),
-use the [message bus](/reference_guide/messaging_infrastructure.md) and the `ProjectTopics.PROJECT_ROOTS` topic:
+*获取项目级SDK:`Sdk projectSdk = ProjectRootManager.getInstance(project).getProjectSdk();`
+
+*获取项目级SDK名称:`String projectSdkName = ProjectRootManager.getInstance(project).getProjectSdkName();`
+
+
+###如何设置项目SDK？
+
+
+*设置项目级SDK:`ProjectRootManager.getInstance(project).setProjectSdk(Sdk jdk);`
+
+*设置项目级SDK名称:`ProjectRootManager.getInstance(project).setProjectSdkName(String name);`
+
+
+请注意,默认情况下,项目模块使用项目SDK. 
+(可选)您可以为每个模块配置单独的SDK.
+
+
+##更改项目结构
+
+
+可以在包[projectModel-impl.openapi](upsource:///platform/projectModel-impl/src/com/intellij/openapi)中找到可用于修改项目结构的实用程序类.
+它的[根](upsource:///platform/projectModel-impl/src/com/intellij/openapi/roots/)子包包含用于处理项目和模块源根的实例和实用程序,包括[ModuleRootModificationUtil.java](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java)和[ProjectRootUtil.java](upsource:///platform/projectModel-impl/src/com/intellij/openapi/projectRoots/IMPL/ProjectRootUtil.java).
+项目结构
+
+需要在[write action]中执行更改(/basics/architectural_overview/general_threading_rules.md #readwrite-lock).
+
+
+请参阅上面的[基本示例](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/project_model/src/com/intellij/tutorials/project/model/ModificationAction.java)
+ - 飞行项目结构修改,以了解如何实施.
+
+
+##接收有关项目结构更改的通知
+
+
+要接收有关项目结构更改的通知(要添加或删除的模块或库,更改模块依赖项等),
+
+使用[消息总线](/reference_guide/messaging_infrastructure.md)和`ProjectTopics.PROJECT_ROOTS`主题:
+
 
 ```java
 project.getMessageBus().connect().subscribe(ProjectTopics.PROJECT_ROOTS, new ModuleRootListener() {
@@ -95,6 +150,11 @@ project.getMessageBus().connect().subscribe(ProjectTopics.PROJECT_ROOTS, new Mod
 });
 ```
 
-The event only notifies you that something has changed; if you need to know in detail what changes have occurred, you
-need to keep a copy of the state of the project structure model which is relevant for you, and to compare it with the
-current state after the change.
+该事件只会通知您某些事情已发生变化;
+如果你需要详细了解发生了什么变化,你
+
+需要保留与您相关的项目结构模型的状态副本,并与之进行比较
+
+改变后的当前状态.
+
+

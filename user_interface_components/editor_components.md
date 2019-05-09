@@ -4,38 +4,65 @@ title: Editor Components
 
 ## EditorTextField
 
-Compared to
-[Swing JTextArea](https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextArea.html), the
-*IntelliJ Platform's* editor component has a ton of advantages: syntax highlighting support, code completion, code folding and much more.
-*IntelliJ Platform* editors are normally displayed in editor tabs, but they can be embedded in dialogs or tool windows, too.
-This is enabled by the
+
+相比
+
+[Swing JTextArea](https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextArea.html)，
+
+* IntelliJ Platform的*编辑器组件具有很多优点:语法高亮支持，代码完成，代码折叠等等。
+
+* IntelliJ Platform *编辑器通常显示在编辑器选项卡中，但它们也可以嵌入到对话框或工具窗口中。
+
+这是由
+
 [EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java)
-component.
 
-When creating an
-[EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java),
-you can specify the following attributes:
+零件。
 
-*  The file type according to which the text in the text field is parsed;
 
-*  Whether the text field is read-only or editable;
+创建时
 
-*  Whether the text field is single-line or multiline.
+[EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java)，
 
-A common use case for
+您可以指定以下属性:
+
+
+*解析文本字段中文本的文件类型;
+
+
+*文本字段是只读还是可编辑;
+
+
+*文本字段是单行还是多行。
+
+
+一个常见的用例
+
 [EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java)
-is entering the name of a Java class or package.
-This can be accomplished with the following steps:
 
-*  Use
-   [JavaCodeFragmentFactory.getInstance().createReferenceCodeFragment()](upsource:///java/java-psi-api/src/com/intellij/psi/JavaCodeFragmentFactory.java)
-   to create a code fragment representing the class or package name;
+输入Java类或包的名称。
 
-*  Call
-   [PsiDocumentManager.getInstance().getDocument()](upsource:///platform/core-api/src/com/intellij/psi/PsiDocumentManager.java)
-   to get the document corresponding to the code fragment;
+这可以通过以下步骤完成:
 
-*  Pass the returned document to the
-   [EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java)
-   constructor or its `setDocument()` method.
+
+*  使用
+   
+[JavaCodeFragmentFactory.getInstance().createReferenceCodeFragment()](upsource:///java/java-psi-api/src/com/intellij/psi/JavaCodeFragmentFactory.java)
+   
+创建表示类或包名称的代码片段;
+
+
+*打电话
+   
+[PsiDocumentManager.getInstance().getDocument()](upsource:///platform/core-api/src/com/intellij/psi/PsiDocumentManager.java)
+   
+获取与代码片段对应的文档;
+
+
+*将退回的文件传递给
+   
+[EditorTextField](upsource:///platform/platform-impl/src/com/intellij/ui/EditorTextField.java)
+   
+构造函数或其`setDocument()`方法。
+
 

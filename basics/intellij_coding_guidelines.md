@@ -2,51 +2,92 @@
 title: IntelliJ Platform Coding Guidelines
 ---
 
-If you are writing code that you would like to contribute to the IntelliJ Platform (either as a patch or as a plugin), following these guidelines will make it easier for the JetBrains development team to review and accept your changes.
+如果您要编写想要为IntelliJ平台贡献的代码(作为补丁或插件),遵循这些指导原则将使JetBrains开发团队更容易查看和接受您的更改.
 
-#### Following the Latest Source Code
 
-If you submit patches, we strongly recommend building your patches against the latest version of the code from the Git repository. The easiest way to do so is to clone the JetBrains Git repository, track your work in Git, and create patches using the "git format-patch" command.
+####遵循最新源代码
 
-#### General Architectural Principles
 
-Please do your best to follow common Java architectural principles. "Effective Java" by Joshua Bloch is a good place to start.
+如果您提交补丁,我们强烈建议您根据Git存储库中的最新版本的代码构建补丁.
+最简单的方法是克隆JetBrains Git存储库,在Git中跟踪您的工作,并使用“git format-patch”命令创建补丁.
 
-#### Tests
 
-Most of the existing functionality of IntelliJ IDEA is covered by functional tests. If the area you're modifying is covered by tests, you must run the tests and make sure that your changes do not introduce any new test failures. It's also strongly recommended that you provide new functional tests that cover the bugs you fix or the new features that you add.
+####一般建筑原理
 
-#### Code Formatting
 
-We're generally pretty lax about code formatting, but at least the following conventions must be observed:
+请尽力遵循常见的Java架构原则.
+约书亚布洛赫的“有效Java”是一个很好的起点.
 
-- 2 space indents in source files
-- **my** prefix for instance variables and **our** prefix for class variables
-- new source code files must include a copyright statement with the Apache 2 license and the name of the contributor.
 
-The easiest way to follow our code formatting guidelines is to reformat your code submissions using the shared code style, which is included in the IntelliJ IDEA Community Edition project directory.
+####测试
 
-#### Inspections
 
-The IntelliJ IDEA Community Edition project includes a shared inspection profile. We strongly recommend making sure that the code you submit does not contain any warnings highlighted by the inspections configured in that inspection profile.
+IntelliJ IDEA的大多数现有功能都包含在功能测试中.
+如果要修改的区域由测试覆盖,则必须运行测试并确保更改不会引入任何新的测试失败.
+还强烈建议您提供新的功能测试,以涵盖您修复的错误或您添加的新功能.
 
-#### JavaDoc Comments
 
-If your code adds new OpenAPI interfaces, classes, methods or extension points, you must provide JavaDoc comments describing the parameters and intended usage of the APIs. Providing JavaDoc or other comments for other parts of the code is a good idea but isn't required.
+####代码格式
 
-#### Commits
 
-To avoid unnecessary work when reviewing your changes, please follow these guidelines:
+我们对代码格式化一般都很松懈,但至少必须遵守以下约定:
 
-- Look through all of your changes in your patch or pull request before you submit it to us. Make sure that everything you've changed is there for a reason.
-- Please don't include unfinished work to the patch. Make sure that it doesn't include any TODO comments. If you added some code and ended up not needing it, please make sure that you delete it before you submit your patch.
-- Please don't include any changes that affect formatting, fixing "yellow code" (warnings) or code style along with actual changes that fix a bug or implement a feature. No one likes to leave poor code, but remember that having these changes mixed with each other complicates the process of review.
-- Please don't fix multiple problems within a single patch or pull request.
-- Please don't commit your personal changes to configuration files (runConfigurations/IDEA.xml, codeStyleSettings.xml, misc.xml, etc.) unless it is essential for the fix itself.
-- Please avoid moving or renaming classes unless it is necessary for the fix.
 
-The ideal pull request would contain 1 commit with everything needed to fix the bug or implement a feature, but nothing else. "Commit early, commit often" perfectly applies only to local commits, but such "public commits" are hard to review (the reviewer needs either to go commit by commit spending more time to review work-in-progress, or to review all changes at once thus losing valuable information stored in commit messages).
+ - 源文件中有2个空格缩进
 
-The best would be to commit early, but then to squash all commits into one with a descriptive commit message.
+ -  **实例变量的**前缀和类变量的**我们的**前缀
 
-Sometimes several commits for a single issue are also acceptable, but each of these need to be self-contained "steps" to solve the problem.
+ - 新的源代码文件必须包含带有Apache 2许可证和贡献者名称的版权声明.
+
+
+遵循我们的代码格式化指南的最简单方法是使用共享代码样式重新格式化代码提交,该代码样式包含在IntelliJ IDEA Community Edition项目目录中.
+
+
+####检查
+
+
+IntelliJ IDEA Community Edition项目包括共享检查配置文件.
+我们强烈建议您确保所提交的代码不包含该检查配置文件中配置的检查突出显示的任何警告.
+
+
+#### JavaDoc评论
+
+
+如果您的代码添加了新的OpenAPI接口,类,方法或扩展点,则必须提供描述API的参数和预期用法的JavaDoc注释.
+为代码的其他部分提供JavaDoc或其他注释是个好主意,但不是必需的.
+
+
+####承诺
+
+
+在查看更改时,为避免不必要的工作,请遵循以下准则:
+
+
+ - 在提交给我们之前,查看补丁或拉取请求中的所有更改.
+确保你改变的一切都是有原因的.
+
+ - 请不要在补丁中包含未完成的工作.
+确保它不包含任何TODO注释.
+如果您添加了一些代码但最终不需要它,请确保在提交补丁之前将其删除.
+
+ - 请不要包含任何影响格式的更改,修复“黄色代码”(警告)或代码样式以及修复错误或实现功能的实际更改.
+没有人愿意留下糟糕的代码,但请记住,将这些变化相互混合会使审查过程变得复杂.
+
+ - 请不要在单个补丁或拉取请求中修复多个问题.
+
+ - 请不要对配置文件(runConfigurations/IDEA.xml,codeStyleSettings.xml,misc.xml等)进行个人更改,除非它对修复本身至关重要.
+
+ - 除非有必要修复,否则请避免移动或重命名课程.
+
+
+理想的pull请求将包含1个提交,其中包含修复bug或实现某个功能所需的所有内容,但没有其他内容. 
+“提前提交,经常提交”完全适用于本地提交,但这种“公共提交”很难审核(审核人员需要花费更多时间来审核正在进行的工作或审核所有更改
+立即丢失存储在提交消息中的有价值信息).
+
+
+最好的方法是尽早提交,然后将所有提交压缩成一个带有描述性提交消息的提交.
+
+
+有时单个问题的几个提交也是可以接受的,但是每个提交都需要是自包含的“步骤”来解决问题.
+
+

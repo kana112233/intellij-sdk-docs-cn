@@ -2,32 +2,50 @@
 title: Plugin Services
 ---
 
-A _service_ is a plugin component loaded on demand when your plugin calls the `getService` method of the [ServiceManager](upsource:///platform/core-api/src/com/intellij/openapi/components/ServiceManager.java) class.
-
-The *IntelliJ Platform* ensures that only one instance of a service is loaded even though the service is called several times. A service must have an implementation class which is used for service instantiation. A service may also have an interface class which is used to obtain the service instance and provides API of the service. The interface and implementation classes are specified in the `plugin.xml` file.
-
-The *IntelliJ Platform* offers three types of services: _application level_ services, _project level_ services and _module level_ services.
-
-## How to Declare a Service?
-
-To declare a service, you can use the following extension points in the IntelliJ Platform:
-
-* `applicationService`: designed to declare an application level service.
-* `projectService`: designed to declare a project level service.
-* `moduleService`: designed to declare a module level service.
-
-**To declare a service:**
-
-1. In your project, open the context menu of the destination package and click *New* (or press <kbd>Alt</kbd>+<kbd>Insert</kbd>).
-2. In the *New* menu, choose *Plugin DevKit* and click *Application Service*, *Project Service* or *Module Service* depending on the type of service you need to use.
-3. In the dialog box that opens, you can specify service interface and implementation, or just a service class if you uncheck *Separate interface from implementation* check box.
-
-The IDE will generate new Java interface and class (or just a class if you unchecked *Separate interface from implementation* check box) and register the new service in `plugin.xml` file.
-
-> **Note** Declaring a service via *New* context menu is available since version **2017.3**.
+当你的插件调用[ServiceManager](upsource:///platform/core-api/src/com/intellij/openapi/components/ServiceManager.java)类的`getService`方法时,_service_是一个按需加载的插件组件
+.
 
 
-To clarify the service declaration procedure, consider the following fragment of the `plugin.xml` file:
+* IntelliJ Platform *确保即使多次调用服务,也只加载一个服务实例.
+服务必须具有用于服务实例化的实现类.
+服务还可以具有接口类,该接口类用于获取服务实例并提供服务的API.
+接口和实现类在`plugin.xml`文件中指定.
+
+
+* IntelliJ Platform *提供三种类型的服务:应用程序级服务,项目级服务和_module level_服务.
+
+
+##如何申报服务？
+
+
+要声明服务,可以在IntelliJ平台中使用以下扩展点:
+
+
+*`applicationService`:用于声明应用程序级服务.
+
+*`projectService`:旨在声明项目级服务.
+
+*`moduleService`:用于声明模块级服务.
+
+
+**申报服务:**
+
+
+1.在项目中,打开目标包的上下文菜单,然后单击*新建*(或按<kbd> Alt </kbd> + <kbd>插入</kbd>).
+
+2.在* New *菜单中,选择* Plugin DevKit *并单击* Application Service *,* Project Service *或* Module Service *,具体取决于您需要使用的服务类型.
+
+3.在打开的对话框中,您可以指定服务接口和实现,如果取消选中*将实现*与实例*分隔,则只需指定服务类.
+
+
+IDE将生成新的Java接口和类(或者如果取消选中则只是一个类*从实现*中分离接口复选框)并在`plugin.xml`文件中注册新服务.
+
+
+> **注意**自版本** 2017.3 **起,可通过* New *上下文菜单声明服务.
+
+
+为了阐明服务声明过程,请考虑以下`plugin.xml`文件的片段:
+
 
 ```xml
 <extensions defaultExtensionNs="com.intellij">
@@ -41,11 +59,14 @@ To clarify the service declaration procedure, consider the following fragment of
 </extensions>
 ```
 
-If `serviceInterface` isn't specified, it's supposed to have the same value as `serviceImplementation`.
+如果没有指定`serviceInterface`,它应该与`serviceImplementation`具有相同的值.
 
-## Retrieving a service
 
-To instantiate your service, in Java code, use the following syntax:
+##检索服务
+
+
+要在Java代码中实例化您的服务,请使用以下语法:
+
 
 ```java
 MyApplicationService applicationService = ServiceManager.getService(MyApplicationService.class);
@@ -55,15 +76,23 @@ MyProjectService projectService = ServiceManager.getService(project, MyProjectSe
 MyModuleService moduleService = ModuleServiceManager.getService(module, MyModuleService.class);
 ```
 
-### Sample Plugin
+###示例插件
 
-This section allows you to download and install a sample plugin illustrating how to create and use a plugin service. This plugin has a project component implementing a service that counts the number of currently opened projects in the IDE. If this number exceeds the maximum allowed number of simultaneously opened projects, the plugin returns an error message and closes the most recently opened project.
 
-<!-- TODO Replace with other plugin URL when available-->
+本部分允许您下载和安装示例插件,说明如何创建和使用插件服务.
+该插件有一个项目组件,它实现了一个服务,该服务计算IDE中当前打开的项目的数量.
+如果此数字超过允许的最大同时打开项目数,则插件将返回错误消息并关闭最近打开的项目.
 
-**To install and run the sample plugin**
+
+<! -  TODO在可用时替换为其他插件URL  - >
+
+
+**安装并运行示例插件**
+
 
 * Download the included sample plugin project located [here](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/max_opened_projects).
 * Start *IntelliJ IDEA*, on the starting page, click *Open Project*, and then use the *Open Project* dialog box to open the project *max_opened_projects*.
 * On the main menu, choose *Run \| Run* or press <kbd>Shift</kbd>+<kbd>F10</kbd>.
 * If necessary, change the [Run/Debug Configurations](https://www.jetbrains.com/help/idea/run-debug-configuration-plugin.html).
+
+

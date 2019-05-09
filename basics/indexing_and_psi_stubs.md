@@ -2,31 +2,59 @@
 title: Indexing and PSI Stubs
 ---
 
-## Indices
+##指数
 
-The indexing framework provides a quick way to locate certain elements, e.g. files containing a certain word or methods with a particular name, in large code bases. Plugin developers can use the existing indexes built by the IDE itself, as well as build and use their own indexes.
 
-It supports two main types of indexes:
+索引框架提供了一种定位某些元素的快捷方法,例如
+在大型代码库中包含特定单词或具有特定名称的方法的文件.
+插件开发人员可以使用IDE本身构建的现有索引,以及构建和使用自己的索引.
 
-* [File-based indices](/basics/indexing_and_psi_stubs/file_based_indexes.md)
-* [Stub indices](/basics/indexing_and_psi_stubs/stub_indexes.md)
 
-File-based indexes are built directly over the content of files. Stub indexes are built over serialized *stub trees*. A stub tree for a source file is a subset of its PSI tree which contains only externally visible declarations and is serialized in a compact binary format.
+它支持两种主要类型的索引:
 
-Querying a file-based index gets you the set of files matching a certain condition. Querying a stub index gets you the set of matching PSI elements. Therefore, custom language plugin developers should typically use stub indexes in their plugin implementations.
 
-## Dumb mode
+* [基于文件的索引](/basics/indexing_and_psi_stubs/file_based_indexes.md)
 
-Indexing is a potentially long process. It's performed in background, and during this time, IDE's features are restricted to the ones that don't require index: basic text editing, version control etc. This restriction is managed by [DumbService](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbService.java).
+* [存根索引](/basics/indexing_and_psi_stubs/stub_indexes.md)
 
-`DumbService` provides API to query whether the IDE is currently in "dumb" mode (where index access is not allowed) or "smart" mode (with all index built and ready to use). It also provides ways of delaying code execution until indices are ready. Please see its javadoc for more details.
+
+基于文件的索引直接构建在文件内容上.
+存根索引是在序列化的*存根树*上构建的.
+源文件的存根树是其PSI树的子集,其仅包含外部可见的声明,并以紧凑的二进制格式序列化.
+
+
+查询基于文件的索引可以获得符合特定条件的文件集.
+查询存根索引可以获得匹配的PSI元素集.
+因此,自定义语言插件开发人员通常应在其插件实现中使用存根索引.
+
+
+##哑模式
+
+
+索引是一个潜在的漫长过程.
+它是在后台执行的,在此期间,IDE的功能仅限于不需要索引的功能:基本文本编辑,版本控制等.此限制由[DumbService](upsource:///platform/core-api/src/com/intellij/openapi/project/DumbService.java).
+
+
+`DumbService`提供API来查询IDE当前是处于“哑”模式(不允许索引访问)还是“智能”模式(所有索引都已构建并可以使用).
+它还提供了延迟代码执行的方法,直到索引准备就绪.
+有关更多详细信息,请参阅其javadoc.
+
 
 ## Gists
 
-Sometimes, the following conditions hold:
 
-* the aggregation functionality of file-based indices is not needed. One just needs to calculate some data based on particular file's contents, and cache it on disk
-* eagerly calculating the data for the entire project during indexing isn't needed (e.g. it slows down the indexing, and/or this data probably will ever be needed for a minor subset of all project files)
-* the data can be recalculated lazily on request without major performance penalties
+有时,以下条件成立:
 
-In such cases, file-based index can be used, but file gists provide a way to perform data calculation lazily, caching on disk, and a more lightweight API. Please see [VirtualFileGist](upsource:///platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java) and [PsiFileGist](upsource:///platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java) documentation.
+
+*不需要基于文件的索引的聚合功能.
+只需要根据特定文件的内容计算一些数据,并将其缓存在磁盘上
+
+*不需要在索引期间急切地计算整个项目的数据(例如,它会降低索引速度,和/或所有项目文件的次要子集可能都需要此数据)
+
+*可以根据要求懒散地重新计算数据,而不会造成重大的性能损失
+
+
+在这种情况下,可以使用基于文件的索引,但文件列表提供了一种懒惰地执行数据计算,在磁盘上缓存以及更轻量级API的方法.
+请参阅[VirtualFileGist](upsource:///platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java)和[PsiFileGist](upsource:///platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java)文档.
+
+

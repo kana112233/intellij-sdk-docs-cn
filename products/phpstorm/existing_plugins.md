@@ -4,33 +4,58 @@ redirect_from:
   - /phpstorm/existing_plugins.html
 ---
 
-This page lists some example PhpStorm plugins created by third party developers.
+此页面列出了由第三方开发人员创建的一些示例PhpStorm插件.
 
-## Symfony2 Plugin
 
-Symfony2 plugin is a free plugin for Symfony2 framework developers.
+## Symfony2插件
 
-There are lots of futures included into this plugin, such as Symfony-specific completion and navigation for symbols, templates, service container, Doctrine, translations, routes, forms, events, and more.
 
-* [Official Symfony2 plugin Web Site](https://symfony2-plugin.espend.de/)
+Symfony2插件是Symfony2框架开发人员的免费插件.
+
+
+此插件中包含许多未来,例如Symfony特定的完成和符号,模板,服务容器,Doctrine,翻译,路线,表单,事件等的导航.
+
+
+* [Symfony2官方插件网站](https://symfony2-plugin.espend.de/)
+
 * [GitHub](https://github.com/Haehnchen/idea-php-symfony2-plugin)
-* [Symfony Development using PhpStorm Tutorials](https://confluence.jetbrains.com/display/PhpStorm/Symfony+Development+using+PhpStorm)
-* [Symfony2 plugin in PhpStorm Plugins Repository](https://plugins.jetbrains.com/plugin/7219?pr=phpStorm)
+
+* [使用PhpStorm教程进行Symfony开发](https://confluence.jetbrains.com/display/PhpStorm/Symfony+Development+using+PhpStorm)
+
+* [PhpStorm插件库中的Symfony2插件](https://plugins.jetbrains.com/plugin/7219?pr=phpStorm)
+
 
 ## Magicento
 
-Magicento is a paid PhpStorm plugin for Magento developers. Free limited version is available.
-Features include: Goto for factories and template paths, autocomplete for factories, xml files and class names, documentation for xml nodes, evaluation of PHP code inside Magento environment, and much more to come!
 
-* [Official Magicento Web Site](http://magicento.com/)
+Magicento是Magento开发人员的付费PhpStorm插件.
+提供免费限量版.
+
+功能包括:工厂和模板路径的转到,工厂的自动完成,xml文件和类名,xml节点的文档,Magento环境中的PHP代码评估,以及更多内容!
+
+
+* [Magicento官方网站](http://magicento.com/)
+
 * [GitHub](https://github.com/enriquepiatti/Magicento)
-* [Magicento in PhpStorm Plugins Repository](https://plugins.jetbrains.com/plugin/7089-magicento)
+
+* [PhpStorm插件库中的Magicento](https://plugins.jetbrains.com/plugin/7089-magicento)
+
 
 ## YiiStorm
 
-YiiStorm is a plugin for PhpStorm IDE that is adding code navigation enhancements for Yii framework based projects.
-Features are: Going from render and renderPartial to the view file. Includes controllers, partials and widgets. Supports all ways of specifying a view: themes, smarty .tpl views and external actions; Going from model name in relations() to the model class; Going from the $this->widget('path.to.widget.Class') call to the widget class; Going from controller actions() to action class.
+
+YiiStorm是PhpStorm IDE的一个插件,它为基于Yii框架的项目添加了代码导航增强功能.
+
+功能包括:从render和renderPartial转到视图文件.
+包括控制器,部分和小部件.
+支持指定视图的所有方式:主题,智能.tpl视图和外部操作;
+从relations()中的模型名称到模型类;
+从$ this-> widget('path.to.widget.Class')调用到widget类;
+从控制器动作()转到动作类.
+
 
 * [GitHub](https://github.com/cmazx/yiistorm)
-* [YiiStorm in PhpStorm Plugins Repository](https://plugins.jetbrains.com/plugin/7182-yiistorm)
+
+* [PhiStorm插件库中的YiiStorm](https://plugins.jetbrains.com/plugin/7182-yiistorm)
+
 

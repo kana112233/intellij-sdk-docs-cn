@@ -2,58 +2,100 @@
 title: Localization Guide
 ---
 
+本文档的目的是描述创建IDEA本地化版本所需的步骤.
 
-The purpose of the document is to describe steps necessary to create localized versions of IDEA.
 
-## Application Bundle Layout
+##应用程序包布局
 
-In regards to localization purpose all the resources (in English) that need to be translated are located in jar files called
-***resources_en.jar***.
-There's one such jar file for IDEA core functionality located at
-***%INST_HOME%\lib\resources_en.jar***
-and one jar for each of bundled plugins at
-***%INST_HOME%\plugins\$Plugin$\lib\resources_en.jar***.
 
-Translated resources should be jarred and placed exactly in the same folder original jar comes from.
-So localization pack should have exactly the same number of jar files and they have to be laid out in exactly the same way original jars are laid out.
-In order to enable multiple localizations per installation without localization packs overriding each other we suggest to include the name of the locale in the jar name (for example, ***resources_ja.jar***).
+关于本地化目的,需要翻译的所有资源(英文)都位于调用的jar文件中
 
-## Content and Layout of resources_en.jar
+*** *** resources_en.jar.
 
-Property files  usually contain messages, menu items, dialog labels texts etc.
-For every such file localized jar should contain translated version that is placed to exactly the same path relative to the jar root and has exactly the same name as original file plus locale identifier.
-For example ***messages/ActionsBundle.properties*** file from ***resources_en.jar*** should have its translated version ***messages/ActionsBundle_ja.properties*** file in ***resources_ja.jar***.
-All property files should be ASCII encoded with *\uXXXX* sequences used for characters that have no their representation in ASCII range.
-See
-[native2ascii](https://docs.oracle.com/javase/7/docs/technotes/tools/solaris/native2ascii.html)
-tool for more details.
+IDEA核心功能有一个这样的jar文件位于
 
-Property values mostly follow MessageFormat rules.
+***％INST_HOME％\ LIB \ resources_en.jar ***
 
-> **Note** Due to historic reasons main menu, toolbar, popup menus and other actions have their mnemonic char prefixed with `\_` (underscore) char while all other mnemonics like those for checkboxes, buttons etc. use `&` (ampersand) sign for the same purpose.  Moreover one can encounter `&&` (double ampersand) in some places, which denote alternative mnemonic to be used under MacOS X (mnemonics mapped to `U`, `I`, `O`, `N` chars won't work there).  Generally, use the same mnemonic denotation used in original property value and everything will be OK.
+和每个捆绑插件的一个罐子
 
-## Components Location
+***％INST_HOME％\插件\ $插件$ \ LIB \ resources_en.jar ***.
+
+
+翻译的资源应该是震撼的,并且完全放在原始jar来自的相同文件夹中.
+
+因此,本地化包应该具有完全相同数量的jar文件,并且它们必须以与原始jar布局完全相同的方式布局.
+
+为了在没有本地化包相互覆盖的情况下为每个安装启用多个本地化,我们建议在jar名称中包含语言环境的名称(例如,*** resources_ja.jar ***).
+
+
+## resources_en.jar的内容和布局
+
+
+属性文件通常包含消息,菜单项,对话框标签文本等.
+
+对于每个这样的文件,本地化jar应该包含翻译版本,该版本放置在相对于jar根目录的完全相同的路径上,并且与原始文件和区域设置标识符具有完全相同的名称.
+
+例如来自*** resources_en.jar ***的***消息/ActionsBundle.properties ***文件应该在*** resources_ja.jar中有其翻译版***消息/ActionsBundle_ja.properties ***文件** 
+*.
+
+所有属性文件都应使用* \ uXXXX *序列进行ASCII编码,这些序列用于在ASCII范围内没有表示的字符.
+
+看到
+
+[native2ascii的](https://docs.oracle.com/javase/7/docs/technotes/tools/solaris/native2ascii.html)
+
+工具了解更多细节.
+
+
+属性值主要遵循MessageFormat规则.
+
+
+> **注意**由于历史原因,主菜单,工具栏,弹出菜单和其他操作的助记符字符以`\ _`(下划线)字符为前缀,而所有其他助记符(如复选框,按钮等)使用`＆` 
+(＆符号)签署相同的目的.
+此外,在某些地方可能会遇到`&&`(双＆符号),它表示在MacOS X下使用的替代助记符(映射到'U`,`I`,`O`,`N`字符的助记符在那里不起作用
+).
+通常,使用原始属性值中使用的相同助记符表示,一切都会正常.
+
+
+##组件位置
+
 
 *  **Inspection descriptions**  appear in Settings|Errors and represent short information about what each of the inspection tools is intended to do.
 Each description is represented by single html file under ***/inspectionDescriptions/*** folder that should be encoded in UTF-8 encoding.
 Localized versions should be stored in folder suffixed with locale instead. For instance ***/inspectionDescriptions/CanBeFinal.html*** from ***resources_en.jar*** translation should be placed in ***/inspectionDescriptions_ja/CanBeFinal.html*** in ***resources_ja.jar***.
 
-*  **Intention descriptions and samples**  are very similar to inspection descriptions but the layout is a bit more advanced.
-Every intention has a bunch of files located in the folder named after intention's short name in /intentionDescriptions/.
-These files include description.html, which holds description similar to inspection one plus a couple of template files demonstrating what the intention will do on a sample.
-Those templates are optional to translate. Similar to inspection descriptions whole intentionDescriptions folder should be suffixed with locale identifier.
-For instance ***/intentionDescriptions/AddOnDemandStaticImportAction/description.html*** translation should be placed in ***/intentionDescriptions_ja/AddOnDemandStaticImportAction/description.html***.
-All the HTML files should be UTF-8 encoded.
+* **意图描述和样本**与检查描述非常相似,但布局更加先进.
 
-*  **Tips of the day**  follow the same pattern inspections and intentions do.
-For instance translation of ***/tips/AdaptiveWelcome.html*** goes to ***/tips_ja/AdaptiveWelcome.html***.
-The only thing special about tips is they use special pattern for denoting shortcuts like *EnterAction*;
-will be replaced to keystroke mapped to *EnterAction* in currently used keymap at run-time.
-So please make sure you leave such sequences intact while translating.
-Remember UTF-8 encoding.
+每个意图都有一堆文件位于/intentionDescriptions /中以意图的短名称命名的文件夹中.
 
-*  **File templates**  again go the same way (if at all should be translated).
-***/fileTemplates/Singleton.java.ft*** goes to ***/fileTemplates_ja/Singleton.java.ft***.
+这些文件包括description.html,其中包含类似于检查的描述以及一些模板文件,这些文件证明了对样本的意图.
 
-Following Sun rules for property bundles whenever certain resource cannot be found in localized version its default version from ***resources_en.jar*** will be used instead.
+这些模板是可选的翻译.
+与检查描述类似,整个intenDescriptions文件夹应以区域设置标识符为后缀.
+
+例如***/intentionDescriptions/AddOnDemandStaticImportAction/description.html ***翻译应放在***/intentionDescriptions_ja/AddOnDemandStaticImportAction/description.html ***中.
+
+所有HTML文件都应该是UTF-8编码的.
+
+
+* **当天的提示**遵循相同的模式检查和意图.
+
+例如,***/tips/AdaptiveWelcome.html ***的翻译转到***/tips_ja/AdaptiveWelcome.html ***.
+
+关于提示的唯一特别之处是它们使用特殊模式来表示像* EnterAction *这样的快捷方式;
+
+将在运行时替换为当前使用的keymap中映射到* EnterAction *的击键.
+
+所以请确保在翻译时保持这些序列完好无损.
+
+记住UTF-8编码.
+
+
+* **文件模板**再次以相同的方式(如果应该翻译).
+
+***/fileTemplates/Singleton.java.ft ***转到***/fileTemplates_ja/Singleton.java.ft ***.
+
+
+在本地化版本中找不到某些资源时,遵循Sun规则的属性包,将使用*** resources_en.jar ***的默认版本.
+
 

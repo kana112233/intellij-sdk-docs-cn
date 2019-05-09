@@ -2,131 +2,239 @@
 title: Implementing a Parser and PSI
 ---
 
-Parsing files in IntelliJ Platform is a two-step process.
-First, an abstract syntax tree (AST) is built, defining the structure of the program.
-AST nodes are created internally by the IDE and are represented by instances of the
+在IntelliJ平台中解析文件分为两步.
+
+首先,构建抽象语法树(AST),定义程序的结构.
+
+AST节点由IDE在内部创建,由实例表示
+
 [ASTNode](upsource:///platform/core-api/src/com/intellij/lang/ASTNode.java)
-class.
-Each AST node has an associated element type
+
+类.
+
+每个AST节点都有一个关联的元素类型
+
 [IElementType](upsource:///platform/core-api/src/com/intellij/psi/tree/IElementType.java)
-instance, and the element types are defined by the language plugin.
-The top-level node of the AST tree for a file needs to have a special element type, implementing the
+
+实例,元素类型由语言插件定义.
+
+文件的AST树的顶级节点需要具有特殊的元素类型,实现
+
 [IFileElementType](upsource:///platform/core-api/src/com/intellij/psi/tree/IFileElementType.java)
-interface.
 
-The AST nodes have a direct mapping to text ranges in the underlying document.
-The bottom-most nodes of the AST match individual tokens returned by the lexer, and higher level nodes match multiple-token fragments.
-Operations performed on nodes of the AST tree, such as inserting, removing, reordering nodes and so on, are immediately reflected as changes to the text of the underlying document.
+接口.
 
-Second, a PSI, or Program Structure Interface, tree is built on top of the AST, adding semantics and methods for manipulating specific language constructs.
-Nodes of the PSI tree are represented by classes implementing the
+
+AST节点直接映射到底层文档中的文本范围.
+
+AST的最底部节点匹配词法分析器返回的各个令牌,而更高级别的节点匹配多个令牌片段.
+
+在AST树的节点上执行的操作(例如插入,移除,重新排序节点等)立即反映为对基础文档的文本的更改.
+
+
+其次,PSI或程序结构接口树构建在AST之上,添加了用于操纵特定语言结构的语义和方法.
+
+PSI树的节点由实现该节点的类表示
+
 [PsiElement](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
-interface and are created by the language plugin in the
+
+接口,由语言插件创建
+
 [ParserDefinition.createElement()](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java)
-method.
-The top-level node of the PSI tree for a file needs to implement the
+
+方法.
+
+文件的PSI树的顶级节点需要实现
+
 [PsiFile](upsource:///platform/core-api/src/com/intellij/psi/PsiFile.java)
-interface, and is created in the
+
+接口,并在.中创建
+
 [ParserDefinition.createFile()](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java)
-method.
 
-**Example**:
+方法.
+
+
+**例**:
+
 [ParserDefinition](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesParserDefinition.java)
-for
-[Properties language plugin](upsource:///plugins/properties)
+
+对于
+
+[属性语言插件](upsource:///plugins/properties)
 
 
-The lifecycle of the PSI is described in more detail in [Fundamentals](/platform/fundamentals.md).
+PSI的生命周期在[Fundamentals](/platform/fundamentals.md)中有更详细的描述.
 
-The base classes for the PSI implementation, including
+
+PSI实现的基类,包括
+
 [PsiFileBase](upsource:///platform/core-impl/src/com/intellij/extapi/psi/PsiFileBase.java),
-the base implementation of
+
+基础实现
+
 [PsiFile](upsource:///platform/core-api/src/com/intellij/psi/PsiFile.java),
-and
+
+和
+
 [ASTWrapperPsiElement](upsource:///platform/core-impl/src/com/intellij/extapi/psi/ASTWrapperPsiElement.java),
-the base implementation of
+
+基础实现
+
 [PsiElement](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java),
-are provided by *IntelliJ Platform*.
 
-There is currently no ready way to reuse existing language grammars, for example, from ANTLR, for creating custom language parsers.
-The parsers need to be coded manually.
+由* IntelliJ Platform *提供.
 
-Custom language parser and PSI classes can be generated from grammars using
-[Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit) plugin.
-Besides code generation it provides various features for editing grammar files: syntax highlighting, quick navigation, refactorings and more.
-The Grammar-Kit plugin is built using its own engine and its source code can be found on
-[GitHub](https://github.com/JetBrains/Grammar-Kit).
 
-The language plugin provides the parser implementation as an implementation of the
+目前还没有现成的方法来重用现有的语言语法,例如,从ANTLR,用于创建自定义语言解析器.
+
+解析器需要手动编码.
+
+
+可以使用语法生成自定义语言解析器和PSI类
+
+[Grammar-Kit](https://plugins.jetbrains.com/plugin/6606-grammar-kit)插件.
+
+除了代码生成,它还提供了各种编辑语法文件的功能:语法高亮,快速导航,重构等.
+
+Grammar-Kit插件使用自己的引擎构建,其源代码可以在上面找到
+
+[GitHub的](https://github.com/JetBrains/Grammar-Kit).
+
+
+语言插件提供了解析器实现作为的实现
+
 [PsiParser](upsource:///platform/core-api/src/com/intellij/lang/PsiParser.java)
-interface, returned from
+
+界面,从中返回
+
 [ParserDefinition.createParser()](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java).
-The parser receives an instance of the
+
+解析器接收一个实例
+
 [PsiBuilder](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-class, which is used to get the stream of tokens from the lexer and to hold the intermediate state of the AST being built.
-The parser must process all tokens returned by the lexer up to the end of stream, in other words until
+
+class,用于从词法分析器获取标记流并保持正在构建的AST的中间状态.
+
+解析器必须处理词法分析器返回的所有标记,直到流的末尾,换句话说直到
+
 [PsiBuilder.getTokenType()](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-returns `null`, even if the tokens are not valid according to the language syntax.
 
-**Example**:
+返回`null`,即使令牌根据语言语法无效.
+
+
+**例**:
+
 [PsiParser](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesParser.java)
-implementation for
-[Properties language plugin](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/).
 
-The parser works by setting pairs of markers (
+实施
+
+[属性语言插件](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/).
+
+
+解析器通过设置标记对来工作(
+
 [PsiBuilder.Marker](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-instances) within the stream of tokens received from the lexer.
-Each pair of markers defines the range of lexer tokens for a single node in the AST tree.
-If a pair of markers is nested in another pair (starts after its start and ends before its end), it becomes the child node of the outer pair.
 
-The element type for the marker pair and for the AST node created from it is specified when the end marker is set, which is done by making call to
+实例)从词法分析器收到的令牌流中.
+
+每对标记定义AST树中单个节点的词法分析器标记的范围.
+
+如果一对标记嵌套在另一对中(在其开始之后开始并在结束之前结束),它将成为外部对的子节点.
+
+
+设置结束标记时,将指定标记对和从中创建的AST节点的元素类型,这通过调用来完成
+
 [PsiBuilder.Marker.done()](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java).
-Also, it is possible to drop a start marker before its end marker has been set.
-The `drop()` method drops only a single start marker without affecting any markers added after it, and the `rollbackTo()` method drops the start marker and all markers added after it and reverts the lexer position to the start marker.
-These methods can be used to implement lookahead when parsing.
 
-The method
+此外,可以在设置结束标记之前删除开始标记.
+
+`drop()`方法只丢弃一个开始标记而不影响其后添加的任何标记,并且`rollbackTo()`方法删除开始标记和在其后添加的所有标记,并将词法分析器位置恢复为开始标记.
+
+解析时,这些方法可用于实现前瞻.
+
+
+方法
+
 [PsiBuilder.Marker.precede()](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-is useful for right-to-left parsing when you don't know how many markers you need at a certain position until you read more input.
-For example, a binary expression `a+b+c` needs to be parsed as `( (a+b) + c )`.
-Thus, two start markers are needed at the position of the token 'a', but that is not known until the token 'c' is read.
-When the parser reaches the '+' token following 'b', it can call `precede()` to duplicate the start marker at 'a' position, and then put its matching end marker after 'c'.
 
-An important feature of
+当您在读取更多输入之前不知道在某个位置需要多少个标记时,从右到左解析很有用.
+
+例如,二进制表达式“a + b + c”需要解析为`((a + b)+ c)`.
+
+因此,在令牌“a”的位置处需要两个开始标记,但是直到读取令牌“c”才知道.
+
+当解析器到达'b'后的'+'标记时,它可以调用`precede()`来复制'a'位置的开始标记,然后将其匹配的结束标记放在'c'之后.
+
+
+一个重要的特征
+
 [PsiBuilder](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-is its handling of whitespace and comments.
-The types of tokens which are treated as whitespace or comments are defined by the methods `getWhitespaceTokens()` and `getCommentTokens()` in the
+
+是处理空白和评论.
+
+被视为空格或注释的标记类型由方法`getWhitespaceTokens()`和`getCommentTokens()`定义.
+
 [ParserDefinition](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java)
-class.
+
+类.
+
 [PsiBuilder](upsource:///platform/core-api/src/com/intellij/lang/PsiBuilder.java)
-automatically omits whitespace and comment tokens from the stream of tokens it passes to
+
+从它传递给的标记流中自动省略空格和注释标记
+
 [PsiParser](upsource:///platform/core-api/src/com/intellij/lang/PsiParser.java),
-and adjusts the token ranges of AST nodes so that leading and trailing whitespace tokens are not included in the node.
 
-The token set returned from
+并调整AST节点的令牌范围,以便前导和尾随空格令牌不包含在节点中.
+
+
+从中返回的令牌集
+
 [ParserDefinition.getCommentTokens()](upsource:///platform/core-api/src/com/intellij/lang/ParserDefinition.java)
-is also used to search for TODO items.
 
-In order to better understand the process of building a PSI tree for a simple expression, you can refer to the following diagram:
+也用于搜索TODO项目.
 
-![PsiBuilder](img/PsiBuilder.gif)
 
-In general, there is no single right way to implement a PSI for a custom language, and the plugin author can choose the PSI structure and set of methods which are the most convenient for the code which uses the PSI (error analysis, refactorings and so on).
-However, there is one base interface which needs to be used by a custom language PSI implementation in order to support features like rename and find usages.
-Every element which can be renamed or referenced (a class definition, a method definition and so on) needs to implement the
+为了更好地理解为简单表达式构建PSI树的过程,可以参考下图:
+
+
+![PsiBuilder](IMG/PsiBuilder.gif)
+
+
+一般来说,没有一种正确的方法可以为自定义语言实现PSI,插件作者可以选择PSI结构和方法集,这些方法对于使用PSI的代码最为方便(错误分析,重构等等)
+上).
+
+但是,有一个基本接口需要由自定义语言PSI实现使用,以支持重命名和查找用法等功能.
+
+可以重命名或引用的每个元素(类定义,方法定义等)都需要实现
+
 [PsiNamedElement](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-interface, with methods `getName()` and `setName()`.
 
-A number of functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in the
+接口,使用`getName()`和`setName()`方法.
+
+
+可以在`com.intellij.psi.util`包中找到许多可用于实现和使用PSI的函数,特别是在
+
 [PsiUtil](upsource:///java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java)
-and
+
+和
+
 [PsiTreeUtil](upsource:///platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java)
-classes.
 
-A very helpful tool for debugging the PSI implementation is the
-[PsiViewer plugin](https://plugins.jetbrains.com/plugin/227-psiviewer).
-It can show you the structure of the PSI built by your plugin, the properties of every PSI element and highlight its text range.
+类.
 
-Please see
-[Indexing and PSI Stubs](/basics/indexing_and_psi_stubs.md)
-for advanced topics.
+
+调试PSI实现的一个非常有用的工具是
+
+[PsiViewer插件](https://plugins.jetbrains.com/plugin/227-psiviewer).
+
+它可以显示您的插件构建的PSI的结构,每个PSI元素的属性并突出显示其文本范围.
+
+
+请参阅
+
+[索引和PSI存根](/basics/indexing_and_psi_stubs.md)
+
+对于高级主题.
+
+

@@ -2,46 +2,79 @@
 title: Modifying the PSI
 ---
 
-The PSI is a read-write representation of the source code as a tree of elements corresponding to the structure of a source
-file. You can modify the PSI by *adding*, *replacing*, and *deleting* PSI elements.
+PSI是源代码的读写表示,作为对应于源结构的元素树
 
-To perform these operations, you use methods such as `PsiElement.add()`, `PsiElement.delete()`, and `PsiElement.replace()`,
-as well as other methods defined in the `PsiElement` interface that let you process multiple elements in a single
-operation, or to specify the exact location in the tree where an element needs to be added.
-
-Just as document operations, PSI modifications need to be wrapped in a write action and in a command (and therefore
-can only be performed in the event dispatch thread). See [the Documents article](documents.md#what-are-the-rules-of-working-with-documents)
-for more information on commands and write actions.
+文件.
+您可以通过*添加*,*替换*和*删除* PSI元素来修改PSI.
 
 
-## Creating the New PSI
+要执行这些操作,可以使用诸如`PsiElement.add()`,`PsiElement.delete()`和`PsiElement.replace()`之类的方法,
 
-The PSI elements to add to the tree, or to replace existing PSI elements, are normally *created from text*.
-In the most general case, you use the `createFileFromText` method of [`PsiFileFactory`](upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java)
-to create a new file that contains the code construct which you need to add to the tree or to use as a replacement
-for an existing element, traverse the resulting tree to locate the specific element that you need, and then pass that
-element to `add()` or `replace()`.
+以及在`PsiElement`接口中定义的其他方法,它允许您在一个单元中处理多个元素
 
-Most languages provide factory methods which let you create specific code constructs more easily. For example,
-the [`PsiJavaParserFacade`](upsource:///java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java) class
-contains methods such as `createMethodFromText`, which creates a Java method from the given text.
+操作,或指定树中需要添加元素的确切位置.
 
-When you're implementing refactorings, intentions or inspection quickfixes that work with existing code, the text that
-you pass to the various `createFromText` methods will combine hard-coded fragments and fragments of code taken from
-the existing file. For small code fragments (individual identifiers), you can simply append the text from the existing
-code to the text of the code fragment you're building. In that case, you need to make sure that the resulting text is 
-syntactically correct, otherwise the `createFromText` method will throw an exception. 
 
-For larger code fragments, it's best to perform the modification in several steps: 
+就像文档操作一样,PSI修改需要包含在写入操作和命令中(因此
 
- * create a replacement tree fragment from text, leaving placeholders for the user code fragments;
- * replace the placeholders with the user code fragments;
- * replace the element in the original source file with the replacement tree.
+只能在事件派发线程中执行).
+参见[文件文章](documents.md#the-are-the-rules-of-working-with-documents)
 
-This ensures that the formatting of the user code is preserved and that the modification doesn't introduce any unwanted
-whitespace changes.  
+有关命令和写入操作的更多信息.
 
-As an example of this approach, see the quickfix in the `ComparingReferencesInspection` example:
+
+##创建新的PSI
+
+
+要添加到树中或替换现有PSI元素的PSI元素通常是从文本*创建的.
+
+在最常见的情况下,使用[`PsiFileFactory`]的`createFileFromText`方法(upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java)
+
+创建一个新文件,其中包含您需要添加到树中或用作替换的代码构造
+
+对于现有元素,遍历生成的树以找到所需的特定元素,然后传递它
+
+元素到`add()`或`replace()`.
+
+
+大多数语言都提供工厂方法,使您可以更轻松地创建特定的代码构造.
+例如,
+
+[`PsiJavaParserFacade`](upsource:///java/java-psi-api/src/com/intellij/psi/PsiJavaParserFacade.java)类
+
+包含诸如`createMethodFromText`之类的方法,它从给定文本创建Java方法.
+
+
+当您实现与现有代码一起使用的重构,意图或检查quickfix时,文本
+
+你传递给各种`createFromText`方法将结合硬编码片段和从中获取的代码片段
+
+现有文件.
+对于小代码片段(单个标识符),您只需附加现有文本即可
+
+代码到您正在构建的代码片段的文本.
+在这种情况下,您需要确保生成的文本是
+
+语法正确,否则`createFromText`方法将抛出异常.
+
+
+对于较大的代码片段,最好分几步执行修改:
+
+
+*从文本创建替换树片段,留下用户代码片段的占位符;
+ 
+*用用户代码片段替换占位符;
+ 
+*用替换树替换原始源文件中的元素.
+
+
+这可确保保留用户代码的格式,并且修改不会引入任何不需要的内容
+
+空白变化.
+
+
+作为此方法的示例,请参阅“ComparingReferencesInspection”示例中的quickfix:
+
 
 ```java
 // binaryExpression holds a PSI expression of the form "x == y", which needs to be replaced with "x.equals(y)"
@@ -63,44 +96,80 @@ equalsCall.getArgumentList().getExpressions()[0].replace(rExpr);
 PsiExpression result = (PsiExpression) binaryExpression.replace(equalsCall);
 ```
 
-Just as everywhere else in the IntelliJ Platform API, the text passed to `createFileFromText` and other `createFromText`
-methods must use only `\n` as line separators.
+就像IntelliJ Platform API中的其他地方一样,文本传递给`createFileFromText`和其他`createFromText`
+
+方法必须只使用`\ n`作为行分隔符.
 
 
-## Maintaining Tree Structure Consistency
-
-The PSI modification methods do not restrict you in the way you can build the resulting tree structure. For example,
-when working with a Java class, you can add a `for` statement as a direct child of a `PsiMethod` element, even though
-the Java parser will never produce such a structure (the `for` statement will always be a child of the `PsiCodeBlock`)
-representing the method body). Modifications that produce incorrect tree structures may appear to work, but they will
-lead to problems and exceptions later. Therefore, you always need to ensure that the structure you built with PSI
-modification operations is the same as what the parser would produce when parsing the code that you've built.
-
-To make sure you're not introducing inconsistencies, you can call `PsiTestUtil.checkFileStructure()` in the tests for
-your action that modifies the PSI. This method ensures that the structure you've built is the same as what the parser produces.
+##维护树结构一致性
 
 
-## Whitespaces and Imports
+PSI修改方法不会限制您构建结果树结构的方式.
+例如,
 
-When working with PSI modification functions, you should never create individual whitespace nodes (spaces or line breaks)
-from text. Instead, all whitespace modifications are performed by the formatter, which follows the code style settings
-selected by the user. Formatting is automatically performed at the end of every command, and if you need, you can
-also perform it manually using the `reformat(PsiElement)` method in the
-[`CodeStyleManager`](upsource:///platform/core-api/src/com/intellij/psi/codeStyle/CodeStyleManager.java) class.
+使用Java类时,可以添加`for`语句作为`PsiMethod`元素的直接子元素,即使
 
-Also, when working with Java code (or with code in other languages with a similar import mechanism such as Groovy or Python),
-you should never create imports manually. Instead, you should insert fully-qualified names into the code you're
-generating, and then call the `shortenClassReferences()` method in the 
+Java解析器永远不会产生这样的结构(`for`语句将始终是`PsiCodeBlock`的子句)
+
+代表方法体).
+产生错误树结构的修改似乎可行,但它们会起作用
+
+以后会导致问题和例外.
+因此,您始终需要确保使用PSI构建的结构
+
+修改操作与解析您构建的代码时解析器生成的操作相同.
+
+
+为了确保不引入不一致,可以在测试中调用`PsiTestUtil.checkFileStructure()`
+
+你修改PSI的动作.
+此方法可确保您构建的结构与解析器生成的结构相同.
+
+
+##空白和进口
+
+
+使用PSI修改函数时,永远不应创建单独的空白节点(空格或换行符)
+
+来自文字.
+相反,所有空格修改都由格式化程序执行,格式化程序遵循代码样式设置
+
+由用户选择.
+格式化在每个命令结束时自动执行,如果需要,可以
+
+也可以使用`中的`reformat(PsiElement)`方法手动执行它
+
+[`CodeStyleManager`](upsource:///platform/core-api/src/com/intellij/psi/codeStyle/CodeStyleManager.java)类.
+
+
+此外,在使用Java代码(或使用类似导入机制(如Groovy或Python)的其他语言中的代码时),
+
+你永远不应该手动创建导入.
+相反,您应该将完全限定的名称插入到您的代码中
+
+生成,然后在中调用`shortenClassReferences()`方法
+
 [`JavaCodeStyleManager`](upsource:///java/java-psi-api/src/com/intellij/psi/codeStyle/JavaCodeStyleManager.java)
-(or the equivalent API for the language you're working with). This ensures that the imports are created according to
-the user's code style settings and inserted into the correct place of the file.
+
+(或您正在使用的语言的等效API).
+这可以确保根据导入创建
+
+用户的代码样式设置并插入到文件的正确位置.
 
 
-## Combining PSI and Document Modifications 
+##结合PSI和文档修改
 
-In some cases, you need to perform a PSI modification and then to perform an operation on the document you've just
-modified through the PSI (for example, start a live template). In this case, you need to call a special method that
-completes the PSI-based post-processing (such as formatting) and commits the changes to the document. The method
-you need to call is called `doPostponedOperationsAndUnblockDocument`, and it's defined in the
-[`PsiDocumentManager`](upsource:///platform/core-api/src/com/intellij/psi/PsiDocumentManager.java) class.
+
+在某些情况下,您需要执行PSI修改,然后对您刚才的文档执行操作
+
+通过PSI修改(例如,启动实时模板).
+在这种情况下,您需要调用一个特殊的方法
+
+完成基于PSI的后处理(例如格式化)并将更改提交到文档.
+方法
+
+你需要调用的是`doPostponedOperationsAndUnblockDocument`,它的定义是
+
+[`PsiDocumentManager`](upsource:///platform/core-api/src/com/intellij/psi/PsiDocumentManager.java)类.
+
 

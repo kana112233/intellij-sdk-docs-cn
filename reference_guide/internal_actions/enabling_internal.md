@@ -2,7 +2,8 @@
 title: Enabling Internal Mode
 ---
 
-There are useful tools, such as the Internal Actions menu, that are only visible if internal mode is enabled in IntelliJ IDEA.
+有一些有用的工具,例如“内部操作”菜单,只有在IntelliJ IDEA中启用了内部模式时才可见.
+
 
 ## Setting Internal Mode in the IDE Properties File
 There are multiple ways to enable internal mode, but the simplest is within IntelliJ IDEA:
@@ -17,5 +18,6 @@ idea.is.internal=true
 * Save the `idea.properties` file and restart IntelliJ IDEA.
 
 The Internal Actions menu is available in **Tools \| Internal Actions**.
+
 
 

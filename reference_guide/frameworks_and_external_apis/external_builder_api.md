@@ -2,124 +2,205 @@
 title: External Builder API and Plugins
 ---
 
-### External Build Process Workflow
+###外部构建流程工作流程
 
-When the user invokes an action that involves executing an external build (Make, Build Artifacts, etc.), the following steps happen:
 
-*  Before-compile tasks are executed in the IDE process.
+当用户调用涉及执行外部构建(Make,Build Artifacts等)的操作时,会发生以下步骤:
 
-*  Some source generation tasks that depend on the PSI (e.g. UI designer form to source compilation) are executed in the IDE process.
 
-*  [`BuildTargetScopeProvider`](upsource:///java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extensions are called to calculate the scope of the external build (the set of build targets to compile based on the target module to make and the known set of changes).
+*在IDE过程中执行编译前任务.
 
-*  The external build process is spawned (or an existing build process background process is reused).
 
-*  The external build process loads the project model (.idea, .iml files and so on), represented by a [`JpsModel`](upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsModel.java) instance.
+*在IDE过程中执行依赖于PSI的某些源生成任务(例如,UI设计器表单到源编译).
 
-*  The full tree of targets to build is calculated, based on the dependencies of each build target to be compiled.
 
-*  For each target, the set of builders capable of building this target is calculated.
+调用* [`BuildTargetScopeProvider`](upsource:///java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java)扩展来计算外部构建的范围(构建目标的集合)
+基于目标模块进行编译以及已知的一组更改).
 
-*  For every target and every builder, the `build()` method is called. This can happen in parallel if the "Compile independent modules in parallel" option is enabled in the settings. For module-level builders, the order of invoking builders for a single target is determined by their category; for other builders, the order is undefined.
 
-*  Caches to record the state of the compilation are saved.
+*生成外部构建过程(或重用现有构建过程后台进程).
 
-*  Compilation messages reported through the [`CompileContext`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/CompileContext.java) API are transmitted to the IDE process and displayed in the UI (in the *Messages* view).
 
-*  Post-compile tasks are executed in the IDE process.
+*外部构建过程加载项目模型(.idea,.iml文件等),由[`JpsModel`]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model 
+/JpsModel.java)实例.
 
-### Incremental Build
 
-To support incremental build, the build process uses a number of caches which are persisted between build invocations. Even if your compiler doesn't support incremental build, you still need to report correct information so that incremental build works correctly for other compilers.
+*根据要编译的每个构建目标的依赖关系,计算要构建的完整目标树.
 
-*  [`SourceToOutputMapping`](upsource:///jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java) is a many-to-many relationship between source files and output files ("which source files were used to produce the specified output file"). It's filled by calls to `BuildOutputConsumer.registerOutputFile()` and `ModuleLevelBuilder.OutputConsumer.registerOutputFile()`.
 
-*  [`Timestamps`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/storage/Timestamps.java) records the timestamp of each source file when it was compiled by each build target. (If the compilation was invoked multiple times with different scopes and the file was changed in the meantime, the last compiled timestamps for different build targets may vary.) It's updated automatically by JPS.
+*对于每个目标,计算能够构建此目标的构建器集.
 
-The IDE monitors the changes of the project content and uses the information from those caches to generate the set of dirty and deleted files for every compilation. (Dirty files need to be recompiled, and deleted files need to have their output deleted). A builder can also report additional files as dirty (e.g. if a method is deleted, the builder can report the classes using this method as dirty.) A module-level builder can add some files to the dirty scope; if this happens, and if the builder returns `ADDITIONAL_PASS_REQUIRED` from its `build()` method, another round of builder execution for the same module chunk will be started with the new dirty scope.
 
-A builder may also want to have its custom caches to store additional information to support partial recompilation of a target (e.g. the dependencies between Java files in a module). To store this data, you can either store arbitrary files in the directory returned from `BuildDataManager.getDataPaths().getTargetDataRoot()` or use a higher-level API: `BuildDataManager.getStorage()`
+*对于每个目标和每个构建器,都会调用`build()`方法.
+如果在设置中启用了“并行编译独立模块”选项,则可以并行执行此操作.
+对于模块级构建器,为单个目标调用构建器的顺序由其类别决定;
+对于其他构建者,订单未定义.
 
-To pass custom data between the invocation of the same builder between multiple targets, you can use `CompileContext.getUserData()` and `CompileContext.putUserData()`.
 
-### Services and extensions in External Builder
+*保存用于记录编译状态的缓存.
 
-The external builder process uses the standard Java
-[services](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html)
-mechanism to support plugins. There are several service interfaces (e.g. [`BuilderService`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) which can be implemented in plugins to extend the builder functionality. An implementation of a service need to be registered by creating `META-INF/services/<service-interface-fqn>` file containing the qualified name of the implementation class. E.g. `BuilderService` implementations are registered in `META-INF/services/org.jetbrains.jps.incremental.BuilderService` file. These files don't have extensions so you need to map corresponding patterns to text files in IDE settings.
 
-### Registering a plugin for External Builder
+*通过[`CompileContext`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/CompileContext.java)API报告的编译消息被传输到IDE进程并显示在UI中(
+在* Messages *视图中).
+
+
+*后编译任务在IDE过程中执行.
+
+
+###增量构建
+
+
+为了支持增量构建,构建过程使用许多缓存,这些缓存在构建调用之间保持不变.
+即使您的编译器不支持增量构建,您仍需要报告正确的信息,以便增量构建可以正常地用于其他编译器.
+
+
+* [`SourceToOutputMapping`](upsource:///jps/jps-builders/src/org/jetbrains/jps/builders/storage/SourceToOutputMapping.java)是源文件和输出文件之间的多对多关系(“
+哪些源文件用于生成指定的输出文件“).
+它通过调用`BuildOutputConsumer.registerOutputFile()`和`ModuleLevelBuilder.OutputConsumer.registerOutputFile()`来填充.
+
+
+* [`Timestamps`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/storage/Timestamps.java)记录每个源文件在每个构建目标编译时的时间戳. 
+(如果使用不同的范围多次调用编译并且同时更改了文件,则不同构建目标的最后编译时间戳可能会有所不同.)它由JPS自动更新.
+
+
+IDE监视项目内容的更改,并使用这些缓存中的信息为每个编译生成一组脏文件和已删除文件. 
+(需要重新编译脏文件,删除的文件需要删除其输出).
+构建器还可以将其他文件报告为脏(例如,如果删除方法,构建器可以使用此方法将类报告为脏.)模块级构建器可以将一些文件添加到脏范围;
+如果发生这种情况,并且构建器从其`build()`方法返回`ADDITIONAL_PASS_REQUIRED`,则将使用新的脏范围启动针对同一模块块的另一轮构建器执行.
+
+
+构建器还可能希望使其自定义高速缓存存储其他信息以支持目标的部分重新编译(例如,模块中Java文件之间的依赖关系).
+要存储此数据,您可以将任意文件存储在从`BuildDataManager.getDataPaths().getTargetDataRoot()`返回的目录中,或者使用更高级别的API:`BuildDataManager.getStorage()`
+
+
+要在多个目标之间调用同一构建器之间传递自定义数据,可以使用`CompileContext.getUserData()`和`CompileContext.putUserData()`.
+
+
+###外部构建器中的服务和扩展
+
+
+外部构建器进程使用标准Java
+
+[服务(https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html)
+
+支持插件的机制.
+有几个服务接口(例如[`BuilderService`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java),可以在插件中实现以扩展构建器功能.
+需要通过创建包含实现类的限定名称的“META-INF/services/<service-interface-fqn>”文件来注册服务的实现.例如``BuilderService`实现在`META-INF/services中注册
+/org.jetbrains.jps.incremental.BuilderService`文件.这些文件没有扩展名,因此您需要将相应的模式映射到IDE设置中的文本文件.
+
+
+###注册外部构建器的插件
+
 
 Sources of a plugin for External Builder should be put in a separate module. By convention such module has name '...-jps-plugin' and its sources are placed under 'jps-plugin' directory in the main plugin directory. Use `<compileServer.plugin>` extension to add the plugin to classpath of external build process, the plugin jar should be named `<jps module name>.jar`. 'Build' \| 'Prepare Plugin Module for deployment' action will automatically pack 'jps-plugin' part to a separate jar accordingly.
 
-### Debugging a plugin for External Builder
+###调试外部构建器的插件
 
-**If your test IDE is IntelliJ IDEA 16.0 or newer**
 
-Switch on "Debug Build Process" toggle action (available via 'Find Action') in the test IDE. After that every time compilation is run, the build  process will wait for debugger connection on some (random) port and will show the port number in the status bar. In working copy of IDE a "Remote" run configuration should be created and pointed to this port. If you often need to debug external builders and want to reuse the created "Remote" run configuration you may fix the port number by adding the following VM option to the plugin run configuration:
+**如果您的测试IDE是IntelliJ IDEA 16.0或更高版本**
+
+
+在测试IDE中打开“调试构建过程”切换操作(可通过“查找操作”获得).
+在每次运行编译之后,构建过程将等待某个(随机)端口上的调试器连接,并在状态栏中显示端口号.
+在IDE的工作副本中,应创建“远程”运行配置并指向此端口.
+如果您经常需要调试外部构建器并希望重用创建的“远程”运行配置,则可以通过向插件运行配置添加以下VM选项来修复端口号:
+
 
 ```
 -Dcompiler.process.debug.port=<port-number>
 ```
 
+**如果您的测试IDE是IntelliJ IDEA 15.0或更早版本**
 
-**If your test IDE is IntelliJ IDEA 15.0 or older**
 
-Start IDE with your plugin with the following VM option
+使用以下VM选项启动带有插件的IDE
+
 
 ```
 -Dcompiler.process.debug.port=<port-number>
 ```
 
+之后,每次在测试IDE中运行编译时,构建过程将等待此端口上的调试器连接,然后才继续.
+在IDE的工作副本中,应创建“远程”运行配置并指向此端口.
+指定端口“-1”将禁用调试模式.
 
-After that every time compilation is run in the test IDE, the build  process will wait for debugger connection on this port and only then proceed.  In working copy of IDE a "Remote" run configuration should be created and pointed to this port. Specifying port "-1" will disable debugging mode.
 
-### Profiling external build process
+###分析外部构建过程
 
-The build process has built-in self-cpu-profiling capabilities. To enable them do the following:
 
-1. Copy `<ide-home>/lib/yjp-controller-api-redist.jar` and `<ide-home>/bin/yjpagent.*`  files to `<ide-system-dir>/compile-server`
+构建过程具有内置的自我分析功能.
+要启用它们,请执行以下操作:
+
+
+1.将`<ide-home>/lib/yjp-controller-api-redist.jar`和`<ide-home>/bin/yjpagent.*`文件复制到`<ide-system-dir>/compile-server 
+`
+
 
 2. In "Settings \| Compiler \| Additional compiler process VM options" field enter `-Dprofiling.mode=true`
 
-3. Make sure automatic make is turned off
-
-After this every build process run should result in a CPU snapshot stored in `<user-home>`/Snapshots directory.
-Snapshots are named like "ExternalBuild\-\{date\}.snapshot".
-
-Specifying `-Dprofiling.mode=false` will turn profiling off.
-Please capture a couple of snapshots for the situations in which you believe the build should work much faster than it does.
-
-Please create an issue in the issue tracker and attach generated \*.snapshot files to it or upload them to
-[ftp://ftp.intellij.net/.uploads](ftp://ftp.intellij.net/.uploads) and specify links in the issue.
-Please also provide details about the memory and other VM settings for the build process you were using.
+3.确保自动make已关闭
 
 
-### Accessing External Build process' logs
+在此之后,每次构建过程运行都应该导致CPU快照存储在`<user-home>`/Snapshots目录中.
 
-The log file is located under the directory
+快照的名称类似于“ExternalBuild \  -  \ {date \} .snapshot”.
+
+
+指定`-Dprofiling.mode = false`将关闭分析.
+
+请捕获几个快照,以了解您认为构建应该比它更快地工作的情况.
+
+
+请在问题跟踪器中创建问题,并将生成的\ * .snapshot文件附加到其中或将其上载到
+
+[ftp://ftp.intellij.net/.uploads](ftp://ftp.intellij.net/.uploads)并指定问题中的链接.
+
+还请提供有关您正在使用的构建过程的内存和其他VM设置的详细信息.
+
+
+###访问外部构建过程的日志
+
+
+日志文件位于目录下
+
 
 ```
 <ide-system-directory>/log/build-log
 ```
 
-There both `build-log.log` and `build-log.properties` files can be found.
-The `build-log.properties` is a log4j configuration file, where the log level and desired logging categories can be adjusted. 
-This file contains logging from all  build sessions, including those from the auto-make.
+可以找到`build-log.log`和`build-log.properties`文件.
 
-In IntelliJ Platform versions before version 14.1 log4j configuration was stored in `build-log.xml`.
+`build-log.properties`是一个log4j配置文件,可以调整日志级别和所需的日志记录类别.
 
-### Accessing project model and configuration from External Build
+此文件包含来自所有构建会话的日志记录,包括来自auto-make的会话.
 
-The project model in External Build process is provided by JPS (*JetBrains Project System*).
-A project is represented by [`JpsProject`](upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsProject.java), a module by [`JpsModule`](upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsProject.java) and so on.
-If your compiler depends on something that isn't added to the model yet (e.g. some facet settings),
-you need to extend the JPS model (use `JpsGwtModuleExtension` as a reference implementation) and provide implementation of
-[`JpsModelSerializerExtension`](upsource:///jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java) to load the configuration from project files.
 
-#### Implementing builder
+在版本14.1之前的IntelliJ平台版本中,log4j配置存储在`build-log.xml`中.
 
-If your compiler isn't involved into compilation of an existing [`BuildTarget`](upsource:///jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java) you need to create a new implementation of `BuildTarget` and `BuildTargetType`. Also register an implementation of [`BuildTargetScopeProvider`](upsource:///java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java) extension on IDE side to add required targets to the build scope.
-The builder implementation should extend either [`TargetBuilder`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java) or [`ModuleLevelBuilder`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java) class and should be created using [`BuilderService`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java) extension.
+
+###从External Build访问项目模型和配置
+
+
+外部构建过程中的项目模型由JPS(* JetBrains Project System *)提供.
+
+项目由[`JpsProject`](upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsProject.java)表示,模块由[`JpsModule`]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model/JpsProject.java)等等.
+
+如果您的编译器依赖于尚未添加到模型中的内容(例如某些构面设置),
+
+你需要扩展JPS模型(使用`JpsGwtModuleExtension`作为参考实现)并提供实现
+
+[`JpsModelSerializerExtension`](upsource:///jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java)从项目文件加载配置.
+
+
+####实施构建器
+
+
+如果您的编译器不参与编译现有的[`BuildTarget`](upsource:///jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java),您需要创建一个新的实现
+`BuildTarget`和`BuildTargetType`.
+还在IDE端注册[`BuildTargetScopeProvider`](upsource:///java/compiler/impl/src/com/intellij/compiler/impl/BuildTargetScopeProvider.java)扩展的实现,以将所需目标添加到构建范围.
+
+构建器实现应该扩展[`TargetBuilder`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/TargetBuilder.java)或[`ModuleLevelBuilder`](upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/ModuleLevelBuilder.java)类,应该使用[`BuilderService`]创建(upsource:///jps/jps-builders/src/org/jetbrains/jps/incremental/BuilderService.java)扩展.
+
+
 
 

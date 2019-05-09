@@ -2,15 +2,25 @@
 title: Custom UI Themes
 ---
 
-Beginning with the 2019.1 release, custom UI Themes are supported by IntelliJ IDEA.
-Custom UI Themes give designers control of the appearance of built-in IntelliJ IDEA UI elements. 
-[Creating a new UI element](/user_interface_components/user_interface_components.md) for a plugin is distinctly different than Custom UI Themes. 
+从2019.1版本开始,IntelliJ IDEA支持自定义UI主题.
 
-> **note** Custom UI Themes are available beginning in version **2019.1**.
+自定义UI主题使设计人员能够控制内置IntelliJ IDEA UI元素的外观.
 
-This section discusses creating and customizing UI Themes:
-* [Creating UI Themes](themes.md)
-* [Customizing UI Themes](themes_customize.md)
-* [Adding Editor Schemes and Background Images](themes_extras.md)
+插件的[创建新UI元素](/user_interface_components/user_interface_components.md)与自定义UI主题明显不同.
 
-For plugin developers, [Exposing Theme Metadata](themes_metadata.md) discusses the format of customization keys and information how to provide it to Theme authors. 
+
+> ** note **自定义UI主题从版本** 2019.1 **开始提供.
+
+
+本节讨论创建和自定义UI主题:
+
+* [创建UI主题](themes.md)
+
+* [自定义UI主题](themes_customize.md)
+
+* [添加编辑器方案和背景图像](themes_extras.md)
+
+
+对于插件开发人员,[公开主题元数据](themes_metadata.md)讨论了自定义键的格式以及如何将其提供给主题作者的信息.
+
+

@@ -4,15 +4,27 @@ redirect_from:
   - /phpstorm/phpstorm.html
 ---
 
-### Development and Testing Tools
-Plugins for PhpStorm are developed in Java using either edition of IntelliJ IDEA. The Community Edition of IntelliJ IDEA can
-be used for developing, but not testing, a PhpStorm plugin. Although IntelliJ IDEA Ultimate Edition (with the PHP plugin) can be 
-used for testing PhpStorm plugins, the recommended approach is to use PhpStorm for testing.
+###开发和测试工具
 
-The [PsiViewer plugin](https://plugins.jetbrains.com/plugin/227-psiviewer) is also recommended.
+PhpStorm的插件是使用IntelliJ IDEA的任一版本在Java中开发的. 
+IntelliJ IDEA的Community Edition可以
 
-### PhpStorm Specifics
+用于开发,但不测试PhpStorm插件.
+虽然IntelliJ IDEA Ultimate Edition(带有PHP插件)可以
 
-* [Setting-up the environment](setting_up_environment.md)
+用于测试PhpStorm插件,推荐的方法是使用PhpStorm进行测试.
+
+
+还建议使用[PsiViewer插件](https://plugins.jetbrains.com/plugin/227-psiviewer).
+
+
+### PhpStorm细节
+
+
+* [设置环境](setting_up_environment.md)
+
 * [PHP Open API](php_open_api.md)
-* [Example Third Party PhpStorm plugins](existing_plugins.md)
+
+* [示例第三方PhpStorm插件](existing_plugins.md)
+
+

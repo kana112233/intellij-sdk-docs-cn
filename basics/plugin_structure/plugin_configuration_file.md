@@ -2,7 +2,9 @@
 title: Plugin Configuration File - plugin.xml
 ---
 
-The following is a sample plugin configuration file. This sample showcases and describes all elements that can be used in the `plugin.xml` file.
+以下是示例插件配置文件.
+此示例展示并描述了可以在`plugin.xml`文件中使用的所有元素.
+
 
 ```xml
 <!-- `url` specifies the URL of the plugin homepage (can be opened from "Plugins" settings dialog) -->
@@ -122,3 +124,5 @@ The following is a sample plugin configuration file. This sample showcases and d
   </extensions>
 </idea-plugin>
 ```
+
+

@@ -2,80 +2,125 @@
 title: DialogWrapper
 ---
 
-
 ## DialogWrapper
 
-The
+
+该
+
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)
-is the base class which is supposed to be used for all modal dialogs (and some non-modal dialogs) shown in *IntelliJ Platform* plugins.
 
-It provides the following features:
-
-*  Button layout (platform-specific order of `OK/Cancel` buttons, macOS-specific `Help` button)
-
-*  Context help
-
-*  Remembering the size of the dialog
-
-*  Non-modal validation (displaying an error message text when the data entered into the dialog is not valid)
-
-*  Keyboard shortcuts:
-
-    *  `Esc` for closing the dialog
-
-    *  `Left/Right` for switching between buttons
-
-    *  `Y/N` for `Yes/No` actions if they exist in the dialog
-
-*  Optional `Do not ask again` checkbox
+是基本类，它应该用于* IntelliJ Platform *插件中显示的所有模态对话框(以及一些非模态对话框)。
 
 
-When using the
+它提供以下功能:
+
+
+*按钮布局(特定于平台的“确定/取消”按钮，特定于macOS的“帮助”按钮)
+
+
+*上下文帮助
+
+
+*记住对话框的大小
+
+
+*非模态验证(当输入对话框的数据无效时显示错误消息文本)
+
+
+*  键盘快捷键:
+
+
+*`Esc`用于关闭对话框
+
+
+*“左/右”用于在按钮之间切换
+
+
+*如果对话框中存在“是/否”动作，则为“Y/N”
+
+
+*可选`不要再问'复选框
+
+
+使用时
+
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)
-class for your own dialog, you need to follow these steps:
 
-*  Call the base class constructor and provide either a project in the frame of which the dialog will be displayed, or a parent component for the dialog.
+对于您自己的对话框，您需要按照以下步骤操作:
 
-*  Call the `init()` method from the constructor of your dialog class
 
-*  Call the `setTitle()` method to set the title for the dialog box
+*调用基类构造函数，并在框架中提供将显示对话框的项目，或者提供对话框的父组件。
 
-*  Implement the `createCenterPanel()` method to return the component comprising the main contents of the dialog.
 
-*  *Optional*: Override the `getPreferredFocusedComponent()` method and return the component that should be focused when the dialog is first displayed.
+*从对话框类的构造函数中调用`init()`方法
 
-*  *Optional*: Override the `getDimensionServiceKey()` method to return the identifier which will be used for persisting the dialog dimensions.
 
-*  *Optional*: Override the `getHelpId()` method to return the context help topic associated with the dialog.
+*调用`setTitle()`方法设置对话框的标题
 
-The
+
+*实现`createCenterPanel()`方法以返回包含对话框主要内容的组件。
+
+
+* *可选*:覆盖`getPreferredFocusedComponent()`方法并返回首次显示对话框时应该聚焦的组件。
+
+
+* *可选*:重写`getDimensionServiceKey()`方法以返回将用于持久化对话框维度的标识符。
+
+
+* *可选*:重写`getHelpId()`方法以返回与对话框关联的上下文帮助主题。
+
+
+该
+
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)
-class is often used together with UI Designer forms.
-In this case, you bind a UI Designer form to your class extending
-[DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java),
-bind the top-level panel of the form to a field and return that field from the `createCenterPanel()` method.
 
-To display the dialog, you call the `show()` method and then use the `getExitCode()` method to check how the dialog was closed.
+class通常与UI Designer表单一起使用。
 
-To customize the buttons displayed in the dialog (replacing the standard `OK/Cancel/Help` set of buttons), you can override either the `createActions()` or `createLeftActions()` methods.
-Both of these methods return an array of Swing Action objects.
-If the button that you're adding closes the dialog, you can use
-[DialogWrapperExitAction](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java),
-as the base class for your action. 
-Use `action.putValue(DialogWrapper.DEFAULT_ACTION, true)` to set the default button.
+在这种情况下，您将UI Designer表单绑定到您的类扩展
 
-To validate the data entered into the dialog, you can override the `doValidate()` method.
-The method will be called automatically by timer.
-If the currently entered data is valid, you need to return `null` from your implementation.
-Otherwise, you need to return a
+[DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)，
+
+将窗体的顶级面板绑定到一个字段，并从`createCenterPanel()`方法返回该字段。
+
+
+要显示对话框，可以调用`show()`方法，然后使用`getExitCode()`方法检查对话框的关闭方式。
+
+
+要自定义对话框中显示的按钮(替换标准的“OK/Cancel/Help”按钮组)，您可以覆盖`createActions()`或`createLeftActions()`方法。
+
+这两个方法都返回一个Swing Action对象数组。
+
+如果您要添加的按钮关闭对话框，则可以使用
+
+[DialogWrapperExitAction](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java)，
+
+作为您行动的基类。
+
+使用`action.putValue(DialogWrapper.DEFAULT_ACTION，true)`来设置默认按钮。
+
+
+要验证输入到对话框中的数据，可以覆盖`doValidate()`方法。
+
+该方法将由计时器自动调用。
+
+如果当前输入的数据有效，则需要从实现中返回“null”。
+
+否则，你需要返回一个
+
 [ValidationInfo](upsource:///platform/platform-api/src/com/intellij/openapi/ui/ValidationInfo.java)
-class which encapsulates an error message and an optional component associated with the invalid data.
-If you specify a component, an error icon will be displayed next to it, and it will be focused when the user tries to invoke the `OK` action.
 
-## Example
+封装错误消息的类和与无效数据关联的可选组件。
 
-Simple definition of a
+如果指定一个组件，它旁边会显示一个错误图标，当用户尝试调用“OK”操作时它将被聚焦。
+
+
+##示例
+
+
+简单定义一个
+
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java):
+
 
 ```java
 public class SampleDialogWrapper extends DialogWrapper {
@@ -100,8 +145,10 @@ public class SampleDialogWrapper extends DialogWrapper {
 }
 ```
 
-Usage of 
+用法
+
 [DialogWrapper](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java):
+
 
 ```java
 JButton testButton = new JButton();
@@ -112,3 +159,5 @@ testButton.addActionListener(actionEvent -> {
   }
 });
 ```
+
+

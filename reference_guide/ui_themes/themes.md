@@ -2,64 +2,105 @@
 title: Creating Custom UI Themes
 ---
 
-Creating a custom UI Theme is a process of choosing a base IDE Theme (_Light_ or _Darcula_,) then changing aspects of the base Theme definition. 
-Custom UI Themes can:
-* substitute icons,
-* change the colors of icons and UI controls,
-* alter the borders and insets of UI controls,
-* provide custom editor schemes,
-* add background images.
+创建自定义UI主题是选择基本IDE主题(_Light_或_Darcula_)然后更改基本主题定义的各个方面的过程.
 
-## The Structure of a UI Theme
-UI Themes are components within IntelliJ Platform plugins. 
-Theme plugins should be stand-alone plugins, and not combined with other plugin functionality. 
-This approach is the best user experience because it avoids an IDE restart when installing a UI Theme plugin.
+自定义UI主题可以:
 
-UI Themes have several components:
-* A required Theme description (JSON) file in the plugin project's `resources` folder. 
-* A required `themeProvider` declaration in the plugin's `plugin.xml` file, located in the plugin project's `META-INF` folder.
-* An optional Editor Scheme description (XML) file derived from an exported IDE editor scheme. 
-  This file is located in the plugin project's `resources` folder.
-* An optional background image file, located in the plugin project's `resources` folder.
-* Optional icon image files, located in the plugin project's `resources` folder.  
+*替换图标,
 
-![UI Theme Components](img/theme_components.png)
+*更改图标和UI控件的颜色,
 
-## Custom UI Theme Workflow
-Creating a UI Theme follows this general sequence:
-* [Start with a Plugin Project](/basics/getting_started/creating_plugin_project.md)
-* [Add UI Theme components to the plugin](#creating-a-ui-theme-with-the-devkit-theme-wizard) by using the DevKit UI Theme Wizard.
-* [Customize the UI Theme](themes_customize.md) by adding data objects to the Theme description (JSON) file.
-* [Add an Editor Scheme or Background Image](themes_extras.md) to the plugin.
-* [Build and test](/basics/getting_started/running_and_debugging_a_plugin.md) the UI Theme plugin.
-* [Deploy the UI Theme plugin](/basics/getting_started/deploying_plugin.md)
-* [Publish the UI Theme plugin](/basics/getting_started/publishing_plugin.md) 
+*改变UI控件的边框和插图,
+
+*提供自定义编辑器方案,
+
+*添加背景图片.
 
 
-## Creating Custom UI Themes
+## UI主题的结构
 
-A UI Theme is added to an IntelliJ Platform plugin using the DevKit UI Theme Wizard.
+UI主题是IntelliJ平台插件中的组件.
 
-### Creating a UI Theme with the DevKit Theme Wizard
-The DevKit Wizard is part of the DevKit plugin, which is bundled with IntelliJ IDEA. 
-This Wizard can be used for both DevKit-based and Gradle-based plugins.
+主题插件应该是独立的插件,而不是与其他插件功能相结合.
+
+此方法是最佳用户体验,因为它可以避免在安装UI Theme插件时重新启动IDE.
+
+
+UI主题有几个组成部分:
+
+*插件项目的`resources`文件夹中的必需主题描述(JSON)文件.
+
+*插件的`plugin.xml`文件中需要的`themeProvider`声明,位于插件项目的`META-INF`文件夹中.
+
+*从导出的IDE编辑器方案派生的可选编辑器方案描述(XML)文件.
+  
+该文件位于插件项目的`resources`文件夹中.
+
+*一个可选的背景图像文件,位于插件项目的`resources`文件夹中.
+
+*可选的图标图像文件,位于插件项目的`resources`文件夹中.
+
+
+![UI主题组件](img/theme_components.png)
+
+
+##自定义UI主题工作流程
+
+创建UI主题遵循以下一般顺序:
+
+* [从插件项目开始](/basics/getting_started/creating_plugin_project.md)
+
+* [使用DevKit UI主题向导将UI主题组件添加到插件](#creating-a-ui-theme-with-the-devkit-theme-wizard).
+
+* [自定义UI主题](themes_customize.md)通过将数据对象添加到主题描述(JSON)文件.
+
+* [添加编辑器方案或背景图像](themes_extras.md)到插件.
+
+* [构建和测试](/basics/getting_started/running_and_debugging_a_plugin.md)UI主题插件.
+
+* [部署UI主题插件](/basics/getting_started/deploying_plugin.md)
+
+* [发布UI主题插件](/basics/getting_started/publishing_plugin.md)
+
+
+##创建自定义UI主题
+
+
+使用DevKit UI主题向导将UI主题添加到IntelliJ平台插件.
+
+
+###使用DevKit主题向导创建UI主题
+
+DevKit向导是DevKit插件的一部分,该插件与IntelliJ IDEA捆绑在一起.
+
+此向导可用于基于DevKit和基于Gradle的插件.
+
 
 While a plugin project is open in IntelliJ IDEA, select the `resources` folder in the _Project_ tool window.
 From the main menu, select the _**New | Plugin DevKit | Theme**_ action. 
 
 ![DevKit Wizard Action](img/devkit_wiz_action.png)
 
-<br>
 
-The Wizard then prompts for the name of the new Theme, and the basis for the Theme:
+点击
+
+
+然后,向导会提示输入新主题的名称,以及主题的基础:
+
 
 ![DevKit Dialog](img/devkit_wiz_dialog.png)
 
-The best practice is to name the new Theme the same as the name of the plugin. 
-The checkbox indicates the basis for the Theme. 
-Checking _Dark theme_ means basing the custom Theme on _Darcula_. 
-Leaving the box unchecked means basing the custom Theme on the default IntelliJ IDEA _Light_ Theme. 
-For the SDK code sample `theme_basics` the box is _unchecked_.
+
+最佳做法是将新主题命名为与插件名称相同.
+
+该复选框表示主题的基础.
+
+检查_Dark theme_意味着在_Darcula_上创建自定义主题.
+
+保持框未选中意味着将自定义主题基于默认的IntelliJ IDEA _Light_主题.
+
+对于SDK代码示例`theme_basics`,该框是_unchecked_.
+
 
 Clicking the _OK_ button creates a default Theme description file named `[themeName].theme.json` in the plugin project's `resources` folder. 
 In this example, the file is named `theme_basics.theme.json`. 
@@ -75,11 +116,16 @@ The content of the default file is a short set of key–value pairs:
 }
 ```
 
-The `value` of the `name` key matches the first portion of the Theme description `[themeName].theme.json` file name. 
-The `value` of `name` is displayed in the [Theme](https://www.jetbrains.com/help/idea/settings-appearance.html)  _Preferences_ dropdown when the UI Theme's plugin is installed in the IDE. 
-The value of the `author` key is by default empty.
-The `editorScheme` section will be addressed in [Adding a Custom Editor Scheme](themes_extras.md#adding-a-custom-editor-scheme) 
-The `ui` section will be addressed in [Customizing UI Control Colors](themes_customize.md#customizing-ui-controls). 
+`name`键的`value`匹配主题描述`[themeName] .theme.json`文件名的第一部分.
+
+当UI主题的插件安装在IDE中时,`name`的`value`显示在[Theme](https://www.jetbrains.com/help/idea/settings-appearance.html)_Preferences_下拉列表中.
+
+`author`键的值默认为空.
+
+`editorScheme`部分将在[添加自定义编辑器方案]中解决(themes_extras.md#adding-a-custom-editor-scheme)
+
+`ui`部分将在[Customizing UI Control Colors](themes_customize.md#customizing-ui-controls)中解决.
+
 
 The Wizard also creates a `themeProvider` declaration in the `<extensions>` section of the plugin's `plugin.xml` file. 
 This declaration binds the Theme description file to a theme provider extension using a generated unique `id`.
@@ -90,13 +136,24 @@ This declaration binds the Theme description file to a theme provider extension 
 ```
 > **WARNING** Do not modify or re-use an existing value of the generated `id` attribute.
 
-At this point, the UI Theme `theme_basics` is a valid UI Theme. 
-Its plugin can be built and tested in IntelliJ Platform-based IDEs, giving the user the opportunity to select _theme_basics_ in the [Theme](https://www.jetbrains.com/help/idea/settings-appearance.html) _Preferences_ dropdown. 
-The custom Theme looks exactly like the IntelliJ IDEA default `Light` Theme, but it is a valid custom Theme.
+此时,UI主题`theme_basics`是一个有效的UI主题.
 
-### Completing the Default UI Theme Description File
-The default UI Theme definition can be directly edited to add or change some of the values for the default keys, if desired:
-The following values can be changed directly in the Theme (`*.theme.json`) description file:
-* The value of the `dark` key can be changed to `true`, which would switch the basis of the Theme to _Darcula_ instead of _Light_.
-* The value of the `author` key, which defaults to an empty string, can be set to a `String` literal. 
-In the case of the `theme_basics` code sample, it is set to "IntelliJ Platform SDK".
+它的插件可以在基于IntelliJ平台的IDE中构建和测试,让用户有机会在[主题](https://www.jetbrains.com/help/idea/settings-appearance.html)_Preferences_下拉列表中选择_theme_basics_ 
+.
+
+自定义主题看起来与IntelliJ IDEA默认的`Light`主题完全相同,但它是一个有效的自定义主题.
+
+
+###完成默认UI主题描述文件
+
+如果需要,可以直接编辑默认UI主题定义以添加或更改默认键的某些值:
+
+可以在Theme(`* .theme.json`)描述文件中直接更改以下值:
+
+*`dark`键的值可以改为`true`,这会将主题的基础切换为_Darcula_而不是_Light_.
+
+*`author`键的值,默认为空字符串,可以设置为`String`字面值.
+
+在`theme_basics`代码示例的情况下,它被设置为“IntelliJ Platform SDK”.
+
+

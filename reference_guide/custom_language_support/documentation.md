@@ -2,16 +2,26 @@
 title: Documentation
 ---
 
-To provide different kinds of documentation support (tooltips on **Ctrl-hover**, quick documentation popup etc.), the plugin needs to provide an implementation of the
+要提供不同类型的文档支持(工具提示在** Ctrl-hover **,快速文档弹出等),插件需要提供一个实现
+
 [DocumentationProvider](upsource:///platform/lang-api/src/com/intellij/lang/documentation/DocumentationProvider.java)
-interface and register it in the `lang.documentationProvider` extension point.
-A standard base class for such implementations is available in the class
+
+接口并将其注册到`lang.documentationProvider`扩展点.
+
+类中提供了此类实现的标准基类
+
 [AbstractDocumentationProvider](upsource:///platform/lang-api/src/com/intellij/lang/documentation/AbstractDocumentationProvider.java).
 
-**Example**:
+
+**例**:
+
 [DocumentationProvider](upsource:///plugins/properties/src/com/intellij/lang/properties/PropertiesDocumentationProvider.java)
-for
-[Properties language plugin](upsource:///plugins/properties/)
+
+对于
+
+[属性语言插件](upsource:///plugins/properties/)
 
 
-The `getQuickNavigateInfo()` method returns the text to be displayed when the user holds the mouse over an element with `Ctrl` pressed.
+`getQuickNavigateInfo()`方法返回当用户将鼠标按住按下“Ctrl”的元素时要显示的文本.
+
+

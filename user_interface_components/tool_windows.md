@@ -2,89 +2,158 @@
 title: Tool Windows
 ---
 
+##工具Windows
 
-## Tool Windows
 
-_Tool windows_ are child windows of the IDE used to display information. These windows generally have their own toolbars (referred to as _tool window bars_) along the outer edges of the main window containing one or more _tool window buttons_, which activate panels displayed on the left, bottom and right sides of the main IDE window. For detailed information about tool windows, please see [IntelliJ IDEA Web Help ](https://www.jetbrains.com/idea/help/tool-windows.html).
+_Tool windows_是用于显示信息的IDE的子窗口。
+这些窗口通常在主窗口的外边缘有自己的工具栏(称为_tool窗口栏_)，其中包含一个或多个_tool窗口按钮_，它们激活显示在主IDE窗口左侧，底部和右侧的面板。
+有关工具窗口的详细信息，请参阅[IntelliJ IDEA Web帮助](https://www.jetbrains.com/idea/help/tool-windows.html)。
 
-Each side contains two tool window groups, the primary and the secondary one, and only one tool window from each group can be active at a time.
 
-Each tool window can show multiple tabs (or "contents", as they are called in the API).
-For example, the Run tool window displays a tab for each active run configuration, and the Changes tool window displays a fixed set of tabs depending on the version control system used in the project.
+每一侧包含两个工具窗口组，主要和次要工具窗口组，每个组中只有一个工具窗口可以一次处于活动状态。
 
-There are two main scenarios for the use of tool windows in a plugin.
-In the first scenario (used by the Ant and Commander plugins, for example), a tool window button is always visible, and the user can activate it and interact with the plugin functionality at any time.
-In the second scenario (used by the `Analyze Dependencies` action, for example), the tool window is created to show the results of a specific operation, and can be closed by the user after the operation is completed.
 
-In the first scenario, the tool window is registered in *plugin.xml* using the `<toolWindow>` extension point.
-The extension point attributes specify all the data which is necessary to display the tool window button:
+每个工具窗口都可以显示多个选项卡(或“内容”，因为它们在API中调用)。
 
-*  The `id` of the tool window (corresponds to the text displayed on the tool window button)
+例如，“运行”工具窗口显示每个活动运行配置的选项卡，“更改”工具窗口显示一组固定的选项卡，具体取决于项目中使用的版本控制系统。
 
-*  The `anchor`, meaning the side of the screen on which the tool window is displayed ("left", "right" or "bottom")
 
-*  The `secondary` attribute, specifying whether the tool window is displayed in the primary or the secondary group
+在插件中使用工具窗口有两种主要方案。
 
-*  The `icon` to display on the tool window button (13x13 pixels)
+在第一个场景中(例如，Ant和Commander插件使用)，工具窗口按钮始终可见，用户可以随时激活它并与插件功能交互。
 
-In addition to that, you specify the *factory class*  - the name of a class implementing the
+在第二个场景中(例如，“Analyze Dependencies”操作使用)，创建工具窗口以显示特定操作的结果，并且可以在操作完成后由用户关闭。
+
+
+在第一个场景中，工具窗口使用`<toolWindow>`扩展点在* plugin.xml *中注册。
+
+扩展点属性指定显示工具窗口按钮所需的所有数据:
+
+
+*工具窗口的`id`(对应于工具窗口按钮上显示的文本)
+
+
+*`anchor`，表示显示工具窗口的屏幕一侧(“左”，“右”或“底”)
+
+
+*“secondary”属性，指定工具窗口是显示在主要组还是次要组中
+
+
+*工具窗口按钮上显示的`icon`(13x13像素)
+
+
+除此之外，您还可以指定* factory class *  - 实现该类的类的名称
+
 [ToolWindowFactory](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java)
-interface.
-When the user clicks on the tool window button, the `createToolWindowContent()` method of the factory class is called, and initializes the UI of the tool window.
-This procedure ensures that unused tool windows don't cause any overhead in startup time or memory usage: if a user does not interact with the tool window of your plugin, no plugin code will be loaded or executed.
 
-If the tool window of your plugin doesn't need to be displayed for all projects, you can also specify the *conditionClass*  attribute - the qualified name of a class implementing the
-[Condition\<Project\>](upsource:///platform/util-rt/src/com/intellij/openapi/util/Condition.java)
-interface (this can be the same class as the tool window factory implementation).
-If the condition returns `false`, the tool window will not be displayed.
-Note that the condition is evaluated only once when the project is loaded;
-if you'd like to show your and hide tool window dynamically while the user is working with the project, you need to use the second method for tool window registration.
+接口。
 
-The second method involves simply calling
+当用户单击工具窗口按钮时，将调用工厂类的`createToolWindowContent()`方法，并初始化工具窗口的UI。
+
+此过程可确保未使用的工具窗口不会导致启动时间或内存使用的任何开销:如果用户未与插件的工具窗口交互，则不会加载或执行插件代码。
+
+
+如果不需要为所有项目显示插件的工具窗口，还可以指定* conditionClass *属性 - 实现该类的类的限定名称
+
+[条件\ <项目\>](upsource:///platform/util-rt/src/com/intellij/openapi/util/Condition.java)
+
+interface(这可以是与工具窗口工厂实现相同的类)。
+
+如果条件返回“false”，则不会显示工具窗口。
+
+请注意，在加载项目时仅评估条件一次;
+
+如果您想在用户使用项目时动态显示和隐藏工具窗口，则需要使用第二种方法进行工具窗口注册。
+
+
+第二种方法涉及简单地调用
+
 [ToolWindowManager.registerToolWindow()](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.java)
-from your plugin code.
-The method has multiple overloads that can be used depending on your task.
-If you use an overload that takes a component, the component becomes the first content (tab) displayed in the tool window.
 
-Displaying the contents of many tool windows requires access to the indexes.
-Because of that, tool windows are normally disabled while building indices, unless you pass true as the value of `canWorkInDumbMode` to the `registerToolWindow()` function.
+从你的插件代码。
 
-As mentioned previously, tool windows can contain multiple tabs, or contents.
-To manage the contents of a tool window, you can call
-[ToolWindow.getContentManager()](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindow.java).
-To add a tab (content), you first need to create it by calling
-[ContentManager.getFactory().createContent()](upsource:///platform/platform-api/src/com/intellij/ui/content/ContentManager.java),
-and then to add it to the tool window using
-[ContentManager.addContent()](upsource:///platform/platform-api/src/com/intellij/ui/content/ContentManager.java).
+该方法具有多个重载，可根据您的任务使用。
 
-You can control whether the user is allowed to close tabs either globally or on a per-tab basis.
-The former is done by passing the `canCloseContents` parameter to the `registerToolWindow()` function, or by specifying
-`canCloseContents="true"` in *plugin.xml*.  The default value is `false`; Calling setClosable(true) on ContentManager content will be ignored unless `canCloseContents` is explicityly set.
-If closing tabs is enabled in general, you can disable closing of specific tabs by calling
-[Content.setCloseable(false)](upsource:///platform/platform-api/src/com/intellij/ui/content/Content.java).
+如果使用带有组件的重载，则组件将成为工具窗口中显示的第一个内容(选项卡)。
 
-## How to Create a Tool Window?
 
-The IntelliJ Platform provides the _toolWindow_ [extension point](/basics/plugin_structure/plugin_extensions_and_extension_points.md) that you can use to create and configure your custom tool windows. This extension point is declared using the [ToolWindowEP](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowEP.java) bean class.
+显示许多工具窗口的内容需要访问索引。
 
-To create a tool window, first declare an extension to the _toolWindow_ extension point.
+因此，工具窗口通常在构建索引时被禁用，除非您将`canWorkInDumbMode`的值传递给`registerToolWindow()`函数。
 
-### Creation of Plugin
 
-To create a plugin that displays a custom tool window, perform the following steps:
+如前所述，工具窗口可以包含多个选项卡或内容。
 
-1. In your plugin project, create a Java class that implements the [ToolWindowFactory](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java)interface.
-2. In this class, override the `createToolWindowContent` method. This method specifies the content for your tool window.
-3. In the plugin configuration file plugin.xml, create the `<extensions defaultExtensionNs="com.intellij">...</extensions>` section.
-4. To this section, add the `<toolWindow>` element, and for this element, set the following attributes declared in the ToolWindowEP bean class:
-    - **id** (required): specifies the tool window caption.
-    - **anchor** (required): specifies the tool window bar where the tool window button will be displayed. Possible values: "left", "right", "top", "bottom."
-    - **secondary** (optional): when true, the tool window button will be shown on the lower part of the tool window bar. Default value is false.
-    - **factoryClass** (required): specifies the Java class implementing the ToolWindowFactory interface (see Step 1).
-    - **icon** (optional): specifies path to the icon that identifies the tool window, if any.
-    - **conditionClass** (optional): specifies a Java class that implements the [Condition](upsource:///platform/util-rt/src/com/intellij/openapi/util/Condition.java) interface. Using this class, you can define conditions to be met to display tool window button. In the Condition class, you should override the value method: if this method returns false, the tool window button is not displayed on tool window bar.
+要管理工具窗口的内容，您可以调用
 
-To clarify the above procedure, consider the following fragment of the `plugin.xml` file:
+[ToolWindow.getContentManager()](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindow.java)。
+
+要添加选项卡(内容)，首先需要通过调用来创建它
+
+[ContentManager.getFactory().createContent()](upsource:///platform/platform-api/src/com/intellij/ui/content/ContentManager.java)，
+
+然后使用将其添加到工具窗口
+
+[ContentManager.addContent()](upsource:///platform/platform-api/src/com/intellij/ui/content/ContentManager.java)。
+
+
+您可以控制是否允许用户全局或基于每个选项卡关闭选项卡。
+
+前者是通过将`canCloseContents`参数传递给`registerToolWindow()`函数，或者通过指定
+
+* canClose中的`canCloseContents =“true”`*。
+默认值为“false”;
+除非明确设置`canCloseContents`，否则将忽略对ContentManager内容调用setClosable(true)。
+
+如果通常启用了关闭选项卡，则可以通过调用禁用特定选项卡的关闭
+
+[Content.setCloseable(假)](upsource:///platform/platform-api/src/com/intellij/ui/content/Content.java)。
+
+
+##如何创建工具窗口？
+
+
+IntelliJ平台提供_toolWindow_ [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)，您可以使用它来创建和配置自定义工具窗口。
+使用[ToolWindowEP](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowEP.java)bean类声明此扩展点。
+
+
+要创建工具窗口，首先声明_toolWindow_扩展点的扩展名。
+
+
+###创建插件
+
+
+要创建显示自定义工具窗口的插件，请执行以下步骤:
+
+
+1.在插件项目中，创建一个实现[ToolWindowFactory](upsource:///platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java)接口的Java类。
+
+2.在这个类中，重写`createToolWindowContent`方法。
+此方法指定工具窗口的内容。
+
+3.在插件配置文件plugin.xml中，创建`<extensions defaultExtensionNs =“com.intellij”> ... </extensions>`部分。
+
+4.在本节中，添加`<toolWindow>`元素，对于此元素，设置ToolWindowEP bean类中声明的以下属性:
+    
+ -  ** id **(必填):指定工具窗口标题。
+    
+ -  ** anchor **(必需):指定将显示工具窗口按钮的工具窗口栏。
+可能的值:“left”，“right”，“top”，“bottom”。
+    
+ -  ** secondary **(可选):当为true时，工具窗口按钮将显示在工具窗口栏的下部。
+默认值为false。
+    
+ -  ** factoryClass **(必需):指定实现ToolWindowFactory接口的Java类(参见步骤1)。
+    
+ -  ** icon **(可选):指定标识工具窗口的图标的路径(如果有)。
+    
+ -  ** conditionClass **(可选):指定实现[Condition](upsource:///platform/util-rt/src/com/intellij/openapi/util/Condition.java)接口的Java类。
+使用此类，您可以定义要显示工具窗口按钮的条件。
+在Condition类中，您应该覆盖value方法:如果此方法返回false，则工具窗口栏上不会显示工具窗口按钮。
+
+
+为了阐明上述过程，请考虑以下`plugin.xml`文件的片段:
+
 
 ```xml
 <extensions defaultExtensionNs="com.intellij">
@@ -92,11 +161,16 @@ To clarify the above procedure, consider the following fragment of the `plugin.x
 </extensions>
 ```
 
-### Sample Plugin
+###示例插件
 
-To clarify how to develop plugins that create tool windows, consider the **toolWindow** sample plugin available in the [code_samples](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/) directory of the SDK documentation. This plugin creates the **Sample Calendar** tool window that displays the system date, time and time zone.
 
-**To run the toolWindow plugin**
+为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow **示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/) 
+SDK文档的目录。
+此插件创建** Sample Calendar **工具窗口，显示系统日期，时间和时区。
+
+
+**运行toolWindow插件**
+
 
 1. Start **IntelliJ IDEA** and open the **tool_window** project saved into the [code_samples/tool_window](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/tool_window) directory.
 2. Ensure that the project settings are valid for your environment. If necessary, modify the project settings.
@@ -104,6 +178,10 @@ To view or modify the project settings, you can open the [Project Structure](ht
 3. Run the plugin by choosing the **Run | Run** on the main menu.
 If necessary, change the [Run/Debug Configurations](https://www.jetbrains.com/help/idea/run-debug-configuration-plugin.html).
 
-The plugin creates the **Sample Calendar** tool window. When opened, this tool window is similar to the following screen:
+该插件创建** Sample Calendar **工具窗口。
+打开时，此工具窗口类似于以下屏幕:
 
-![Sample Calendar](img/sample_calendar.png)
+
+![样本日历](img/sample_calendar.png)
+
+

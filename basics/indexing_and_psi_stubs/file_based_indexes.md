@@ -2,67 +2,113 @@
 title: File-based Indexes
 ---
 
-File-based indexes are based on a Map/Reduce architecture. Each index has a certain type of key and a certain type of value.
+基于文件的索引基于Map/Reduce架构.
+每个索引都有某种类型的键和某种类型的值.
 
-The key is what's later used to retrieve data from the index.
 
-*Example:* in the word index the key is the word itself.
+关键是后来用于从索引中检索数据的内容.
 
-The value is arbitrary data which is associated with the key in the index.
 
-*Example:* in the word index the value is a mask indicating in which context the word occurs (code, string literal or comment).
+*示例:*在单词索引中,键是单词本身.
 
-In the simplest case, when we only need to know in what files some data is present, the value has type `Void` and is not stored in the index.
 
-When the index implementation indexes a file, it receives the content of a file and returns a map from the keys found in the file to the associated values.
+该值是与索引中的键相关联的任意数据.
 
-When you access the index, you specify the key that you're interested in and get back the list of files in which the key occurs and the value associated with each file.
 
-## Implementing a file-based index
+*示例:*在单词索引中,值是一个掩码,指示单词出现在哪个上下文中(代码,字符串文字或注释).
 
-A fairly simple file-based index implementation is the [UI Designer bound forms index](upsource:///plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java). Refer to it as an example to understand this topic better.
 
-Each specific index implementation is a class extending [FileBasedIndexExtension](upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndexExtension.java). A file-based index should be registered in the `<fileBasedIndex>` extension point.
+在最简单的情况下,当我们只需要知道某些数据存在于哪些文件中时,该值的类型为“Void”并且不存储在索引中.
 
-An implementation of a file-based index consists of the following main parts:
 
-* `getIndexer()` returns the indexer class actually responsible for building a set of key/value pairs based on file content.
-* `getKeyDescriptor()` returns the key descriptor responsible for comparing keys and storing them in a serialized binary format.
+当索引实现索引文件时,它接收文件的内容并将文件中找到的键的映射返回到关联的值.
 
-   Probably the most commonly used [`KeyDescriptor`](upsource:///platform/util/src/com/intellij/util/io/KeyDescriptor.java) implementation is [`EnumeratorStringDescriptor`](upsource:///platform/util/src/com/intellij/util/io/EnumeratorStringDescriptor.java) which is designed for storing identifiers in an efficient way.
-* `getValueExternalizer()` returns the value serializer responsible for storing values in a serialized binary format.
-* `getInputFilter()` allows to restrict the indexing only to a certain set of files.
-* `getVersion()` returns the version of the index implementation. The index is automatically rebuilt if the current version differs from the version of the index implementation used to build the index.
 
-If you don't need to associate any value with the files (i.e. your value type is Void), you can simplify the implementation by using [ScalarIndexExtension](upsource:///platform/indexing-impl/src/com/intellij/util/indexing/ScalarIndexExtension.java) as the base class.
+当您访问索引时,指定您感兴趣的密钥并返回密钥出现的文件列表以及与每个文件关联的值.
 
-> **Note** The data returned by `DataIndexer.map()` must depend only on input data passed to the method, and must not depend on any external files. Otherwise your index will not be correctly updated when the external data changes, and you will have stale data in your index.
 
-> **Note** Please see `com.intellij.util.indexing.DebugAssertions` on how to enable additional debugging assertions during development to assert correct index implementation.
+##实现基于文件的索引
 
-## Accessing a file-based index
 
-Access to file-based indexes is performed through the [FileBasedIndex](upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java) class.
+一个相当简单的基于文件的索引实现是[UI Designer绑定表单索引](upsource:///plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java).
+请参考它作为一个例子来更好地理解这个主题.
 
-The following primary operations are supported:
 
-* `getAllKeys()` and `processAllKeys()` allow to obtain the list of all keys found in files which are a part of the specified project.
+每个特定的索引实现都是一个扩展[FileBasedIndexExtension]的类(upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndexExtension.java).
+基于文件的索引应该在`<fileBasedIndex>`扩展点中注册.
 
-> **Note** The returned data is guaranteed to contain all keys found in up-to-date project content, but may also contain additional keys not currently found in the project.
 
-* `getValues()` allows to obtain all values associated with a specific key but not the files in which they were found.
-* `getContainingFiles()` allows to obtain all files in which a specific key was encountered.
-* `processValues()` allows to iterate though all files in which a specific key was encountered and to access the associated values at the same time.
+基于文件的索引的实现包括以下主要部分:
 
-> **Note** Nested index access is forbidden as it might lead to a deadlock. Collect all necessary data from index A first, then process results while accessing index B.
 
-## Standard indexes
+*`getIndexer()`返回实际负责根据文件内容构建一组键/值对的索引器类.
 
-The *IntelliJ Platform* contains a number of standard file-based indexes. The most useful indexes for plugin developers are:
+*`getKeyDescriptor()`返回密钥描述符,负责比较密钥并以序列化二进制格式存储它们.
 
-* Word index
-* File name index
 
-Generally, the word index should be accessed indirectly by using helper methods of the [`PsiSearchHelper`](upsource:///platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java) class.
+可能最常用的[`KeyDescriptor`](upsource:///platform/util/src/com/intellij/util/io/KeyDescriptor.java)实现是[`EnumeratorStringDescriptor`](upsource:///platform/util/src/com/intellij/util/io/EnumeratorStringDescriptor.java),用于以有效的方式存储标识符.
 
-The second index is [`FilenameIndex`](upsource:///platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java). It provides a quick way to find all files matching a certain file name. [`FileTypeIndex`](upsource:///platform/indexing-impl/src/com/intellij/psi/search/FileTypeIndex.java) serves a similar goal: it allows to quickly find all files of a certain file type.
+*`getValueExternalizer()`返回值序列化器,负责以序列化二进制格式存储值.
+
+*`getInputFilter()`允许将索引限制为仅限于某组文件.
+
+*`getVersion()`返回索引实现的版本.
+如果当前版本与用于构建索引的索引实现的版本不同,则会自动重建索引.
+
+
+如果您不需要将任何值与文件相关联(即您的值类型为Void),则可以使用[ScalarIndexExtension]简化实现(upsource:///platform/indexing-impl/src/com/intellij/util/indexing/ScalarIndexExtension.java)作为基类.
+
+
+> **注意**`DataIndexer.map()`返回的数据必须仅依赖于传递给方法的输入数据,并且不能依赖于任何外部文件.
+否则,当外部数据发生更改时,您的索引将无法正确更新,并且索引中将包含过时数据.
+
+
+> **注意**请参阅`com.intellij.util.indexing.DebugAssertions`,了解如何在开发期间启用其他调试断言以断言正确的索引实现.
+
+
+##访问基于文件的索引
+
+
+通过[FileBasedIndex](upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java)类访问基于文件的索引.
+
+
+支持以下主要操作:
+
+
+*`getAllKeys()`和`processAllKeys()`允许获取在作为指定项目一部分的文件中找到的所有键的列表.
+
+
+> **注意**返回的数据保证包含在最新项目内容中找到的所有密钥,但也可能包含当前未在项目中找到的其他密钥.
+
+
+*`getValues()`允许获取与特定键相关联的所有值,但不能获取找到它们的文件.
+
+*`getContainingFiles()`允许获取遇到特定键的所有文件.
+
+*`processValues()`允许迭代遇到特定键的所有文件,并同时访问关联的值.
+
+
+> **注意**禁止嵌套索引访问,因为它可能导致死锁.
+首先从索引A收集所有必要的数据,然后在访问索引B时处理结果.
+
+
+##标准索引
+
+
+* IntelliJ Platform *包含许多基于标准文件的索引.
+插件开发人员最有用的索引是:
+
+
+*词索引
+
+*文件名索引
+
+
+通常,应使用[`PsiSearchHelper`](upsource:///platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java)类的辅助方法间接访问单词索引.
+
+
+第二个索引是[`FilenameIndex`](upsource:///platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java).
+它提供了一种快速查找与特定文件名匹配的文件的方法. 
+[`FileTypeIndex`](upsource:///platform/indexing-impl/src/com/intellij/psi/search/FileTypeIndex.java)提供了类似的目标:它允许快速查找某种文件类型的所有文件.
+
+

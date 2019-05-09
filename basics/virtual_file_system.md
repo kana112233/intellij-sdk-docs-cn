@@ -2,67 +2,125 @@
 title: Virtual File System
 ---
 
-The virtual file system (VFS) is a component of *IntelliJ Platform* that encapsulates most of its activity for working with files. It serves the following main purposes:
+虚拟文件系统(VFS)是* IntelliJ Platform *的一个组件,它封装了用于处理文件的大部分活动.
+它有以下主要用途:
 
-* Providing a universal API for working with files regardless of their actual location (on disk, in archive, on a HTTP server etc.)
-* Tracking file modifications and providing both old and new versions of the file content when a modification is detected.
-* Providing a possibility to associate additional persistent data with a file in the VFS.
 
-In order to provide the last two features, the VFS manages a _persistent snapshot_ of some of the contents of the user's hard disk. The snapshot stores only those files which have been requested at least once through the VFS API, and is asynchronously updated to match the changes happening on the disk.
+*提供用于处理文件的通用API,无论其实际位置如何(在磁盘上,存档中,在HTTP服务器上等)
 
-The snapshot is application level, not project level - so, if some file (for example, a class in the JDK) is referenced by multiple projects, only one copy of its contents will be stored in the VFS.
+*在检测到修改时跟踪文件修改并提供文件内容的新旧版本.
 
-All VFS access operations go through the snapshot. 
+*提供将附加持久数据与VFS中的文件相关联的可能性.
 
-If some information is requested through the VFS APIs and is not available in the snapshot, it is loaded from disk and stored into the snapshot. If the information is available in the snapshot, the snapshot data is returned. The contents of files and the lists of files in directories are stored in the snapshot only if that specific information was accessed - otherwise, only file metadata like name, length, timestamp, attributes is stored.
 
-> **Note** This means that the state of the file system and the file contents displayed in the IntelliJ Platform UI comes from the snapshot, which may not always match the actual contents of the disk. 
+为了提供最后两个功能,VFS管理用户硬盘的某些内容的_peristent snapshot_.
+快照仅存储通过VFS API至少请求过一次的文件,并且异步更新以匹配磁盘上发生的更改.
+
+
+快照是应用程序级别,而不是项目级别 - 因此,如果某个文件(例如,JDK中的某个类)被多个项目引用,则其内容的一个副本将存储在VFS中.
+
+
+所有VFS访问操作都通过快照.
+
+
+如果通过VFS API请求某些信息但快照中没有这些信息,则会从磁盘加载并存储到快照中.
+如果快照中有可用信息,则返回快照数据.
+仅当访问了特定信息时,文件的内容和目录中的文件列表才存储在快照中 - 否则,仅存储名称,长度,时间戳,属性等文件元数据.
+
+
+> **注意**这意味着IntelliJ平台UI中显示的文件系统状态和文件内容来自快照,快照可能并不总是与磁盘的实际内容相匹配.
+
 >
-> For example, in some cases deleted files can still be visible in the UI for some time before the deletion is picked up by the IntelliJ Platform.
 
-The snapshot is updated from disk during _refresh operations_, which generally happen asynchronously. All write operations made through the VFS are synchronous - i.e. the contents is saved to disk immediately.
+>例如,在某些情况下,在IntelliJ平台选择删除之前,已删除的文件仍可在UI中显示一段时间.
 
-A refresh operation synchronizes the state of a part of the VFS with the actual disk contents. Refresh operations are explicitly invoked by the *IntelliJ Platform* or plugin code - i.e. when a file is changed on disk while the IDE is running, the change will not be immediately picked up by the VFS. The VFS will be updated during the next refresh operation which includes the file in its scope.
+
+在_refresh operations_期间,快照从磁盘更新,这通常是异步发生的.
+通过VFS进行的所有写操作都是同步的 - 即内容立即保存到磁盘.
+
+
+刷新操作将VFS的一部分状态与实际磁盘内容同步.
+刷新操作由* IntelliJ Platform *或插件代码显式调用 - 即,当IDE运行时在磁盘上更改文件时,VFS不会立即获取更改. 
+VFS将在下一次刷新操作期间更新,其中包括其范围内的文件.
+
 
 *IntelliJ Platform* refreshes the entire project contents asynchronously on startup. By default, it performs a refresh operation when the user switches to it from another app, but users can turn this off via **Settings \| Appearance & Behavior \| System Settings \| Synchronize files on frame activation**.
 
-On Windows, Mac and Linux, *IntelliJ Platform* starts a native file watcher process that receives file change notifications from the file system and reports them to *IntelliJ Platform*. If a file watcher is available, a refresh operation looks only at the files that have been reported as changed by the file watcher. If no file watcher is present, a refresh operation walks through all directories and files in the refresh scope.
+在Windows,Mac和Linux上,* IntelliJ Platform *启动本机文件监视器进程,该进程从文件系统接收文件更改通知并将其报告给* IntelliJ Platform *.
+如果文件观察程序可用,则刷新操作仅查看文件观察程序已报告已更改的文件.
+如果不存在文件观察程序,则刷新操作将遍历刷新范围中的所有目录和文件.
 
-Refresh operations are based on file timestamps. If the contents of a file was changed but its timestamp remained the same, *IntelliJ Platform* will not pick up the updated contents.
 
-There is currently no facility for removing files from the snapshot. If a file was loaded there once, it remains there forever unless it was deleted from the disk and a refresh operation was called on one of its parent directories.
+刷新操作基于文件时间戳.
+如果文件的内容已更改但其时间戳保持不变,则* IntelliJ Platform *将不会获取更新的内容.
+
+
+目前没有用于从快照中删除文件的工具.
+如果一个文件被加载一次,它将永远保留在那里,除非它从磁盘中删除并且在其父目录之一上调用了刷新操作.
+
 
 The VFS itself does not honor ignored files listed in **Settings \| File Types \| Files** and folders to ignore and excluded folders listed in **Project Structure \| Modules \| Sources \| Excluded**. If the application code accesses them, the VFS will load and return their contents. In most cases, the ignored files and excluded folders must be skipped from processing by higher level code.
 
-During the lifetime of a running instance of an IntelliJ Platform IDE, multiple `VirtualFile` instances may correspond to the same disk file. They are equal, have the same `hashCode` and share the user data.
+在IntelliJ平台IDE的运行实例的生命周期中,多个`VirtualFile`实例可能对应于同一磁盘文件.
+它们是相同的,具有相同的`hashCode`并共享用户数据.
 
-## Synchronous and asynchronous refreshes
 
-From the point of view of the caller, refresh operations can be either synchronous or asynchronous. In fact, the refresh operations are executed according to their own threading policy, and the synchronous flag simply means that the calling thread will be blocked until the refresh operation (which will most likely run on a different thread) is completed.
+##同步和异步刷新
 
-Both synchronous and asynchronous refreshes can be initiated from any thread. If a refresh is initiated from a background thread, the calling thread must not hold a read action, because otherwise a deadlock would occur. See [IntelliJ Platform Architectural Overview](/basics/architectural_overview/general_threading_rules.md) for more details on the threading model and read/write actions.
 
-The same threading requirements also apply to functions like [LocalFileSystem.refreshAndFindFileByPath()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/LocalFileSystem.java), which perform a partial refresh if the file with the specified path is not found in the snapshot.
+从调用者的角度来看,刷新操作可以是同步的也可以是异步的.
+实际上,刷新操作是根据它们自己的线程策略执行的,而同步标志只是意味着调用线程将被阻塞,直到刷新操作(很可能在不同的线程上运行)完成.
 
-In nearly all cases, using asynchronous refreshes is strongly preferred. If there is some code that needs to be executed after the refresh is complete, the code should be passed as a `postRunnable` parameter to one of the refresh methods:
- 
-* [RefreshQueue.createSession()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/newvfs/RefreshQueue.java)<!--#L36-->
-* [VirtualFile.refresh()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<!--#L681-->
- 
-Synchronous refreshes can cause deadlocks in some cases, depending on which locks are held by the thread invoking the refresh operation.
 
-## Virtual file system events
+同步刷新和异步刷新都可以从任何线程启动.
+如果从后台线程启动刷新,则调用线程不能保持读取操作,否则会发生死锁.
+有关线程模型和读/写操作的更多详细信息,请参阅[IntelliJ平台架构概述](/basics/architectural_overview/general_threading_rules.md).
 
-All changes happening in the virtual file system, either as a result of refresh operations or caused by user's actions, are reported as _virtual file system events_. VFS events are always fired in the event dispatch thread, and in a write action.
 
-The most efficient way to listen to VFS events is to implement the `BulkFileListener` interface and to subscribe with it to the [VirtualFileManager.VFS_CHANGES](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!--#L34--> topic. 
+相同的线程要求也适用于[LocalFileSystem.refreshAndFindFileByPath()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/LocalFileSystem.java)等函数,如果执行部分刷新,则执行部分刷新
+快照中找不到具有指定路径的文件.
 
-This API gives you all the changes detected during the refresh operation in one list, and lets you process them in batch. Alternatively, you can implement the `VirtualFileListener` interface and register it using [VirtualFileManager.addVirtualFileListener()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!--#L113-->. This will let you process the events one by one.
 
-> **Note** VFS listeners are application level, and will receive events for changes happening in *all* the projects opened by the user. You may need to filter out events which aren't relevant to your task.
+几乎在所有情况下,强烈使用异步刷新.
+如果在刷新完成后需要执行某些代码,则应将代码作为`postRunnable`参数传递给其中一个刷新方法:
+ 
 
-VFS events are sent both before and after each change, and you can access the old contents of the file in the before event. Note that events caused by a refresh are sent after the changes have already occurred on disk - so when you process the `beforeFileDeletion` event, for example, the file has already been deleted from disk. However, it is still present in the VFS snapshot, and you can access its last contents using the VFS API.
+* [RefreshQueue.createSession()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/newvfs/RefreshQueue.java)<! -#L36-->
 
-Note that a refresh operation fires events only for changes in files that have been loaded in the snapshot. For example, if you accessed a `VirtualFile` for a directory but never loaded its contents using [VirtualFile.getChildren()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<!--#L135-->, you may not get `fileCreated` notifications when files are created in that directory.
+* [VirtualFile.refresh()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<! -#L681-->
+ 
 
-If you loaded only a single file in a directory using `VirtualFile.findChild()`, you will get notifications for changes to that file, but you may not get created/deleted notifications for other files in the same directory.
+在某些情况下,同步刷新可能会导致死锁,具体取决于调用刷新操作的线程所持有的锁.
+
+
+##虚拟文件系统事件
+
+
+虚拟文件系统中发生的所有更改(由于刷新操作或由用户的操作引起)都会报告为_virtual file system events_. 
+VFS事件始终在事件派发线程和写入操作中触发.
+
+
+监听VFS事件的最有效方法是实现`BulkFileListener`接口并将其订阅到[VirtualFileManager.VFS_CHANGES](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<! - #L34  - >主题.
+
+
+此API为您提供在一个列表中刷新操作期间检测到的所有更改,并允许您批量处理它们.
+或者,您可以实现`VirtualFileListener`接口并使用[VirtualFileManager.addVirtualFileListener()]注册它(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!--#L113  - >.
+这将让您逐个处理事件.
+
+
+> **注意** VFS监听器是应用程序级别,并将接收用户打开的* all *项目中发生的更改的事件.
+您可能需要过滤掉与您的任务无关的事件.
+
+
+在每次更改之前和之后都会发送VFS事件,您可以在之前的事件中访问该文件的旧内容.
+请注意,刷新后发生的事件是在磁盘上发生更改后发送的 - 因此,当您处理`beforeFileDeletion`事件时,例如,该文件已从磁盘中删除.
+但是,它仍然存在于VFS快照中,您可以使用VFS API访问其最后的内容.
+
+
+请注意,刷新操作仅针对已在快照中加载的文件中的更改触发事件.
+例如,如果您访问了一个目录的`VirtualFile`但从未使用[VirtualFile.getChildren()]加载其内容(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<! -#L135  - >,在该目录中创建文件时,可能无法获得`fileCreated`通知.
+
+
+如果使用`VirtualFile.findChild()`仅在目录中加载单个文件,您将收到有关该文件更改的通知,但您可能无法获得同一目录中其他文件的创建/删除通知.
+
+

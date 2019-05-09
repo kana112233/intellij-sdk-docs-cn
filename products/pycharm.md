@@ -2,18 +2,28 @@
 title: PyCharm
 ---
 
-## Which API should be used by PyCharm plugin developers?
+## PyCharm插件开发人员应该使用哪个API？
+
 
 ### Platform Open API
 
-The APIs from the standard set of Platform Open API modules can be safely used in plugins. Public symbols defined in these modules have a lifecycle, and will be marked as deprecated for several releases before being removed.
 
-The modules are [defined in the `CommunityRepositoryModules.groovy` file](upsource:///platform/build-scripts/groovy/org/jetbrains/intellij/build/CommunityRepositoryModules.groovy).
+可以在插件中安全地使用标准的Platform Open API模块集中的API.
+这些模块中定义的公共符号具有生命周期,并且在删除之前将被标记为已弃用.
+
+
+这些模块[在`CommunityRepositoryModules.groovy`文件中定义](upsource:///platform/build-scripts/groovy/org/jetbrains/intellij/build/CommunityRepositoryModules.groovy).
+
 
 ### PyCharm Open API
 
-Symbols defined in the **python-psi-api** and **python-openapi** modules are also public API and considered stable.
 
-### Other API
+** python-psi-api **和** python-openapi **模块中定义的符号也是公共API,并且被认为是稳定的.
 
-Classes and methods defined in other modules are used at your own risk, and care should be taken to test your plugin with any version of PyCharm you wish to support.
+
+###其他API
+
+
+使用其他模块中定义的类和方法需要您自担风险,应注意使用您希望支持的任何版本的PyCharm来测试您的插件.
+
+

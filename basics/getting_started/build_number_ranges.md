@@ -10,21 +10,37 @@ title: Build Number Ranges
   }
 </style>
 
-Use this reference of build number ranges to specify the correct `since-build` and `until-build` values in your plugin descriptor.
+使用此编译范围的引用来指定插件描述符中正确的`since-build`和`until-build`值.
 
-Starting with IntelliJ IDEA 9 beta, a multi-part build number is used, such as `IU-162.94`.
 
-The number consists of the following parts:
+从IntelliJ IDEA 9 beta开始,使用多部分内部版本号,例如`IU-162.94`.
 
-* Product ID (`IC` for IDEA Community, `IU` for IDEA Ultimate, `RM` for RubyMine, `PY` for PyCharm, etc.)
-* Branch number (`162`)
-* Build number in the branch (`94`)
 
-Since version 2016.2 of the *IntelliJ Platform*, branch numbers are based on the `YYYY.R` [IDE release version numbers](https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/). The branch number takes the last two digits of the year, and the `R` release number. For example, `162` for 2016.2, `163` for 2016.3, `171` for 2017.1. In this scheme `IU-162.94` corresponds to the 2016.2 release.
+该号码由以下部分组成:
 
-Starting with 2016.2 the build number may also have multiple components: `IU-162.94`, `IU-162.94.11`, `IU-162.94.11.256.42`. This gives more flexibility for third-party plugins and IDE developers. Plugins may specify compatibility versions more precisely; IDE vendors may have build numbers that are based on a specific *IntelliJ Platform* version and also specify additional internal version (e.g. `256.42` in `XX-162.94.11.256.42`) to allow plugin developers for their IDE to specify compatibility.
 
-Multi-part build numbers can also be used in the `since-build` and `until-build` attributes of `idea-version`. Usually you should omit the product ID and use only the branch number and build number, for example:
+*产品ID(IDEA社区的`IC`,IDEA Ultimate的'IU`,RubyMine的`RM`,PyCharm的'PY`等)
+
+*分行号码(`162`)
+
+*分支中的内部编号(`94`)
+
+
+从* IntelliJ Platform *的2016.2版本开始,分支编号基于`YYYY.R` [IDE release version numbers](https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/).
+分支编号采用年份的最后两位数字和“R”发布编号.
+例如,2016年的“162”,2016年的“163”,2017年的“171”.
+在这个方案中,“IU-162.94”对应于2016.2版本.
+
+
+从2016.2开始,内部版本号也可能有多个组件:`IU-162.94`,`IU-162.94.11`,`IU-162.94.11.256.42`.
+这为第三方插件和IDE开发人员提供了更大的灵活性.
+插件可以更精确地指定兼容版本; 
+IDE供应商可能具有基于特定* IntelliJ Platform *版本的内部版本号,并且还指定了其他内部版本(例如,“XX-162.94.11.256.42”中的“256.42”),以允许插件开发人员为其IDE指定兼容性.
+
+
+多部分构建号也可以用在`idea-version`的`since-build`和`until-build`属性中.
+通常,您应该省略产品ID并仅使用分支编号和内部版本号,例如:
+
 
 ```xml
 <idea-version since-build="94.539"/>
@@ -33,7 +49,8 @@ Multi-part build numbers can also be used in the `since-build` and `until-build`
 <idea-version since-build="162" until-build="162.*"/> <!-- any 162-based version, 162.94, 162.94.11, etc.-->
 ```
 
-The following branch numbers are used for *IntelliJ Platform* based products and build numbers of recent IDE versions:
+以下分支编号用于基于* IntelliJ Platform *的产品,并构建最新IDE版本的编号:
+
 
 | Branch number                                                   | IntelliJ Platform version |
 |-----------------------------------------------------------------|---------------------------|
@@ -47,9 +64,12 @@ The following branch numbers are used for *IntelliJ Platform* based products and
 | [163](https://github.com/JetBrains/intellij-community/tree/163) | 2016.3                    |
 | [162](https://github.com/JetBrains/intellij-community/tree/162) | 2016.2                    |
 
-Note that there is no `170`. In the `YYYY.R` versioning scheme, the `R` part starts at 1.
+请注意,没有'170`.
+在`YYYY.R`版本控制方案中,`R`部分从1开始.
 
-## Branch and build numbers for IntelliJ Platform pre-2016.2
+
+## 2016年之前IntelliJ平台的分支和内部版本号
+
 
 | Branch number | Product version |
 |---------------|-----------------|
@@ -74,7 +94,8 @@ Note that there is no `170`. In the `YYYY.R` versioning scheme, the `R` part sta
 | 95            | IDEA 9.0.2\+ |
 | 93            | IDEA 9.0 |
 
-Build numbers for IntelliJ IDEA versions:
+IntelliJ IDEA版本的内部版本号:
+
 
 | IntelliJ IDEA version | Build number  |
 |-----------------------|---------------|
@@ -99,9 +120,11 @@ Build numbers for IntelliJ IDEA versions:
 | 9.0.1                 | 93.94         |
 | 9.0                   | 93.13         |
 
-## Build numbers for IntelliJ IDEA pre-9.0
+## IntelliJ IDEA 9.0之前的内部版本号
 
-Before IntelliJ IDEA 9.0, linear build numbers were used, with the following ranges:
+
+在IntelliJ IDEA 9.0之前,使用了线性内部版本号,具有以下范围:
+
 
 | IntelliJ IDEA version | Build number range |
 |-----------------------|--------------------|
@@ -116,7 +139,8 @@ Before IntelliJ IDEA 9.0, linear build numbers were used, with the following ran
 | 6.0 branch            | 5000-5999          |
 | 5.1 branch            | 4000-4999          |
 
-The build number for each release:
+每个版本的内部版本号:
+
 
 | IntelliJ IDEA version | Build number |
 |-----------------------|--------------|
@@ -134,3 +158,5 @@ The build number for each release:
 | 6.0.5                 | 6180         |
 | 6.0.1                 | 5784         |
 | 5.1.2                 | 4267         |
+
+

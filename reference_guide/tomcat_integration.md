@@ -2,7 +2,8 @@
 title: Tomcat Integration
 ---
 
+IntelliJ IDEA Ultimate中包含的Tomcat插件的源代码可用作实现应​​用程序服务器集成插件的示例.
 
-The source code of the Tomcat plugin included in IntelliJ IDEA Ultimate is available as a sample for implementing application server integration plugins.
-You can find the code under *lib\src\src_tomcat.zip* in the main IntelliJ IDEA Ultimate distribution.
+您可以在主IntelliJ IDEA Ultimate发行版中找到* lib \ src \ src_tomcat.zip *下的代码.
+
 

@@ -2,16 +2,25 @@
 title: Plugin Content
 ---
 
-There are two possible ways of organizing plugin content:
+组织插件内容有两种可能的方法:
 
-1. A plugin consisting of one `.jar` file placed in the plugins directory:
 
-    The archive should contain the configuration file (`META-INF/plugin.xml`), 
-    plugin icon files (`META-INF/pluginIcon*.svg`), 
-    and the classes that implement the plugin functionality. The configuration file 
-    specifies the plugin name, description, version, vendor, the supported IntelliJ IDEA version, 
-    plugin components, actions and action groups, and action user interface placement.
-    See the [Plugin Icon File](plugin_icon_file.md) page for more information about plugin icon SVG files.
+1.一个插件,由一个放在plugins目录中的`.jar`文件组成:
+
+
+存档应包含配置文件(`META-INF/plugin.xml`),
+    
+插件图标文件(`META-INF/pluginIcon * .svg`),
+    
+以及实现插件功能的类.
+配置文件
+    
+指定插件名称,描述,版本,供应商,支持的IntelliJ IDEA版本,
+    
+插件组件,操作和操作组以及操作用户界面放置.
+    
+有关插件图标SVG文件的更多信息,请参见[插件图标文件](plugin_icon_file.md)页面.
+
 
    ```
    .IntelliJIDEAx0/
@@ -26,8 +35,8 @@ There are two possible ways of organizing plugin content:
            pluginIcon_dark.svg
    ```
 
+2.位于lib文件夹中的`.jar`文件中的插件文件:
 
-2. Plugin files located in a `.jar` file that is placed in the lib folder:
 
    ```
    .IntelliJIDEAx0/
@@ -46,4 +55,6 @@ There are two possible ways of organizing plugin content:
                pluginIcon_dark.svg
    ```
 
-   All jars from the `lib` folder are automatically added to the classpath.
+`lib`文件夹中的所有jar都会自动添加到类路径中.
+
+

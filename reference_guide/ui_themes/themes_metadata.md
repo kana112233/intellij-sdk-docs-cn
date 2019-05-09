@@ -13,10 +13,11 @@ title: Exposing Theme Metadata
   }
 </style>
 
+可以在[自定义主题](themes_customize.md)中使用的所有可用UI自定义键必须在专用的`* .themeMetadata.json`文件中定义,该文件通过`com.intellij.themeMetadataProvider`扩展点注册.
 
-All available UI Customization Keys that can be used in [Custom Themes](themes_customize.md) must be defined in a dedicated `*.themeMetadata.json` file which is registered via `com.intellij.themeMetadataProvider` extension point. 
 
-The following minimal sample demonstrates all details required when exposing UI customization keys of your plugin's UI.
+以下最小示例演示了在公开插件UI的UI自定义键时所需的所有详细信息.
+
 
 `/resources/META-INF/plugin.xml`:
 ```xml
@@ -50,16 +51,24 @@ The following minimal sample demonstrates all details required when exposing UI 
 
 ```     
 
-- `name` - Human-readable name, e.g., plugin name
-- `fixed` - `false` by default, `true` if metadata describes external elements, e.g., an UI library
-- `ui` - Root element listing all customization keys:
+ - `name`  - 人类可读的名称,例如插件名称
 
-    - `key` - Customization key name (see [Key Naming Scheme](#key-naming-scheme))
-    - `description` - Description to be shown to Theme authors editing `*.theme.json` files
-    - `deprecated` - `true` when key is deprecated, please provide explanation and/or replacement in `description` if available
-    - `source` - FQN of the underlying UI component implementation
-  
-> **TIP** It is highly recommended to always provide a `description` entry, so Theme authors can understand usages.
+ - 如果元数据描述外部元素,例如UI库,则默认为“fixed” - “false”,“true”
+
+ - `ui`  - 列出所有自定义键的根元素:
+
+
+ - `key`  - 自定义密钥名称(参见[密钥命名方案](#key-naming-scheme))
+    
+ - `description`  - 向主题作者编辑`* .theme.json`文件显示的描述
+    
+ - 当不推荐使用密钥时,“弃用” - “true”,如果可用,请在“说明”中提供说明和/或替换
+    
+ - `source`  - 底层UI组件实现的FQN
+  
+
+> **提示**强烈建议始终提供`description`条目,因此主题作者可以理解用法.
+
 
 Color keys can be used via `JBColor#namedColor` providing defaults for Light and Dark theme:
 ```java
@@ -67,17 +76,23 @@ Color keys can be used via `JBColor#namedColor` providing defaults for Light and
     JBColor.namedColor("Plugins.SectionHeader.foreground", new JBColor(0x787878, 0x999999));
 ```                                                                                         
 
-Other keys can be obtained via `javax.swing.UIManager#getXXX()` methods.
+其他键可以通过`javax.swing.UIManager#getXXX()`方法获得.
 
-## Key Naming Scheme
 
-All keys must follow this Naming Pattern:
+##密钥命名方案
 
-**`Object[.SubObject].[state][Part]Property`**
 
-![Key Naming Pattern](img/keys-naming.png){:width="735"}
+所有键必须遵循此命名模式:
 
-#### Property
+
+**`对象[.SubObject] [状态] [部分] Property` **
+
+
+![键命名模式](img/keys-naming.png){:width =“735”}
+
+
+####财产
+
 
 | Word | Use for | Example |
 |------|---------|---------|
@@ -85,7 +100,8 @@ All keys must follow this Naming Pattern:
 | **`background`**  | Background color for objects with text. | `Label.foreground` |
 | **`<part>Color`** | Objects with a single color (do not have foreground/background). Do not use the word “Color” separately, always use with the “part” word. <br/><br/>_The word “Color” shows that this is a color property. Otherwise, it can be confused with a property of another type._ | `Popup.borderColor` <br/> `Group.separatorColor` |
 
-#### State
+####状态
+
 
 | Word | Use for | Example |
 |------|---------|---------|
@@ -97,11 +113,16 @@ All keys must follow this Naming Pattern:
 | **`Error`** <br/> **`Warning`** <br/> **`Success`** | Validation states. [See example](https://jetbrains.github.io/ui/principles/validation_errors/) in the guide article. | `ValidationTooltip.errorBackground` <br/> `ValidationTooltip.warningBorderColor` |
 | **`Disabled`**   | Unavailable components. | `Label.disabledForeground` |
 
-#### Part
+####部分
 
-A part is an internal element of a component, e.g., an arrow button in a combo box. Create a separate key for a part if its properties differ from the parent object.
 
-If a part is common among several components, use the same name for it. Notable examples of common parts:
+部件是组件的内部元件,例如组合框中的箭头按钮.
+如果零件的属性与父对象不同,则为零件创建单独的密钥.
+
+
+如果某个部件在多个组件中很常见,请使用相同的名称.
+常见部分的显着例子:
+
 
 | Common parts| Use for | Example |
 |-------------|---------|---------|
@@ -117,23 +138,43 @@ If a part is common among several components, use the same name for it. Notable 
 | **`Shadow`** | A shadow below a component. | `Button.shadowColor` |
 
 #### SubObject
-Use a subobject when creating keys for one of the following:
-- An implementation variation. Usually has a similar set of UI property keys as the parent object. Examples: 
-  - Default button: `Button.Default.background`
-  - Tool window notification: `Notification.ToolWindow.errorBackground` 
-- An internal smaller component of a complex component with its own UI and behavior. Examples:
-  - Tool window tab: `ToolWindow.HeaderTab.inactiveBackground`
-  - The hint text at the bottom of a popup: `Popup.Advertiser.background` 
 
-#### Gradient Color
-If a component has a gradient color, add the words “start” and “end” for the beginning and ending of a gradient. Examples:
-- `Button.startBorderColor` / `Button.endBorderColor`
-- `SearchMatch.startBackground` / `SearchMatch.endBackground`
+在为以下某项创建密钥时使用子对象:
 
-#### Capitalization 
-Capitalize Object and SubObject. Use lowerCamelCase for property.
+ - 实施变化.
+通常具有与父对象类似的一组UI属性键.
+例子:
+  
+ - 默认按钮:`Button.Default.background`
+  
+ - 工具窗口通知:`Notification.ToolWindow.errorBackground`
 
-#### Do not use
+ - 具有自己的UI和行为的复杂组件的内部较小组件.
+例子:
+  
+ - 工具窗口选项卡:`ToolWindow.HeaderTab.inactiveBackground`
+  
+ - 弹出窗口底部的提示文本:`Popup.Advertiser.background`
+
+
+####渐变色
+
+如果组件具有渐变颜色,请为渐变的开头和结尾添加单词“start”和“end”.
+例子:
+
+ - `Button.startBorderColor` /`Button.endBorderColor`
+
+ - `SearchMatch.startBackground` /`SearchMatch.endBackground`
+
+
+####资本化
+
+大写对象和子对象.
+使用lowerCamelCase作为属性.
+
+
+#### 不使用
+
 
 | Do not use | Use instead |
 |------------|-------------|
@@ -142,23 +183,39 @@ Capitalize Object and SubObject. Use lowerCamelCase for property.
 | `Text` | `Foreground` |
 | `darcula` _and other look-and-feel names_ | _Omit_ | 
 
-#### Swing legacy
+####摆动遗产
 
-Some color keys are not named according to the rules above. Such keys are inherited from Java Swing and cannot be renamed for compatibility reasons.
-Do not use naming patterns from the legacy keys.
 
-Examples of Swing keys:
-- `activeCaption`  Correct: `WindowsDialogHeader.background`
-- `Button.disabledText` Correct: `Button.disabledForeground`
-- `TableHeader.background` Correct: `Table.Header.background`
+某些颜色键未根据上述规则命名.
+此类密钥继承自Java Swing,并且出于兼容性原因无法重命名.
 
-## IntelliJ Platform Metadata
-> **NOTE** This section is relevant for IntelliJ Platform developers only.
+请勿使用旧密钥中的命名模式.
 
-Metadata is split up as follows:
-- [`IntelliJPlatform.themeMetadata.json`](upsource:///platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) - all keys from IntelliJ Platform and custom UI components
-- [`JDK.themeMetadata.json`](upsource:///platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json) - all keys from Swing components
 
-New keys should be added to `IntelliJPlatform.themeMetadata.json` only (or corresponding "local" `*.themeMetadata.json` file of the plugin if applicable).
+Swing键的示例:
 
-Please make sure to respect [Key Naming Scheme](#key-naming-scheme) and keep alphabetical ordering of keys.
+ - `activeCaption`正确:`WindowsDialogHeader.background`
+
+ - `Button.disabledText`正确:`Button.disabledForeground`
+
+ - `TableHeader.background`正确:`Table.Header.background`
+
+
+## IntelliJ平台元数据
+
+> **注意**本节仅适用于IntelliJ平台开发人员.
+
+
+元数据分为以下几种:
+
+ -  [`IntelliJPlatform.themeMetadata.json`](upsource:///platform/platform-resources/src/themes/metadata/IntelliJPlatform.themeMetadata.json) -  IntelliJ平台和自定义UI组件的所有键
+
+ -  [`JDK.themeMetadata.json`](upsource:///platform/platform-resources/src/themes/metadata/JDK.themeMetadata.json) - 来自Swing组件的所有键
+
+
+新密钥应仅添加到`IntelliJPlatform.themeMetadata.json`(或相应的“本地”`* .themeMetadata.json`文件中,如果适用).
+
+
+请确保遵守[密钥命名方案](#key-naming-scheme)并按字母顺序排列密钥.
+
+

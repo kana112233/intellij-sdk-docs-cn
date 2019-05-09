@@ -2,23 +2,41 @@
 title: Getting Help
 ---
 
-## Problems with the guide
+##指南的问题
 
-If you’re having problems with the guide itself, such as missing, incorrect or confusing content, please [raise an issue on YouTrack](https://youtrack.jetbrains.com/newIssue?project=IJSDK&clearDraft=true&c=). If the problem is easily solved, you can also submit a [Pull Request on GitHub](https://github.com/JetBrains/intellij-sdk-docs).
 
-If you just want to share feedback on the guide, again, [raise an issue](https://youtrack.jetbrains.com/newIssue?project=IJSDK&clearDraft=true&c=), even if it’s for a discussion, ideas on improvements or suggestions.
+如果您对指南本身有问题,例如遗失,错误或混淆内容,请[在YouTrack上提出问题](https://youtrack.jetbrains.com/newIssue?project=IJSDK&clearDraft=true&c=).
+如果问题很容易解决,您还可以在GitHub上提交[Pull Request](https://github.com/JetBrains/intellij-sdk-docs).
 
-> **Note** Please don't use the **IJSDK** YouTrack project for plugin or product support requests - it's intended for the SDK and the documentation, and you'll get a better response using one of the methods below.
 
-## Problems with code - support issues
+如果您只是想分享对指南的反馈,请再次[提出问题](https://youtrack.jetbrains.com/newIssue?project=IJSDK&clearDraft=true&c=),即使是讨论,改进的想法或
+建议.
 
-For problems related to code, rather than the content of the guide, you have several options:
 
-* [Plugin Development Forum](https://intellij-support.jetbrains.com/hc/en-us/community/topics/200366979-IntelliJ-IDEA-Open-API-and-Plugin-Development) - post a message to the support forum. It is regularly updated with answers by JetBrains team members.
-* [IntelliJ Plugin Developers Gitter room](https://gitter.im/IntelliJ-Plugin-Developers/Lobby) - this chat room is a great place to ask questions, with answers coming from both JetBrains team members, and members of the community.
+> **注意**请不要将** IJSDK ** YouTrack项目用于插件或产品支持请求 - 它适用于SDK和文档,您将使用以下方法之一获得更好的响应.
 
-Of course, all issues will be used to try and improve this guide.
 
-## Problems with products
+##代码问题 - 支持问题
 
-If you have a problem with an IntelliJ Platform-based product, such as IntelliJ IDEA, WebStorm, Rider, etc., please raise an issue on [YouTrack](https://youtrack.jetbrains.com), assigning it to the correct project for the product.
+
+对于与代码相关的问题,而不是指南的内容,您有以下几种选择:
+
+
+* [插件开发论坛](https://intellij-support.jetbrains.com/hc/en-us/community/topics/200366979-IntelliJ-IDEA-Open-API-and-Plugin-Development) - 发送消息给
+支持论坛.
+它定期更新JetBrains团队成员的答案.
+
+* [IntelliJ插件开发人员Gitter室](https://gitter.im/IntelliJ-Plugin-Developers/Lobby) - 这个聊天室是一个提问的好地方,JetBrains团队成员和成员
+社区.
+
+
+当然,所有问题都将用于尝试和改进本指南.
+
+
+##产品问题
+
+
+如果您对基于IntelliJ平台的产品(例如IntelliJ IDEA,WebStorm,Rider等)有问题,请在[YouTrack](https://youtrack.jetbrains.com)上提出问题,并将其分配给正确的
+该产品的项目.
+
+

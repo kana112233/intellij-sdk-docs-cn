@@ -2,89 +2,167 @@
 title: Run Configuration Management
 ---
 
-This document describes main classes to work with run configurations and common use case.
+本文档描述了使用运行配置和常见用例的主要类.
 
-* Dummy table of contents
-{:toc}
 
-## Configuration type
+*虚拟目录
 
-The starting point for implementing any run configuration type is the [`ConfigurationType`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java) interface. The list of available configuration types is shown when a user opens the _'Edit run configurations'_ dialog and executes _'Add'_ action:
+{:TOC}
 
-![Create](/basics/img/create-1.png)
 
-Every type there is represented as an instance of [`ConfigurationType`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java) and registered like below:
+##配置类型
+
+
+实现任何运行配置类型的起点是[`ConfigurationType`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)接口.
+当用户打开_'Edit运行配置'对话框并执行_'Add'_动作时,将显示可用配置类型列表:
+
+
+![创建](/基础/IMG/创建-1.png)
+
+
+每种类型都表示为[`ConfigurationType`]的实例(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java),注册如下:
+
 
 ```xml
 <configurationType implementation="org.jetbrains.plugins.gradle.service.execution.GradleExternalTaskConfigurationType" />
 ```
 
-The easiest way to implement this interface is to use the [`ConfigurationTypeBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java) base class. In order to use it, you need to inherit from it and to provide the configuration type parameters (ID, name, description and icon) as constructor parameters. In addition to that, you need to call the [`addFactory()`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)<!--#L46--> method to add a configuration factory.
+实现此接口的最简单方法是使用[`ConfigurationTypeBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)基类.
+为了使用它,您需要继承它并提供配置类型参数(ID,名称,描述和图标)作为构造函数参数.
+除此之外,你需要调用[`addFactory()`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)<! - #L46-
+ - >添加配置工厂的方法.
 
-## Configuration factory
 
-All run configurations are created by the [`ConfigurationFactory`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java) registered for a particular `ConfigurationType`. It's possible that one `ConfigurationType` [has more than one](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)<!--#L34--> `ConfigurationFactory`:
+##配置工厂
 
-![Configuration Factory](/basics/img/create-3.png)
 
-The key API of [`ConfigurationFactory`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java), and the only method that you're required to implement, is the [`createTemplateConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L45--> method. This method is called once per project to create the template run configuration.
+所有运行配置都是由为特定`ConfigurationType`注册的[`ConfigurationFactory`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)创建的.
+有一个`ConfigurationType` [有多个](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)<! - #L34-->`ConfigurationFactory 
+`:
 
-All real run configurations (loaded from the workspace or created by the user) are called by cloning the template through the [`createConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L39--> method.
 
-You can customize additional aspects of your configuration factory by overriding the [`getIcon`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L59-->, [`getAddIcon`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L55-->, [`getName`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L51--> and the default settings methods. These additional overrides are optional.
+![配置工厂](/basics/img/create-3.png)
 
-## Run configuration
 
-The run configuration itself is represented by the [`RunConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java) interface. A _'run configuration'_ here is some named profile which can be executed, e.g. application started via `main()` class, test, remote debug to particular machine/port etc.
+[`ConfigurationFactory`]的关键API(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java),以及您需要实现的唯一方法是
+[`createTemplateConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! - #L45-->方法.
+每个项目调用此方法一次以创建模板运行配置.
 
-Here is an example of a Java run configurations defined for a particular project:
 
-![Run Configuration](/basics/img/create-2.png)
+通过[`createConfiguration`]克隆模板来调用所有实际运行配置(从工作空间加载或由用户创建)(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! - #L39  - >方法.
 
-When implementing a run configuration, you may want to use one of the common base classes:
 
-* [`RunConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java) is a general-purpose superclass that contains the most basic implementation of a run configuration.
-* [`LocatableConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java) is a common base class that should be used for configurations that can be created from context by a `RunConfigurationProducer`. It supports automatically generating a name for a configuration from its settings and keeping track of whether the name was changed by the user.
-* [`ModuleBasedConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ModuleBasedConfiguration.java) is a base class for a configuration that is associated with a specific module (for example, Java run configurations use the selected module to determine the run classpath).
+您可以通过覆盖[`getIcon`]来自定义配置工厂的其他方面(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! -#L59-
+ - >,[`getAddIcon`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! -#L55-->,[`getName`]( 
+upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java) <! - #L51-->和默认设置方法.
+这些额外的覆盖是可选的.
 
-## Settings editor
 
-That common run configuration settings might be modified via:
+##运行配置
 
-[`RunConfiguration`-specific UI](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)<!--#L48-->. That is handled by [`SettingsEditor`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!--#L97-->:
 
-* [`getComponent()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!--#L97--> method is called by the IDE and shows run configuration specific UI.
-* [`resetFrom()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!--#L83--> is called to discard all non-confirmed user changes made via that UI.
-* [`applyTo()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!--#L93--> is called to confirm the changes, i.e. copy current UI state into the target settings object.
+运行配置本身由[`RunConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)接口表示.
+这里的“运行配置”是一些可以执行的命名配置文件,例如,
+应用程序通过`main()`类,测试,远程调试启动到特定的机器/端口等.
 
-## Persistence
 
-That run configuration settings are persistent, i.e. they are stored at file system and loaded back on the IDE startup. That is performed via [`writeExternal()`](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<!--#L27--> and [`readExternal()`](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<!--#L26--> methods of [`RunConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java) class correspondingly.
+以下是为特定项目定义的Java运行配置示例:
 
-The actual configurations stored by the *IntelliJ Platform* are represented by instances of the [`RunnerAndConfigurationSettings`](upsource:///platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java) class, which combines a run configuration with runner-specific settings, as well as keeping track of certain run configuration flags such as "temporary" or "singleton".
 
-Dealing with instances of this class becomes necessary when you need to create run configurations from code. This is accomplished with the following two steps:
+![运行配置](/basics/img/create-2.png)
 
-* `RunManager.createConfiguration()` creates an instance of `RunnerAndConfigurationSettings`.
-* `RunManager.addConfiguration()` makes it persistent by adding it to either the list of shared configurations stored in a project, or to the list of local configurations stored in the workspace file.
 
-## Refactoring support
+实现运行配置时,您可能希望使用其中一个公共基类:
 
-Most run configurations contain references to classes, files or directories in their settings, and these settings usually need to be updated when the corresponding element is renamed or moved.
 
-In order to support that, your run configuration needs to implement the [`RefactoringListenerProvider`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RefactoringListenerProvider.java) interface.
+* [`RunConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java)是一个通用超类,包含运行配置的最基本实现.
 
-In your implementation of `getRefactoringElementListener()`, you need to check whether the element being refactored is the one that your run configuration refers to, and if it is, you return a [`RefactoringElementListener`](upsource:///platform/lang-api/src/com/intellij/refactoring/listeners/RefactoringElementListener.java) that updates your configuration according to the new name and location of the element.
+* [`LocatableConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java)是一个公共基类,应该用于可以从上下文创建的配置
+一个`RunConfigurationProducer`.
+它支持从其设置自动生成配置名称,并跟踪用户是否更改了名称.
 
-## Creating configurations from context
+* [`ModuleBasedConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ModuleBasedConfiguration.java)是与特定模块关联的配置的基类(例如, 
+Java运行配置使用选定的模块来确定运行类路径.
 
-Many plugins support automatic creation of run configurations from context, so that the user can click, for example, on an application or test class and automatically run it using the correct run configuration type. In order to support that, you need to provide an implementation of the [`RunConfigurationProducer`](upsource:///platform/lang-api/src/com/intellij/execution/actions/RunConfigurationProducer.java)
-interface and to register it as `<runConfigurationProducer>` in your `plugin.xml`. (Note that this API has been redesigned in IntelliJ IDEA 13; the old [`RuntimeConfigurationProducer`](upsource:///platform/lang-api/src/com/intellij/execution/junit/RuntimeConfigurationProducer.java) is a much more confusing version of the same API).
 
-The two main methods that you need to implement are:
+##设置编辑器
 
-* `setupConfigurationFromContext` receives a blank configuration of your type and a `ConfigurationContext` containing information about a source code location (accessible by calling `getLocation()` or `getPsiLocation()`). Your implementation needs to check whether the location is applicable for your configuration type (for example, if it's in a file of the language you're supporting). If not, you need to return false, and if it is, you need to put the correct context-specific settings into the run configuration and return true.
-* `isConfigurationFromContext` checks if the specified configuration of your type was created from the specified context. Implementing this method allows you to reuse an existing run configuration which is applicable to the current context instead of creating a new one and possibly ignoring the customisations the user has performed in the existing one.
 
-Note that, in order to support automatic naming of configurations created from context, your configuration should use
-[`LocatableConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java) as the base class.
+可以通过以下方式修改常见的运行配置设置:
+
+
+[`RunConfiguration`特定的UI](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)<! - #L48-->.
+这由[`SettingsEditor`]处理(upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L97-->:
+
+
+* [`getComponent()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L97-->方法由IDE调用
+显示运行配置特定UI.
+
+* [`resetFrom()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L83-->被调用以丢弃所有非
+确认用户通过该UI进行的更改.
+
+* [`applyTo()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)调用<! -#L93-->确认更改,
+即将当前UI状态复制到目标设置对象中.
+
+
+##持久性
+
+
+该运行配置设置是持久的,即它们存储在文件系统中并在IDE启动时加载回来.
+这是通过[`writeExternal()`]执行的(upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<! - #L27-->和[`readExternal() 
+`](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<! -#L26--> [RunConfiguration`]的方法(upsource:///platform/
+lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)相应的类.
+
+
+* IntelliJ Platform *存储的实际配置由[`RunnerAndConfigurationSettings`](upsource:///platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java)类的实例表示,该类结合了
+使用特定于运行程序的设置运行配置,以及跟踪某些运行配置标志,例如“临时”或“单例”.
+
+
+当您需要从代码创建运行配置时,需要处理此类的实例.
+这是通过以下两个步骤完成的:
+
+
+*`RunManager.createConfiguration()`创建一个`RunnerAndConfigurationSettings`的实例.
+
+*`RunManager.addConfiguration()`通过将其添加到项目中存储的共享配置列表或工作空间文件中存储的本地配置列表来使其持久化.
+
+
+##重构支持
+
+
+大多数运行配置包含对其设置中的类,文件或目录的引用,并且通常需要在重命名或移动相应元素时更新这些设置.
+
+
+为了支持这一点,您的运行配置需要实现[`RefactoringListenerProvider`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RefactoringListenerProvider.java)接口.
+
+
+在你的`getRefactoringElementListener()`的实现中,你需要检查被重构的元素是否是你的运行配置所引用的元素,如果是,你返回一个[`RefactoringElementListener`](upsource:///platform/lang-api/src/com/intellij/refactoring/listeners/RefactoringElementListener.java)根据元素的新名称和位置更新配置.
+
+
+##从上下文创建配置
+
+
+许多插件支持从上下文自动创建运行配置,以便用户可以单击(例如)应用程序或测试类,并使用正确的运行配置类型自动运行它.
+为了支持这一点,您需要提供[`RunConfigurationProducer`]的实现(upsource:///platform/lang-api/src/com/intellij/execution/actions/RunConfigurationProducer.java)
+
+接口并在``plugin.xml`中将其注册为`<runConfigurationProducer>`. 
+(请注意,此API已在IntelliJ IDEA 13中重新设计;旧的[`RuntimeConfigurationProducer`](upsource:///platform/lang-api/src/com/intellij/execution/junit/RuntimeConfigurationProducer.java)是一个更多
+混淆版本的相同API).
+
+
+您需要实现的两个主要方法是:
+
+
+*`setupConfigurationFromContext`接收您的类型的空白配置和`ConfigurationContext`,其中包含有关源代码位置的信息(可通过调用`getLocation()`或`getPsiLocation()`来访问).
+您的实现需要检查该位置是否适用于您的配置类型(例如,如果它位于您支持的语言的文件中).
+如果没有,则需要返回false,如果是,则需要将正确的特定于上下文的设置放入运行配置中并返回true.
+
+*`isConfigurationFromContext`检查您的类型的指定配置是否是从指定的上下文创建的.
+通过实现此方法,您可以重用现有的运行配置,该配置适用于当前上下文,而不是创建新的配置,并可能忽略用户在现有环境中执行的自定义.
+
+
+请注意,为了支持从上下文创建的配置的自动命名,您的配置应该使用
+
+[`LocatableConfigurationBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/LocatableConfigurationBase.java)作为基类.
+
+

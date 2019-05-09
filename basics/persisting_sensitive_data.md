@@ -2,10 +2,13 @@
 title: Persisting Sensitive Data
 ---
 
-The Credentials Store API allows you to securely store sensitive user data, like passwords, server URLs, etc.
+凭据存储API允许您安全地存储敏感用户数据,如密码,服务器URL等.
 
-## How to use
-Use [`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/passwordSafe/PasswordSafe.kt) to work with credentials.
+
+## 如何使用
+
+使用[`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/passwordSafe/PasswordSafe.kt)处理凭据.
+
 
 ### Retrieve stored credentials
 ```java
@@ -25,7 +28,8 @@ Use [`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/pass
     }    
 ```
 
-### Store credentials
+###存储凭据
+
 
 ```java
     CredentialAttributes credentialAttributes = createCredentialAttributes(serverId); // see previous sample
@@ -34,8 +38,10 @@ Use [`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/pass
 ```
 To remove stored credentials, pass `null` for `credentials` parameter.
 
-## Storage
-Default storage format depends on OS.
+##存储
+
+默认存储格式取决于操作系统.
+
 
 | OS      | Storage |
 |---------|---------|
@@ -44,3 +50,5 @@ Default storage format depends on OS.
 | Linux   | [Secret Service API](https://standards.freedesktop.org/secret-service) using [libsecret](https://wiki.gnome.org/Projects/Libsecret) |
 
 Users can override the default behavior in Preferences \| Appearance & Behavior \| System Settings \| Passwords.
+
+

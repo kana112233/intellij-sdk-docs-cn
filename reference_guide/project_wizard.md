@@ -2,33 +2,50 @@
 title: Project Wizard. Adding Support for Creating New Project Types.
 ---
 
-## Project Wizard
+##项目向导
 
-Working with the project wizard can be illustrated with the
-[RedLine SmallTalk plugin](https://github.com/bulenkov/RedlineSmalltalk)
 
-## Implementing New Module Type
+使用项目向导可以使用
 
-Additional support for specific tools and technologies is usually done via implementing some certain module type which is attached to the project.
-New module type should be derived from the class
+[RedLine SmallTalk插件](https://github.com/bulenkov/RedlineSmalltalk)
+
+
+##实现新模块类型
+
+
+通常通过实现附加到项目的某些模块类型来完成对特定工具和技术的额外支持.
+
+新模块类型应该从类派生
+
 [ModuleType](upsource:///platform/lang-api/src/com/intellij/openapi/module/ModuleType.java).
 
 
-## Project Wizard
+##项目向导
 
-Main utilities to configure a custom project wizard can be found in the package
+
+可以在包中找到配置自定义项目向导的主要实用程序
+
 [lang-api.ide.util.projectWizard](upsource:///platform/lang-api/src/com/intellij/ide/util/projectWizard).
-These classes and interfaces serve the following purposes:
 
-* Modification of the configuration wizard view
-* Adding new steps to the wizard
-* Providing additional setting for project creation
-* Handling activities during project creation
-* Initial environment configuration
+这些类和接口用于以下目的:
 
-### Module Type
 
-To create a new module type and an extension
+*修改配置向导视图
+
+*向向导添加新步骤
+
+*为项目创建提供额外设置
+
+*项目创建期间的处理活动
+
+*初始环境配置
+
+
+###模块类型
+
+
+创建新模块类型和扩展名
+
 
 ```xml
 <moduleType id="MY_MODULE" implementationClass="st.redline.smalltalk.module.MyModuleType"/>
@@ -43,11 +60,15 @@ The following
 [module type implementation](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java)
 of a custom module type show how this instance can be registered and implemented.
 
-### Implementing Module Builder
+###实现Module Builder
 
-To set up a new module environment
+
+设置新模块环境
+
 [ModuleBuilder](upsource:///platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java)
-class should be extended and registered as an extension point like the following snippet shows:
+
+class应该被扩展并注册为扩展点,如下面的代码段所示:
+
 
 ```xml
 <extensions>
@@ -56,41 +77,62 @@ class should be extended and registered as an extension point like the following
 </extensions>
 ```
 
-Functionality which is mandatory to implement consists of:
+强制实施的功能包括:
 
-*  Setting up a root model for the new module by overriding
+
+*通过覆盖为新模块设置根模型
+
 
    ```java
    public abstract void setupRootModel(ModifiableRootModel modifiableRootModel) throws ConfigurationException;
    ```
 
-*  Getting a module type
+*获取模块类型
+
 
    ```java
    public abstract ModuleType getModuleType();
    ```
 
-See
-[JavaModuleBuilder](upsource:///java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java)
-to understand better how to implement a module builder.
+看到
 
-If your module type is based on the java module and meant to support Java as well, extending
 [JavaModuleBuilder](upsource:///java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java)
-is enough.
-No extension point needs to be registered.
-Refer to
-[SmallTalk module type](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java)
-to see how
+
+更好地了解如何实现模块构建器.
+
+
+如果您的模块类型基于java模块并且也意味着支持Java,那么扩展
+
 [JavaModuleBuilder](upsource:///java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java)
-can be derived.
 
-### Implementing Module Builder Listener
+足够.
 
-Module builder listener reacts on a new module creation, which could be done either as a part of the project creation process,
-or as adding a new module to the already existing project.
-To provide a certain behavior right after a module has been created, module builder should implement
+不需要注册扩展点.
+
+参考
+
+[SmallTalk模块类型](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java)
+
+看怎么样
+
+[JavaModuleBuilder](upsource:///java/openapi/src/com/intellij/ide/util/projectWizard/JavaModuleBuilder.java)
+
+可以派生出来.
+
+
+###实现Module Builder Listener
+
+
+模块构建器侦听器对新模块创建做出反应,这可以作为项目创建过程的一部分来完成,
+
+或者将新模块添加到现有项目中.
+
+要在创建模块后立即提供某种行为,模块构建器应该实现
+
 [ModuleBuilderListener](upsource:///platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilderListener.java)
-Method
+
+方法
+
 
 ```java
 public void moduleCreated(@NotNull final Module module);
@@ -101,9 +143,11 @@ For more details please see the following
 [SmallTalk custom module type](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java)
 implementation.
 
-### Adding New Wizard Steps
+###添加新向导步骤
 
-Adding new steps to the module wizard can be done by overriding the
+
+可以通过覆盖模块向导来添加新步骤
+
 
 ```java
 public ModuleWizardStep[] createWizardSteps(WizardContext wizardContext, ModulesProvider modulesProvider);
@@ -129,28 +173,39 @@ which has two methods to be overridden:
    ```
    commits data from UI into ModuleBuilder and WizardContext
 
-## Facet
-
-Facets in IntelliJ are the way to store multiple kinds of module-specific settings, for instance to make a language support or framework available in some given module.
-To understand facets better from the point of view of an end-user, please see
-[Facet](/reference_guide/project_model/facet.md)
-documentation section.
+##方面
 
 
-## Implementing Project Structure Detector
+IntelliJ中的构面是存储多种特定于模块的设置的方式,例如,在某些给定模块中提供语言支持或框架.
 
-To support the creation of your module when a project is imported from existing sources, extend [ProjectStructureDetector](upsource:///java/idea-ui/src/com/intellij/ide/util/projectWizard/importSources/ProjectStructureDetector.java).
+要从最终用户的角度更好地理解方面,请参阅
 
-To detect your files your module supports implement
+[刻面](/reference_guide/project_model/facet.md)
+
+文档部分.
+
+
+##实现项目结构检测器
+
+
+要在从现有源导入项目时支持模块的创建,请扩展[ProjectStructureDetector](upsource:///java/idea-ui/src/com/intellij/ide/util/projectWizard/importSources/ProjectStructureDetector.java) 
+.
+
+
+要检测文件,模块支持实现
+
 
 ```java
 public abstract DirectoryProcessingResult detectRoots(@NotNull File dir, @NotNull File[] children, @NotNull File base,
                                                         @NotNull List<DetectedProjectRoot> result);
 ```
 
-Refer to the [Smalltalk project structure detector](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsProjectStructureDetector.java)
+请参阅[Smalltalk项目结构检测器](https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsProjectStructureDetector.java)
 
-But detecting the files is not enough, you also need to create a module for the project if appropriate by implementing `setupProjectStructure()`. Here is an example that creates a module if no other modules exist in the project structure.
+
+但是检测文件是不够的,你还需要通过实现`setupProjectStructure()`来为项目创建一个模块.
+以下是在项目结构中不存在其他模块时创建模块的示例.
+
 
 ```java
 @Override
@@ -172,3 +227,5 @@ But detecting the files is not enough, you also need to create a module for the 
         }
     }
 ```
+
+

@@ -2,25 +2,42 @@
 title: Publishing a plugin
 ---
 
-When your plugin is ready you can publish it to a plugin repository so that other users can install it. 
-You can choose to publish it on the [JetBrains Plugin Repository](https://plugins.jetbrains.com)
-or a custom plugin repository. 
+当您的插件准备好后,您可以将其发布到插件存储库,以便其他用户可以安装它.
 
-### Publishing to the JetBrains Plugin Repository
-To upload your plugin to the [JetBrains Plugin Repository](https://plugins.jetbrains.com), 
-you must login with your personal JetBrains Account.
+您可以选择在[JetBrains插件存储库](https://plugins.jetbrains.com)上发布它
 
-**To get your JetBrains account**
+或自定义插件存储库.
 
-1. Open the [JetBrains Account Center](https://account.jetbrains.com) and click **Create Account**.
-2. Fill in all fields in the **Create JetBrains Account** form that opens and click **Register**.
 
-**To upload your plugin to JetBrains Plugin Repository**
+###发布到JetBrains插件存储库
 
-1. [Login to JetBrains Plugin Repository](https://plugins.jetbrains.com/author/me) with your personal JetBrains account.
-2. On your Profile page that opens, click **Add new plugin**.
-3. Fill in the **Add new plugin** form that opens and click the **Add the plugin** button to upload your plugin.
+要将插件上传到[JetBrains Plugin Repository](https://plugins.jetbrains.com),
 
-### Publishing a Plugin to an Custom Plugin Repository
-If you plan to publish your plugin to a repository _other than_ the [JetBrains Plugin Repository](https://plugins.jetbrains.com),
-please refer to the [Publishing to Custom Plugin Repositories](update_plugins_format.md) documentation.
+您必须使用个人JetBrains帐户登录.
+
+
+**获取JetBrains账户**
+
+
+1.打开[JetBrains帐户中心](https://account.jetbrains.com),然后单击**创建帐户**.
+
+2.填写打开的**创建JetBrains帐户**表单中的所有字段,然后单击**注册**.
+
+
+**将您的插件上传到JetBrains插件存储库**
+
+
+1. [使用您的个人JetBrains帐户登录JetBrains插件存储库](https://plugins.jetbrains.com/author/me).
+
+2.在打开的“配置文件”页面上,单击“**添加新插件**”.
+
+3.填写打开的**添加新插件**表单,然后单击**添加插件**按钮上传您的插件.
+
+
+###将插件发布到自定义插件存储库
+
+如果您计划将您的插件发布到[JetBrains插件存储库](https://plugins.jetbrains.com)以外的存储库,
+
+请参阅[发布到自定义插件存储库](update_plugins_format.md)文档.
+
+

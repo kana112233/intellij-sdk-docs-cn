@@ -2,35 +2,58 @@
 title: File View Providers
 ---
 
-A file view provider (see the [FileViewProvider](upsource:///platform/core-api/src/com/intellij/psi/FileViewProvider.java) class) was introduced in *IntelliJ IDEA* 6.0. Its main purpose is to manage access to multiple PSI trees within a single file.
+* IntelliJ IDEA * 6.0中引入了文件视图提供程序(请参阅[FileViewProvider](upsource:///platform/core-api/src/com/intellij/psi/FileViewProvider.java)).
+其主要目的是管理单个文件中对多个PSI树的访问.
 
-For example, a JSPX page has a separate PSI tree for the Java code in it (`PsiJavaFile`), a separate tree for the XML code (`XmlFile`), and a separate tree for JSP as a whole [JspFile](upsource:///java/jsp-openapi/src/com/intellij/psi/jsp/JspFile.java)).
 
-Each of the PSI trees covers the entire contents of the file, and contains special "outer language elements" in the places where contents in a different language can be found.
+例如,一个JSPX页面有一个单独的PSI树,用于其中的Java代码(`PsiJavaFile`),一个单独的XML代码树(`XmlFile`),以及一个单独的JSP for JSP [JspFile](upsource) 
+:///java/jsp-openapi/src/com/intellij/psi/jsp/JspFile.java)).
 
-A [`FileViewProvider`](upsource:///platform/core-api/src/com/intellij/psi/FileViewProvider.java) instance corresponds to a single `VirtualFile`, a single `Document`, and can be used to retrieve multiple `PsiFile` instances.
 
-## How do I get an FVP?
+每个PSI树都覆盖了文件的全部内容,并且在可以找到不同语言的内容的地方包含特殊的“外部语言元素”.
 
-* From a VirtualFile: `PsiManager.getInstance(project).findViewProvider()`
-* From a PSI file: `psiFile.getViewProvider()`
 
-## What can I do with an FVP?
+一个[`FileViewProvider`](upsource:///platform/core-api/src/com/intellij/psi/FileViewProvider.java)实例对应一个`VirtualFile`,一个`Document`,可以用来
+检索多个`PsiFile`实例.
 
-* To get the set of all languages for which PSI trees exist in a file: `fileViewProvider.getLanguages()`
-* To get the PSI tree for a particular language: `fileViewProvider.getPsi(language)`, where the `language` parameter can take values of the [Language](upsource:///platform/core-api/src/com/intellij/lang/Language.java) type defined in [StdLanguages](upsource:///platform/platform-api/src/com/intellij/lang/StdLanguages.java) class. For example, to get the PSI tree for XML, use `fileViewProvider.getPsi(StdLanguages.XML)`.
-* To find an element of a particular language at the specified offset in the file: `fileViewProvider.findElementAt(offset, language)`
 
-## How do I extend the FileViewProvider?
+##如何获得FVP？
 
-To create a file type that has multiple interspersing trees for different languages, your plugin must contain an extension to the `fileType.fileViewProviderFactory` [extension point](/basics/plugin_structure/plugin_extensions_and_extension_points.md) available in the *IntelliJ Platform* core.
 
-This extension point is declared using the [FileTypeExtensionPoint](upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)
-bean class.
+*来自VirtualFile:`PsiManager.getInstance(project).findViewProvider()`
 
-To access this extension point, create a Java class that implements the [FileViewProviderFactory](upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) interface, and in this class, override the `createFileViewProvider` method.
+*来自PSI文件:`psiFile.getViewProvider()`
 
-To declare the extension to the `fileType.fileViewProviderFactory` extension point, add the following syntax to the `<extensions>` section of the `plugin.xml` file:
+
+## FVP怎么办？
+
+
+*要获取文件中存在PSI树的所有语言的集合:`fileViewProvider.getLanguages()`
+
+*获取特定语言的PSI树:`fileViewProvider.getPsi(language)`,其中`language`参数可以取[Language]的值(upsource:///platform/core-api/src/com/
+intellij/lang/Language.java)在[StdLanguages](upsource:///platform/platform-api/src/com/intellij/lang/StdLanguages.java)类中定义的类型.
+例如,要获取XML的PSI树,请使用`fileViewProvider.getPsi(StdLanguages.XML)`.
+
+*要在文件中指定的偏移量处查找特定语言的元素:`fileViewProvider.findElementAt(offset,language)`
+
+
+##如何扩展FileViewProvider？
+
+
+要创建具有针对不同语言的多个散布树的文件类型,您的插件必须包含* IntelliJ Platform *核心中可用的`fileType.fileViewProviderFactory` [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)的扩展.
+
+
+此扩展点使用[FileTypeExtensionPoint]声明(upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)
+
+豆类.
+
+
+要访问此扩展点,请创建一个实现[FileViewProviderFactory](upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)接口的Java类,并在此类中覆盖` 
+createFileViewProvider`方法.
+
+
+要声明`fileType.fileViewProviderFactory`扩展点的扩展,请将以下语法添加到`plugin.xml`文件的`<extensions>`部分:
+
 
 ```xml
 <extensions>
@@ -38,4 +61,7 @@ To declare the extension to the `fileType.fileViewProviderFactory` extension poi
 </extensions>
 ```
 
-Where `%file_type%` refers to the type of the file being created (for example, "JFS"), and the `%class_name%` refers to the name of your Java class that implements the [`FileViewProviderFactory`](upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java) interface.
+其中`％file_type％`指的是正在创建的文件的类型(例如,“JFS”),而`％class_name％`指的是实现[`FileViewProviderFactory`]的Java类的名称(upsource: 
+///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)界面.
+
+

@@ -4,7 +4,8 @@ redirect_from:
   - /phpstorm/php_open_api.html
 ---
 
-## Using php-openapi
+##使用php-openapi
+
 
 ```xml
 <depends>com.jetbrains.php</depends>
@@ -12,21 +13,28 @@ redirect_from:
 
 ## PHP PSI
 
-`com.jetbrains.php.lang.psi.elements.*;`
+
+`com.jetbrains.php.lang.psi.elements *;`
+
 
 ## Utility Classes
 
-## PHP Extension Points
+
+## PHP扩展点
+
 
 ### PhpTypeProvider
 
-Here is a code fragment that makes [generic Factory Method support](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Advanced+Metadata#PhpStormAdvancedMetadata-Factorymethods) work
+
+这是一个代码片段,使[通用工厂方法支持](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Advanced+Metadata#PhpStormAdvancedMetadata-Factorymethods)工作
+
 
 ```xml
 <php.typeProvider2 implementation="com.jetbrains.php.lang.psi.resolve.types.PhpStaticFactoryTypeProvider2"/>
 ```
 
-Interface:
+接口:
+
 
 ```java
 /**
@@ -57,7 +65,8 @@ public interface PhpTypeProvider2 {
 }
 ```
 
-Our implementation: includes a Completion contributor for the parameter values too.
+我们的实现:包括参数值的完成贡献者.
+
 
 ```java
 /**
@@ -207,8 +216,11 @@ public class PhpStaticFactoryTypeProvider extends CompletionContributor implemen
 }
 ```
 
-to make completion work registration is required:
+要完成工作注册是必需的:
+
 
 ```xml
 <completion.contributor language="PHP" implementationClass="com.jetbrains.php.lang.psi.resolve.types.PhpStaticFactoryTypeProvider"/>
 ```
+
+

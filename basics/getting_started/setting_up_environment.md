@@ -2,50 +2,90 @@
 title: Setting Up a Development Environment
 ---
 
-### Preliminary Steps
+###预备步骤
 
-Use the following checklist to ensure that you are ready to develop your custom plugins.
 
-- **Get IntelliJ IDEA CE source code** on your local computer. Getting IntelliJ IDEA CE source code is not a requirement for plugin development, but having it makes debugging your plugins much easier. For detailed instructions refer to the _Getting IntelliJ IDEA Community Edition Source Code_ section of [Check Out And Build Community Edition](upsource:///README.md). Note that building IntelliJ IDEA CE from source code is not required for plugin development.
-- **Plugin DevKit** plugin must be [enabled in IntelliJ IDEA](https://www.jetbrains.com/help/idea/managing-plugins.html)
-- **IntelliJ Platform SDK** must be configured for your IDEA project. For more information, see below.
-  
-### Configuring IntelliJ Platform SDK
-  
-To set up your plugin development environment:
+使用以下清单确保您已准备好开发自定义插件.
+
+
+ -  **在本地计算机上获取IntelliJ IDEA CE源代码**.
+获取IntelliJ IDEA CE源代码不是插件开发的必要条件,但拥有它可以使调试插件变得更加容易.
+有关详细说明,请参阅[检出并构建社区版]的_Getting IntelliJ IDEA社区版源代码_部分(upsource:///README.md).
+请注意,插件开发不需要从源代码构建IntelliJ IDEA CE.
+
+ -  **插件DevKit **插件必须[在IntelliJ IDEA中启用](https://www.jetbrains.com/help/idea/managing-plugins.html)
+
+ -  **必须为您的IDEA项目配置IntelliJ Platform SDK **.
+有关更多信息,请参阅下文.
+  
+
+###配置IntelliJ Platform SDK
+  
+
+要设置插件开发环境:
+
 
 *  Create a new *IntelliJ Platform SDK* under **File \| Project Structure**:
 
-   ![Create IntelliJ Platform SDK](img/create_intellij_idea_sdk.png)
-<br/>
-<br/>
-*  Specify the installation folder of *IntelliJ IDEA Community Edition* as the home directory.
-> **warning** You may use IntelliJ IDEA Ultimate as an alternative, but debugging the core code will only work with the *Community Edition*.
+![创建IntelliJ平台SDK](img/create_intellij_idea_sdk.png)
 
-   ![Set Home Directory](img/set_home_directory.png)
-<br/>
-<br/>      
-*  Select **1.8** as the default Java SDK. See the _IntelliJ Build Configuration_ section of [Check Out And Build Community Edition](upsource:///README.md) for instructions about creating **1.8** JSDK.
+<BR/>
 
-   ![Set IDEA JDK](img/set_java_sdk.png)
-<br/>
-<br/>
-*  In the Sourcepath tab of the SDK settings, click the *Add* button:
+<BR/>
 
-   ![Add Sourcepath](img/add_sourcepath.png)
-<br/>
-<br/>
-*  Specify the source code directory for the *IntelliJ IDEA Community Edition*:
+*指定* IntelliJ IDEA Community Edition *的安装文件夹作为主目录.
 
-   ![Specify Source Paths](img/community_sources_directory.png)
-<br/>
-<br/>
-*  Specify the **Sandbox Home** directory.  
-   The *Sandbox Home* directory stores the settings of the IDE development instance launched from a Plugin Project's **Run** configration.
-   Shown below is the default *Sandbox Home* directory for a user on Mac OS X. Any directory can be chosen as the *Sandbox Home* location. 
-   Use the ellipsis button (shown below) to define a custom location.  
-   
-   See the [IDE Development Instances](/basics/ide_development_instance.md) page for more information about default *Sandbox Home* directory
-   locations and contents.  
-  
-   ![Specify Sandbox Path](img/plugins-sandbox.png)
+> **警告**您可以使用IntelliJ IDEA Ultimate作为替代方案,但调试核心代码仅适用于* Community Edition *.
+
+
+![设置主目录](img/set_home_directory.png)
+
+<BR/>
+
+<BR/>
+
+*选择** 1.8 **作为默认Java SDK.
+有关创建** 1.8 ** JSDK的说明,请参阅[Check Out And Build Community Edition]的_IntelliJ Build Configuration_部分(upsource:///README.md).
+
+
+![设置IDEA JDK](img/set_java_sdk.png)
+
+<BR/>
+
+<BR/>
+
+*在SDK设置的Sourcepath选项卡中,单击* Add *按钮:
+
+
+![添加源路径](img/add_sourcepath.png)
+
+<BR/>
+
+<BR/>
+
+*指定* IntelliJ IDEA Community Edition *的源代码目录:
+
+
+![指定源路径](img/community_sources_directory.png)
+
+<BR/>
+
+<BR/>
+
+*指定** Sandbox Home **目录.
+   
+* Sandbox Home *目录存储从插件项目的** Run ** configration启动的IDE开发实例的设置.
+   
+下面显示的是Mac OS X上用户的默认* Sandbox Home *目录.可以选择任何目录作为* Sandbox Home *位置.
+   
+使用省略号按钮(如下所示)定义自定义位置.
+   
+   
+有关default * Sandbox Home *目录的更多信息,请参见[IDE开发实例](/basics/ide_development_instance.md)页面
+   
+地点和内容.
+  
+   
+![指定沙盒路径](img/plugins-sandbox.png)
+
+

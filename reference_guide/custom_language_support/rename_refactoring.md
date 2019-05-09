@@ -2,68 +2,113 @@
 title: Rename Refactoring
 ---
 
+重命名重构的操作与Find Usages的操作非常相似.
 
-The operation of the Rename refactoring is quite similar to that of Find Usages.
-It uses the same rules for locating the element to be renamed, and the same index of words for locating the files which may have references to the element being renamed.
+它使用相同的规则来定位要重命名的元素,以及用于定位文件的相同索引,这些文件可能引用了要重命名的元素.
 
-When the rename refactoring is performed, the method
+
+当执行重命名重构时,该方法
+
 [PsiNamedElement.setName()](upsource:///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)
-is called for the renamed element, and
+
+调用重命名的元素,和
+
 [PsiReference.handleElementRename()](upsource:///platform/core-api/src/com/intellij/psi/PsiReference.java)
-is called for all references to the renamed element.
-Both of these methods perform basically the same action: replace the underlying AST node of the PSI element with the node containing the new text entered by the user.
-Creating a fully correct AST node from scratch is quite difficult.
-Thus, surprisingly, the easiest way to get the replacement node is to create a dummy file in the custom language so that it would contain the necessary node in its parse tree, build the parse tree and extract the necessary node from it.
 
-**Example:**
-[setName()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!--#L58-->
-implementation for a
-[Properties language plugin](upsource:///plugins/properties)
+调用所有对重命名元素的引用.
+
+这两种方法基本上执行相同的操作:将PSI元素的基础AST节点替换为包含用户输入的新文本的节点.
+
+从头开始创建完全正确的AST节点非常困难.
+
+因此,令人惊讶的是,获取替换节点的最简单方法是使用自定义语言创建一个虚拟文件,以便它在其解析树中包含必要的节点,构建解析树并从中提取必要的节点.
 
 
-Another interface related to the Rename refactoring is
+**例:**
+
+[的setName()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<! - ＃L58-->
+
+实施一个
+
+[属性语言插件](upsource:///plugins/properties)
+
+
+与重命名重构相关的另一个接口是
+
 [NamesValidator](upsource:///platform/lang-api/src/com/intellij/lang/refactoring/NamesValidator.java).
-This interface allows a plugin to check if the name entered by the user in the `Rename` dialog is a valid identifier (and not a keyword) according to the custom language rules.
-If an implementation of this interface is not provided by the plugin, Java rules for validating identifiers are used.
-Implementations of
+
+此接口允许插件根据自定义语言规则检查用户在“重命名”对话框中输入的名称是否是有效标识符(而不是关键字).
+
+如果插件未提供此接口的实现,则使用用于验证标识符的Java规则.
+
+实施
+
 [NamesValidator](upsource:///platform/lang-api/src/com/intellij/lang/refactoring/NamesValidator.java)
-are registered in the `com.intellij.lang.namesValidator` extension point.
 
-**Example**:
+在`com.intellij.lang.namesValidator`扩展点中注册.
+
+
+**例**:
+
 [NamesValidator](upsource:///plugins/properties/src/com/intellij/lang/properties/PropertiesNamesValidator.java)
-for
-[Properties language plugin](upsource:///plugins/properties)
+
+对于
+
+[属性语言插件](upsource:///plugins/properties)
 
 
-Further customization of the Rename refactoring processing is possible on multiple levels.
-Providing a custom implementation of the
+可以在多个级别上进一步自定义重命名重构处理.
+
+提供自定义的实现
+
 [RenameHandler](upsource:///platform/lang-api/src/com/intellij/refactoring/rename/RenameHandler.java)
-interface allows you to entirely replace the UI and workflow of the rename refactoring, and also to support renaming something which is not a
+
+界面允许您完全替换重命名重构的UI和工作流,并且还支持重命名非重构的内容
+
 [PsiElement](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
-at all.
 
-**Example**:
+一点都不
+
+
+**例**:
+
 [RenameHandler](upsource:///plugins/properties/src/com/intellij/lang/properties/refactoring/rename/ResourceBundleFromEditorRenameHandler.java)
-for renaming a resource bundle in the
-[Properties language plugin](upsource:///plugins/properties)
+
+用于重命名资源包
+
+[属性语言插件](upsource:///plugins/properties)
 
 
-If you're fine with the standard UI but need to extend the default logic of renaming, you can provide an implementation of the
+如果你对标准UI很好,但需要扩展默认的重命名逻辑,你可以提供一个实现
+
 [RenamePsiElementProcessor](upsource:///platform/lang-impl/src/com/intellij/refactoring/rename/RenamePsiElementProcessor.java)
-interface.
-This allows you to:
 
-*  Rename an element different from the one on which the action was invoked (a super method, for example)
+接口.
 
-*  Rename multiple elements at once (if their names are linked according to the logic of your language)
+这允许您:
 
-*  Check for name conflicts (existing names etc.)
 
-*  Customize how search for code references or text references is performed
+*重命名与调用操作的元素不同的元素(例如,超级方法)
 
-*  etc.
 
-**Example**:
+*一次重命名多个元素(如果他们的名字根据您的语言逻辑链接)
+
+
+*检查名称冲突(现有名称等)
+
+
+*自定义搜索代码引用或文本引用的方式
+
+
+*等
+
+
+**例**:
+
 [RenamePsiElementProcessor](upsource:///plugins/properties/src/com/intellij/lang/properties/refactoring/rename/RenamePropertyProcessor.java)
-for renaming a property in
-[Properties plugin language](upsource:///plugins/properties)
+
+用于重命名属性
+
+[属性插件语言](upsource:///plugins/properties)
+
+

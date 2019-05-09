@@ -2,33 +2,56 @@
 title: Action System
 ---
 
-## Executing and updating actions
+##执行和更新操作
+
 
 The system of actions allows plugins to add their own items to IDEA menus and toolbars.  An action is a class, derived from the [`AnAction`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) class, whose `actionPerformed` method is called when the menu item or toolbar button is selected.
 For example, one of the action classes is responsible for the **File \| Open File...** menu item and for the **Open File** toolbar button.
 
-Actions are organized into groups, which, in turn, can contain other groups. A group of actions can form a toolbar or a menu.
-Subgroups of the group can form submenus of the menu.
+操作被组织成组,而组又可以包含其他组.
+一组动作可以形成工具栏或菜单.
 
-Every action and action group has an unique identifier. Identifiers of many of the standard IDEA actions are defined in the [IdeActions](upsource:///platform/platform-api/src/com/intellij/openapi/actionSystem/IdeActions.java) class.
+该组的子组可以形成菜单的子菜单.
 
-Every action can be included in multiple groups, and thus appear in multiple places within the IDEA user interface. Different places where actions can appear are defined by constants in the [`ActionPlaces`](upsource:///platform/platform-api/src/com/intellij/openapi/actionSystem/ActionPlaces.java) interface. For every place where the action appears, a new [`Presentation`](upsource:///platform/platform-api/src/com/intellij/ide/presentation/Presentation.java) is created. Thus, the same action can have different text or icons when it appears in different places of the user interface. Different presentations for the action are created by copying the presentation returned by the `AnAction.getTemplatePresentation()` method.
 
-To update the state of the action, the method `AnAction.update()` is periodically called by IDEA. The [`AnActionEvent`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java) object passed to this method carries the information about the current context for the action, and in particular, the specific presentation which needs to be updated.
+每个操作和操作组都有一个唯一标识符.
+许多标准IDEA操作的标识符在[IdeActions](upsource:///platform/platform-api/src/com/intellij/openapi/actionSystem/IdeActions.java)类中定义.
 
-To retrieve the information about the current state of the IDE, including the active project, the selected file, the selection in the editor and so on, the method `AnActionEvent.getData()` can be used. Different data keys that can be passed to that method are defined in the [`CommonDataKeys`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/CommonDataKeys.java)class.
 
-The `AnActionEvent` instance is also passed to the `actionPerformed` method.
+每个操作都可以包含在多个组中,因此可以显示在IDEA用户界面中的多个位置.
+可以出现动作的不同位置由[`ActionPlaces`](upsource:///platform/platform-api/src/com/intellij/openapi/actionSystem/ActionPlaces.java)界面中的常量定义.
+对于动作出现的每个地方,都会创建一个新的[`Presentation`](upsource:///platform/platform-api/src/com/intellij/ide/presentation/Presentation.java).
+因此,当相同的动作出现在用户界面的不同位置时,它可以具有不同的文本或图标.
+通过复制`AnAction.getTemplatePresentation()`方法返回的表示来创建动作的不同表示.
 
-For a step-by-step walkthrough of defining actions, please check out the [action system tutorial](/tutorials/action_system.md).
 
-## Registering Actions
+为了更新动作的状态,IDEA定期调用方法`AnAction.update()`.
+传递给此方法的[`AnActionEvent`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java)对象包含有关操作的当前上下文的信息,
+特别是需要更新的具体表述.
 
-There are two main ways to register an action: either by listing it in the `<actions>` section of the `plugin.xml` file, or through Java code.
 
-### Registering Actions in plugin.xml
+要检索有关IDE当前状态的信息,包括活动项目,所选文件,编辑器中的选择等,可以使用方法“AnActionEvent.getData()”.
+可以传递给该方法的不同数据键在[`CommonDataKeys`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/CommonDataKeys.java)类中定义.
 
-Registering actions in `plugin.xml` is demonstrated in the following example. The example section of `plugin.xml` demonstrates all elements which can be used in the `<actions>` section, and describes the meaning of each element.
+
+`AnActionEvent`实例也传递给`actionPerformed`方法.
+
+
+有关定义操作的分步演练,请查看[操作系统教程](/tutorials/action_system.md).
+
+
+##注册操作
+
+
+注册动作有两种主要方式:通过在`plugin.xml`文件的`<actions>`部分中列出它,或者通过Java代码.
+
+
+###在plugin.xml中注册操作
+
+
+以下示例演示了在`plugin.xml`中注册操作. 
+`plugin.xml`的示例部分演示了可以在`<actions>`部分中使用的所有元素,并描述了每个元素的含义.
+
 
 ```xml
 <!-- Actions -->
@@ -126,22 +149,35 @@ Registering actions in `plugin.xml` is demonstrated in the following example. Th
 </actions>
 ```
 
-## Registering Actions from Code
+##从代码注册操作
 
-To register an action from code, two steps are required.
 
-* First, an instance of the class derived from `AnAction` must be passed to the `registerAction` method of the [ActionManager](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionManager.java) class, to associate the action with an ID.
-* Second, the action needs to be added to one or more groups. To get an instance of an action group by ID, it is necessary to call `ActionManager.getAction()` and cast the returned value to the [DefaultActionGroup](upsource:///platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java) class.
+要从代码注册操作,需要两个步骤.
 
-You can create a plugin that registers actions on IDEA startup using the following procedure.
 
-**To register an action on IDEA startup**
+*首先,必须将源自`AnAction`的类的实例传递给[ActionManager]的`registerAction`方法(upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem) 
+/ActionManager.java)类,用于将操作与ID相关联.
 
-* Create a new class that implements the [`ApplicationComponent`](upsource:///platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java) interface.
-* In this class, override the `getComponentName`, `initComponent`, and `disposeComponent` methods.
-* Register this class in the `<application-components>` section of the plugin.xml file.
+*其次,需要将操作添加到一个或多个组中.
+要按ID获取操作组的实例,必须调用`ActionManager.getAction()`并将返回的值强制转换为[DefaultActionGroup](upsource:///platform/platform-api/src/com/intellij) 
+/openapi/actionSystem/DefaultActionGroup.java)类.
 
-To clarify the above procedure, consider the following sample Java class `MyPluginRegistration` that registers an action defined in a custom `TextBoxes` class and adds a new menu command to the *Window*  menu group on the main menu:
+
+您可以使用以下过程创建一个在IDEA启动时注册操作的插件.
+
+
+**在IDEA创业公司注册诉讼**
+
+
+*创建一个实现[`ApplicationComponent`](upsource:///platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java)接口的新类.
+
+*在这个类中,重写`getComponentName`,`initComponent`和`disposeComponent`方法.
+
+*在plugin.xml文件的`<application-components>`部分注册此类.
+
+
+为了阐明上述过程,请考虑以下示例Java类“MyPluginRegistration”,它注册在自定义`TextBoxes`类中定义的操作,并将新菜单命令添加到主菜单上的* Window *菜单组:
+
 
 ```java
 public class MyPluginRegistration implements ApplicationComponent {
@@ -174,9 +210,11 @@ public class MyPluginRegistration implements ApplicationComponent {
 }
 ```
 
-Note, that the sample `TextBoxes` class is described in [Getting Started with Plugin Development](/basics/getting_started.md).
+请注意,[插件开发入门](/basics/getting_started.md)中描述了示例`TextBoxes`类.
 
-To ensure that your plugin is initialized on IDEA start-up, make the following changes to the `<application-components>` section of the `plugin.xml` file:
+
+要确保在IDEA启动时初始化插件,请对`plugin.xml`文件的`<application-components>`部分进行以下更改:
+
 
 ```xml
 <application-components>
@@ -187,8 +225,16 @@ To ensure that your plugin is initialized on IDEA start-up, make the following c
 </application-components>
 ```
 
-## Building UI from Actions
+##从Actions构建UI
 
-If a plugin needs to include a toolbar or popup menu built from a group of actions in its own user interface, that can be accomplished through the [`ActionPopupMenu`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionPopupMenu.java) and [`ActionToolbar`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionToolbar.java) classes. These objects can be created through calls to `ActionManager.createActionPopupMenu` and `ActionManager.createActionToolbar`. To get a Swing component from such an object, simply call the getComponent() method.
 
-If your action toolbar is attached to a specific component (for example, a panel in a tool window), you usually need to call `ActionToolbar.setTargetComponent()` and pass the instance of the related component as a parameter. This ensures that the state of the toolbar buttons depends on the state of the related component, and not on the current focus location within the IDE frame.
+如果插件需要包含从其自己的用户界面中的一组操作构建的工具栏或弹出菜单,则可以通过[`ActionPopupMenu`](upsource:///platform/editor-ui-api/src/)来完成
+com/intellij/openapi/actionSystem/ActionPopupMenu.java)和[`ActionToolbar`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionToolbar.java)类.
+可以通过调用`ActionManager.createActionPopupMenu`和`ActionManager.createActionToolbar`来创建这些对象.
+要从这样的对象获取Swing组件,只需调用getComponent()方法即可.
+
+
+如果操作工具栏附加到特定组件(例如,工具窗口中的面板),则通常需要调用`ActionToolbar.setTargetComponent()`并将相关组件的实例作为参数传递.
+这可确保工具栏按钮的状态取决于相关组件的状态,而不是IDE框架中当前的焦点位置.
+
+

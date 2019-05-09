@@ -3,7 +3,7 @@ product_name: IntelliJ Platform SDK
 product_version:
 product_type: DevGuide
 
-url: http://www.jetbrains.org
+url: https://kana112233.github.io
 baseurl: /intellij/sdk/docs/
 
 description: Documentation for working with and extending the IntelliJ Platform SDK
@@ -14,5 +14,5 @@ upsource:
   repo: idea-ce
   commit: 4f9b5f89b2a19ce700b1373a465c16b28ed8ad52
 
-github_repo: JetBrains/intellij-sdk-docs
+github_repo: kana112233/kana112233.github.io
 youtrack_project: IJSDK
