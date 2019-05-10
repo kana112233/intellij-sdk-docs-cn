@@ -78,4 +78,5 @@ A set of Rake tasks, a Make-like program implemented in Ruby, provides short com
    in your browser.
    **Note:** Make sure you haven't changed default Jekyll port during installation.
 
-
+部署编译
+rake build[_config.yml]
