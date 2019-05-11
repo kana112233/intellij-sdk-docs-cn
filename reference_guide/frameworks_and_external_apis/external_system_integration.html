@@ -31,7 +31,7 @@
     <meta property="og:title" content="External System Integration" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:46:04+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,8 +84,7 @@
                     
 
                     <h1>External System Integration</h1>
-                    <a name="section" class="elem-anchor"></a>
-<h1>目的<a href="#section" class="anchor-link"><span></span></a></h1>
+                    <p>＃目的</p>
 
 <p>此页面提供<em>外部系统</em>子系统的高级概述.</p>
 
@@ -107,8 +106,7 @@
 <p>这意味着我们可以将外部系统特定逻辑和一般IDE处理分开. 
 <em>‘外部系统’</em>子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.</p>
 
-<a name="section-1" class="elem-anchor"></a>
-<h1>项目管理<a href="#section-1" class="anchor-link"><span></span></a></h1>
+<p>＃ 项目管理</p>
 
 <p>##项目数据域</p>
 
@@ -175,8 +173,8 @@
 <p><strong>注意:</strong> * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()<em>经常被调用,这就是为什么它应该尽快返回控制. 
 Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即</em> ExternalSystemManager <em>实现</em> ExternalSystemAutoImportAware <em>可以有一个字段,如</em>‘new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* <em>委托</em> ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.</p>
 
-<a name="section-2" class="elem-anchor"></a>
-<h1>设置<a href="#section-2" class="anchor-link"><span></span></a></h1>
+<a name="section" class="elem-anchor"></a>
+<h1>设置<a href="#section" class="anchor-link"><span></span></a></h1>
 
 <p>一般的想法是所有外部系统设置控件都由[ExternalSettingsControl]的实现表示(upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java)
 接口.
@@ -199,7 +197,7 @@ Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即</em> Ex
                         <a class="navigation-links__next" href="/basics/architectural_overview/psi.html">Program Structure Interface (PSI)</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 
