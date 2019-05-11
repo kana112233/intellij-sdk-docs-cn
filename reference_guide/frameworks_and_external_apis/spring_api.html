@@ -90,20 +90,23 @@
 
 <p>要开发插件,您需要使用IntelliJ IDEA Ultimate Edition 13.1或更高版本.</p>
 
-<p>###设置IntelliJ Platform SDK</p>
+<a name="intellij-platform-sdk" class="elem-anchor"></a>
+<h3>设置IntelliJ Platform SDK<a href="#intellij-platform-sdk" class="anchor-link"><span></span></a></h3>
 
 <aside class="注意">
   <p>这仅适用于<a href="/intellij-sdk-docs-cn/basics/getting_started/using_dev_kit.html"><span>Plugin DevKit</span></a>项目.
 对于<a href="/intellij-sdk-docs-cn/tutorials/build_system.html"><span>Gradle</span></a>项目,只需将依赖项添加到捆绑的Spring插件<code class="code highlight language-text">com.intellij.spring</code>即可.</p>
 </aside>
 
-<p>#####新SDK</p>
+<a name="sdk" class="elem-anchor"></a>
+<h5>新SDK</h5>
 
 <p>请创建IntelliJ Platform SDK以包含所有必需的最低文件.</p>
 
 <p>然后将<code class="code highlight language-text">$ IDEA_HOME $/plugins/Spring/lib/spring.jar</code>添加到其_classpath_(_not_到你的插件模块的依赖项).</p>
 
-<p>#####现有SDK</p>
+<a name="sdk-1" class="elem-anchor"></a>
+<h5>现有SDK</h5>
 
 <p>请按照以下步骤修改现有的IntelliJ Platform SDK:</p>
 
@@ -133,7 +136,8 @@
 
 <p>请注意,“Spring Support”插件本身依赖于其他一些需要在沙箱中启用的插件(请参阅启动时的通知).</p>
 
-<p>##主要概念</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>主要概念<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>Spring facet可以安装在模块上. 
 (几乎)所有Spring功能都需要一个现有且正确设置的Spring facet.</p>
@@ -160,8 +164,8 @@
   <p>有些核心类已在14(.1)中更改,请参阅“<em>Version 14(.1)</em>”说明,了解有关如何替换现有API调用的信息.</p>
 </aside>
 
-<a name="section-1" class="elem-anchor"></a>
-<h2>我如何能…<a href="#section-1" class="anchor-link"><span></span></a></h2>
+<a name="section-2" class="elem-anchor"></a>
+<h2>我如何能…<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <a name="spring-setup" class="elem-anchor"></a>
 <h3>Spring Setup<a href="#spring-setup" class="anchor-link"><span></span></a></h3>
@@ -177,7 +181,8 @@
 
 <p>请参阅<code class="code highlight language-text">SpringManager#getSpringModel(s)...</code>和<code class="code highlight language-text">com.intellij.spring.model.utils.SpringModelUtils</code>.</p>
 
-<p>#####贡献隐式模型</p>
+<a name="section-3" class="elem-anchor"></a>
+<h5>贡献隐式模型</h5>
 
 <p>请参阅<code class="code highlight language-text">com.intellij.spring.SpringModelProvider</code>以提供隐式文件集(例如,由特定配置文件中的另一个框架提供).</p>
 
@@ -186,11 +191,13 @@
 <p>有关方便的基类,请参阅<code class="code highlight language-text">com.intellij.spring.facet.SpringAutodetectedFileSet</code>.
 请注意,Spring facet中的用户无法编辑/修改自动检测的文件集.</p>
 
-<p>#####自定义隐式模型配置</p>
+<a name="section-4" class="elem-anchor"></a>
+<h5>自定义隐式模型配置</h5>
 
 <p>_2017.1_参见<code class="code highlight language-text">com.intellij.spring.facet.SpringFileSetEditorCustomization</code>来自定义演示文稿和/或为特定的自动检测文件集添加额外的设置/操作.</p>
 
-<p>#####贡献隐式bean</p>
+<a name="bean" class="elem-anchor"></a>
+<h5>贡献隐式bean</h5>
 
 <p>请参阅<code class="code highlight language-text">com.intellij.spring.model.jam.CustomComponentsDiscoverer</code>或<code class="code highlight language-text">com.intellij.spring.model.SpringImplicitBeansProviderBase</code>以提供隐式(特定于框架)的bean(例如Spring MVC的“servletContext”).</p>
 
@@ -198,28 +205,32 @@
 
 <p><code class="code highlight language-text">CustomComponentsDiscoverer</code>已分别分为<code class="code highlight language-text">com.intellij.spring.model.custom.CustomLocalComponentsDiscoverer</code>和<code class="code highlight language-text">com.intellij.spring.model.custom.CustomModuleComponentsDiscoverer</code>.</p>
 
-<p>#####贡献自定义bean范围</p>
+<a name="bean-1" class="elem-anchor"></a>
+<h5>贡献自定义bean范围</h5>
 
 <p><em>版本14</em></p>
 
 <p>请参阅<code class="code highlight language-text">com.intellij.spring.model.scope.SpringCustomBeanScope</code>以提供自定义(例如特定于框架)bean范围.</p>
 
-<p>#####获取/创建Spring配置文件</p>
+<a name="spring" class="elem-anchor"></a>
+<h5>获取/创建Spring配置文件</h5>
 
 <p><em>版本14.1</em></p>
 
 <p><code class="code highlight language-text">com.intellij.spring.profiles.SpringProfilesFactory</code></p>
 
-<a name="section-2" class="elem-anchor"></a>
-<h3>豆子<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<a name="section-5" class="elem-anchor"></a>
+<h3>豆子<a href="#section-5" class="anchor-link"><span></span></a></h3>
 
-<p>#####按名称搜索bean</p>
+<a name="bean-2" class="elem-anchor"></a>
+<h5>按名称搜索bean</h5>
 
 <p><code class="code highlight language-text">com.intellij.spring.CommonSpringModel#findBeanByName</code></p>
 
 <p><em>Version 14</em>:<code class="code highlight language-text">com.intellij.spring.model.utils.SpringModelSearchers#findBean</code></p>
 
-<p>#####按类型搜索bean</p>
+<a name="bean-3" class="elem-anchor"></a>
+<h5>按类型搜索bean</h5>
 
 <p>选择<code class="code highlight language-text">com.intellij.spring.CommonSpringModel#findBeansByPsiClassXXX</code>变体之一(请注意不推荐使用的方法).</p>
 
@@ -227,11 +238,13 @@
 
 <p><em>Version 16</em>:注意’SpringModelSearchParameters.BeanClass#withInheritors(GlobalSearchScope)的弃用</p>
 
-<p>#####查明是否存在具有给定名称/类型的bean</p>
+<a name="bean-4" class="elem-anchor"></a>
+<h5>查明是否存在具有给定名称/类型的bean</h5>
 
 <p><em>Version 14</em>:<code class="code highlight language-text">com.intellij.spring.model.utils.SpringModelSearchers#doesBeanExist</code>(请注意弃用的方法)</p>
 
-<p>#####将bean作为基础结构bean</p>
+<a name="beanbean" class="elem-anchor"></a>
+<h5>将bean作为基础结构bean</h5>
 
 <p><em>Version 14</em>:实现<code class="code highlight language-text">SpringInfrastructureBean</code>,这样的bean获取特殊图标,可以在UI的各个地方进行过滤.</p>
 
@@ -240,7 +253,8 @@
 
 <p>所有对基于XML的Spring配置文件的支持都是通过<a href="xml_dom_api.html"><span>DOM-API</span></a>提供的.</p>
 
-<p>#####添加对其他Spring命名空间的支持</p>
+<a name="spring-1" class="elem-anchor"></a>
+<h5>添加对其他Spring命名空间的支持</h5>
 
 <p>请参阅EP<code class="code highlight language-text">com.intellij.spring.dom.SpringCustomNamespaces</code>,注册的namespace-key必须与通过<code class="code highlight language-text">@ Namespace</code>注册的DOM元素匹配.</p>
 
@@ -248,7 +262,8 @@
 
 <p>请注意<code class="code highlight language-text">getModelVersion</code>和<code class="code highlight language-text">getStubVersion</code>(参见javadoc).</p>
 
-<p>#####在我的DomElement中添加对Spring Bean的引用</p>
+<a name="domelementspring-bean" class="elem-anchor"></a>
+<h5>在我的DomElement中添加对Spring Bean的引用</h5>
 
 <p>使用以下模板:</p>
 
@@ -257,9 +272,11 @@
 <span class="n">GenericAttributeValue</span><span class="o">&lt;</span><span class="n">SpringBeanPointer</span><span class="o">&gt;</span> <span class="nf">getMyAttributeName</span><span class="o">();</span>
 </code></div>
 
-<p>###代码配置</p>
+<a name="section-6" class="elem-anchor"></a>
+<h3>代码配置<a href="#section-6" class="anchor-link"><span></span></a></h3>
 
-<p>#####在我的JamElement中添加对Spring Bean的引用</p>
+<a name="jamelementspring-bean" class="elem-anchor"></a>
+<h5>在我的JamElement中添加对Spring Bean的引用</h5>
 
 <p><em>版本14</em></p>
 
@@ -289,13 +306,15 @@
 <h5>Add inspections to Spring Validator</h5>
 <p>Add additional inspections (e.g. for custom namespace) to Spring Validator (<em>Settings|Compiler|Validation</em>) via EP <code class="code highlight language-text">com.intellij.spring.SpringInspectionsRegistry$Contributor</code>.</p>
 
-<p>#####将其他文件添加到Spring Validator</p>
+<a name="spring-validator" class="elem-anchor"></a>
+<h5>将其他文件添加到Spring Validator</h5>
 
 <p><em>版本14.1</em></p>
 
 <p>可以通过<code class="code highlight language-text">com.intellij.spring.SpringInspectionsRegistry $ AdditionalFilesContributor注册通过Spring Validator注册的检查处理的其他文件(例如特定的</code>.properties`配置文件).</p>
 
-<p>#####为其他框架配置Spring支持</p>
+<a name="spring-2" class="elem-anchor"></a>
+<h5>为其他框架配置Spring支持</h5>
 
 <p>当通过框架向导添加Spring facet时,使用<code class="code highlight language-text">com.intellij.spring.facet.SpringConfigurator</code>提供“自动”配置.</p>
 
@@ -305,7 +324,8 @@
 <p>请不要直接引用<code class="code highlight language-text">SpringApiIcons</code>中的bean图标,而是使用<code class="code highlight language-text">SpringPresentationProvider</code>重新使用统一的图标/bean名称.
 有关弹出/列表渲染器的信息,请参阅<code class="code highlight language-text">SpringBeansPsiElementCellRenderer</code>.</p>
 
-<p>#Spring Boot</p>
+<a name="spring-boot" class="elem-anchor"></a>
+<h1>Spring Boot<a href="#spring-boot" class="anchor-link"><span></span></a></h1>
 
 <p><em>2018.1</em></p>
 
@@ -315,8 +335,8 @@
   <p>虽然我们试图保持兼容性,但请为不太严格的政策做好准备.</p>
 </aside>
 
-<a name="section-3" class="elem-anchor"></a>
-<h3>配置<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<a name="section-7" class="elem-anchor"></a>
+<h3>配置<a href="#section-7" class="anchor-link"><span></span></a></h3>
 
 <p>请执行以下步骤_additionally_以设置Spring API支持(请参阅<a href="#setting-up-intellij-platform-sdk"><span>此处</span></a>):</p>
 
@@ -348,7 +368,8 @@
 <p><code class="code highlight language-text">com.intellij.spring.boot.model.SpringBootModelConfigFileContributor</code>允许添加对自定义配置文件格式的支持.
                                             </p>
 
-<p>###自动配置支持</p>
+<a name="section-8" class="elem-anchor"></a>
+<h3>自动配置支持<a href="#section-8" class="anchor-link"><span></span></a></h3>
 
 <p>现有的<code class="code highlight language-text">Condition</code>实现可以在IDE中通过<code class="code highlight language-text">com.intellij.spring.boot.model.autoconfigure.conditions.ConditionalContributor</code>在设计时进行模拟.</p>
 
@@ -361,7 +382,8 @@
 
 <p><code class="code highlight language-text">com.intellij.spring.boot.initializr.SpringInitializrModuleBuilderPostTask</code>允许在创建模块后执行自定义设置步骤(例如,与构建系统的设置集成).</p>
 
-<p>###端点选项卡</p>
+<a name="section-9" class="elem-anchor"></a>
+<h3>端点选项卡<a href="#section-9" class="anchor-link"><span></span></a></h3>
 
 <p><em>2018.2</em>  - 需要<code class="code highlight language-text">spring-boot-run.jar</code></p>
 
