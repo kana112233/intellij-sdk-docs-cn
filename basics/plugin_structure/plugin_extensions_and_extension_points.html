@@ -31,7 +31,7 @@
     <meta property="og:title" content="Plugin Extensions and Extension Points" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,20 +84,21 @@
                     
 
                     <h1>Plugin Extensions and Extension Points</h1>
-                    <ul>
-  <li>IntelliJ Platform *提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.</li>
-</ul>
+                    <p><em>IntelliJ Platform</em> 提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.</p>
 
-<p>##扩展点</p>
+<a name="section" class="elem-anchor"></a>
+<h2>扩展点<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>如果您希望插件允许其他插件扩展其功能,则在插件中,您必须声明一个或多个_extension points_.
 每个扩展点定义允许访问此点的类或接口.</p>
 
-<p>##扩展</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>扩展<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
-<p>如果您希望插件扩展其他插件或* IntelliJ Platform *的功能,则必须声明一个或多个_extensions_.</p>
+<p>如果您希望插件扩展其他插件或 <em>IntelliJ Platform</em> 的功能,则必须声明一个或多个_extensions_.</p>
 
-<p>##如何声明扩展和扩展点</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>如何声明扩展和扩展点<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>您可以分别在插件配置文件<code class="code highlight language-text">plugin.xml</code>中声明扩展和扩展点,分别在<code class="code highlight language-text">&lt;extensions&gt;</code>和<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分中.</p>
 
@@ -114,10 +115,14 @@
 <span class="nt">&lt;/extensionPoints&gt;</span>
 </code></div>
 
-<p>*<code class="code highlight language-text">interface</code>属性设置一个接口,该插件有助于扩展点必须实现.</p>
-
-<p>*<code class="code highlight language-text">beanClass</code>属性设置一个bean类,它指定一个或多个用[@Attribute]注释的属性(upsource:///platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java)注释
-.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">interface</code>属性设置一个接口,该插件有助于扩展点必须实现.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">beanClass</code>属性设置一个bean类,它指定一个或多个用[@Attribute]注释的属性(upsource:///platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java)注释.</p>
+  </li>
+</ul>
 
 <p>有助于扩展点的插件将从<code class="code highlight language-text">plugin.xml</code>文件中读取这些属性.</p>
 
@@ -163,7 +168,7 @@
     
 *如果使用<code class="code highlight language-text">beanClass</code>属性声明扩展点,则对于新添加的子元素,设置所有使用[@Attribute]注释的属性(upsource:///xml/dom-openapi/src/com/intellij/util/指定bean类中的xml/Attribute.java)注释.</p>
 
-<p>为了澄清这个过程,请考虑<code class="code highlight language-text">plugin.xml</code>文件的以下示例部分,它定义了两个扩展,旨在访问* IntelliJ Platform *中的<code class="code highlight language-text">appStarter</code>和<code class="code highlight language-text">applicationConfigurable</code>扩展点,以及一个访问`MyExtensionPoint1的扩展名.
+<p>为了澄清这个过程,请考虑<code class="code highlight language-text">plugin.xml</code>文件的以下示例部分,它定义了两个扩展,旨在访问 <em>IntelliJ Platform</em> 中的<code class="code highlight language-text">appStarter</code>和<code class="code highlight language-text">applicationConfigurable</code>扩展点,以及一个访问`MyExtensionPoint1的扩展名.
 测试插件中的扩展点:</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="c">&lt;!-- Declare extensions to access extension points in the IntelliJ Platform.
@@ -193,7 +198,7 @@
 
 <p>##如何获得扩展点列表？</p>
 
-<p>要获取* IntelliJ Platform *核心中可用的扩展点列表,请参阅以下XML配置文件的<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分:</p>
+<p>要获取 <em>IntelliJ Platform</em> 核心中可用的扩展点列表,请参阅以下XML配置文件的<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分:</p>
 
 <ul>
   <li>
@@ -214,7 +219,7 @@
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_actions.html">Plugin Actions</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

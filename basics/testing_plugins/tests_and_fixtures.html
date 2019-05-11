@@ -31,7 +31,7 @@
     <meta property="og:title" content="Tests and Fixtures" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,16 +84,14 @@
                     
 
                     <h1>Tests and Fixtures</h1>
-                    <ul>
-  <li>IntelliJ Platform *测试基础架构不依赖于任何特定的测试框架.
+                    <p><em>IntelliJ Platform</em> 测试基础架构不依赖于任何特定的测试框架.
 事实上,IntelliJ IDEA团队使用JUnit,TestNG和Cucumber来测试项目的不同部分.
-但是,大多数测试都是使用JUnit 3编写的.</li>
-</ul>
+但是,大多数测试都是使用JUnit 3编写的.</p>
 
 <p>在编写自己的测试时,您可以选择使用标准基类为您执行测试设置和使用fixture类,这可以让您手动执行设置,而不会将您绑定到特定的测试框架.</p>
 
 <p>使用前一种方法,您可以使用[<code class="code highlight language-text">LightPlatformCodeInsightFixtureTestCase</code>]等类(upsource:///platform/testFramework/src/com/intellij/testFramework/fixtures/LightPlatformCodeInsightFixtureTestCase.java)(尽管它是最长和最丑陋的类之一)
-您将在* IntelliJ Platform * API中遇到的名称,它实际上是编写测试的推荐方法).</p>
+您将在 <em>IntelliJ Platform</em>  API中遇到的名称,它实际上是编写测试的推荐方法).</p>
 
 <p>使用后一种方法,您可以使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">IdeaTestFixtureFactory</code></span></a>类为测试环境创建灯具实例,并且您
 需要从测试框架使用的测试设置方法中调用fixture创建和设置方法.</p>
@@ -105,7 +103,7 @@
                         <a class="navigation-links__next" href="/basics/testing_plugins/light_and_heavy_tests.html">Light and Heavy Tests</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

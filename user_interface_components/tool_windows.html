@@ -31,7 +31,7 @@
     <meta property="og:title" content="Tool Windows" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>Tool Windows</h1>
-                    <p>##工具Windows</p>
+                    <a name="windows" class="elem-anchor"></a>
+<h2>工具Windows<a href="#windows" class="anchor-link"><span></span></a></h2>
 
 <p><em>Tool windows_是用于显示信息的IDE的子窗口。
 这些窗口通常在主窗口的外边缘有自己的工具栏(称为_tool窗口栏</em>)，其中包含一个或多个_tool窗口按钮_，它们激活显示在主IDE窗口左侧，底部和右侧的面板。
@@ -106,13 +107,20 @@
 
 <p>扩展点属性指定显示工具窗口按钮所需的所有数据:</p>
 
-<p>*工具窗口的<code class="code highlight language-text">id</code>(对应于工具窗口按钮上显示的文本)</p>
-
-<p>*<code class="code highlight language-text">anchor</code>，表示显示工具窗口的屏幕一侧(“左”，“右”或“底”)</p>
-
-<p>*“secondary”属性，指定工具窗口是显示在主要组还是次要组中</p>
-
-<p>*工具窗口按钮上显示的<code class="code highlight language-text">icon</code>(13x13像素)</p>
+<ul>
+  <li>
+    <p>工具窗口的<code class="code highlight language-text">id</code>(对应于工具窗口按钮上显示的文本)</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">anchor</code>，表示显示工具窗口的屏幕一侧(“左”，“右”或“底”)</p>
+  </li>
+  <li>
+    <p>“secondary”属性，指定工具窗口是显示在主要组还是次要组中</p>
+  </li>
+  <li>
+    <p>工具窗口按钮上显示的<code class="code highlight language-text">icon</code>(13x13像素)</p>
+  </li>
+</ul>
 
 <p>除此之外，您还可以指定* factory class *  - 实现该类的类的名称</p>
 
@@ -178,14 +186,16 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/content/Content.java" data-bypass="yes" target="_blank"><span>Content.setCloseable(假)</span></a>。</p>
 
-<p>##如何创建工具窗口？</p>
+<a name="section" class="elem-anchor"></a>
+<h2>如何创建工具窗口？<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>IntelliJ平台提供_toolWindow_ <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_extensions_and_extension_points.html"><span>扩展点</span></a>，您可以使用它来创建和配置自定义工具窗口。
 使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowEP.java" data-bypass="yes" target="_blank"><span>ToolWindowEP</span></a>bean类声明此扩展点。</p>
 
 <p>要创建工具窗口，首先声明_toolWindow_扩展点的扩展名。</p>
 
-<p>###创建插件</p>
+<a name="section-1" class="elem-anchor"></a>
+<h3>创建插件<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
 <p>要创建显示自定义工具窗口的插件，请执行以下步骤:</p>
 
@@ -223,7 +233,8 @@
 <span class="nt">&lt;/extensions&gt;</span>
 </code></div>
 
-<p>###示例插件</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>示例插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow <strong>示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/) 
 SDK文档的目录。
@@ -251,7 +262,7 @@ If necessary, change the <a href="https://www.jetbrains.com/help/idea/run-debug
                         <a class="navigation-links__next" href="/user_interface_components/dialog_wrapper.html">DialogWrapper</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

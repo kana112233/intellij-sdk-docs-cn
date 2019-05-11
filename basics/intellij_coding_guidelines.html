@@ -31,7 +31,7 @@
     <meta property="og:title" content="IntelliJ Platform Coding Guidelines" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -86,23 +86,27 @@
                     <h1>IntelliJ Platform Coding Guidelines</h1>
                     <p>如果您要编写想要为IntelliJ平台贡献的代码(作为补丁或插件),遵循这些指导原则将使JetBrains开发团队更容易查看和接受您的更改.</p>
 
-<p>####遵循最新源代码</p>
+<a name="section" class="elem-anchor"></a>
+<h4>遵循最新源代码</h4>
 
 <p>如果您提交补丁,我们强烈建议您根据Git存储库中的最新版本的代码构建补丁.
 最简单的方法是克隆JetBrains Git存储库,在Git中跟踪您的工作,并使用“git format-patch”命令创建补丁.</p>
 
-<p>####一般建筑原理</p>
+<a name="section-1" class="elem-anchor"></a>
+<h4>一般建筑原理</h4>
 
 <p>请尽力遵循常见的Java架构原则.
 约书亚布洛赫的“有效Java”是一个很好的起点.</p>
 
-<p>####测试</p>
+<a name="section-2" class="elem-anchor"></a>
+<h4>测试</h4>
 
 <p>IntelliJ IDEA的大多数现有功能都包含在功能测试中.
 如果要修改的区域由测试覆盖,则必须运行测试并确保更改不会引入任何新的测试失败.
 还强烈建议您提供新的功能测试,以涵盖您修复的错误或您添加的新功能.</p>
 
-<p>####代码格式</p>
+<a name="section-3" class="elem-anchor"></a>
+<h4>代码格式</h4>
 
 <p>我们对代码格式化一般都很松懈,但至少必须遵守以下约定:</p>
 
@@ -120,7 +124,8 @@
 
 <p>遵循我们的代码格式化指南的最简单方法是使用共享代码样式重新格式化代码提交,该代码样式包含在IntelliJ IDEA Community Edition项目目录中.</p>
 
-<p>####检查</p>
+<a name="section-4" class="elem-anchor"></a>
+<h4>检查</h4>
 
 <p>IntelliJ IDEA Community Edition项目包括共享检查配置文件.
 我们强烈建议您确保所提交的代码不包含该检查配置文件中配置的检查突出显示的任何警告.</p>
@@ -131,7 +136,8 @@
 <p>如果您的代码添加了新的OpenAPI接口,类,方法或扩展点,则必须提供描述API的参数和预期用法的JavaDoc注释.
 为代码的其他部分提供JavaDoc或其他注释是个好主意,但不是必需的.</p>
 
-<p>####承诺</p>
+<a name="section-5" class="elem-anchor"></a>
+<h4>承诺</h4>
 
 <p>在查看更改时,为避免不必要的工作,请遵循以下准则:</p>
 
@@ -175,7 +181,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

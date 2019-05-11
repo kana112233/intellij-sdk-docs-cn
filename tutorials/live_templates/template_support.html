@@ -31,7 +31,7 @@
     <meta property="og:title" content="1. Adding Live Template Support" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>1. Adding Live Template Support</h1>
-                    <p>##模板创建</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>模板创建<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>最初，您需要从头开始<a href="https://www.jetbrains.com/idea/help/creating-and-editing-live-templates.html#d1476224e158" data-bypass="yes" target="_blank"><span>创建新的实时模板</span></a>。
 添加新模板组“Markdown”并在此组下创建新的实时模板。
@@ -101,7 +102,8 @@
 
 <p>最后，为您的新实时模板提供适用的上下文(即“Everywhere”或“Other”)。</p>
 
-<p>##导出实时模板</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>导出实时模板<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>Once confident the Live Template produces the expected result (consider testing it inside the current editor to minimize debugging later), export the Live Template (<strong>File | Export Settings | ☑ Live Templates</strong>). Unpack the resulting archive, and inside a directory <code class="code highlight language-text">./templates/</code> there will be a file  called <code class="code highlight language-text">Markdown.xml</code> with the following contents:</p>
 
@@ -118,7 +120,8 @@
 
 <p>将此文件复制到插件的资源中(例如<code class="code highlight language-text">project/resource/liveTemplates/Markdown.xml</code>。</p>
 
-<p>##实现DefaultLiveTemplatesProvider</p>
+<a name="defaultlivetemplatesprovider" class="elem-anchor"></a>
+<h2>实现DefaultLiveTemplatesProvider<a href="#defaultlivetemplatesprovider" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/codeInsight/template/impl/DefaultLiveTemplatesProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">DefaultLiveTemplatesProvider</code></span></a>告诉我们在哪里可以找到实时模板设置文件。
 确保包含相对于资源目录的文件的完整路径，不包括文件名。</p>
@@ -141,7 +144,8 @@
 
 </code></div>
 
-<p>##实现TemplateContextType</p>
+<a name="templatecontexttype" class="elem-anchor"></a>
+<h2>实现TemplateContextType<a href="#templatecontexttype" class="anchor-link"><span></span></a></h2>
 
 <p>A <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">TemplateContextType</code></span></a>告诉我们实时模板的适用位置。</p>
 
@@ -173,7 +177,8 @@
 <p>并不总是需要定义自己的<code class="code highlight language-text">TemplateContextType</code>，因为IntelliJ平台中已经定义了许多现有的模板上下文。
 如果要增加对现有区域的语言支持，请考虑重复使用[许多现有模板上下文]之一(upsource:///platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java)。</p>
 
-<p>##注册扩展点</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>注册扩展点<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
   <span class="nt">&lt;id&gt;</span>live_templates<span class="nt">&lt;/id&gt;</span>
@@ -194,7 +199,8 @@
 <span class="nt">&lt;/idea-plugin&gt;</span>
 </code></div>
 
-<p>##检查插件</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>检查插件<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>Now check that the plugin is working correctly. Run the plugin and verify there is a new entry under <em>File | Settings | Live Templates | Markdown | [</em>. Finally, create a new file <code class="code highlight language-text">Test.md</code> and confirm that the Live Template works.</p>
 
@@ -205,7 +211,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 8 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

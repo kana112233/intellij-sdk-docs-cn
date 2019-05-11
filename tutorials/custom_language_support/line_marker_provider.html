@@ -31,7 +31,7 @@
     <meta property="og:title" content="8. Line Marker Provider" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -129,7 +129,8 @@
 
 </code></div>
 
-<p>##实施者的更多技术细节</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>实施者的更多技术细节<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>*请返回行标记信息以获取您要求的确切元素。
     
@@ -140,7 +141,8 @@
 例如，不要为[<code class="code highlight language-text">PsiMethod</code>]返回方法标记(upsource:///java/java-psi-api/src/com/intellij/psi/PsiMethod.java)。
 而是将其返回给<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiIdentifier</code></span></a>，这是此方法的名称。</p>
 
-<p>###更多技术细节:</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>更多技术细节:<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>当<code class="code highlight language-text">LineMarkerProvider</code>为太大的PsiElement返回一些东西时会发生什么？</p>
 
@@ -181,20 +183,20 @@
 <span class="o">}</span>
 </code></div>
 
-<a name="section-1" class="elem-anchor"></a>
-<h3>8.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>8.2。<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>注册行标记提供程序</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;codeInsight.lineMarkerProvider</span> <span class="na">language=</span><span class="s">"JAVA"</span> <span class="na">implementationClass=</span><span class="s">"com.simpleplugin.SimpleLineMarkerProvider"</span><span class="nt">/&gt;</span>
 </code></div>
 
-<a name="section-2" class="elem-anchor"></a>
-<h3>8.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<a name="section-4" class="elem-anchor"></a>
+<h3>8.3。<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>运行该项目</p>
 
 <p>现在，您可以在装订线上看到图标，并可以导航到属性定义。</p>
 
-<p>！<a href="img/line_marker.png"><span>Line Marker</span></a></p>
+<p><img src="img/line_marker.png" alt="Line Marker" /></p>
 
 
 
@@ -203,7 +205,7 @@
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/completion_contributor.html">9. Completion Contributor</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 8 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

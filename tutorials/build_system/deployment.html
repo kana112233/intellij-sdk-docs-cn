@@ -31,7 +31,7 @@
     <meta property="og:title" content="Publishing Plugins with Gradle" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -97,7 +97,8 @@
 
 <p>我们将描述三个选项:仅使用Gradle属性，使用环境变量并使用Gradle任务的参数。</p>
 
-<p>####使用Gradle属性文件</p>
+<a name="gradle" class="elem-anchor"></a>
+<h4>使用Gradle属性文件</h4>
 
 <p>您可以将凭据存储在<a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties" data-bypass="yes" target="_blank"><span>Gradle属性</span></a>中。</p>
 
@@ -124,7 +125,8 @@ intellijPublishPassword=YOUR_PASSWORD_HERE
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">gradle.properties
 </code></div>
 
-<p>####使用环境变量</p>
+<a name="section-1" class="elem-anchor"></a>
+<h4>使用环境变量</h4>
 
 <p>或者，可能稍微安全一些，因为您不会意外地将您的凭据提交给git，您可以通过环境变量“ORG_GRADLE_PROJECT_intellijPublishUsername”和“ORG_GRADLE_PROJECT_intellijPublishPassword”提供您的凭据。</p>
 
@@ -134,7 +136,8 @@ intellijPublishPassword=YOUR_PASSWORD_HERE
 
 <p>请注意，您仍需要在Gradle属性中放置一些默认值(可以为空)，否则您将收到编译错误。</p>
 
-<p>####为Gradle任务提供参数</p>
+<a name="gradle-1" class="elem-anchor"></a>
+<h4>为Gradle任务提供参数</h4>
 
 <p>与使用环境变量类似，您也可以将凭证作为参数传递给Gradle任务。</p>
 
@@ -142,8 +145,8 @@ intellijPublishPassword=YOUR_PASSWORD_HERE
 
 <p>请注意，在这种情况下，您仍需要在Gradle属性中添加一些默认值。</p>
 
-<a name="section-1" class="elem-anchor"></a>
-<h3>2.1配置你的插件<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<a name="section-2" class="elem-anchor"></a>
+<h3>2.1配置你的插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>gradle-intellij-plugin提供了许多<a href="https://github.com/JetBrains/gradle-intellij-plugin#configuration" data-bypass="yes" target="_blank"><span>配置选项</span></a>，用于自定义Gradle如何构建插件。</p>
 
@@ -176,8 +179,8 @@ Gradle插件还将更新<code class="code highlight language-text">plugin.xml</c
 
 <p>此任务可以直接从命令行运行，无需任何先前的工具帮助。</p>
 
-<a name="section-2" class="elem-anchor"></a>
-<h3>2.3部署插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>2.3部署插件<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
 <p>部署插件的第一步是确认它是否正常工作。</p>
 
@@ -228,7 +231,7 @@ Gradle插件还将更新<code class="code highlight language-text">plugin.xml</c
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 8 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

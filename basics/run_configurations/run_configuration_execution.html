@@ -31,7 +31,7 @@
     <meta property="og:title" content="Execution" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -86,14 +86,21 @@
                     <h1>Execution</h1>
                     <p>标准执行运行操作将执行以下步骤:</p>
 
-<p><em>用户选择</em>运行配置<em>(例如,通过从运行配置组合框中选择一个)和</em>执行器*(例如,通过按执行器创建的工具栏按钮).</p>
-
-<p><em>通过轮询所有已注册的程序运行程序并询问是否可以使用指定的执行程序ID运行指定的运行配置文件,选择将实际执行该进程的</em>程序运行器*.</p>
-
-<p>*创建<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/runners/ExecutionEnvironment.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ExecutionEnvironment</code></span></a>对象.
+<ul>
+  <li>
+    <p>用户选择<em>运行配置</em>(例如,通过从运行配置组合框中选择一个)和<em>执行器</em>(例如,通过按执行器创建的工具栏按钮).</p>
+  </li>
+  <li>
+    <p>通过轮询所有已注册的程序运行程序并询问是否可以使用指定的执行程序ID运行指定的运行配置文件,选择将实际执行该进程的<em>程序运行器</em>.</p>
+  </li>
+  <li>
+    <p>创建<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/runners/ExecutionEnvironment.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ExecutionEnvironment</code></span></a>对象.
 此对象聚合执行该过程所需的所有设置,以及所选的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/runners/ProgramRunner.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProgramRunner</code></span></a>.</p>
-
-<p>*调用<code class="code highlight language-text">ProgramRunner.execute()</code>,接收执行程序和执行环境.</p>
+  </li>
+  <li>
+    <p>调用<code class="code highlight language-text">ProgramRunner.execute()</code>,接收执行程序和执行环境.</p>
+  </li>
+</ul>
 
 <p><code class="code highlight language-text">ProgramRunner.execute()</code>的实现通过以下步骤来执行该过程:</p>
 
@@ -101,22 +108,29 @@
 即将开始.
 在此阶段,初始化命令行参数,环境变量和启动过程所需的其他信息.</p>
 
-<p>*``RunProfileState.execute()<code class="code highlight language-text">被调用.
-它启动进程,将一个</code>ProcessHandler<code class="code highlight language-text">附加到它的输入和输出流,创建一个控制台来显示进程输出,并返回一个[</code>ExecutionResult`](upsource:///platform/lang-api/src/com/intellij/execution/ExecutionResult.java)聚合控制台和进程处理程序的对象.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">RunProfileState.execute()</code>被调用.
+它启动进程,将一个<code class="code highlight language-text">ProcessHandler</code>附加到它的输入和输出流,创建一个控制台来显示进程输出,并返回一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/ExecutionResult.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ExecutionResult</code></span></a>聚合控制台和进程处理程序的对象.</p>
+  </li>
+  <li>
+    <p>创建并调用<code class="code highlight language-text">RunContentBuilder</code>对象,以在Run或Debug工具窗口的选项卡中显示执行控制台.</p>
+  </li>
+</ul>
 
-<p>*创建并调用<code class="code highlight language-text">RunContentBuilder</code>对象,以在Run或Debug工具窗口的选项卡中显示执行控制台.</p>
-
-<p>##执行人</p>
+<a name="section" class="elem-anchor"></a>
+<h2>执行人<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/Executor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Executor</code></span></a>接口描述了执行任何可能的运行配置的特定方式.</p>
 
-<p>默认情况下,* IntelliJ Platform *提供的三个默认执行程序是_Run _,_Debug_和带有Coverage_的_Run.
+<p>默认情况下, <em>IntelliJ Platform</em> 提供的三个默认执行程序是_Run _,_Debug_和带有Coverage_的_Run.
 每个执行程序都有自己的工具栏按钮,它使用此执行程序启动选定的运行配置,以及使用此执行程序启动配置的自己的上下文菜单项.</p>
 
 <p>作为插件开发人员,通常不需要实现<code class="code highlight language-text">Executor</code>接口.
 但是,它可能很有用,例如,如果您正在实现探查器集成并希望提供使用性能分析执行任何配置的可能性.</p>
 
-<p>##运行一个进程</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>运行一个进程<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>每个运行配置实现都会出现<code class="code highlight language-text">RunProfileState</code>接口,作为返回值<code class="code highlight language-text">RunProfile.getState()</code>.
 它描述了一个准备启动的进程,并保存了诸如命令行,当前工作目录和要启动的进程的环境变量之类的信息. 
@@ -136,7 +150,8 @@
 您可能还想将一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/execution/process/ProcessTerminatedListener.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProcessTerminatedListener</code></span></a>附加到<code class="code highlight language-text">OSProcessHandler</code>,以便退出状态为
 该过程将显示在控制台中.</p>
 
-<p>##显示流程输出</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>显示流程输出<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>如果您正在使用<code class="code highlight language-text">CommandLineState</code>,将自动创建一个控制台视图并将其附加到该进程的输出.
 或者,您可以自己安排:</p>
@@ -153,9 +168,10 @@
 
 <p>您可能想要重用的两个常见过滤器实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/filters/RegexpFilter.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RegexpFilter</code></span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/filters/UrlFilter.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">UrlFilter</code></span></a>.</p>
 
-<p>##从代码开始运行配置</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>从代码开始运行配置<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
-<p>如果您有一个需要执行的现有运行配置,最简单的方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/execution/ProgramRunnerUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProgramRunnerUtil.executeConfiguration()</code></span></a>&lt;! -#L110  - &gt;.
+<p>如果您有一个需要执行的现有运行配置,最简单的方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-impl/src/com/intellij/execution/ProgramRunnerUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProgramRunnerUtil.executeConfiguration()</code></span></a><!--#L110  -->.
 该方法采用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">RunnerAndConfigurationSettings</code></span></a>,以及<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/Executor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Executor</code></span></a>
 .
 要获取现有配置的<code class="code highlight language-text">RunnerAndConfigurationSettings</code>,您可以使用,例如,<code class="code highlight language-text">RunManager.getConfigurationSettings(ConfigurationType)</code>.
@@ -168,7 +184,7 @@
                         <a class="navigation-links__next" href="/tutorials/run_configurations.html">Run Configurations</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

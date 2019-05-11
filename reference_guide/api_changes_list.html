@@ -31,7 +31,7 @@
     <meta property="og:title" content="Incompatible Changes in IntelliJ Platform and Plugins API" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,29 +84,34 @@
                     
 
                     <h1>Incompatible Changes in IntelliJ Platform and Plugins API</h1>
-                    <p>&lt;! -</p>
+                    <!--
 
-<p>在记录API更改之前,请确保无法避免更改</p>
+在记录API更改之前,请确保无法避免更改
 
-<p>以下文档中的另一种方式说明:</p>
+以下文档中的另一种方式说明:
 
-<p>API兼容性政策:https://confluence.jetbrains.com/display/IDEA/IntelliJ+Platform+API+compatibility+policy</p>
 
-<p>API兼容性常见问题解答:https://confluence.jetbrains.com/display/IDEA/IntelliJ+API+Compatibility+Policy+FAQ</p>
+API兼容性政策:https://confluence.jetbrains.com/display/IDEA/IntelliJ+Platform+API+compatibility+policy
 
-<p>标有ApiStatus.@ Experimental的地方不需要记录.</p>
+API兼容性常见问题解答:https://confluence.jetbrains.com/display/IDEA/IntelliJ+API+Compatibility+Policy+FAQ
 
-<p>要记录新的不兼容更改,请添加带有问题模式的新行</p>
 
-<p>然后是第二行,带有“:” - 前缀的人类可读描述和推荐的修复/操作.</p>
+标有ApiStatus.@ Experimental的地方不需要记录.
 
-<p>支持以下问题模式:</p>
 
-<package name="">包已删除
+要记录新的不兼容更改,请添加带有问题模式的新行
 
-删除了<class name="">类
+然后是第二行,带有“:” - 前缀的人类可读描述和推荐的修复/操作.
 
-<class name="">重命名为<new class="" name="">
+
+支持以下问题模式:
+
+
+<package name>包已删除
+
+删除了<class name>类
+
+<class name>重命名为<new class name>
 
 
 <类名>.<方法名称>(<人类可读参数>)方法已删除
@@ -115,41 +120,41 @@
 
 <类名>.<方法名称>(<人类可读参数>)方法参数<type>已删除
 
-<class name="">.<方法名称>(<人类可读参数>)方法参数类型从<before>更改为<after>
+<class name>.<方法名称>(<人类可读参数>)方法参数类型从<before>更改为<after>
 
-<class name="">.<方法名称>(<人类可读参数>)方法可见性从<before>更改为<after>
+<class name>.<方法名称>(<人类可读参数>)方法可见性从<before>更改为<after>
 
-<class name="">.<方法名称>(<human-readable parameters="">)方法标记为final
-
-
-删除了<class name="">(<human-readable parameters="">)构造函数
-
-删除<class name="">(<human-readable parameters="">)构造函数参数<type>
-
-<class name="">(<human-readable parameters="">)构造函数参数类型已从<before>更改为<after>
-
-<class name="">(<human-readable parameters="">)构造函数可见性从<before>更改为<after>
+<class name>.<方法名称>(<human-readable parameters>)方法标记为final
 
 
-删除了<class name="">.<field name="">字段
+删除了<class name>(<human-readable parameters>)构造函数
 
-<class name="">.<field name="">字段类型从<before>更改为<after>
+删除<class name>(<human-readable parameters>)构造函数参数<type>
 
-<class name="">.<field name="">字段可见性从<before>更改为<after>
+<class name>(<human-readable parameters>)构造函数参数类型已从<before>更改为<after>
+
+<class name>(<human-readable parameters>)构造函数可见性从<before>更改为<after>
+
+
+删除了<class name>.<field name>字段
+
+<class name>.<field name>字段类型从<before>更改为<after>
+
+<class name>.<field name>字段可见性从<before>更改为<after>
 
 
 <类名>.<方法名称>(<人类可读参数>)添加了抽象方法
 
-<class name="">类移动到包<package name="">
+<class name>类移动到包<package name>
 
 
-其中<class name="">是该类的完全限定名称,例如
+其中<class name>是该类的完全限定名称,例如
 com.intellij.openapi.actionSystem.AnAction $将InnerClass.
 
-<method name="">是确切方法的名称.
+<method name>是确切方法的名称.
 请注意,构造函数具有专用模式.
 
-<human-readable parameters="">是表示参数的字符串,不一定是完全限定的.
+<human-readable parameters>是表示参数的字符串,不一定是完全限定的.
 它们不会影响解析器.
 例如,您可以自由编写(Object,List <String>,int)而不是(java.lang.Object,java.util.List,int).
 
@@ -168,33 +173,36 @@ com.intellij.openapi.actionSystem.AnAction $将InnerClass.
  
 3)代码引号和链接:[`org.example.Foo`](upsource:///platform/core-api/src/org/example/Foo)
 
- - &gt;
+ -->
 
+<p>在版本之间偶尔会更改IntelliJ API,导致现有插件与较新的IDE版本不兼容.</p>
 
-在版本之间偶尔会更改IntelliJ API,导致现有插件与较新的IDE版本不兼容.
-
-
-使用内置[插件验证程序](https://blog.jetbrains.com/platform/2018/)可以轻松验证[JetBrains插件存储库](../plugin_repository/index.md)上托管的插件与新IDE的兼容性
+<p>使用内置<a href="https://blog.jetbrains.com/platform/2018/" data-bypass="yes" target="_blank"><span>插件验证程序</span></a>可以轻松验证<a href="../plugin_repository/index.html"><span>JetBrains插件存储库</span></a>上托管的插件与新IDE的兼容性
 07 /插件存储库,现已集成与 - 的 - 插件验证工具/).
-  
+  </p>
 
-以下页面列出了IDE版本中的重大更改以及插件作者需要采取的建议步骤.
+<p>以下页面列出了IDE版本中的重大更改以及插件作者需要采取的建议步骤.</p>
 
+<ul>
+  <li>
+    <p><a href="api_changes/api_changes_list_2019.html"><span>** 2019年的变化.***</span></a></p>
+  </li>
+  <li>
+    <p><a href="api_changes/api_changes_list_2018.html"><span>** 2018年的变化.***</span></a></p>
+  </li>
+  <li>
+    <p><a href="api_changes/api_changes_list_2017.html"><span>** 2017年的变化.***</span></a></p>
+  </li>
+  <li>
+    <p><a href="api_changes/api_changes_list_2016.html"><span>** 2016年的变化.***</span></a></p>
+  </li>
+</ul>
 
-* [** 2019年的变化.***](api_changes/api_changes_list_2019.md)
+<aside class="注意">
+  <p>未列出标有[<code class="code highlight language-text">org.jetbrains.annotations.ApiStatus.@ Experimental</code>]的API的更改(upsource:///platform/util/src/org/jetbrains/annotations/ApiStatus.java)
+在这里,因为预期会出现不兼容的变化.</p>
+</aside>
 
-* [** 2018年的变化.***](api_changes/api_changes_list_2018.md)
-
-* [** 2017年的变化.***](api_changes/api_changes_list_2017.md)
-
-* [** 2016年的变化.***](api_changes/api_changes_list_2016.md)
-
-
-&gt; **注意**未列出标有[`org.jetbrains.annotations.ApiStatus.@ Experimental`]的API的更改(upsource:///platform/util/src/org/jetbrains/annotations/ApiStatus.java)
-在这里,因为预期会出现不兼容的变化.
-
-
-</String></human-readable></method></class></package></class></人类可读参数></方法名称></类名></after></before></field></class></after></before></field></class></field></class></after></before></human-readable></class></after></before></human-readable></class></type></human-readable></class></human-readable></class></human-readable></方法名称></class></after></before></人类可读参数></方法名称></class></after></before></人类可读参数></方法名称></class></type></人类可读参数></方法名称></类名></after></before></人类可读参数></方法名称></类名></人类可读参数></方法名称></类名></new></class></class></package>
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
@@ -202,7 +210,7 @@ com.intellij.openapi.actionSystem.AnAction $将InnerClass.
                         <a class="navigation-links__next" href="/reference_guide/api_notable/api_notable.html">Notable Changes and Features in IntelliJ Platform and Plugins API</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

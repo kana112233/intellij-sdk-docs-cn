@@ -31,7 +31,7 @@
     <meta property="og:title" content="Setting-up the Environment for PhpStorm Plugin Development" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -100,7 +100,8 @@
 
 <p>但是,这会冒着意外使用PhpStorm中没有的某些API的风险.</p>
 
-<p>###如何使用PhpStorm OpenAPI库进行插件开发</p>
+<a name="phpstorm-openapi" class="elem-anchor"></a>
+<h3>如何使用PhpStorm OpenAPI库进行插件开发<a href="#phpstorm-openapi" class="anchor-link"><span></span></a></h3>
 
 <aside class="注意">
   <p> OpenAPI可用于PhpStorm 6及更高版本.</p>
@@ -111,17 +112,20 @@
 <p>DevKit以及Gradle开发环境.
 按照说明:</p>
 
-<p>*将PHP OpenAPI类添加到插件的类路径中:
-  
-*对于基于Gradle的插件开发,请将<code class="code highlight language-text">com.jetbrains.php</code>插件ID添加到build.gradle文件中.
-  
-*对于基于DevKit的插件开发,将<code class="code highlight language-text">php-openapi.jar</code>和<code class="code highlight language-text">php.jar</code>库添加到项目SDK的类路径中.
+<ul>
+  <li>将PHP OpenAPI类添加到插件的类路径中:
+  </li>
+  <li>对于基于Gradle的插件开发,请将<code class="code highlight language-text">com.jetbrains.php</code>插件ID添加到build.gradle文件中.
+  </li>
+  <li>
+    <p>对于基于DevKit的插件开发,将<code class="code highlight language-text">php-openapi.jar</code>和<code class="code highlight language-text">php.jar</code>库添加到项目SDK的类路径中.
     
 这些库位于<code class="code highlight language-text">&lt;your_installation_of_PhpStorm&gt;/plugins/php/lib</code>目录中.</p>
-
-<p>*添加<code class="code highlight language-text">com.jetbrains.php</code>和<code class="code highlight language-text">com.intellij.modules.platform</code>依赖项
+  </li>
+  <li>添加<code class="code highlight language-text">com.jetbrains.php</code>和<code class="code highlight language-text">com.intellij.modules.platform</code>依赖项
   
-到你的插件项目的’plugin.xml`文件.</p>
+到你的插件项目的’plugin.xml`文件.</li>
+</ul>
 
 
 
@@ -130,7 +134,7 @@
                         <a class="navigation-links__next" href="/products/phpstorm/php_open_api.html">PHP Open API</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

@@ -31,7 +31,7 @@
     <meta property="og:title" content="DialogWrapper" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -91,7 +91,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java" data-bypass="yes" target="_blank"><span>DialogWrapper</span></a></p>
 
-<p>是基本类，它应该用于* IntelliJ Platform *插件中显示的所有模态对话框(以及一些非模态对话框)。</p>
+<p>是基本类，它应该用于 <em>IntelliJ Platform</em> 插件中显示的所有模态对话框(以及一些非模态对话框)。</p>
 
 <p>它提供以下功能:</p>
 
@@ -99,21 +99,29 @@
 
 <p>*上下文帮助</p>
 
-<p>*记住对话框的大小</p>
-
-<p>*非模态验证(当输入对话框的数据无效时显示错误消息文本)</p>
-
 <ul>
-  <li>键盘快捷键:</li>
+  <li>
+    <p>记住对话框的大小</p>
+  </li>
+  <li>
+    <p>非模态验证(当输入对话框的数据无效时显示错误消息文本)</p>
+  </li>
+  <li>
+    <p>键盘快捷键:</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">Esc</code>用于关闭对话框</p>
+  </li>
+  <li>
+    <p>“左/右”用于在按钮之间切换</p>
+  </li>
+  <li>
+    <p>如果对话框中存在“是/否”动作，则为“Y/N”</p>
+  </li>
+  <li>
+    <p>可选`不要再问’复选框</p>
+  </li>
 </ul>
-
-<p>*<code class="code highlight language-text">Esc</code>用于关闭对话框</p>
-
-<p>*“左/右”用于在按钮之间切换</p>
-
-<p>*如果对话框中存在“是/否”动作，则为“Y/N”</p>
-
-<p>*可选`不要再问’复选框</p>
 
 <p>使用时</p>
 
@@ -121,24 +129,28 @@
 
 <p>对于您自己的对话框，您需要按照以下步骤操作:</p>
 
-<p>*调用基类构造函数，并在框架中提供将显示对话框的项目，或者提供对话框的父组件。</p>
-
-<p>*从对话框类的构造函数中调用<code class="code highlight language-text">init()</code>方法</p>
-
-<p>*调用<code class="code highlight language-text">setTitle()</code>方法设置对话框的标题</p>
-
-<p>*实现<code class="code highlight language-text">createCenterPanel()</code>方法以返回包含对话框主要内容的组件。</p>
-
 <ul>
   <li>
-    <p><em>可选</em>:覆盖<code class="code highlight language-text">getPreferredFocusedComponent()</code>方法并返回首次显示对话框时应该聚焦的组件。</p>
+    <p>调用基类构造函数，并在框架中提供将显示对话框的项目，或者提供对话框的父组件。</p>
+  </li>
+  <li>
+    <p>从对话框类的构造函数中调用<code class="code highlight language-text">init()</code>方法</p>
+  </li>
+  <li>
+    <p>调用<code class="code highlight language-text">setTitle()</code>方法设置对话框的标题</p>
+  </li>
+  <li>
+    <p>实现<code class="code highlight language-text">createCenterPanel()</code>方法以返回包含对话框主要内容的组件。</p>
+  </li>
+  <li>
+    <ul>
+      <li>可选* :覆盖<code class="code highlight language-text">getPreferredFocusedComponent()</code>方法并返回首次显示对话框时应该聚焦的组件。</li>
+    </ul>
   </li>
   <li>
     <p><em>可选</em>:重写<code class="code highlight language-text">getDimensionServiceKey()</code>方法以返回将用于持久化对话框维度的标识符。</p>
   </li>
-  <li>
-    <p><em>可选</em>:重写<code class="code highlight language-text">getHelpId()</code>方法以返回与对话框关联的上下文帮助主题。</p>
-  </li>
+  <li><em>可选</em>:重写<code class="code highlight language-text">getHelpId()</code>方法以返回与对话框关联的上下文帮助主题。</li>
 </ul>
 
 <p>该</p>
@@ -181,7 +193,8 @@
 
 <p>如果指定一个组件，它旁边会显示一个错误图标，当用户尝试调用“OK”操作时它将被聚焦。</p>
 
-<p>##示例</p>
+<a name="section" class="elem-anchor"></a>
+<h2>示例<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>简单定义一个</p>
 
@@ -229,7 +242,7 @@
                         <a class="navigation-links__next" href="/user_interface_components/popups.html">Popups</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

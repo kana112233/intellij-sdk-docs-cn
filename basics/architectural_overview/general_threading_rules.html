@@ -31,7 +31,7 @@
     <meta property="og:title" content="General Threading Rules" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,9 +84,10 @@
                     
 
                     <h1>General Threading Rules</h1>
-                    <p>##读/写锁</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>读/写锁<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>通常,* IntelliJ Platform *中与代码相关的数据结构由单个读取器/写入器锁覆盖.
+<p>通常, <em>IntelliJ Platform</em> 中与代码相关的数据结构由单个读取器/写入器锁覆盖.
 这适用于PSI,VFS和项目根模型.</p>
 
 <p>允许从任何线程读取数据.
@@ -103,28 +104,37 @@
 不保证相应的对象在几个连续的读取动作之间存活.
 因此,根据经验,每当您开始执行读取操作时,都应检查PSI/VFS/项目/模块是否仍然有效.</p>
 
-<p>##<code class="code highlight language-text">invokeLater</code></p>
+<a name="invokelater" class="elem-anchor"></a>
+<h2><code class="code highlight language-text">invokeLater</code><a href="#invokelater" class="anchor-link"><span></span></a></h2>
 
 <p>要将控制从后台线程传递到事件调度线程,而不是标准的<code class="code highlight language-text">SwingUtilities.invokeLater()</code>,插件应该使用<code class="code highlight language-text">ApplicationManager.getApplication().invokeLater()</code>.
 后一种API允许为调用指定_modality state_,即允许执行调用的模式对话框的堆栈.</p>
 
-<p>*传递<code class="code highlight language-text">ModalityState.NON_MODAL</code>意味着在关闭所有模态对话框后将执行操作.
+<ul>
+  <li>
+    <p>传递<code class="code highlight language-text">ModalityState.NON_MODAL</code>意味着在关闭所有模态对话框后将执行操作.
 请注意,如果任何打开(不相关)项目显示每个项目模式对话框,则在关闭对话框后将执行该操作.</p>
-
-<p>*传递<code class="code highlight language-text">ModalityState.stateForComponent()</code>意味着当最顶层显示的对话框是包含指定组件的对话框,或者是其父对话框之一时,可以执行该操作.</p>
-
-<p>*如果没有传递模态状态,将使用<code class="code highlight language-text">ModalityState.defaultModalityState()</code>.
+  </li>
+  <li>
+    <p>传递<code class="code highlight language-text">ModalityState.stateForComponent()</code>意味着当最顶层显示的对话框是包含指定组件的对话框,或者是其父对话框之一时,可以执行该操作.</p>
+  </li>
+  <li>
+    <p>如果没有传递模态状态,将使用<code class="code highlight language-text">ModalityState.defaultModalityState()</code>.
 在大多数情况下,这是最佳选择,在从UI线程调用时使用当前模态状态,并且具有对使用<code class="code highlight language-text">ProgressManager</code>启动的后台进程的特殊处理:来自这样的进程的<code class="code highlight language-text">invokeLater</code>可以在与该进程相同的对话框中运行
 过程开始了.</p>
-
-<p>*<code class="code highlight language-text">ModalityState.any()</code>表示无论模态对话框如何,都会尽快执行runnable.
+  </li>
+  <li>
+    <p><code class="code highlight language-text">ModalityState.any()</code>表示无论模态对话框如何,都会尽快执行runnable.
 请注意,此类runnables禁止修改PSI,VFS或项目模型.
 有关详细信息,请参阅<code class="code highlight language-text">TransactionGuard</code>文档.</p>
+  </li>
+</ul>
 
 <p>如果您的UI线程活动需要访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围PSI分析,解析引用等),请使用<code class="code highlight language-text">DumbService#smartInvokeLater</code>.
 这样,您的活动将在所有可能的索引过程完成后运行.</p>
 
-<p>##后台进程和<code class="code highlight language-text">ProcessCanceledException</code></p>
+<a name="processcanceledexception" class="elem-anchor"></a>
+<h2>后台进程和<code class="code highlight language-text">ProcessCanceledException</code><a href="#processcanceledexception" class="anchor-link"><span></span></a></h2>
 
 <p>后台进程由<code class="code highlight language-text">ProgressManager</code>类管理,它有很多方法来执行给定的代码</p>
 
@@ -140,19 +150,14 @@
 <p>例如
 设置完成工作的文本或可见部分.</p>
 
-<p>进度指示器还提供了用户处理取消后台进程的方法(按“取消”按钮),</p>
+<p>进度指示器还提供了用户处理取消后台进程的方法(按“取消”按钮),
+或者来自代码(例如,当前操作由于项目中的某些变化而变得过时).
+通过调用“ProgressIndicator#cancelout”可以将进度标记为取消.
+该过程通过调用<code class="code highlight language-text">ProgressIndicator#checkCanceled</code>(或者如果你手头没有指标实例,则为’ProgressManager#checkCanceled<code class="code highlight language-text">)对此作出反应.
+如果后台进程已被取消,则此调用将抛出一个特殊的未经检查的</code>ProcessCanceledException`.</p>
 
-<p>或者来自代码(例如,当前操作由于项目中的某些变化而变得过时).</p>
-
-<p>通过调用“ProgressIndicator#cancelout”可以将进度标记为取消.</p>
-
-<p>该过程通过调用<code class="code highlight language-text">ProgressIndicator#checkCanceled</code>(或者如果你手头没有指标实例,则为’ProgressManager#checkCanceled`)对此作出反应.</p>
-
-<p>如果后台进程已被取消,则此调用将抛出一个特殊的未经检查的<code class="code highlight language-text">ProcessCanceledException</code>.</p>
-
-<p>使用PSI或其他类型的后台进程的所有代码都应该准备好从任何一点抛出的<code class="code highlight language-text">ProcessCanceledException</code>.</p>
-
-<p>永远不应该记录此异常,应该重新抛出它,并且它将在启动该过程的基础结构中处理.</p>
+<p>使用PSI或其他类型的后台进程的所有代码都应该准备好从任何一点抛出的<code class="code highlight language-text">ProcessCanceledException</code>.
+永远不应该记录此异常,应该重新抛出它,并且它将在启动该过程的基础结构中处理.</p>
 
 <p>应该经常调用<code class="code highlight language-text">checkCanceled</code>以确保顺利取消该过程. 
 PSI内部</p>
@@ -163,7 +168,8 @@ PSI内部</p>
 <p>插入明确的<code class="code highlight language-text">checkCanceled</code>调用,以便它经常发生,例如
 在每个第N次循环迭代.</p>
 
-<p>##防止UI冻结</p>
+<a name="ui" class="elem-anchor"></a>
+<h2>防止UI冻结<a href="#ui" class="anchor-link"><span></span></a></h2>
 
 <p>后台线程不应该长时间执行读取操作.
 原因是如果UI线程需要写操作(例如用户键入某些内容),它必须尽快获取它,否则UI将冻结,直到所有后台线程都已释放其读取操作.</p>
@@ -182,16 +188,21 @@ PSI内部</p>
 
 <p>有两种建议的方法:</p>
 
-<p>*如果您使用的是UI线程,请创建一个<code class="code highlight language-text">ReadTask</code>并将其传递给<code class="code highlight language-text">ProgressIndicatorUtils.schedule *</code>方法之一.
+<ul>
+  <li>
+    <p>如果您使用的是UI线程,请创建一个<code class="code highlight language-text">ReadTask</code>并将其传递给<code class="code highlight language-text">ProgressIndicatorUtils.schedule *</code>方法之一.
 在<code class="code highlight language-text">onCanceled</code>方法内部,如果应该重新启动活动,请再次安排它.</p>
-
-<p>*如果您已经在后台线程中,请在循环中使用<code class="code highlight language-text">ProgressManager.getInstance().runInReadActionWithWriteActionPriority()</code>,直到它通过或整个活动变得过时.</p>
+  </li>
+  <li>
+    <p>如果您已经在后台线程中,请在循环中使用<code class="code highlight language-text">ProgressManager.getInstance().runInReadActionWithWriteActionPriority()</code>,直到它通过或整个活动变得过时.</p>
+  </li>
+</ul>
 
 <p>在这两种方法中,您应始终检查每个读取操作的开始,如果您正在使用的对象仍然有效,并且整个操作仍然有意义(即未被用户取消,则项目未关闭
 等)</p>
 
 <p>如果您正在进行的活动必须访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围的PSI分析,解析引用等),您应该重写<code class="code highlight language-text">ReadTask#runBackgroundProcess 
-</code>并在那里使用“智能模式”读取操作:<code class="code highlight language-text">DumbService.getInstance(project).runReadActionInSmartMode(() - &gt; performInReadAction(indicator))</code></p>
+</code>并在那里使用“智能模式”读取操作:<code class="code highlight language-text">DumbService.getInstance(project).runReadActionInSmartMode(() --&gt; performInReadAction(indicator))</code></p>
 
 
 
@@ -200,7 +211,7 @@ PSI内部</p>
                         <a class="navigation-links__next" href="/reference_guide/messaging_infrastructure.html">Messaging infrastructure</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

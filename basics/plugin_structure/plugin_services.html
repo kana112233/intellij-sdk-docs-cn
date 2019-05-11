@@ -31,7 +31,7 @@
     <meta property="og:title" content="Plugin Services" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,22 +84,17 @@
                     
 
                     <h1>Plugin Services</h1>
-                    <p>当你的插件调用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ServiceManager.java" data-bypass="yes" target="_blank"><span>ServiceManager</span></a>类的<code class="code highlight language-text">getService</code>方法时,_service_是一个按需加载的插件组件
-.</p>
+                    <p>当你的插件调用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ServiceManager.java" data-bypass="yes" target="_blank"><span>ServiceManager</span></a>类的<code class="code highlight language-text">getService</code>方法时,_service_是一个按需加载的插件组件.</p>
 
-<ul>
-  <li>
-    <p>IntelliJ Platform *确保即使多次调用服务,也只加载一个服务实例.
+<p><em>IntelliJ Platform</em> 确保即使多次调用服务,也只加载一个服务实例.
 服务必须具有用于服务实例化的实现类.
 服务还可以具有接口类,该接口类用于获取服务实例并提供服务的API.
 接口和实现类在<code class="code highlight language-text">plugin.xml</code>文件中指定.</p>
-  </li>
-  <li>
-    <p>IntelliJ Platform *提供三种类型的服务:应用程序级服务,项目级服务和_module level_服务.</p>
-  </li>
-</ul>
 
-<p>##如何申报服务？</p>
+<p><em>IntelliJ Platform</em> 提供三种类型的服务:应用程序级服务,项目级服务和_module level_服务.</p>
+
+<a name="section" class="elem-anchor"></a>
+<h2>如何申报服务？<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>要声明服务,可以在IntelliJ平台中使用以下扩展点:</p>
 
@@ -138,7 +133,8 @@
 
 <p>如果没有指定<code class="code highlight language-text">serviceInterface</code>,它应该与<code class="code highlight language-text">serviceImplementation</code>具有相同的值.</p>
 
-<p>##检索服务</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>检索服务<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>要在Java代码中实例化您的服务,请使用以下语法:</p>
 
@@ -149,13 +145,14 @@
 <span class="n">MyModuleService</span> <span class="n">moduleService</span> <span class="o">=</span> <span class="n">ModuleServiceManager</span><span class="o">.</span><span class="na">getService</span><span class="o">(</span><span class="n">module</span><span class="o">,</span> <span class="n">MyModuleService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </code></div>
 
-<p>###示例插件</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>示例插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>本部分允许您下载和安装示例插件,说明如何创建和使用插件服务.
 该插件有一个项目组件,它实现了一个服务,该服务计算IDE中当前打开的项目的数量.
 如果此数字超过允许的最大同时打开项目数,则插件将返回错误消息并关闭最近打开的项目.</p>
 
-<p>&lt;! -  TODO在可用时替换为其他插件URL  - &gt;</p>
+<!--  TODO在可用时替换为其他插件URL  -->
 
 <p><strong>安装并运行示例插件</strong></p>
 
@@ -173,7 +170,7 @@
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_configuration_file.html">Plugin Configuration File - plugin.xml</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

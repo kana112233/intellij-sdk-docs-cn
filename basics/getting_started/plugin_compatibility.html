@@ -31,7 +31,7 @@
     <meta property="og:title" content="Plugin Compatibility with IntelliJ Platform Products" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,7 @@
                     
 
                     <h1>Plugin Compatibility with IntelliJ Platform Products</h1>
-                    <p>&lt;! -  TODO链接到sample_plugin文件 - &gt;</p>
+                    <!--  TODO链接到sample_plugin文件 -->
 
 <p>所有基于_IntelliJ Platform_的产品,如IntelliJ IDEA,RubyMine,WebStorm等,都针对相同的底层平台API,一些产品共享在平台之上构建的功能,例如Java支持(IntelliJ IDEA)</p>
 
@@ -108,7 +108,7 @@
 <span class="nt">&lt;/idea-plugin&gt;</span>
 </code></div>
 
-<p>&lt;! -  TODO链接到sample_plugin文件 - &gt;</p>
+<!--  TODO链接到sample_plugin文件 -->
 
 <p>如果插件在其<code class="code highlight language-text">plugin.xml</code>中不包含任何模块依赖关系标签,则它被假定为旧插件并且仅在IntelliJ IDEA中加载.</p>
 
@@ -116,15 +116,23 @@
 
 <p>目前,基于IntelliJ平台的所有产品均提供以下模块:</p>
 
-<p>*<code class="code highlight language-text">com.intellij.modules.platform</code></p>
-
-<p>*<code class="code highlight language-text">com.intellij.modules.lang</code></p>
-
-<p>*<code class="code highlight language-text">com.intellij.modules.vcs</code></p>
-
-<p>*<code class="code highlight language-text">com.intellij.modules.xml</code></p>
-
-<p>*<code class="code highlight language-text">com.intellij.modules.xdebugger</code></p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">com.intellij.modules.platform</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">com.intellij.modules.lang</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">com.intellij.modules.vcs</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">com.intellij.modules.xml</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">com.intellij.modules.xdebugger</code></p>
+  </li>
+</ul>
 
 <p>这意味着插件可以声明对<code class="code highlight language-text">com.intellij.modules.vcs</code>的依赖,它可以在任何支持版本控制的产品中工作,并且因为所有产品目前都包含<code class="code highlight language-text">com.intellij.modules.vcs</code>模块,这个插件
 将适用于所有产品.</p>
@@ -198,14 +206,16 @@
   </tbody>
 </table>
 
-<p>##插件依赖项</p>
+<a name="section" class="elem-anchor"></a>
+<h2>插件依赖项<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>如果要为插件添加依赖项,请使用插件名称/ID将“<depends>”标记添加到“plugin.xml”.
 例如`JavaScript`或`tslint`.
 请注意,目标SDK中默认不包含某些插件,因此您还必须手动将其jar添加到SDKs类路径中,以针对其提供的类进行编译.
 确保将插件罐添加到SDK而不是插件,否则罐子将与您的插件捆绑在一起.</depends></p>
 
-<p>##可选的依赖项</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>可选的依赖项<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>您还可以指定可选的依赖项.
 如果您的插件适用于所有产品但提供了一些特定于Java的功能,则可以使用如下依赖项标记:</p>
@@ -221,7 +231,8 @@
 
 <p><a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>根据上述规则自动检测与插件兼容的产品,并将其提供给这些产品的用户.</p>
 
-<p>##平台兼容性</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>平台兼容性<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>_IntelliJ Platform_和捆绑插件的API可以在发行版之间更改.
 可能会破坏插件的主要更改列在<a href="/intellij-sdk-docs-cn/reference_guide/api_changes_list.html"><span>IntelliJ平台和插件API中的不兼容更改</span></a>页面上.</p>
@@ -235,7 +246,7 @@
                         <a class="navigation-links__next" href="/basics/getting_started/build_number_ranges.html">Build Number Ranges</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

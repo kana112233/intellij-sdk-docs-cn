@@ -31,7 +31,7 @@
     <meta property="og:title" content="PSI Cookbook" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -87,48 +87,58 @@
                     <p>此页面提供了使用PSI(程序结构接口)的最常见操作的配方列表.
 与<a href="/intellij-sdk-docs-cn/reference_guide/custom_language_support.html"><span>开发自定义语言插件</span></a>不同,它讨论了使用现有语言(例如Java)的PSI.</p>
 
-<p>##如果我知道它的名字但是不知道路径,我如何找到文件？</p>
+<a name="section" class="elem-anchor"></a>
+<h2>如果我知道它的名字但是不知道路径,我如何找到文件？<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">FilenameIndex.getFilesByName()</code></p>
 
-<p>##如何找到特定PSI元素的使用位置？</p>
+<a name="psi" class="elem-anchor"></a>
+<h2>如何找到特定PSI元素的使用位置？<a href="#psi" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">ReferencesSearch.search()</code></p>
 
-<p>##如何重命名PSI元素？</p>
+<a name="psi-1" class="elem-anchor"></a>
+<h2>如何重命名PSI元素？<a href="#psi-1" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">RefactoringFactory.createRename()</code></p>
 
-<p>##如何重建虚拟文件的PSI？</p>
+<a name="psi-2" class="elem-anchor"></a>
+<h2>如何重建虚拟文件的PSI？<a href="#psi-2" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">FileContentUtil.reparseFiles()</code></p>
 
 <a name="java-specific" class="elem-anchor"></a>
 <h2>Java Specific<a href="#java-specific" class="anchor-link"><span></span></a></h2>
 
-<p>###如何找到类的所有继承者？</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>#如何找到类的所有继承者？<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">ClassInheritorsSearch.search()</code></p>
 
-<p>###如何通过限定名称查找课程？</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>如何通过限定名称查找课程？<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p><code class="code highlight language-text">JavaPsiFacade.findClass()</code></p>
 
-<p>###如何通过短名称找到课程？</p>
+<a name="section-3" class="elem-anchor"></a>
+<h3>如何通过短名称找到课程？<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
 <p><code class="code highlight language-text">PsiShortNamesCache.getInstance().getClassesByName()</code></p>
 
-<p>###如何找到Java类的超类？</p>
+<a name="java" class="elem-anchor"></a>
+<h3>如何找到Java类的超类？<a href="#java" class="anchor-link"><span></span></a></h3>
 
 <p><code class="code highlight language-text">PsiClass.getSuperClass()</code></p>
 
-<p>###如何获取对Java类的包含的引用？</p>
+<a name="java-1" class="elem-anchor"></a>
+<h3>如何获取对Java类的包含的引用？<a href="#java-1" class="anchor-link"><span></span></a></h3>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">PsiJavaFile</span> <span class="n">javaFile</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiJavaFile</span><span class="o">)</span> <span class="n">psiClass</span><span class="o">.</span><span class="na">getContaningFile</span><span class="o">();</span>
 <span class="n">PsiPackage</span> <span class="n">pkg</span> <span class="o">=</span> <span class="n">JavaPsiFacade</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">findPackage</span><span class="o">(</span><span class="n">javaFile</span><span class="o">.</span><span class="na">getPackageName</span><span class="o">());</span>
 </code></div>
 
-<p>###如何找到覆盖特定方法的方法？</p>
+<a name="section-4" class="elem-anchor"></a>
+<h3>如何找到覆盖特定方法的方法？<a href="#section-4" class="anchor-link"><span></span></a></h3>
 
 <p><code class="code highlight language-text">OverridingMethodsSearch.search()</code></p>
 
@@ -139,7 +149,7 @@
                         <a class="navigation-links__next" href="/basics/indexing_and_psi_stubs.html">Indexing and PSI Stubs</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

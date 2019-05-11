@@ -31,7 +31,7 @@
     <meta property="og:title" content="Kotlin UI DSL" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -89,7 +89,8 @@
 本文档中描述的许多功能不适用于针对早期IntelliJ IDEA版本的插件。</p>
 </aside>
 
-<p>##布局结构</p>
+<a name="section" class="elem-anchor"></a>
+<h2>布局结构<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>使用<code class="code highlight language-text">panel</code>创建UI:</p>
 
@@ -147,7 +148,8 @@
 <span class="p">}</span>
 </code></div>
 
-<p>##添加组件</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>添加组件<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>There are two ways to add child components. The recommended way is to use factory methods <code class="code highlight language-text">label</code>, <code class="code highlight language-text">button</code>, <code class="code highlight language-text">radioButton</code>, <code class="code highlight language-text">hint</code>, <code class="code highlight language-text">link</code>, etc. It allows you to create consistent UI and reuse common patterns.</p>
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">note</span><span class="p">(</span><span class="s">"""Do not have an account? &lt;a href="https://account.jetbrains.com/login"&gt;Sign Up&lt;/a&gt;"""</span><span class="p">,</span> <span class="n">span</span><span class="p">,</span> <span class="n">wrap</span><span class="p">)</span>
@@ -173,20 +175,24 @@
 <span class="c1">// use userField variable somehow</span>
 </code></div>
 
-<p>##支持的组件</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>支持的组件<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
-<p>＃＃＃ 标签</p>
+<a name="section-3" class="elem-anchor"></a>
+<h3>标签<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
 <p>使用<code class="code highlight language-text">label</code>方法:</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">label</span><span class="p">(</span><span class="s">"Sample text"</span><span class="p">)</span>
 </code></div>
 
-<p>###复选框</p>
+<a name="section-4" class="elem-anchor"></a>
+<h3>复选框<a href="#section-4" class="anchor-link"><span></span></a></h3>
 
 <p>见上面的例子。</p>
 
-<p>###单选按钮</p>
+<a name="section-5" class="elem-anchor"></a>
+<h3>单选按钮<a href="#section-5" class="anchor-link"><span></span></a></h3>
 
 <p>单选按钮组使用<code class="code highlight language-text">buttonGroup</code>块创建。
 有两种方法可以使用它。
@@ -209,7 +215,8 @@
 <span class="p">}</span>
 </code></div>
 
-<p>###文本字段</p>
+<a name="section-6" class="elem-anchor"></a>
+<h3>文本字段<a href="#section-6" class="anchor-link"><span></span></a></h3>
 
 <p>将<code class="code highlight language-text">textField</code>方法用于简单的文本字段:</p>
 
@@ -240,7 +247,8 @@
 <span class="p">}</span>
 </code></div>
 
-<p>###组合框</p>
+<a name="section-7" class="elem-anchor"></a>
+<h3>组合框<a href="#section-7" class="anchor-link"><span></span></a></h3>
 
 <p>将<code class="code highlight language-text">comboBox</code>方法与bound属性或getter/setter对一起使用:</p>
 
@@ -252,14 +260,16 @@
   <span class="p">{</span> <span class="n">mySettings</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">pgpKeyId</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">usePgpKey</span><span class="p">.</span><span class="n">isSelected</span><span class="p">)</span> <span class="n">it</span><span class="o">?.</span><span class="n">keyId</span> <span class="k">else</span> <span class="k">null</span> <span class="p">})</span>
 </code></div>
 
-<p>###纺纱厂</p>
+<a name="section-8" class="elem-anchor"></a>
+<h3>纺纱厂<a href="#section-8" class="anchor-link"><span></span></a></h3>
 
 <p>使用<code class="code highlight language-text">spinner</code>方法:</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">spinner</span><span class="p">(</span><span class="n">retypeOptions</span><span class="o">::</span><span class="n">retypeDelay</span><span class="p">,</span> <span class="n">minValue</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">maxValue</span> <span class="p">=</span> <span class="m">5000</span><span class="p">,</span> <span class="n">step</span> <span class="p">=</span> <span class="m">50</span><span class="p">)</span>
 </code></div>
 
-<p>###链接标签</p>
+<a name="section-9" class="elem-anchor"></a>
+<h3>链接标签<a href="#section-9" class="anchor-link"><span></span></a></h3>
 
 <p>使用<code class="code highlight language-text">link</code>方法:</p>
 
@@ -268,7 +278,8 @@
 <span class="p">}</span>
 </code></div>
 
-<p>###分隔符</p>
+<a name="section-10" class="elem-anchor"></a>
+<h3>分隔符<a href="#section-10" class="anchor-link"><span></span></a></h3>
 
 <p>使用<code class="code highlight language-text">titledRow</code>方法并将分隔符下的控件放入嵌套块中:</p>
 
@@ -277,7 +288,8 @@
 <span class="p">}</span>
 </code></div>
 
-<p>###解释性文字</p>
+<a name="section-11" class="elem-anchor"></a>
+<h3>解释性文字<a href="#section-11" class="anchor-link"><span></span></a></h3>
 
 <p>使用<code class="code highlight language-text">comment</code>参数:</p>
 
@@ -286,7 +298,8 @@
        <span class="n">comment</span> <span class="p">=</span> <span class="n">message</span><span class="p">(</span><span class="s">"checkbox.smart.tab.reuse.inline.help"</span><span class="p">))</span>
 </code></div>
 
-<p>##使用属性绑定集成面板</p>
+<a name="section-12" class="elem-anchor"></a>
+<h2>使用属性绑定集成面板<a href="#section-12" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">panel</code>方法返回的面板是<code class="code highlight language-text">DialogPanel</code>的实例。
 该基类支持标准的<code class="code highlight language-text">apply</code>，<code class="code highlight language-text">reset</code>和<code class="code highlight language-text">isModified</code>方法。</p>
@@ -297,7 +310,8 @@
 <p>如果您使用此面板实现<code class="code highlight language-text">Configurable</code>，请使用<code class="code highlight language-text">BoundConfigurable</code>作为基类。
 在这种情况下，<code class="code highlight language-text">Configurable</code>方法将自动委托给面板。</p>
 
-<p>##启用和禁用控件</p>
+<a name="section-13" class="elem-anchor"></a>
+<h2>启用和禁用控件<a href="#section-13" class="anchor-link"><span></span></a></h2>
 
 <p>使用<code class="code highlight language-text">enableIf</code>方法将控件的启用状态绑定到在其他控件中输入的值。
 该方法的参数是<strong>谓词</strong>。</p>
@@ -320,7 +334,8 @@
               <span class="n">myScrollTabLayoutInEditorCheckBox</span><span class="p">.</span><span class="n">selected</span><span class="p">)</span>
 </code></div>
 
-<p>##示例</p>
+<a name="section-14" class="elem-anchor"></a>
+<h2>示例<a href="#section-14" class="anchor-link"><span></span></a></h2>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="kd">val</span> <span class="py">panel</span> <span class="p">=</span> <span class="n">panel</span> <span class="p">{</span>
   <span class="n">noteRow</span><span class="p">(</span><span class="s">"Login to get notified when the submitted\nexceptions are fixed."</span><span class="p">)</span>
@@ -338,7 +353,8 @@
 
 <p>＃＃ 常问问题</p>
 
-<p>###一个单元格最小，第二个单元格最大</p>
+<a name="section-15" class="elem-anchor"></a>
+<h3>一个单元格最小，第二个单元格最大<a href="#section-15" class="anchor-link"><span></span></a></h3>
 
 <p>为第二个单元格中的某个组件设置<code class="code highlight language-text">CCFlags.growX</code>和<code class="code highlight language-text">CCFlags.pushX</code>。</p>
 
@@ -349,7 +365,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

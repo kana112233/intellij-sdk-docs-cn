@@ -31,7 +31,7 @@
     <meta property="og:title" content="Action System" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>Action System</h1>
-                    <p>##执行和更新操作</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>执行和更新操作<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>The system of actions allows plugins to add their own items to IDEA menus and toolbars.  An action is a class, derived from the <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">AnAction</code></span></a> class, whose <code class="code highlight language-text">actionPerformed</code> method is called when the menu item or toolbar button is selected.
 For example, one of the action classes is responsible for the <strong>File | Open File…</strong> menu item and for the <strong>Open File</strong> toolbar button.</p>
@@ -114,11 +115,13 @@ For example, one of the action classes is responsible for the <strong>File | Ope
 
 <p>有关定义操作的分步演练,请查看<a href="/intellij-sdk-docs-cn/tutorials/action_system.html"><span>操作系统教程</span></a>.</p>
 
-<p>##注册操作</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>注册操作<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>注册动作有两种主要方式:通过在<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;actions&gt;</code>部分中列出它,或者通过Java代码.</p>
 
-<p>###在plugin.xml中注册操作</p>
+<a name="pluginxml" class="elem-anchor"></a>
+<h3>在plugin.xml中注册操作<a href="#pluginxml" class="anchor-link"><span></span></a></h3>
 
 <p>以下示例演示了在<code class="code highlight language-text">plugin.xml</code>中注册操作. 
 <code class="code highlight language-text">plugin.xml</code>的示例部分演示了可以在<code class="code highlight language-text">&lt;actions&gt;</code>部分中使用的所有元素,并描述了每个元素的含义.</p>
@@ -222,22 +225,33 @@ For example, one of the action classes is responsible for the <strong>File | Ope
 
 <p>要从代码注册操作,需要两个步骤.</p>
 
-<p>*首先,必须将源自<code class="code highlight language-text">AnAction</code>的类的实例传递给[ActionManager]的<code class="code highlight language-text">registerAction</code>方法(upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem) 
+<ul>
+  <li>
+    <p>首先,必须将源自<code class="code highlight language-text">AnAction</code>的类的实例传递给[ActionManager]的<code class="code highlight language-text">registerAction</code>方法(upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem)
 /ActionManager.java)类,用于将操作与ID相关联.</p>
-
-<p>*其次,需要将操作添加到一个或多个组中.
+  </li>
+  <li>
+    <p>其次,需要将操作添加到一个或多个组中.
 要按ID获取操作组的实例,必须调用<code class="code highlight language-text">ActionManager.getAction()</code>并将返回的值强制转换为<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij" data-bypass="yes" target="_blank"><span>DefaultActionGroup</span></a> 
 /openapi/actionSystem/DefaultActionGroup.java)类.</p>
+  </li>
+</ul>
 
 <p>您可以使用以下过程创建一个在IDEA启动时注册操作的插件.</p>
 
 <p><strong>在IDEA创业公司注册诉讼</strong></p>
 
-<p>*创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ApplicationComponent</code></span></a>接口的新类.</p>
-
-<p>*在这个类中,重写<code class="code highlight language-text">getComponentName</code>,<code class="code highlight language-text">initComponent</code>和<code class="code highlight language-text">disposeComponent</code>方法.</p>
-
-<p>*在plugin.xml文件的<code class="code highlight language-text">&lt;application-components&gt;</code>部分注册此类.</p>
+<ul>
+  <li>
+    <p>创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ApplicationComponent</code></span></a>接口的新类.</p>
+  </li>
+  <li>
+    <p>在这个类中,重写<code class="code highlight language-text">getComponentName</code>,<code class="code highlight language-text">initComponent</code>和<code class="code highlight language-text">disposeComponent</code>方法.</p>
+  </li>
+  <li>
+    <p>在plugin.xml文件的<code class="code highlight language-text">&lt;application-components&gt;</code>部分注册此类.</p>
+  </li>
+</ul>
 
 <p>为了阐明上述过程,请考虑以下示例Java类“MyPluginRegistration”,它注册在自定义<code class="code highlight language-text">TextBoxes</code>类中定义的操作,并将新菜单命令添加到主菜单上的* Window *菜单组:</p>
 
@@ -283,7 +297,8 @@ For example, one of the action classes is responsible for the <strong>File | Ope
 <span class="nt">&lt;/application-components&gt;</span>
 </code></div>
 
-<p>##从Actions构建UI</p>
+<a name="actionsui" class="elem-anchor"></a>
+<h2>从Actions构建UI<a href="#actionsui" class="anchor-link"><span></span></a></h2>
 
 <p>如果插件需要包含从其自己的用户界面中的一组操作构建的工具栏或弹出菜单,则可以通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ActionPopupMenu</code></span></a>来完成
 com/intellij/openapi/actionSystem/ActionPopupMenu.java)和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionToolbar.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ActionToolbar</code></span></a>类.
@@ -300,7 +315,7 @@ com/intellij/openapi/actionSystem/ActionPopupMenu.java)和<a href="https://upsou
                         <a class="navigation-links__next" href="/basics/architectural_overview/files.html">Files</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

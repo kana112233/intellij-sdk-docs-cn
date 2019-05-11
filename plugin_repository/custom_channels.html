@@ -31,7 +31,7 @@
     <meta property="og:title" content="Custom Release Channels" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>Custom Release Channels</h1>
-                    <p>##将插件更新上传到自定义发布渠道</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>将插件更新上传到自定义发布渠道<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>您可以通过插件存储库Web界面,<a href="../tutorials/build_system/deployment.html"><span>Gradle插件</span></a>或<a href="api/plugin_upload.html"><span>API</span></a>将插件部署到您选择的特定频道.</p>
 
@@ -100,7 +101,8 @@
 
 <p><img src="img/plugin_repository_add_custom_channel.png" alt="添加频道" /></p>
 
-<p>##在基于IntelliJ平台的IDE中配置自定义通道</p>
+<a name="intellijide" class="elem-anchor"></a>
+<h2>在基于IntelliJ平台的IDE中配置自定义通道<a href="#intellijide" class="anchor-link"><span></span></a></h2>
 
 <p>使用非默认发布通道时,基于IntelliJ Platform的IDE用户需要添加新的<a href="https://www.jetbrains.com/idea/help/managing-enterprise-plugin-repositories.html" data-bypass="yes" target="_blank"><span>自定义插件存储库</span></a>
 从指定的频道安装插件.</p>
@@ -110,11 +112,17 @@
 
 <p>热门频道名称包括:</p>
 
-<p>*<code class="code highlight language-text">eap</code>:https://plugins.jetbrains.com/plugins/eap/list</p>
-
-<p>*<code class="code highlight language-text">alpha</code>:https://plugins.jetbrains.com/plugins/alpha/list</p>
-
-<p>*<code class="code highlight language-text">beta</code>:https://plugins.jetbrains.com/plugins/beta/list</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">eap</code>:https://plugins.jetbrains.com/plugins/eap/list</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">alpha</code>:https://plugins.jetbrains.com/plugins/alpha/list</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">beta</code>:https://plugins.jetbrains.com/plugins/beta/list</p>
+  </li>
+</ul>
 
 <p>也可以托管<a href="https://www.jetbrains.com/idea/help/adding-plugins-to-enterprise-repositories.html" data-bypass="yes" target="_blank"><span>Enterprise Plugin Repository</span></a>,在这种情况下,URL结构将取决于您的
 托管地址.
@@ -132,7 +140,8 @@
 
 <p><img src="img/intellij_custom_plugin_repository.png" alt="在IntelliJ IDEA中添加自定义插件存储库" /></p>
 
-<p>##频道优先通知</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>频道优先通知<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>请注意,自定义存储库优先于默认通道.
 当未提供自定义通道名称时,更新将上载到默认通道,默认通道也称为稳定通道或释放通道.
@@ -151,7 +160,7 @@
                         <a class="navigation-links__next" href="/appendix/resources/useful_links.html">Useful Links</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

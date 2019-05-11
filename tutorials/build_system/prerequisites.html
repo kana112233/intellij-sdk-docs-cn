@@ -31,7 +31,7 @@
     <meta property="og:title" content="Getting Started with Gradle" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -96,7 +96,7 @@
 
 <p>You can verify that the plugins are enabled by visiting <strong>Settings | Plugins</strong>.</p>
 
-<p>！<a href="img/step0_gradle_enabled.png"><span>确保已启用Gradle插件</span></a></p>
+<p><img src="img/step0_gradle_enabled.png" alt="确保已启用Gradle插件" /></p>
 
 <a name="scratch" class="elem-anchor"></a>
 <h3>1.2从Scratch创建一个插件项目<a href="#scratch" class="anchor-link"><span></span></a></h3>
@@ -108,20 +108,20 @@
 <p>To do so, create a new project in IntelliJ IDEA by opening <strong>File | New… | Project</strong>, and select Gradle from the dialog box. 
 In the “Additional Libraries and Frameworks” page, check “IntelliJ Platform Plugin”.</p>
 
-<p>！<a href="img/step1_new_gradle_project.png"><span>在项目创建向导中选择Gradle构面</span></a></p>
+<p><img src="img/step1_new_gradle_project.png" alt="在项目创建向导中选择Gradle构面" /></p>
 
 <p>项目创建向导现在将指导您完成Gradle项目创建过程。</p>
 
 <p>您需要指定组ID，工件ID和版本:</p>
 
-<p>！<a href="img/step2_group_artifact_version.png"><span>指定组，工件和版本ID</span></a></p>
+<p><img src="img/step2_group_artifact_version.png" alt="指定组，工件和版本ID" /></p>
 
 <p>建议选择“使用默认gradle包装器”选项，这样IntelliJ IDEA将安装运行Gradle任务所需的一切。</p>
 
 <p>Finally, specify a JVM Gradle will use, it can be the Project JDK. 
 You also configure this path once the project is created via <strong>Settings | Build, Execution, Deployment | Build Tools | Gradle</strong>.</p>
 
-<p>！<a href="img/step3_gradle_config.png"><span>验证JVM的版本是否正确</span></a></p>
+<p><img src="img/step3_gradle_config.png" alt="验证JVM的版本是否正确" /></p>
 
 <a name="gradle" class="elem-anchor"></a>
 <h3>1.3配置Gradle插件项目<a href="#gradle" class="anchor-link"><span></span></a></h3>
@@ -186,7 +186,7 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
 
 <p>有关<code class="code highlight language-text">pluginIcon.svg</code>文件的更多信息，请参阅<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_icon_file.html"><span>插件图标</span></a>页面。</p>
 
-<p>！<a href="img/gradle_directory_structure.png"><span>Gradle目录结构</span></a></p>
+<p><img src="img/gradle_directory_structure.png" alt="Gradle目录结构" /></p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">import</span> <span class="nn">com.intellij.openapi.actionSystem.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.intellij.openapi.project.Project</span><span class="o">;</span>
@@ -231,17 +231,17 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
 
 <p>双击它以运行它。</p>
 
-<p>！<a href="img/gradle_tasks_in_tool_window.png"><span>Gradle Tool Window</span></a></p>
+<p><img src="img/gradle_tasks_in_tool_window.png" alt="Gradle Tool Window" /></p>
 
 <p>或添加新的Gradle Run配置，配置如下:</p>
 
-<p>！<a href="img/gradle_run_config.png"><span>Gradle Run配置</span></a></p>
+<p><img src="img/gradle_run_config.png" alt="Gradle Run配置" /></p>
 
 <p>启动新的Gradle运行配置。</p>
 
 <p>在“运行”窗口中，应显示以下输出。</p>
 
-<p>！<a href="img/launch.png"><span>Gradle task output</span></a></p>
+<p><img src="img/launch.png" alt="Gradle task output" /></p>
 
 <p>最后，当IDE启动时，** Help **菜单右侧应该有一个新菜单。</p>
 
@@ -254,7 +254,7 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
                         <a class="navigation-links__next" href="/tutorials/build_system/deployment.html">Publishing Plugins with Gradle</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 8 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

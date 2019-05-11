@@ -31,7 +31,7 @@
     <meta property="og:title" content="Virtual Files" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -87,12 +87,13 @@
                     <p>虚拟文件<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java" data-bypass="yes" target="_blank"><span>com.intellij.openapi.vfs.VirtualFile</span></a>是* IntelliJ平台的<em>文件表示
 在文件系统(VFS)中.
 最常见的是,虚拟文件​​是本地文件系统中的文件.
-但是,</em> IntelliJ Platform *支持多个可插入文件系统实现,因此虚拟文件也可以表示JAR文件中的类,从版本控制存储库加载的文件的旧版本,等等.</p>
+但是, *IntelliJ Platform</em> 支持多个可插入文件系统实现,因此虚拟文件也可以表示JAR文件中的类,从版本控制存储库加载的文件的旧版本,等等.</p>
 
 <p>VFS级别仅处理二进制内容.
 您可以将“VirtualFile”的内容作为字节流获取或设置,但编码和行分隔符等概念在较高的系统级别上处理.</p>
 
-<p>##如何获取虚拟文件？</p>
+<a name="section" class="elem-anchor"></a>
+<h2>如何获取虚拟文件？<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>*来自一个动作:<code class="code highlight language-text">e.getData(PlatformDataKeys.VIRTUAL_FILE)</code>.
 如果您对多重选择感兴趣,还可以使用<code class="code highlight language-text">e.getData(PlatformDataKeys.VIRTUAL_FILE_ARRAY)</code>.</p>
@@ -103,13 +104,14 @@
 
 <p>*来自文档:<code class="code highlight language-text">FileDocumentManager.getInstance().getFile()</code></p>
 
-<p>##我能用它做什么？</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>我能用它做什么？<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>可以使用典型的文件操作,例如遍历文件系统,获取文件内容,重命名,移动或删除.
 应使用<code class="code highlight language-text">VfsUtilCore.iterateChildrenRecursively</code>执行递归迭代,以防止由递归符号链接引起的无限循环.</p>
 
-<a name="section" class="elem-anchor"></a>
-<h2>它从何而来？<a href="#section" class="anchor-link"><span></span></a></h2>
+<a name="section-2" class="elem-anchor"></a>
+<h2>它从何而来？<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>通过从项目根目录开始上下扫描文件系统,可以逐步构建VFS. 
 VFS _refreshes_检测到文件系统中出现的新文件.
@@ -118,38 +120,44 @@ VFS _refreshes_检测到文件系统中出现的新文件.
 
 <p>作为插件开发人员,如果需要访问刚通过IntelliJ Platform API由外部工具创建的文件,则可能需要调用VFS刷新.</p>
 
-<p>##虚拟文件持续多长时间？</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>虚拟文件持续多长时间？<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>在IDEA流程的整个生命周期中,磁盘上的特定文件由相同的<code class="code highlight language-text">VirtualFile</code>实例表示.
 可能存在与同一文件相对应的多个实例,并且它们可以被垃圾收集.
 该文件是一个<code class="code highlight language-text">UserDataHolder</code>,用户数据在这些相等的实例之间共享.
 如果删除了一个文件,其对应的VirtualFile实例将变为无效(<code class="code highlight language-text">isValid()</code>方法返回<code class="code highlight language-text">false</code>,操作导致异常).</p>
 
-<p>##如何创建虚拟文件？</p>
+<a name="section-4" class="elem-anchor"></a>
+<h2>如何创建虚拟文件？<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
 <p>通常你没有.
 通常,文件是通过PSI API或通过常规java.io.File API创建的.</p>
 
 <p>如果确实需要通过VFS创建文件,可以使用<code class="code highlight language-text">VirtualFile.createChildData()</code>方法创建<code class="code highlight language-text">VirtualFile</code>实例,使用<code class="code highlight language-text">VirtualFile.setBinaryContent()</code>方法将一些数据写入文件.</p>
 
-<p>##如何在VFS更改时收到通知？</p>
+<a name="vfs" class="elem-anchor"></a>
+<h2>如何在VFS更改时收到通知？<a href="#vfs" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">Virtual FileManager.addVirtual File Listener()</code>方法允许您接收有关VFS中所有更改的通知.</p>
 
-<p>##是否有用于分析和操作虚拟文件的实用程序？</p>
+<a name="section-5" class="elem-anchor"></a>
+<h2>是否有用于分析和操作虚拟文件的实用程序？<a href="#section-5" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VfsUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">VfsUtil</code></span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VfsUtilCore.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">VfsUtilCore</code></span></a>提供用于分析虚拟文件系统中的文件的实用程序方法.</p>
 
 <p>您可以使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/ProjectLocator.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ProjectLocator</code></span></a>查找包含给定虚拟文件的项目.</p>
 
-<p>##如何扩展VFS？</p>
+<a name="vfs-1" class="elem-anchor"></a>
+<h2>如何扩展VFS？<a href="#vfs-1" class="anchor-link"><span></span></a></h2>
 
 <p>要提供备用文件系统实现(例如,FTP文件系统),请实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/vfs/VirtualFileSystem.java" data-bypass="yes" target="_blank"><span>VirtualFileSystem</span></a>类(
 您很可能还需要实现<code class="code highlight language-text">VirtualFile</code>),并将您的实现注册为<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_components.html"><span>应用程序组件</span></a>.</p>
 
 <p>要挂钩在本地文件系统中执行的操作(例如,如果您正在开发需要自定义重命名/移动处理的版本控制系统集成),请实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/vfs/LocalFileOperationsHandler.java" data-bypass="yes" target="_blank"><span>LocalFileOperationsHandler</span></a>接口并通过<code class="code highlight language-text">LocalFileSystem.registerAuxiliaryFileOperationsHandler</code>方法注册它.</p>
 
-<p>##使用VFS有哪些规则？</p>
+<a name="vfs-2" class="elem-anchor"></a>
+<h2>使用VFS有哪些规则？<a href="#vfs-2" class="anchor-link"><span></span></a></h2>
 
 <p>有关VFS体系结构和使用指南的详细说明,请参阅<a href="/intellij-sdk-docs-cn/basics/virtual_file_system.html"><span>IntelliJ平台虚拟文件系统</span></a>.</p>
 
@@ -160,7 +168,7 @@ VFS _refreshes_检测到文件系统中出现的新文件.
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

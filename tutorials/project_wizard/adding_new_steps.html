@@ -31,7 +31,7 @@
     <meta property="og:title" content="Adding New Steps to Project Wizard" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -86,7 +86,8 @@
                     <h1>Adding New Steps to Project Wizard</h1>
                     <p>本教程介绍如何向项目向导添加额外步骤以提供其他项目配置设置。</p>
 
-<p>##预先要求</p>
+<a name="section" class="elem-anchor"></a>
+<h2>预先要求<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>创建一个空的插件项目。</p>
 
@@ -96,8 +97,8 @@
 
 <p>知道怎么做。</p>
 
-<a name="section" class="elem-anchor"></a>
-<h2>1.注册模块构建器<a href="#section" class="anchor-link"><span></span></a></h2>
+<a name="section-1" class="elem-anchor"></a>
+<h2>1.注册模块构建器<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>项目配置设置取决于项目的模块类型。</p>
 
@@ -108,8 +109,8 @@
 <span class="nt">&lt;/extensions&gt;</span>
 </code></div>
 
-<a name="section-1" class="elem-anchor"></a>
-<h2>2.创建自定义模块构建器<a href="#section-1" class="anchor-link"><span></span></a></h2>
+<a name="section-2" class="elem-anchor"></a>
+<h2>2.创建自定义模块构建器<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleBuilder</code></span></a>类以提供自定义配置。</p>
 
@@ -124,8 +125,8 @@
 <span class="o">}</span>
 </code></div>
 
-<a name="section-2" class="elem-anchor"></a>
-<h2>3.定义模块类型<a href="#section-2" class="anchor-link"><span></span></a></h2>
+<a name="section-3" class="elem-anchor"></a>
+<h2>3.定义模块类型<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>设置要为其提供额外向导步骤的模块类型。
 在此示例中，我们选择一个空模块类型。</p>
@@ -141,8 +142,8 @@
 <span class="o">}</span>
 </code></div>
 
-<a name="section-3" class="elem-anchor"></a>
-<h2>4.设计和实现向导步骤<a href="#section-3" class="anchor-link"><span></span></a></h2>
+<a name="section-4" class="elem-anchor"></a>
+<h2>4.设计和实现向导步骤<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
 <p>提供要添加到向导的自定义UI组件的实现。</p>
 
@@ -195,7 +196,7 @@
                         <a class="navigation-links__next" href="/tutorials/project_wizard/module_types.html">Supporting Module Types</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 8 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

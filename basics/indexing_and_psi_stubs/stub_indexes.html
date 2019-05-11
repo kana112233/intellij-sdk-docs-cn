@@ -31,7 +31,7 @@
     <meta property="og:title" content="Stub Indexes" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -114,7 +114,7 @@
 示例</span></a>).</p>
 
 <p>*确保PSI元素的实现类扩展了<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/extapi/psi/StubBasedPsiElementBase.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">StubBasedPsiElementBase</code></span></a>参数化的存根类型
-interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>示例</span></a>&lt;! -#L45–&gt;).
+interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>示例</span></a><!--#L45-->).
 提供接受<code class="code highlight language-text">ASTNode</code>的构造函数和接受存根的构造函数.</p>
 
 <p>*创建一个实现<code class="code highlight language-text">IStubElementType</code>的类,并使用存根接口和实际的PSI元素接口进行参数化(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertyStubElementType.java" data-bypass="yes" target="_blank"><span>example</span></a>).
@@ -123,14 +123,14 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
 
 <p>*解析时使用实现<code class="code highlight language-text">IStubElementType</code>的类作为元素类型常量(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesElementTypes.java" data-bypass="yes" target="_blank"><span>示例</span></a>).</p>
 
-<p>*确保PSI元素接口中的所有方法在适当时访问存根数据而不是PSI树(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>example:Property.getKey()implementation</span></a>&lt;! -#L95  - &gt;).</p>
+<p>*确保PSI元素接口中的所有方法在适当时访问存根数据而不是PSI树(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java" data-bypass="yes" target="_blank"><span>example:Property.getKey()implementation</span></a><!--#L95  -->).</p>
 
 <p>对于支持存根的每种语言,只需执行以下步骤一次:</p>
 
 <p>*将您的语言的文件元素类型(从<code class="code highlight language-text">ParserDefinition.getFileNodeType()</code>返回的元素类型)更改为扩展<code class="code highlight language-text">IStubFileElementType</code>的类.</p>
 
 <p>*在你的<code class="code highlight language-text">plugin.xml</code>中,定义<code class="code highlight language-text">&lt;stubElementTypeHolder&gt;</code>扩展并指定包含语言解析器使用的<code class="code highlight language-text">IElementType</code>常量的接口(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/properties/src/META" data-bypass="yes" target="_blank"><span>示例</span></a> 
--INF/plugin.xml中)&lt;! -#L55  - &gt;).</p>
+-INF/plugin.xml中)<!--#L55  -->).</p>
 
 <p>对于序列化字符串数据,例如
 元素名称,在存根中,我们建议使用<code class="code highlight language-text">StubOutputStream.writeName()</code>和<code class="code highlight language-text">StubInputStream.readName()</code>方法.
@@ -151,7 +151,8 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
 <p>确保存根树中存储的所有信息仅依赖于正在构建存根的文件的内容,并且不依赖于任何外部文件,这一点至关重要.
 否则,当外部依赖关系发生更改时,将不会重建存根树,并且存根树中将存在过时且不正确的数据.</p>
 
-<p>##存根索引</p>
+<a name="section" class="elem-anchor"></a>
+<h2>存根索引<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>构建存根树时,您可以同时将关于存根元素的一些数据放入多个索引中,然后可以使用相应的键来查找PSI元素.
 与基于文件的索引不同,存根索引不支持将自定义数据存储为值;
@@ -163,16 +164,22 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
 在最常见的情况下,当键类型为<code class="code highlight language-text">String</code>时,使用更具体的基类,即<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/psi/stubs/StringStubIndexExtension.java" data-bypass="yes" target="_blank"><span>StringStubIndexExtension</span></a>.
 存根索引实现类在<code class="code highlight language-text">&lt;stubIndex&gt;</code>扩展点中注册.</p>
 
-<p>要将数据放入索引,请实现方法<code class="code highlight language-text">IStubElementType.indexStub()</code>(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java" data-bypass="yes" target="_blank"><span>example:JavaClassElementType.indexStub()</span></a>&lt;! -#L189  - &gt;).
+<p>要将数据放入索引,请实现方法<code class="code highlight language-text">IStubElementType.indexStub()</code>(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java" data-bypass="yes" target="_blank"><span>example:JavaClassElementType.indexStub()</span></a><!--#L189  -->).
 此方法接受<code class="code highlight language-text">IndexSink</code>作为参数,并为应存储元素的每个索引放入索引ID和键.</p>
 
 <p>要从索引访问数据,请使用以下两种方法:</p>
 
-<p>*<code class="code highlight language-text">AbstractStubIndex.getAllKeys()</code>返回指定项目的指定索引中所有键的列表(例如,项目中找到的所有类名列表).</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">AbstractStubIndex.getAllKeys()</code>返回指定项目的指定索引中所有键的列表(例如,项目中找到的所有类名列表).</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">AbstractStubIndex.get()</code>返回与指定范围内的某个键(例如,具有指定短名称的类)对应的PSI元素的集合.</p>
+  </li>
+</ul>
 
-<p>*<code class="code highlight language-text">AbstractStubIndex.get()</code>返回与指定范围内的某个键(例如,具有指定短名称的类)对应的PSI元素的集合.</p>
-
-<p>##相关论坛讨论</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>相关论坛讨论<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <ul>
   <li><a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206121959-Lifecycle-of-stub-creation/comments/206143885" data-bypass="yes" target="_blank"><span>存根创建的生命周期</span></a></li>
@@ -185,7 +192,7 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

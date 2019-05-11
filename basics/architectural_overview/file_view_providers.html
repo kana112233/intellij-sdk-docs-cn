@@ -31,7 +31,7 @@
     <meta property="og:title" content="File View Providers" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -97,30 +97,37 @@
 <p>一个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/FileViewProvider.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">FileViewProvider</code></span></a>实例对应一个<code class="code highlight language-text">VirtualFile</code>,一个<code class="code highlight language-text">Document</code>,可以用来
 检索多个<code class="code highlight language-text">PsiFile</code>实例.</p>
 
-<p>##如何获得FVP？</p>
-
-<p>*来自VirtualFile:<code class="code highlight language-text">PsiManager.getInstance(project).findViewProvider()</code></p>
-
-<p>*来自PSI文件:<code class="code highlight language-text">psiFile.getViewProvider()</code></p>
-
 <a name="fvp" class="elem-anchor"></a>
-<h2>FVP怎么办？<a href="#fvp" class="anchor-link"><span></span></a></h2>
+<h2>如何获得FVP？<a href="#fvp" class="anchor-link"><span></span></a></h2>
 
-<p>*要获取文件中存在PSI树的所有语言的集合:<code class="code highlight language-text">fileViewProvider.getLanguages()</code></p>
+<ul>
+  <li>来自VirtualFile:<code class="code highlight language-text">PsiManager.getInstance(project).findViewProvider()</code></li>
+  <li>来自PSI文件:<code class="code highlight language-text">psiFile.getViewProvider()</code></li>
+</ul>
 
-<p>*获取特定语言的PSI树:<code class="code highlight language-text">fileViewProvider.getPsi(language)</code>,其中<code class="code highlight language-text">language</code>参数可以取[Language]的值(upsource:///platform/core-api/src/com/
+<a name="fvp-1" class="elem-anchor"></a>
+<h2>FVP怎么办？<a href="#fvp-1" class="anchor-link"><span></span></a></h2>
+
+<ul>
+  <li>
+    <p>要获取文件中存在PSI树的所有语言的集合:<code class="code highlight language-text">fileViewProvider.getLanguages()</code></p>
+  </li>
+  <li>
+    <p>获取特定语言的PSI树:<code class="code highlight language-text">fileViewProvider.getPsi(language)</code>,其中<code class="code highlight language-text">language</code>参数可以取[Language]的值(upsource:///platform/core-api/src/com/
 intellij/lang/Language.java)在<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/lang/StdLanguages.java" data-bypass="yes" target="_blank"><span>StdLanguages</span></a>类中定义的类型.
 例如,要获取XML的PSI树,请使用<code class="code highlight language-text">fileViewProvider.getPsi(StdLanguages.XML)</code>.</p>
+  </li>
+  <li>
+    <p>要在文件中指定的偏移量处查找特定语言的元素:<code class="code highlight language-text">fileViewProvider.findElementAt(offset,language)</code></p>
+  </li>
+</ul>
 
-<p>*要在文件中指定的偏移量处查找特定语言的元素:<code class="code highlight language-text">fileViewProvider.findElementAt(offset,language)</code></p>
+<a name="fileviewprovider" class="elem-anchor"></a>
+<h2>如何扩展FileViewProvider？<a href="#fileviewprovider" class="anchor-link"><span></span></a></h2>
 
-<p>##如何扩展FileViewProvider？</p>
-
-<p>要创建具有针对不同语言的多个散布树的文件类型,您的插件必须包含* IntelliJ Platform *核心中可用的<code class="code highlight language-text">fileType.fileViewProviderFactory</code> <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_extensions_and_extension_points.html"><span>扩展点</span></a>的扩展.</p>
-
-<p>此扩展点使用[FileTypeExtensionPoint]声明(upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)</p>
-
-<p>豆类.</p>
+<p>要创建具有针对不同语言的多个散布树的文件类型,您的插件必须包含 <em>IntelliJ Platform</em> 核心中可用的<code class="code highlight language-text">fileType.fileViewProviderFactory</code> <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_extensions_and_extension_points.html"><span>扩展点</span></a>的扩展.
+此扩展点使用[FileTypeExtensionPoint]声明(upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)
+豆类.</p>
 
 <p>要访问此扩展点,请创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java" data-bypass="yes" target="_blank"><span>FileViewProviderFactory</span></a>接口的Java类,并在此类中覆盖<code class="code highlight language-text"> 
 createFileViewProvider</code>方法.</p>
@@ -132,8 +139,7 @@ createFileViewProvider</code>方法.</p>
 <span class="nt">&lt;/extensions&gt;</span>
 </code></div>
 
-<p>其中<code class="code highlight language-text">％file_type％</code>指的是正在创建的文件的类型(例如,“JFS”),而<code class="code highlight language-text">％class_name％</code>指的是实现[<code class="code highlight language-text">FileViewProviderFactory</code>]的Java类的名称(upsource: 
-///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)界面.</p>
+<p>其中<code class="code highlight language-text">％file_type％</code>指的是正在创建的文件的类型(例如,“JFS”),而<code class="code highlight language-text">％class_name％</code>指的是实现[<code class="code highlight language-text">FileViewProviderFactory</code>]的Java类的名称(upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)界面.</p>
 
 
 
@@ -142,7 +148,7 @@ createFileViewProvider</code>方法.</p>
                         <a class="navigation-links__next" href="/basics/architectural_overview/psi_elements.html">PSI Elements</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

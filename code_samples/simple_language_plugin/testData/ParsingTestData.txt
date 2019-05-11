@@ -4,7 +4,7 @@ PsiComment（SimpleTokenType.COMMENT）（'＃您正在阅读“.properties”�
   
 PsiWhiteSpace（ '\ n'）（42,43）
   
-PsiComment（SimpleTokenType.COMMENT）（'！感叹号也可以将文本标记为注释。'）（43,47）
+PsiComment（SimpleTokenType.COMMENT）（'!感叹号也可以将文本标记为注释。'）（43,47）
   
 PsiWhiteSpace（ '\ n'）（97,98）
   
@@ -54,7 +54,7 @@ PsiElement（SimpleTokenType.SEPARATOR）（ '='）（257258）
     
 PsiWhiteSpace（''）（258,259）
     
-PsiElement（SimpleTokenType.VALUE）（'欢迎来到\\ n Wikipedia！'）（259,292）
+PsiElement（SimpleTokenType.VALUE）（'欢迎来到\\ n Wikipedia!'）（259,292）
   
 PsiWhiteSpace（ '\ n'）（292293）
   

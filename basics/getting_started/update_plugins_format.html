@@ -31,7 +31,7 @@
     <meta property="og:title" content="Publishing a Plugin to a Custom Plugin Repository" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -88,18 +88,24 @@
 
 <p>你需要:</p>
 
-<p>*在用于自定义存储库的HTTPS Web服务器上创建和维护<code class="code highlight language-text">updatePlugins.xml</code>文件.
-  
+<ul>
+  <li>
+    <p>在用于自定义存储库的HTTPS Web服务器上创建和维护<code class="code highlight language-text">updatePlugins.xml</code>文件.  
 此文件描述了自定义存储库中可用的所有插件以及每个插件的下载URL.</p>
-
-<p>*将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
+  </li>
+  <li>
+    <p>将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
 这可以是您用于自定义存储库的同一Web服务器
   
 或者不同的HTTPS Web服务器.</p>
+  </li>
+  <li>
+    <p>将自定义存储库的URL添加到JetBrains IDE <a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
+  </li>
+</ul>
 
-<p>*将自定义存储库的URL添加到JetBrains IDE <a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
-
-<p>##在updatePlugins文件中描述您的插件</p>
+<a name="updateplugins" class="elem-anchor"></a>
+<h2>在updatePlugins文件中描述您的插件<a href="#updateplugins" class="anchor-link"><span></span></a></h2>
 
 <p>每个自定义插件存储库必须至少有一个<code class="code highlight language-text">updatePlugins.xml</code>文件来描述最新的可用版本</p>
 
@@ -111,21 +117,17 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.</p>
 
 <p>该描述还告诉JetBrains IDE在哪里下载插件本身.</p>
 
-<p>自定义插件存储库的<code class="code highlight language-text">updatePlugins.xml</code>文件由管理员构建和维护</p>
-
-<p>存储库.
+<p>自定义插件存储库的<code class="code highlight language-text">updatePlugins.xml</code>文件由管理员构建和维护存储库.
 如果自定义存储库的使用者使用更多,则可能需要多个<code class="code highlight language-text">updatePlugins.xml</code>文件</p>
 
 <p>比一个版本的JetBrains IDE.
 例如,对于IntelliJ IDEA 2018.2和2018.3,分别为<code class="code highlight language-text">updatePlugins-182.xml</code>,<code class="code highlight language-text">updatePlugins-183.xml</code>.</p>
 
-<p>每个<code class="code highlight language-text">updatePlugins  -  *.xml</code>文件都有一个添加到JetBrains IDE的唯一URL</p>
+<p>每个<code class="code highlight language-text">updatePlugins  -  *.xml</code>文件都有一个添加到JetBrains IDE的唯一URL
+<a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
 
-<p><a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>存储库设置/首选项</span></a>.</p>
-
-<a name="updateplugins" class="elem-anchor"></a>
-<h3>updatePlugins文件的格式<a href="#updateplugins" class="anchor-link"><span></span></a></h3>
-
+<a name="updateplugins-1" class="elem-anchor"></a>
+<h3>updatePlugins文件的格式<a href="#updateplugins-1" class="anchor-link"><span></span></a></h3>
 <p><code class="code highlight language-text">updatePlugins.xml</code>文件的格式只是描述每个插件的顺序元素列表:</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
@@ -161,7 +163,8 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.</p>
   <li>Multiple plugins with the same <code class="code highlight language-text">id</code> but different <code class="code highlight language-text">idea-version</code> attributes must be split into separate <code class="code highlight language-text">updatePlugins-*.xml</code> files.</li>
 </ul>
 
-<p>###可选的updatePlugin元素</p>
+<a name="updateplugin" class="elem-anchor"></a>
+<h3>可选的updatePlugin元素<a href="#updateplugin" class="anchor-link"><span></span></a></h3>
 
 <p>可以在<code class="code highlight language-text">updatePlugins.xml</code>中添加其他元素吗？
 是的,但仅在需要时才建议.
@@ -169,9 +172,8 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.</p>
 
 <p>与每个插件的<code class="code highlight language-text">plugin.xml</code>文件同步.</p>
 
-<p>在插件安装期间,JetBrains IDE读取插件JAR/ZIP文件,然后显示有关插件的更多信息.</p>
-
-<p>哪些附加信息可能有助于用户在何时选择插件</p>
+<p>在插件安装期间,JetBrains IDE读取插件JAR/ZIP文件,然后显示有关插件的更多信息.
+哪些附加信息可能有助于用户在何时选择插件</p>
 
 <p><a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>浏览自定义插件存储库</span></a></p>
 
@@ -209,7 +211,7 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.</p>
                         <a class="navigation-links__next" href="/basics/plugin_structure.html">Plugin Structure</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

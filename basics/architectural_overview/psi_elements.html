@@ -31,7 +31,7 @@
     <meta property="og:title" content="PSI Elements" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -93,22 +93,34 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiElement.java" data-bypass="yes" target="_blank"><span>PsiElement</span></a>类是PSI元素的公共基类.</p>
 
-<p>##如何获得PSI元素？</p>
+<a name="psi" class="elem-anchor"></a>
+<h2>如何获得PSI元素？<a href="#psi" class="anchor-link"><span></span></a></h2>
 
-<p>*来自一个动作:<code class="code highlight language-text">e.getData(LangDataKeys.PSI_ELEMENT)</code>.
+<ul>
+  <li>
+    <p>来自一个动作:<code class="code highlight language-text">e.getData(LangDataKeys.PSI_ELEMENT)</code>.
 注意:如果编辑器当前处于打开状态且插入符号下的元素是引用,则将返回解析引用的结果.
 这可能是您需要的,也可能不是.</p>
-
-<p>*来自偏移的文件:<code class="code highlight language-text">PsiFile.findElementAt()</code>.
+  </li>
+  <li>
+    <p>来自偏移的文件:<code class="code highlight language-text">PsiFile.findElementAt()</code>.
 注意:这将返回指定偏移量处的最低级别元素(“leaf”),该偏移量通常是词法分析器标记.</p>
+  </li>
+</ul>
 
 <p>很可能你应该使用<code class="code highlight language-text">PsiTreeUtil.getParentOfType()</code>来找到你真正需要的元素.</p>
 
-<p>*通过迭代PSI文件:使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiRecursiveElementWalkingVisitor</code></span></a>.</p>
+<ul>
+  <li>
+    <p>通过迭代PSI文件:使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiRecursiveElementWalkingVisitor</code></span></a>.</p>
+  </li>
+  <li>
+    <p>通过解析引用:<code class="code highlight language-text">PsiReference.resolve()</code></p>
+  </li>
+</ul>
 
-<p>*通过解析引用:<code class="code highlight language-text">PsiReference.resolve()</code></p>
-
-<p>##我可以用PSI元素做什么？</p>
+<a name="psi-1" class="elem-anchor"></a>
+<h2>我可以用PSI元素做什么？<a href="#psi-1" class="anchor-link"><span></span></a></h2>
 
 <p>参见<a href="/intellij-sdk-docs-cn/basics/psi_cookbook.html"><span>PSI Cook Book</span></a></p>
 
@@ -119,7 +131,7 @@
                         <a class="navigation-links__next" href="/basics/architectural_overview/navigating_psi.html">Navigating the PSI</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

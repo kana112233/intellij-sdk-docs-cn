@@ -31,7 +31,7 @@
     <meta property="og:title" content="PSI Files" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -93,54 +93,68 @@
 <p>与具有应用范围的<code class="code highlight language-text">VirtualFile</code>和<code class="code highlight language-text">Document</code>不同(即使多个项目是打开的,每个文件由相同的<code class="code highlight language-text">VirtualFile</code>实例表示),PSI也有项目范围(同一个文件由多个<code class="code highlight language-text">PsiFile</code>实例表示)
 如果文件属于同时打开的多个项目).</p>
 
-<p>##如何获取PSI文件？</p>
+<a name="psi" class="elem-anchor"></a>
+<h2>如何获取PSI文件？<a href="#psi" class="anchor-link"><span></span></a></h2>
 
-<p>*来自一个动作:<code class="code highlight language-text">e.getData(LangDataKeys.PSI_FILE)</code>.</p>
+<ul>
+  <li>
+    <p>来自一个动作:<code class="code highlight language-text">e.getData(LangDataKeys.PSI_FILE)</code>.</p>
+  </li>
+  <li>
+    <p>来自VirtualFile:<code class="code highlight language-text">PsiManager.getInstance(project).findFile()</code></p>
+  </li>
+  <li>
+    <p>来自Document:<code class="code highlight language-text">PsiDocumentManager.getInstance(project).getPsiFile()</code></p>
+  </li>
+  <li>
+    <p>来自文件中的元素:<code class="code highlight language-text">psiElement.getContainingFile()</code></p>
+  </li>
+  <li>
+    <p>要在项目的任何位置查找具有特定名称的文件,请使用<code class="code highlight language-text">FilenameIndex.getFilesByName(项目,名称,范围)</code></p>
+  </li>
+</ul>
 
-<p>*来自VirtualFile:<code class="code highlight language-text">PsiManager.getInstance(project).findFile()</code></p>
-
-<p>*来自Document:<code class="code highlight language-text">PsiDocumentManager.getInstance(project).getPsiFile()</code></p>
-
-<p>*来自文件中的元素:<code class="code highlight language-text">psiElement.getContainingFile()</code></p>
-
-<p>*要在项目的任何位置查找具有特定名称的文件,请使用<code class="code highlight language-text">FilenameIndex.getFilesByName(项目,名称,范围)</code></p>
-
-<p>##如何处理PSI文件？</p>
+<a name="psi-1" class="elem-anchor"></a>
+<h2>如何处理PSI文件？<a href="#psi-1" class="anchor-link"><span></span></a></h2>
 
 <p>最有趣的修改操作是在单个PSI元素的级别上执行的,而不是作为整体的文件.</p>
 
 <p>要迭代文件中的元素,请使用<code class="code highlight language-text">psiFile.accept(new PsiRecursiveElementWalkingVisitor()...);</code></p>
 
-<a name="psi" class="elem-anchor"></a>
-<h2>PSI文件来自哪里？<a href="#psi" class="anchor-link"><span></span></a></h2>
+<a name="psi-2" class="elem-anchor"></a>
+<h2>PSI文件来自哪里？<a href="#psi-2" class="anchor-link"><span></span></a></h2>
 
 <p>由于PSI依赖于语言,因此通过使用“LanguageParserDefinitions.INSTANCE”,通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/lang/Language.java" data-bypass="yes" target="_blank"><span>语言</span></a>对象创建PSI文件. 
 forLanguage(language).createFile(fileViewProvider)`方法.</p>
 
 <p>与文档类似,当为特定文件访问PSI时,将按需创建PSI文件.</p>
 
-<a name="psi-1" class="elem-anchor"></a>
-<h2>PSI文件持续多长时间？<a href="#psi-1" class="anchor-link"><span></span></a></h2>
+<a name="psi-3" class="elem-anchor"></a>
+<h2>PSI文件持续多长时间？<a href="#psi-3" class="anchor-link"><span></span></a></h2>
 
 <p>与文档一样,PSI文件从相应的<code class="code highlight language-text">VirtualFile</code>实例中被弱引用,如果没有任何人引用,则可以进行垃圾收集.</p>
 
-<p>##如何创建PSI文件？</p>
+<a name="psi-4" class="elem-anchor"></a>
+<h2>如何创建PSI文件？<a href="#psi-4" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiFileFactory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiFileFactory</code></span></a><code class="code highlight language-text">.getInstance(project).createFileFromText()</code>方法创建一个内存中的PSI文件
 指定的内容.</p>
 
 <p>要将PSI文件保存到磁盘,请使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiDirectory.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiDirectory</code></span></a><code class="code highlight language-text">.add()</code>方法.</p>
 
-<p>##如何在PSI文件发生变化时收到通知？</p>
+<a name="psi-5" class="elem-anchor"></a>
+<h2>如何在PSI文件发生变化时收到通知？<a href="#psi-5" class="anchor-link"><span></span></a></h2>
 
 <p><code class="code highlight language-text">PsiManager.getInstance(project).addPsiTreeChangeListener()</code>允许您接收有关项目PSI树的所有更改的通知.</p>
 
-<p>##如何扩展PSI？</p>
+<a name="psi-6" class="elem-anchor"></a>
+<h2>如何扩展PSI？<a href="#psi-6" class="anchor-link"><span></span></a></h2>
 
 <p>可以通过自定义语言插件扩展PSI以支持其他语言.
 有关开发自定义语言插件的更多详细信息,请参阅<a href="/intellij-sdk-docs-cn/reference_guide/custom_language_support.html"><span>自定义语言支持</span></a>参考指南.</p>
 
-<p>##使用PSI有哪些规则？</p>
+<a name="psi-7" class="elem-anchor"></a>
+<h2>使用PSI有哪些规则？<a href="#psi-7" class="anchor-link"><span></span></a></h2>
 
 <p>对PSI文件内容所做的任何更改都会反映在文档中,因此处理文档的所有规则(读/写操作,命令,只读状态处理)都有效.</p>
 
@@ -151,7 +165,7 @@ forLanguage(language).createFile(fileViewProvider)`方法.</p>
                         <a class="navigation-links__next" href="/basics/architectural_overview/file_view_providers.html">File View Providers</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

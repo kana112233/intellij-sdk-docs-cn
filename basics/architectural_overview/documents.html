@@ -31,7 +31,7 @@
     <meta property="og:title" content="Documents" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -85,51 +85,64 @@
 
                     <h1>Documents</h1>
                     <p>文档是可编辑的Unicode字符序列,通常对应于虚拟文件的文本内容.
-文档中的换行符_always_规范化为<code class="code highlight language-text">\ n</code>.</p>
+文档中的换行符_always_规范化为<code class="code highlight language-text">\ n</code>. 
+ <em>IntelliJ Platform</em> 在透明地加载和保存文档时处理编码和换行符转换.</p>
+
+<a name="section" class="elem-anchor"></a>
+<h2>如何获取文件？<a href="#section" class="anchor-link"><span></span></a></h2>
+
 <ul>
-  <li>IntelliJ Platform *在透明地加载和保存文档时处理编码和换行符转换.</li>
-</ul>
-
-<p>##如何获取文件？</p>
-
-<p>*来自一个动作:<code class="code highlight language-text">e.getData(PlatformDataKeys.EDITOR).getDocument()</code></p>
-
-<p>*来自虚拟文件:<code class="code highlight language-text">FileDocumentManager.getDocument()</code>.
+  <li>来自一个动作:<code class="code highlight language-text">e.getData(PlatformDataKeys.EDITOR).getDocument()</code></li>
+  <li>
+    <p>来自虚拟文件:<code class="code highlight language-text">FileDocumentManager.getDocument()</code>.
 如果之前未加载文档内容,则此调用会强制从磁盘加载文档内容;
 如果您只对打开的文档或可能已修改的文档感兴趣,请使用<code class="code highlight language-text">FileDocumentManager.getCachedDocument()</code>.</p>
+  </li>
+  <li>来自PSI文件:<code class="code highlight language-text">PsiDocumentManager.getInstance().getDocument()</code>或<code class="code highlight language-text">PsiDocumentManager.getInstance().getCachedDocument()</code></li>
+</ul>
 
-<p>*来自PSI文件:<code class="code highlight language-text">PsiDocumentManager.getInstance().getDocument()</code>或<code class="code highlight language-text">PsiDocumentManager.getInstance().getCachedDocument()</code></p>
-
-<p>##我可以用文件做什么？</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>我可以用文件做什么？<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>您可以执行在“纯文本”级别上访问或修改文件内容的任何操作(作为字符序列,而不是Java元素树).</p>
 
-<p>##文件来自何处？</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>文件来自何处？<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>当某些操作需要访问文件的文本内容时,会创建文档实例(特别是,需要为文件构建PSI).
 此外,可以临时创建未链接到任何虚拟文件的文档实例,例如,表示对话框中文本编辑器字段的内容.</p>
 
-<p>##文档持续多长时间？</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>文档持续多长时间？<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>来自<code class="code highlight language-text">VirtualFile</code>实例的文档实例被弱引用.
 因此,未经修改的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/Document.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Document</code></span></a>实例可以被垃圾收集,如果它没有被任何人引用,
 如果稍后再次访问文档内容,将创建一个新实例.
 在插件的长期数据结构中存储<code class="code highlight language-text">Document</code>引用将导致内存泄漏.</p>
 
-<p>##如何创建文档？</p>
+<a name="section-4" class="elem-anchor"></a>
+<h2>如何创建文档？<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
 <p>如果你需要在磁盘上创建一个新文件,你不要创建一个<code class="code highlight language-text">Document</code>:你创建一个PSI文件然后得到它的<code class="code highlight language-text">Document</code>.
 如果你需要创建一个没有绑定任何东西的<code class="code highlight language-text">Document</code>实例,你可以使用<code class="code highlight language-text">EditorFactory.createDocument</code>.</p>
 
-<p>##如何在文档更改时收到通知？</p>
+<a name="section-5" class="elem-anchor"></a>
+<h2>如何在文档更改时收到通知？<a href="#section-5" class="anchor-link"><span></span></a></h2>
 
-<p>*<code class="code highlight language-text">Document.addDocumentListener</code>允许您接收有关特定<code class="code highlight language-text">Document</code>实例中的更改的通知.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">Document.addDocumentListener</code>允许您接收有关特定<code class="code highlight language-text">Document</code>实例中的更改的通知.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">EditorFactory.getEventMulticaster().addDocumentListener</code>允许您接收有关所有打开文档中的更改的通知.</p>
+  </li>
+  <li>
+    <p>在任何级别总线上订阅<code class="code highlight language-text">AppTopics#FILE_DOCUMENT_SYNC</code>,以便在从磁盘保存或重新加载任何<code class="code highlight language-text">Document</code>时接收通知.</p>
+  </li>
+</ul>
 
-<p>*<code class="code highlight language-text">EditorFactory.getEventMulticaster().addDocumentListener</code>允许您接收有关所有打开文档中的更改的通知.</p>
-
-<p>*在任何级别总线上订阅<code class="code highlight language-text">AppTopics#FILE_DOCUMENT_SYNC</code>,以便在从磁盘保存或重新加载任何<code class="code highlight language-text">Document</code>时接收通知.</p>
-
-<p>##使用Documents有哪些规则？</p>
+<a name="documents" class="elem-anchor"></a>
+<h2>使用Documents有哪些规则？<a href="#documents" class="anchor-link"><span></span></a></h2>
 
 <p>一般读/写操作规则有效.
 除此之外,任何修改文档内容的操作都必须包装在一个命令中(<code class="code highlight language-text">CommandProcessor.getInstance().executeCommand()</code>).
@@ -141,7 +154,8 @@
 
 <p>传递给<code class="code highlight language-text">Document</code>修改方法(<code class="code highlight language-text">setText</code>,<code class="code highlight language-text">insertString</code>,<code class="code highlight language-text">replaceString</code>)的所有文本字符串必须只使用\ n作为行分隔符.</p>
 
-<p>##是否有可用于处理文档的实用程序？</p>
+<a name="section-6" class="elem-anchor"></a>
+<h2>是否有可用于处理文档的实用程序？<a href="#section-6" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-impl/src/com/intellij/util/DocumentUtil.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">DocumentUtil</code></span></a>包含<code class="code highlight language-text">D​​ocument</code>处理的实用程序方法.
 这允许您获取特定行的文本偏移等信息.
@@ -154,7 +168,7 @@
                         <a class="navigation-links__next" href="/reference_guide/editors.html">Editors</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

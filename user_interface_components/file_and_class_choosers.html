@@ -31,7 +31,7 @@
     <meta property="og:title" content="File and Class Choosers" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>File and Class Choosers</h1>
-                    <p>##文件选择器</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>文件选择器<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>要让用户选择文件，目录或多个文件，请使用</p>
 
@@ -112,7 +113,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java" data-bypass="yes" target="_blank"><span>FileChooserDescriptor</span></a>。</p>
 
-<p>请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用<code class="code highlight language-text">chooseFiles()</code>的重载来显示标准的* IntelliJ Platform *对话框。</p>
+<p>请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用<code class="code highlight language-text">chooseFiles()</code>的重载来显示标准的 <em>IntelliJ Platform</em> 对话框。</p>
 
 <p>使用文件选择器的一种非常常见的方法是使用文本字段输入带有省略号按钮(“…”)的路径以显示文件选择器。</p>
 
@@ -130,15 +131,19 @@
 
 <p>此API显示的对话框有两个选项卡:</p>
 
-<p>*一个显示项目结构</p>
-
 <ul>
-  <li>Another显示的文件列表类似于<code class="code highlight language-text">Goto File</code>弹出窗口所使用的文件。</li>
+  <li>
+    <p>一个显示项目结构</p>
+  </li>
+  <li>
+    <p>Another显示的文件列表类似于<code class="code highlight language-text">Goto File</code>弹出窗口所使用的文件。</p>
+  </li>
 </ul>
 
 <p>要显示对话框，请在<code class="code highlight language-text">createFileChooser()</code>返回的选择器上调用<code class="code highlight language-text">showDialog()</code>，然后调用<code class="code highlight language-text">getSelectedFile</code>来检索用户的选择。</p>
 
-<p>##类和包选择器</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>类和包选择器<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>如果要为用户提供选择Java类的可能性，可以使用</p>
 
@@ -161,7 +166,7 @@
                         <a class="navigation-links__next" href="/user_interface_components/editor_components.html">Editor Components</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

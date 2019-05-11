@@ -31,7 +31,7 @@
     <meta property="og:title" content="Project Structure" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,38 +84,40 @@
                     
 
                     <h1>Project Structure</h1>
-                    <p>&lt;! -  TODO根据目录分成部分 - &gt;</p>
+                    <!--  TODO根据目录分成部分 -->
 
-<p>本主题考虑基于* IntelliJ Platform *和相关主题的项目概念,例如_modules_,<em>facets</em>,<em>libraries</em>,<em>SDK</em>.
+<p>本主题考虑基于 <em>IntelliJ Platform</em> 和相关主题的项目概念,例如_modules_,<em>facets</em>,<em>libraries</em>,<em>SDK</em>.
 已经考虑了可用于管理项目和模块的项目结构和Java类.</p>
 
-<p>##项目及其组件</p>
+<a name="section" class="elem-anchor"></a>
+<h2>项目及其组件<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>本节简要讨论IDEA项目结构,项目组件和相关术语.
 有关项目及其组件的更多信息,请参阅<a href="https://www.jetbrains.com/help/idea/about-projects.html" data-bypass="yes" target="_blank"><span>项目</span></a>,<a href="https://www.jetbrains.com/help/idea/configurations-projects.html#working-with-modules" data-bypass="yes" target="_blank"><span>模块</span></a>,<a href="https://www.jetbrains.com/help/idea/working-with-libraries.html" data-bypass="yes" target="_blank"><span>Library</span></a>,<a href="https://www.jetbrains.com/help/idea/adding-support-for-frameworks-and-technologies.html#facets" data-bypass="yes" target="_blank"><span>Facet</span></a>在* IntelliJ IDEA * Web帮助中.</p>
 
-<p>###项目</p>
+<a name="section-1" class="elem-anchor"></a>
+<h3>项目<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
-<p>在* IntelliJ Platform <em>中,_project_将所有源代码,库和构建指令封装到单个组织单元中.
-使用</em> IntelliJ Platform SDK *所做的一切都是在项目的上下文中完成的.
+<p>在 <em>IntelliJ Platform</em> 中,_project_将所有源代码,库和构建指令封装到单个组织单元中.
+使用* IntelliJ Platform SDK *所做的一切都是在项目的上下文中完成的.
 项目定义称为_modules_和_libraries_的集合.
 根据项目的逻辑和功能要求,您可以创建_single-module_或_multi-module_项目.</p>
 
-<p>###模块</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>模块<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>_module_是一个独立的功能单元,可以独立运行,测试和调试.
 模块包括源代码,构建脚本,单元测试,部署描述符等.在项目中,每个模块可以使用特定的SDK或继承项目级别定义的SDK(参见<a href="/intellij-sdk-docs-cn/reference_guide/project_model"><span>SDK</span></a> 
 /sdk.md)本文档下面的部分).
 模块可以依赖于项目的其他模块.</p>
 
-<a name="section" class="elem-anchor"></a>
-<h3>图书馆<a href="#section" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>图书馆<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
-<p>_library_是模块所依赖的已编译代码(例如JAR文件)的存档.</p>
+<p>_library_是模块所依赖的已编译代码(例如JAR文件)的存档. 
+ <em>IntelliJ Platform</em> 支持三种类型的库:</p>
+
 <ul>
-  <li>
-    <p>IntelliJ Platform *支持三种类型的库:</p>
-  </li>
   <li>
     <p><strong>模块库</strong>:库类仅在此模块中可见,库信息记录在模块的<code class="code highlight language-text">.iml</code>文件中.</p>
   </li>
@@ -180,7 +182,7 @@ Spring特定配置存储在Spring facet中.</p>
                         <a class="navigation-links__next" href="/reference_guide/project_model/project.html">Project</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

@@ -31,7 +31,7 @@
     <meta property="og:title" content="Plugin Components" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -114,23 +114,24 @@
 <p>每个组件都有一个唯一的名称,用于其外部化和其他内部需求.
 组件的名称由其<code class="code highlight language-text">getComponentName()</code>方法返回.</p>
 
-<p>##组件命名表示法</p>
+<a name="section" class="elem-anchor"></a>
+<h2>组件命名表示法<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>建议以“<plugin_name>.<component_name>”的形式命名组件.</component_name></plugin_name></p>
 
-<p>##应用程序级组件</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>应用程序级组件<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>可选地,应用程序级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span>ApplicationComponent</span></a>接口.</p>
 
 <p>没有依赖项的应用程序组件应该有一个没有参数的构造函数,它将用于实例化.
-如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数.</p>
-<ul>
-  <li>IntelliJ Platform *将确保以正确的顺序实例化组件以满足依赖性.</li>
-</ul>
+如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数. 
+ <em>IntelliJ Platform</em> 将确保以正确的顺序实例化组件以满足依赖性.</p>
 
 <p>应用程序级组件必须在plugin.xml文件的<code class="code highlight language-text">&lt;application-components&gt;</code>部分中注册(请参阅<a href="plugin_configuration_file.html"><span>插件配置文件</span></a>).</p>
 
-<p>##项目级组件</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>项目级组件<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>可选地,项目级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>ProjectComponent</span></a>接口.</p>
 
@@ -140,7 +141,8 @@
 
 <p>项目级组件必须在<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;project-components&gt;</code>部分中注册(参见<a href="plugin_configuration_file.html"><span>Plugin Configuration File</span></a>).</p>
 
-<p>##模块级组件</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>模块级组件<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>可选地,模块级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/module/ModuleComponent.java" data-bypass="yes" target="_blank"><span>ModuleComponent</span></a>接口.</p>
 
@@ -149,7 +151,8 @@
 
 <p>模块级组件必须在<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;module-components&gt;</code>部分中注册(参见<a href="plugin_configuration_file.html"><span>Plugin Configuration File</span></a>).</p>
 
-<p>##持久化组件的状态</p>
+<a name="section-4" class="elem-anchor"></a>
+<h2>持久化组件的状态<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
 <p>如果组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>(不建议使用)或[PersistentStateComponent],则会自动保存和加载每个组件的状态. 
 ](upsource:///platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java)界面.</p>
@@ -168,7 +171,8 @@
 
 <p>有关更多信息和示例,请参阅<a href="/intellij-sdk-docs-cn/basics/persisting_state_of_components.html"><span>持久性组件状态</span></a>.</p>
 
-<p>##默认值</p>
+<a name="section-5" class="elem-anchor"></a>
+<h2>默认值<a href="#section-5" class="anchor-link"><span></span></a></h2>
 
 <p>默认值(组件的预定义设置)应放在<code class="code highlight language-text">&lt;component_name&gt; .xml</code>文件中.
 将此文件放在与默认包对应的文件夹中的插件的类路径中. 
@@ -180,7 +184,8 @@
 
 <p>*第二次保存配置</p>
 
-<p>##插件组件生命周期</p>
+<a name="section-6" class="elem-anchor"></a>
+<h2>插件组件生命周期<a href="#section-6" class="anchor-link"><span></span></a></h2>
 
 <p>组件按以下顺序加载:</p>
 
@@ -218,7 +223,7 @@
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_extensions_and_extension_points.html">Plugin Extensions and Extension Points</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

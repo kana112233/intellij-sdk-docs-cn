@@ -31,7 +31,7 @@
     <meta property="og:title" content="Test Project and Testdata Directories" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -103,7 +103,7 @@
 
 <aside>
   <p>如果在一系列成功运行后遇到意外错误,<strong>尝试再次运行测试</strong>,如果这没有帮助,<strong>删除沙箱目录中的“system”子目录</strong>(通过<code class="code highlight language-text">
-用于Gradle设置的sandboxDirectory</code>或用于Devkit设置的* IntelliJ Platform * SDK设置).</p>
+用于Gradle设置的sandboxDirectory</code>或用于Devkit设置的 <em>IntelliJ Platform</em>  SDK设置).</p>
 </aside>
 
 <p>在您的插件中,您通常会在<code class="code highlight language-text">testdata</code>目录中存储测试的测试数据(例如将在其上执行插件功能的文件和预期的输出文件).
@@ -111,10 +111,10 @@
 <code class="code highlight language-text">testdata</code>中的文件通常不是有效的源代码,不得编译.</p>
 
 <p>要指定<code class="code highlight language-text">testdata</code>的位置,必须覆盖<code class="code highlight language-text">LightPlatformCodeInsightFixtureTestCase.getTestDataPath()</code>方法.
-默认实现假定作为* IntelliJ Platform *源代码树的一部分运行,不适用于第三方插件.</p>
+默认实现假定作为 <em>IntelliJ Platform</em> 源代码树的一部分运行,不适用于第三方插件.</p>
 
 <aside class="注意">
-  <p> * IntelliJ Platform *测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建<code class="code highlight language-text">testdata</code>文件路径的基础.
+  <p>  <em>IntelliJ Platform</em> 测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建<code class="code highlight language-text">testdata</code>文件路径的基础.
 这允许在测试相同功能的不同方面的不同测试方法之间重用大多数代码,并且还建议将此方法用于第三方插件测试.
 可以使用<code class="code highlight language-text">UsefulTestCase.getTestName()</code>检索测试方法的名称.</p>
 </aside>
@@ -133,11 +133,17 @@ src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)类.</p>
 <p>在内存编辑器中打开文件时,文件内容中的特殊标记可用于指定插入符号位置或选择.
 您可以使用以下标记之一:</p>
 
-<p>*<code class="code highlight language-text">&lt;caret&gt;</code>指定插入符号的位置.</p>
-
-<p>*<code class="code highlight language-text">&lt;selection&gt;</code>和<code class="code highlight language-text">&lt;/selection&gt;</code>指定要选择的文本范围的开始和结束.</p>
-
-<p>*<code class="code highlight language-text">&lt;block&gt;</code>和<code class="code highlight language-text">&lt;/block&gt;</code>指定列选择的起点和终点.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">&lt;caret&gt;</code>指定插入符号的位置.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;selection&gt;</code>和<code class="code highlight language-text">&lt;/selection&gt;</code>指定要选择的文本范围的开始和结束.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;block&gt;</code>和<code class="code highlight language-text">&lt;/block&gt;</code>指定列选择的起点和终点.</p>
+  </li>
+</ul>
 
 
 
@@ -146,7 +152,7 @@ src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)类.</p>
                         <a class="navigation-links__next" href="/basics/testing_plugins/writing_tests.html">Writing Tests</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

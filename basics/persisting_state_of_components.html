@@ -31,7 +31,7 @@
     <meta property="og:title" content="Persisting State of Components" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,17 +84,16 @@
                     
 
                     <h1>Persisting State of Components</h1>
-                    <ul>
-  <li>IntelliJ Platform *提供了一个API,允许组件或服务在重新启动IDE之间保持其状态.
+                    <p><em>IntelliJ Platform</em> 提供了一个API,允许组件或服务在重新启动IDE之间保持其状态.
 您可以使用简单的API来保留一些值,也可以使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/PersistentStateComponent" data-bypass="yes" target="_blank"><span>PersistentStateComponent</span></a>来保持更复杂组件的状态. 
-java)接口.</li>
-</ul>
+java)接口.</p>
 
 <aside class="警告">
   <p>如果您需要保留密码等敏感数据,请参阅<a href="persisting_sensitive_data.html"><span>持久敏感数据</span></a>.</p>
 </aside>
 
-<p>##使用PropertiesComponent进行简单的非可扩展持久化</p>
+<a name="propertiescomponent" class="elem-anchor"></a>
+<h2>使用PropertiesComponent进行简单的非可扩展持久化<a href="#propertiescomponent" class="anchor-link"><span></span></a></h2>
 
 <p>如果您的插件唯一需要保留的是一些简单的值,最简单的方法是使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/ide/util/PropertiesComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">com.intellij.ide.util.PropertiesComponent</code></span></a>服务.
 它可用于保存应用程序级值和项目级值(存储在工作区文件中).
@@ -104,7 +103,8 @@ java)接口.</li>
 
 <p>由于所有插件共享相同的命名空间,因此强烈建议为键名称添加前缀(例如,使用插件ID).</p>
 
-<p>##使用PersistentStateComponent</p>
+<a name="persistentstatecomponent" class="elem-anchor"></a>
+<h2>使用PersistentStateComponent<a href="#persistentstatecomponent" class="anchor-link"><span></span></a></h2>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">com.intellij.openapi.components.PersistentStateComponent</code></span></a>界面为您提供了定义值的最大灵活性
 要坚持,他们的格式和存储位置.</p>
@@ -126,7 +126,8 @@ java)接口.</li>
 <p>请注意,扩展实例不能通过实现<code class="code highlight language-text">PersistentStateComponent</code>来保持其状态.
 如果您的扩展需要具有持久状态,则需要定义一个负责管理该状态的单独服务.</p>
 
-<p>###实现PersistentStateComponent接口</p>
+<a name="persistentstatecomponent-1" class="elem-anchor"></a>
+<h3>实现PersistentStateComponent接口<a href="#persistentstatecomponent-1" class="anchor-link"><span></span></a></h3>
 
 <p>“PersistentStateComponent”的实现需要使用状态类的类型进行参数化.
 状态类可以是单独的JavaBean类,也可以是实现<code class="code highlight language-text">PersistentStateComponent</code>本身的类.</p>
@@ -168,7 +169,8 @@ java)接口.</li>
 <span class="o">}</span>
 </code></div>
 
-<p>###实现状态类</p>
+<a name="section" class="elem-anchor"></a>
+<h3>实现状态类<a href="#section" class="anchor-link"><span></span></a></h3>
 
 <p>“PersistentStateComponent”的实现通过将公共字段,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/xmlb/annotations" data-bypass="yes" target="_blank"><span>annotated</span></a>私有字段和bean属性序列化为XML格式来实现.</p>
 
@@ -194,7 +196,8 @@ java)接口.</li>
 <p>State类应该有一个<code class="code highlight language-text">equals</code>方法,但如果没有实现,状态对象将按字段进行比较.
 使用Kotlin时,请使用<a href="https://kotlinlang.org/docs/reference/data-classes.html" data-bypass="yes" target="_blank"><span>数据类</span></a>.</p>
 
-<p>###定义存储位置</p>
+<a name="section-1" class="elem-anchor"></a>
+<h3>定义存储位置<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
 <p>要指定存储的确切位置,需要在<code class="code highlight language-text">PersistentStateComponent</code>类中添加一个<code class="code highlight language-text">@ State</code>注释.</p>
 
@@ -222,7 +225,8 @@ java)接口.</li>
 
 <p><code class="code highlight language-text">@Storage</code>注释的<code class="code highlight language-text">roamingType</code>参数指定使用Settings Repository插件时的漫游类型.</p>
 
-<p>##自定义持久值的XML格式</p>
+<a name="xml" class="elem-anchor"></a>
+<h2>自定义持久值的XML格式<a href="#xml" class="anchor-link"><span></span></a></h2>
 
 <p>请考虑仅使用注释参数来实现向后兼容性.
 否则随意提交有关序列化妆品的问题.</p>
@@ -237,7 +241,8 @@ java)接口.</li>
 在<code class="code highlight language-text">loadState()</code>方法中,您可以使用任何自定义逻辑反序列化JDOM元素树.
 请注意,不建议这样做,应尽可能避免.</p>
 
-<p>##持久性组件生命周期</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>持久性组件生命周期<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>在创建组件之后调用<code class="code highlight language-text">loadState()</code>方法(仅当组件持有一些非默认状态时),并且在外部更改具有持久状态的XML文件后(例如,如果项目)
 文件已从版本控制系统更新).
@@ -258,10 +263,15 @@ java)接口.</li>
 
 <p>组件将其状态保存在以下文件中:</p>
 
-<p>*项目级:项目(<code class="code highlight language-text">.ipr</code>)文件.
+<ul>
+  <li>
+    <p>项目级:项目(<code class="code highlight language-text">.ipr</code>)文件.
 但是,如果<code class="code highlight language-text">plugin.xml</code>文件中的workspace选项设置为<code class="code highlight language-text">true</code>,则将使用workspace(<code class="code highlight language-text">.iws</code>)文件.</p>
-
-<p>*模块级:模块(<code class="code highlight language-text">.iml</code>)文件.</p>
+  </li>
+  <li>
+    <p>模块级:模块(<code class="code highlight language-text">.iml</code>)文件.</p>
+  </li>
+</ul>
 
 
 
@@ -270,7 +280,7 @@ java)接口.</li>
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

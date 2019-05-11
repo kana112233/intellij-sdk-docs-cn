@@ -31,7 +31,7 @@
     <meta property="og:title" content="Plugin Recommendations" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -86,13 +86,15 @@
                     <h1>Plugin Recommendations</h1>
                     <p>IntelliJ平台IDE将推荐一个插件,以便在以下某种情况下进行安装:</p>
 
-<p>*如果项目包含运行的IDE不支持但受插件支持的类型的文件
+<ul>
+  <li>如果项目包含运行的IDE不支持但受插件支持的类型的文件
    
 在插件存储库中可用;
- 
-*如果项目是在安装了插件的其他IDE安装中创建的,并且包含共享
+ </li>
+  <li>如果项目是在安装了插件的其他IDE安装中创建的,并且包含共享
    
-使用插件配置的设置(模块,构面,工件或运行配置).</p>
+使用插件配置的设置(模块,构面,工件或运行配置).</li>
+</ul>
 
 <p>IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们对用户有意义.</p>
 
@@ -126,7 +128,8 @@
 
 <p>请参阅<a href="/intellij-sdk-docs-cn/reference_guide/custom_language_support/registering_file_type.html"><span>注册文件类型</span></a>以在插件中提供此功能.</p>
 
-<p>##运行配置类型</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>运行配置类型<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>如果希望IDE显示您的插件支持“运行配置类型”,则需要实现</p>
 
@@ -155,7 +158,8 @@
 
 <p>有关其他信息,请参阅<a href="/intellij-sdk-docs-cn/reference_guide/project_model/facet.html"><span>Facet</span></a>.</p>
 
-<p>##模块类型</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>模块类型<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>如果您希望IDE显示您的插件可以支持创建特定模块类型的提示,则应该扩展</p>
 
@@ -168,7 +172,8 @@
 
 <p>有关支持模块类型的更多信息.</p>
 
-<p>##神器类型</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>神器类型<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>要支持特定的工件类型,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/compiler/openapi/src/com/intellij/packaging/artifacts/ArtifactType.java" data-bypass="yes" target="_blank"><span>ArtifactType</span></a>,</p>
 
@@ -186,7 +191,7 @@
                         <a class="navigation-links__next" href="/plugin_repository/custom_channels.html">Custom Release Channels</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

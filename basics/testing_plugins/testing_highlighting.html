@@ -31,7 +31,7 @@
     <meta property="og:title" content="Testing Highlighting" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,7 @@
                     
 
                     <h1>Testing Highlighting</h1>
-                    <p>编写插件测试时的一个常见任务是测试各种突出显示(检查,注释器,解析器错误突出显示等).* IntelliJ Platform *为此任务提供专用的实用程序和标记格式.</p>
+                    <p>编写插件测试时的一个常见任务是测试各种突出显示(检查,注释器,解析器错误突出显示等). <em>IntelliJ Platform</em> 为此任务提供专用的实用程序和标记格式.</p>
 
 <p>要测试当前加载到内存编辑器中的文件的突出显示,请调用<code class="code highlight language-text">checkHighlighting()</code>方法.
 该方法的参数指定在将结果与预期结果进行比较时应考虑哪些严重性:始终考虑错误,而警告,弱警告和信息是可选的.
@@ -110,29 +110,46 @@
 <p>标签名称指定预期突出显示的严重性.
 支持以下严重性:</p>
 
-<p>*<code class="code highlight language-text">&lt;错误&gt;</code></p>
-
-<p>*<code class="code highlight language-text">&lt;警告&gt;</code></p>
-
-<p>*<code class="code highlight language-text">&lt;weak_warning&gt;</code></p>
-
-<p>*<code class="code highlight language-text">&lt;info&gt;</code></p>
-
-<p>*<code class="code highlight language-text">&lt;inject&gt;</code>(对于注入的片段)</p>
-
-<p>*<code class="code highlight language-text">&lt;symbolName&gt;</code>(用于根据类型突出显示标识符的标记)</p>
-
-<p>*任何自定义严重性都可以通过其名称引用</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">&lt;错误&gt;</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;警告&gt;</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;weak_warning&gt;</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;info&gt;</code></p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;inject&gt;</code>(对于注入的片段)</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;symbolName&gt;</code>(用于根据类型突出显示标识符的标记)</p>
+  </li>
+  <li>
+    <p>任何自定义严重性都可以通过其名称引用</p>
+  </li>
+</ul>
 
 <p>标签还可以具有以下可选属性:</p>
 
-<p>*<code class="code highlight language-text">descr</code>  - 与荧光笔相关的预期消息(如果未指定,任何文本将匹配;如果消息包含引号,则可以通过在其前面放置两个反斜杠字符来转义它)</p>
-
-<p>*<code class="code highlight language-text">foregroundColor</code>,<code class="code highlight language-text">backgroundColor</code>,<code class="code highlight language-text">effectColor</code>用于突出显示的预期颜色</p>
-
-<p>*<code class="code highlight language-text">effectType</code>预期效果类型用于突出显示(有关可能的值,请参阅<code class="code highlight language-text">EffectType</code>枚举)</p>
-
-<p>*<code class="code highlight language-text">fontType</code>预期突出显示的字体样式(0  - 正常,1  - 粗体,2  - 斜体,3  - 粗体斜体)</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">descr</code>  - 与荧光笔相关的预期消息(如果未指定,任何文本将匹配;如果消息包含引号,则可以通过在其前面放置两个反斜杠字符来转义它)</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">foregroundColor</code>,<code class="code highlight language-text">backgroundColor</code>,<code class="code highlight language-text">effectColor</code>用于突出显示的预期颜色</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">effectType</code>预期效果类型用于突出显示(有关可能的值,请参阅<code class="code highlight language-text">EffectType</code>枚举)</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">fontType</code>预期突出显示的字体样式(0  - 正常,1  - 粗体,2  - 斜体,3  - 粗体斜体)</p>
+  </li>
+</ul>
 
 <aside class="note">
   <p> <em>Nested</em> tags are <strong>supported</strong>:
@@ -148,7 +165,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

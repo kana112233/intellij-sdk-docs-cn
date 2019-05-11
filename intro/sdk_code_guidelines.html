@@ -31,7 +31,7 @@
     <meta property="og:title" content="Guidelines for Creating IntelliJ Platform SDK Code Samples" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -90,7 +90,8 @@
 
 <p>有关为IntelliJ平台本身做出贡献的信息,请访问<a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>贡献IntelliJ平台</span></a>.</p>
 
-<p>##目标</p>
+<a name="section" class="elem-anchor"></a>
+<h2>目标<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>在编写SDK代码示例时,请记住以下注意事项:</p>
 
@@ -98,34 +99,31 @@
   <li>
     <p>SDK示例的目的是演示在IntelliJ平台的子系统和组件之上构建的实现模式.</p>
   </li>
-  <li>
-    <p>SDK代码示例是教学代码,旨在教授.
-  
-*教学代码在某些关键方面与生产代码不同:
-    
-*为了简单和简洁,牺牲一些稳健性.
+  <li>SDK代码示例是教学代码,旨在教授.
+  </li>
+  <li>教学代码在某些关键方面与生产代码不同:
+    </li>
+  <li>为了简单和简洁,牺牲一些稳健性.
       
 使用错误检查有必要对实施陷阱提出一个观点.
-    
-*尽可能简化实现,但使用IntelliJ平台,Java语言和库的全部功能.
-    
-*为接口,类,字段,方法和扩展点使用有意义的名称.
-    
-*编写指导JavaDoc注释.
-  
-*代码示例取代了大量文档.</p>
+    </li>
+  <li>尽可能简化实现,但使用IntelliJ平台,Java语言和库的全部功能.
+    </li>
+  <li>为接口,类,字段,方法和扩展点使用有意义的名称.
+    </li>
+  <li>编写指导JavaDoc注释.
+  </li>
+  <li>
+    <p>代码示例取代了大量文档.</p>
   </li>
-</ul>
-
-<p>*针对两个级别的SDK示例:
-  
-*通过演示IntelliJ平台的有限区域,_basic_示例专注于特定主题.
+  <li>针对两个级别的SDK示例:
+  </li>
+  <li>通过演示IntelliJ平台的有限区域,_basic_示例专注于特定主题.
     
 它应该显示所有组件和架构,但最终会完成一些基本的东西.
     
 例如,通过仅存储<code class="code highlight language-text">String</code>来演示持久性.
-  </p>
-<ul>
+  </li>
   <li>_advanced_示例演示了IntelliJ平台的不同部分如何集成和协同工作.
     
 例如,将检查或意图与非平凡的PsiTree操作相结合.
@@ -136,11 +134,17 @@
 
 <p>每个路线图应包含:</p>
 
-<p>*指向实现该功能所需的IntelliJ Platform API的SDK文档.</p>
-
-<p>*指向相关的_basic_ SDK示例插件的指针.</p>
-
-<p>*指向相关的_advanced_ SDK示例插件的指针.</p>
+<ul>
+  <li>
+    <p>指向实现该功能所需的IntelliJ Platform API的SDK文档.</p>
+  </li>
+  <li>
+    <p>指向相关的_basic_ SDK示例插件的指针.</p>
+  </li>
+  <li>
+    <p>指向相关的_advanced_ SDK示例插件的指针.</p>
+  </li>
+</ul>
 
 <a name="sdk" class="elem-anchor"></a>
 <h2>SDK插件的命名约定<a href="#sdk" class="anchor-link"><span></span></a></h2>
@@ -166,7 +170,8 @@
 </code></div>
 <p>The copyright statement must appear in every source file with the <code class="code highlight language-text">$today.year</code> <a href="https://www.jetbrains.com/help/idea/copyright-profiles.html" data-bypass="yes" target="_blank"><span>Velocity</span></a> template resolved.</p>
 
-<p>##插件ID约定</p>
+<a name="id" class="elem-anchor"></a>
+<h2>插件ID约定<a href="#id" class="anchor-link"><span></span></a></h2>
 
 <p>插件ID(<code class="code highlight language-text">plugin.xml</code>中的<code class="code highlight language-text">&lt;id&gt;</code>)总是以<code class="code highlight language-text">org.intellij.sdk</code>开头.</p>
 
@@ -176,7 +181,8 @@
 
 <p>像<code class="code highlight language-text">facet_basics</code>这样的插件有ID<code class="code highlight language-text">org.intellij.sdk.facet</code>.</p>
 
-<p>##插件包名称</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>插件包名称<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>插件中的包应以插件ID开头.</p>
 
@@ -254,49 +260,55 @@ It is not needed in SDK samples.</li>
 
 <p>SDK代码示例<code class="code highlight language-text">plugin.xml</code>文件中的元素序列是:</p>
 
-<p>*<code class="code highlight language-text">&lt;id&gt;</code>使用完全限定的<a href="#plugin-id-conventions"><span>插件ID</span></a>.</p>
-
-<p>*<code class="code highlight language-text">&lt;name&gt;</code>名称值不必与[插件名称]匹配(#naming-conventions-for-sdk-plugins).
+<ul>
+  <li>
+    <p><code class="code highlight language-text">&lt;id&gt;</code>使用完全限定的<a href="#plugin-id-conventions"><span>插件ID</span></a>.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;name&gt;</code>名称值不必与[插件名称]匹配(#naming-conventions-for-sdk-plugins).
   
 它可能反映了插件的功能.
   
 名称必须以“SDK:”开头.</p>
-
-<p>*<code class="code highlight language-text">&lt;version&gt;</code>MAJOR.MINOR.FIX格式的代码示例版本.
-  </p>
-<ul>
+  </li>
+  <li><code class="code highlight language-text">&lt;version&gt;</code>MAJOR.MINOR.FIX格式的代码示例版本.
+  </li>
   <li>MAJOR对应于功能的重大升级.
   </li>
   <li>MINOR对应于次要重构和功能上的小改进.
   </li>
-  <li>FIX对应于在没有重大重构的情况下修复问题的更改.</li>
-</ul>
-
-<p>*<code class="code highlight language-text">&lt;idea-version/&gt;</code>设置属性:
-  
-*<code class="code highlight language-text">since-build</code>属性是IntelliJ平台最早的兼容版本号.
-  
-*<code class="code highlight language-text">until-build</code>属性为空字符串<code class="code highlight language-text">“”</code>.
+  <li>
+    <p>FIX对应于在没有重大重构的情况下修复问题的更改.</p>
+  </li>
+  <li><code class="code highlight language-text">&lt;idea-version/&gt;</code>设置属性:
+  </li>
+  <li><code class="code highlight language-text">since-build</code>属性是IntelliJ平台最早的兼容版本号.
+  </li>
+  <li>
+    <p><code class="code highlight language-text">until-build</code>属性为空字符串<code class="code highlight language-text">“”</code>.
     
 每个主要版本都会审核SDK代码示例,以确保与最新的IntelliJ平台兼容.</p>
-
-<p>*<code class="code highlight language-text">&lt;description&gt;</code>是对所演示内容以及用户如何访问该功能的简洁说明.</p>
-
-<p>*<code class="code highlight language-text">&lt;change-notes&gt;</code>是按版本号排列的有序列表,其中简要描述了每个版本的更改.</p>
-
-<p>*<code class="code highlight language-text">&lt;vendor&gt;</code>将值设置为<code class="code highlight language-text">IntelliJ Platform SDK</code>.
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;description&gt;</code>是对所演示内容以及用户如何访问该功能的简洁说明.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">&lt;change-notes&gt;</code>是按版本号排列的有序列表,其中简要描述了每个版本的更改.</p>
+  </li>
+  <li><code class="code highlight language-text">&lt;vendor&gt;</code>将值设置为<code class="code highlight language-text">IntelliJ Platform SDK</code>.
   
 设置属性:
-  
-*<code class="code highlight language-text">email</code>省略此属性.
-  
-*<code class="code highlight language-text">url</code>到JetBrains插件库`“https://plugins.jetbrains.com”</p>
-
-<ul>
+  </li>
+  <li><code class="code highlight language-text">email</code>省略此属性.
+  </li>
+  <li>
+    <p><code class="code highlight language-text">url</code>到JetBrains插件库`“https://plugins.jetbrains.com”</p>
+  </li>
   <li>[插件配置元素]的其余部分(/basics/plugin_structure/plugin_configuration_file.md)只应在特定插件需要时才会出现.</li>
 </ul>
 
-<p>##测试</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>测试<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>IntelliJ Platform SDK代码示例应该根据<code class="code highlight language-text">since-build</code>版本构建和测试.</p>
 
@@ -319,7 +331,7 @@ Here the term “IDE” means the IntelliJ Platform-based IDE in which the plugi
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

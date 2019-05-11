@@ -31,7 +31,7 @@
     <meta property="og:title" content="List and Tree Controls" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -103,15 +103,21 @@
 
 <p><a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html" data-bypass="yes" target="_blank"><span>JList的</span></a>:</p>
 
-<p>*如果项目不适合列表框宽度，则绘制带有项目完整文本的工具提示。</p>
-
-<p>*当列表框中不包含任何项目时，在列表框中间绘制一条灰色文本消息。
+<ul>
+  <li>
+    <p>如果项目不适合列表框宽度，则绘制带有项目完整文本的工具提示。</p>
+  </li>
+  <li>
+    <p>当列表框中不包含任何项目时，在列表框中间绘制一条灰色文本消息。
    
 可以通过调用<code class="code highlight language-text">getEmptyText()。setText()</code>来定制文本。</p>
-
-<p>*在列表框的右上角绘制一个忙碌图标，表示正在执行后台操作。
+  </li>
+  <li>
+    <p>在列表框的右上角绘制一个忙碌图标，表示正在执行后台操作。
    
 这可以通过调用<code class="code highlight language-text">setPaintBusy()</code>来启用。</p>
+  </li>
+</ul>
 
 <p>同样，</p>
 
@@ -190,7 +196,9 @@
 
 <p>要使用工具栏装饰器:</p>
 
-<p>*如果您需要支持删除和重新排序列表框中的项目，请确保列表的模型实现
+<ul>
+  <li>
+    <p>如果您需要支持删除和重新排序列表框中的项目，请确保列表的模型实现
    
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/util/ui/EditableModel.java" data-bypass="yes" target="_blank"><span>EditableModel</span></a>
    
@@ -199,33 +207,32 @@
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/CollectionListModel.java" data-bypass="yes" target="_blank"><span>CollectionListModel</span></a>
    
 是一个实现此接口的方便模型类。</p>
-
-<p>*打电话
+  </li>
+  <li>
+    <p>打电话
    
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java" data-bypass="yes" target="_blank"><span>ToolbarDecorator.createDecorator</span></a>
    
 创建装饰器实例。</p>
-
-<p>*如果需要支持添加和/或删除项目，请调用<code class="code highlight language-text">setAddAction()</code>和/或<code class="code highlight language-text">setRemoveAction()</code>。</p>
-
-<p>*如果你需要除标准按钮之外的其他按钮，请调用<code class="code highlight language-text">addExtraAction()</code>或<code class="code highlight language-text">setActionGroup()</code>。</p>
-
-<p>*调用<code class="code highlight language-text">createPanel()</code>并将它返回的组件添加到面板中。</p>
-
-<p>&lt;! -</p>
-
-<a name="abstracttreebuilderabstracttreestructure" class="elem-anchor"></a>
-<h3>AbstractTreeBuilder和AbstractTreeStructure<a href="#abstracttreebuilderabstracttreestructure" class="anchor-link"><span></span></a></h3>
-
-<p>TODO链接到教程</p>
-
-<ul>
+  </li>
   <li>
-    <aside>
-
-    </aside>
+    <p>如果需要支持添加和/或删除项目，请调用<code class="code highlight language-text">setAddAction()</code>和/或<code class="code highlight language-text">setRemoveAction()</code>。</p>
+  </li>
+  <li>
+    <p>如果你需要除标准按钮之外的其他按钮，请调用<code class="code highlight language-text">addExtraAction()</code>或<code class="code highlight language-text">setActionGroup()</code>。</p>
+  </li>
+  <li>
+    <p>调用<code class="code highlight language-text">createPanel()</code>并将它返回的组件添加到面板中。</p>
   </li>
 </ul>
+
+<!--
+
+### AbstractTreeBuilder和AbstractTreeStructure
+
+TODO链接到教程
+
+ -->
 
 
 
@@ -234,7 +241,7 @@
                         <a class="navigation-links__next" href="/user_interface_components/misc_swing_components.html">Miscellaneous Swing Components</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

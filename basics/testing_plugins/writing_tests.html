@@ -31,7 +31,7 @@
     <meta property="og:title" content="Writing Tests" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -87,17 +87,26 @@
                     <p>在大多数情况下,一旦将必要的文件复制到测试项目并加载到内存编辑器中,编写测试本身就会涉及调用插件代码,并且对测试框架的依赖性很小.
 但是,对于许多常见情况,框架提供了可以使测试更容易的辅助方法:</p>
 
-<p>*<code class="code highlight language-text">type()</code>模拟字符或字符串在内存编辑器中的输入.</p>
-
-<p>*<code class="code highlight language-text">performEditorAction()</code>模拟在内存编辑器的上下文中执行动作.</p>
-
-<p>*<code class="code highlight language-text">complete()</code>模拟代码完成的调用并返回完成列表中显示的查找元素列表(如果完成没有任何建议或一个自动插入的建议,则返回<code class="code highlight language-text">null</code>).</p>
-
-<p>*<code class="code highlight language-text">findUsages()</code>模拟’Find Usages’的调用并返回找到的用法.</p>
-
-<p>*<code class="code highlight language-text">findSingleIntention()</code>与<code class="code highlight language-text">launchAction()</code>结合使用指定名称模拟意图动作或检查quickfix的调用.</p>
-
-<p>*<code class="code highlight language-text">renameElementAtCaret()</code>或<code class="code highlight language-text">rename()</code>模拟重命名重构的执行.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">type()</code>模拟字符或字符串在内存编辑器中的输入.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">performEditorAction()</code>模拟在内存编辑器的上下文中执行动作.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">complete()</code>模拟代码完成的调用并返回完成列表中显示的查找元素列表(如果完成没有任何建议或一个自动插入的建议,则返回<code class="code highlight language-text">null</code>).</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">findUsages()</code>模拟’Find Usages’的调用并返回找到的用法.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">findSingleIntention()</code>与<code class="code highlight language-text">launchAction()</code>结合使用指定名称模拟意图动作或检查quickfix的调用.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">renameElementAtCaret()</code>或<code class="code highlight language-text">rename()</code>模拟重命名重构的执行.</p>
+  </li>
+</ul>
 
 <p>要将执行操作的结果与预期结果进行比较,可以使用<code class="code highlight language-text">checkResultByFile()</code>方法.
 具有预期结果的文件还可以包含标记,以指定预期的插入符号位置或选定的文本范围.
@@ -110,7 +119,7 @@
                         <a class="navigation-links__next" href="/basics/testing_plugins/testing_highlighting.html">Testing Highlighting</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

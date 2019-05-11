@@ -31,7 +31,7 @@
     <meta property="og:title" content="Persisting Sensitive Data" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -109,7 +109,8 @@
 <span class="o">}</span>    
 </code></div>
 
-<p>###存储凭据</p>
+<a name="section-1" class="elem-anchor"></a>
+<h3>存储凭据<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">CredentialAttributes</span> <span class="n">credentialAttributes</span> <span class="o">=</span> <span class="n">createCredentialAttributes</span><span class="o">(</span><span class="n">serverId</span><span class="o">);</span> <span class="c1">// see previous sample</span>
 <span class="n">Credentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Credentials</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
@@ -117,7 +118,8 @@
 </code></div>
 <p>To remove stored credentials, pass <code class="code highlight language-text">null</code> for <code class="code highlight language-text">credentials</code> parameter.</p>
 
-<p>##存储</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>存储<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>默认存储格式取决于操作系统.</p>
 
@@ -153,7 +155,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

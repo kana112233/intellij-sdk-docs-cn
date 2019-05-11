@@ -31,7 +31,7 @@
     <meta property="og:title" content="Indexing and PSI Stubs" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -84,7 +84,8 @@
                     
 
                     <h1>Indexing and PSI Stubs</h1>
-                    <p>##指数</p>
+                    <a name="section" class="elem-anchor"></a>
+<h2>指数<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>索引框架提供了一种定位某些元素的快捷方法,例如
 在大型代码库中包含特定单词或具有特定名称的方法的文件.
@@ -109,7 +110,8 @@
 查询存根索引可以获得匹配的PSI元素集.
 因此,自定义语言插件开发人员通常应在其插件实现中使用存根索引.</p>
 
-<p>##哑模式</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>哑模式<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>索引是一个潜在的漫长过程.
 它是在后台执行的,在此期间,IDE的功能仅限于不需要索引的功能:基本文本编辑,版本控制等.此限制由<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/DumbService.java" data-bypass="yes" target="_blank"><span>DumbService</span></a>.</p>
@@ -123,12 +125,18 @@
 
 <p>有时,以下条件成立:</p>
 
-<p>*不需要基于文件的索引的聚合功能.
+<ul>
+  <li>
+    <p>不需要基于文件的索引的聚合功能.
 只需要根据特定文件的内容计算一些数据,并将其缓存在磁盘上</p>
-
-<p>*不需要在索引期间急切地计算整个项目的数据(例如,它会降低索引速度,和/或所有项目文件的次要子集可能都需要此数据)</p>
-
-<p>*可以根据要求懒散地重新计算数据,而不会造成重大的性能损失</p>
+  </li>
+  <li>
+    <p>不需要在索引期间急切地计算整个项目的数据(例如,它会降低索引速度,和/或所有项目文件的次要子集可能都需要此数据)</p>
+  </li>
+  <li>
+    <p>可以根据要求懒散地重新计算数据,而不会造成重大的性能损失</p>
+  </li>
+</ul>
 
 <p>在这种情况下,可以使用基于文件的索引,但文件列表提供了一种懒惰地执行数据计算,在磁盘上缓存以及更轻量级API的方法.
 请参阅<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java" data-bypass="yes" target="_blank"><span>VirtualFileGist</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java" data-bypass="yes" target="_blank"><span>PsiFileGist</span></a>文档.</p>
@@ -140,7 +148,7 @@
                         <a class="navigation-links__next" href="/reference_guide/frameworks_and_external_apis/xml_dom_api.html">XML DOM API</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

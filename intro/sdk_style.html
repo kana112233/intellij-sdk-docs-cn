@@ -31,7 +31,7 @@
     <meta property="og:title" content="Style Guide for SDK Documents" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -147,13 +147,16 @@
 
 <p>YAML标头还可以包括<a href="#redirects"><span>重定向</span></a>信息.</p>
 
-<p>Markdown文件中标题周围的行间距通常不会影响HTML转换,但它确实使MD页面对作者更具可读性:
-*标题与其下方的第一个内容之间没有空格.
-*如果是前一部分的同一级别或子标题,则前一个空格.
-*标题之前的两个空格,其高于上一节的标题.</p>
+<p>Markdown文件中标题周围的行间距通常不会影响HTML转换,但它确实使MD页面对作者更具可读性:</p>
+<ul>
+  <li>标题与其下方的第一个内容之间没有空格.</li>
+  <li>如果是前一部分的同一级别或子标题,则前一个空格.</li>
+  <li>标题之前的两个空格,其高于上一节的标题.</li>
+</ul>
 
-<p>###重定向
-文档站点设置为包含<a href="https://github.com/jekyll/jekyll-redirect-from" data-bypass="yes" target="_blank"><span>jekyll-redirect-from</span></a>插件,该插件将生成自动重定向到给定页面的“虚拟”页面.
+<a name="section-2" class="elem-anchor"></a>
+<h3>重定向<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>文档站点设置为包含<a href="https://github.com/jekyll/jekyll-redirect-from" data-bypass="yes" target="_blank"><span>jekyll-redirect-from</span></a>插件,该插件将生成自动重定向到给定页面的“虚拟”页面.
 例如,要指定生成<code class="code highlight language-text">index.html</code>页面以重定向到<code class="code highlight language-text">README.md</code>,<code class="code highlight language-text">README.md</code>文件应在YAML头中包含以下内容:</p>
 
 <div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
@@ -170,8 +173,8 @@
 <p>重命名或移动文件时重定向也很有用.
 可以将多个重定向添加到YAML标头中.</p>
 
-<a name="section-2" class="elem-anchor"></a>
-<h3>页面的目录<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>页面的目录<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>该网站配置为使用<a href="http://kramdown.gettalong.org" data-bypass="yes" target="_blank"><span>Kramdown Markdown转换器</span></a>,它增加了传统Markdown的一些额外功能.
 例如,“属性列表”可以将属性应用于生成的元素.</p>
 
@@ -186,8 +189,8 @@
 <p>进一步的Kramdown功能在<a href="https://kramdown.gettalong.org/converter/html.html" data-bypass="yes" target="_blank"><span>转换器页面</span></a>中进行了描述,属性列表在[语法页面]中进行了描述(http://kramdown.gettalong.org/syntax.html).
 请注意,源代码格式配置为使用<a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavored Mardown</span></a>和“code fences”,如下所示.</p>
 
-<a name="section-3" class="elem-anchor"></a>
-<h3>液体标签和过滤器<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<a name="section-4" class="elem-anchor"></a>
+<h3>液体标签和过滤器<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>Jekyll使用<a href="https://shopify.github.io/liquid/" data-bypass="yes" target="_blank"><span>Liquid</span></a>模板语言来处理文件.
 此过程意味着可以使用标准的液体标签和过滤器.
 然而,应该没有必要使用它们,因为Markdown格式已经相当丰富.
@@ -210,12 +213,12 @@
   <li>GitHub存储库<code class="code highlight language-text">intellij-community</code>中的开源代码称为_IntelliJ Platform_.
 使用SDK文档中的完整短语.</li>
   <li>基于IntelliJ平台的IDE被描述为_IntelliJ基于平台的IDEs_.
-一旦在页面上使用该术语,之后作者可以使用IDE
-*在提及JetBrains产品时,请始终使用全名,例如_IntelliJ IDEA_.</li>
+一旦在页面上使用该术语,之后作者可以使用IDE</li>
+  <li>在提及JetBrains产品时,请始终使用全名,例如_IntelliJ IDEA_.</li>
 </ul>
 
-<a name="section-4" class="elem-anchor"></a>
-<h3>语法高亮显示<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<a name="section-5" class="elem-anchor"></a>
+<h3>语法高亮显示<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>源代码可以使用<a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavored Markdown</span></a>代码围栏来表示,这是三个反引号:</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">```
@@ -238,17 +241,17 @@
 
 <p>请保持代码示例简洁,避免任何不必要的“周围”代码或import语句.</p>
 
-<p>&lt;! - //TODO:目前不支持rouge或网站的CSS</p>
+<!-- //TODO:目前不支持rouge或网站的CSS
 
-<p>该站点还配置为突出显示源代码中的一系列文件,方法是指定<code class="code highlight language-text">{start-end}</code>,它是突出显示的开始和结束行:</p>
+该站点还配置为突出显示源代码中的一系列文件,方法是指定`{start-end}`,它是突出显示的开始和结束行:
 
-<div class="code-block" data-lang="text"><code class="code-block__wrapper">```java{2-3}
-// Not highlighted
-// Highlighted
-// Highlighted
-// Not highlighted
-``` --&gt;
-</code></div>
+    ```java{2-3}
+    // Not highlighted
+    // Highlighted
+    // Highlighted
+    // Not highlighted
+    ```
+-->
 
 <a name="tables" class="elem-anchor"></a>
 <h3>Tables<a href="#tables" class="anchor-link"><span></span></a></h3>
@@ -262,17 +265,19 @@ The syntax is to use the pipe (<code class="code highlight language-text">|</cod
 ```
 </code></div>
 
-<a name="section-5" class="elem-anchor"></a>
-<h3>链接<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<a name="section-6" class="elem-anchor"></a>
+<h3>链接<a href="#section-6" class="anchor-link"><span></span></a></h3>
 <p>链接作为普通的Markdown链接处理,可以锚定到外部站点,站点内的页面或站点中的标题.
 将Markdown标头转换为HTML标头时,会为其分配一个ID,以便进行链接.
 例如,<code class="code highlight language-text">## Introduction</code>将获得<code class="code highlight language-text">introduction</code>的ID,并且可以在同一页面或跨页面中链接,如下所述.</p>
 
 <p>IntelliJ平台(<code class="code highlight language-text">intellij-community</code>)存储库中文件的链接使用<code class="code highlight language-text">upsource:///</code>而不是存储库的完整URL.
-<code class="code highlight language-text">upsource:///</code>URI有效地指向<code class="code highlight language-text">intellij-community</code>存储库的根.
-*<code class="code highlight language-text">[README.md](upsource:///README.md)</code>用于链接到存储库中的常规文件.
-*<code class="code highlight language-text">[</code>`AnAction `<code class="code highlight language-text">](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)</code>用于指向接口和类的源代码文件的链接.
-  请注意链接中类名周围使用的``字符.</p>
+<code class="code highlight language-text">upsource:///</code>URI有效地指向<code class="code highlight language-text">intellij-community</code>存储库的根.</p>
+<ul>
+  <li><code class="code highlight language-text">[README.md](upsource:///README.md)</code>用于链接到存储库中的常规文件.</li>
+  <li><code class="code highlight language-text">[</code>`AnAction `<code class="code highlight language-text">](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)</code>用于指向接口和类的源代码文件的链接.
+请注意链接中类名周围使用的``字符.</li>
+</ul>
 
 <p>常规链接具有以下格式之一:</p>
 <ul>
@@ -288,12 +293,15 @@ The syntax is to use the pipe (<code class="code highlight language-text">|</cod
   </li>
   <li>链接到SDK文档中页面上的特定_sections_.
 锚名称全部为小写,空格用<code class="code highlight language-text">-</code>替换,例如<code class="code highlight language-text">## Page setup</code>变为<code class="code highlight language-text">#page-setup</code>.
-*<code class="code highlight language-text">[链接到当前页面上的部分](#another-section)</code>链接到当前页面上的标题.
-*<code class="code highlight language-text">[链接到另一页上的部分](Page2.md#another-section)</code>链接到另一页上的标题.</li>
+    <ul>
+      <li><code class="code highlight language-text">[链接到当前页面上的部分](#another-section)</code>链接到当前页面上的标题.</li>
+      <li><code class="code highlight language-text">[链接到另一页上的部分](Page2.md#another-section)</code>链接到另一页上的标题.</li>
+    </ul>
+  </li>
 </ul>
 
-<a name="section-6" class="elem-anchor"></a>
-<h3>备注和标注<a href="#section-6" class="anchor-link"><span></span></a></h3>
+<a name="section-7" class="elem-anchor"></a>
+<h3>备注和标注<a href="#section-7" class="anchor-link"><span></span></a></h3>
 <p>可以使用blockquote语法指定注释和标注.
 转换器查看下面的第一个单词以查看它是否为粗体.
 如果是这样,它将应用标注样式.
@@ -317,8 +325,8 @@ The syntax is to use the pipe (<code class="code highlight language-text">|</cod
 使用此标注可获取可防止出现故障或错误的信息.</li>
 </ul>
 
-<a name="section-7" class="elem-anchor"></a>
-<h3>图片<a href="#section-7" class="anchor-link"><span></span></a></h3>
+<a name="section-8" class="elem-anchor"></a>
+<h3>图片<a href="#section-8" class="anchor-link"><span></span></a></h3>
 <p>可以通过将文件直接添加到<code class="code highlight language-text">intellij-sdk-docs</code>存储库来包含图像.
 每个主题目录通常都有一个<code class="code highlight language-text">img</code>子目录.
 使映像保持在存储库目录结构中的相应文档文件附近.</p>
@@ -383,7 +391,7 @@ The syntax is to use the pipe (<code class="code highlight language-text">|</cod
                         <a class="navigation-links__next" href="/intro/sdk_code_guidelines.html">Guidelines for Creating IntelliJ Platform SDK Code Samples</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

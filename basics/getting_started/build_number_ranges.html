@@ -31,7 +31,7 @@
     <meta property="og:title" content="Build Number Ranges" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -99,13 +99,19 @@
 
 <p>该号码由以下部分组成:</p>
 
-<p>*产品ID(IDEA社区的<code class="code highlight language-text">IC</code>,IDEA Ultimate的’IU<code class="code highlight language-text">,RubyMine的</code>RM<code class="code highlight language-text">,PyCharm的'PY</code>等)</p>
+<ul>
+  <li>
+    <p>产品ID(IDEA社区的<code class="code highlight language-text">IC</code>,IDEA Ultimate的’IU<code class="code highlight language-text">,RubyMine的</code>RM<code class="code highlight language-text">,PyCharm的'PY</code>等)</p>
+  </li>
+  <li>
+    <p>分行号码(<code class="code highlight language-text">162</code>)</p>
+  </li>
+  <li>
+    <p>分支中的内部编号(<code class="code highlight language-text">94</code>)</p>
+  </li>
+</ul>
 
-<p>*分行号码(<code class="code highlight language-text">162</code>)</p>
-
-<p>*分支中的内部编号(<code class="code highlight language-text">94</code>)</p>
-
-<p>从* IntelliJ Platform *的2016.2版本开始,分支编号基于<code class="code highlight language-text">YYYY.R</code> <a href="https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/" data-bypass="yes" target="_blank"><span>IDE release version numbers</span></a>.
+<p>从 <em>IntelliJ Platform</em> 的2016.2版本开始,分支编号基于<code class="code highlight language-text">YYYY.R</code> <a href="https://blog.jetbrains.com/blog/2016/03/09/jetbrains-toolbox-release-and-versioning-changes/" data-bypass="yes" target="_blank"><span>IDE release version numbers</span></a>.
 分支编号采用年份的最后两位数字和“R”发布编号.
 例如,2016年的“162”,2016年的“163”,2017年的“171”.
 在这个方案中,“IU-162.94”对应于2016.2版本.</p>
@@ -113,7 +119,7 @@
 <p>从2016.2开始,内部版本号也可能有多个组件:<code class="code highlight language-text">IU-162.94</code>,<code class="code highlight language-text">IU-162.94.11</code>,<code class="code highlight language-text">IU-162.94.11.256.42</code>.
 这为第三方插件和IDE开发人员提供了更大的灵活性.
 插件可以更精确地指定兼容版本; 
-IDE供应商可能具有基于特定* IntelliJ Platform *版本的内部版本号,并且还指定了其他内部版本(例如,“XX-162.94.11.256.42”中的“256.42”),以允许插件开发人员为其IDE指定兼容性.</p>
+IDE供应商可能具有基于特定 <em>IntelliJ Platform</em> 版本的内部版本号,并且还指定了其他内部版本(例如,“XX-162.94.11.256.42”中的“256.42”),以允许插件开发人员为其IDE指定兼容性.</p>
 
 <p>多部分构建号也可以用在<code class="code highlight language-text">idea-version</code>的<code class="code highlight language-text">since-build</code>和<code class="code highlight language-text">until-build</code>属性中.
 通常,您应该省略产品ID并仅使用分支编号和内部版本号,例如:</p>
@@ -124,7 +130,7 @@ IDE供应商可能具有基于特定* IntelliJ Platform *版本的内部版本�
 <span class="nt">&lt;idea-version</span> <span class="na">since-build=</span><span class="s">"162"</span> <span class="na">until-build=</span><span class="s">"162.*"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- any 162-based version, 162.94, 162.94.11, etc.--&gt;</span>
 </code></div>
 
-<p>以下分支编号用于基于* IntelliJ Platform *的产品,并构建最新IDE版本的编号:</p>
+<p>以下分支编号用于基于 <em>IntelliJ Platform</em> 的产品,并构建最新IDE版本的编号:</p>
 
 <table>
   <thead>
@@ -495,7 +501,7 @@ IDE供应商可能具有基于特定* IntelliJ Platform *版本的内部版本�
                         <a class="navigation-links__next" href="/products/idea.html">IntelliJ IDEA</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

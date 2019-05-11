@@ -31,7 +31,7 @@
     <meta property="og:title" content="IDE Development Instances - Settings, Caches, Logs, and Plugins" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -91,7 +91,7 @@ IntelliJ IDEA.</p>
 
 <p>启用了插件的IDE的_Development Instance_.</p>
 
-<p>** Sandbox Home **目录包含</p>
+<p><strong>Sandbox Home</strong>目录包含</p>
 
 <p><a href="#development-instance-settings-caches-logs-and-plugins"><span>设置,缓存,日志和插件</span></a></p>
 
@@ -100,14 +100,15 @@ IntelliJ IDEA.</p>
 
 <p><a href="https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs" data-bypass="yes" target="_blank"><span>installed IDE itself</span></a>.</p>
 
-<p>###基于Gradle的插件项目的Sandbox Home位置</p>
+<a name="gradlesandbox-home" class="elem-anchor"></a>
+<h3>基于Gradle的插件项目的Sandbox Home位置<a href="#gradlesandbox-home" class="anchor-link"><span></span></a></h3>
 
-<p>对于基于Gradle的插件,默认的** Sandbox Home **位置由IntelliJ平台<code class="code highlight language-text">gradle-intellij-plugin</code>定义.</p>
+<p>对于基于Gradle的插件,默认的<strong>Sandbox Home</strong>位置由IntelliJ平台<code class="code highlight language-text">gradle-intellij-plugin</code>定义.</p>
 
 <p>请参阅<a href="/intellij-sdk-docs-cn/tutorials/build_system/prerequisites.html"><span>配置Gradle插件项目</span></a></p>
 
-<p>有关指定** Sandbox Home <strong>位置的详细信息.
-默认</strong> Sandbox Home **位置</p>
+<p>有关指定<strong>Sandbox Home</strong>位置的详细信息.
+默认<strong>Sandbox Home</strong>位置</p>
 
 <p>对于基于Gradle的插件项目是:</p>
 
@@ -120,13 +121,14 @@ IntelliJ IDEA.</p>
   </li>
 </ul>
 
-<p>###基于DevKit的插件项目的沙箱主页位置</p>
+<a name="devkit" class="elem-anchor"></a>
+<h3>基于DevKit的插件项目的沙箱主页位置<a href="#devkit" class="anchor-link"><span></span></a></h3>
 
-<p>对于基于DevKit的插件,默认的** Sandbox Home **位置在IntelliJ Platform Plugin SDK中定义.</p>
+<p>对于基于DevKit的插件,默认的<strong>Sandbox Home</strong>位置在IntelliJ Platform Plugin SDK中定义.</p>
 
 <p>有关详细信息,请参阅指定<a href="/intellij-sdk-docs-cn/basics/getting_started/setting_up_environment.html"><span>Sandbox Home for DevKit Projects</span></a>.</p>
 
-<p>基于DevKit的插件项目的默认** Sandbox Home **目录位置是:</p>
+<p>基于DevKit的插件项目的默认<strong>Sandbox Home</strong>目录位置是:</p>
 
 <ul>
   <li>
@@ -140,19 +142,27 @@ IntelliJ IDEA.</p>
   </li>
 </ul>
 
-<p>###开发实例设置,缓存,日志和插件</p>
+<a name="section" class="elem-anchor"></a>
+<h3>开发实例设置,缓存,日志和插件<a href="#section" class="anchor-link"><span></span></a></h3>
 
-<p>在** Sandbox Home **目录中有与开发实例有关的子目录:</p>
+<p>在<strong>Sandbox Home</strong>目录中有与开发实例有关的子目录:</p>
 
-<p>*<code class="code highlight language-text">config</code>包含IDE实例的设置.</p>
+<ul>
+  <li>
+    <p><code class="code highlight language-text">config</code>包含IDE实例的设置.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">plugins</code>包含在IDE实例中运行的每个插件的文件夹.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">system/caches</code>或<code class="code highlight language-text">system \ _ caches</code>包含IDE实例数据.</p>
+  </li>
+  <li>
+    <p><code class="code highlight language-text">system/log</code>或<code class="code highlight language-text">system \ log</code>包含IDE实例的<code class="code highlight language-text">idea.log</code>文件.</p>
+  </li>
+</ul>
 
-<p>*<code class="code highlight language-text">plugins</code>包含在IDE实例中运行的每个插件的文件夹.</p>
-
-<p>*<code class="code highlight language-text">system/caches</code>或<code class="code highlight language-text">system \ _ caches</code>包含IDE实例数据.</p>
-
-<p>*<code class="code highlight language-text">system/log</code>或<code class="code highlight language-text">system \ log</code>包含IDE实例的<code class="code highlight language-text">idea.log</code>文件.</p>
-
-<p>可以手动清除这些** Sandbox Home **子目录中的每一个以重置IDE开发实例.</p>
+<p>可以手动清除这些<strong>Sandbox Home</strong>子目录中的每一个以重置IDE开发实例.</p>
 
 <p>在下一次启动开发实例时,将使用适当的信息重新填充子目录.</p>
 
@@ -163,7 +173,7 @@ IntelliJ IDEA.</p>
                         <a class="navigation-links__next" href="/faq.html">Plugin Development FAQ</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

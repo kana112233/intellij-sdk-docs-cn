@@ -31,7 +31,7 @@
     <meta property="og:title" content="PSI References" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -144,7 +144,8 @@
 
 <p>对于<code class="code highlight language-text">PsiReference.resolve()</code>来返回<code class="code highlight language-text">null</code>,如果你使用引用,你需要能够在你的代码中处理它.</p>
 
-<p>##贡献参考文献</p>
+<a name="section" class="elem-anchor"></a>
+<h2>贡献参考文献<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>除了由编程语言的语义定义的引用之外,IntelliJ IDEA还可识别许多引用</p>
 
@@ -176,7 +177,8 @@
 
 <p>要提供您自己的参考资料,请参阅<a href="/intellij-sdk-docs-cn/tutorials/custom_language_support/reference_contributor.html"><span>参考贡献者教程</span></a>.</p>
 
-<p>##带有可选或多个解析结果的引用</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>带有可选或多个解析结果的引用<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>在最简单的情况下,引用解析为单个元素,如果解析失败,则表示该引用</p>
 
@@ -214,7 +216,8 @@ JavaScript是动态的</p>
 
 <p>返回所有重载的<code class="code highlight language-text">ResolveResult</code>对象,<code class="code highlight language-text">isValidResult()</code>将为所有重载返回false.</p>
 
-<p>##搜索参考文献</p>
+<a name="section-2" class="elem-anchor"></a>
+<h2>搜索参考文献<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
 <p>如您所知,解析引用意味着从使用到相应的声明.
 执行</p>
@@ -235,7 +238,8 @@ JavaScript是动态的</p>
 
 <p>使用迭代,因为它允许您在找到所需元素后停止处理.</p>
 
-<p>##实现参考</p>
+<a name="section-3" class="elem-anchor"></a>
+<h2>实现参考<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
 <p>上述文档涵盖了访问引用的关键点.
 如果您需要创建自己的参考</p>
@@ -253,7 +257,7 @@ JavaScript是动态的</p>
                         <a class="navigation-links__next" href="/basics/architectural_overview/modifying_psi.html">Modifying the PSI</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 

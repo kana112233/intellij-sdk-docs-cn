@@ -31,7 +31,7 @@
     <meta property="og:title" content="Navigating the PSI" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -95,16 +95,17 @@
 <p>在PSI树中(例如,插入符号中的元素),需要找出有关其上下文的内容(例如,</p>
 
 <p>它已被声明的元素).
-最后,* references *允许您从元素的使用中导航</p>
+最后, <em>references</em> 允许您从元素的使用中导航</p>
 
 <p>(例如,方法调用)声明(被调用的方法)和返回.
 参考文献描述于</p>
 
 <p><a href="psi_references.html"><span>单独主题</span></a>.</p>
 
-<p>##自上而下导航</p>
+<a name="section" class="elem-anchor"></a>
+<h2>自上而下导航<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>执行自上而下导航的最常用方法是使用* visitor *.
+<p>执行自上而下导航的最常用方法是使用 <em>visitor</em>.
 要使用访问者,您需要创建一个类</p>
 
 <p>(通常是一个匿名内部类)扩展基本访问者类,覆盖处理元素的方法</p>
@@ -114,9 +115,8 @@
 <p>访问者的基类是特定于语言的.
 例如,如果您需要处理Java文件中的元素,</p>
 
-<p>扩展<code class="code highlight language-text">JavaRecursiveElementVisitor</code>并覆盖与您所使用的Java元素类型相对应的方法</p>
-
-<p>有兴趣.</p>
+<p>扩展<code class="code highlight language-text">JavaRecursiveElementVisitor</code>并覆盖与您所使用的Java元素类型相对应的方法
+有兴趣.</p>
 
 <p>以下代码段显示了使用visitor查找所有Java局部变量声明:</p>
 
@@ -140,7 +140,8 @@
 
 <p>执行自上而下的导航.</p>
 
-<p>##自下而上的导航</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>自下而上的导航<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
 <p>自下而上导航的起点是PSI树中的特定元素(例如,结果)</p>
 
@@ -184,7 +185,7 @@
                         <a class="navigation-links__next" href="/basics/architectural_overview/psi_references.html">PSI References</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 
