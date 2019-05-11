@@ -2,7 +2,7 @@
 title: External System Integration
 ---
 
-# 目的
+＃目的
 
 
 此页面提供*外部系统*子系统的高级概述.
@@ -28,7 +28,7 @@ title: External System Integration
 *'外部系统'*子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.
 
 
-#  项目管理
+＃ 项目管理
 
 
 ##项目数据域

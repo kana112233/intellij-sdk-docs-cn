@@ -11,21 +11,21 @@ Spring API允许第三方插件在IntelliJ IDEA中重用,集成或扩展现有�
 要开发插件,您需要使用IntelliJ IDEA Ultimate Edition 13.1或更高版本.
 
 
-###设置IntelliJ Platform SDK
+### 设置IntelliJ Platform SDK
 
 
 > **注意**这仅适用于[Plugin DevKit](/basics/getting_started/using_dev_kit.md)项目.
 对于[Gradle](/tutorials/build_system.md)项目,只需将依赖项添加到捆绑的Spring插件`com.intellij.spring`即可.
 
 
-#####新SDK
+##### 新SDK
 
 请创建IntelliJ Platform SDK以包含所有必需的最低文件.
 
 然后将`$ IDEA_HOME $/plugins/Spring/lib/spring.jar`添加到其_classpath_(_not_到你的插件模块的依赖项).
 
 
-#####现有SDK
+##### 现有SDK
 
 请按照以下步骤修改现有的IntelliJ Platform SDK:
 
@@ -58,7 +58,7 @@ Spring API允许第三方插件在IntelliJ IDEA中重用,集成或扩展现有�
 请注意,“Spring Support”插件本身依赖于其他一些需要在沙箱中启用的插件(请参阅启动时的通知).
 
 
-##主要概念
+## 主要概念
 
 Spring facet可以安装在模块上. 
 (几乎)所有Spring功能都需要一个现有且正确设置的Spring facet.
@@ -104,7 +104,7 @@ _2016.2_参见`com.intellij.spring.SpringLibraryUtil`以获取有关正在使用
 请参阅`SpringManager#getSpringModel(s)...`和`com.intellij.spring.model.utils.SpringModelUtils`.
 
 
-#####贡献隐式模型
+##### 贡献隐式模型
 
 请参阅`com.intellij.spring.SpringModelProvider`以提供隐式文件集(例如,由特定配置文件中的另一个框架提供).
 
@@ -115,12 +115,12 @@ _版本15_
 请注意,Spring facet中的用户无法编辑/修改自动检测的文件集.
 
 
-#####自定义隐式模型配置
+##### 自定义隐式模型配置
 
 _2017.1_参见`com.intellij.spring.facet.SpringFileSetEditorCustomization`来自定义演示文稿和/或为特定的自动检测文件集添加额外的设置/操作.
 
 
-#####贡献隐式bean
+##### 贡献隐式bean
 
 请参阅`com.intellij.spring.model.jam.CustomComponentsDiscoverer`或`com.intellij.spring.model.SpringImplicitBeansProviderBase`以提供隐式(特定于框架)的bean(例如Spring MVC的“servletContext”).
 
@@ -130,14 +130,14 @@ _版本15_
 `CustomComponentsDiscoverer`已分别分为`com.intellij.spring.model.custom.CustomLocalComponentsDiscoverer`和`com.intellij.spring.model.custom.CustomModuleComponentsDiscoverer`.
 
 
-#####贡献自定义bean范围
+##### 贡献自定义bean范围
 
 _版本14_
 
 请参阅`com.intellij.spring.model.scope.SpringCustomBeanScope`以提供自定义(例如特定于框架)bean范围.
 
 
-#####获取/创建Spring配置文件
+##### 获取/创建Spring配置文件
 
 _版本14.1_
 
@@ -147,7 +147,7 @@ _版本14.1_
 ### 豆子
 
 
-#####按名称搜索bean
+##### 按名称搜索bean
 
 `com.intellij.spring.CommonSpringModel#findBeanByName`
 
@@ -155,7 +155,7 @@ _版本14.1_
 _Version 14_:`com.intellij.spring.model.utils.SpringModelSearchers#findBean`
 
 
-#####按类型搜索bean
+##### 按类型搜索bean
 
 选择`com.intellij.spring.CommonSpringModel#findBeansByPsiClassXXX`变体之一(请注意不推荐使用的方法).
 
@@ -166,12 +166,12 @@ _Version 14_:`com.intellij.spring.model.utils.SpringModelSearchers#findBeans`
 _Version 16_:注意'SpringModelSearchParameters.BeanClass#withInheritors(GlobalSearchScope)的弃用
 
 
-#####查明是否存在具有给定名称/类型的bean
+##### 查明是否存在具有给定名称/类型的bean
 
 _Version 14_:`com.intellij.spring.model.utils.SpringModelSearchers#doesBeanExist`(请注意弃用的方法)
 
 
-#####将bean作为基础结构bean
+##### 将bean作为基础结构bean
 
 _Version 14_:实现`SpringInfrastructureBean`,这样的bean获取特殊图标,可以在UI的各个地方进行过滤.
 
@@ -181,7 +181,7 @@ _Version 14_:实现`SpringInfrastructureBean`,这样的bean获取特殊图标,�
 所有对基于XML的Spring配置文件的支持都是通过[DOM-API](xml_dom_api.md)提供的.
 
 
-#####添加对其他Spring命名空间的支持
+##### 添加对其他Spring命名空间的支持
 
 请参阅EP`com.intellij.spring.dom.SpringCustomNamespaces`,注册的namespace-key必须与通过`@ Namespace`注册的DOM元素匹配.
 
@@ -191,7 +191,7 @@ _Version 14_:实现`SpringInfrastructureBean`,这样的bean获取特殊图标,�
 请注意`getModelVersion`和`getStubVersion`(参见javadoc).
 
 
-#####在我的DomElement中添加对Spring Bean的引用
+##### 在我的DomElement中添加对Spring Bean的引用
 
 使用以下模板:
 
@@ -202,10 +202,10 @@ _Version 14_:实现`SpringInfrastructureBean`,这样的bean获取特殊图标,�
 GenericAttributeValue<SpringBeanPointer> getMyAttributeName();
 ```
 
-###代码配置
+### 代码配置
 
 
-#####在我的JamElement中添加对Spring Bean的引用
+##### 在我的JamElement中添加对Spring Bean的引用
 
 _版本14_
 
@@ -236,14 +236,14 @@ _版本15_
 ##### Add inspections to Spring Validator
 Add additional inspections (e.g. for custom namespace) to Spring Validator (*Settings|Compiler|Validation*) via EP `com.intellij.spring.SpringInspectionsRegistry$Contributor`.
 
-#####将其他文件添加到Spring Validator
+##### 将其他文件添加到Spring Validator
 
 _版本14.1_
 
 可以通过`com.intellij.spring.SpringInspectionsRegistry $ AdditionalFilesContributor注册通过Spring Validator注册的检查处理的其他文件(例如特定的`.properties`配置文件).
 
 
-#####为其他框架配置Spring支持
+##### 为其他框架配置Spring支持
 
 当通过框架向导添加Spring facet时,使用`com.intellij.spring.facet.SpringConfigurator`提供“自动”配置.
 
@@ -254,7 +254,7 @@ _版本14.1_
 有关弹出/列表渲染器的信息,请参阅`SpringBeansPsiElementCellRenderer`.
 
 
-#Spring Boot
+# Spring Boot
 
 _2018.1_
 
@@ -299,7 +299,7 @@ Spring Boot API允许在IDE中扩展/访问Spring Boot特定的支持.
 `com.intellij.spring.boot.model.SpringBootModelConfigFileContributor`允许添加对自定义配置文件格式的支持.
                                             
 
-###自动配置支持
+### 自动配置支持
 
 现有的`Condition`实现可以在IDE中通过`com.intellij.spring.boot.model.autoconfigure.conditions.ConditionalContributor`在设计时进行模拟.
 
@@ -315,7 +315,7 @@ Spring Boot API允许在IDE中扩展/访问Spring Boot特定的支持.
 `com.intellij.spring.boot.initializr.SpringInitializrModuleBuilderPostTask`允许在创建模块后执行自定义设置步骤(例如,与构建系统的设置集成).
 
 
-###端点选项卡
+### 端点选项卡
 
 _2018.2_  - 需要`spring-boot-run.jar`
 
