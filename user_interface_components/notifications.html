@@ -87,56 +87,54 @@
                     </a>
 
                     <h1>Notifications</h1>
-                    <a name="notifications" class="elem-anchor"></a>
-<h2>Notifications<a href="#notifications" class="anchor-link"><span></span></a></h2>
+                    <a name="section" class="elem-anchor"></a>
+<h2>通知<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>One of the leading design principles is avoiding the use of modal message boxes for notifying the user about errors and other situations that may warrant the user’s attention.
-As a replacement, the <em>IntelliJ Platform</em> provides multiple non-modal notification UI options.</p>
+<p>其中一个主要的设计原则是避免使用模态消息框来通知用户有关可能需要用户注意的错误和其他情况.
+作为替代,* IntelliJ Platform *提供了多个非模态通知UI选项.</p>
 
-<a name="dialogs" class="elem-anchor"></a>
-<h3>Dialogs<a href="#dialogs" class="anchor-link"><span></span></a></h3>
+<a name="section-1" class="elem-anchor"></a>
+<h3>对话<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
-<p>When working in a modal dialog, instead of checking the validity of the input when the <code class="code highlight language-text">OK</code> button is pressed and notifying the user about invalid data with a modal dialog, the recommended approach is to use
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java" data-bypass="yes" target="_blank"><span>DialogBuilder.doValidate()</span></a>,
-which was described previously.</p>
+<p>在模态对话框中工作时,不是在按下“OK”按钮时检查输入的有效性,而是通过模态对话框通知用户有关无效数据,建议的方法是使用
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java" data-bypass="yes" target="_blank"><span>DialogBu​​ilder.doValidate()</span></a>
+这是前面描述的.</p>
 
-<a name="editor-hints" class="elem-anchor"></a>
-<h3>Editor Hints<a href="#editor-hints" class="anchor-link"><span></span></a></h3>
+<a name="section-2" class="elem-anchor"></a>
+<h3>编辑提示<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
-<p>For actions invoked from the editor (such as refactorings, navigation actions and different code insight features), the best way to notify the user about the inability to perform an action is to use the
+<p>对于从编辑器调用的操作(例如重构,导航操作和不同的代码洞察功能),通知用户无法执行操作的最佳方法是使用
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java" data-bypass="yes" target="_blank"><span>HintManager</span></a>类.
+它的方法<code class="code highlight language-text">showErrorHint()</code>在编辑器上方显示一个浮动弹出窗口,当用户开始在编辑器中执行另一个操作时,它会自动隐藏.
+其他
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java" data-bypass="yes" target="_blank"><span>HintManager</span></a>
-class.
-Its method <code class="code highlight language-text">showErrorHint()</code> displays a floating popup above the editor which is automatically hidden when the user starts performing another action in the editor.
-Other
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java" data-bypass="yes" target="_blank"><span>HintManager</span></a>
-methods can be used for displaying other kinds of non-modal notification hints over an editor.</p>
+方法可用于在编辑器上显示其他类型的非模态通知提示.</p>
 
-<a name="top-level-notifications" class="elem-anchor"></a>
-<h3>Top-Level Notifications<a href="#top-level-notifications" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>顶级通知<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
-<p>The most general way to display non-modal notifications is to use the
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notifications</span></a>
-class.</p>
+<p>显示非模态通知的最常用方法是使用</p>
 
-<p>It has two main advantages:</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>通知</span></a>类.</p>
+
+<p>它有两个主要优点:</p>
 
 <ul>
   <li>
     <p>The user can control the way each notification type is displayed under <code class="code highlight language-text">Settings | Notifications</code></p>
   </li>
   <li>
-    <p>All displayed notifications are gathered in the Event Log tool window and can be reviewed later</p>
+    <p>所有显示的通知都会在“事件日志”工具窗口中收集,以后可以查看</p>
   </li>
 </ul>
 
-<p>The specific method used to display a notification is
+<p>用于显示通知的具体方法是
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notifications.Bus.notify()</span></a>.
-The text of the notification can include HTML tags.
-You can allow the user to interact with the notification by including hyperlink tags in the notification text and passing a
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/NotificationListener.java" data-bypass="yes" target="_blank"><span>NotificationListener</span></a>
-instance to the constructor of the
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notification</span></a>
-class.</p>
+通知的文本可以包括HTML标记.
+您可以通过在通知文本中包含超链接标记并传递一个来允许用户与通知进行交互
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/NotificationListener.java" data-bypass="yes" target="_blank"><span>的NotificationListener</span></a>
+实例到的构造函数
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>通知</span></a>类.</p>
 
 <p>The <code class="code highlight language-text">groupDisplayId</code> parameter of the
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/notification/Notification.java" data-bypass="yes" target="_blank"><span>Notification</span></a>

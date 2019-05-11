@@ -87,28 +87,34 @@
                     </a>
 
                     <h1>1. Working with text</h1>
-                    <p>The following set of steps will show how to access a text selection and change it.</p>
+                    <p>以下一组步骤将说明如何访问文本选择并进行更改.</p>
 
-<a name="pre-requirements" class="elem-anchor"></a>
-<h2>1.1. Pre-requirements<a href="#pre-requirements" class="anchor-link"><span></span></a></h2>
+<a name="section" class="elem-anchor"></a>
+<h2>1.1.<a href="#section" class="anchor-link"><span></span></a></h2>
+<p>前要求</p>
 
-<a name="creating-a-new-action" class="elem-anchor"></a>
-<h3>1.1.1 Creating a new action<a href="#creating-a-new-action" class="anchor-link"><span></span></a></h3>
+<a name="section-1" class="elem-anchor"></a>
+<h3>1.1.1创建新动作<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
-<p>In this example we access the editor from an action.
-To create an action we need to extend the
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction.java</span></a>
-class.</p>
+<p>在此示例中,我们从操作中访问编辑器.</p>
+
+<p>要创建一个动作,我们需要扩展</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction.java</span></a></p>
+
+<p>类.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
 <span class="o">}</span>
 </code></div>
 
-<a name="registering-an-action" class="elem-anchor"></a>
-<h3>1.1.2. Registering an action<a href="#registering-an-action" class="anchor-link"><span></span></a></h3>
+<a name="section-2" class="elem-anchor"></a>
+<h3>1.1.2.<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>注册一个动作</p>
 
-<p>To register the action we should add the corresponding tag to the <code class="code highlight language-text">&lt;actions&gt;</code> section of the plugin configuration file
-<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a></p>
+<p>要注册操作,我们应该将相应的标记添加到插件配置文件的<code class="code highlight language-text">&lt;actions&gt;</code>部分</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a></p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
     <span class="nt">&lt;action</span> <span class="na">id=</span><span class="s">"EditorBasics.EditorIllustration"</span> <span class="na">class=</span><span class="s">"EditorIllustration"</span> <span class="na">text=</span><span class="s">"Editor Basics"</span>
@@ -118,14 +124,17 @@ class.</p>
 <span class="nt">&lt;/actions&gt;</span>
 </code></div>
 
-<p>If an action is registered in the group <code class="code highlight language-text">EditorPopupMenu</code>, like the sample above shows,
-it will be available from the context menu when the focus is located in the editor.</p>
+<p>如果在“EditorPopupMenu”组中注册了一个动作,如上面的示例所示,</p>
 
-<a name="defining-actions-visibility" class="elem-anchor"></a>
-<h3>1.1.3. Defining action’s visibility<a href="#defining-actions-visibility" class="anchor-link"><span></span></a></h3>
+<p>当焦点位于编辑器中时,它将在上下文菜单中可用.</p>
 
-<p>To determine conditions by which the action will be visible and available for being executed we need to override its
-<code class="code highlight language-text">public void update(AnActionEvent e)</code> method.</p>
+<a name="section-3" class="elem-anchor"></a>
+<h3>1.1.3.<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<p>定义动作的可见性</p>
+
+<p>要确定操作可见且可用于执行的条件,我们需要覆盖它</p>
+
+<p><code class="code highlight language-text">public void update(AnActionEvent e)</code>方法.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -134,21 +143,23 @@ it will be available from the context menu when the focus is located in the edit
 <span class="o">}</span>
 </code></div>
 
-<p>If we want to work with a selected part of the text, it’s reasonable to make the action available only when the following requirements are met:</p>
+<p>如果我们想要使用文本的选定部分,只有在满足以下要求时才能使操作可用:</p>
 
-<ul>
-  <li>There is a project open</li>
-  <li>There is an instance of the Editor available</li>
-  <li>There is a text selection in the Editor</li>
-</ul>
+<p>*有一个项目开放</p>
 
-<p>Further steps will show how to check these conditions through obtaining instances of Project and Editor and how to show or hide the action based on them.</p>
+<p>*有一个编辑器实例可用</p>
 
-<a name="getting-an-instance-of-the-active-editor" class="elem-anchor"></a>
-<h2>1.2. Getting an instance of the active Editor<a href="#getting-an-instance-of-the-active-editor" class="anchor-link"><span></span></a></h2>
+<p>*编辑器中有文本选择</p>
 
-<p>A reference to an instance of the Editor can be obtained by calling <code class="code highlight language-text">getData(CommonDataKeys.EDITOR)</code>.
-To obtain a project reference, we use the <code class="code highlight language-text">getProject()</code> method.</p>
+<p>进一步的步骤将显示如何通过获取项目和编辑器的实例以及如何基于它们显示或隐藏操作来检查这些条件.</p>
+
+<a name="section-4" class="elem-anchor"></a>
+<h2>1.2.<a href="#section-4" class="anchor-link"><span></span></a></h2>
+<p>获取活动编辑器的实例</p>
+
+<p>可以通过调用<code class="code highlight language-text">getData(CommonDataKeys.EDITOR)</code>来获得对Editor实例的引用.</p>
+
+<p>要获得项目引用,我们使用<code class="code highlight language-text">getProject()</code>方法.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -162,27 +173,27 @@ To obtain a project reference, we use the <code class="code highlight language-t
 <span class="o">}</span>
 </code></div>
 
-<p><strong>Note:</strong></p>
+<p><strong>注意:</strong></p>
 
-<p>To access an Editor instance, other ways can also be used:</p>
+<p>要访问Editor实例,还可以使用其他方法:</p>
 
-<ul>
-  <li>
-    <p>If <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/DataContext.java" data-bypass="yes" target="_blank"><span>DataContext</span></a>
-object is available: <code class="code highlight language-text">final Editor editor = CommonDataKeys.EDITOR.getData(context);</code></p>
-  </li>
-  <li>
-    <p>If only a <code class="code highlight language-text">Project</code> is available, you can use <code class="code highlight language-text">FileEditorManager.getInstance(project).getSelectedTextEditor()</code></p>
-  </li>
-</ul>
+<p>*如果<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/DataContext.java" data-bypass="yes" target="_blank"><span>DataContext</span></a>
+  
+对象可用:<code class="code highlight language-text">final Editor editor = CommonDataKeys.EDITOR.getData(context);</code></p>
 
-<a name="obtaining-a-caret-model-and-selection" class="elem-anchor"></a>
-<h2>1.3. Obtaining a caret model and selection<a href="#obtaining-a-caret-model-and-selection" class="anchor-link"><span></span></a></h2>
+<p>*如果只有<code class="code highlight language-text">Project</code>可用,你可以使用<code class="code highlight language-text">FileEditorManager.getInstance(project).getSelectedTextEditor()</code></p>
 
-<p>After making sure we have a project open and an instance of the Editor we need to check if any selection is available and set action’s visibility according to these conditions.
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java" data-bypass="yes" target="_blank"><span>SelectionModel</span></a>
-accessed from the Editor allows to do it by calling its <code class="code highlight language-text">hasSelection()</code> method.
-Here’s how our <code class="code highlight language-text">update(AnActionEvent e)</code> method should look like in the end:</p>
+<a name="section-5" class="elem-anchor"></a>
+<h2>1.3.<a href="#section-5" class="anchor-link"><span></span></a></h2>
+<p>获得插入符号模型和选择</p>
+
+<p>在确保我们打开一个项目和编辑器的实例后,我们需要检查是否有任何选项可用,并根据这些条件设置操作的可见性.</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SelectionModel.java" data-bypass="yes" target="_blank"><span>selectionModel的</span></a></p>
+
+<p>从编辑器访问允许通过调用它的<code class="code highlight language-text">hasSelection()</code>方法来实现.</p>
+
+<p>这是我们的<code class="code highlight language-text">update(AnActionEvent e)</code>方法最终应该是这样的:</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -213,12 +224,15 @@ package and include:</p>
   <li><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/SoftWrapModel.java" data-bypass="yes" target="_blank"><span>SoftWrapModel.java</span></a></li>
 </ul>
 
-<a name="obtaining-a-document" class="elem-anchor"></a>
-<h2>1.4. Obtaining a Document<a href="#obtaining-a-document" class="anchor-link"><span></span></a></h2>
+<a name="section-6" class="elem-anchor"></a>
+<h2>1.4.<a href="#section-6" class="anchor-link"><span></span></a></h2>
+<p>获取文件</p>
 
-<p>The action is visible and available now.
-In order to make it do something we need to override its
-<code class="code highlight language-text">public void actionPerformed(AnActionEvent anActionEvent)</code> method.</p>
+<p>该操作现在可见且可用.</p>
+
+<p>为了使它做某事我们需要覆盖它</p>
+
+<p><code class="code highlight language-text">public void actionPerformed(AnActionEvent anActionEvent)</code>方法.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -231,11 +245,16 @@ In order to make it do something we need to override its
 <span class="o">}</span>
 </code></div>
 
-<p>To modify the text an instance of the
-<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/Document.java" data-bypass="yes" target="_blank"><span>Document</span></a>
-needs to be accessed. <a href="/intellij-sdk-docs-cn/basics/architectural_overview/documents.html"><span>Document</span></a> represents the contents of a text file loaded into memory and possibly opened in an IDEA text editor.
-The instance of a Document will be used later when a text replacement is performed.
-We also need to figure out where the selected part of the text is located.</p>
+<p>修改文本的实例</p>
+
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/editor/Document.java" data-bypass="yes" target="_blank"><span>文献</span></a></p>
+
+<p>需要访问. 
+<a href="/intellij-sdk-docs-cn/basics/architectural_overview/documents.html"><span>Document</span></a>表示加载到内存中的文本文件的内容,可能在IDEA文本编辑器中打开.</p>
+
+<p>稍后在执行文本替换时将使用文档的实例.</p>
+
+<p>我们还需要弄清楚文本的选定部分的位置.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="kd">final</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -250,14 +269,19 @@ We also need to figure out where the selected part of the text is located.</p>
 <span class="o">}</span>
 </code></div>
 
-<a name="modifying-text" class="elem-anchor"></a>
-<h2>1.5. Modifying text<a href="#modifying-text" class="anchor-link"><span></span></a></h2>
+<a name="section-7" class="elem-anchor"></a>
+<h2>1.5.<a href="#section-7" class="anchor-link"><span></span></a></h2>
+<p>修改文字</p>
 
-<p>Generally replacement can be done by calling
-<code class="code highlight language-text">void replaceString(int startOffset, int endOffset, @NotNull CharSequence s);</code> of the Document, however,
-the operation of replacement must be executed safely, this means the Document must be locked and
-any changes should be performed in a <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java" data-bypass="yes" target="_blank"><span>write action</span></a><!--#L172-->.
-See the <a href="/intellij-sdk-docs-cn/basics/architectural_overview/general_threading_rules.html"><span>Threading Issues</span></a> section to learn more about synchronization issues and changes safety on the IntelliJ Platform.</p>
+<p>通常可以通过调用来完成替换</p>
+
+<p><code class="code highlight language-text">void replaceString(int startOffset,int endOffset,@ NotNull CharSequence s);;然而,文档的</code></p>
+
+<p>必须安全地执行更换操作,这意味着必须锁定文件</p>
+
+<p>任何更改都应在[写入操作]中执行(upsource:///platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java)&lt;! -#L172–&gt;.</p>
+
+<p>请参阅<a href="/intellij-sdk-docs-cn/basics/architectural_overview/general_threading_rules.html"><span>线程问题</span></a>部分以了解有关IntelliJ平台上的同步问题和更改安全性的更多信息.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="kd">final</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
@@ -284,11 +308,16 @@ See the <a href="/intellij-sdk-docs-cn/basics/architectural_overview/general_thr
 
 <hr />
 
-<p>The source code is located in
-<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/EditorIllustration.java" data-bypass="yes" target="_blank"><span>EditorIllustration.java</span></a>.
-To see how text replacement works, check out
-<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/" data-bypass="yes" target="_blank"><span>Editor Basics</span></a>
-plugin, make the project, run it, then invoke the <em>EditorIllustration</em> action which is available in the context menu of the editor.</p>
+<p>源代码位于</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/EditorIllustration.java" data-bypass="yes" target="_blank"><span>EditorIllustration.java</span></a>.</p>
+
+<p>要查看文本替换的工作原理,请查看</p>
+
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/" data-bypass="yes" target="_blank"><span>编辑基础</span></a></p>
+
+<p>插件,制作项目,运行它,然后调用编辑器上下文菜单中提供的* EditorIllustration *操作.</p>
+
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">

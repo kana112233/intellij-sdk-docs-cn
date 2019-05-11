@@ -87,21 +87,24 @@
                     </a>
 
                     <h1>Kotlin for Plugin Developers</h1>
-                    <a name="why-kotlin" class="elem-anchor"></a>
-<h2>1. Why Kotlin?<a href="#why-kotlin" class="anchor-link"><span></span></a></h2>
+                    <a name="kotlin" class="elem-anchor"></a>
+<h2>1.为什么选择Kotlin?<a href="#kotlin" class="anchor-link"><span></span></a></h2>
 
-<p>Using Kotlin to write plugins for the IntelliJ Platform is very similar to writing plugins in Java. Existing plugin developers can get started by converting boilerplate Java classes to their Kotlin equivalents by using the <a href="https://kotlinlang.org/docs/tutorials/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k" data-bypass="yes" target="_blank"><span>J2K compiler</span></a> bundled with the IntelliJ Platform (versions  143.+), and developers can easily mix and match Kotlin classes with their existing Java code.</p>
+<p>使用Kotlin为IntelliJ平台编写插件与在Java中编写插件非常相似.
+现有的插件开发人员可以通过使用[J2K编译器]将样板Java类转换为他们的Kotlin等价物来开始(https://kotlinlang.org/docs/tutorials/mixing-java-kotlin-intellij.html#converting-an-existing-java-file-to-kotlin-with-j2k)与IntelliJ平台(版本143. +)捆绑在一起,开发人员可以轻松地将Kotlin类与现有的Java代码混合搭配.</p>
 
-<p>In addition to <a href="https://kotlinlang.org/docs/reference/null-safety.html" data-bypass="yes" target="_blank"><span>null safety</span></a> and <a href="https://kotlinlang.org/docs/reference/type-safe-builders.html" data-bypass="yes" target="_blank"><span>type-safe builders</span></a>, the Kotlin language offers a number of convenient features for plugin development, which make plugins easier to read and simpler to maintain. Much like <a href="https://kotlinlang.org/docs/tutorials/kotlin-android.html" data-bypass="yes" target="_blank"><span>Kotlin for Android</span></a>, the IntelliJ Platform makes extensive use of callbacks, which are easy to express as <a href="https://kotlinlang.org/docs/reference/lambdas.html" data-bypass="yes" target="_blank"><span>lambdas</span></a> in Kotlin.</p>
+<p>除了<a href="https://kotlinlang.org/docs/reference/null-safety.html" data-bypass="yes" target="_blank"><span>null safety</span></a>和<a href="https://kotlinlang.org/docs/reference/type-safe-builders.html" data-bypass="yes" target="_blank"><span>type-safe builders</span></a>,Kotlin语言为插件开发提供了许多方便的功能,使插件更易于阅读和维护.
+与<a href="https://kotlinlang.org/docs/tutorials/kotlin-android.html" data-bypass="yes" target="_blank"><span>Kotlin for Android</span></a>非常相似,IntelliJ平台广泛使用回调,这些回调很容易表达为<a href="https://kotlinlang.org/docs/reference/lambdas.html" data-bypass="yes" target="_blank"><span>lambdas</span></a>.</p>
 
-<p>Likewise, it is easy to customize the behavior of internal classes in IntelliJ IDEA, with <a href="https://kotlinlang.org/docs/reference/extensions.html" data-bypass="yes" target="_blank"><span>extensions</span></a>. For example, it is common practice to <a href="https://www.slf4j.org/faq.html#logging_performance" data-bypass="yes" target="_blank"><span>guard logging statements</span></a> to avoid the cost of parameter construction, leading to the following ceremony when using the log:</p>
+<p>同样,使用<a href="https://kotlinlang.org/docs/reference/extensions.html" data-bypass="yes" target="_blank"><span>extensions</span></a>可以轻松地在IntelliJ IDEA中自定义内部类的行为.
+例如,通常的做法是<a href="https://www.slf4j.org/faq.html#logging_performance" data-bypass="yes" target="_blank"><span>保护日志声明</span></a>以避免参数构建的成本,在使用日志时导致以下仪式:</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="k">if</span><span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
   <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"..."</span><span class="o">);</span>
 <span class="o">}</span>
 </code></div>
 
-<p>We can achieve the same result more succinctly in Kotlin, by declaring the following extension method:</p>
+<p>通过声明以下扩展方法,我们可以在Kotlin中更简洁地实现相同的结果:</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="k">inline</span> <span class="k">fun</span> <span class="nc">Logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="n">lazyMessage</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">isDebugEnabled</span><span class="p">)</span> <span class="p">{</span>
@@ -110,19 +113,24 @@
 <span class="p">}</span>
 </code></div>
 
-<p>Now we can directly write <code class="code highlight language-text">logger.debug { "..." }</code> to receive all the benefits of lightweight logging, with none of the verbosity. With practice, you will be able to recognize many idioms in the IntelliJ Platform that can be simplified with Kotlin. To learn more about building IntelliJ Platform plugins with Kotlin, this tutorial will help you get started.</p>
+<p>现在我们可以直接编写`logger.debug {“…”}来获得轻量级日志记录的所有好处,没有任何冗长.
+通过练习,您将能够在IntelliJ平台中识别出许多可以通过Kotlin简化的习语.
+要了解有关使用Kotlin构建IntelliJ平台插件的更多信息,本教程将帮助您入门.</p>
 
-<a name="adding-kotlin-support" class="elem-anchor"></a>
-<h2>2. Adding Kotlin Support<a href="#adding-kotlin-support" class="anchor-link"><span></span></a></h2>
+<a name="kotlin-1" class="elem-anchor"></a>
+<h2>2.添加Kotlin支持<a href="#kotlin-1" class="anchor-link"><span></span></a></h2>
 
-<p>Plugins targeting the IntelliJ Platform versions 143 and above are easy to migrate: just start writing Kotlin. The necessary Kotlin plugins and libraries are already bundled with the IDE, requiring no further configuration. For version 142 or below, you will need to install and configure dependencies to the Kotlin runtime (in addition to installing the Kotlin plugin itself, for code assistance and tooling support). For detailed instructions, please refer to the <a href="https://kotlinlang.org/docs/tutorials/getting-started.html" data-bypass="yes" target="_blank"><span>Kotlin documentation</span></a>.</p>
+<p>针对IntelliJ平台版本143及更高版本的插件易于迁移:刚开始编写Kotlin.
+必要的Kotlin插件和库已与IDE捆绑在一起,无需进一步配置.
+对于142或更低版本,您需要安装和配置Kotlin运行时的依赖项(除了安装Kotlin插件本身,还提供代码帮助和工具支持).
+有关详细说明,请参阅<a href="https://kotlinlang.org/docs/tutorials/getting-started.html" data-bypass="yes" target="_blank"><span>Kotlin文档</span></a>.</p>
 
-<a name="kotlin-gradle-plugin" class="elem-anchor"></a>
-<h2>3. Kotlin Gradle Plugin<a href="#kotlin-gradle-plugin" class="anchor-link"><span></span></a></h2>
+<a name="kotlin-gradle" class="elem-anchor"></a>
+<h2>3. Kotlin Gradle插件<a href="#kotlin-gradle" class="anchor-link"><span></span></a></h2>
 
-<p>For plugins already using the <a href="build_system.html"><span>Gradle Build System</span></a>, or those that require precise control over the Kotlin build process, we recommend using the <a href="https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies" data-bypass="yes" target="_blank"><span>kotlin-gradle-plugin</span></a>. This <a href="https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-gradle-plugin-core" data-bypass="yes" target="_blank"><span>Gradle plugin</span></a> greatly simplifies building Kotlin projects in a controlled and reproducible manner.</p>
+<p>对于已经使用<a href="build_system.html"><span>Gradle Build System</span></a>的插件,或那些需要对Kotlin构建过程进行精确控制的插件,我们建议使用<a href="https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies" data-bypass="yes" target="_blank"><span>kotlin-gradle-plugin</span></a>. This <a href="https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-gradle-plugin-core" data-bypass="yes" target="_blank"><span>Gradle plugin</span></a>极大地简化了以受控且可重现的方式构建Kotlin项目的过程.</p>
 
-<p>Your <code class="code highlight language-text">build.gradle</code> file may look like so:</p>
+<p>您的<code class="code highlight language-text">build.gradle</code>文件可能如下所示:</p>
 
 <div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">buildscript</span> <span class="o">{</span>
     <span class="n">repositories</span> <span class="o">{</span>
@@ -149,16 +157,17 @@
 <span class="o">}</span>
 </code></div>
 
-<p>Please note that you should <strong>not</strong> include <code class="code highlight language-text">kotlin-runtime</code> and <code class="code highlight language-text">kotlin-stdlib</code> jars with your plugin because Kotlin guarantees backward- and forward- binary compatibility.</p>
+<p>请注意,你应该**不要用你的插件包含<code class="code highlight language-text">kotlin-runtime</code>和<code class="code highlight language-text">kotlin-stdlib</code> jars,因为Kotlin保证了后向和前向二进制兼容性.</p>
 
-<a name="use-kotlin-to-write-gradle-script" class="elem-anchor"></a>
-<h3>3.1. Use Kotlin to write Gradle script<a href="#use-kotlin-to-write-gradle-script" class="anchor-link"><span></span></a></h3>
+<a name="section" class="elem-anchor"></a>
+<h3>3.1.<a href="#section" class="anchor-link"><span></span></a></h3>
+<p>使用Kotlin编写Gradle脚本</p>
 
-<p>Starting with 4.4, Gradle supports <code class="code highlight language-text">build.gradle.kts</code>, an alternative to <code class="code highlight language-text">build.gradle</code> written in Kotlin.</p>
+<p>从4.4开始,Gradle支持<code class="code highlight language-text">build.gradle.kts</code>,它是Kotlin编写的<code class="code highlight language-text">build.gradle</code>的替代品.</p>
 
-<p>There’re many good resources for learning how to write build scripts for an IntelliJ plugin with Kotlin script, like <a href="https://github.com/intellij-rust/intellij-rust/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>intellij-rust</span></a>, <a href="https://github.com/ice1000/julia-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>julia-intellij</span></a>, <a href="https://github.com/covscript/covscript-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>covscript-intellij</span></a> or <a href="https://github.com/ice1000/zig-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>zig-intellij</span></a>.</p>
+<p>学习如何使用Kotlin脚本为IntelliJ插件编写构建脚本有很多很好的资源,比如<a href="https://github.com/intellij-rust/intellij-rust/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>intellij-rust</span></a>,<a href="https://github.com/ice1000/julia-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>julia-intellij</span></a>,<a href="https://github.com/covscript/covscript-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>covscript-intellij</span></a>或<a href="https://github.com/ice1000/zig-intellij/blob/master/build.gradle.kts" data-bypass="yes" target="_blank"><span>zig-intellij</span></a>.</p>
 
-<p><code class="code highlight language-text">build.gradle.kts</code> basically looks like:</p>
+<p><code class="code highlight language-text">build.gradle.kts</code>基本上看起来像:</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">group</span> <span class="p">=</span> <span class="s">"com.your.company.name"</span>
 <span class="n">version</span> <span class="p">=</span> <span class="s">"0.1-SNAPSHOT"</span>
@@ -180,29 +189,45 @@
 <span class="p">}</span>
 </code></div>
 
-<a name="ui-in-kotlin" class="elem-anchor"></a>
-<h2>4. UI in Kotlin<a href="#ui-in-kotlin" class="anchor-link"><span></span></a></h2>
+<a name="kotlin-2" class="elem-anchor"></a>
+<h2>4.Kotlin的用户界面<a href="#kotlin-2" class="anchor-link"><span></span></a></h2>
 
-<p>The best way to create user interfaces with Kotlin is to use a type safe DSL for building forms instead of GUI designer. The DSL used in the IntelliJ platform is inside <code class="code highlight language-text">com.intellij.ui.layout</code> package. <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/layout/readme.md" data-bypass="yes" target="_blank"><span>Documentation</span></a>.</p>
+<p>使用Kotlin创建用户界面的最佳方法是使用类型安全的DSL来构建表单而不是GUI设计器. 
+IntelliJ平台中使用的DSL位于<code class="code highlight language-text">com.intellij.ui.layout</code>包中. 
+<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-impl/src/com/intellij/ui/layout/readme.md" data-bypass="yes" target="_blank"><span>文档</span></a>.</p>
 
-<a name="handling-kotlin-code" class="elem-anchor"></a>
-<h2>5. Handling Kotlin code<a href="#handling-kotlin-code" class="anchor-link"><span></span></a></h2>
+<a name="kotlin-3" class="elem-anchor"></a>
+<h2>5.处理Kotlin代码<a href="#kotlin-3" class="anchor-link"><span></span></a></h2>
 
-<p>If you need to write a plugin that processes Kotlin code, you need to add a dependency on the Kotlin plugin. Please refer
-to <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_dependencies.html"><span>Plugin Dependencies</span></a> for information on how to do that.</p>
+<p>如果您需要编写处理Kotlin代码的插件,则需要在Kotlin插件上添加依赖项.
+请参考</p>
 
-<a name="examples" class="elem-anchor"></a>
-<h2>6. Examples<a href="#examples" class="anchor-link"><span></span></a></h2>
+<p>到<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_dependencies.html"><span>Plugin Dependencies</span></a>获取有关如何执行此操作的信息.</p>
 
-<p>There are a number of <a href="https://github.com/search?l=Kotlin&amp;q=+intellij&amp;ref=searchresults&amp;type=Repositories" data-bypass="yes" target="_blank"><span>open source Kotlin projects</span></a> built on the IntelliJ Platform. For a readily available source of up to date examples and applications of the Kotlin language for building developer tools with the IntelliJ Platform, developers may look to these projects for inspiration:</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>6.例子<a href="#section-1" class="anchor-link"><span></span></a></h2>
+
+<p>在IntelliJ平台上构建了许多<a href="https://github.com/search?l=Kotlin&amp;q=+intellij&amp;ref=searchresults&amp;type=Repositories" data-bypass="yes" target="_blank"><span>开源Kotlin项目</span></a>.
+有关使用IntelliJ平台构建开发人员工具的Kotlin语言的最新示例和应用程序的现成资源,开发人员可以查看这些项目的灵感:</p>
 
 <ul>
-  <li><a href="https://github.com/intellij-rust/intellij-rust" data-bypass="yes" target="_blank"><span>intellij-rust</span></a></li>
-  <li><a href="https://github.com/atsky/haskell-idea-plugin" data-bypass="yes" target="_blank"><span>haskell-idea-plugin</span></a></li>
-  <li><a href="https://github.com/valich/intellij-markdown" data-bypass="yes" target="_blank"><span>intellij-markdown</span></a></li>
-  <li><a href="https://github.com/chashnikov/IntelliJ-presentation-assistant" data-bypass="yes" target="_blank"><span>IntelliJ-presentation-assistant</span></a></li>
-  <li><a href="https://github.com/hhariri/leanpub-plugin" data-bypass="yes" target="_blank"><span>leanpub-plugin</span></a></li>
+  <li>
+    <p><a href="https://github.com/intellij-rust/intellij-rust" data-bypass="yes" target="_blank"><span>intellij-rust</span></a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/atsky/haskell-idea-plugin" data-bypass="yes" target="_blank"><span>haskell-idea-plugin</span></a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/valich/intellij-markdown" data-bypass="yes" target="_blank"><span>intellij-markdown</span></a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/chashnikov/IntelliJ-presentation-assistant" data-bypass="yes" target="_blank"><span>IntelliJ-presentation-assistant</span></a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/hhariri/leanpub-plugin" data-bypass="yes" target="_blank"><span>leanpub-plugin</span></a></p>
+  </li>
 </ul>
+
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
