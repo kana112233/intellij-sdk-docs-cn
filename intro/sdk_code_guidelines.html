@@ -6,23 +6,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Guidelines for Creating IntelliJ Platform SDK Code Samples / IntelliJ Platform SDK  DevGuide</title>
-    <link rel="stylesheet" href="/app/app.css">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-    <link rel="mask-icon" href="/apple-mask-icon.svg" color="black">
+    <link rel="stylesheet" href="/intellij-sdk-docs-cn/app/app.css">
+    <link rel="shortcut icon" href="/intellij-sdk-docs-cn/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/intellij-sdk-docs-cn/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/intellij-sdk-docs-cn/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/intellij-sdk-docs-cn/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/intellij-sdk-docs-cn/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/intellij-sdk-docs-cn/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/intellij-sdk-docs-cn/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/intellij-sdk-docs-cn/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/intellij-sdk-docs-cn/apple-touch-icon-180x180.png">
+    <link rel="mask-icon" href="/intellij-sdk-docs-cn/apple-mask-icon.svg" color="black">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-square70x70logo" content="/mstile-70x70.png">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    <meta name="msapplication-square150x150logo" content="/mstile-150x150.png">
-    <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png">
-    <meta name="msapplication-square310x310logo" content="/mstile-310x310.png">
+    <meta name="msapplication-square70x70logo" content="/intellij-sdk-docs-cn/mstile-70x70.png">
+    <meta name="msapplication-TileImage" content="/intellij-sdk-docs-cn/mstile-144x144.png">
+    <meta name="msapplication-square150x150logo" content="/intellij-sdk-docs-cn/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/intellij-sdk-docs-cn/mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/intellij-sdk-docs-cn/mstile-310x310.png">
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:type" content="website" />
@@ -39,8 +39,8 @@
     <meta name="twitter:title" content="Guidelines for Creating IntelliJ Platform SDK Code Samples" />
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta class="swiftype" name="product" data-type="string" content="/"></meta>
-<link  rel="stylesheet" href="/app/styles.css"></head>
+    <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
 <body data-id="intro/sdk_code_guidelines">
 <div class="wrapper">
     <section class="panel _nav">
@@ -89,9 +89,9 @@
                     <h1>Guidelines for Creating IntelliJ Platform SDK Code Samples</h1>
                     <p>本文档描述了用于编写开源IntelliJ Platform SDK代码示例的编码指南.</p>
 
-<p>在开始之前,请仔细阅读本页以及<a href="/CODE_OF_CONDUCT.html"><span>行为准则</span></a>和<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>许可证</span></a>文件.</p>
+<p>在开始之前,请仔细阅读本页以及<a href="/intellij-sdk-docs-cn/CODE_OF_CONDUCT.html"><span>行为准则</span></a>和<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>许可证</span></a>文件.</p>
 
-<p>有关为IntelliJ平台本身做出贡献的信息,请访问<a href="/basics/platform_contributions.html"><span>贡献IntelliJ平台</span></a>.</p>
+<p>有关为IntelliJ平台本身做出贡献的信息,请访问<a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>贡献IntelliJ平台</span></a>.</p>
 
 <p>##目标</p>
 
@@ -216,13 +216,13 @@ The following is the directory structure for a <code class="code highlight langu
 <a name="buildgradle" class="elem-anchor"></a>
 <h2>build.gradle约定<a href="#buildgradle" class="anchor-link"><span></span></a></h2>
 
-<p>应该<a href="/tutorials/build_system.html"><span>使用Gradle</span></a>开发新的SDK代码示例.</p>
+<p>应该<a href="/intellij-sdk-docs-cn/tutorials/build_system.html"><span>使用Gradle</span></a>开发新的SDK代码示例.</p>
 
 <p>在撰写本文时,在SDK代码示例中使用Gradle仍然在很大程度上依赖于<code class="code highlight language-text">plugin.xml</code>来指定插件配置.</p>
 
 <p>在稍后的第二阶段,SDK代码示例将转换为更多地依赖Gradle配置.</p>
 
-<p><code class="code highlight language-text">build.gradle</code>文件的默认内容由<a href="/tutorials/build_system/prerequisites.html#create-a-plugin-project-from-scratch"><span>Gradle项目向导</span></a>生成.</p>
+<p><code class="code highlight language-text">build.gradle</code>文件的默认内容由<a href="/intellij-sdk-docs-cn/tutorials/build_system/prerequisites.html#create-a-plugin-project-from-scratch"><span>Gradle项目向导</span></a>生成.</p>
 
 <p>SDK代码示例的“build.gradle”文件的一致结构对于清晰度很重要,并且基于项目向导生成的默认值.</p>
 
@@ -249,7 +249,7 @@ It is not needed in SDK samples.</li>
 <a name="pluginxml" class="elem-anchor"></a>
 <h2>plugin.xml约定<a href="#pluginxml" class="anchor-link"><span></span></a></h2>
 
-<p>SDK代码示例的<a href="/basics/plugin_structure/plugin_configuration_file.html"><span><code class="code highlight language-text">plugin.xml</code></span></a>配置文件的一致结构非常重要,因为我们希望引起对插件文件的独特部分的注意.</p>
+<p>SDK代码示例的<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_configuration_file.html"><span><code class="code highlight language-text">plugin.xml</code></span></a>配置文件的一致结构非常重要,因为我们希望引起对插件文件的独特部分的注意.</p>
 
 <p>不一致的元素顺序在视觉上是嘈杂的.</p>
 
@@ -334,7 +334,7 @@ Here the term “IDE” means the IntelliJ Platform-based IDE in which the plugi
     </main>
 </div>
 
-<script src="/app/app.js" data-baseurl="/"></script>
+<script src="/intellij-sdk-docs-cn/app/app.js" data-baseurl="/intellij-sdk-docs-cn/"></script>
 
 </body>
 </html>
