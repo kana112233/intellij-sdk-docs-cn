@@ -33,7 +33,7 @@ IntelliJ平台第三方依赖项的工件托管在[Bintray存储库](https://jet
 当使用IntelliJ平台工件库中的各个模块时,应将此存储库的链接添加到`pom.xml` /`build.gradle`文件中.
 
 
-##使用IntelliJ平台模块工件
+## 使用IntelliJ平台模块工件
 
 通过向项目的“build.gradle”文件添加信息来利用IntelliJ平台模块工件.
 
@@ -47,7 +47,7 @@ IntelliJ平台第三方依赖项的工件托管在[Bintray存储库](https://jet
 2.指定工件的Maven坐标.
  
 
-###指定存储库URL
+### 指定存储库URL
 
 需要将所需工件的URL添加到Maven或Gradle脚本中:
 
@@ -58,7 +58,7 @@ IntelliJ平台第三方依赖项的工件托管在[Bintray存储库](https://jet
 *对于IntelliJ平台中各个模块的依赖关系,也可以使用`https://jetbrains.bintray.com/intellij-third-party-dependencies`
 
 
-###指定工件
+### 指定工件
 
 使用Maven坐标描述所需的IntelliJ平台模块工件.
 

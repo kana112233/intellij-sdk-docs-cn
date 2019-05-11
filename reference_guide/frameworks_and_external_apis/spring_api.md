@@ -294,7 +294,7 @@ Spring Boot API允许在IDE中扩展/访问Spring Boot特定的支持.
 使用`com.intellij.spring.boot.library.SpringBootLibraryUtil`查询常见附加库的版本和可用性.
 
 
-###自定义配置文件格式
+### 自定义配置文件格式
 
 `com.intellij.spring.boot.model.SpringBootModelConfigFileContributor`允许添加对自定义配置文件格式的支持.
                                             
