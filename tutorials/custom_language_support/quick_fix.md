@@ -45,6 +45,6 @@ title: 18. Quick Fix
 现在让我们尝试使用尚未定义的属性。
 
 
-！[快速修复](img/quick_fix.png)
+![快速修复](img/quick_fix.png)
 
 

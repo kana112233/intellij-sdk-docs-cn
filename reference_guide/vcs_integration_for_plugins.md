@@ -14,7 +14,7 @@ VCS API在版本6.0中进行了重大重构,本文档未描述旧版本的API.
 ＃＃ 关键概念
 
 
-＃＃＃ 文件路径
+### 文件路径
 
 
 A [FilePath](upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/vcs/FilePath.java)
@@ -174,7 +174,7 @@ A [FilePath](upsource:///platform/vcs-api/vcs-api-core/src/com/intellij/openapi/
 如果尚未指定自定义文件状态,则会根据更改类型自动计算状态.
 
 
-＃＃＃ 更改列表
+### 更改列表
 
 
 一个

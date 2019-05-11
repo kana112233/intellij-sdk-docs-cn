@@ -94,6 +94,6 @@ tab : \u0009
 现在打开* PsiViewer *工具窗口，检查词法分析器如何将文件内容分解为标记，解析器将标记解析为PSI元素。
 
 
-！[PSI Elements](img/psi_elements.png)
+![PSI Elements](img/psi_elements.png)
 
 

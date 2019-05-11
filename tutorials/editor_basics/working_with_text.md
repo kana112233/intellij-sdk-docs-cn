@@ -222,7 +222,7 @@ public void actionPerformed(final AnActionEvent e) {
 
 必须安全地执行更换操作,这意味着必须锁定文件
 
-任何更改都应在[写入操作]中执行(upsource:///platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java)<! -#L172-->.
+任何更改都应在[写入操作]中执行(upsource:///platform/core-api/src/com/intellij/openapi/command/WriteCommandAction.java)<!--#L172-->.
 
 请参阅[线程问题](/basics/architectural_overview/general_threading_rules.md)部分以了解有关IntelliJ平台上的同步问题和更改安全性的更多信息.
 

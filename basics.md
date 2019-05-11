@@ -2,7 +2,7 @@
 title: Quick Start Guide
 ---
 
-本节介绍使用* IntelliJ Platform *的基础知识.
+本节介绍使用 *IntelliJ Platform* 的基础知识.
 它将使您熟悉工作环境,项目结构和常用的API组件.
 
 * [IntelliJ平台插件的主要类型](basics/types_of_plugins.md)

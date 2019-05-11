@@ -2,23 +2,23 @@
 title: Plugin Extensions and Extension Points
 ---
 
-* IntelliJ Platform *提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.
+ *IntelliJ Platform* 提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.
 
 
-##扩展点
+## 扩展点
 
 
 如果您希望插件允许其他插件扩展其功能,则在插件中,您必须声明一个或多个_extension points_.
 每个扩展点定义允许访问此点的类或接口.
 
 
-##扩展
+## 扩展
 
 
-如果您希望插件扩展其他插件或* IntelliJ Platform *的功能,则必须声明一个或多个_extensions_.
+如果您希望插件扩展其他插件或 *IntelliJ Platform* 的功能,则必须声明一个或多个_extensions_.
 
 
-##如何声明扩展和扩展点
+## 如何声明扩展和扩展点
 
 
 您可以分别在插件配置文件`plugin.xml`中声明扩展和扩展点,分别在`<extensions>`和`<extensionPoints>`部分中.
@@ -41,10 +41,9 @@ title: Plugin Extensions and Extension Points
 </extensionPoints>
 ```
 
-*`interface`属性设置一个接口,该插件有助于扩展点必须实现.
+* `interface`属性设置一个接口,该插件有助于扩展点必须实现.
 
-*`beanClass`属性设置一个bean类,它指定一个或多个用[@Attribute]注释的属性(upsource:///platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java)注释
-.
+* `beanClass`属性设置一个bean类,它指定一个或多个用[@Attribute]注释的属性(upsource:///platform/util/src/com/intellij/util/xmlb/annotations/Attribute.java)注释.
 
 
 有助于扩展点的插件将从`plugin.xml`文件中读取这些属性.
@@ -96,7 +95,7 @@ public class MyBeanClass1 extends AbstractExtensionPointBean {
 *如果使用`beanClass`属性声明扩展点,则对于新添加的子元素,设置所有使用[@Attribute]注释的属性(upsource:///xml/dom-openapi/src/com/intellij/util/指定bean类中的xml/Attribute.java)注释.
 
 
-为了澄清这个过程,请考虑`plugin.xml`文件的以下示例部分,它定义了两个扩展,旨在访问* IntelliJ Platform *中的`appStarter`和`applicationConfigurable`扩展点,以及一个访问`MyExtensionPoint1的扩展名.
+为了澄清这个过程,请考虑`plugin.xml`文件的以下示例部分,它定义了两个扩展,旨在访问 *IntelliJ Platform* 中的`appStarter`和`applicationConfigurable`扩展点,以及一个访问`MyExtensionPoint1的扩展名.
 测试插件中的扩展点:
 
 
@@ -126,7 +125,7 @@ The following properties are available always:
 ##如何获得扩展点列表？
 
 
-要获取* IntelliJ Platform *核心中可用的扩展点列表,请参阅以下XML配置文件的`<extensionPoints>`部分:
+要获取 *IntelliJ Platform* 核心中可用的扩展点列表,请参阅以下XML配置文件的`<extensionPoints>`部分:
 
 
 * [`LangExtensionPoints.xml`](upsource:///platform/platform-resources/src/META-INF/LangExtensionPoints.xml)

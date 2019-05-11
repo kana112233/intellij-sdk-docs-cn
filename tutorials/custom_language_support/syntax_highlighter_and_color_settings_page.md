@@ -30,7 +30,7 @@ title: 5. Syntax Highlighter and Color Settings Page
 运行该项目
 
 
-！[语法荧光笔](img/syntax_highlighter.png)
+![语法荧光笔](img/syntax_highlighter.png)
 
 
 ### 5.5。
@@ -53,6 +53,6 @@ title: 5. Syntax Highlighter and Color Settings Page
 运行该项目
 
 
-！[颜色设置页面](img/color_settings_page.png)
+![颜色设置页面](img/color_settings_page.png)
 
 

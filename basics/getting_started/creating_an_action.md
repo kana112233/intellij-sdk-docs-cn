@@ -19,7 +19,7 @@ IntelliJ平台提供类[AnAction](upsource:///platform/editor-ui-api/src/com/int
 有关详细信息和示例,请参阅[IntelliJ平台操作系统](/basics/action_system.md).
 
 
-###定义动作
+### 定义动作
 
 
 An action is a class derived from the `AnAction` class. To define your action, in your plugin, create a Java class derived from the `AnAction` class. In this class, override the `actionPerformed` method to be called when a menu item or a toolbar button is selected.
@@ -50,7 +50,7 @@ public class TextBoxes extends AnAction {
 在这种情况下,您的插件将定义一个操作系统.
 
 
-###注册动作
+### 注册动作
 
 
 定义操作或操作系统后,必须注册它们以指定与操作关联的菜单项或工具栏按钮.
@@ -66,7 +66,7 @@ public class TextBoxes extends AnAction {
 有关更多信息,请参阅[IntelliJ平台操作系统](/basics/action_system.md).
 
 
-####在plugin.xml文件中注册操作
+#### 在plugin.xml文件中注册操作
 
 
 To register your actions, make appropriate changes to the `<actions>` section of the plugin.xml file for your IDEA project. The following fragment of the plugin.xml file adds the Sample Menu group (item) to the main menu. Clicking this item allows you to access **Sample Menu \| Text Boxes and Sample Menu \| Show Dialog** menu commands:
@@ -88,14 +88,14 @@ plugin.xml文件的这个片段只演示了一些可以在`<actions>`部分中�
 有关用于注册操作的所有元素的信息,请参阅[IntelliJ平台操作系统](/basics/action_system.md).
 
 
-####从Java代码注册操作
+#### 从Java代码注册操作
 
 
 或者,您可以从Java代码注册您的操作.
 有关如何从Java代码注册操作的更多信息和示例,请参阅[IntelliJ平台操作系统](/basics/action_system.md).
 
 
-###快速创建动作
+### 快速创建动作
 
 
 IntelliJ平台提供** New Action **向导,该向导建议使用所有必需的基础结构创建操作的简化方法.

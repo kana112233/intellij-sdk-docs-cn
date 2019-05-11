@@ -2,7 +2,7 @@
 title: Testing Highlighting
 ---
 
-编写插件测试时的一个常见任务是测试各种突出显示(检查,注释器,解析器错误突出显示等).* IntelliJ Platform *为此任务提供专用的实用程序和标记格式.
+编写插件测试时的一个常见任务是测试各种突出显示(检查,注释器,解析器错误突出显示等). *IntelliJ Platform* 为此任务提供专用的实用程序和标记格式.
 
 
 要测试当前加载到内存编辑器中的文件的突出显示,请调用`checkHighlighting()`方法.
@@ -36,31 +36,31 @@ public int <warning descr="The compareTo() method does not reference 'foo' which
 支持以下严重性:
 
 
-*`<错误>`
+* `<错误>`
 
-*`<警告>`
+* `<警告>`
 
-*`<weak_warning>`
+* `<weak_warning>`
 
-*`<info>`
+* `<info>`
 
-*`<inject>`(对于注入的片段)
+* `<inject>`(对于注入的片段)
 
-*`<symbolName>`(用于根据类型突出显示标识符的标记)
+* `<symbolName>`(用于根据类型突出显示标识符的标记)
 
-*任何自定义严重性都可以通过其名称引用
+* 任何自定义严重性都可以通过其名称引用
 
 
 标签还可以具有以下可选属性:
 
 
-*`descr`  - 与荧光笔相关的预期消息(如果未指定,任何文本将匹配;如果消息包含引号,则可以通过在其前面放置两个反斜杠字符来转义它)
+* `descr`  - 与荧光笔相关的预期消息(如果未指定,任何文本将匹配;如果消息包含引号,则可以通过在其前面放置两个反斜杠字符来转义它)
 
-*`foregroundColor`,`backgroundColor`,`effectColor`用于突出显示的预期颜色
+* `foregroundColor`,`backgroundColor`,`effectColor`用于突出显示的预期颜色
 
-*`effectType`预期效果类型用于突出显示(有关可能的值,请参阅`EffectType`枚举)
+* `effectType`预期效果类型用于突出显示(有关可能的值,请参阅`EffectType`枚举)
 
-*`fontType`预期突出显示的字体样式(0  - 正常,1  - 粗体,2  - 斜体,3  - 粗体斜体)
+* `fontType`预期突出显示的字体样式(0  - 正常,1  - 粗体,2  - 斜体,3  - 粗体斜体)
 
 
 > **Note** *Nested* tags are **supported**: 

@@ -17,7 +17,7 @@ title: Publishing Plugins with Gradle
 我们将描述三个选项:仅使用Gradle属性，使用环境变量并使用Gradle任务的参数。
 
 
-####使用Gradle属性文件
+#### 使用Gradle属性文件
 
 您可以将凭据存储在[Gradle属性](https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties)中。
 
@@ -51,7 +51,7 @@ publishPlugin {
 gradle.properties
 ```
 
-####使用环境变量
+#### 使用环境变量
 
 
 或者，可能稍微安全一些，因为您不会意外地将您的凭据提交给git，您可以通过环境变量“ORG_GRADLE_PROJECT_intellijPublishUsername”和“ORG_GRADLE_PROJECT_intellijPublishPassword”提供您的凭据。
@@ -65,7 +65,7 @@ gradle.properties
 请注意，您仍需要在Gradle属性中放置一些默认值(可以为空)，否则您将收到编译错误。
 
 
-####为Gradle任务提供参数
+#### 为Gradle任务提供参数
 
 
 与使用环境变量类似，您也可以将凭证作为参数传递给Gradle任务。

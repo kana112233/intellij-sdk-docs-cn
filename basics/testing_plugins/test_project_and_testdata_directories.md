@@ -18,7 +18,7 @@ title: Test Project and Testdata Directories
 >
 
 >如果在一系列成功运行后遇到意外错误,**尝试再次运行测试**,如果这没有帮助,**删除沙箱目录中的“system”子目录**(通过`
-用于Gradle设置的sandboxDirectory`或用于Devkit设置的* IntelliJ Platform * SDK设置).
+用于Gradle设置的sandboxDirectory`或用于Devkit设置的 *IntelliJ Platform*  SDK设置).
 
 
 在您的插件中,您通常会在`testdata`目录中存储测试的测试数据(例如将在其上执行插件功能的文件和预期的输出文件).
@@ -27,10 +27,10 @@ title: Test Project and Testdata Directories
 
 
 要指定`testdata`的位置,必须覆盖`LightPlatformCodeInsightFixtureTestCase.getTestDataPath()`方法.
-默认实现假定作为* IntelliJ Platform *源代码树的一部分运行,不适用于第三方插件.
+默认实现假定作为 *IntelliJ Platform* 源代码树的一部分运行,不适用于第三方插件.
 
 
-> **注意** * IntelliJ Platform *测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建`testdata`文件路径的基础.
+> **注意**  *IntelliJ Platform* 测试中一个非常常见的模式是使用正在执行的测试方法的名称作为构建`testdata`文件路径的基础.
 这允许在测试相同功能的不同方面的不同测试方法之间重用大多数代码,并且还建议将此方法用于第三方插件测试.
 可以使用`UsefulTestCase.getTestName()`检索测试方法的名称.
 
@@ -53,10 +53,10 @@ src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java)类.
 您可以使用以下标记之一:
 
 
-*`<caret>`指定插入符号的位置.
+* `<caret>`指定插入符号的位置.
 
-*`<selection>`和`</selection>`指定要选择的文本范围的开始和结束.
+* `<selection>`和`</selection>`指定要选择的文本范围的开始和结束.
 
-*`<block>`和`</block>`指定列选择的起点和终点.
+* `<block>`和`</block>`指定列选择的起点和终点.
 
 

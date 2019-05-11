@@ -44,6 +44,6 @@ title: 15. Formatter
 
 Now add some extra spaces and reformat the code via **Code \| Reformat Code**.
 
-！[格式化](IMG/formatter.png)
+![格式化](IMG/formatter.png)
 
 

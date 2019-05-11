@@ -2,7 +2,7 @@
 title: Persisting State of Components
 ---
 
-* IntelliJ Platform *提供了一个API,允许组件或服务在重新启动IDE之间保持其状态.
+ *IntelliJ Platform* 提供了一个API,允许组件或服务在重新启动IDE之间保持其状态.
 您可以使用简单的API来保留一些值,也可以使用[PersistentStateComponent](upsource:///platform/core-api/src/com/intellij/openapi/components/PersistentStateComponent)来保持更复杂组件的状态. 
 java)接口.
 
@@ -10,7 +10,7 @@ java)接口.
 > **警告**如果您需要保留密码等敏感数据,请参阅[持久敏感数据](persisting_sensitive_data.md).
 
 
-##使用PropertiesComponent进行简单的非可扩展持久化
+## 使用PropertiesComponent进行简单的非可扩展持久化
 
 
 如果您的插件唯一需要保留的是一些简单的值,最简单的方法是使用[`com.intellij.ide.util.PropertiesComponent`](upsource:///platform/core-api/src/com/intellij/ide/util/PropertiesComponent.java)服务.
@@ -24,7 +24,7 @@ java)接口.
 由于所有插件共享相同的命名空间,因此强烈建议为键名称添加前缀(例如,使用插件ID).
 
 
-##使用PersistentStateComponent
+## 使用PersistentStateComponent
 
 
 [`com.intellij.openapi.components.PersistentStateComponent`](upsource:///platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java)界面为您提供了定义值的最大灵活性
@@ -44,7 +44,7 @@ java)接口.
 如果您的扩展需要具有持久状态,则需要定义一个负责管理该状态的单独服务.
 
 
-###实现PersistentStateComponent接口
+### 实现PersistentStateComponent接口
 
 
 “PersistentStateComponent”的实现需要使用状态类的类型进行参数化.
@@ -92,7 +92,7 @@ class MyService implements PersistentStateComponent<MyService> {
 }
 ```
 
-###实现状态类
+### 实现状态类
 
 
 “PersistentStateComponent”的实现通过将公共字段,[annotated](upsource:///platform/util/src/com/intellij/util/xmlb/annotations)私有字段和bean属性序列化为XML格式来实现.
@@ -124,7 +124,7 @@ State类应该有一个`equals`方法,但如果没有实现,状态对象将按�
 使用Kotlin时,请使用[数据类](https://kotlinlang.org/docs/reference/data-classes.html).
 
 
-###定义存储位置
+### 定义存储位置
 
 
 要指定存储的确切位置,需要在`PersistentStateComponent`类中添加一个`@ State`注释.
@@ -159,7 +159,7 @@ State类应该有一个`equals`方法,但如果没有实现,状态对象将按�
 `@Storage`注释的`roamingType`参数指定使用Settings Repository插件时的漫游类型.
 
 
-##自定义持久值的XML格式
+## 自定义持久值的XML格式
 
 
 请考虑仅使用注释参数来实现向后兼容性.
@@ -179,7 +179,7 @@ State类应该有一个`equals`方法,但如果没有实现,状态对象将按�
 请注意,不建议这样做,应尽可能避免.
 
 
-##持久性组件生命周期
+## 持久性组件生命周期
 
 
 在创建组件之后调用`loadState()`方法(仅当组件持有一些非默认状态时),并且在外部更改具有持久状态的XML文件后(例如,如果项目)
@@ -206,9 +206,9 @@ State类应该有一个`equals`方法,但如果没有实现,状态对象将按�
 组件将其状态保存在以下文件中:
 
 
-*项目级:项目(`.ipr`)文件.
+* 项目级:项目(`.ipr`)文件.
 但是,如果`plugin.xml`文件中的workspace选项设置为`true`,则将使用workspace(`.iws`)文件.
 
-*模块级:模块(`.iml`)文件.
+* 模块级:模块(`.iml`)文件.
 
 

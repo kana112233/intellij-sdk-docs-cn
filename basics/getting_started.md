@@ -2,7 +2,7 @@
 title: Creating Your First Plugin
 ---
 
-本文档部分将帮助您开始为* IntelliJ Platform *开发插件.
+本文档部分将帮助您开始为 *IntelliJ Platform* 开发插件.
 您可以使用[IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/)或[IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download/)作为您的
 IDE.
 两者都包括完整的插件开发工具集.
@@ -16,7 +16,7 @@ IDE.
 对于现有项目,仍然支持旧的工作流程[使用插件DevKit](#using-devkit).
 
 
-##使用Gradle
+## 使用Gradle
 
 
 * [使用Gradle开发插件](/tutorials/build_system.md)
@@ -26,7 +26,7 @@ IDE.
 * [发布您的插件](/tutorials/build_system/deployment.md)
 
 
-##使用DevKit
+## 使用DevKit
 
 * [使用DevKit开发插件](getting_started/using_dev_kit.md)
     

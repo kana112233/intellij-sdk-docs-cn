@@ -5,14 +5,14 @@ title: Execution
 标准执行运行操作将执行以下步骤:
 
 
-*用户选择*运行配置*(例如,通过从运行配置组合框中选择一个)和*执行器*(例如,通过按执行器创建的工具栏按钮).
+* 用户选择*运行配置*(例如,通过从运行配置组合框中选择一个)和*执行器*(例如,通过按执行器创建的工具栏按钮).
 
-*通过轮询所有已注册的程序运行程序并询问是否可以使用指定的执行程序ID运行指定的运行配置文件,选择将实际执行该进程的*程序运行器*.
+* 通过轮询所有已注册的程序运行程序并询问是否可以使用指定的执行程序ID运行指定的运行配置文件,选择将实际执行该进程的*程序运行器*.
 
-*创建[`ExecutionEnvironment`](upsource:///platform/lang-api/src/com/intellij/execution/runners/ExecutionEnvironment.java)对象.
+* 创建[`ExecutionEnvironment`](upsource:///platform/lang-api/src/com/intellij/execution/runners/ExecutionEnvironment.java)对象.
 此对象聚合执行该过程所需的所有设置,以及所选的[`ProgramRunner`](upsource:///platform/lang-api/src/com/intellij/execution/runners/ProgramRunner.java).
 
-*调用`ProgramRunner.execute()`,接收执行程序和执行环境.
+* 调用`ProgramRunner.execute()`,接收执行程序和执行环境.
 
 
 `ProgramRunner.execute()`的实现通过以下步骤来执行该过程:
@@ -22,19 +22,19 @@ title: Execution
 即将开始.
 在此阶段,初始化命令行参数,环境变量和启动过程所需的其他信息.
 
-*``RunProfileState.execute()`被调用.
+* `RunProfileState.execute()`被调用.
 它启动进程,将一个`ProcessHandler`附加到它的输入和输出流,创建一个控制台来显示进程输出,并返回一个[`ExecutionResult`](upsource:///platform/lang-api/src/com/intellij/execution/ExecutionResult.java)聚合控制台和进程处理程序的对象.
 
-*创建并调用`RunContentBuilder`对象,以在Run或Debug工具窗口的选项卡中显示执行控制台.
+* 创建并调用`RunContentBuilder`对象,以在Run或Debug工具窗口的选项卡中显示执行控制台.
 
 
-##执行人
+## 执行人
 
 
 [`Executor`](upsource:///platform/lang-api/src/com/intellij/execution/Executor.java)接口描述了执行任何可能的运行配置的特定方式.
 
 
-默认情况下,* IntelliJ Platform *提供的三个默认执行程序是_Run _,_Debug_和带有Coverage_的_Run.
+默认情况下, *IntelliJ Platform* 提供的三个默认执行程序是_Run _,_Debug_和带有Coverage_的_Run.
 每个执行程序都有自己的工具栏按钮,它使用此执行程序启动选定的运行配置,以及使用此执行程序启动配置的自己的上下文菜单项.
 
 
@@ -42,7 +42,7 @@ title: Execution
 但是,它可能很有用,例如,如果您正在实现探查器集成并希望提供使用性能分析执行任何配置的可能性.
 
 
-##运行一个进程
+## 运行一个进程
 
 
 每个运行配置实现都会出现`RunProfileState`接口,作为返回值`RunProfile.getState()`.
@@ -68,7 +68,7 @@ title: Execution
 该过程将显示在控制台中.
 
 
-##显示流程输出
+## 显示流程输出
 
 
 如果您正在使用`CommandLineState`,将自动创建一个控制台视图并将其附加到该进程的输出.
@@ -91,10 +91,10 @@ Console [filters](upsource:///platform/lang-api/src/com/intellij/execution/filte
 您可能想要重用的两个常见过滤器实现是[`RegexpFilter`](upsource:///platform/lang-api/src/com/intellij/execution/filters/RegexpFilter.java)和[`UrlFilter`](upsource:///platform/lang-api/src/com/intellij/execution/filters/UrlFilter.java).
 
 
-##从代码开始运行配置
+## 从代码开始运行配置
 
 
-如果您有一个需要执行的现有运行配置,最简单的方法是使用[`ProgramRunnerUtil.executeConfiguration()`](upsource:///platform/lang-impl/src/com/intellij/execution/ProgramRunnerUtil.java)<! -#L110  - >.
+如果您有一个需要执行的现有运行配置,最简单的方法是使用[`ProgramRunnerUtil.executeConfiguration()`](upsource:///platform/lang-impl/src/com/intellij/execution/ProgramRunnerUtil.java)<!--#L110  -->.
 该方法采用[`Project`](upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java),[`RunnerAndConfigurationSettings`](upsource:///platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java),以及[`Executor`](upsource:///platform/lang-api/src/com/intellij/execution/Executor.java)
 .
 要获取现有配置的`RunnerAndConfigurationSettings`,您可以使用,例如,`RunManager.getConfigurationSettings(ConfigurationType)`.

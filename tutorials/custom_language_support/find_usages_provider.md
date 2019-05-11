@@ -30,6 +30,6 @@ title: 11. Find Usages Provider
 现在我们可以通过参考调用任何属性的* Find Usages *。
 
 
-！[查找用法](img/find_usages.png)
+![查找用法](img/find_usages.png)
 
 

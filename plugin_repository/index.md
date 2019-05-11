@@ -11,13 +11,13 @@ title: Plugin Repository (plugins.jetbrains.com)
 插件存储库是一项服务,负责:
 
 
-*提供产品(例如IntelliJ IDEA)以及兼容插件及其更新列表;
+* 提供产品(例如IntelliJ IDEA)以及兼容插件及其更新列表;
  
  
-*方便下载兼容的插件更新;
+* 方便下载兼容的插件更新;
  
  
-*存储,上传和管理由第三方供应商或JetBrains开发和发布的插件及其更新.
+* 存储,上传和管理由第三方供应商或JetBrains开发和发布的插件及其更新.
 
 
 JetBrains为所有基于IntelliJ平台的IDE提供官方插件库[plugins.jetbrains.com](https://plugins.jetbrains.com),

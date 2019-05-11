@@ -26,7 +26,7 @@ _IntelliJ Platform_提供了这些IDE提供丰富语言工具支持所需的所�
 _IntelliJ Platform_包括多种语言的解析器和PSI模型,其可组合性意味着可以添加对其他语言的支持.
 
 
-##插件
+## 插件
 
 
 构建在_IntelliJ Platform_上的产品是可组合的应用程序,平台负责组件的创建,以及将依赖项注入类中. 
@@ -44,7 +44,7 @@ _IntelliJ Platform_是一个JVM应用程序,主要使用Java和Kotlin编写.
 目前,无法以非JVM语言扩展_IntelliJ Platform_.
 
 
-##开源
+## 开源
 
 
 _IntelliJ Platform_是开源,在[Apache许可证](upsource:///LICENSE.txt)和[托管在GitHub](https://github.com/JetBrains/intellij-community)下.

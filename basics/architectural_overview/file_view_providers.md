@@ -17,40 +17,30 @@ title: File View Providers
 检索多个`PsiFile`实例.
 
 
-##如何获得FVP？
+## 如何获得FVP？
 
-
-*来自VirtualFile:`PsiManager.getInstance(project).findViewProvider()`
-
-*来自PSI文件:`psiFile.getViewProvider()`
-
+* 来自VirtualFile:`PsiManager.getInstance(project).findViewProvider()`
+* 来自PSI文件:`psiFile.getViewProvider()`
 
 ## FVP怎么办？
 
+* 要获取文件中存在PSI树的所有语言的集合:`fileViewProvider.getLanguages()`
 
-*要获取文件中存在PSI树的所有语言的集合:`fileViewProvider.getLanguages()`
-
-*获取特定语言的PSI树:`fileViewProvider.getPsi(language)`,其中`language`参数可以取[Language]的值(upsource:///platform/core-api/src/com/
+* 获取特定语言的PSI树:`fileViewProvider.getPsi(language)`,其中`language`参数可以取[Language]的值(upsource:///platform/core-api/src/com/
 intellij/lang/Language.java)在[StdLanguages](upsource:///platform/platform-api/src/com/intellij/lang/StdLanguages.java)类中定义的类型.
 例如,要获取XML的PSI树,请使用`fileViewProvider.getPsi(StdLanguages.XML)`.
 
-*要在文件中指定的偏移量处查找特定语言的元素:`fileViewProvider.findElementAt(offset,language)`
+* 要在文件中指定的偏移量处查找特定语言的元素:`fileViewProvider.findElementAt(offset,language)`
 
 
-##如何扩展FileViewProvider？
+## 如何扩展FileViewProvider？
 
-
-要创建具有针对不同语言的多个散布树的文件类型,您的插件必须包含* IntelliJ Platform *核心中可用的`fileType.fileViewProviderFactory` [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)的扩展.
-
-
+要创建具有针对不同语言的多个散布树的文件类型,您的插件必须包含 *IntelliJ Platform* 核心中可用的`fileType.fileViewProviderFactory` [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)的扩展.
 此扩展点使用[FileTypeExtensionPoint]声明(upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)
-
 豆类.
-
 
 要访问此扩展点,请创建一个实现[FileViewProviderFactory](upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)接口的Java类,并在此类中覆盖` 
 createFileViewProvider`方法.
-
 
 要声明`fileType.fileViewProviderFactory`扩展点的扩展,请将以下语法添加到`plugin.xml`文件的`<extensions>`部分:
 
@@ -61,7 +51,6 @@ createFileViewProvider`方法.
 </extensions>
 ```
 
-其中`％file_type％`指的是正在创建的文件的类型(例如,“JFS”),而`％class_name％`指的是实现[`FileViewProviderFactory`]的Java类的名称(upsource: 
-///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)界面.
+其中`％file_type％`指的是正在创建的文件的类型(例如,“JFS”),而`％class_name％`指的是实现[`FileViewProviderFactory`]的Java类的名称(upsource:///platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java)界面.
 
 

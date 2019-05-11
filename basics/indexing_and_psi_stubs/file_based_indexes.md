@@ -27,7 +27,7 @@ title: File-based Indexes
 当您访问索引时,指定您感兴趣的密钥并返回密钥出现的文件列表以及与每个文件关联的值.
 
 
-##实现基于文件的索引
+## 实现基于文件的索引
 
 
 一个相当简单的基于文件的索引实现是[UI Designer绑定表单索引](upsource:///plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java).
@@ -66,7 +66,7 @@ title: File-based Indexes
 > **注意**请参阅`com.intellij.util.indexing.DebugAssertions`,了解如何在开发期间启用其他调试断言以断言正确的索引实现.
 
 
-##访问基于文件的索引
+## 访问基于文件的索引
 
 
 通过[FileBasedIndex](upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java)类访问基于文件的索引.
@@ -92,10 +92,10 @@ title: File-based Indexes
 首先从索引A收集所有必要的数据,然后在访问索引B时处理结果.
 
 
-##标准索引
+## 标准索引
 
 
-* IntelliJ Platform *包含许多基于标准文件的索引.
+ *IntelliJ Platform* 包含许多基于标准文件的索引.
 插件开发人员最有用的索引是:
 
 

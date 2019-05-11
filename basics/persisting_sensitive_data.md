@@ -28,7 +28,7 @@ title: Persisting Sensitive Data
     }    
 ```
 
-###存储凭据
+### 存储凭据
 
 
 ```java
@@ -38,7 +38,7 @@ title: Persisting Sensitive Data
 ```
 To remove stored credentials, pass `null` for `credentials` parameter.
 
-##存储
+## 存储
 
 默认存储格式取决于操作系统.
 

@@ -11,9 +11,9 @@ title: Project Wizard
 
 2. [支持模块类型](project_wizard/module_types.md)
 
-3.项目创建期间的处理活动
+3. 项目创建期间的处理活动
 
-4.初始环境配置
+4. 初始环境配置
 
 
 **注意:**

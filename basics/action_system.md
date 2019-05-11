@@ -2,7 +2,7 @@
 title: Action System
 ---
 
-##执行和更新操作
+## 执行和更新操作
 
 
 The system of actions allows plugins to add their own items to IDEA menus and toolbars.  An action is a class, derived from the [`AnAction`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java) class, whose `actionPerformed` method is called when the menu item or toolbar button is selected.
@@ -40,13 +40,13 @@ For example, one of the action classes is responsible for the **File \| Open Fil
 有关定义操作的分步演练,请查看[操作系统教程](/tutorials/action_system.md).
 
 
-##注册操作
+## 注册操作
 
 
 注册动作有两种主要方式:通过在`plugin.xml`文件的`<actions>`部分中列出它,或者通过Java代码.
 
 
-###在plugin.xml中注册操作
+### 在plugin.xml中注册操作
 
 
 以下示例演示了在`plugin.xml`中注册操作. 
@@ -155,10 +155,10 @@ For example, one of the action classes is responsible for the **File \| Open Fil
 要从代码注册操作,需要两个步骤.
 
 
-*首先,必须将源自`AnAction`的类的实例传递给[ActionManager]的`registerAction`方法(upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem) 
+* 首先,必须将源自`AnAction`的类的实例传递给[ActionManager]的`registerAction`方法(upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem)
 /ActionManager.java)类,用于将操作与ID相关联.
 
-*其次,需要将操作添加到一个或多个组中.
+* 其次,需要将操作添加到一个或多个组中.
 要按ID获取操作组的实例,必须调用`ActionManager.getAction()`并将返回的值强制转换为[DefaultActionGroup](upsource:///platform/platform-api/src/com/intellij) 
 /openapi/actionSystem/DefaultActionGroup.java)类.
 
@@ -169,11 +169,11 @@ For example, one of the action classes is responsible for the **File \| Open Fil
 **在IDEA创业公司注册诉讼**
 
 
-*创建一个实现[`ApplicationComponent`](upsource:///platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java)接口的新类.
+* 创建一个实现[`ApplicationComponent`](upsource:///platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java)接口的新类.
 
-*在这个类中,重写`getComponentName`,`initComponent`和`disposeComponent`方法.
+* 在这个类中,重写`getComponentName`,`initComponent`和`disposeComponent`方法.
 
-*在plugin.xml文件的`<application-components>`部分注册此类.
+* 在plugin.xml文件的`<application-components>`部分注册此类.
 
 
 为了阐明上述过程,请考虑以下示例Java类“MyPluginRegistration”,它注册在自定义`TextBoxes`类中定义的操作,并将新菜单命令添加到主菜单上的* Window *菜单组:
@@ -225,7 +225,7 @@ public class MyPluginRegistration implements ApplicationComponent {
 </application-components>
 ```
 
-##从Actions构建UI
+## 从Actions构建UI
 
 
 如果插件需要包含从其自己的用户界面中的一组操作构建的工具栏或弹出菜单,则可以通过[`ActionPopupMenu`](upsource:///platform/editor-ui-api/src/)来完成

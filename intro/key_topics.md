@@ -6,7 +6,7 @@ _IntelliJ Platform_非常庞大,非常强大,其规模和范围最初可能非�
 此页面旨在列出插件作者感兴趣的关键主题,并提供指向最常见扩展点的快速链接.
 
 
-##基本概念
+## 基本概念
 
 
  - 带插件的[入门](/basics/getting_started.md).
@@ -26,14 +26,14 @@ _IntelliJ Platform_非常庞大,非常强大,其规模和范围最初可能非�
  -  [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)
 
 
-##代码模型
+## 代码模型
 
 
 _IntelliJ Platform_的代码模型称为PSI  - 程序结构接口. 
 PSI解析代码,构建索引并创建语义模型.
 
 
-##常用扩展点
+## 常用扩展点
 
 
 _IntelliJ Platform_具有极强的可扩展性,可以扩展大多数功能和服务.

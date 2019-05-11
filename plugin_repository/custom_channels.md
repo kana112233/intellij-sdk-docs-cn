@@ -2,7 +2,7 @@
 title: Custom Release Channels
 ---
 
-##将插件更新上传到自定义发布渠道
+## 将插件更新上传到自定义发布渠道
 
 
 您可以通过插件存储库Web界面,[Gradle插件](../tutorials/build_system/deployment.md)或[API](api/plugin_upload.md)将插件部署到您选择的特定频道.
@@ -26,7 +26,7 @@ title: Custom Release Channels
 ![添加频道](img/plugin_repository_add_custom_channel.png)
 
 
-##在基于IntelliJ平台的IDE中配置自定义通道
+## 在基于IntelliJ平台的IDE中配置自定义通道
 
 
 使用非默认发布通道时,基于IntelliJ Platform的IDE用户需要添加新的[自定义插件存储库](https://www.jetbrains.com/idea/help/managing-enterprise-plugin-repositories.html)
@@ -40,11 +40,11 @@ title: Custom Release Channels
 热门频道名称包括:
 
 
-*`eap`:https://plugins.jetbrains.com/plugins/eap/list
+* `eap`:https://plugins.jetbrains.com/plugins/eap/list
 
-*`alpha`:https://plugins.jetbrains.com/plugins/alpha/list
+* `alpha`:https://plugins.jetbrains.com/plugins/alpha/list
 
-*`beta`:https://plugins.jetbrains.com/plugins/beta/list
+* `beta`:https://plugins.jetbrains.com/plugins/beta/list
 
 
 也可以托管[Enterprise Plugin Repository](https://www.jetbrains.com/idea/help/adding-plugins-to-enterprise-repositories.html),在这种情况下,URL结构将取决于您的
@@ -68,7 +68,7 @@ https://plugins.jetbrains.com/plugins/<channel>/<pluginId>
 ![在IntelliJ IDEA中添加自定义插件存储库](img/intellij_custom_plugin_repository.png)
 
 
-##频道优先通知
+## 频道优先通知
 
 
 请注意,自定义存储库优先于默认通道.

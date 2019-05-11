@@ -2,7 +2,7 @@
 title: Tool Windows
 ---
 
-##工具Windows
+## 工具Windows
 
 
 _Tool windows_是用于显示信息的IDE的子窗口。
@@ -30,16 +30,16 @@ _Tool windows_是用于显示信息的IDE的子窗口。
 扩展点属性指定显示工具窗口按钮所需的所有数据:
 
 
-*工具窗口的`id`(对应于工具窗口按钮上显示的文本)
+* 工具窗口的`id`(对应于工具窗口按钮上显示的文本)
 
 
-*`anchor`，表示显示工具窗口的屏幕一侧(“左”，“右”或“底”)
+* `anchor`，表示显示工具窗口的屏幕一侧(“左”，“右”或“底”)
 
 
-*“secondary”属性，指定工具窗口是显示在主要组还是次要组中
+* “secondary”属性，指定工具窗口是显示在主要组还是次要组中
 
 
-*工具窗口按钮上显示的`icon`(13x13像素)
+* 工具窗口按钮上显示的`icon`(13x13像素)
 
 
 除此之外，您还可以指定* factory class *  - 实现该类的类的名称
@@ -110,7 +110,7 @@ interface(这可以是与工具窗口工厂实现相同的类)。
 [Content.setCloseable(假)](upsource:///platform/platform-api/src/com/intellij/ui/content/Content.java)。
 
 
-##如何创建工具窗口？
+## 如何创建工具窗口？
 
 
 IntelliJ平台提供_toolWindow_ [扩展点](/basics/plugin_structure/plugin_extensions_and_extension_points.md)，您可以使用它来创建和配置自定义工具窗口。
@@ -120,7 +120,7 @@ IntelliJ平台提供_toolWindow_ [扩展点](/basics/plugin_structure/plugin_ext
 要创建工具窗口，首先声明_toolWindow_扩展点的扩展名。
 
 
-###创建插件
+### 创建插件
 
 
 要创建显示自定义工具窗口的插件，请执行以下步骤:
@@ -161,7 +161,7 @@ IntelliJ平台提供_toolWindow_ [扩展点](/basics/plugin_structure/plugin_ext
 </extensions>
 ```
 
-###示例插件
+### 示例插件
 
 
 为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow **示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/) 

@@ -7,12 +7,12 @@ title: Creating a Plugin Project
 
 本节介绍如何使用“新建项目”向导从头开始创建新的插件项目. 
 (可选)您可以导入现有项目或从外部模型导入项目.
-您还可以将新插件模块添加到现有的* IntelliJ Platform *项目中.
+您还可以将新插件模块添加到现有的 *IntelliJ Platform* 项目中.
 
 有关更多信息,请参阅[IntelliJ IDEA Web帮助](https://www.jetbrains.com/idea/help/new-project-wizard.html).
 
 
-###创建IntelliJ平台插件项目:
+### 创建IntelliJ平台插件项目:
 
 
 *  On the main menu, choose **File \| New \| Project**. The *New Project*

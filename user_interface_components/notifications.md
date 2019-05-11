@@ -5,7 +5,7 @@ title: Notifications
 ## 通知
 
 其中一个主要的设计原则是避免使用模态消息框来通知用户有关可能需要用户注意的错误和其他情况.
-作为替代,* IntelliJ Platform *提供了多个非模态通知UI选项.
+作为替代, *IntelliJ Platform* 提供了多个非模态通知UI选项.
 
 ### 对话
 

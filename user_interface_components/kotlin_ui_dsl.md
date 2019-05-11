@@ -6,7 +6,7 @@ title: Kotlin UI DSL
 本文档中描述的许多功能不适用于针对早期IntelliJ IDEA版本的插件。
 
 
-##布局结构
+## 布局结构
 
 
 使用`panel`创建UI:
@@ -76,7 +76,7 @@ row {
 }
 ```
 
-##添加组件
+## 添加组件
 
 
 There are two ways to add child components. The recommended way is to use factory methods `label`, `button`, `radioButton`, `hint`, `link`, etc. It allows you to create consistent UI and reuse common patterns.
@@ -108,10 +108,10 @@ If you want to add a component for which there are no factory methods, you can s
   // use userField variable somehow
   ```
 
-##支持的组件
+## 支持的组件
 
 
-＃＃＃ 标签
+### 标签
 
 
 使用`label`方法:
@@ -121,13 +121,13 @@ If you want to add a component for which there are no factory methods, you can s
 label("Sample text")
 ```
 
-###复选框
+### 复选框
 
 
 见上面的例子。
 
 
-###单选按钮
+### 单选按钮
 
 
 单选按钮组使用`buttonGroup`块创建。
@@ -155,7 +155,7 @@ buttonGroup {
 }
 ```
 
-###文本字段
+### 文本字段
 
 
 将`textField`方法用于简单的文本字段:
@@ -195,7 +195,7 @@ val panel = panel {
 }
 ```
 
-###组合框
+### 组合框
 
 
 将`comboBox`方法与bound属性或getter/setter对一起使用:
@@ -210,7 +210,7 @@ comboBox<PgpKey>(
   { mySettings.state.pgpKeyId = if (usePgpKey.isSelected) it?.keyId else null })
 ```
 
-###纺纱厂
+### 纺纱厂
 
 
 使用`spinner`方法:
@@ -220,7 +220,7 @@ comboBox<PgpKey>(
 spinner(retypeOptions::retypeDelay, minValue = 0, maxValue = 5000, step = 50)
 ```
 
-###链接标签
+### 链接标签
 
 
 使用`link`方法:
@@ -232,7 +232,7 @@ link("Forgot password?") {
 }
 ```
 
-###分隔符
+### 分隔符
 
 
 使用`titledRow`方法并将分隔符下的控件放入嵌套块中:
@@ -244,7 +244,7 @@ titledRow("Appearance") {
 }
 ```
 
-###解释性文字
+### 解释性文字
 
 
 使用`comment`参数:
@@ -256,7 +256,7 @@ checkBox(message("checkbox.smart.tab.reuse"),
        comment = message("checkbox.smart.tab.reuse.inline.help"))
 ```
 
-##使用属性绑定集成面板
+## 使用属性绑定集成面板
 
 
 `panel`方法返回的面板是`DialogPanel`的实例。
@@ -271,7 +271,7 @@ checkBox(message("checkbox.smart.tab.reuse"),
 在这种情况下，`Configurable`方法将自动委托给面板。
 
 
-##启用和禁用控件
+## 启用和禁用控件
 
 
 使用`enableIf`方法将控件的启用状态绑定到在其他控件中输入的值。
@@ -299,7 +299,7 @@ checkBox("Hide tabs if there is no space", uiSettings::hideTabsIfNeed)
               myScrollTabLayoutInEditorCheckBox.selected)
 ```
 
-##示例
+## 示例
 
 
 ```kotlin
@@ -320,7 +320,7 @@ val panel = panel {
 ＃＃ 常问问题
 
 
-###一个单元格最小，第二个单元格最大
+### 一个单元格最小，第二个单元格最大
 
 
 为第二个单元格中的某个组件设置`CCFlags.growX`和`CCFlags.pushX`。

@@ -26,7 +26,7 @@ title: Rename Refactoring
 
 **例:**
 
-[的setName()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<! - ＃L58-->
+[的setName()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!-- ＃L58-->
 
 实施一个
 

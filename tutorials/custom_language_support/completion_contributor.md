@@ -28,6 +28,6 @@ title: 9. Completion Contributor
 运行该项目
 
 
-！[完成](IMG/completion.png)
+![完成](IMG/completion.png)
 
 

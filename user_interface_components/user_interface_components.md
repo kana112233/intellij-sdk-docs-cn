@@ -9,7 +9,7 @@ IntelliJ平台包含大量自定义Swing组件。
 以下组件特别值得注意:
 
 
-*使用[Action System](/basics/action_system.md)构建菜单和工具栏
+* 使用[Action System](/basics/action_system.md)构建菜单和工具栏
 
 * [工具窗口](/user_interface_components/tool_windows.md)
 
@@ -25,13 +25,13 @@ IntelliJ平台包含大量自定义Swing组件。
 
 * [列表和树控件](/user_interface_components/lists_and_trees.md)
 
-*表格(TableView)(待定)
+* 表格(TableView)(待定)
 
-*拖放助手(TBD)
+* 拖放助手(TBD)
 
 * [其他Swing组件](/user_interface_components/misc_swing_components.md)
     
-*消息
+* 消息
     
 * JBSplitter
     

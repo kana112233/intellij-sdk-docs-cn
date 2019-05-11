@@ -2,7 +2,7 @@
 title: File and Class Choosers
 ---
 
-##文件选择器
+## 文件选择器
 
 
 要让用户选择文件，目录或多个文件，请使用
@@ -32,7 +32,7 @@ class允许您控制可以选择的文件。
 
 [FileChooserDescriptor](upsource:///platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java)。
 
-请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用`chooseFiles()`的重载来显示标准的* IntelliJ Platform *对话框。
+请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用`chooseFiles()`的重载来显示标准的 *IntelliJ Platform* 对话框。
 
 
 使用文件选择器的一种非常常见的方法是使用文本字段输入带有省略号按钮(“...”)的路径以显示文件选择器。
@@ -54,7 +54,7 @@ class允许您控制可以选择的文件。
 此API显示的对话框有两个选项卡:
 
 
-*一个显示项目结构
+* 一个显示项目结构
 
 
 * Another显示的文件列表类似于`Goto File`弹出窗口所使用的文件。
@@ -63,7 +63,7 @@ class允许您控制可以选择的文件。
 要显示对话框，请在`createFileChooser()`返回的选择器上调用`showDialog()`，然后调用`getSelectedFile`来检索用户的选择。
 
 
-##类和包选择器
+## 类和包选择器
 
 
 如果要为用户提供选择Java类的可能性，可以使用

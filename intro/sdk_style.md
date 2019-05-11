@@ -65,11 +65,11 @@ Lorem ipsum...
 YAML标头还可以包括[重定向](#redirects)信息.
 
 Markdown文件中标题周围的行间距通常不会影响HTML转换,但它确实使MD页面对作者更具可读性:
-*标题与其下方的第一个内容之间没有空格.
-*如果是前一部分的同一级别或子标题,则前一个空格.
-*标题之前的两个空格,其高于上一节的标题.
+* 标题与其下方的第一个内容之间没有空格.
+* 如果是前一部分的同一级别或子标题,则前一个空格.
+* 标题之前的两个空格,其高于上一节的标题.
 
-###重定向
+### 重定向
 文档站点设置为包含[jekyll-redirect-from](https://github.com/jekyll/jekyll-redirect-from)插件,该插件将生成自动重定向到给定页面的“虚拟”页面.
 例如,要指定生成`index.html`页面以重定向到`README.md`,`README.md`文件应在YAML头中包含以下内容:
 
@@ -128,7 +128,7 @@ Consistent text styles are used to standardize references and keywords:
   使用SDK文档中的完整短语.
 * 基于IntelliJ平台的IDE被描述为_IntelliJ基于平台的IDEs_.
   一旦在页面上使用该术语,之后作者可以使用IDE
-*在提及JetBrains产品时,请始终使用全名,例如_IntelliJ IDEA_.
+* 在提及JetBrains产品时,请始终使用全名,例如_IntelliJ IDEA_.
 
 ### 语法高亮显示
 源代码可以使用[GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)代码围栏来表示,这是三个反引号:
@@ -152,7 +152,7 @@ Consistent text styles are used to standardize references and keywords:
 
 请保持代码示例简洁,避免任何不必要的“周围”代码或import语句.
 
-<! - //TODO:目前不支持rouge或网站的CSS
+<!-- //TODO:目前不支持rouge或网站的CSS
 
 该站点还配置为突出显示源代码中的一系列文件,方法是指定`{start-end}`,它是突出显示的开始和结束行:
 
@@ -181,8 +181,8 @@ The syntax is to use the pipe (`|`) and minus symbols:
 
 IntelliJ平台(`intellij-community`)存储库中文件的链接使用`upsource:///`而不是存储库的完整URL.
 `upsource:///`URI有效地指向`intellij-community`存储库的根.
-*`[README.md](upsource:///README.md)`用于链接到存储库中的常规文件.
-*`[`\`AnAction \``](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)`用于指向接口和类的源代码文件的链接.
+* `[README.md](upsource:///README.md)`用于链接到存储库中的常规文件.
+* `[`\`AnAction \``](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)`用于指向接口和类的源代码文件的链接.
   请注意链接中类名周围使用的\`\`字符.
 
 常规链接具有以下格式之一:
@@ -195,8 +195,8 @@ IntelliJ平台(`intellij-community`)存储库中文件的链接使用`upsource:/
     相对链接也有效(`../Folder2/Page2.md`).
 * 链接到SDK文档中页面上的特定_sections_.
   锚名称全部为小写,空格用`-`替换,例如`## Page setup`变为`#page-setup`.
-  *`[链接到当前页面上的部分](#another-section)`链接到当前页面上的标题.
-  *`[链接到另一页上的部分](Page2.md#another-section)`链接到另一页上的标题.
+  * `[链接到当前页面上的部分](#another-section)`链接到当前页面上的标题.
+  * `[链接到另一页上的部分](Page2.md#another-section)`链接到另一页上的标题.
 
 
 ### 备注和标注

@@ -2,7 +2,7 @@
 title: Plugin Actions
 ---
 
-* IntelliJ Platform *提供了_actions_的概念.
+ *IntelliJ Platform* 提供了_actions_的概念.
 动作是一个类,派生自[`AnAction`](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)类,其`actionPerformed`方法是
 选择菜单项或工具栏按钮时调用.
 

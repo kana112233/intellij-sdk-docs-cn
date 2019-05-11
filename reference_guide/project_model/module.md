@@ -43,7 +43,7 @@ _module_是一个独立的功能单元,可以独立运行,测试和调试.
 插件可以通过创建构面或模块级组件来存储与模块关联的其他数据.
 
 
-* IntelliJ Platform *提供了许多可用于处理模块的Java类和接口:
+ *IntelliJ Platform* 提供了许多可用于处理模块的Java类和接口:
 
 
 * [`ModuleManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/module/ModuleManager.java) abstract class.

@@ -51,6 +51,6 @@ title: 16. Code Style Setting
 运行该项目
 
 
-！[代码样式设置](img/code_style_settings.png)
+![代码样式设置](img/code_style_settings.png)
 
 

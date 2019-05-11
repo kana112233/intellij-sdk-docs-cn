@@ -5,7 +5,7 @@ title: Adding New Steps to Project Wizard
 本教程介绍如何向项目向导添加额外步骤以提供其他项目配置设置。
 
 
-##预先要求
+## 预先要求
 
 
 创建一个空的插件项目。

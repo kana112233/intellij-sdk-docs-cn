@@ -73,6 +73,6 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.simpleplugin.psi.impl.Sim
 
 Now we can navigate to a property definition by name pattern via **Navigate \| Symbol** action.
 
-！[转到符号](img/go_to_symbol.png)
+![转到符号](img/go_to_symbol.png)
 
 

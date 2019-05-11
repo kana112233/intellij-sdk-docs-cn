@@ -41,6 +41,6 @@ title: 14. Structure View Factory
 运行该项目
 
 
-！[结构视图](img/structure_view.png)
+![结构视图](img/structure_view.png)
 
 

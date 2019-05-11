@@ -2,7 +2,7 @@
 title: Plugin Compatibility with IntelliJ Platform Products
 ---
 
-<! -  TODO链接到sample_plugin文件 - >
+<!--  TODO链接到sample_plugin文件 -->
 
 
 所有基于_IntelliJ Platform_的产品,如IntelliJ IDEA,RubyMine,WebStorm等,都针对相同的底层平台API,一些产品共享在平台之上构建的功能,例如Java支持(IntelliJ IDEA)
@@ -32,7 +32,7 @@ title: Plugin Compatibility with IntelliJ Platform Products
 </idea-plugin>
 ```
 
-<! -  TODO链接到sample_plugin文件 - >
+<!--  TODO链接到sample_plugin文件 -->
 
 
 如果插件在其`plugin.xml`中不包含任何模块依赖关系标签,则它被假定为旧插件并且仅在IntelliJ IDEA中加载.
@@ -44,15 +44,15 @@ title: Plugin Compatibility with IntelliJ Platform Products
 目前,基于IntelliJ平台的所有产品均提供以下模块:
 
 
-*`com.intellij.modules.platform`
+* `com.intellij.modules.platform`
 
-*`com.intellij.modules.lang`
+* `com.intellij.modules.lang`
 
-*`com.intellij.modules.vcs`
+* `com.intellij.modules.vcs`
 
-*`com.intellij.modules.xml`
+* `com.intellij.modules.xml`
 
-*`com.intellij.modules.xdebugger`
+* `com.intellij.modules.xdebugger`
 
 
 这意味着插件可以声明对`com.intellij.modules.vcs`的依赖,它可以在任何支持版本控制的产品中工作,并且因为所有产品目前都包含`com.intellij.modules.vcs`模块,这个插件
@@ -79,7 +79,7 @@ title: Plugin Compatibility with IntelliJ Platform Products
 | `com.jetbrains.php`                  | PhpStorm (built-in plugin)                                                           |
 | `com.intellij.modules.webstorm`      | WebStorm                                                           |
 
-##插件依赖项
+## 插件依赖项
 
 
 如果要为插件添加依赖项,请使用插件名称/ID将“<depends>”标记添加到“plugin.xml”.
@@ -88,7 +88,7 @@ title: Plugin Compatibility with IntelliJ Platform Products
 确保将插件罐添加到SDK而不是插件,否则罐子将与您的插件捆绑在一起.
 
 
-##可选的依赖项
+## 可选的依赖项
 
 
 您还可以指定可选的依赖项.
@@ -109,7 +109,7 @@ title: Plugin Compatibility with IntelliJ Platform Products
 [JetBrains插件存储库](https://plugins.jetbrains.com/)根据上述规则自动检测与插件兼容的产品,并将其提供给这些产品的用户.
 
 
-##平台兼容性
+## 平台兼容性
 
 
 _IntelliJ Platform_和捆绑插件的API可以在发行版之间更改.

@@ -100,7 +100,7 @@ title: 2. Grouping Actions
 执行上述步骤后，操作组及其内容将在**工具**菜单中提供:
 
 
-！[简单行动小组](img/grouped_action.png)
+![简单行动小组](img/grouped_action.png)
     
   
 
@@ -241,7 +241,7 @@ public class CustomDefaultActionGroup extends DefaultActionGroup {
 还会有一个图标:
 
 
-！[默认操作组](img/editor_popup_menu.png)
+![默认操作组](img/editor_popup_menu.png)
 
 
 ### 2.3。
@@ -318,6 +318,6 @@ public class DynamicActionGroup extends ActionGroup {
 提供`DynamicActionGroup`的实现并使其返回非空的操作数组后，** Tools **菜单中的最后一个位置将包含一组新的操作:
 
 
-！[动态行动小组](img/dynamic_action_group.png)
+![动态行动小组](img/dynamic_action_group.png)
 
 

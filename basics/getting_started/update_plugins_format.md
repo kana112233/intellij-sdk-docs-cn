@@ -6,19 +6,18 @@ title: Publishing a Plugin to a Custom Plugin Repository
 
 你需要:
 
-*在用于自定义存储库的HTTPS Web服务器上创建和维护`updatePlugins.xml`文件.
-  
+* 在用于自定义存储库的HTTPS Web服务器上创建和维护`updatePlugins.xml`文件.  
 此文件描述了自定义存储库中可用的所有插件以及每个插件的下载URL.
 
-*将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
+* 将您的插件JAR/ZIP文件上传到HTTPS Web服务器.
 这可以是您用于自定义存储库的同一Web服务器
   
 或者不同的HTTPS Web服务器.
 
-*将自定义存储库的URL添加到JetBrains IDE [存储库设置/首选项](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
+* 将自定义存储库的URL添加到JetBrains IDE [存储库设置/首选项](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
 
 
-##在updatePlugins文件中描述您的插件
+## 在updatePlugins文件中描述您的插件
 
 每个自定义插件存储库必须至少有一个`updatePlugins.xml`文件来描述最新的可用版本
 
@@ -31,21 +30,17 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.
 该描述还告诉JetBrains IDE在哪里下载插件本身.
 
 
-自定义插件存储库的`updatePlugins.xml`文件由管理员构建和维护
-
-存储库.
+自定义插件存储库的`updatePlugins.xml`文件由管理员构建和维护存储库.
 如果自定义存储库的使用者使用更多,则可能需要多个`updatePlugins.xml`文件
 
 比一个版本的JetBrains IDE.
 例如,对于IntelliJ IDEA 2018.2和2018.3,分别为`updatePlugins-182.xml`,`updatePlugins-183.xml`.
 
 每个`updatePlugins  -  *.xml`文件都有一个添加到JetBrains IDE的唯一URL
-
 [存储库设置/首选项](https://www.jetbrains.com/help/idea/managing-plugins.html#repos).
 
 
 ### updatePlugins文件的格式
-
 `updatePlugins.xml`文件的格式只是描述每个插件的顺序元素列表:
 
 
@@ -81,7 +76,7 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.
 * A plugin `id` may be listed only once in an `updatePlugins.xml` file.  
 * Multiple plugins with the same `id` but different `idea-version` attributes must be split into separate `updatePlugins-*.xml` files. 
 
-###可选的updatePlugin元素
+### 可选的updatePlugin元素
 
 可以在`updatePlugins.xml`中添加其他元素吗？
 是的,但仅在需要时才建议.
@@ -91,7 +86,6 @@ JetBrains IDE显示这些属性,以帮助用户选择或升级插件.
 
 
 在插件安装期间,JetBrains IDE读取插件JAR/ZIP文件,然后显示有关插件的更多信息.
-
 哪些附加信息可能有助于用户在何时选择插件
 
 [浏览自定义插件存储库](https://www.jetbrains.com/help/idea/managing-plugins.html#repos)

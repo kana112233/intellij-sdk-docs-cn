@@ -2,7 +2,7 @@
 title: Incompatible Changes in IntelliJ Platform and Plugins API
 ---
 
-<! - 
+<!--
 
 在记录API更改之前,请确保无法避免更改
 
@@ -91,7 +91,7 @@ com.intellij.openapi.actionSystem.AnAction $将InnerClass.
  
 3)代码引号和链接:[`org.example.Foo`](upsource:///platform/core-api/src/org/example/Foo)
 
- - >
+ -->
 
 
 在版本之间偶尔会更改IntelliJ API,导致现有插件与较新的IDE版本不兼容.

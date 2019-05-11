@@ -5,11 +5,11 @@ title: Plugin Recommendations
 IntelliJ平台IDE将推荐一个插件,以便在以下某种情况下进行安装:
 
 
-*如果项目包含运行的IDE不支持但受插件支持的类型的文件
+* 如果项目包含运行的IDE不支持但受插件支持的类型的文件
    
 在插件存储库中可用;
  
-*如果项目是在安装了插件的其他IDE安装中创建的,并且包含共享
+* 如果项目是在安装了插件的其他IDE安装中创建的,并且包含共享
    
 使用插件配置的设置(模块,构面,工件或运行配置).
 
@@ -52,7 +52,7 @@ IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们�
 请参阅[注册文件类型](/reference_guide/custom_language_support/registering_file_type.md)以在插件中提供此功能.
 
 
-##运行配置类型
+## 运行配置类型
 
 
 如果希望IDE显示您的插件支持“运行配置类型”,则需要实现
@@ -90,7 +90,7 @@ IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们�
 有关其他信息,请参阅[Facet](/reference_guide/project_model/facet.md).
 
 
-##模块类型
+## 模块类型
 
 
 如果您希望IDE显示您的插件可以支持创建特定模块类型的提示,则应该扩展
@@ -106,7 +106,7 @@ IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们�
 有关支持模块类型的更多信息.
 
 
-##神器类型
+## 神器类型
 
 
 要支持特定的工件类型,请扩展[ArtifactType](upsource:///java/compiler/openapi/src/com/intellij/packaging/artifacts/ArtifactType.java),

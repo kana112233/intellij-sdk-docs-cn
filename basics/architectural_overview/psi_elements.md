@@ -14,24 +14,24 @@ PSI元素和各个PSI元素级别的操作用于探索源代码的内部结构,�
 [PsiElement](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)类是PSI元素的公共基类.
 
 
-##如何获得PSI元素？
+## 如何获得PSI元素？
 
 
-*来自一个动作:`e.getData(LangDataKeys.PSI_ELEMENT)`.
+* 来自一个动作:`e.getData(LangDataKeys.PSI_ELEMENT)`.
 注意:如果编辑器当前处于打开状态且插入符号下的元素是引用,则将返回解析引用的结果.
 这可能是您需要的,也可能不是.
 
-*来自偏移的文件:`PsiFile.findElementAt()`.
+* 来自偏移的文件:`PsiFile.findElementAt()`.
 注意:这将返回指定偏移量处的最低级别元素(“leaf”),该偏移量通常是词法分析器标记.
 
 很可能你应该使用`PsiTreeUtil.getParentOfType()`来找到你真正需要的元素.
 
-*通过迭代PSI文件:使用[`PsiRecursiveElementWalkingVisitor`](upsource:///platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java).
+* 通过迭代PSI文件:使用[`PsiRecursiveElementWalkingVisitor`](upsource:///platform/core-api/src/com/intellij/psi/PsiRecursiveElementWalkingVisitor.java).
 
-*通过解析引用:`PsiReference.resolve()`
+* 通过解析引用:`PsiReference.resolve()`
 
 
-##我可以用PSI元素做什么？
+## 我可以用PSI元素做什么？
 
 
 参见[PSI Cook Book](/basics/psi_cookbook.md)

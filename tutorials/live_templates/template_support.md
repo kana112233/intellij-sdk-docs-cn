@@ -2,7 +2,7 @@
 title: 1. Adding Live Template Support
 ---
 
-##模板创建
+## 模板创建
 
 
 最初，您需要从头开始[创建新的实时模板](https://www.jetbrains.com/idea/help/creating-and-editing-live-templates.html#d1476224e158)。
@@ -24,7 +24,7 @@ title: 1. Adding Live Template Support
 最后，为您的新实时模板提供适用的上下文(即“Everywhere”或“Other”)。
 
 
-##导出实时模板
+## 导出实时模板
 
 
 Once confident the Live Template produces the expected result (consider testing it inside the current editor to minimize debugging later), export the Live Template (**File \| Export Settings \| ☑ Live Templates**). Unpack the resulting archive, and inside a directory `./templates/` there will be a file  called `Markdown.xml` with the following contents:
@@ -44,7 +44,7 @@ Once confident the Live Template produces the expected result (consider testing 
 将此文件复制到插件的资源中(例如`project/resource/liveTemplates/Markdown.xml`。
 
 
-##实现DefaultLiveTemplatesProvider
+## 实现DefaultLiveTemplatesProvider
 
 
 [`DefaultLiveTemplatesProvider`](upsource:///platform/lang-impl/src/com/intellij/codeInsight/template/impl/DefaultLiveTemplatesProvider.java)告诉我们在哪里可以找到实时模板设置文件。
@@ -55,7 +55,7 @@ Once confident the Live Template produces the expected result (consider testing 
 {% include /code_samples/live_templates/src/MarkdownTemplateProvider.java %}
 ```
 
-##实现TemplateContextType
+## 实现TemplateContextType
 
 
 A [`TemplateContextType`](upsource:///platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java)告诉我们实时模板的适用位置。
@@ -79,14 +79,14 @@ A [`TemplateContextType`](upsource:///platform/lang-api/src/com/intellij/codeIns
 如果要增加对现有区域的语言支持，请考虑重复使用[许多现有模板上下文]之一(upsource:///platform/lang-api/src/com/intellij/codeInsight/template/TemplateContextType.java)。
 
 
-##注册扩展点
+## 注册扩展点
 
 
 ```xml
 {% include /code_samples/live_templates/resources/META-INF/plugin.xml %}
 ```
 
-##检查插件
+## 检查插件
 
 
 Now check that the plugin is working correctly. Run the plugin and verify there is a new entry under *File \| Settings \| Live Templates \| Markdown \| \[*. Finally, create a new file `Test.md` and confirm that the Live Template works.

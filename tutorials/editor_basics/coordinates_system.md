@@ -74,7 +74,7 @@ public class EditorAreaIllustration extends AnAction {
 可以对应于相同的逻辑位置。
 在逻辑中存储精确的视觉位置细节很方便
 
-位置是为了进一步简化“逻辑位置” - >“视觉位置”映射。
+位置是为了进一步简化“逻辑位置” -->“视觉位置”映射。
 
 
 ## 2.4。

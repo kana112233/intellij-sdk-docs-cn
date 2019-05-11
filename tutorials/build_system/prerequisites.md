@@ -16,7 +16,7 @@ title: Getting Started with Gradle
 
 You can verify that the plugins are enabled by visiting **Settings \| Plugins**. 
 
-！[确保已启用Gradle插件](img/step0_gradle_enabled.png){:width =“858px”}
+![确保已启用Gradle插件](img/step0_gradle_enabled.png){:width =“858px”}
 
 
 ### 1.2从Scratch创建一个插件项目
@@ -30,7 +30,7 @@ IntelliJ IDEA支持使用Gradle自动创建新的插件项目，并自动执行�
 To do so, create a new project in IntelliJ IDEA by opening **File \| New... \| Project**, and select Gradle from the dialog box. 
 In the "Additional Libraries and Frameworks" page, check "IntelliJ Platform Plugin".
 
-！[在项目创建向导中选择Gradle构面](img/step1_new_gradle_project.png){:width =“800px”}
+![在项目创建向导中选择Gradle构面](img/step1_new_gradle_project.png){:width =“800px”}
 
 
 项目创建向导现在将指导您完成Gradle项目创建过程。
@@ -38,7 +38,7 @@ In the "Additional Libraries and Frameworks" page, check "IntelliJ Platform Plug
 您需要指定组ID，工件ID和版本:
 
 
-！[指定组，工件和版本ID](img/step2_group_artifact_version.png){:width =“800px”}
+![指定组，工件和版本ID](img/step2_group_artifact_version.png){:width =“800px”}
 
 
 建议选择“使用默认gradle包装器”选项，这样IntelliJ IDEA将安装运行Gradle任务所需的一切。
@@ -47,7 +47,7 @@ In the "Additional Libraries and Frameworks" page, check "IntelliJ Platform Plug
 Finally, specify a JVM Gradle will use, it can be the Project JDK. 
 You also configure this path once the project is created via **Settings \| Build, Execution, Deployment \| Build Tools \| Gradle**. 
 
-！[验证JVM的版本是否正确](img/step3_gradle_config.png){:width =“800px”}
+![验证JVM的版本是否正确](img/step3_gradle_config.png){:width =“800px”}
 
 
 ### 1.3配置Gradle插件项目
@@ -117,7 +117,7 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.
 有关`pluginIcon.svg`文件的更多信息，请参阅[插件图标](/basics/plugin_structure/plugin_icon_file.md)页面。
 
 
-！[Gradle目录结构](img/gradle_directory_structure.png){:width =“374px”}
+![Gradle目录结构](img/gradle_directory_structure.png){:width =“374px”}
 
 
 ```java
@@ -135,13 +135,13 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.
 双击它以运行它。
 
 
-！[Gradle Tool Window](img/gradle_tasks_in_tool_window.png){:width =“398px”}
+![Gradle Tool Window](img/gradle_tasks_in_tool_window.png){:width =“398px”}
 
 
 或添加新的Gradle Run配置，配置如下:
 
 
-！[Gradle Run配置](img/gradle_run_config.png){:width =“800px”}
+![Gradle Run配置](img/gradle_run_config.png){:width =“800px”}
 
 
 启动新的Gradle运行配置。
@@ -149,7 +149,7 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.
 在“运行”窗口中，应显示以下输出。
 
 
-！[Gradle task output](img/launch.png){:width =“800px”}
+![Gradle task output](img/launch.png){:width =“800px”}
 
 
 最后，当IDE启动时，** Help **菜单右侧应该有一个新菜单。

@@ -37,7 +37,7 @@ title: Stub Indexes
 示例](upsource:///plugins/properties/properties-psi-api/src/com/intellij/lang/properties/psi/Property.java)).
 
 *确保PSI元素的实现类扩展了[`StubBasedPsiElementBase`](upsource:///platform/core-impl/src/com/intellij/extapi/psi/StubBasedPsiElementBase.java)参数化的存根类型
-interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<! -#L45-->).
+interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!--#L45-->).
 提供接受`ASTNode`的构造函数和接受存根的构造函数.
 
 *创建一个实现`IStubElementType`的类,并使用存根接口和实际的PSI元素接口进行参数化([example](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertyStubElementType.java)).
@@ -47,7 +47,7 @@ interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/in
 *解析时使用实现`IStubElementType`的类作为元素类型常量([示例](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/parsing/PropertiesElementTypes.java 
 )).
 
-*确保PSI元素接口中的所有方法在适当时访问存根数据而不是PSI树([example:Property.getKey()implementation](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<! -#L95  - >).
+*确保PSI元素接口中的所有方法在适当时访问存根数据而不是PSI树([example:Property.getKey()implementation](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!--#L95  -->).
 
 
 对于支持存根的每种语言,只需执行以下步骤一次:
@@ -56,7 +56,7 @@ interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/in
 *将您的语言的文件元素类型(从`ParserDefinition.getFileNodeType()`返回的元素类型)更改为扩展`IStubFileElementType`的类.
 
 *在你的`plugin.xml`中,定义`<stubElementTypeHolder>`扩展并指定包含语言解析器使用的`IElementType`常量的接口([示例](upsource:///plugins/properties/src/META) 
--INF/plugin.xml中)<! -#L55  - >).
+-INF/plugin.xml中)<!--#L55  -->).
 
 
 对于序列化字符串数据,例如
@@ -81,7 +81,7 @@ interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/in
 否则,当外部依赖关系发生更改时,将不会重建存根树,并且存根树中将存在过时且不正确的数据.
 
 
-##存根索引
+## 存根索引
 
 
 构建存根树时,您可以同时将关于存根元素的一些数据放入多个索引中,然后可以使用相应的键来查找PSI元素.
@@ -96,19 +96,19 @@ interface([示例](upsource:///plugins/properties/properties-psi-impl/src/com/in
 存根索引实现类在`<stubIndex>`扩展点中注册.
 
 
-要将数据放入索引,请实现方法`IStubElementType.indexStub()`([example:JavaClassElementType.indexStub()](upsource:///java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java)<! -#L189  - >).
+要将数据放入索引,请实现方法`IStubElementType.indexStub()`([example:JavaClassElementType.indexStub()](upsource:///java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java)<!--#L189  -->).
 此方法接受`IndexSink`作为参数,并为应存储元素的每个索引放入索引ID和键.
 
 
 要从索引访问数据,请使用以下两种方法:
 
 
-*`AbstractStubIndex.getAllKeys()`返回指定项目的指定索引中所有键的列表(例如,项目中找到的所有类名列表).
+* `AbstractStubIndex.getAllKeys()`返回指定项目的指定索引中所有键的列表(例如,项目中找到的所有类名列表).
 
-*`AbstractStubIndex.get()`返回与指定范围内的某个键(例如,具有指定短名称的类)对应的PSI元素的集合.
+* `AbstractStubIndex.get()`返回与指定范围内的某个键(例如,具有指定短名称的类)对应的PSI元素的集合.
 
 
-##相关论坛讨论
+## 相关论坛讨论
 
 
 * [存根创建的生命周期](https://intellij-support.jetbrains.com/hc/en-us/community/posts/206121959-Lifecycle-of-stub-creation/comments/206143885)

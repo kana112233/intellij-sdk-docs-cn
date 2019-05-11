@@ -18,10 +18,10 @@ title: PyCharm
 ### PyCharm Open API
 
 
-** python-psi-api **和** python-openapi **模块中定义的符号也是公共API,并且被认为是稳定的.
+**python-psi-api**和**python-openapi**模块中定义的符号也是公共API,并且被认为是稳定的.
 
 
-###其他API
+### 其他API
 
 
 使用其他模块中定义的类和方法需要您自担风险,应注意使用您希望支持的任何版本的PyCharm来测试您的插件.

@@ -6,17 +6,17 @@ title: Writing Tests
 但是,对于许多常见情况,框架提供了可以使测试更容易的辅助方法:
 
 
-*`type()`模拟字符或字符串在内存编辑器中的输入.
+* `type()`模拟字符或字符串在内存编辑器中的输入.
 
-*`performEditorAction()`模拟在内存编辑器的上下文中执行动作.
+* `performEditorAction()`模拟在内存编辑器的上下文中执行动作.
 
-*`complete()`模拟代码完成的调用并返回完成列表中显示的查找元素列表(如果完成没有任何建议或一个自动插入的建议,则返回`null`).
+* `complete()`模拟代码完成的调用并返回完成列表中显示的查找元素列表(如果完成没有任何建议或一个自动插入的建议,则返回`null`).
 
-*`findUsages()`模拟'Find Usages'的调用并返回找到的用法.
+* `findUsages()`模拟'Find Usages'的调用并返回找到的用法.
 
-*`findSingleIntention()`与`launchAction()`结合使用指定名称模拟意图动作或检查quickfix的调用.
+* `findSingleIntention()`与`launchAction()`结合使用指定名称模拟意图动作或检查quickfix的调用.
 
-*`renameElementAtCaret()`或`rename()`模拟重命名重构的执行.
+* `renameElementAtCaret()`或`rename()`模拟重命名重构的执行.
 
 
 要将执行操作的结果与预期结果进行比较,可以使用`checkResultByFile()`方法.

@@ -7,7 +7,7 @@ redirect_from:
 以下链接表示使用_IntelliJ Platform_和创建插件的有用资源.
 
 
-###存储库
+### 存储库
 
 * [IntelliJ SDK文档](https://github.com/JetBrains/intellij-sdk-docs)
 
@@ -20,7 +20,7 @@ redirect_from:
 * [开源插件](https://plugins.jetbrains.com/search?correctionAllowed=true&pr=&orderBy=name&search=&should_have_source=true)
 
 
-###工具
+### 工具
 
 * [IDE设置,缓存,日志和插件](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)
 

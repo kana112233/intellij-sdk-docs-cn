@@ -149,7 +149,7 @@ public void doChange(Context context) {
 
 * * MessageBus *实例可通过
 
-[ComponentManager.getMessageBus()](upsource:///platform/core-api/src/com/intellij/openapi/components/ComponentManager.java)<! - ＃L85-->
+[ComponentManager.getMessageBus()](upsource:///platform/core-api/src/com/intellij/openapi/components/ComponentManager.java)<!-- ＃L85-->
 
 (许多标准接口实现它,例如
 

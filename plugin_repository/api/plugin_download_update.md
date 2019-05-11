@@ -5,7 +5,7 @@ title: Download Plugin Update API
 有两种方法可以编程方式下载插件版本:
 
 
-##下载与某个产品兼容的最新插件更新
+## 下载与某个产品兼容的最新插件更新
 
 
 ```
@@ -33,7 +33,7 @@ https://plugins.jetbrains.com/pluginManager?action=download&id=<pluginXmlId>&bui
 `的https://plugins.jetbrains.com/pluginManager行动=下载＆ID = org.intellij.scala及建立= IU-171.3780.107`
 
 
-##下载指定版本的插件
+## 下载指定版本的插件
 
 
 ```

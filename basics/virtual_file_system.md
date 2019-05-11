@@ -2,15 +2,15 @@
 title: Virtual File System
 ---
 
-虚拟文件系统(VFS)是* IntelliJ Platform *的一个组件,它封装了用于处理文件的大部分活动.
+虚拟文件系统(VFS)是 *IntelliJ Platform* 的一个组件,它封装了用于处理文件的大部分活动.
 它有以下主要用途:
 
 
-*提供用于处理文件的通用API,无论其实际位置如何(在磁盘上,存档中,在HTTP服务器上等)
+* 提供用于处理文件的通用API,无论其实际位置如何(在磁盘上,存档中,在HTTP服务器上等)
 
-*在检测到修改时跟踪文件修改并提供文件内容的新旧版本.
+* 在检测到修改时跟踪文件修改并提供文件内容的新旧版本.
 
-*提供将附加持久数据与VFS中的文件相关联的可能性.
+* 提供将附加持久数据与VFS中的文件相关联的可能性.
 
 
 为了提供最后两个功能,VFS管理用户硬盘的某些内容的_peristent snapshot_.
@@ -40,19 +40,19 @@ title: Virtual File System
 
 
 刷新操作将VFS的一部分状态与实际磁盘内容同步.
-刷新操作由* IntelliJ Platform *或插件代码显式调用 - 即,当IDE运行时在磁盘上更改文件时,VFS不会立即获取更改. 
+刷新操作由 *IntelliJ Platform* 或插件代码显式调用 - 即,当IDE运行时在磁盘上更改文件时,VFS不会立即获取更改.
 VFS将在下一次刷新操作期间更新,其中包括其范围内的文件.
 
 
 *IntelliJ Platform* refreshes the entire project contents asynchronously on startup. By default, it performs a refresh operation when the user switches to it from another app, but users can turn this off via **Settings \| Appearance & Behavior \| System Settings \| Synchronize files on frame activation**.
 
-在Windows,Mac和Linux上,* IntelliJ Platform *启动本机文件监视器进程,该进程从文件系统接收文件更改通知并将其报告给* IntelliJ Platform *.
+在Windows,Mac和Linux上, *IntelliJ Platform* 启动本机文件监视器进程,该进程从文件系统接收文件更改通知并将其报告给 *IntelliJ Platform* .
 如果文件观察程序可用,则刷新操作仅查看文件观察程序已报告已更改的文件.
 如果不存在文件观察程序,则刷新操作将遍历刷新范围中的所有目录和文件.
 
 
 刷新操作基于文件时间戳.
-如果文件的内容已更改但其时间戳保持不变,则* IntelliJ Platform *将不会获取更新的内容.
+如果文件的内容已更改但其时间戳保持不变,则 *IntelliJ Platform* 将不会获取更新的内容.
 
 
 目前没有用于从快照中删除文件的工具.
@@ -65,7 +65,7 @@ The VFS itself does not honor ignored files listed in **Settings \| File Types \
 它们是相同的,具有相同的`hashCode`并共享用户数据.
 
 
-##同步和异步刷新
+## 同步和异步刷新
 
 
 从调用者的角度来看,刷新操作可以是同步的也可以是异步的.
@@ -85,26 +85,26 @@ The VFS itself does not honor ignored files listed in **Settings \| File Types \
 如果在刷新完成后需要执行某些代码,则应将代码作为`postRunnable`参数传递给其中一个刷新方法:
  
 
-* [RefreshQueue.createSession()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/newvfs/RefreshQueue.java)<! -#L36-->
+* [RefreshQueue.createSession()](upsource:///platform/platform-api/src/com/intellij/openapi/vfs/newvfs/RefreshQueue.java)<!--#L36-->
 
-* [VirtualFile.refresh()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<! -#L681-->
+* [VirtualFile.refresh()](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<!--#L681-->
  
 
 在某些情况下,同步刷新可能会导致死锁,具体取决于调用刷新操作的线程所持有的锁.
 
 
-##虚拟文件系统事件
+## 虚拟文件系统事件
 
 
 虚拟文件系统中发生的所有更改(由于刷新操作或由用户的操作引起)都会报告为_virtual file system events_. 
 VFS事件始终在事件派发线程和写入操作中触发.
 
 
-监听VFS事件的最有效方法是实现`BulkFileListener`接口并将其订阅到[VirtualFileManager.VFS_CHANGES](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<! - #L34  - >主题.
+监听VFS事件的最有效方法是实现`BulkFileListener`接口并将其订阅到[VirtualFileManager.VFS_CHANGES](upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!-- #L34  -->主题.
 
 
 此API为您提供在一个列表中刷新操作期间检测到的所有更改,并允许您批量处理它们.
-或者,您可以实现`VirtualFileListener`接口并使用[VirtualFileManager.addVirtualFileListener()]注册它(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!--#L113  - >.
+或者,您可以实现`VirtualFileListener`接口并使用[VirtualFileManager.addVirtualFileListener()]注册它(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFileManager.java)<!--#L113  -->.
 这将让您逐个处理事件.
 
 
@@ -118,7 +118,7 @@ VFS事件始终在事件派发线程和写入操作中触发.
 
 
 请注意,刷新操作仅针对已在快照中加载的文件中的更改触发事件.
-例如,如果您访问了一个目录的`VirtualFile`但从未使用[VirtualFile.getChildren()]加载其内容(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<! -#L135  - >,在该目录中创建文件时,可能无法获得`fileCreated`通知.
+例如,如果您访问了一个目录的`VirtualFile`但从未使用[VirtualFile.getChildren()]加载其内容(upsource:///platform/core-api/src/com/intellij/openapi/vfs/VirtualFile.java)<!--#L135  -->,在该目录中创建文件时,可能无法获得`fileCreated`通知.
 
 
 如果使用`VirtualFile.findChild()`仅在目录中加载单个文件,您将收到有关该文件更改的通知,但您可能无法获得同一目录中其他文件的创建/删除通知.

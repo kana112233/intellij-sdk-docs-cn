@@ -30,6 +30,6 @@ title: Deploying a Plugin
 ![Jar文件位置](deploying_plugin/img/jar_location.png)
 
 
-*重新启动IDE,以使更改生效.
+* 重新启动IDE,以使更改生效.
 
 

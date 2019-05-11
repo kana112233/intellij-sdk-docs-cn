@@ -5,12 +5,12 @@ title: Run Configuration Management
 本文档描述了使用运行配置和常见用例的主要类.
 
 
-*虚拟目录
+* 虚拟目录
 
 {:TOC}
 
 
-##配置类型
+## 配置类型
 
 
 实现任何运行配置类型的起点是[`ConfigurationType`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)接口.
@@ -29,15 +29,15 @@ title: Run Configuration Management
 
 实现此接口的最简单方法是使用[`ConfigurationTypeBase`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)基类.
 为了使用它,您需要继承它并提供配置类型参数(ID,名称,描述和图标)作为构造函数参数.
-除此之外,你需要调用[`addFactory()`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)<! - #L46-
- - >添加配置工厂的方法.
+除此之外,你需要调用[`addFactory()`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationTypeBase.java)<!-- #L46-
+ -->添加配置工厂的方法.
 
 
-##配置工厂
+## 配置工厂
 
 
 所有运行配置都是由为特定`ConfigurationType`注册的[`ConfigurationFactory`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)创建的.
-有一个`ConfigurationType` [有多个](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)<! - #L34-->`ConfigurationFactory 
+有一个`ConfigurationType` [有多个](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java)<!-- #L34-->`ConfigurationFactory
 `:
 
 
@@ -45,20 +45,20 @@ title: Run Configuration Management
 
 
 [`ConfigurationFactory`]的关键API(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java),以及您需要实现的唯一方法是
-[`createTemplateConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! - #L45-->方法.
+[`createTemplateConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!-- #L45-->方法.
 每个项目调用此方法一次以创建模板运行配置.
 
 
-通过[`createConfiguration`]克隆模板来调用所有实际运行配置(从工作空间加载或由用户创建)(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! - #L39  - >方法.
+通过[`createConfiguration`]克隆模板来调用所有实际运行配置(从工作空间加载或由用户创建)(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!-- #L39  -->方法.
 
 
-您可以通过覆盖[`getIcon`]来自定义配置工厂的其他方面(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! -#L59-
- - >,[`getAddIcon`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<! -#L55-->,[`getName`]( 
-upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java) <! - #L51-->和默认设置方法.
+您可以通过覆盖[`getIcon`]来自定义配置工厂的其他方面(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L59-
+ -->,[`getAddIcon`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java)<!--#L55-->,[`getName`](
+upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java) <!-- #L51-->和默认设置方法.
 这些额外的覆盖是可选的.
 
 
-##运行配置
+## 运行配置
 
 
 运行配置本身由[`RunConfiguration`](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)接口表示.
@@ -85,36 +85,36 @@ upsource:///platform/lang-api/src/com/intellij/execution/configurations/Configur
 Java运行配置使用选定的模块来确定运行类路径.
 
 
-##设置编辑器
+## 设置编辑器
 
 
 可以通过以下方式修改常见的运行配置设置:
 
 
-[`RunConfiguration`特定的UI](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)<! - #L48-->.
-这由[`SettingsEditor`]处理(upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L97-->:
+[`RunConfiguration`特定的UI](upsource:///platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)<!-- #L48-->.
+这由[`SettingsEditor`]处理(upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!-- #L97-->:
 
 
-* [`getComponent()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L97-->方法由IDE调用
+* [`getComponent()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!-- #L97-->方法由IDE调用
 显示运行配置特定UI.
 
-* [`resetFrom()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<! - #L83-->被调用以丢弃所有非
+* [`resetFrom()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)<!-- #L83-->被调用以丢弃所有非
 确认用户通过该UI进行的更改.
 
-* [`applyTo()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)调用<! -#L93-->确认更改,
+* [`applyTo()`](upsource:///platform/platform-api/src/com/intellij/openapi/options/SettingsEditor.java)调用<!--#L93-->确认更改,
 即将当前UI状态复制到目标设置对象中.
 
 
-##持久性
+## 持久性
 
 
 该运行配置设置是持久的,即它们存储在文件系统中并在IDE启动时加载回来.
-这是通过[`writeExternal()`]执行的(upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<! - #L27-->和[`readExternal() 
-`](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<! -#L26--> [RunConfiguration`]的方法(upsource:///platform/
+这是通过[`writeExternal()`]执行的(upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<!-- #L27-->和[`readExternal()
+`](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)<!--#L26--> [RunConfiguration`]的方法(upsource:///platform/
 lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)相应的类.
 
 
-* IntelliJ Platform *存储的实际配置由[`RunnerAndConfigurationSettings`](upsource:///platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java)类的实例表示,该类结合了
+ *IntelliJ Platform* 存储的实际配置由[`RunnerAndConfigurationSettings`](upsource:///platform/lang-api/src/com/intellij/execution/RunnerAndConfigurationSettings.java)类的实例表示,该类结合了
 使用特定于运行程序的设置运行配置,以及跟踪某些运行配置标志,例如“临时”或“单例”.
 
 
@@ -127,7 +127,7 @@ lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)相应�
 *`RunManager.addConfiguration()`通过将其添加到项目中存储的共享配置列表或工作空间文件中存储的本地配置列表来使其持久化.
 
 
-##重构支持
+## 重构支持
 
 
 大多数运行配置包含对其设置中的类,文件或目录的引用,并且通常需要在重命名或移动相应元素时更新这些设置.
@@ -139,7 +139,7 @@ lang-api/src/com/intellij/execution/configurations/RunConfiguration.java)相应�
 在你的`getRefactoringElementListener()`的实现中,你需要检查被重构的元素是否是你的运行配置所引用的元素,如果是,你返回一个[`RefactoringElementListener`](upsource:///platform/lang-api/src/com/intellij/refactoring/listeners/RefactoringElementListener.java)根据元素的新名称和位置更新配置.
 
 
-##从上下文创建配置
+## 从上下文创建配置
 
 
 许多插件支持从上下文自动创建运行配置,以便用户可以单击(例如)应用程序或测试类,并使用正确的运行配置类型自动运行它.

@@ -2,7 +2,7 @@
 title: Project
 ---
 
-在* IntelliJ Platform *中,项目将所有源代码,库,构建指令封装到单个组织单元中.
+在 *IntelliJ Platform* 中,项目将所有源代码,库,构建指令封装到单个组织单元中.
 您在IDE中执行的所有操作都是在项目的上下文中完成的.
 项目定义了一些称为模块和库的集合.
 根据项目的逻辑和功能要求,您可以创建单模块或多模块项目.
@@ -11,7 +11,7 @@ title: Project
 ##使用项目
 
 
-* IntelliJ Platform *将项目配置数据存储在XML文件中.
+ *IntelliJ Platform* 将项目配置数据存储在XML文件中.
 这些文件的列表取决于插件[project](https://www.jetbrains.com/help/idea/about-projects.html)格式.
 
 

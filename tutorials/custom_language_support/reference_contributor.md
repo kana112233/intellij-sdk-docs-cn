@@ -103,7 +103,7 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.simpleplugin.psi.impl.Sim
   implements="com.simpleplugin.psi.SimpleNamedElement" methods=[getKey getValue getName setName getNameIdentifier]}
 ```
 
-不要忘记重新生成解析器！
+不要忘记重新生成解析器!
 右键单击`Simple.bnf`文件并选择_Generate Parser Code_。
 
 
@@ -146,13 +146,13 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.simpleplugin.psi.impl.Sim
 如您所见，IDE现在解析了该属性并提供了完成功能。
 
 
-！[参考贡献者](img/reference_contributor.png)
+![参考贡献者](img/reference_contributor.png)
 
 
 *根据定义和用法重命名*重构。
 
 
-！[重命名](IMG/rename.png)
+![重命名](IMG/rename.png)
 
 
 ### 10.9。
@@ -178,6 +178,6 @@ property ::= (KEY? SEPARATOR VALUE?) | KEY {mixin="com.simpleplugin.psi.impl.Sim
 运行该项目
 
 
-！[原位重命名](img/in_place_rename.png)
+![原位重命名](img/in_place_rename.png)
 
 

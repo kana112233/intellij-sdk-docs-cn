@@ -5,7 +5,7 @@ title: Popups
 ＃＃ 弹出窗口
 
 
-* IntelliJ Platform *用户界面广泛使用弹出窗口 - 没有镶边的半模式窗口(显式关闭按钮)，并在焦点丢失时自动消失。
+ *IntelliJ Platform* 用户界面广泛使用弹出窗口 - 没有镶边的半模式窗口(显式关闭按钮)，并在焦点丢失时自动消失。
 
 在插件中使用这些控件可确保插件与IDE其余部分之间的一致用户体验。
 
@@ -22,22 +22,22 @@ title: Popups
 最常用的方法是:
 
 
-*`createComponentPopupBuilder()`是最通用的，允许你显示任何
+* `createComponentPopupBuilder()`是最通用的，允许你显示任何
 
 [摇摆](https://docs.oracle.com/javase/tutorial/uiswing/start/index.html)
 
 弹出窗口中的组件。
 
 
-*`createListPopupBuilder()`创建一个弹出窗口，用于从a中选择一个或多个项目
+* `createListPopupBuilder()`创建一个弹出窗口，用于从a中选择一个或多个项目
     
 [Swing JList](https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html)。
 
 
-*`createConfirmation()`创建一个弹出窗口，用于在两个选项之间进行选择，并根据选择的选项执行不同的操作。
+* `createConfirmation()`创建一个弹出窗口，用于在两个选项之间进行选择，并根据选择的选项执行不同的操作。
 
 
-*`createActionGroupPopup()`创建一个弹出窗口，显示操作组中的操作并执行用户选择的操作。
+* `createActionGroupPopup()`创建一个弹出窗口，显示操作组中的操作并执行用户选择的操作。
 
 
 除了普通箭头键之外，操作组弹出窗口支持从键盘选择操作的不同方法。

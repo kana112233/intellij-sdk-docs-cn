@@ -2,7 +2,7 @@
 title: Setting Up a Development Environment
 ---
 
-###预备步骤
+### 预备步骤
 
 
 使用以下清单确保您已准备好开发自定义插件.
@@ -19,7 +19,7 @@ title: Setting Up a Development Environment
 有关更多信息,请参阅下文.
   
 
-###配置IntelliJ Platform SDK
+### 配置IntelliJ Platform SDK
   
 
 要设置插件开发环境:
@@ -54,7 +54,7 @@ title: Setting Up a Development Environment
 
 <BR/>
 
-*在SDK设置的Sourcepath选项卡中,单击* Add *按钮:
+* 在SDK设置的Sourcepath选项卡中,单击 *Add* 按钮:
 
 
 ![添加源路径](img/add_sourcepath.png)

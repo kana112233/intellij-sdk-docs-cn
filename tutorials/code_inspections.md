@@ -17,7 +17,7 @@ IntelliJ平台提供了专为静态代码分析而设计的工具，称为_code 
 请参阅[代码检查](https://www.jetbrains.com/idea/webhelp/code-inspection.html)和[创建自定义检查](https://www.jetbrains.com/idea/help/creating-custom-inspections.html)了解更多信息。
 
 
-##创建一个检查插件
+## 创建一个检查插件
 
 
 The [comparing_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection) code sample adds a new inspection to the **Java | Probable Bugs** group in the [Inspections list](https://www.jetbrains.com/help/idea/inspections-settings.html).
@@ -47,7 +47,7 @@ The overall approach works for inspections aimed at other languages as well.
   * From the inspection description entry find the `implementationClass` attribute value.
 * Use the `implementationClass` text as the [target of a class search](https://www.jetbrains.com/help/idea/searching-everywhere.html#Searching_Everywhere.xml) in the _intellij_community_ codebase to find the Java implementation file.
 
-##创建检查
+## 创建检查
 
 [comparison_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection)代码示例报告在Java表达式之间使用`==`或`!=`运算符时
 参考类型。
@@ -58,7 +58,7 @@ The overall approach works for inspections aimed at other languages as well.
 `comparison_references_inspection`实现的细节说明了检查插件的组件。
 
 
-###插件配置文件
+### 插件配置文件
 
 `comparison_references_inspection`在`comparison_references_inspection`插件配置中的`<extensions>`元素中被描述为`<localInspection>`类型([plugin.xml](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparison_references_inspection/resources/META-INF/plugin.xml))文件。
 
@@ -83,7 +83,7 @@ The overall approach works for inspections aimed at other languages as well.
 作为替代方案，检查可以通过覆盖检查实现类中的方法来定义所有属性信息(“implementationClass”除外)。
 
 
-###检查实现Java类
+### 检查实现Java类
 
 Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection/source/com/intellij/codeInspection/ComparingReferencesInspection.java)，
 通常基于Java类[AbstractBaseJavaLocalInspectionTool](upsource:///java/java-analysis-api/src/com/intellij/codeInspection/AbstractBaseJavaLocalInspectionTool.java)。
@@ -100,11 +100,11 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 
 检查实施类的主要职责是提供:
 
-*一个'PsiElementVisitor`对象，用于遍历被检查文件的“PsiTree”。
+* 一个'PsiElementVisitor`对象，用于遍历被检查文件的“PsiTree”。
 
-*一个`LocalQuickFix`类，用于更改已识别问题的语法。
+* 一个`LocalQuickFix`类，用于更改已识别问题的语法。
 
-*一个`JPanel`将显示在_Inspections_对话框中。
+* 一个`JPanel`将显示在_Inspections_对话框中。
 
 
 请注意，如果插件配置文件中的检查描述仅定义实现类，则必须通过Java实现中的重写方法提供其他属性信息。
@@ -112,15 +112,15 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 
 `ComparingReferencesInspection`类定义了两个`String`字段:
 
-*`QUICK_FIX_NAME`定义用户在提示应用快速修复时看到的字符串。
+* `QUICK_FIX_NAME`定义用户在提示应用快速修复时看到的字符串。
 
-*`CHECKED_CLASSES`包含检查所关注的类名列表。
+* `CHECKED_CLASSES`包含检查所关注的类名列表。
 
 
 重写的`ComparingReferencesInspection`方法将在下面的部分中讨论。
 
 
-###访客实施班
+### 访客实施班
 
 访问者类评估文件的“PsiTree”的元素是否对检查感兴趣。
 
@@ -130,16 +130,16 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 
 匿名类特别重写了三种方法。
 
-*`visitReferenceExpression()`以防止对引用类型表达式的任何重复访问。
+* `visitReferenceExpression()`以防止对引用类型表达式的任何重复访问。
 
-*`visitBinaryExpression()`，它完成了所有繁重的工作。
+* `visitBinaryExpression()`，它完成了所有繁重的工作。
   
 它被称为评估一个'PsiBinaryExpression`，它检查操作数是否是`==`或`!=`，以及操作数是否与此检查相关的类。
 
-*`isCheckedType()`计算操作数的'PsiType`，以确定它们是否对此检查感兴趣。
+* `isCheckedType()`计算操作数的'PsiType`，以确定它们是否对此检查感兴趣。
 
 
-###快速修复实施
+### 快速修复实施
 
 快速修复类的作用非常类似，允许用户更改检查突出显示的“PsiTree”部分。
 
@@ -155,16 +155,16 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 
 对“PsiTree”的更改是通过通常的修改方法完成的:
 
-*获得'PsiElementFactory`。
+* 获得'PsiElementFactory`。
 
-*创建一个新的'PsiMethodCallExpression`。
+* 创建一个新的'PsiMethodCallExpression`。
 
-*将原来的左右操作数替换为新的“PsiMethodCallExpression”。
+* 将原来的左右操作数替换为新的“PsiMethodCallExpression”。
 
-*用'PsiMethodCallExpression`替换原始二进制表达式。
+* 用'PsiMethodCallExpression`替换原始二进制表达式。
 
 
-###检查首选项面板
+### 检查首选项面板
 
 检查首选项面板用于显示有关检查的信息。
 
@@ -181,7 +181,7 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 只要正确定义了检查属性和检查描述，IntelliJ平台就会在_Inspections Preferences_ UI中显示信息。
 
 
-###检验说明
+### 检验说明
 
 检查描述是HTML文件。
 
@@ -190,16 +190,16 @@ Java文件的检查实现，如[`ComparingReferencesInspection`](https://github.
 
 在检查实现的类层次结构中使用[`LocalInspectionTool`](upsource:///platform/analysis-api/src/com/intellij/codeInspection/LocalInspectionTool.java)隐含意味着遵循一些约定。
 
-*检查描述文件应位于`<plugin root dir>/resources/inspectionDescriptions /`下。
+* 检查描述文件应位于`<plugin root dir>/resources/inspectionDescriptions /`下。
   
 如果检查描述文件位于其他位置，则在检查实现类中重写`getDescriptionUrl()`。
 
-*描述文件的名称应该是检查描述或检查实现类提供的检查`<短名称> .html`。
+* 描述文件的名称应该是检查描述或检查实现类提供的检查`<短名称> .html`。
   
 如果插件未提供短名称，则IntelliJ平台会计算一个。
   
 
-###检查单元测试
+### 检查单元测试
 
 `comparison_references_inspection`代码示例为检查提供单元测试。
 
@@ -236,17 +236,17 @@ The inspection reports when the `==` or `!=` operator is used between Java expre
 
 要运行示例插件:
 
-*启动** IntelliJ IDEA **，打开`intellij-sdk-docs`项目，并突出显示[comparison_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection 
+* 启动**IntelliJ IDEA**，打开`intellij-sdk-docs`项目，并突出显示[comparison_references_inspection](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/comparing_references_inspection
 )模块。
 
-*打开[项目结构](https://www.jetbrains.com/help/idea/project-structure-dialog.html)对话框，确保项目设置对您的环境有效。
+* 打开[项目结构](https://www.jetbrains.com/help/idea/project-structure-dialog.html)对话框，确保项目设置对您的环境有效。
 
-*如有必要，修改`comparison_references_inspection`模块的[运行/调试配置](https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html)。
+* 如有必要，修改`comparison_references_inspection`模块的[运行/调试配置](https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html)。
 
-*在主菜单上选择** Run **运行插件。
+* 在主菜单上选择** Run **运行插件。
 
 
-###配置插件
+### 配置插件
 
 
 启动插件后，您可以设置插件选项。
@@ -262,14 +262,14 @@ In the list of the IntelliJ IDEA _Java_ inspections, expand the _Probable bugs_
 
 在**选项**下，您可以指定以下插件设置:
 
-*从** Severity **列表中，选择插件找到的可能错误的严重性级别，例如警告，信息等。
+* 从** Severity **列表中，选择插件找到的可能错误的严重性级别，例如警告，信息等。
 
-*在** Severity **下的文本框中，指定以分号分隔的Java类列表以参与此代码检查。
+* 在** Severity **下的文本框中，指定以分号分隔的Java类列表以参与此代码检查。
 
-*完成后，单击**确定**。
+* 完成后，单击**确定**。
 
 
-＃＃＃ 它是如何工作的？
+### 它是如何工作的？
 
 
 该插件检查您在IntelliJ IDEA编辑器中打开的代码或您键入的代码。

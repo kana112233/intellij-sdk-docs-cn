@@ -2,7 +2,7 @@
 title: XML DOM API
 ---
 
-<! -  TODO内容:DOM <=> PSI,转到符号,编辑器装订图标 - > DOM  - >
+<!--  TODO内容:DOM <=> PSI,转到符号,编辑器装订图标 --> DOM  -->
 
 
 ##摘要
@@ -397,7 +397,7 @@ DOM可以从现有的XSD/DTD自动生成.
 
 *在启用“插件DevKit”的情况下运行IntelliJ IDEA并添加JVM选项`-Didea.is.internal = true`
 
-*选择工具 - >内部操作 - > DevKit  - >生成DOM模型
+*选择工具 -->内部操作 --> DevKit  -->生成DOM模型
 
 *选择Scheme文件并设置选项,然后单击“生成”以生成源
 
@@ -507,7 +507,7 @@ DOM也有一种反射,称为“通用信息”.
 
 #### 介绍
 
-<! -  TODO:使用@Presentation  - >
+<!--  TODO:使用@Presentation  -->
 
 
 `DomElement.getPresentation()`返回[`ElementPresentation`]的实例(upsource:///xml/dom-openapi/src/com/intellij/util/xml/ElementPresentation.java),这是一个知道可呈现元素类型的接口

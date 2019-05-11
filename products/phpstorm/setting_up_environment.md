@@ -21,7 +21,7 @@ PhpStorm.
 但是,这会冒着意外使用PhpStorm中没有的某些API的风险.
 
 
-###如何使用PhpStorm OpenAPI库进行插件开发
+### 如何使用PhpStorm OpenAPI库进行插件开发
 
 
 > **注意** OpenAPI可用于PhpStorm 6及更高版本.
@@ -33,16 +33,16 @@ DevKit以及Gradle开发环境.
 按照说明:
 
 
-*将PHP OpenAPI类添加到插件的类路径中:
+* 将PHP OpenAPI类添加到插件的类路径中:
   
-*对于基于Gradle的插件开发,请将`com.jetbrains.php`插件ID添加到build.gradle文件中.
+* 对于基于Gradle的插件开发,请将`com.jetbrains.php`插件ID添加到build.gradle文件中.
   
-*对于基于DevKit的插件开发,将`php-openapi.jar`和`php.jar`库添加到项目SDK的类路径中.
+* 对于基于DevKit的插件开发,将`php-openapi.jar`和`php.jar`库添加到项目SDK的类路径中.
     
 这些库位于`<your_installation_of_PhpStorm>/plugins/php/lib`目录中.
 
 
-*添加`com.jetbrains.php`和`com.intellij.modules.platform`依赖项
+* 添加`com.jetbrains.php`和`com.intellij.modules.platform`依赖项
   
 到你的插件项目的'plugin.xml`文件.
 

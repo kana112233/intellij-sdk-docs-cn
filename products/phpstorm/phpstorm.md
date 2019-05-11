@@ -4,7 +4,7 @@ redirect_from:
   - /phpstorm/phpstorm.html
 ---
 
-###开发和测试工具
+### 开发和测试工具
 
 PhpStorm的插件是使用IntelliJ IDEA的任一版本在Java中开发的. 
 IntelliJ IDEA的Community Edition可以

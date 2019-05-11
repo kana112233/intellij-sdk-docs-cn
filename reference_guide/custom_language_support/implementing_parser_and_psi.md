@@ -83,7 +83,7 @@ PSI实现的基类,包括
 
 [PsiElement](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java),
 
-由* IntelliJ Platform *提供.
+由 *IntelliJ Platform* 提供.
 
 
 目前还没有现成的方法来重用现有的语言语法,例如,从ANTLR,用于创建自定义语言解析器.

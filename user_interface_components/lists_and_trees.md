@@ -22,15 +22,15 @@ title: List and Tree Controls
 [JList的](https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html):
 
 
-*如果项目不适合列表框宽度，则绘制带有项目完整文本的工具提示。
+* 如果项目不适合列表框宽度，则绘制带有项目完整文本的工具提示。
 
 
-*当列表框中不包含任何项目时，在列表框中间绘制一条灰色文本消息。
+* 当列表框中不包含任何项目时，在列表框中间绘制一条灰色文本消息。
    
 可以通过调用`getEmptyText()。setText()`来定制文本。
 
 
-*在列表框的右上角绘制一个忙碌图标，表示正在执行后台操作。
+* 在列表框的右上角绘制一个忙碌图标，表示正在执行后台操作。
    
 这可以通过调用`setPaintBusy()`来启用。
 
@@ -117,7 +117,7 @@ class提供了标准的替代品
 要使用工具栏装饰器:
 
 
-*如果您需要支持删除和重新排序列表框中的项目，请确保列表的模型实现
+* 如果您需要支持删除和重新排序列表框中的项目，请确保列表的模型实现
    
 [EditableModel](upsource:///platform/util/src/com/intellij/util/ui/EditableModel.java)
    
@@ -128,28 +128,28 @@ class提供了标准的替代品
 是一个实现此接口的方便模型类。
 
 
-*打电话
+* 打电话
    
 [ToolbarDecorator.createDecorator](upsource:///platform/platform-api/src/com/intellij/ui/ToolbarDecorator.java)
    
 创建装饰器实例。
 
 
-*如果需要支持添加和/或删除项目，请调用`setAddAction()`和/或`setRemoveAction()`。
+* 如果需要支持添加和/或删除项目，请调用`setAddAction()`和/或`setRemoveAction()`。
 
 
-*如果你需要除标准按钮之外的其他按钮，请调用`addExtraAction()`或`setActionGroup()`。
+* 如果你需要除标准按钮之外的其他按钮，请调用`addExtraAction()`或`setActionGroup()`。
 
 
-*调用`createPanel()`并将它返回的组件添加到面板中。
+* 调用`createPanel()`并将它返回的组件添加到面板中。
 
 
-<! - 
+<!--
 
 ### AbstractTreeBuilder和AbstractTreeStructure
 
 TODO链接到教程
 
- - >
+ -->
 
 

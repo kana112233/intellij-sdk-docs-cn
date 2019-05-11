@@ -7,9 +7,9 @@ title: Plugin Dependencies
 
 依赖项(例如Kotlin),您需要执行以下步骤:
 
-*如果没有捆绑插件,请运行目标IDE的沙箱实例并在那里安装插件.
+* 如果没有捆绑插件,请运行目标IDE的沙箱实例并在那里安装插件.
 
-*如果您使用Gradle和Kotlin构建脚本来构建插件,请在`intellij`块中使用`setPlugins()`[^ gradleplugin],例如:
+* 如果您使用Gradle和Kotlin构建脚本来构建插件,请在`intellij`块中使用`setPlugins()`[^ gradleplugin],例如:
 
 
 ```kotlin
@@ -49,7 +49,7 @@ intellij {
 要查找您所依赖的插件的ID,请在其jar中找到`META-INF/plugin.xml`文件并检查`<id>`标记的内容.
 
 
-##可选插件依赖项
+## 可选插件依赖项
 
 
 您还可以指定可选的插件依赖项.
@@ -61,11 +61,7 @@ intellij {
 将`optional =“true”config-file =“otherconfig.xml”添加到`<depends>`标签中.
 
 
-例如,
-
-如果您正在处理为Java和Kotlin文件添加额外突出显示的插件,则可以使用以下内容
-
-建立.
+例如,如果您正在处理为Java和Kotlin文件添加额外突出显示的插件,则可以使用以下内容建立.
 您的主plugin.xml将为Java定义一个注释器,并指定对Kotlin插件的可选依赖项:
 
 

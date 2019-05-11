@@ -2,7 +2,7 @@
 title: Custom Language Support
 ---
 
-* IntelliJ Platform *是一个功能强大的平台,用于构建针对* any *语言的开发工具.
+ *IntelliJ Platform* 是一个功能强大的平台,用于构建针对* any *语言的开发工具.
 
 大多数IDE功能由语言无关和语言特定部分组成,您可以通过少量工作为您的语言支持特定功能:
 

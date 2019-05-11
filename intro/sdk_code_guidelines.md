@@ -9,7 +9,7 @@ title: Guidelines for Creating IntelliJ Platform SDK Code Samples
 有关为IntelliJ平台本身做出贡献的信息,请访问[贡献IntelliJ平台](/basics/platform_contributions.md).
 
 
-##目标
+## 目标
 
 在编写SDK代码示例时,请记住以下注意事项:
 
@@ -17,23 +17,23 @@ title: Guidelines for Creating IntelliJ Platform SDK Code Samples
 
 * SDK代码示例是教学代码,旨在教授.
   
-*教学代码在某些关键方面与生产代码不同:
+* 教学代码在某些关键方面与生产代码不同:
     
-*为了简单和简洁,牺牲一些稳健性.
+* 为了简单和简洁,牺牲一些稳健性.
       
 使用错误检查有必要对实施陷阱提出一个观点.
     
-*尽可能简化实现,但使用IntelliJ平台,Java语言和库的全部功能.
+* 尽可能简化实现,但使用IntelliJ平台,Java语言和库的全部功能.
     
-*为接口,类,字段,方法和扩展点使用有意义的名称.
+* 为接口,类,字段,方法和扩展点使用有意义的名称.
     
-*编写指导JavaDoc注释.
+* 编写指导JavaDoc注释.
   
-*代码示例取代了大量文档.
+* 代码示例取代了大量文档.
 
-*针对两个级别的SDK示例:
+* 针对两个级别的SDK示例:
   
-*通过演示IntelliJ平台的有限区域,_basic_示例专注于特定主题.
+* 通过演示IntelliJ平台的有限区域,_basic_示例专注于特定主题.
     
 它应该显示所有组件和架构,但最终会完成一些基本的东西.
     
@@ -48,11 +48,11 @@ title: Guidelines for Creating IntelliJ Platform SDK Code Samples
 
 每个路线图应包含:
 
-*指向实现该功能所需的IntelliJ Platform API的SDK文档.
+* 指向实现该功能所需的IntelliJ Platform API的SDK文档.
 
-*指向相关的_basic_ SDK示例插件的指针.
+* 指向相关的_basic_ SDK示例插件的指针.
 
-*指向相关的_advanced_ SDK示例插件的指针.
+* 指向相关的_advanced_ SDK示例插件的指针.
 
 
 ## SDK插件的命名约定
@@ -81,7 +81,7 @@ Copyright 2000-$today.year JetBrains s.r.o. Use of this source code is governed 
 ```
 The copyright statement must appear in every source file with the `$today.year` [Velocity](https://www.jetbrains.com/help/idea/copyright-profiles.html) template resolved.
 
-##插件ID约定
+## 插件ID约定
 
 插件ID(`plugin.xml`中的`<id>`)总是以`org.intellij.sdk`开头.
 
@@ -93,7 +93,7 @@ The copyright statement must appear in every source file with the `$today.year` 
 像`facet_basics`这样的插件有ID`org.intellij.sdk.facet`.
 
 
-##插件包名称
+## 插件包名称
 
 插件中的包应以插件ID开头.
 
@@ -171,15 +171,15 @@ SDK代码示例的[`plugin.xml`](/basics/plugin_structure/plugin_configuration_f
 
 SDK代码示例`plugin.xml`文件中的元素序列是:
 
-*`<id>`使用完全限定的[插件ID](#plugin-id-conventions).
+* `<id>`使用完全限定的[插件ID](#plugin-id-conventions).
 
-*`<name>`名称值不必与[插件名称]匹配(#naming-conventions-for-sdk-plugins).
+* `<name>`名称值不必与[插件名称]匹配(#naming-conventions-for-sdk-plugins).
   
 它可能反映了插件的功能.
   
 名称必须以“SDK:”开头.
 
-*`<version>`MAJOR.MINOR.FIX格式的代码示例版本.
+* `<version>`MAJOR.MINOR.FIX格式的代码示例版本.
   
 * MAJOR对应于功能的重大升级.
   
@@ -187,30 +187,30 @@ SDK代码示例`plugin.xml`文件中的元素序列是:
   
 * FIX对应于在没有重大重构的情况下修复问题的更改.
 
-*`<idea-version/>`设置属性:
+* `<idea-version/>`设置属性:
   
-*`since-build`属性是IntelliJ平台最早的兼容版本号.
+* `since-build`属性是IntelliJ平台最早的兼容版本号.
   
-*`until-build`属性为空字符串`“”`.
+* `until-build`属性为空字符串`“”`.
     
 每个主要版本都会审核SDK代码示例,以确保与最新的IntelliJ平台兼容.
 
-*`<description>`是对所演示内容以及用户如何访问该功能的简洁说明.
+* `<description>`是对所演示内容以及用户如何访问该功能的简洁说明.
 
-*`<change-notes>`是按版本号排列的有序列表,其中简要描述了每个版本的更改.
+* `<change-notes>`是按版本号排列的有序列表,其中简要描述了每个版本的更改.
 
-*`<vendor>`将值设置为`IntelliJ Platform SDK`.
+* `<vendor>`将值设置为`IntelliJ Platform SDK`.
   
 设置属性:
   
-*`email`省略此属性.
+* `email`省略此属性.
   
-*`url`到JetBrains插件库`“https://plugins.jetbrains.com”
+* `url`到JetBrains插件库`“https://plugins.jetbrains.com”
 
 * [插件配置元素]的其余部分(/basics/plugin_structure/plugin_configuration_file.md)只应在特定插件需要时才会出现.
 
 
-##测试
+## 测试
 
 IntelliJ Platform SDK代码示例应该根据`since-build`版本构建和测试.
 

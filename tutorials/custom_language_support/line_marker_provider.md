@@ -18,7 +18,7 @@ title: 8. Line Marker Provider
 {% include /code_samples/simple_language_plugin/src/com/simpleplugin/SimpleLineMarkerProvider.java %}
 ```
 
-##实施者的更多技术细节
+## 实施者的更多技术细节
 
 
 *请返回行标记信息以获取您要求的确切元素。
@@ -32,7 +32,7 @@ title: 8. Line Marker Provider
 而是将其返回给[`PsiIdentifier`](upsource:///java/java-psi-api/src/com/intellij/psi/PsiIdentifier.java)，这是此方法的名称。
 
 
-###更多技术细节:
+### 更多技术细节:
 
 
 当`LineMarkerProvider`为太大的PsiElement返回一些东西时会发生什么？
@@ -99,6 +99,6 @@ public class MyLineMarkerProvider implements LineMarkerProvider {
 现在，您可以在装订线上看到图标，并可以导航到属性定义。
 
 
-！[Line Marker](img/line_marker.png)
+![Line Marker](img/line_marker.png)
 
 

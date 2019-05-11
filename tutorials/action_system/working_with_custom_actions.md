@@ -80,7 +80,7 @@ IntelliJ IDEA具有嵌入式检查功能，可以发现未注册的操作。
 以下是使用`SimplePopDialogAction`类的示例:
 
 
-！[“动作从未使用过”检查](img/action_never_used.png)
+![“动作从未使用过”检查](img/action_never_used.png)
 
 
 要注册`SimplePopDialogAction`并设置其属性，请将插入符号放在操作声明上时按*** Alt + Enter ***。
@@ -93,7 +93,7 @@ IntelliJ IDEA具有嵌入式检查功能，可以发现未注册的操作。
 在这种情况下，`SimplePopDialogAction`将在**工具菜单**中可用，它将被置于顶部，并且没有快捷方式。
 
 
-！[新动作](img/new_action.png)
+![新动作](img/new_action.png)
 
 
 在这个例子中，在完成** New Action **表单并应用更改之后，插件的`plugins.xml`文件的`<actions>`部分
@@ -146,7 +146,7 @@ file contains copious comments about the declaration.
 执行上述步骤后，我们需要编译并运行插件到新创建的操作，作为工具菜单项:
 
 
-！[“注册动作”快速修复](img/tools_menu_item_action.png)
+![“注册动作”快速修复](img/tools_menu_item_action.png)
 
 
 ### 1.5。
@@ -239,6 +239,6 @@ public void update(AnActionEvent anActionEvent) {
 编译并运行插件项目并调用操作后，将弹出对话框:
 
 
-！[已执行的操作](img/action_performed.png)
+![已执行的操作](img/action_performed.png)
 
 

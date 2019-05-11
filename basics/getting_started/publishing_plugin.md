@@ -9,7 +9,7 @@ title: Publishing a plugin
 或自定义插件存储库.
 
 
-###发布到JetBrains插件存储库
+### 发布到JetBrains插件存储库
 
 要将插件上传到[JetBrains Plugin Repository](https://plugins.jetbrains.com),
 
@@ -29,12 +29,12 @@ title: Publishing a plugin
 
 1. [使用您的个人JetBrains帐户登录JetBrains插件存储库](https://plugins.jetbrains.com/author/me).
 
-2.在打开的“配置文件”页面上,单击“**添加新插件**”.
+2. 在打开的“配置文件”页面上,单击“**添加新插件**”.
 
-3.填写打开的**添加新插件**表单,然后单击**添加插件**按钮上传您的插件.
+3. 填写打开的**添加新插件**表单,然后单击**添加插件**按钮上传您的插件.
 
 
-###将插件发布到自定义插件存储库
+### 将插件发布到自定义插件存储库
 
 如果您计划将您的插件发布到[JetBrains插件存储库](https://plugins.jetbrains.com)以外的存储库,
 

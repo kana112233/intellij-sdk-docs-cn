@@ -31,13 +31,13 @@ title: Plugin Components
 组件的名称由其`getComponentName()`方法返回.
 
 
-##组件命名表示法
+## 组件命名表示法
 
 
 建议以“<plugin_name>.<component_name>”的形式命名组件.
 
 
-##应用程序级组件
+## 应用程序级组件
 
 
 可选地,应用程序级组件的实现类可以实现[ApplicationComponent](upsource:///platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java)接口.
@@ -45,13 +45,13 @@ title: Plugin Components
 
 没有依赖项的应用程序组件应该有一个没有参数的构造函数,它将用于实例化.
 如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数. 
-* IntelliJ Platform *将确保以正确的顺序实例化组件以满足依赖性.
+ *IntelliJ Platform* 将确保以正确的顺序实例化组件以满足依赖性.
 
 
 应用程序级组件必须在plugin.xml文件的`<application-components>`部分中注册(请参阅[插件配置文件](plugin_configuration_file.md)).
 
 
-##项目级组件
+## 项目级组件
 
 
 可选地,项目级组件的实现类可以实现[ProjectComponent](upsource:///platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java)接口.
@@ -65,7 +65,7 @@ title: Plugin Components
 项目级组件必须在`plugin.xml`文件的`<project-components>`部分中注册(参见[Plugin Configuration File](plugin_configuration_file.md)).
 
 
-##模块级组件
+## 模块级组件
 
 
 可选地,模块级组件的实现类可以实现[ModuleComponent](upsource:///platform/projectModel-api/src/com/intellij/openapi/module/ModuleComponent.java)接口.
@@ -78,7 +78,7 @@ title: Plugin Components
 模块级组件必须在`plugin.xml`文件的`<module-components>`部分中注册(参见[Plugin Configuration File](plugin_configuration_file.md)).
 
 
-##持久化组件的状态
+## 持久化组件的状态
 
 
 如果组件的类实现[JDOMExternalizable](upsource:///platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java)(不建议使用)或[PersistentStateComponent],则会自动保存和加载每个组件的状态. 
@@ -104,7 +104,7 @@ title: Plugin Components
 有关更多信息和示例,请参阅[持久性组件状态](/basics/persisting_state_of_components.md).
 
 
-##默认值
+## 默认值
 
 
 默认值(组件的预定义设置)应放在`<component_name> .xml`文件中.
@@ -120,7 +120,7 @@ title: Plugin Components
 *第二次保存配置
 
 
-##插件组件生命周期
+## 插件组件生命周期
 
 
 组件按以下顺序加载:

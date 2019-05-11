@@ -66,6 +66,6 @@ title: 2. Language and File Type
 和IntelliJ IDEA会自动将其与我们的语言相关联。
 
 
-！[文件类型工厂](img/file_type_factory.png)
+![文件类型工厂](img/file_type_factory.png)
 
 

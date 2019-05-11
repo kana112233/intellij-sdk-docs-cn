@@ -2,7 +2,7 @@
 title: Supporting Module Types
 ---
 
-* IntelliJ Platform *提供了一组可以选择的标准模块类型，但是，您可能需要创建一个尚不支持的类型的模块。
+ *IntelliJ Platform* 提供了一组可以选择的标准模块类型，但是，您可能需要创建一个尚不支持的类型的模块。
 
 本教程介绍如何注册新模块类型并将其链接到项目创建过程和UI。
 

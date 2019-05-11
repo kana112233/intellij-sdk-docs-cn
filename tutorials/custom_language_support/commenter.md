@@ -25,6 +25,6 @@ title: 17. Commenter
 运行该项目
 
 
-！[注释器(IMG/commenter.png)
+![注释器(IMG/commenter.png)
 
 

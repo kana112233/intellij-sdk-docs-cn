@@ -31,6 +31,6 @@ title: 12. Folding Builder
 现在，当我们打开一个Java文件时，它会显示属性的值而不是键。
 
 
-！[折叠](IMG/folding.png)
+![折叠](IMG/folding.png)
 
 

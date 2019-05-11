@@ -14,7 +14,7 @@ title: Structure View
 
 [StructureView](upsource:///platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java)
 
-* IntelliJ Platform *提供的实现可以重用.
+ *IntelliJ Platform* 提供的实现可以重用.
 
 
 结构视图的起点是
@@ -33,7 +33,7 @@ interface,在`com.intellij.lang.psiStructureViewFactory`扩展点中注册.
 [属性语言插件](upsource:///plugins/properties)
 
 
-重用* IntelliJ Platform *的实现
+重用 *IntelliJ Platform* 的实现
 
 [StructureView](upsource:///platform/editor-ui-api/src/com/intellij/ide/structureView/StructureView.java),
 
@@ -43,7 +43,7 @@ interface,在`com.intellij.lang.psiStructureViewFactory`扩展点中注册.
 
 来自它
 
-[PsiStructureViewFactory.getStructureViewBuilder()](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)<! - ＃L35-->
+[PsiStructureViewFactory.getStructureViewBuilder()](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)<!-- ＃L35-->
 
 方法.
 

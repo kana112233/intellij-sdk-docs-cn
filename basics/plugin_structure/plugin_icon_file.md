@@ -24,7 +24,7 @@ _Plugin Icon_旨在成为插件功能,技术或的独特表示
 欲获得更多信息.
 
 
-###插件图标文件格式
+### 插件图标文件格式
 
 所有插件图标图像必须以SVG格式提供.
 
@@ -40,21 +40,17 @@ _Plugin Icon_旨在成为插件功能,技术或的独特表示
 | ------------- | -------------                            |
 | 40x40         | ![Kotlin Plugin Icon](img/kotlin40.svg)  |
 
-###插件图标文件命名约定
+### 插件图标文件命名约定
 
 插件图标文件根据以下约定命名:
-
-*`pluginIcon.svg`用于默认(轻量)JetBrains IDE主题
-
-*`pluginIcon_dark.svg`用于Darcula JetBrains IDE主题
+* `pluginIcon.svg`用于默认(轻量)JetBrains IDE主题
+* `pluginIcon_dark.svg`用于Darcula JetBrains IDE主题
 
 
-###将插件图标添加到插件项目中
+### 将插件图标添加到插件项目中
 
 插件图标文件必须位于插件分发文件的“META-INF”文件夹中,
-
 即您上传到插件存储库并安装到的`* .jar`或`* .zip`文件
-
 JetBrains IDE.
 
 

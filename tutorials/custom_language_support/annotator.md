@@ -77,12 +77,12 @@ public class Test {
 }
 ```
 
-！[注释器(IMG/annotator.png)
+![注释器(IMG/annotator.png)
 
 
 如果我们键入未定义的属性名称，它将使用错误注释代码。
 
 
-！[未解决的属性](img/unresolved_property.png)
+![未解决的属性](img/unresolved_property.png)
 
 

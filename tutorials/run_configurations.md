@@ -4,7 +4,7 @@ title: Run Configurations
 
 这一系列步骤显示了如何注册和实现简单的运行配置。
 
-运行配置用于从基于* IntelliJ Platform *的产品中运行内部和外部流程。
+运行配置用于从基于 *IntelliJ Platform* 的产品中运行内部和外部流程。
 
 要熟悉运行配置的概念，请参阅
 
@@ -15,7 +15,7 @@ title: Run Configurations
 [IntelliJ IDEA Web帮助](https://www.jetbrains.com/idea/help/intellij-idea.html)
 
 
-##预先要求
+## 预先要求
 
 
 创建一个空的插件项目。

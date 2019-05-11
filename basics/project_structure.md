@@ -2,30 +2,30 @@
 title: Project Structure
 ---
 
-<! -  TODO根据目录分成部分 - >
+<!--  TODO根据目录分成部分 -->
 
 
-本主题考虑基于* IntelliJ Platform *和相关主题的项目概念,例如_modules_,_facets_,_libraries_,_SDK_.
+本主题考虑基于 *IntelliJ Platform* 和相关主题的项目概念,例如_modules_,_facets_,_libraries_,_SDK_.
 已经考虑了可用于管理项目和模块的项目结构和Java类.
 
 
-##项目及其组件
+## 项目及其组件
 
 
 本节简要讨论IDEA项目结构,项目组件和相关术语.
 有关项目及其组件的更多信息,请参阅[项目](https://www.jetbrains.com/help/idea/about-projects.html),[模块](https://www.jetbrains.com/help/idea/configurations-projects.html#working-with-modules),[Library](https://www.jetbrains.com/help/idea/working-with-libraries.html),[Facet](https://www.jetbrains.com/help/idea/adding-support-for-frameworks-and-technologies.html#facets)在* IntelliJ IDEA * Web帮助中.
 
 
-###项目
+### 项目
 
 
-在* IntelliJ Platform *中,_project_将所有源代码,库和构建指令封装到单个组织单元中.
+在 *IntelliJ Platform* 中,_project_将所有源代码,库和构建指令封装到单个组织单元中.
 使用* IntelliJ Platform SDK *所做的一切都是在项目的上下文中完成的.
 项目定义称为_modules_和_libraries_的集合.
 根据项目的逻辑和功能要求,您可以创建_single-module_或_multi-module_项目.
 
 
-###模块
+### 模块
 
 
 _module_是一个独立的功能单元,可以独立运行,测试和调试.
@@ -38,7 +38,7 @@ _module_是一个独立的功能单元,可以独立运行,测试和调试.
 
 
 _library_是模块所依赖的已编译代码(例如JAR文件)的存档. 
-* IntelliJ Platform *支持三种类型的库:
+ *IntelliJ Platform* 支持三种类型的库:
 
 
 * **模块库**:库类仅在此模块中可见,库信息记录在模块的`.iml`文件中.

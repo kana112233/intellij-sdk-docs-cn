@@ -2,7 +2,7 @@
 title: Getting Help
 ---
 
-##指南的问题
+## 指南的问题
 
 
 如果您对指南本身有问题,例如遗失,错误或混淆内容,请[在YouTrack上提出问题](https://youtrack.jetbrains.com/newIssue?project=IJSDK&clearDraft=true&c=).
@@ -16,7 +16,7 @@ title: Getting Help
 > **注意**请不要将** IJSDK ** YouTrack项目用于插件或产品支持请求 - 它适用于SDK和文档,您将使用以下方法之一获得更好的响应.
 
 
-##代码问题 - 支持问题
+## 代码问题 - 支持问题
 
 
 对于与代码相关的问题,而不是指南的内容,您有以下几种选择:
@@ -33,7 +33,7 @@ title: Getting Help
 当然,所有问题都将用于尝试和改进本指南.
 
 
-##产品问题
+## 产品问题
 
 
 如果您对基于IntelliJ平台的产品(例如IntelliJ IDEA,WebStorm,Rider等)有问题,请在[YouTrack](https://youtrack.jetbrains.com)上提出问题,并将其分配给正确的

@@ -2,20 +2,19 @@
 title: Plugin Services
 ---
 
-当你的插件调用[ServiceManager](upsource:///platform/core-api/src/com/intellij/openapi/components/ServiceManager.java)类的`getService`方法时,_service_是一个按需加载的插件组件
-.
+当你的插件调用[ServiceManager](upsource:///platform/core-api/src/com/intellij/openapi/components/ServiceManager.java)类的`getService`方法时,_service_是一个按需加载的插件组件.
 
 
-* IntelliJ Platform *确保即使多次调用服务,也只加载一个服务实例.
+ *IntelliJ Platform* 确保即使多次调用服务,也只加载一个服务实例.
 服务必须具有用于服务实例化的实现类.
 服务还可以具有接口类,该接口类用于获取服务实例并提供服务的API.
 接口和实现类在`plugin.xml`文件中指定.
 
 
-* IntelliJ Platform *提供三种类型的服务:应用程序级服务,项目级服务和_module level_服务.
+ *IntelliJ Platform* 提供三种类型的服务:应用程序级服务,项目级服务和_module level_服务.
 
 
-##如何申报服务？
+## 如何申报服务？
 
 
 要声明服务,可以在IntelliJ平台中使用以下扩展点:
@@ -62,7 +61,7 @@ IDE将生成新的Java接口和类(或者如果取消选中则只是一个类*�
 如果没有指定`serviceInterface`,它应该与`serviceImplementation`具有相同的值.
 
 
-##检索服务
+## 检索服务
 
 
 要在Java代码中实例化您的服务,请使用以下语法:
@@ -76,7 +75,7 @@ MyProjectService projectService = ServiceManager.getService(project, MyProjectSe
 MyModuleService moduleService = ModuleServiceManager.getService(module, MyModuleService.class);
 ```
 
-###示例插件
+### 示例插件
 
 
 本部分允许您下载和安装示例插件,说明如何创建和使用插件服务.
@@ -84,7 +83,7 @@ MyModuleService moduleService = ModuleServiceManager.getService(module, MyModule
 如果此数字超过允许的最大同时打开项目数,则插件将返回错误消息并关闭最近打开的项目.
 
 
-<! -  TODO在可用时替换为其他插件URL  - >
+<!--  TODO在可用时替换为其他插件URL  -->
 
 
 **安装并运行示例插件**
