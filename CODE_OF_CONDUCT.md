@@ -2,7 +2,9 @@
 title: Code of Conduct
 ---
 
-## Code of Conduct
+## 行为守则
 
-This project and the corresponding community is governed by the [JetBrains Open Source and Community Code of Conduct](https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct). Please make sure you read it. 
+该项目和相应的社区受[JetBrains开源和社区行为准则]的管辖(https://confluence.jetbrains.com/display/ALL/JetBrains+Open+Source+and+Community+Code+of+Conduct).
+请确保你阅读它.
+
 

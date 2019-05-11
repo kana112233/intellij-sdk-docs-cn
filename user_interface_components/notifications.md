@@ -2,48 +2,46 @@
 title: Notifications
 ---
 
+## 通知
 
-## Notifications
+其中一个主要的设计原则是避免使用模态消息框来通知用户有关可能需要用户注意的错误和其他情况.
+作为替代,* IntelliJ Platform *提供了多个非模态通知UI选项.
 
-One of the leading design principles is avoiding the use of modal message boxes for notifying the user about errors and other situations that may warrant the user's attention.
-As a replacement, the *IntelliJ Platform* provides multiple non-modal notification UI options.
+### 对话
 
-### Dialogs
+在模态对话框中工作时,不是在按下“OK”按钮时检查输入的有效性,而是通过模态对话框通知用户有关无效数据,建议的方法是使用
+[DialogBu​​ilder.doValidate()](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java)
+这是前面描述的.
 
-When working in a modal dialog, instead of checking the validity of the input when the `OK` button is pressed and notifying the user about invalid data with a modal dialog, the recommended approach is to use
-[DialogBuilder.doValidate()](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java),
-which was described previously.
+### 编辑提示
 
-### Editor Hints
-
-For actions invoked from the editor (such as refactorings, navigation actions and different code insight features), the best way to notify the user about the inability to perform an action is to use the
+对于从编辑器调用的操作(例如重构,导航操作和不同的代码洞察功能),通知用户无法执行操作的最佳方法是使用
+[HintManager](upsource:///platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java)类.
+它的方法`showErrorHint()`在编辑器上方显示一个浮动弹出窗口,当用户开始在编辑器中执行另一个操作时,它会自动隐藏.
+其他
 [HintManager](upsource:///platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java)
-class.
-Its method `showErrorHint()` displays a floating popup above the editor which is automatically hidden when the user starts performing another action in the editor.
-Other
-[HintManager](upsource:///platform/platform-api/src/com/intellij/codeInsight/hint/HintManager.java)
-methods can be used for displaying other kinds of non-modal notification hints over an editor.
+方法可用于在编辑器上显示其他类型的非模态通知提示.
 
-### Top-Level Notifications
 
-The most general way to display non-modal notifications is to use the
-[Notifications](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)
-class.
+### 顶级通知
 
-It has two main advantages:
+显示非模态通知的最常用方法是使用
+
+[通知](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)类.
+
+它有两个主要优点:
 
 *  The user can control the way each notification type is displayed under `Settings | Notifications`
 
-*  All displayed notifications are gathered in the Event Log tool window and can be reviewed later
+*  所有显示的通知都会在“事件日志”工具窗口中收集,以后可以查看
 
-The specific method used to display a notification is
+用于显示通知的具体方法是
 [Notifications.Bus.notify()](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java).
-The text of the notification can include HTML tags.
-You can allow the user to interact with the notification by including hyperlink tags in the notification text and passing a
-[NotificationListener](upsource:///platform/platform-api/src/com/intellij/notification/NotificationListener.java)
-instance to the constructor of the
-[Notification](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)
-class.
+通知的文本可以包括HTML标记.
+您可以通过在通知文本中包含超链接标记并传递一个来允许用户与通知进行交互
+[的NotificationListener](upsource:///platform/platform-api/src/com/intellij/notification/NotificationListener.java)
+实例到的构造函数
+[通知](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)类.
 
 The `groupDisplayId` parameter of the
 [Notification](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)

@@ -33,7 +33,7 @@ title: About this Guide
 基础平台层基本上包含_IntelliJ Platform_的功能,该功能不针对语言功能或解析.
 
 
-* [**第III部分 - 项目模型**](/basics/project_structure.md)
+* [**第三部分 - 项目模型**](/basics/project_structure.md)
 
 
 记录项目模型,它表示当前加载的项目的文件和配置,以及用于构建项目的构建系统.
@@ -54,20 +54,20 @@ title: About this Guide
 有关特定于语言的功能,请参阅下面的自定义语言部分,该功能仅在添加对新语言的支持时适用.
 
 
-* [**第VI部分 - 测试**](/basics/testing_plugins.md)
+* [**第六部分 - 测试**](/basics/testing_plugins.md)
 
 
 描述用于编写涵盖插件功能的自动化测试的可用基础结构.
 
 
-* [**第VII部分 - 自定义语言**](/reference_guide/custom_language_support.md)
+* [**第七部分 - 自定义语言**](/reference_guide/custom_language_support.md)
 
 
 插件经常扩展对现有语言的支持,例如向Java文件添加检查.
 本节介绍如何为_IntelliJ Platform_添加对新语言的支持,默认情况下不支持该语言,创建解析器,语法和语义模型以及构建在顶层的所有功能.
 
 
-* [**第VIII部分 - 产品特定**](/products/idea.md)
+* [**第八部分 - 产品特定**](/products/idea.md)
 
 
 _IntelliJ Platform_中的许多功能都是语言和产品无关的.
@@ -75,14 +75,14 @@ _IntelliJ Platform_中的许多功能都是语言和产品无关的.
 本节介绍产品特定功能,例如特定项目模型差异以及如何在插件中定位它们.
 
 
-* **第IX部分 - 自定义IDE **
+* **第九部分 - 自定义IDE **
 
 
 记录如何使用_IntelliJ Platform_创建新的自定义IDE,而不是插入现有产品,例如
 像WebStorm或Android Studio.
 
 
-* [** Part X  - 插件存储库API **](/plugin_repository/index.md)
+* [** Part 十  - 插件存储库API **](/plugin_repository/index.md)
 
 
 记录JetBrains维护的[Plugin Repository](https://plugins.jetbrains.com)服务的API,用于托管插件.

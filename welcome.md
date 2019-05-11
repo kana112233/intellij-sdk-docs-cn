@@ -4,26 +4,46 @@ redirect_from:
   - /index.html
 ---
 
-[![official JetBrains project](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
-[![Join the chat at https://gitter.im/JetBrains/gradle-intellij-plugin](https://badges.gitter.im/JetBrains/intellij-sdk-docs.svg)](https://gitter.im/IntelliJ-Plugin-Developers/Lobby)
+[![官方JetBrains项目](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 
-Welcome to the _IntelliJ Platform_ SDK. This is the primary source of documentation for extending the _IntelliJ Platform_, by creating plugins, custom language support or building a custom IDE.
+[![加入聊天https://gitter.im/JetBrains/gradle-intellij-plugin](https://badges.gitter.im/JetBrains/intellij-sdk-docs.svg)](https://gitter.im/IntelliJ-Plugin-Developers/Lobby)
 
-## Getting Started
 
-* [**What is the IntelliJ Platform?**](intro/intellij_platform.md)
-* [**About this Guide**](intro/about.md)
-    * [**Key Topics**](intro/key_topics.md)
-* [**Getting Help**](intro/getting_help.md)
-* [**Getting Started**](/basics/getting_started.md)
-* [**Useful Links**](/appendix/resources/useful_links.md)
+欢迎使用_IntelliJ Platform_ SDK.
+这是扩展_IntelliJ Platform_的文档的主要来源,通过创建插件,自定义语言支持或构建自定义IDE.
 
-## Open Source
 
-This guide is Open Source, and licensed under Apache 2.0. The source (as Markdown) is [hosted on GitHub](https://github.com/JetBrains/intellij-sdk-docs). 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to host the docs locally and contribute.
+## 入门
 
-Please see [Getting Help](/intro/getting_help.md) if you encounter bugs in this guide or require help with missing content. 
 
-## Updates
-See [Recently Updated](recently_updated.md) for latest changes. Follow [JBPlatform](https://twitter.com/JBPlatform/) on Twitter and visit [JetBrains Platform Blog](https://blog.jetbrains.com/platform/) for latest announcements.
+* [**什么是IntelliJ平台?**](intro/intellij_platform.md)
+
+* [**关于本指南**](intro/about.md)
+    
+* [**关键主题**](intro/key_topics.md)
+
+* [**获得帮助**](intro/getting_help.md)
+
+* [**入门**](/basics/getting_started.md)
+
+* [**有用的链接**](/appendix/resources/useful_links.md)
+
+
+##开源
+
+
+本指南是开源的,并在Apache 2.0下获得许可.
+源(作为Markdown)[托管在GitHub上](https://github.com/JetBrains/intellij-sdk-docs).
+
+有关如何在本地托管文档并做出贡献的详细信息,请参阅[CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+如果您在本指南中遇到错误或需要有关缺少内容的帮助,请参阅[获得帮助](/intro/getting_help.md).
+
+
+## 更新
+
+有关最新更改,请参阅[最近更新](recent_updated.md).
+在Twitter上关注[JBPlatform](https://twitter.com/JBPlatform/),访问[JetBrains平台博客](https://blog.jetbrains.com/platform/)获取最新公告.
+
+
