@@ -26,19 +26,19 @@
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kana112233.github.io//basics/architectural_overview/modifying_psi.html" />
+    <meta property="og:url" content="https://kana112233.github.io/intellij-sdk-docs-cn//basics/architectural_overview/modifying_psi.html" />
     <meta property="og:site_name" content="JetBrains IntelliJ Platform SDK" />
     <meta property="og:title" content="Modifying the PSI" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
-    <meta property="og:image" content="https://kana112233.github.io/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
+    <meta property="article:modified_time" content="2019-05-11T13:34:41+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
     <meta name="twitter:title" content="Modifying the PSI" />
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
-    <meta name="twitter:image" content="https://kana112233.github.io/jetbrains.png" />
+    <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/"></meta>
 <link  rel="stylesheet" href="/app/styles.css"></head>
 <body data-id="basics/architectural_overview/modifying_psi">
@@ -87,35 +87,22 @@
                     </a>
 
                     <h1>Modifying the PSI</h1>
-                    <p>PSI是源代码的读写表示,作为对应于源结构的元素树</p>
+                    <p>PSI是源代码的读写表示,作为对应于源结构的元素树文件.您可以通过<em>添加</em>,<em>替换</em>和<em>删除</em> PSI元素来修改PSI.</p>
 
-<p>文件.
-您可以通过<em>添加</em>,<em>替换</em>和<em>删除</em> PSI元素来修改PSI.</p>
+<p>要执行这些操作,可以使用诸如<code class="code highlight language-text">PsiElement.add()</code>,<code class="code highlight language-text">PsiElement.delete()</code>和<code class="code highlight language-text">PsiElement.replace()</code>之类的方法,
+以及在<code class="code highlight language-text">PsiElement</code>接口中定义的其他方法,它允许您在一个单元中处理多个元素操作,或指定树中需要添加元素的确切位置.</p>
 
-<p>要执行这些操作,可以使用诸如<code class="code highlight language-text">PsiElement.add()</code>,<code class="code highlight language-text">PsiElement.delete()</code>和<code class="code highlight language-text">PsiElement.replace()</code>之类的方法,</p>
-
-<p>以及在<code class="code highlight language-text">PsiElement</code>接口中定义的其他方法,它允许您在一个单元中处理多个元素</p>
-
-<p>操作,或指定树中需要添加元素的确切位置.</p>
-
-<p>就像文档操作一样,PSI修改需要包含在写入操作和命令中(因此</p>
-
-<p>只能在事件派发线程中执行).
+<p>就像文档操作一样,PSI修改需要包含在写入操作和命令中(因此只能在事件派发线程中执行).
 参见<a href="documents.html#the-are-the-rules-of-working-with-documents"><span>文件文章</span></a></p>
 
 <p>有关命令和写入操作的更多信息.</p>
 
-<p>##创建新的PSI</p>
+<a name="psi" class="elem-anchor"></a>
+<h2>创建新的PSI<a href="#psi" class="anchor-link"><span></span></a></h2>
 
-<p>要添加到树中或替换现有PSI元素的PSI元素通常是从文本*创建的.</p>
-
-<p>在最常见的情况下,使用[<code class="code highlight language-text">PsiFileFactory</code>]的<code class="code highlight language-text">createFileFromText</code>方法(upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java)</p>
-
-<p>创建一个新文件,其中包含您需要添加到树中或用作替换的代码构造</p>
-
-<p>对于现有元素,遍历生成的树以找到所需的特定元素,然后传递它</p>
-
-<p>元素到<code class="code highlight language-text">add()</code>或<code class="code highlight language-text">replace()</code>.</p>
+<p>要添加到树中或替换现有PSI元素的PSI元素通常是从文本*创建的.
+在最常见的情况下,使用[<code class="code highlight language-text">PsiFileFactory</code>]的<code class="code highlight language-text">createFileFromText</code>方法(upsource:///platform/core-api/src/com/intellij/psi/PsiFileFactory.java)
+创建一个新文件,其中包含您需要添加到树中或用作替换的代码构造对于现有元素,遍历生成的树以找到所需的特定元素,然后传递它元素到<code class="code highlight language-text">add()</code>或<code class="code highlight language-text">replace()</code>.</p>
 
 <p>大多数语言都提供工厂方法,使您可以更轻松地创建特定的代码构造.
 例如,</p>
@@ -124,31 +111,22 @@
 
 <p>包含诸如<code class="code highlight language-text">createMethodFromText</code>之类的方法,它从给定文本创建Java方法.</p>
 
-<p>当您实现与现有代码一起使用的重构,意图或检查quickfix时,文本</p>
+<p>当您实现与现有代码一起使用的重构,意图或检查quickfix时,文本你传递给各种<code class="code highlight language-text">createFromText</code>方法将结合硬编码片段和从中获取的代码片段现有文件.
+对于小代码片段(单个标识符),您只需附加现有文本即可代码到您正在构建的代码片段的文本.
+在这种情况下,您需要确保生成的文本是语法正确,否则<code class="code highlight language-text">createFromText</code>方法将抛出异常.
+对于较大的代码片段,最好分几步执行修改:</p>
 
-<p>你传递给各种<code class="code highlight language-text">createFromText</code>方法将结合硬编码片段和从中获取的代码片段</p>
+<ul>
+  <li>从文本创建替换树片段,留下用户代码片段的占位符;
+ </li>
+  <li>用用户代码片段替换占位符;
+ </li>
+  <li>用替换树替换原始源文件中的元素.</li>
+</ul>
 
-<p>现有文件.
-对于小代码片段(单个标识符),您只需附加现有文本即可</p>
+<p>这可确保保留用户代码的格式,并且修改不会引入任何不需要的内容空白变化.</p>
 
-<p>代码到您正在构建的代码片段的文本.
-在这种情况下,您需要确保生成的文本是</p>
-
-<p>语法正确,否则<code class="code highlight language-text">createFromText</code>方法将抛出异常.</p>
-
-<p>对于较大的代码片段,最好分几步执行修改:</p>
-
-<p>*从文本创建替换树片段,留下用户代码片段的占位符;
- 
-*用用户代码片段替换占位符;
- 
-*用替换树替换原始源文件中的元素.</p>
-
-<p>这可确保保留用户代码的格式,并且修改不会引入任何不需要的内容</p>
-
-<p>空白变化.</p>
-
-<p>作为此方法的示例,请参阅“ComparingReferencesInspection”示例中的quickfix:</p>
+<p>作为此方法的示例,请参阅”ComparingReferencesInspection”示例中的quickfix:</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="c1">// binaryExpression holds a PSI expression of the form "x == y", which needs to be replaced with "x.equals(y)"</span>
 <span class="n">PsiBinaryExpression</span> <span class="n">binaryExpression</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiBinaryExpression</span><span class="o">)</span> <span class="n">descriptor</span><span class="o">.</span><span class="na">getPsiElement</span><span class="o">();</span>
@@ -171,9 +149,10 @@
 
 <p>就像IntelliJ Platform API中的其他地方一样,文本传递给<code class="code highlight language-text">createFileFromText</code>和其他<code class="code highlight language-text">createFromText</code></p>
 
-<p>方法必须只使用<code class="code highlight language-text">\ n</code>作为行分隔符.</p>
+<p>方法必须只使用<code class="code highlight language-text">\n</code>作为行分隔符.</p>
 
-<p>##维护树结构一致性</p>
+<a name="section" class="elem-anchor"></a>
+<h2>维护树结构一致性<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>PSI修改方法不会限制您构建结果树结构的方式.
 例如,</p>
@@ -186,21 +165,16 @@
 产生错误树结构的修改似乎可行,但它们会起作用</p>
 
 <p>以后会导致问题和例外.
-因此,您始终需要确保使用PSI构建的结构</p>
+因此,您始终需要确保使用PSI构建的结构修改操作与解析您构建的代码时解析器生成的操作相同.</p>
 
-<p>修改操作与解析您构建的代码时解析器生成的操作相同.</p>
-
-<p>为了确保不引入不一致,可以在测试中调用<code class="code highlight language-text">PsiTestUtil.checkFileStructure()</code></p>
-
-<p>你修改PSI的动作.
+<p>为了确保不引入不一致,可以在测试中调用<code class="code highlight language-text">PsiTestUtil.checkFileStructure()</code>
+你修改PSI的动作.
 此方法可确保您构建的结构与解析器生成的结构相同.</p>
 
-<p>##空白和进口</p>
+<a name="section-1" class="elem-anchor"></a>
+<h2>空白和进口<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
-<p>使用PSI修改函数时,永远不应创建单独的空白节点(空格或换行符)</p>
-
-<p>来自文字.
-相反,所有空格修改都由格式化程序执行,格式化程序遵循代码样式设置</p>
+<p>使用PSI修改函数时,永远不应创建单独的空白节点(空格或换行符)来自文字.相反,所有空格修改都由格式化程序执行,格式化程序遵循代码样式设置</p>
 
 <p>由用户选择.
 格式化在每个命令结束时自动执行,如果需要,可以</p>
@@ -223,7 +197,8 @@
 
 <p>用户的代码样式设置并插入到文件的正确位置.</p>
 
-<p>##结合PSI和文档修改</p>
+<a name="psi-1" class="elem-anchor"></a>
+<h2>结合PSI和文档修改<a href="#psi-1" class="anchor-link"><span></span></a></h2>
 
 <p>在某些情况下,您需要执行PSI修改,然后对您刚才的文档执行操作</p>
 
@@ -238,13 +213,12 @@
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiDocumentManager.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiDocumentManager</code></span></a>类.</p>
 
 
-
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/architectural_overview/psi_references.html">PSI References</a>
                         <a class="navigation-links__next" href="/basics/psi_cookbook.html">PSI Cookbook</a>
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 
