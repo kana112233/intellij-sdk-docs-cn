@@ -31,7 +31,7 @@
     <meta property="og:title" content="Spring API" />
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
-    <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
+    <meta property="article:modified_time" content="2019-05-11T21:27:17+08:00" />
     <!-- <meta property="article:section" content="" /> 
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
@@ -177,7 +177,8 @@
 <a name="spring-model" class="elem-anchor"></a>
 <h3>Spring Model<a href="#spring-model" class="anchor-link"><span></span></a></h3>
 
-<p>#####按文件PsiElement获取Spring模型.</p>
+<a name="psielementspring" class="elem-anchor"></a>
+<h5>按文件PsiElement获取Spring模型.</h5>
 
 <p>请参阅<code class="code highlight language-text">SpringManager#getSpringModel(s)...</code>和<code class="code highlight language-text">com.intellij.spring.model.utils.SpringModelUtils</code>.</p>
 
@@ -363,13 +364,14 @@
 
 <p>使用<code class="code highlight language-text">com.intellij.spring.boot.library.SpringBootLibraryUtil</code>查询常见附加库的版本和可用性.</p>
 
-<p>###自定义配置文件格式</p>
+<a name="section-8" class="elem-anchor"></a>
+<h3>自定义配置文件格式<a href="#section-8" class="anchor-link"><span></span></a></h3>
 
 <p><code class="code highlight language-text">com.intellij.spring.boot.model.SpringBootModelConfigFileContributor</code>允许添加对自定义配置文件格式的支持.
                                             </p>
 
-<a name="section-8" class="elem-anchor"></a>
-<h3>自动配置支持<a href="#section-8" class="anchor-link"><span></span></a></h3>
+<a name="section-9" class="elem-anchor"></a>
+<h3>自动配置支持<a href="#section-9" class="anchor-link"><span></span></a></h3>
 
 <p>现有的<code class="code highlight language-text">Condition</code>实现可以在IDE中通过<code class="code highlight language-text">com.intellij.spring.boot.model.autoconfigure.conditions.ConditionalContributor</code>在设计时进行模拟.</p>
 
@@ -382,8 +384,8 @@
 
 <p><code class="code highlight language-text">com.intellij.spring.boot.initializr.SpringInitializrModuleBuilderPostTask</code>允许在创建模块后执行自定义设置步骤(例如,与构建系统的设置集成).</p>
 
-<a name="section-9" class="elem-anchor"></a>
-<h3>端点选项卡<a href="#section-9" class="anchor-link"><span></span></a></h3>
+<a name="section-10" class="elem-anchor"></a>
+<h3>端点选项卡<a href="#section-10" class="anchor-link"><span></span></a></h3>
 
 <p><em>2018.2</em>  - 需要<code class="code highlight language-text">spring-boot-run.jar</code></p>
 
@@ -397,7 +399,7 @@
                         
                     </div>
                     <div class="last-modified">
-                        Last modified: 9 May 2019
+                        Last modified: 11 May 2019
                     </div>
                 </article>
 
