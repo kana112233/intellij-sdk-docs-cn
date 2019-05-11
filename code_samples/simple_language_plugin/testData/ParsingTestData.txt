@@ -1,6 +1,6 @@
 简单文件（0,492）
   
-PsiComment（SimpleTokenType.COMMENT）（'＃您正在阅读“.properties”条目。'）（0,42）
+PsiComment（SimpleTokenType.COMMENT）（'# 您正在阅读“.properties”条目。'）（0,42）
   
 PsiWhiteSpace（ '\ n'）（42,43）
   
@@ -36,11 +36,11 @@ PsiElement（SimpleTokenType.VALUE）（ '英语'）（145152）
   
 PsiWhiteSpace（ '\ n'）（152153）
   
-PsiComment（SimpleTokenType.COMMENT）（'＃下面的反斜杠告诉应用程序继续读取'）（153,216）
+PsiComment（SimpleTokenType.COMMENT）（'# 下面的反斜杠告诉应用程序继续读取'）（153,216）
   
 PsiWhiteSpace（ '\ n'）（216217）
   
-PsiComment（SimpleTokenType.COMMENT）（'＃下一行的值。'）（217,248）
+PsiComment（SimpleTokenType.COMMENT）（'# 下一行的值。'）（217,248）
   
 PsiWhiteSpace（ '\ n'）（248249）
   
@@ -58,7 +58,7 @@ PsiElement（SimpleTokenType.VALUE）（'欢迎来到\\ n Wikipedia!'）（259,2
   
 PsiWhiteSpace（ '\ n'）（292293）
   
-PsiComment（SimpleTokenType.COMMENT）（'＃为键添加空格'）（293,316）
+PsiComment（SimpleTokenType.COMMENT）（'# 为键添加空格'）（293,316）
   
 PsiWhiteSpace（ '\ n'）（316317）
   
@@ -76,7 +76,7 @@ PsiElement（SimpleTokenType.VALUE）（'这是可以使用键“key with space�
   
 PsiWhiteSpace（ '\ n'）（410411）
   
-PsiComment（SimpleTokenType.COMMENT）（'＃Unicode'）（411,420）
+PsiComment（SimpleTokenType.COMMENT）（'# Unicode'）（411,420）
   
 PsiWhiteSpace（ '\ n'）（420421）
   

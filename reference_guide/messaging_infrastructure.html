@@ -84,7 +84,8 @@
                     
 
                     <h1>Messaging infrastructure</h1>
-                    <p>＃目的</p>
+                    <a name="section" class="elem-anchor"></a>
+<h1>目的<a href="#section" class="anchor-link"><span></span></a></h1>
 
 <p>本文档的目的是向开发人员和插件编写者介绍IntelliJ平台中可用的消息传递基础结构.
 它旨在回答为什么,何时以及如何使用它.</p>
@@ -98,11 +99,13 @@
 
 <p>这提供了额外的功能,如层次结构_上的_broadcasting和特殊的_nested events_处理(_neted event_这是从另一个事件的回调中(直接或间接)触发新事件的情况.</p>
 
-<p>＃设计</p>
+<a name="section-1" class="elem-anchor"></a>
+<h1>设计<a href="#section-1" class="anchor-link"><span></span></a></h1>
 
 <p>以下是消息传递API的主要组件.</p>
 
-<p>＃＃ 话题</p>
+<a name="section-2" class="elem-anchor"></a>
+<h1>#  话题<a href="#section-2" class="anchor-link"><span></span></a></h1>
 
 <p>此类充当消息传递基础结构的端点.
 即
@@ -214,7 +217,7 @@
   </li>
 </ul>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ComponentManager.java" data-bypass="yes" target="_blank"><span>ComponentManager.getMessageBus()</span></a><!-- ＃L85--></p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ComponentManager.java" data-bypass="yes" target="_blank"><span>ComponentManager.getMessageBus()</span></a><!-- # L85--></p>
 
 <p>(许多标准接口实现它,例如</p>
 
@@ -238,7 +241,8 @@
 
 <p>因此,可以订阅它们以便接收有关处理的信息;</p>
 
-<p>＃广播</p>
+<a name="section-3" class="elem-anchor"></a>
+<h1>广播<a href="#section-3" class="anchor-link"><span></span></a></h1>
 
 <p>消息总线可以组织成层次结构.
 此外,* IntelliJ平台*已经拥有它们:</p>
@@ -296,7 +300,8 @@
   </li>
 </ul>
 
-<p>＃嵌套消息</p>
+<a name="section-4" class="elem-anchor"></a>
+<h1>嵌套消息<a href="#section-4" class="anchor-link"><span></span></a></h1>
 
 <p>_Nested message_是在另一个消息处理期间(直接或间接)发送的消息.</p>
 

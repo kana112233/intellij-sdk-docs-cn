@@ -84,7 +84,8 @@
                     
 
                     <h1>External System Integration</h1>
-                    <p>＃目的</p>
+                    <a name="section" class="elem-anchor"></a>
+<h1>目的<a href="#section" class="anchor-link"><span></span></a></h1>
 
 <p>此页面提供<em>外部系统</em>子系统的高级概述.</p>
 
@@ -106,7 +107,8 @@
 <p>这意味着我们可以将外部系统特定逻辑和一般IDE处理分开. 
 <em>‘外部系统’</em>子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.</p>
 
-<p>＃ 项目管理</p>
+<a name="section-1" class="elem-anchor"></a>
+<h1>项目管理<a href="#section-1" class="anchor-link"><span></span></a></h1>
 
 <p>##项目数据域</p>
 
@@ -163,7 +165,7 @@
 <p>当外部项目的配置文件被修改时,可以配置外部系统集成以自动刷新项目结构.
 基本上,最终用户应在外部系统设置中检查相应的框:</p>
 
-<p><img src="/intellij-sdk-docs-cn/reference_guide/IMG /使用-自动import.png" alt="自动导入" /></p>
+<p><img src="/intellij-sdk-docs-cn/reference_guide/img/use-auto-import.png" alt="自动导入" /></p>
 
 <p>内置支持仅涵盖链接外部项目的根配置文件.
 但是,可能存在这样的情况:特定外部项目具有另一个配置文件,这些配置文件也会影响生成的项目结构(例如,它可能是一个多项目,其中每个子项目都有自己的配置文件).
@@ -173,7 +175,8 @@
 <p><strong>注意:</strong> * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()<em>经常被调用,这就是为什么它应该尽快返回控制. 
 Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即</em> ExternalSystemManager <em>实现</em> ExternalSystemAutoImportAware <em>可以有一个字段,如</em>‘new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* <em>委托</em> ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.</p>
 
-<p>＃设置</p>
+<a name="section-2" class="elem-anchor"></a>
+<h1>设置<a href="#section-2" class="anchor-link"><span></span></a></h1>
 
 <p>一般的想法是所有外部系统设置控件都由[ExternalSettingsControl]的实现表示(upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java)
 接口.
