@@ -2,7 +2,7 @@
 title: External System Integration
 ---
 
-＃目的
+# 目的
 
 
 此页面提供*外部系统*子系统的高级概述.
@@ -28,7 +28,7 @@ title: External System Integration
 *'外部系统'*子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.
 
 
-＃ 项目管理
+#  项目管理
 
 
 ##项目数据域
@@ -102,7 +102,7 @@ IntelliJ平台为此提供标准API.
 基本上,最终用户应在外部系统设置中检查相应的框:
 
 
-![自动导入](/reference_guide/IMG /使用-自动import.png)
+![自动导入](/reference_guide/img/use-auto-import.png)
 
 
 内置支持仅涵盖链接外部项目的根配置文件.
@@ -115,7 +115,7 @@ IntelliJ平台为此提供标准API.
 Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即* ExternalSystemManager *实现* ExternalSystemAutoImportAware *可以有一个字段,如*'new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* *委托* ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.
 
 
-＃设置
+# 设置
 
 
 一般的想法是所有外部系统设置控件都由[ExternalSettingsControl]的实现表示(upsource:///platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/settings/ExternalSettingsControl.java)

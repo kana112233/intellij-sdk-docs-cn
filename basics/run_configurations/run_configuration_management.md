@@ -17,7 +17,7 @@ title: Run Configuration Management
 当用户打开_'Edit运行配置'对话框并执行_'Add'_动作时,将显示可用配置类型列表:
 
 
-![创建](/基础/IMG/创建-1.png)
+![创建](/basics/img/create-1.png)
 
 
 每种类型都表示为[`ConfigurationType`]的实例(upsource:///platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java),注册如下:

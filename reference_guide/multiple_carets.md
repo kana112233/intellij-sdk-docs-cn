@@ -2,7 +2,7 @@
 title: Supporting multiple carets
 ---
 
-＃＃ 介绍
+# #  介绍
 
 
 IDEA 13.1中的编辑器实现增加了对多个独立插入符的支持.

@@ -16,7 +16,7 @@ title: Safe Delete Refactoring
 
 *
    
-[PsiElement.delete()](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)<!-- ＃L371-->
+[PsiElement.delete()](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)<!-- # L371-->
    
 的方法
    
@@ -29,7 +29,7 @@ title: Safe Delete Refactoring
 
 **例:**
 
-[删除()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!-- ＃L363-->
+[删除()](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!-- # L363-->
 
 实施一个
 

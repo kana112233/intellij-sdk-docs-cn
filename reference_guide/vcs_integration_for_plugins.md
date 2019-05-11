@@ -11,7 +11,7 @@ title: VCS Integration Plugins
 VCS API在版本6.0中进行了重大重构,本文档未描述旧版本的API.
 
 
-＃＃ 关键概念
+# #  关键概念
 
 
 ### 文件路径

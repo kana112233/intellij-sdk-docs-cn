@@ -157,7 +157,7 @@ title: Find Usages
 
 > **提示**在函数参数和局部变量等情况下,请考虑覆盖
 
-[PsiElement＃getUseScope](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)返回较窄的范围.
+[PsiElement# getUseScope](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)返回较窄的范围.
 
 例如,您可能只返回最近函数定义的范围.
 这种优化可以大大减少

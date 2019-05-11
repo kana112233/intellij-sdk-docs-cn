@@ -18,7 +18,7 @@ title: 1. Adding Live Template Support
 可以在* Edit variables *对话框中进一步配置变量`$ TEXT $`和`$ LINK $`，以重新排序它们的优先级并绑定到将在适当的时间调用自动完成的函数，以及许多其他[有用的函数] 
 ](https://www.jetbrains.com/idea/help/creating-and-editing-template-variables.html)。
 在实现插件中的任何特殊功能之前，开发人员应熟悉所提供的功能，以防所需功能作为[预定义功能]提供(https://www.jetbrains.com/idea/help/creating-and-editing 
--template-variables.html＃predefined_functions)。
+-template-variables.html# predefined_functions)。
 
 
 最后，为您的新实时模板提供适用的上下文(即“Everywhere”或“Other”)。

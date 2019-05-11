@@ -14,13 +14,13 @@ objects, defining specific templates which can be used for surrounding the selec
 
 然后它调用
 
-[Surrounder.isApplicable()](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!-- ＃L46-->
+[Surrounder.isApplicable()](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!-- # L46-->
 
 该描述符中每个surrounder的方法,用于检查特定模板是否适用于当前上下文.
 
 一旦用户从弹出菜单中选择了特定的surrounder,就可以了
 
-[Surrounder.surroundElements()](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!-- ＃L57-->
+[Surrounder.surroundElements()](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!-- # L57-->
 
 方法用于执行环绕动作.
 

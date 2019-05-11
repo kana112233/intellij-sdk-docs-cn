@@ -2,7 +2,7 @@
 title: Messaging infrastructure
 ---
 
-＃目的
+# 目的
 
 
 本文档的目的是向开发人员和插件编写者介绍IntelliJ平台中可用的消息传递基础结构.
@@ -20,13 +20,13 @@ title: Messaging infrastructure
 这提供了额外的功能,如层次结构_上的_broadcasting和特殊的_nested events_处理(_neted event_这是从另一个事件的回调中(直接或间接)触发新事件的情况.
 
 
-＃设计
+# 设计
 
 
 以下是消息传递API的主要组件.
 
 
-＃＃ 话题
+# #  话题
 
 
 此类充当消息传递基础结构的端点.
@@ -149,7 +149,7 @@ public void doChange(Context context) {
 
 * * MessageBus *实例可通过
 
-[ComponentManager.getMessageBus()](upsource:///platform/core-api/src/com/intellij/openapi/components/ComponentManager.java)<!-- ＃L85-->
+[ComponentManager.getMessageBus()](upsource:///platform/core-api/src/com/intellij/openapi/components/ComponentManager.java)<!-- # L85-->
 
 (许多标准接口实现它,例如
 
@@ -169,7 +169,7 @@ public void doChange(Context context) {
 因此,可以订阅它们以便接收有关处理的信息;
 
 
-＃广播
+# 广播
 
 
 消息总线可以组织成层次结构.
@@ -231,7 +231,7 @@ public void doChange(Context context) {
 * _TO \ _PARENT_;
 
 
-＃嵌套消息
+# 嵌套消息
 
 
 _Nested message_是在另一个消息处理期间(直接或间接)发送的消息.

@@ -43,7 +43,7 @@ interface,在`com.intellij.lang.psiStructureViewFactory`扩展点中注册.
 
 来自它
 
-[PsiStructureViewFactory.getStructureViewBuilder()](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)<!-- ＃L35-->
+[PsiStructureViewFactory.getStructureViewBuilder()](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)<!-- # L35-->
 
 方法.
 
