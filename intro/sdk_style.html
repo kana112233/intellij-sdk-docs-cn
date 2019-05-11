@@ -87,46 +87,46 @@
                     </a>
 
                     <h1>Style Guide for SDK Documents</h1>
-                    <p>This document describes the writing style used in authoring open source IntelliJ Platform SDK documentation.
-Before you begin, please read this page thoroughly as well as the <a href="/intellij-sdk-docs-cn/CODE_OF_CONDUCT.html"><span>Code of Conduct</span></a> and <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>License</span></a> documents.
-For information about contributing to the IntelliJ Platform itself, please visit <a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>Contributing to the IntelliJ Platform</span></a>.</p>
+                    <p>本文档描述了在创作开源IntelliJ Platform SDK文档时使用的书写风格.
+在开始之前,请仔细阅读本页以及<a href="/intellij-sdk-docs-cn/CODE_OF_CONDUCT.html"><span>行为准则</span></a>和<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>许可证</span></a>文件.
+有关为IntelliJ平台本身做出贡献的信息,请访问<a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>贡献IntelliJ平台</span></a>.</p>
 
-<p>First and foremost, we should keep in mind our audience and their objectives:
-<em>Someone reading technical content is usually looking to answer a specific question.
-That question might be broad or narrowly-focused, but either way, our goal is to provide answers without distraction.</em></p>
+<p>首先,我们应该牢记我们的观众和他们的目标:
+<em>有人阅读技术内容通常希望回答具体问题.
+这个问题可能是广泛的或狭隘的,但不管怎样,我们的目标是提供答案而不会分心.</em></p>
 
-<p>The style of the <em>Intellij Platform SDK</em> documentation is captured by using a markup language named <a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span><em>Markdown</em></span></a>.
-The following sections describe the SDK documentation style in terms of the Markdown formats:</p>
+<p>使用名为<a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span><em>Markdown</em></span></a>的标记语言捕获_Intellij Platform SDK_文档的样式.
+以下部分根据Markdown格式描述SDK文档样式:</p>
 <ul>
-  <li><a href="#documentation-markup-style"><span>Documentation Markup Style</span></a>
+  <li><a href="#documentation-markup-style"><span>文档标记样式</span></a>
     <ul>
-      <li><a href="#page-format"><span>Page Format</span></a></li>
-      <li><a href="#redirects"><span>Redirects</span></a></li>
-      <li><a href="#table-of-contents-for-a-page"><span>Table of Contents for a Page</span></a></li>
-      <li><a href="#text-format-conventions"><span>Text Format Conventions</span></a></li>
-      <li><a href="#liquid-tags-and-filters"><span>Liquid tags and filters</span></a></li>
-      <li><a href="#syntax-highlighting"><span>Syntax highlighting</span></a></li>
-      <li><a href="#tables"><span>Tables</span></a></li>
-      <li><a href="#links"><span>Links</span></a></li>
-      <li><a href="#notes-and-callouts"><span>Callouts</span></a></li>
-      <li><a href="#images"><span>Images</span></a></li>
+      <li><a href="#page-format"><span>页面格式</span></a></li>
+      <li><a href="#reireirects"><span>重定向</span></a></li>
+      <li><a href="#page-of-contents-for-a-page"><span>页面的目录</span></a></li>
+      <li><a href="#text-format-conventions"><span>文本格式约定</span></a></li>
+      <li><a href="#liquid-tags-and-filters"><span>液体标签和过滤器</span></a></li>
+      <li><a href="#syntax-highlighting"><span>语法高亮</span></a></li>
+      <li><a href="#tables"><span>表</span></a></li>
+      <li><a href="#links"><span>链接</span></a></li>
+      <li><a href="#notes-and-callouts"><span>标注</span></a></li>
+      <li><a href="#images"><span>图片</span></a></li>
     </ul>
   </li>
-  <li><a href="#summary-site-table-of-contents"><span>_SUMMARY.md Site Table of Contents</span></a></li>
+  <li><a href="#summary-site-of-contents"><span>_SUMMARY.md网站目录</span></a></li>
   <li><a href="#repository-submodules"><span>Repository Submodules</span></a></li>
 </ul>
 
-<a name="documentation-markup-style" class="elem-anchor"></a>
-<h2>Documentation Markup Style<a href="#documentation-markup-style" class="anchor-link"><span></span></a></h2>
-<p>By default, when building the site, all files are copied to the destination <code class="code highlight language-text">_site</code> folder.
-Some files are excluded in the <code class="code highlight language-text">_config.yml</code> and <code class="code highlight language-text">sdkdocs-template/jekyll/_config-defaults.yml</code> files.
-The documentation files themselves are <a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span>Markdown</span></a> files (<code class="code highlight language-text">*.md</code>) that get automatically converted to HTML when the site is built.</p>
+<a name="section" class="elem-anchor"></a>
+<h2>文档标记样式<a href="#section" class="anchor-link"><span></span></a></h2>
+<p>默认情况下,在构建站点时,所有文件都将复制到目标<code class="code highlight language-text">_site</code>文件夹.
+一些文件被排除在<code class="code highlight language-text">_config.yml</code>和<code class="code highlight language-text">sdkdocs-template/jekyll/_config-defaults.yml</code>文件中.
+文档文件本身是<a href="https://github.github.com/gfm/" data-bypass="yes" target="_blank"><span>Markdown</span></a>文件(<code class="code highlight language-text">*.md</code>),在构建网站时会自动转换为HTML.</p>
 
-<a name="page-format" class="elem-anchor"></a>
-<h3>Page Format<a href="#page-format" class="anchor-link"><span></span></a></h3>
-<p>Only Markdown files beginning with a <a href="https://yaml.org" data-bypass="yes" target="_blank"><span>YAML</span></a> header are converted to HTML.
-If the Markdown file doesn’t contain a header, it won’t be converted.
-In other words, to convert a <code class="code highlight language-text">.md</code> file to HTML, it should look like this:</p>
+<a name="section-1" class="elem-anchor"></a>
+<h3>页面格式<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<p>只有以<a href="https://yaml.org" data-bypass="yes" target="_blank"><span>YAML</span></a>标头开头的Markdown文件才会转换为HTML.
+如果Markdown文件不包含标题,则不会转换它.
+换句话说,要将<code class="code highlight language-text">.md</code>文件转换为HTML,它应如下所示:</p>
 
 <div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
 <span class="nn">---</span>
@@ -134,12 +134,12 @@ In other words, to convert a <code class="code highlight language-text">.md</cod
 <span class="s">Lorem ipsum...</span>
 </code></div>
 
-<p>The two lines at the top of the file are the markers of the YAML <em>front matter</em>.
-Fields can be added in between these markers, and are used when generating the HTML.
-Typically, this header is empty, although it is required by Jekyll (if omitted, the file isn’t converted).</p>
+<p>文件顶部的两行是YAML _front matter_的标记.
+可以在这些标记之间添加字段,并在生成HTML时使用.
+通常,此标头为空,尽管Jekyll需要它(如果省略,则不转换文件).</p>
 
-<p>The YAML header can contain data that is used when generating the site.
-For example, the page title can be specified as a simple piece of Markdown - <code class="code highlight language-text"># Title</code>, or it can be specified in the YAML, and the page template displays it appropriately:</p>
+<p>YAML标头可以包含生成站点时使用的数据.
+例如,页面标题可以指定为Markdown的简单部分 - <code class="code highlight language-text"># Title</code>,或者可以在YAML中指定,页面模板可以适当地显示它:</p>
 
 <div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s">The Title Of The Page</span>
@@ -148,19 +148,16 @@ For example, the page title can be specified as a simple piece of Markdown - <co
 <span class="s">Lorem ipsum...</span>
 </code></div>
 
-<p>The YAML header can also include <a href="#redirects"><span>redirect</span></a> information.</p>
+<p>YAML标头还可以包括<a href="#redirects"><span>重定向</span></a>信息.</p>
 
-<p>Line spacing around headings in Markdown files generally doesn’t affect the HTML conversion, but it does make MD pages more readable for authors:</p>
-<ul>
-  <li>No space between a heading and the first content below it.</li>
-  <li>One space before a heading if it is the same level or a sub-heading of the previous section.</li>
-  <li>Two spaces before a heading that is higher-level than the heading of the previous section.</li>
-</ul>
+<p>Markdown文件中标题周围的行间距通常不会影响HTML转换,但它确实使MD页面对作者更具可读性:
+*标题与其下方的第一个内容之间没有空格.
+*如果是前一部分的同一级别或子标题,则前一个空格.
+*标题之前的两个空格,其高于上一节的标题.</p>
 
-<a name="redirects" class="elem-anchor"></a>
-<h3>Redirects<a href="#redirects" class="anchor-link"><span></span></a></h3>
-<p>The documentation site is set up to include the <a href="https://github.com/jekyll/jekyll-redirect-from" data-bypass="yes" target="_blank"><span>jekyll-redirect-from</span></a> plugin, which will generate “dummy” pages that automatically redirect to a given page.
-For example, to specify that the <code class="code highlight language-text">index.html</code> page be generated to redirect to <code class="code highlight language-text">README.md</code>, the <code class="code highlight language-text">README.md</code> file should include the following in the YAML header:</p>
+<p>###重定向
+文档站点设置为包含<a href="https://github.com/jekyll/jekyll-redirect-from" data-bypass="yes" target="_blank"><span>jekyll-redirect-from</span></a>插件,该插件将生成自动重定向到给定页面的“虚拟”页面.
+例如,要指定生成<code class="code highlight language-text">index.html</code>页面以重定向到<code class="code highlight language-text">README.md</code>,<code class="code highlight language-text">README.md</code>文件应在YAML头中包含以下内容:</p>
 
 <div class="code-block" data-lang="yaml"><code class="code-block__wrapper"><span class="nn">---</span>
 <span class="na">redirect_from</span><span class="pi">:</span>
@@ -170,33 +167,34 @@ For example, to specify that the <code class="code highlight language-text">inde
 <span class="s">Lorem ipsum...</span>
 </code></div>
 
-<p>The redirect will create an <code class="code highlight language-text">index.html</code> file that will automatically redirect to the generated <code class="code highlight language-text">README.html</code> file.
-Redirects enable the site URL to automatically show the <code class="code highlight language-text">README.html</code> file - <code class="code highlight language-text">http://localhost:4001/foo-test/</code> will try to load <code class="code highlight language-text">index.html</code>, which will automatically redirect to <code class="code highlight language-text">README.html</code>.</p>
+<p>重定向将创建一个<code class="code highlight language-text">index.html</code>文件,该文件将自动重定向到生成的<code class="code highlight language-text">README.html</code>文件.
+重定向使站点URL能够自动显示<code class="code highlight language-text">README.html</code>文件 - <code class="code highlight language-text">http://localhost:4001/foo-test/</code>将尝试加载<code class="code highlight language-text">index.html</code>,它将自动重定向到<code class="code highlight language-text">README.html</code> .</p>
 
-<p>It is also useful to redirect when renaming or moving files.
-Multiple redirects can be added to the YAML header.</p>
+<p>重命名或移动文件时重定向也很有用.
+可以将多个重定向添加到YAML标头中.</p>
 
-<a name="table-of-contents-for-a-page" class="elem-anchor"></a>
-<h3>Table of Contents for a Page<a href="#table-of-contents-for-a-page" class="anchor-link"><span></span></a></h3>
-<p>The site is configured to use the <a href="http://kramdown.gettalong.org" data-bypass="yes" target="_blank"><span>Kramdown Markdown converter</span></a>, which adds some extra features over traditional Markdown.
-For example, “attribute lists” that can apply attributes to the generated elements.</p>
+<a name="section-2" class="elem-anchor"></a>
+<h3>页面的目录<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<p>该网站配置为使用<a href="http://kramdown.gettalong.org" data-bypass="yes" target="_blank"><span>Kramdown Markdown转换器</span></a>,它增加了传统Markdown的一些额外功能.
+例如,“属性列表”可以将属性应用于生成的元素.</p>
 
-<p>One useful attribute is <code class="code highlight language-text">{:toc}</code>, which can be applied to a list item, which will get replaced with a list of links to header items.
-E.g. the following list item will be replaced by links to all of the header items in the page:</p>
+<p>一个有用的属性是<code class="code highlight language-text">{:toc}</code>,它可以应用于列表项,它将被替换为标题项的链接列表.
+例如.
+以下列表项将替换为页面中所有标题项的链接:</p>
 
 <div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="p">*</span> Dummy list item
 {:toc}
 </code></div>
 
-<p>Further Kramdown features are described on the <a href="https://kramdown.gettalong.org/converter/html.html" data-bypass="yes" target="_blank"><span>converter page</span></a>, and attribute lists are described on the <a href="http://kramdown.gettalong.org/syntax.html" data-bypass="yes" target="_blank"><span>syntax page</span></a>.
-Note that source code formatting is configured to use <a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavoured Mardown</span></a> and “code fences”, see below.</p>
+<p>进一步的Kramdown功能在<a href="https://kramdown.gettalong.org/converter/html.html" data-bypass="yes" target="_blank"><span>转换器页面</span></a>中进行了描述,属性列表在[语法页面]中进行了描述(http://kramdown.gettalong.org/syntax.html).
+请注意,源代码格式配置为使用<a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavored Mardown</span></a>和“code fences”,如下所示.</p>
 
-<a name="liquid-tags-and-filters" class="elem-anchor"></a>
-<h3>Liquid tags and filters<a href="#liquid-tags-and-filters" class="anchor-link"><span></span></a></h3>
-<p>Jekyll uses the <a href="https://shopify.github.io/liquid/" data-bypass="yes" target="_blank"><span>Liquid</span></a> templating language to process files.
-This process means standard Liquid tags and filters are available.
-There should be little need to use them, however, as the Markdown format is already quite rich.
-See the <a href="http://jekyllrb.com/docs/templates/" data-bypass="yes" target="_blank"><span>Jekyll site</span></a> for more details.</p>
+<a name="section-3" class="elem-anchor"></a>
+<h3>液体标签和过滤器<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<p>Jekyll使用<a href="https://shopify.github.io/liquid/" data-bypass="yes" target="_blank"><span>Liquid</span></a>模板语言来处理文件.
+此过程意味着可以使用标准的液体标签和过滤器.
+然而,应该没有必要使用它们,因为Markdown格式已经相当丰富.
+有关详细信息,请参阅<a href="http://jekyllrb.com/docs/templates/" data-bypass="yes" target="_blank"><span>Jekyll网站</span></a>.</p>
 
 <a name="text-format-conventions" class="elem-anchor"></a>
 <h3>Text Format Conventions<a href="#text-format-conventions" class="anchor-link"><span></span></a></h3>
@@ -210,25 +208,25 @@ See the <a href="http://jekyllrb.com/docs/templates/" data-bypass="yes" target="
   <li><a href="#links"><span>Links</span></a> have a particular format depending on the type of link.</li>
 </ul>
 
-<p>Consistent terminology helps the reader grasp new concepts more quickly:</p>
+<p>一致的术语有助于读者更快地掌握新概念:</p>
 <ul>
-  <li>The open source code in the GitHub repository <code class="code highlight language-text">intellij-community</code> is known as the <em>IntelliJ Platform</em>.
-Use the full phrase in SDK documentation.</li>
-  <li>IDEs based on the IntelliJ Platform are described as <em>IntelliJ Platform-based IDEs</em>.
-Once that term is used on a page, after that authors may use IDEs</li>
-  <li>When referring to JetBrains products always use the full name such as <em>IntelliJ IDEA</em>.</li>
+  <li>GitHub存储库<code class="code highlight language-text">intellij-community</code>中的开源代码称为_IntelliJ Platform_.
+使用SDK文档中的完整短语.</li>
+  <li>基于IntelliJ平台的IDE被描述为_IntelliJ基于平台的IDEs_.
+一旦在页面上使用该术语,之后作者可以使用IDE
+*在提及JetBrains产品时,请始终使用全名,例如_IntelliJ IDEA_.</li>
 </ul>
 
-<a name="syntax-highlighting" class="elem-anchor"></a>
-<h3>Syntax highlighting<a href="#syntax-highlighting" class="anchor-link"><span></span></a></h3>
-<p>Source code can be represented by using <a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavoured Markdown</span></a> code fences, which are three backticks:</p>
+<a name="section-4" class="elem-anchor"></a>
+<h3>语法高亮显示<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<p>源代码可以使用<a href="https://help.github.com/articles/github-flavored-markdown/" data-bypass="yes" target="_blank"><span>GitHub Flavored Markdown</span></a>代码围栏来表示,这是三个反引号:</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">```
 // Source code goes here...
 ```
 </code></div>
 
-<p>Syntax highlighting can be applied by specifying the language after the first set of ticks:</p>
+<p>可以通过在第一组滴答之后指定语言来应用语法突出显示:</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">```csharp
 // Some C# code
@@ -239,21 +237,21 @@ Once that term is used on a page, after that authors may use IDEs</li>
 ```
 </code></div>
 
-<p>Here is the list of <a href="https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers" data-bypass="yes" target="_blank"><span>supported languages</span></a>, and also <a href="https://kotlinlang.org" data-bypass="yes" target="_blank"><span>Kotlin</span></a>, of course.</p>
+<p>以下列表是<a href="https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers" data-bypass="yes" target="_blank"><span>支持的语言</span></a>,以及<a href="https://kotlinlang.org" data-bypass="yes" target="_blank"><span>Kotlin</span></a>, 当然.</p>
 
-<p>Please keep code samples concise and avoid any unnecessary “surrounding” code or import statements.</p>
+<p>请保持代码示例简洁,避免任何不必要的“周围”代码或import语句.</p>
 
-<!-- //TODO: Not currently supported by rouge, or by the site's CSS
+<p>&lt;! - //TODO:目前不支持rouge或网站的CSS</p>
 
-The site is also configured to highlight a range of files in the source code, by specifying `{start-end}` which is the start and end line of the highlighting:
+<p>该站点还配置为突出显示源代码中的一系列文件,方法是指定<code class="code highlight language-text">{start-end}</code>,它是突出显示的开始和结束行:</p>
 
-    ```java{2-3}
-    // Not highlighted
-    // Highlighted
-    // Highlighted
-    // Not highlighted
-    ```
--->
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">```java{2-3}
+// Not highlighted
+// Highlighted
+// Highlighted
+// Not highlighted
+``` --&gt;
+</code></div>
 
 <a name="tables" class="elem-anchor"></a>
 <h3>Tables<a href="#tables" class="anchor-link"><span></span></a></h3>
@@ -267,99 +265,94 @@ The syntax is to use the pipe (<code class="code highlight language-text">|</cod
 ```
 </code></div>
 
-<a name="links" class="elem-anchor"></a>
-<h3>Links<a href="#links" class="anchor-link"><span></span></a></h3>
-<p>Links are handled as normal Markdown links and can be anchored to external sites, pages within the sites, or headings in the sites.
-When a Markdown header is converted to an HTML header, it is assigned an ID so that it can be linked.
-For example, <code class="code highlight language-text">## Introduction</code> will get the ID of <code class="code highlight language-text">introduction</code>, and can be linked either in the same page or cross-page as described below.</p>
+<a name="section-5" class="elem-anchor"></a>
+<h3>链接<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<p>链接作为普通的Markdown链接处理,可以锚定到外部站点,站点内的页面或站点中的标题.
+将Markdown标头转换为HTML标头时,会为其分配一个ID,以便进行链接.
+例如,<code class="code highlight language-text">## Introduction</code>将获得<code class="code highlight language-text">introduction</code>的ID,并且可以在同一页面或跨页面中链接,如下所述.</p>
 
-<p>Links to files in the IntelliJ Platform (<code class="code highlight language-text">intellij-community</code>) repository use <code class="code highlight language-text">upsource:///</code> instead of the full URL to the repository.
-The <code class="code highlight language-text">upsource:///</code> URI effectively points to the root of the <code class="code highlight language-text">intellij-community</code> repository.</p>
-<ul>
-  <li><code class="code highlight language-text">[README.md](upsource:///README.md)</code> for links to general files in the repository.</li>
-  <li><code class="code highlight language-text">[</code>`AnAction`<code class="code highlight language-text">](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)</code> for links to source code files for interfaces and classes.
-Note the use of `` characters surrounding the class name in the link.</li>
-</ul>
+<p>IntelliJ平台(<code class="code highlight language-text">intellij-community</code>)存储库中文件的链接使用<code class="code highlight language-text">upsource:///</code>而不是存储库的完整URL.
+<code class="code highlight language-text">upsource:///</code>URI有效地指向<code class="code highlight language-text">intellij-community</code>存储库的根.
+*<code class="code highlight language-text">[README.md](upsource:///README.md)</code>用于链接到存储库中的常规文件.
+*<code class="code highlight language-text">[</code>`AnAction `<code class="code highlight language-text">](upsource:///platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java)</code>用于指向接口和类的源代码文件的链接.
+  请注意链接中类名周围使用的``字符.</p>
 
-<p>General links have one of the following formats:</p>
+<p>常规链接具有以下格式之一:</p>
 <ul>
-  <li><code class="code highlight language-text">[External site](http://example.org)</code> links to an external site.</li>
-  <li>Linking to pages in the SDK documentation:
+  <li><code class="code highlight language-text">[外部网站](http://example.org)</code>链接到外部网站.</li>
+  <li>链接到SDK文档中的页面:
     <ul>
-      <li><code class="code highlight language-text">[SDK doc page in current directory](Page2.md)</code> links to an SDK doc page in the same directory as the current page.
-Note that the extension is <code class="code highlight language-text">.md</code>, <em>NOT</em> <code class="code highlight language-text">.html</code>.</li>
-      <li><code class="code highlight language-text">[SDK page in another folder](/Folder2/Page2.md)</code> links to a page in another folder.
-Note that the URL is navigating from the project root - this works even if the site is hosted in a sub-folder (e.g. this link will work for <code class="code highlight language-text">http://localhost:4000/devguide/Folder2/Page2.html</code>).
-Relative links also work (<code class="code highlight language-text">../Folder2/Page2.md</code>).</li>
+      <li><code class="code highlight language-text">[当前目录中的SDK doc页面](Page2.md)</code>链接到与当前页面相同的目录中的SDK doc页面.  
+请注意,扩展名为<code class="code highlight language-text">.md</code>,<em>NOT</em><code class="code highlight language-text"> .html</code>.</li>
+      <li><code class="code highlight language-text">[另一个文件夹中的SDK页面](/Folder2/Page2.md)</code>链接到另一个文件夹中的页面.
+请注意,URL正在从项目根目录导航 - 即使站点位于子文件夹中也是如此(例如,此链接适用于<code class="code highlight language-text">http://localhost:4000/devguide/Folder2/Page2.html</code>).
+相对链接也有效(<code class="code highlight language-text">../Folder2/Page2.md</code>).</li>
     </ul>
   </li>
-  <li>Linking to specific <em>sections</em> on pages in the SDK documentation.
-The anchor name will be all lower case, and spaces are replaced with <code class="code highlight language-text">-</code>, e.g. <code class="code highlight language-text">## Page setup</code> becomes <code class="code highlight language-text">#page-setup</code>.
-    <ul>
-      <li><code class="code highlight language-text">[Link to a section on the current page](#another-section)</code> links to a heading on the current page.</li>
-      <li><code class="code highlight language-text">[Link to the section on another page](Page2.md#another-section)</code> links to a heading on another page.</li>
-    </ul>
-  </li>
+  <li>链接到SDK文档中页面上的特定_sections_.
+锚名称全部为小写,空格用<code class="code highlight language-text">-</code>替换,例如<code class="code highlight language-text">## Page setup</code>变为<code class="code highlight language-text">#page-setup</code>.
+*<code class="code highlight language-text">[链接到当前页面上的部分](#another-section)</code>链接到当前页面上的标题.
+*<code class="code highlight language-text">[链接到另一页上的部分](Page2.md#another-section)</code>链接到另一页上的标题.</li>
 </ul>
 
-<a name="notes-and-callouts" class="elem-anchor"></a>
-<h3>Notes and callouts<a href="#notes-and-callouts" class="anchor-link"><span></span></a></h3>
-<p>Notes and callouts can be specified using the blockquote syntax.
-The converter looks at the first following word to see if it is bold.
-If so, it applies a callout style.
-The example below will be displayed as a callout, styled as a “note”:</p>
+<a name="section-6" class="elem-anchor"></a>
+<h3>备注和标注<a href="#section-6" class="anchor-link"><span></span></a></h3>
+<p>可以使用blockquote语法指定注释和标注.
+转换器查看下面的第一个单词以查看它是否为粗体.
+如果是这样,它将应用标注样式.
+以下示例将显示为标注,样式为“注释”:</p>
 
-<div class="code-block" data-lang="text"><code class="code-block__wrapper">&gt; **NOTE** This is a note
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">&gt; **注意**这是一张纸条
 </code></div>
 
-<aside class="note">
-  <p> This is a note</p>
+<aside class="注意">
+  <p>这是一张纸条</p>
 </aside>
 
-<p>The styles available for callouts are:</p>
+<p>标注可用的样式是:</p>
 <ul>
-  <li>TODO - Generally not used in SDK documentation.
-Embed <code class="code highlight language-text">&lt;--! //TODO: explanation... --&gt;</code> instead, which is not visible in published documentation.</li>
-  <li>TIP - Information that makes the reader more productive.</li>
-  <li>NOTE - Information that is important for the reader to understand.
-This callout is reserved for key points and concepts.</li>
-  <li>WARNING - Information critical to the user.
-Use this callout for information that prevents failures or errors.</li>
+  <li>TODO  - 通常不在SDK文档中使用.
+嵌入<code class="code highlight language-text">&lt;--! //TODO: explanation... --&gt;</code> 相反,这在已发布的文档中不可见.</li>
+  <li>提示 - 使读者更有效率的信息.</li>
+  <li>注 - 对读者理解的重要信息.
+此标注保留用于关键点和概念.</li>
+  <li>警告 - 对用户至关重要的信息.
+使用此标注可获取可防止出现故障或错误的信息.</li>
 </ul>
 
-<a name="images" class="elem-anchor"></a>
-<h3>Images<a href="#images" class="anchor-link"><span></span></a></h3>
-<p>Images can be included by adding the file directly to the <code class="code highlight language-text">intellij-sdk-docs</code> repository.
-Each subject directory typically has an <code class="code highlight language-text">img</code> subdirectory.
-Keep images close to the corresponding documentation file in the repository directory structure.</p>
+<a name="section-7" class="elem-anchor"></a>
+<h3>图片<a href="#section-7" class="anchor-link"><span></span></a></h3>
+<p>可以通过将文件直接添加到<code class="code highlight language-text">intellij-sdk-docs</code>存储库来包含图像.
+每个主题目录通常都有一个<code class="code highlight language-text">img</code>子目录.
+使映像保持在存储库目录结构中的相应文档文件附近.</p>
 
-<p>Images in this documentation are generally screenshots.
-The preferred image format is PNG at 144 DPI resolution.
-A resolution of 72 DPI is acceptable but may look blurry on high-resolution monitors.</p>
+<p>本文档中的图像通常是屏幕截图.
+首选的图像格式是144 DPI分辨率的PNG.
+分辨率为72 DPI是可以接受的,但在高分辨率显示器上可能看起来很模糊.</p>
 
-<p>It is important to reduce the size of image files to prevent bloating the repository and impacting the performance of the documentation site.
-Resize an image to be nearly the desired width on a documentation page.
-Reducing an image’s dimensions is the most effective way to reduce image file size.
-Also optimize the image files using a tool such as the <a href="https://plugins.jetbrains.com/plugin/7942-png-optimizer" data-bypass="yes" target="_blank"><span>PNG optimizer</span></a>.</p>
+<p>减小映像文件的大小以防止存储库膨胀并影响文档站点的性能非常重要.
+在文档页面上将图像大小调整为几乎所需的宽度.
+减小图像的尺寸是减少图像文件大小的最有效方法.
+还可以使用<a href="https://plugins.jetbrains.com/plugin/7942-png-optimizer" data-bypass="yes" target="_blank"><span>PNG优化器</span></a>等工具优化图像文件.</p>
 
-<p>Images are embedded in a document by adding a Markdown link to the image like so:</p>
+<p>通过向图像添加Markdown链接将图像嵌入到文档中,如下所示:</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">![Alt text](path-to-img.png)
 </code></div>
 
-<p>If the width of an image needs to be adjusted, use Kramdown markup:</p>
+<p>如果需要调整图像的宽度,请使用Kramdown标记:</p>
 
-<div class="code-block" data-lang="text"><code class="code-block__wrapper">![Alt text](path-to-img.png){:width="42px"}
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">![Alt text](path-to-img.png){:width =“42px”}
 </code></div>
 
-<a name="summary-site-table-of-contents" class="elem-anchor"></a>
-<h2>_SUMMARY Site Table of Contents<a href="#summary-site-table-of-contents" class="anchor-link"><span></span></a></h2>
-<p>The table of contents for the site is displayed in the tree view on the left-hand side of the site, and it is generated from the <code class="code highlight language-text">_SUMMARY.md</code> file.
-It is a simple Markdown list, with each item in the list being a link to another Markdown page, either in the root folder, or sub-folders.
-The list can have nested items, which are displayed as child items in the table of contents.</p>
+<a name="summary" class="elem-anchor"></a>
+<h2>_SUMMARY网站目录<a href="#summary" class="anchor-link"><span></span></a></h2>
+<p>站点的目录显示在站点左侧的树视图中,它是从<code class="code highlight language-text">_SUMMARY.md</code>文件生成的.
+它是一个简单的Markdown列表,列表中的每个项目都是指向另一个Markdown页面的链接,可以是根文件夹,也可以是子文件夹.
+该列表可以具有嵌套项,这些项在内容列表中显示为子项.</p>
 
-<aside class="warning">
-  <p> Every Markdown (<code class="code highlight language-text">*.md</code>) document within the SDK repository (<code class="code highlight language-text">intellij-sdk-docs</code>) must have an entry in <code class="code highlight language-text">_SUMMARY.md</code>.</p>
+<aside class="警告">
+  <p> SDK存储库(<code class="code highlight language-text">intellij-sdk-docs</code>)中的每个Markdown(<code class="code highlight language-text">* .md</code>)文档必须在<code class="code highlight language-text">_SUMMARY.md</code>中有一个条目.</p>
 </aside>
 
 <div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="gh"># Summary</span>
@@ -369,7 +362,7 @@ The list can have nested items, which are displayed as child items in the table 
 <span class="p">    *</span> <span class="p">[</span><span class="nv">Key Topics</span><span class="p">](</span><span class="sx">Intro/KeyTopics.md</span><span class="p">)</span>
 </code></div>
 
-<p>The contents can be split into “parts” by separating the list into several lists, each new list starting with a level 2 heading (<code class="code highlight language-text">##</code>).</p>
+<p>通过将列表分成几个列表,每个新列表以2级标题(<code class="code highlight language-text">##</code>)开头,可以将内容拆分为“部分”.</p>
 
 <div class="code-block" data-lang="md"><code class="code-block__wrapper"><span class="gh"># Summary</span>
 <span class="p">
@@ -382,9 +375,10 @@ The list can have nested items, which are displayed as child items in the table 
 <span class="p">*</span> ...
 </code></div>
 
-<p>If a node doesn’t have a link but is just plain text, it will still appear in the table of contents but will be greyed out and not clickable.
-It acts as a placeholder for a documentation item.
-A placeholder is useful to keep track of what should be documented, but hasn’t yet, and can be useful to show readers that the topic exists, but isn’t yet documented (Pull Requests always welcome!).</p>
+<p>如果某个节点没有链接但只是纯文本,它仍会显示在目录中,但会显示为灰色且无法点击.
+它充当文档项的占位符.
+占位符对于跟踪应该记录的内容很有用,但是还没有,并且可以向读者显示该主题存在,但尚未记录(拉请求总是受欢迎!).</p>
+
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
