@@ -87,186 +87,183 @@
                     </a>
 
                     <h1>Contributing to the IntelliJ Platform SDK</h1>
-                    <p>This document describes our contribution guidelines for the open source IntelliJ Platform SDK documentation and sample code.
-Before you begin contributing content to the SDK, please read this page thoroughly as well as the <a href="/intellij-sdk-docs-cn/CODE_OF_CONDUCT.html"><span>Code of Conduct</span></a> and <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>License</span></a> documents.
-For information about contributing to the IntelliJ Platform itself, please visit <a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>Contributing to the IntelliJ Platform</span></a>.</p>
+                    <p>本文档描述了我们对开源IntelliJ Platform SDK文档和示例代码的贡献指南.
+在开始向SDK提供内容之前,请仔细阅读本页以及<a href="/intellij-sdk-docs-cn/CODE_OF_CONDUCT.html"><span>行为准则</span></a>和<a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt" data-bypass="yes" target="_blank"><span>许可证</span></a>文档.
+有关为IntelliJ平台本身做出贡献的信息,请访问<a href="/intellij-sdk-docs-cn/basics/platform_contributions.html"><span>贡献IntelliJ平台</span></a>.</p>
 
-<p>Here are some useful things to know before authoring SDK content and submitting your Pull Request.</p>
-<ul id="markdown-toc">
-  <li><a href="#setting-up-the-documentation-build-environment" id="markdown-toc-setting-up-the-documentation-build-environment"><span>Setting Up the Documentation Build Environment</span></a>    <ul>
-      <li><a href="#developing-documentation-with-docker" id="markdown-toc-developing-documentation-with-docker"><span>Developing Documentation with Docker</span></a></li>
-      <li><a href="#developing-documentation-locally" id="markdown-toc-developing-documentation-locally"><span>Developing Documentation Locally</span></a>        <ul>
-          <li><a href="#macos" id="markdown-toc-macos"><span>macOS</span></a></li>
-          <li><a href="#windows" id="markdown-toc-windows"><span>Windows</span></a></li>
-        </ul>
-      </li>
-      <li><a href="#bootstrapping-the-documentation-build-environment" id="markdown-toc-bootstrapping-the-documentation-build-environment"><span>Bootstrapping the Documentation Build Environment</span></a></li>
-      <li><a href="#building-and-previewing-the-site" id="markdown-toc-building-and-previewing-the-site"><span>Building and Previewing the Site</span></a></li>
-    </ul>
-  </li>
-  <li><a href="#documentation-repository-submodules" id="markdown-toc-documentation-repository-submodules"><span>Documentation Repository Submodules</span></a></li>
-  <li><a href="#creating-intellij-platform-sdk-content" id="markdown-toc-creating-intellij-platform-sdk-content"><span>Creating IntelliJ Platform SDK Content</span></a></li>
+<p>在创作SDK内容和提交Pull请求之前,请先了解一些有用的信息.</p>
+<ul>
+  <li>虚拟列表项</li>
 </ul>
+<p> </p>
 
-<a name="setting-up-the-documentation-build-environment" class="elem-anchor"></a>
-<h2>Setting Up the Documentation Build Environment<a href="#setting-up-the-documentation-build-environment" class="anchor-link"><span></span></a></h2>
+<a name="section" class="elem-anchor"></a>
+<h2>设置文档构建环境<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>This site runs via <a href="https://jekyllrb.com" data-bypass="yes" target="_blank"><span>Jekyll</span></a>, which is a popular static site generator, written in Ruby. It can be hosted locally to ensure that any changes are correct. Once set up, running the site is as easy as calling <code class="code highlight language-text">rake preview</code>.</p>
+<p>该站点通过<a href="https://jekyllrb.com" data-bypass="yes" target="_blank"><span>Jekyll</span></a>运行,这是一个流行的静态站点生成器,用Ruby编写.它可以在本地托管,以确保任何更改都是正确的.设置完成后,运行网站就像调用“rake preview”一样简单.</p>
 
-<p>Alternatively, the site can also be hosted in a <a href="https://www.docker.com" data-bypass="yes" target="_blank"><span>Docker container</span></a>. On Mac and Windows, this means the site is hosted in a virtual machine. Docker maintains this container, building it based on the instructions in the <a href="Dockerfile"><span><code class="code highlight language-text">Dockerfile</code></span></a>. All dependencies (Ruby, etc.) are automatically installed when building the image, which reduces the manual configuration steps. The Docker image is also used to build the <a href="https://www.jetbrains.org/intellij/sdk/docs/index.html" data-bypass="yes" target="_blank"><span>published site</span></a>, so it is a known working environment.</p>
+<p>或者,该站点也可以托管在<a href="https://www.docker.com" data-bypass="yes" target="_blank"><span>Docker容器</span></a>中.在Mac和Windows上,这意味着该站点托管在虚拟机中. Docker维护这个容器,根据<a href="Dockerfile"><span><code class="code highlight language-text">Dockerfile</code></span></a>中的指令构建它.构建映像时会自动安装所有依赖项(Ruby等),从而减少了手动配置步骤. Docker镜像也用于构建<a href="https://www.jetbrains.org/intellij/sdk/docs/index.html" data-bypass="yes" target="_blank"><span>已发布网站</span></a>,因此它是一个已知的工作环境.</p>
 
-<a name="developing-documentation-with-docker" class="elem-anchor"></a>
-<h3>Developing Documentation with Docker<a href="#developing-documentation-with-docker" class="anchor-link"><span></span></a></h3>
+<a name="docker" class="elem-anchor"></a>
+<h3>使用Docker开发文档<a href="#docker" class="anchor-link"><span></span></a></h3>
 
-<p>Follow these steps to work with Docker:</p>
+<p>请按照以下步骤使用Docker:</p>
 
 <ul>
-  <li>Firstly, install Docker, using the <a href="https://www.docker.com/docker-toolbox" data-bypass="yes" target="_blank"><span>Docker Toolbox</span></a>.</li>
-  <li>On Windows and Mac, start the Docker host virtual machine (start the “Docker Quickstart terminal” or run “Kitematic.” See the Getting Started guides on <a href="https://www.docker.com" data-bypass="yes" target="_blank"><span>docker.com</span></a> for more details).</li>
-  <li>Clone the <a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">intellij-sdk-docs</code></span></a> repo to the local machine, and <a href="#a-word-on-submodules"><span>initialise the <code class="code highlight language-text">sdkdocs-template</code> submodule</span></a>.</li>
-  <li>Change the current directory to the parent directory of the git repo.</li>
-  <li>Run <code class="code highlight language-text">docker build -t intellij-sdk-docs .</code> to build the docker image from the current folder, and give it the tag <code class="code highlight language-text">intellij-sdk-docs</code>.
-    <ul>
-      <li>Note that this must be run from a command prompt that has the various <code class="code highlight language-text">DOCKER_*</code> environment variables set up, such as the Docker Quickstart Terminal.</li>
-    </ul>
-  </li>
-  <li>Run <code class="code highlight language-text">docker run -p 4000:4000 -v $PWD:/usr/src/app intellij-sdk-docs</code>. This command will:
-    <ul>
-      <li>Start the docker container called <code class="code highlight language-text">intellij-sdk-docs</code>.</li>
-      <li>Forward port 4000 from the docker container to port 4000 on the docker client.</li>
-    </ul>
-
-    <aside class="note">
-      <p> For Windows and Mac, this means port 4000 of the docker container is forwarded to port 4000 of the docker virtual machine, not <code class="code highlight language-text">localhost</code>. For Linux, the docker client is the host machine, so <code class="code highlight language-text">localhost:4000</code> is forwarded to port 4000 on the docker container.</p>
-
-      <p>To hit the container’s port 4000 from Windows or the Mac, it is necessary to hit the IP address of the docker client (virtual machine). Use <code class="code highlight language-text">docker-machine ip default</code> to get the IP address of the docker client. Use <code class="code highlight language-text">X.X.X.X:4000</code> to hit the client in the virtual machine, which is in turn mapped to the container’s port 4000.</p>
-
-      <p>Alternatively, modify the virtual machine’s settings to automatically forward port 4000 to <code class="code highlight language-text">localhost</code>. See this <a href="https://acaird.github.io/computers/2014/11/16/docker-virtualbox-host-networking" data-bypass="yes" target="_blank"><span>blog post</span></a> for more details.</p>
-    </aside>
-
-    <ul>
-      <li>Mount the current directory (<code class="code highlight language-text">$PWD</code> is a Unix style environment variable. You can use <code class="code highlight language-text">%CD%</code> on Windows, or specify the full path) as <code class="code highlight language-text">/usr/src/app</code> inside the docker container. The docker image will see the <code class="code highlight language-text">intellij-sdk-docs</code> repo as the folder <code class="code highlight language-text">/usr/src/app</code>.</li>
-    </ul>
-
-    <aside class="note">
-      <p> If running on Windows in an MSYS bash script (e.g. the “Docker Quickstart terminal”), the path to the local folder needs to be properly escaped, or the MSYS environment will translate the paths to standard Windows path, and causing an error such as <code class="code highlight language-text">invalid value "C:\\Users\\...;C:\\Program Files\\Git\\usr\\src\\app" for flag -v</code>. To fix this problem, prefix the full path with double slashes, e.g. <code class="code highlight language-text">-v //c/Users/...</code>, or <code class="code highlight language-text">docker run -p 4000:4000 -v /$PWD:/usr/src/app intellij-sdk-docs</code> (note the leading slash before <code class="code highlight language-text">$PWD</code>).</p>
-    </aside>
-
-    <ul>
-      <li>Run the commands in the Dockerfile’s <code class="code highlight language-text">CMD</code> instruction to execute:</li>
-      <li><code class="code highlight language-text">rake bootstrap</code>, which ensures all of the prerequisites are installed,</li>
-      <li><code class="code highlight language-text">rake preview</code>, which builds the site and starts to host it.</li>
-    </ul>
-  </li>
-  <li>Finally, you can access the newly created site by visiting <a href="http://localhost:4000/intellij/sdk/docs/" data-bypass="yes" target="_blank"><span>http://localhost:4000/intellij/sdk/docs/</span></a>, or by using the IP address of the docker client virtual machine (see the note above).</li>
+  <li>首先,使用<a href="https://www.docker.com/docker-toolbox" data-bypass="yes" target="_blank"><span>Docker Toolbox</span></a>安装Docker.</li>
+  <li>在Windows和Mac上,启动Docker主机虚拟机(启动“Docker Quickstart终端”或运行“Kitematic”.有关更多信息,请参阅[docker.com]上的入门指南(https://www.docker.com)
+细节).</li>
+  <li>将<a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">intellij-sdk-docs</code></span></a>repo克隆到本地机器,并<a href="#a-word-on-submodules"><span>初始化<code class="code highlight language-text">sdkdocs-template</code>子模块</span></a>.</li>
+  <li>将当前目录更改为git仓库的父目录.</li>
+  <li>运行<code class="code highlight language-text">docker build -t intellij-sdk-docs .</code>从当前文件夹构建docker镜像,并为其指定标签<code class="code highlight language-text">intellij-sdk-docs</code>.  </li>
+  <li>请注意,这必须从设置了各种<code class="code highlight language-text">DOCKER_ *</code>环境变量的命令提示符运行,例如Docker Quickstart Terminal.</li>
+  <li>运行<code class="code highlight language-text">docker run -p 4000:4000 -v $ PWD:/usr/src/app intellij-sdk-docs</code>.
+该命令将:   </li>
+  <li>启动名为<code class="code highlight language-text">intellij-sdk-docs</code>的docker容器.   </li>
+  <li>将Docker容器中的端口4000转发到docker客户端上的端口4000.</li>
 </ul>
 
-<a name="developing-documentation-locally" class="elem-anchor"></a>
-<h3>Developing Documentation Locally<a href="#developing-documentation-locally" class="anchor-link"><span></span></a></h3>
+<aside class="注意">
+  <p>对于Windows和Mac,这意味着docker容器的端口4000被转发到docker虚拟机的端口4000,而不是“localhost”.对于Linux,docker客户端是主机,因此<code class="code highlight language-text">localhost:4000</code>被转发到docker容器上的端口4000. </p>
 
-<p>To build the documentation site, you need:</p>
+  <p>要从Windows或Mac命中容器的端口4000,必须点击docker客户端(虚拟机)的IP地址.使用<code class="code highlight language-text">docker-machine ip default</code>获取docker客户端的IP地址.使用<code class="code highlight language-text">X.X.X.X:4000</code>命中虚拟机中的客户端,然后将其映射到容器的端口4000.  
+ 
+或者,修改虚拟机的设置以自动将端口4000转发到“localhost”.
+有关详细信息,请参阅<a href="https://acaird.github.io/computers/2014/11/16/docker-virtualbox-host-networking" data-bypass="yes" target="_blank"><span>博客文章</span></a>.
+ 
+    
+*挂载当前目录(<code class="code highlight language-text">$ PWD</code>是Unix样式的环境变量.您可以在Windows上使用<code class="code highlight language-text">％CD％</code>,或指定完整路径)作为docker容器内的<code class="code highlight language-text">/usr/src/app</code>. 
+docker镜像将<code class="code highlight language-text">intellij-sdk-docs</code> repo视为文件夹<code class="code highlight language-text">/usr/src/app</code>.</p>
+</aside>
+
+<aside class="注意">
+  <p>如果在Windows上运行MSYS bash脚本(例如“Docker Quickstart终端”),则需要正确转义本地文件夹的路径,否则MSYS环境会将路径转换为标准Windows路径,
+并导致错误,例如<code class="code highlight language-text">invalid value "C:\\Users\\...;C:\\Program Files\\Git\\usr\\src\\app" for flag -v</code>.要解决此问题,请在整个路径前加上双斜杠,例如:
+<code class="code highlight language-text">-v //c/Users/...</code>,或<code class="code highlight language-text">docker run -p 4000:4000 -v /$PWD:/usr/src/app intellij-sdk-docs</code>(注意<code class="code highlight language-text">$ PWD之前的前导斜杠
+</code>).</p>
+</aside>
+
+<div class="code-block" data-lang="text"><code class="code-block__wrapper">*运行Dockerfile的`CMD`指令中的命令来执行:   *`rake bootstrap`,确保安装所有先决条件,   *`rake preview`,它构建网站并开始托管它. *最后,您可以访问[http://localhost:4000/intellij/sdk/docs/](http://localhost:4000/intellij/sdk/docs/)或使用IP访问新创建的站点docker客户端虚拟机的地址(请参阅上面的注释).
+</code></div>
+
+<p>###在本地开发文档</p>
+
+<p>要构建文档站点,您需要:</p>
 
 <ul>
-  <li>Ruby 2 - Jekyll is a Ruby application.</li>
-  <li>Ruby 2 DevKit (for Windows) - Some of Jekyll’s dependencies need to be compiled, and require the DevKit to be installed.</li>
-  <li><code class="code highlight language-text">gem install bundler</code> - the site uses <a href="https://bundler.io" data-bypass="yes" target="_blank"><span>Bundler</span></a> to manage gem dependencies within the repo, rather than globally installing to the local operating system. Run this command to install the Bundler toolset globally.</li>
+  <li>
+    <p>Ruby 2  -  Jekyll是一个Ruby应用程序.</p>
+  </li>
+  <li>
+    <p>Ruby 2 DevKit(适用于Windows) - 需要编译一些Jekyll的依赖项,并且需要安装DevKit.</p>
+  </li>
 </ul>
 
-<a name="macos" class="elem-anchor"></a>
-<h4>macOS</h4>
+<p>*<code class="code highlight language-text">gem install bundler</code>  - 该站点使用<a href="https://bundler.io" data-bypass="yes" target="_blank"><span>Bundler</span></a>来管理repo中的gem依赖项,而不是全局安装到本地操作系统.
+运行此命令以全局安装Bundler工具集.</p>
 
-<p>macOS comes with Ruby already installed. The only steps required are:</p>
+<a name="section-1" class="elem-anchor"></a>
+<h4>苹果系统</h4>
 
-<ul>
-  <li><code class="code highlight language-text">gem install bundler</code></li>
-</ul>
+<p>macOS已经安装了Ruby.
+所需的唯一步骤是:</p>
+
+<p>*<code class="code highlight language-text">gem install bundler</code></p>
 
 <a name="windows" class="elem-anchor"></a>
 <h4>Windows</h4>
 
+<p>*安装<a href="https://rubyinstaller.org" data-bypass="yes" target="_blank"><span>Ruby 2</span></a>和<a href="http://rubyinstaller.org/downloads/" data-bypass="yes" target="_blank"><span>Ruby 2 DevKit</span></a>(其中一个宝石需要构建本机组件)
+    
+*安装DevKit后,请确保编辑<code class="code highlight language-text">config.yml</code>文件以指向Ruby安装</p>
+
+<p>如果您使用<a href="https://chocolatey.org" data-bypass="yes" target="_blank"><span>Chocolatey</span></a>(Windows的包管理器),则此安装更容易:</p>
+
 <ul>
-  <li>Install <a href="https://rubyinstaller.org" data-bypass="yes" target="_blank"><span>Ruby 2</span></a> and the <a href="http://rubyinstaller.org/downloads/" data-bypass="yes" target="_blank"><span>Ruby 2 DevKit</span></a> (one of the gems needs to build a native component)
+  <li><code class="code highlight language-text">choco install ruby​​</code></li>
+  <li><code class="code highlight language-text">choco install ruby​​2.devkit</code>
     <ul>
-      <li>After installing the DevKit, make sure to edit the <code class="code highlight language-text">config.yml</code> file to point to the Ruby installation</li>
+      <li>安装DevKit后,请确保编辑<code class="code highlight language-text">config.yml</code>文件以指向Ruby安装.</li>
+      <li>默认情况下,这是<code class="code highlight language-text">C:\tools\DevKit\config.yml</code></li>
+      <li>添加行<code class="code highlight language-text">- C:\tools\ruby21</code>(包括前导减号)</li>
     </ul>
   </li>
 </ul>
 
-<p>This installation is easier if you use <a href="https://chocolatey.org" data-bypass="yes" target="_blank"><span>Chocolatey</span></a>, a package manager for Windows:</p>
-
-<ul>
-  <li><code class="code highlight language-text">choco install ruby</code></li>
-  <li><code class="code highlight language-text">choco install ruby2.devkit</code>
-    <ul>
-      <li>After installing the DevKit, make sure to edit the <code class="code highlight language-text">config.yml</code> file to point to the Ruby installation.</li>
-      <li>By default, this is <code class="code highlight language-text">C:\tools\DevKit\config.yml</code></li>
-      <li>Add the line <code class="code highlight language-text">- C:\tools\ruby21</code> (including the leading minus sign)</li>
-    </ul>
-  </li>
-</ul>
-
-<aside class="note">
-  <p> Before running the <code class="code highlight language-text">rake bootstrap</code> step listed below, please run the <code class="code highlight language-text">devkitvars.bat</code> file from the DevKit. E.g. <code class="code highlight language-text">C:\tools\DevKit\devkitvars.bat</code></p>
+<aside class="注意">
+  <p>在运行下面列出的“rake bootstrap”步骤之前,请运行DevKit中的<code class="code highlight language-text">devkitvars.bat</code>文件. 例如. <code class="code highlight language-text">C:\tools\DevKit\devkitvars.bat</code></p>
 </aside>
 
-<a name="bootstrapping-the-documentation-build-environment" class="elem-anchor"></a>
-<h3>Bootstrapping the Documentation Build Environment<a href="#bootstrapping-the-documentation-build-environment" class="anchor-link"><span></span></a></h3>
+<a name="section-2" class="elem-anchor"></a>
+<h3>引导文档构建环境<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <ol>
-  <li>Ensure Bundler is installed - <code class="code highlight language-text">gem install bundler</code>.</li>
-  <li>On Windows, ensure the <code class="code highlight language-text">devkitvars.bat</code> file has been run in the current command prompt (e.g. <code class="code highlight language-text">c:\tools\DevKit\devkitvars.bat</code>).</li>
-  <li>Clone the documentation site.</li>
-  <li>Initialize and update the <code class="code highlight language-text">sdkdocs-template</code> submodule - <code class="code highlight language-text">git submodule init</code> and <code class="code highlight language-text">git submodule update</code></li>
-  <li><code class="code highlight language-text">rake bootstrap</code> - this uses Bundler to download all required gems.</li>
-  <li><code class="code highlight language-text">rake preview</code> - this will build the site, and host it in a local webserver.</li>
+  <li>确保已安装Bundler  - <code class="code highlight language-text">gem install bundler</code>.</li>
+  <li>在Windows上,确保已在当前命令提示符下运行<code class="code highlight language-text">devkitvars.bat</code>文件(例如<code class="code highlight language-text">c:\tools\DevKit\devkitvars.bat</code>).</li>
+  <li>克隆文档站点.</li>
+  <li>初始化并更新<code class="code highlight language-text">sdkdocs-template</code>子模块 - <code class="code highlight language-text">git submodule init</code>和<code class="code highlight language-text">git submodule update</code></li>
+  <li><code class="code highlight language-text">rake bootstrap</code> - 这使用Bundler下载所有必需的宝石.</li>
+  <li><code class="code highlight language-text">rake preview</code> - 这将构建网站,并将其托管在本地网络服务器中.</li>
 </ol>
 
-<a name="building-and-previewing-the-site" class="elem-anchor"></a>
-<h3>Building and Previewing the Site<a href="#building-and-previewing-the-site" class="anchor-link"><span></span></a></h3>
+<a name="section-3" class="elem-anchor"></a>
+<h3>构建和预览网站<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
-<p>To build and test the site, run <code class="code highlight language-text">rake preview</code>. This will build the site and host it, using the config provided. The URL of the hosted site is displayed on the screen and depends on the <code class="code highlight language-text">baseurl</code> field defined in <code class="code highlight language-text">_config.yml</code>.</p>
+<p>要构建和测试网站,请运行<code class="code highlight language-text">rake preview</code>.这将使用提供的配置构建站点并托管它.托管站点的URL显示在屏幕上,取决于<code class="code highlight language-text">_config.yml</code>中定义的<code class="code highlight language-text">baseurl</code>字段.</p>
 
-<aside class="note">
-  <p> You must use <code class="code highlight language-text">localhost</code> as hostname, <em>NOT</em> 0.0.0.0, otherwise fonts fail to load.</p>
+<aside class="注意">
+  <p>必须使用<code class="code highlight language-text">localhost</code>作为主机名,<em>NOT</em> 0.0.0.0,否则无法加载字体.</p>
 </aside>
 
 <a name="documentation-repository-submodules" class="elem-anchor"></a>
 <h2>Documentation Repository Submodules<a href="#documentation-repository-submodules" class="anchor-link"><span></span></a></h2>
-<p>The <code class="code highlight language-text">sdkdocs-template</code> directory is actually a Git submodule, and it contains a submodule to the private <code class="code highlight language-text">webhelp-template</code> repository. 
-The <code class="code highlight language-text">sdkdocs-template</code> repository contains build scripts and compiled and minified JS and CSS that allow the site to run. 
-The private <code class="code highlight language-text">webhelp-template</code> repository contains the code to build the JS and CSS. 
-It is currently closed source, but the plan is to make it open source at some point, in which case it is likely the two repositories will be merged.</p>
+<p><code class="code highlight language-text">sdkdocs-template</code>目录实际上是一个Git子模块,它包含一个私有<code class="code highlight language-text">webhelp-template</code>存储库的子模块.
+<code class="code highlight language-text">sdkdocs-template</code>存储库包含构建脚本以及允许站点运行的编译和缩小的JS和CSS.
+私有的<code class="code highlight language-text">webhelp-template</code>存储库包含构建JS和CSS的代码.
+它目前是封闭源,但计划是在某些时候使它成为开源,在这种情况下,很可能会合并两个存储库.</p>
 
-<p>After cloning, a submodule needs to be initialized and updated:</p>
+<p>克隆后,需要初始化和更新子模块:</p>
 
 <div class="code-block" data-lang="sh"><code class="code-block__wrapper">git submodule init
 git submodule update
 </code></div>
 
-<p>Initialization creates a <code class="code highlight language-text">.gitmodules</code> file, register a submodule in the <code class="code highlight language-text">sdkdocs-template</code> folder and check out the files. 
-Note that when a repo is added as a submodule, it doesn’t get a <code class="code highlight language-text">.git</code> folder, but instead gets a <code class="code highlight language-text">.git</code> file that points to the actual location of the <code class="code highlight language-text">.git</code> folder.</p>
+<p>初始化创建一个<code class="code highlight language-text">.gitmodules</code>文件,在<code class="code highlight language-text">sdkdocs-template</code>文件夹中注册一个子模块并检出文件.
+请注意,当repo作为子模块添加时,它不会获得<code class="code highlight language-text">.git</code>文件夹,而是获取指向<code class="code highlight language-text">.git</code>文件夹的实际位置的<code class="code highlight language-text">.git</code>文件.</p>
 
-<p>A submodule can be updated using normal git commands such as <code class="code highlight language-text">git pull</code>. 
-It can be switched to a different branch using <code class="code highlight language-text">git checkout</code>, and any changes to the currently checked out revision need to be committed back into the main repository using git commands. 
-A submodule is initially cloned at a specific revision, and not as part of a branch.update</p>
+<p>子模块可以使用常规git命令更新,例如<code class="code highlight language-text">git pull</code>.
+它可以使用<code class="code highlight language-text">git checkout</code>切换到不同的分支,并且需要使用git命令将当前检出的修订版本的任何更改提交回主存储库.
+子模块最初是在特定版本中克隆的,而不是branch.update的一部分</p>
 
-<p>If changes are made to the submodule, they should be made on a branch to a clone, and a Pull Request sent. 
-Changes can be made and committed, and the hosting repository will need to commit a pointer to the current version of the submodule.</p>
+<p>如果对子模块进行了更改,则应在分支上创建克隆,并发送Pull请求.
+可以进行更改并提交,托管存储库需要提交指向子模块当前版本的指针.</p>
 
-<p>If there are any problems with the <code class="code highlight language-text">sdkdocs-template</code>, please <a href="https://github.com/JetBrains/sdkdocs-template/issues" data-bypass="yes" target="_blank"><span>raise an issue</span></a>.</p>
+<p>如果<code class="code highlight language-text">sdkdocs-template</code>有任何问题,请<a href="https://github.com/JetBrains/sdkdocs-template/issues" data-bypass="yes" target="_blank"><span>提出问题</span></a>.</p>
 
-<a name="creating-intellij-platform-sdk-content" class="elem-anchor"></a>
-<h2>Creating IntelliJ Platform SDK Content<a href="#creating-intellij-platform-sdk-content" class="anchor-link"><span></span></a></h2>
-<p>Content contributions to the IntelliJ Platform SDK are welcome.
-Please download or clone the open source SDK project from <a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span>GitHub</span></a>, make additions or changes, and submit a pull request.
-Before creating or altering content, please consult these guides:</p>
+<a name="intellij-platform-sdk" class="elem-anchor"></a>
+<h2>创建IntelliJ Platform SDK内容<a href="#intellij-platform-sdk" class="anchor-link"><span></span></a></h2>
+
+<p>欢迎提供对IntelliJ Platform SDK的内容贡献.</p>
+
+<p>请从<a href="https://github.com/JetBrains/intellij-sdk-docs" data-bypass="yes" target="_blank"><span>GitHub</span></a>下载或克隆开源SDK项目,进行添加或更改,并提交拉取请求.</p>
+
+<p>在创建或更改内容之前,请参阅以下指南:</p>
+
 <ul>
-  <li><a href="intro/sdk_style.html"><span>SDK Documentation Style Guide</span></a>. 
-This guide describes documentation conventions in terms of Markdown syntax.
-Always test documentation changes using a <a href="#building-and-previewing-the-site"><span>preview</span></a> of the site.</li>
-  <li><a href="intro/sdk_code_guidelines.html"><span>SDK Code Sample Guidelines</span></a>. 
-Conventions for code sample organization, project settings, and naming conventions are described in this document.
-Always test code changes by building and testing the SDK code sample.</li>
+  <li>
+    <p><a href="intro/sdk_style.html"><span>SDK文档样式指南</span></a>.
+  
+本指南根据Markdown语法描述了文档约定.
+  
+始终使用站点的<a href="#building-and-previewing-the-site"><span>预览</span></a>测试文档更改.</p>
+  </li>
+  <li>
+    <p><a href="intro/sdk_code_guidelines.html"><span>SDK代码示例指南</span></a>.
+  
+本文档中描述了代码示例组织,项目设置和命名约定的约定.
+  
+始终通过构建和测试SDK代码示例来测试代码更改.</p>
+  </li>
 </ul>
 
 
