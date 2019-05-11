@@ -4,7 +4,7 @@ product_version:
 product_type: DevGuide
 
 url: https://kana112233.github.io
-baseurl: /
+baseurl: /intellij-sdk-docs-cn/
 
 description: Documentation for working with and extending the IntelliJ Platform SDK
 
