@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T21:22:28+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,14 +81,14 @@
                         <a class="navigation-links__prev" href="/reference_guide/project_model/facet.html">Facet</a>
                         <a class="navigation-links__next" href="/basics/architectural_overview/psi.html">Program Structure Interface (PSI)</a>
                     </div>
-                    
+
 
                     <h1>External System Integration</h1>
-                    <p>＃目的</p>
+                    <h1>目的</h1>
 
 <p>此页面提供<em>外部系统</em>子系统的高级概述.</p>
 
-<p>#Rationale</p>
+<h1>Rationale</h1>
 
 <p>有多个项目管理系统(<a href="https://maven.apache.org/" data-bypass="yes" target="_blank"><span>maven</span></a>,<a href="http://www.gradle.org/" data-bypass="yes" target="_blank"><span>gradle</span></a>,<a href="http://www.scala-sbt.org/" data-bypass="yes" target="_blank"><span>sbt</span></a>etc)并且很高兴在IDE上支持它们.
 幸运的是,从集成的角度来看,它们都提供了类似的设施:</p>
@@ -103,12 +103,12 @@
   <li>……</li>
 </ul>
 
-<p>这意味着我们可以将外部系统特定逻辑和一般IDE处理分开. 
+<p>这意味着我们可以将外部系统特定逻辑和一般IDE处理分开.
 <em>‘外部系统’</em>子系统提供简单的api,用于包装外部系统和可扩展的IDE特定处理逻辑.</p>
 
-<p>＃ 项目管理</p>
+<h1>项目管理</h1>
 
-<p>##项目数据域</p>
+<h2>项目数据域</h2>
 
 <p><strong>一般</strong></p>
 
@@ -142,7 +142,7 @@
 <p>好处是我们可以在这里分离项目解析和管理.
 这意味着可以为特定技术引入一组* DataNode <em>,</em> Key <em>和</em> ProjectDataServices *,然后每个外部系统集成可以在必要时使用它来构建相应的数据.</p>
 
-<p>##从外部模型导入</p>
+<h2>从外部模型导入</h2>
 
 <p>IntelliJ平台为此提供标准API.
 即,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/projectImport/ProjectImportBuilder.java" data-bypass="yes" target="_blank"><span>ProjectImportBuilder</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/projectImport/ProjectImportProvider.java" data-bypass="yes" target="_blank"><span>ProjectImportProvider</span></a>.
@@ -158,7 +158,7 @@
 <p>请注意,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/external-system-impl/src/com/intellij/openapi/externalSystem/service/project/wizard/AbstractExternalProjectImportBuilder.java" data-bypass="yes" target="_blank"><span>AbstractExternalProjectImportBuilder</span></a>构建于“外部系统设置”之上
 控制.</p>
 
-<p>##自动导入</p>
+<h2>自动导入</h2>
 
 <p>当外部项目的配置文件被修改时,可以配置外部系统集成以自动刷新项目结构.
 基本上,最终用户应在外部系统设置中检查相应的框:</p>
@@ -170,7 +170,7 @@
 这就是为什么通过使目标外部系统实现(* ExternalSystemManager <em>)实现</em> ExternalSystemAutoImportAware *来增强该处理的原因.
 这允许提供自定义逻辑,用于将文件修改事件映射到受其影响的目标外部项目.</p>
 
-<p><strong>注意:</strong> * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()<em>经常被调用,这就是为什么它应该尽快返回控制. 
+<p><strong>注意:</strong> * ExternalSystemAutoImportAware.getAffectedExternalProjectPath()<em>经常被调用,这就是为什么它应该尽快返回控制.
 Helper * CachingExternalSystemAutoImportAware *类可能用于缓存,即</em> ExternalSystemManager <em>实现</em> ExternalSystemAutoImportAware <em>可以有一个字段,如</em>‘new CachingExternalSystemAutoImportAware(new MyExternalSystemAutoImportAware())* <em>委托</em> ExternalSystemAutoImportAware.getAffectedExternalProjectPath()*调用它.</p>
 
 <a name="section" class="elem-anchor"></a>
