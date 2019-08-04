@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/basics/project_structure.html">Project Structure</a>
                         <a class="navigation-links__next" href="/reference_guide/project_model/module.html">Module</a>
                     </div>
-                    
+
 
                     <h1>Project</h1>
                     <p>在 <em>IntelliJ Platform</em> 中,项目将所有源代码,库,构建指令封装到单个组织单元中.
@@ -89,7 +89,7 @@
 项目定义了一些称为模块和库的集合.
 根据项目的逻辑和功能要求,您可以创建单模块或多模块项目.</p>
 
-<p>##使用项目</p>
+<h2>使用项目</h2>
 
 <p><em>IntelliJ Platform</em> 将项目配置数据存储在XML文件中.
 这些文件的列表取决于插件<a href="https://www.jetbrains.com/help/idea/about-projects.html" data-bypass="yes" target="_blank"><span>project</span></a>格式.</p>
@@ -99,7 +99,7 @@
 为每个模块创建模块文件.</p>
 
 <p>对于基于目录的格式项目,项目和工作区设置存储在<code class="code highlight language-text">％project_home_directory％/.idea</code>目录下的许多XML文件中.
-每个XML文件都负责其自己的一组设置,并且可以通过其名称识别:<code class="code highlight language-text">projectCodeStyle.xml</code>,<code class="code highlight language-text">encodings.xml</code>,<code class="code highlight language-text">vcs.xml</code>等.至于基于文件的格式项目,<code class="code highlight language-text">.iml 
+每个XML文件都负责其自己的一组设置,并且可以通过其名称识别:<code class="code highlight language-text">projectCodeStyle.xml</code>,<code class="code highlight language-text">encodings.xml</code>,<code class="code highlight language-text">vcs.xml</code>等.至于基于文件的格式项目,<code class="code highlight language-text">.iml
 </code>文件描述模块.</p>
 
 <p>请注意,您无需直接访问项目文件即可加载或保存设置.
@@ -122,11 +122,11 @@
   </li>
 </ul>
 
-<p>其他用于处理项目模型的类位于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi" data-bypass="yes" target="_blank"><span>projectModel-api.openapi</span></a>包中. 
+<p>其他用于处理项目模型的类位于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi" data-bypass="yes" target="_blank"><span>projectModel-api.openapi</span></a>包中.
 [project]概念的基本API类和接口(upsource:///platform/core-api/src/com/intellij/openapi/project/Project.java),<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span>module</span></a>,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/application/Application.java" data-bypass="yes" target="_blank"><span>application</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>
 组件</span></a>放在[core-api.openapi]中(upsource:///platform/core-api/src/com/intellij/openapi)包.</p>
 
-<p>###如何获取项目中所有模块的源根列表？</p>
+<h3>如何获取项目中所有模块的源根列表？</h3>
 
 <p>使用<code class="code highlight language-text">ProjectRootManager.getContentSourceRoots()</code>方法.
 为了澄清这一点,请考虑以下代码段:</p>
@@ -138,13 +138,13 @@
 <span class="n">Messages</span><span class="o">.</span><span class="na">showInfoMessage</span><span class="o">(</span><span class="s">"Source roots for the "</span> <span class="o">+</span> <span class="n">projectName</span> <span class="o">+</span> <span class="s">" plugin:\n"</span> <span class="o">+</span> <span class="n">sourceRootsList</span><span class="o">,</span> <span class="s">"Project Properties"</span><span class="o">);</span>
 </code></div>
 
-<p>###检查文件是否属于项目</p>
+<h3>检查文件是否属于项目</h3>
 
 <p>Use <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java" data-bypass="yes" target="_blank"><span>ProjectFileIndex.java</span></a> to get this information:</p>
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">ProjectFileIndex</span> <span class="n">projectFileIndex</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getFileIndex</span><span class="o">();</span>
 </code></div>
 
-<p>###如何获取指定文件或目录所属的内容或源根目录？</p>
+<h3>如何获取指定文件或目录所属的内容或源根目录？</h3>
 
 <p>使用<code class="code highlight language-text">ProjectFileIndex.getContentRootForFile</code>和<code class="code highlight language-text">ProjectFileIndex.getSourceRootForFile</code>方法.
 例如:</p>
@@ -156,7 +156,7 @@
 <p>请注意,如果文件或目录不属于项目中任何模块的源根,则此方法返回“null”.
  </p>
 
-<p>###如何检查文件或目录是否与项目库相关？</p>
+<h3>如何检查文件或目录是否与项目库相关？</h3>
 
 <p><code class="code highlight language-text">ProjectFileIndex</code>接口实现了许多方法,可用于检查指定的文件是属于项目库类还是库源.</p>
 
@@ -168,22 +168,22 @@
 
 <p>*<code class="code highlight language-text">ProjectFileIndex.**</code>isInLibrarySource<code class="code highlight language-text"> **</code>(virtualFileorDirectory)<code class="code highlight language-text">:如果指定的</code>virtualFileorDirectory<code class="code highlight language-text">属于库源,则返回</code>true`.</p>
 
-<p>###如何获得项目SDK？</p>
+<h3>如何获得项目SDK？</h3>
 
 <p>*获取项目级SDK:<code class="code highlight language-text">Sdk projectSdk = ProjectRootManager.getInstance(project).getProjectSdk();</code></p>
 
 <p>*获取项目级SDK名称:<code class="code highlight language-text">String projectSdkName = ProjectRootManager.getInstance(project).getProjectSdkName();</code></p>
 
-<p>###如何设置项目SDK？</p>
+<h3>如何设置项目SDK？</h3>
 
 <p>*设置项目级SDK:<code class="code highlight language-text">ProjectRootManager.getInstance(project).setProjectSdk(Sdk jdk);</code></p>
 
 <p>*设置项目级SDK名称:<code class="code highlight language-text">ProjectRootManager.getInstance(project).setProjectSdkName(String name);</code></p>
 
-<p>请注意,默认情况下,项目模块使用项目SDK. 
+<p>请注意,默认情况下,项目模块使用项目SDK.
 (可选)您可以为每个模块配置单独的SDK.</p>
 
-<p>##更改项目结构</p>
+<h2>更改项目结构</h2>
 
 <p>可以在包<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi" data-bypass="yes" target="_blank"><span>projectModel-impl.openapi</span></a>中找到可用于修改项目结构的实用程序类.
 它的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi/roots/" data-bypass="yes" target="_blank"><span>根</span></a>子包包含用于处理项目和模块源根的实例和实用程序,包括<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootModificationUtil.java" data-bypass="yes" target="_blank"><span>ModuleRootModificationUtil.java</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-impl/src/com/intellij/openapi/projectRoots/IMPL/ProjectRootUtil.java" data-bypass="yes" target="_blank"><span>ProjectRootUtil.java</span></a>.
@@ -196,7 +196,7 @@
   <li>飞行项目结构修改,以了解如何实施.</li>
 </ul>
 
-<p>##接收有关项目结构更改的通知</p>
+<h2>接收有关项目结构更改的通知</h2>
 
 <p>要接收有关项目结构更改的通知(要添加或删除的模块或库,更改模块依赖项等),</p>
 

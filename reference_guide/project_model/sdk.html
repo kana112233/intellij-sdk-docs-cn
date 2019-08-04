@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,24 +81,24 @@
                         <a class="navigation-links__prev" href="/reference_guide/project_model/module.html">Module</a>
                         <a class="navigation-links__next" href="/reference_guide/project_model/library.html">Library</a>
                     </div>
-                    
+
 
                     <h1>SDK</h1>
                     <p>每个项目都使用软件开发工具包(SDK).
-对于Java项目,SDK称为JDK(Java Development Kit). 
+对于Java项目,SDK称为JDK(Java Development Kit).
 SDK确定用于构建项目的API库.
-如果您的项目是多模块,则默认情况下项目SDK对于项目中的所有模块都是通用的. 
+如果您的项目是多模块,则默认情况下项目SDK对于项目中的所有模块都是通用的.
 (可选)您可以为每个模块配置各个SDK.
 有关SDK的更多信息,请参阅IntelliJ IDEA Web帮助中的<a href="https://www.jetbrains.com/help/idea/working-with-sdks.html" data-bypass="yes" target="_blank"><span>SDK</span></a>.</p>
 
-<p>##获取项目SDK信息</p>
+<h2>获取项目SDK信息</h2>
 
 <p>有关项目SDK的主要信息可以通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectRootManager.java" data-bypass="yes" target="_blank"><span>ProjectRootManager.java</span></a>访问,如下例所示</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">Sdk</span> <span class="n">projectSdk</span> <span class="o">=</span> <span class="n">ProjectRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">getProjectSdk</span><span class="o">();</span>
 </code></div>
 
-<p>##获取和设置项目SDK属性</p>
+<h2>获取和设置项目SDK属性</h2>
 
 <p>*获取项目级SDK</p>
 
@@ -128,7 +128,7 @@ SDK确定用于构建项目的API库.
 
 <p>See the following <a href="../../code_samples/project_model/src/com/intellij/tutorials/project/model/ProjectSdkAction.java"><span>code sample</span></a> to get more familiar with SDK manipulation tool set.</p>
 
-<p>##使用自己的SDK</p>
+<h2>使用自己的SDK</h2>
 
 <p>要创建自己的SDK,您需要创建一个类extends <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/projectRoots/SdkType.java" data-bypass="yes" target="_blank"><span>SdkType</span></a>,将<code class="code highlight language-text">saveAdditionalData</code>留空,
 将它注册到<code class="code highlight language-text">com.intellij.sdkType</code>扩展点.</p>
