@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,14 +79,14 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Run Configurations</h1>
-                    <p>这一系列步骤显示了如何注册和实现简单的运行配置。</p>
+                    <p>这一系列步骤显示了如何注册和实现简单的运行配置.</p>
 
-<p>运行配置用于从基于 <em>IntelliJ Platform</em> 的产品中运行内部和外部流程。</p>
+<p>运行配置用于从基于 <em>IntelliJ Platform</em> 的产品中运行内部和外部流程.</p>
 
 <p>要熟悉运行配置的概念，请参阅</p>
 
@@ -99,11 +99,11 @@
 <a name="section" class="elem-anchor"></a>
 <h2>预先要求<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>创建一个空的插件项目。</p>
+<p>创建一个空的插件项目.</p>
 
 <p>看到</p>
 
-<p><a href="/intellij-sdk-docs-cn/basics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>。</p>
+<p><a href="/intellij-sdk-docs-cn/basics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>.</p>
 
 <a name="configurationtype" class="elem-anchor"></a>
 <h2>1.注册一个新的ConfigurationType<a href="#configurationtype" class="anchor-link"><span></span></a></h2>
@@ -124,7 +124,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span>ConfigurationType</span></a></p>
 
-<p>在步骤1中注册的界面。</p>
+<p>在步骤1中注册的界面.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoRunConfigurationType</span> <span class="kd">implements</span> <span class="n">ConfigurationType</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -162,7 +162,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationFactory.java" data-bypass="yes" target="_blank"><span>ConfigurationFactory</span></a></p>
 
-<p>通过它创建自定义运行配置。</p>
+<p>通过它创建自定义运行配置.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoConfigurationFactory</span> <span class="kd">extends</span> <span class="n">ConfigurationFactory</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FACTORY_NAME</span> <span class="o">=</span> <span class="s">"Demo configuration factory"</span><span class="o">;</span>
@@ -187,11 +187,11 @@
 <a name="section-1" class="elem-anchor"></a>
 <h2>4.实现运行配置<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
-<p>要通过UI显示更改，请实施新的运行配置。</p>
+<p>要通过UI显示更改，请实施新的运行配置.</p>
 
 <p><strong>注意:</strong>在大多数情况下，您可以从中派生自定义运行配置类</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java" data-bypass="yes" target="_blank"><span>RunConfigurationBase</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfigurationBase.java" data-bypass="yes" target="_blank"><span>RunConfigurationBase</span></a>.</p>
 
 <p>如果需要实现特定设置外化规则和I/O行为，</p>
 
@@ -199,7 +199,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/RunConfiguration.java" data-bypass="yes" target="_blank"><span>RunConfiguration</span></a></p>
 
-<p>接口。</p>
+<p>接口.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoRunConfiguration</span> <span class="kd">extends</span> <span class="n">RunConfigurationBase</span> <span class="o">{</span>
     <span class="kd">protected</span> <span class="nf">DemoRunConfiguration</span><span class="o">(</span><span class="n">Project</span> <span class="n">project</span><span class="o">,</span> <span class="n">ConfigurationFactory</span> <span class="n">factory</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
@@ -232,7 +232,7 @@
 
 <p>[UI形式]</p>
 
-<p>它定义了新的运行配置的内部部分应该是什么样子。</p>
+<p>它定义了新的运行配置的内部部分应该是什么样子.</p>
 
 <p>默认运行配置将如下所示:</p>
 
@@ -241,7 +241,7 @@
 <a name="ui-1" class="elem-anchor"></a>
 <h2>6.绑定UI表单<a href="#ui-1" class="anchor-link"><span></span></a></h2>
 
-<p>UI表单应该与负责处理UI组件逻辑的Java类绑定。</p>
+<p>UI表单应该与负责处理UI组件逻辑的Java类绑定.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoSettingsEditor</span> <span class="kd">extends</span> <span class="n">SettingsEditor</span><span class="o">&lt;</span><span class="n">DemoRunConfiguration</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">JPanel</span> <span class="n">myPanel</span><span class="o">;</span>
@@ -275,11 +275,11 @@
 
 <p>参考</p>
 
-<p><a href="/intellij-sdk-docs-cn/basics/getting_started/running_and_debugging_a_plugin.html"><span>运行和调试插件</span></a>。</p>
+<p><a href="/intellij-sdk-docs-cn/basics/getting_started/running_and_debugging_a_plugin.html"><span>运行和调试插件</span></a>.</p>
 
 <p>完成上述步骤后，您可以创建自定义运行配置</p>
 
-<p>从你的插件。</p>
+<p>从你的插件.</p>
 
 <p><img src="run_configurations/img/new_run_configuration.png" alt="新运行配置类型" /></p>
 
@@ -287,7 +287,7 @@
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/run_configurations/run_configuration_execution.html">Execution</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019

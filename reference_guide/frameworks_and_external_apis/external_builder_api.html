@@ -84,7 +84,7 @@
 
 
                     <h1>External Builder API and Plugins</h1>
-                    <p>###外部构建流程工作流程</p>
+                    <h3>外部构建流程工作流程</h3>
 
 <p>当用户调用涉及执行外部构建(Make,Build Artifacts等)的操作时,会发生以下步骤:</p>
 
@@ -116,7 +116,7 @@
 
 <p>*后编译任务在IDE过程中执行.</p>
 
-<p>###增量构建</p>
+<h3>增量构建</h3>
 
 <p>为了支持增量构建,构建过程使用许多缓存,这些缓存在构建调用之间保持不变.
 即使您的编译器不支持增量构建,您仍需要报告正确的信息,以便增量构建可以正常地用于其他编译器.</p>
@@ -143,7 +143,7 @@
 
 <p>要在多个目标之间调用同一构建器之间传递自定义数据,可以使用<code class="code highlight language-text">CompileContext.getUserData()</code>和<code class="code highlight language-text">CompileContext.putUserData()</code>.</p>
 
-<p>###外部构建器中的服务和扩展</p>
+<h3>外部构建器中的服务和扩展</h3>
 
 <p>外部构建器进程使用标准Java</p>
 
@@ -154,11 +154,11 @@
 需要通过创建包含实现类的限定名称的“META-INF/services/<service-interface-fqn>”文件来注册服务的实现.例如``BuilderService`实现在`META-INF/services中注册
 /org.jetbrains.jps.incremental.BuilderService`文件.这些文件没有扩展名,因此您需要将相应的模式映射到IDE设置中的文本文件.</service-interface-fqn></p>
 
-<p>###注册外部构建器的插件</p>
+<h3>注册外部构建器的插件</h3>
 
 <p>Sources of a plugin for External Builder should be put in a separate module. By convention such module has name ‘…-jps-plugin’ and its sources are placed under ‘jps-plugin’ directory in the main plugin directory. Use <code class="code highlight language-text">&lt;compileServer.plugin&gt;</code> extension to add the plugin to classpath of external build process, the plugin jar should be named <code class="code highlight language-text">&lt;jps module name&gt;.jar</code>. ‘Build’ | ‘Prepare Plugin Module for deployment’ action will automatically pack ‘jps-plugin’ part to a separate jar accordingly.</p>
 
-<p>###调试外部构建器的插件</p>
+<h3>调试外部构建器的插件</h3>
 
 <p><strong>如果您的测试IDE是IntelliJ IDEA 16.0或更高版本</strong></p>
 
@@ -181,7 +181,7 @@
 在IDE的工作副本中,应创建“远程”运行配置并指向此端口.
 指定端口“-1”将禁用调试模式.</p>
 
-<p>###分析外部构建过程</p>
+<h3>分析外部构建过程</h3>
 
 <p>构建过程具有内置的自我分析功能.
 要启用它们,请执行以下操作:</p>
@@ -209,7 +209,7 @@
 
 <p>还请提供有关您正在使用的构建过程的内存和其他VM设置的详细信息.</p>
 
-<p>###访问外部构建过程的日志</p>
+<h3>访问外部构建过程的日志</h3>
 
 <p>日志文件位于目录下</p>
 
@@ -224,7 +224,7 @@
 
 <p>在版本14.1之前的IntelliJ平台版本中,log4j配置存储在<code class="code highlight language-text">build-log.xml</code>中.</p>
 
-<p>###从External Build访问项目模型和配置</p>
+<h3>从External Build访问项目模型和配置</h3>
 
 <p>外部构建过程中的项目模型由JPS(* JetBrains Project System *)提供.</p>
 

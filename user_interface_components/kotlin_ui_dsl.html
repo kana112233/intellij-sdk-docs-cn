@@ -85,8 +85,8 @@
 
                     <h1>Kotlin UI DSL</h1>
                     <aside class="注意">
-  <p>本文档涵盖IntelliJ IDEA 2019.2中的Kotlin UI DSL。
-本文档中描述的许多功能不适用于针对早期IntelliJ IDEA版本的插件。</p>
+  <p>本文档涵盖IntelliJ IDEA 2019.2中的Kotlin UI DSL.
+本文档中描述的许多功能不适用于针对早期IntelliJ IDEA版本的插件.</p>
 </aside>
 
 <a name="section" class="elem-anchor"></a>
@@ -101,19 +101,19 @@
 <span class="p">}</span>
 </code></div>
 
-<p>行从上到下垂直创建，顺序与调用<code class="code highlight language-text">row</code>的代码行相同。</p>
+<p>行从上到下垂直创建，顺序与调用<code class="code highlight language-text">row</code>的代码行相同.</p>
 
-<p>在一行内部，您可以按相同的顺序向工厂方法添加从左到右的组件，或者在每行中显示<code class="code highlight language-text">()</code>。</p>
+<p>在一行内部，您可以按相同的顺序向工厂方法添加从左到右的组件，或者在每行中显示<code class="code highlight language-text">()</code>.</p>
 
-<p>每个组件都有效地放置在自己的网格单元中。</p>
+<p>每个组件都有效地放置在自己的网格单元中.</p>
 
 <p>可以将行的标签指定为<code class="code highlight language-text">row</code>方法的参数:</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span><span class="p">(</span><span class="s">"Parameters"</span><span class="p">)</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
 </code></div>
 
-<p>行可以嵌套。
-嵌套行块中的组件被视为从属于包含行，并相应地缩进。</p>
+<p>行可以嵌套.
+嵌套行块中的组件被视为从属于包含行，并相应地缩进.</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">row</span> <span class="p">{</span>
   <span class="n">checkBox</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span>
@@ -189,13 +189,13 @@
 <a name="section-4" class="elem-anchor"></a>
 <h3>复选框<a href="#section-4" class="anchor-link"><span></span></a></h3>
 
-<p>见上面的例子。</p>
+<p>见上面的例子.</p>
 
 <a name="section-5" class="elem-anchor"></a>
 <h3>单选按钮<a href="#section-5" class="anchor-link"><span></span></a></h3>
 
-<p>单选按钮组使用<code class="code highlight language-text">buttonGroup</code>块创建。
-有两种方法可以使用它。
+<p>单选按钮组使用<code class="code highlight language-text">buttonGroup</code>块创建.
+有两种方法可以使用它.
 如果所选单选按钮对应于单个特定值</p>
 
 <p>property，将属性绑定传递给<code class="code highlight language-text">buttonGroup</code>方法，将特定值传递给<code class="code highlight language-text">radioButton</code>函数:</p>
@@ -301,20 +301,20 @@
 <a name="section-12" class="elem-anchor"></a>
 <h2>使用属性绑定集成面板<a href="#section-12" class="anchor-link"><span></span></a></h2>
 
-<p><code class="code highlight language-text">panel</code>方法返回的面板是<code class="code highlight language-text">DialogPanel</code>的实例。
-该基类支持标准的<code class="code highlight language-text">apply</code>，<code class="code highlight language-text">reset</code>和<code class="code highlight language-text">isModified</code>方法。</p>
+<p><code class="code highlight language-text">panel</code>方法返回的面板是<code class="code highlight language-text">DialogPanel</code>的实例.
+该基类支持标准的<code class="code highlight language-text">apply</code>，<code class="code highlight language-text">reset</code>和<code class="code highlight language-text">isModified</code>方法.</p>
 
-<p>如果您使用此面板作为<code class="code highlight language-text">DialogWrapper</code>的主面板，则在使用OK操作关闭对话框时将自动调用<code class="code highlight language-text">apply</code>方法。
-在这种情况下，其他方法未使用。</p>
+<p>如果您使用此面板作为<code class="code highlight language-text">DialogWrapper</code>的主面板，则在使用OK操作关闭对话框时将自动调用<code class="code highlight language-text">apply</code>方法.
+在这种情况下，其他方法未使用.</p>
 
-<p>如果您使用此面板实现<code class="code highlight language-text">Configurable</code>，请使用<code class="code highlight language-text">BoundConfigurable</code>作为基类。
-在这种情况下，<code class="code highlight language-text">Configurable</code>方法将自动委托给面板。</p>
+<p>如果您使用此面板实现<code class="code highlight language-text">Configurable</code>，请使用<code class="code highlight language-text">BoundConfigurable</code>作为基类.
+在这种情况下，<code class="code highlight language-text">Configurable</code>方法将自动委托给面板.</p>
 
 <a name="section-13" class="elem-anchor"></a>
 <h2>启用和禁用控件<a href="#section-13" class="anchor-link"><span></span></a></h2>
 
-<p>使用<code class="code highlight language-text">enableIf</code>方法将控件的启用状态绑定到在其他控件中输入的值。
-该方法的参数是<strong>谓词</strong>。</p>
+<p>使用<code class="code highlight language-text">enableIf</code>方法将控件的启用状态绑定到在其他控件中输入的值.
+该方法的参数是<strong>谓词</strong>.</p>
 
 <div class="code-block" data-lang="kotlin"><code class="code-block__wrapper"><span class="n">checkBox</span><span class="p">(</span><span class="s">"Show tabs in single row"</span><span class="p">,</span> <span class="n">uiSettings</span><span class="o">::</span><span class="n">scrollTabLayoutInEditor</span><span class="p">)</span>
   <span class="p">.</span><span class="n">enableIf</span><span class="p">(</span><span class="n">myEditorTabPlacement</span><span class="p">.</span><span class="n">selectedValueIs</span><span class="p">(</span><span class="n">SwingConstants</span><span class="p">.</span><span class="n">TOP</span><span class="p">))</span>
@@ -324,7 +324,7 @@
   
 *<code class="code highlight language-text">selected</code>检查复选框或单选按钮的选定状态
   
-*<code class="code highlight language-text">selectedValueIs</code>和<code class="code highlight language-text">selectedValueMatches</code>来检查组合框中的选定项目。
+*<code class="code highlight language-text">selectedValueIs</code>和<code class="code highlight language-text">selectedValueMatches</code>来检查组合框中的选定项目.
   </p>
 
 <p>谓词可以与<code class="code highlight language-text">和</code>以及`或’中缀函数结合使用:</p>
@@ -357,7 +357,7 @@
 <a name="section-16" class="elem-anchor"></a>
 <h3>一个单元格最小，第二个单元格最大<a href="#section-16" class="anchor-link"><span></span></a></h3>
 
-<p>为第二个单元格中的某个组件设置<code class="code highlight language-text">CCFlags.growX</code>和<code class="code highlight language-text">CCFlags.pushX</code>。</p>
+<p>为第二个单元格中的某个组件设置<code class="code highlight language-text">CCFlags.growX</code>和<code class="code highlight language-text">CCFlags.pushX</code>.</p>
 
 
 

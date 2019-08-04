@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,28 +81,28 @@
                         <a class="navigation-links__prev" href="/tutorials/editor_basics/working_with_text.html">1. Working with text</a>
                         <a class="navigation-links__next" href="/tutorials/editor_basics/editor_events.html">3. Handling Editor Events</a>
                     </div>
-                    
+
 
                     <h1>2. Editor coordinates system. Positions and offsets</h1>
-                    <p>编辑器中的每个插入符都有一组描述其坐标的属性。</p>
+                    <p>编辑器中的每个插入符都有一组描述其坐标的属性.</p>
 
 <p>可以通过获取a来访问这些属性</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java" data-bypass="yes" target="_blank"><span>插入模型实例</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/CaretModel.java" data-bypass="yes" target="_blank"><span>插入模型实例</span></a>.</p>
 
-<p>下面的示例将解释使用插入位置及其逻辑和视觉属性。</p>
+<p>下面的示例将解释使用插入位置及其逻辑和视觉属性.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h2>2.1。<a href="#section" class="anchor-link"><span></span></a></h2>
+<h2>2.1.<a href="#section" class="anchor-link"><span></span></a></h2>
 <p>前要求</p>
 
-<p>通过操作执行对编辑器的访问。</p>
+<p>通过操作执行对编辑器的访问.</p>
 
 <a name="section-1" class="elem-anchor"></a>
-<h2>2.2。<a href="#section-1" class="anchor-link"><span></span></a></h2>
+<h2>2.2.<a href="#section-1" class="anchor-link"><span></span></a></h2>
 <p>访问插入位置</p>
 
-<p>要获得对插入位置的访问，应该获得“CaretModel”的实例。</p>
+<p>要获得对插入位置的访问，应该获得“CaretModel”的实例.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorAreaIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -118,15 +118,15 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h2>2.3。<a href="#section-2" class="anchor-link"><span></span></a></h2>
+<h2>2.3.<a href="#section-2" class="anchor-link"><span></span></a></h2>
 <p>逻辑位置</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/LogicalPosition.java" data-bypass="yes" target="_blank"><span>LogicalPosition.java</span></a></p>
 
-<p>表示插入符号的当前逻辑位置的行和列。
+<p>表示插入符号的当前逻辑位置的行和列.
 逻辑位置忽略折叠 -</p>
 
-<p>例如，如果文档的前10行被折叠，则文档中的第10行将在其逻辑位置具有行号10。</p>
+<p>例如，如果文档的前10行被折叠，则文档中的第10行将在其逻辑位置具有行号10.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorAreaIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -144,26 +144,26 @@
 
 <p>逻辑位置可以存储定义其映射的其他参数</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java" data-bypass="yes" target="_blank"><span>VisualPosition.java</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java" data-bypass="yes" target="_blank"><span>VisualPosition.java</span></a>.</p>
 
 <p>基本原理是单个逻辑对匹配由软包装引入的虚拟空间，即不同的视觉位置</p>
 
-<p>可以对应于相同的逻辑位置。
+<p>可以对应于相同的逻辑位置.
 在逻辑中存储精确的视觉位置细节很方便</p>
 
-<p>位置是为了进一步简化“逻辑位置” –&gt;“视觉位置”映射。</p>
+<p>位置是为了进一步简化“逻辑位置” –&gt;“视觉位置”映射.</p>
 
 <a name="section-3" class="elem-anchor"></a>
-<h2>2.4。<a href="#section-3" class="anchor-link"><span></span></a></h2>
+<h2>2.4.<a href="#section-3" class="anchor-link"><span></span></a></h2>
 <p>视觉位置</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/editor/VisualPosition.java" data-bypass="yes" target="_blank"><span>VisualPosition.java</span></a></p>
 
-<p>表示视觉位置并且可以与对应的逻辑位置不同。</p>
+<p>表示视觉位置并且可以与对应的逻辑位置不同.</p>
 
 <p>视觉位置考虑折叠 - 例如，</p>
 
-<p>如果文档的前10行被折叠，则文档中的第10行将在其视觉位置具有行号1。</p>
+<p>如果文档的前10行被折叠，则文档中的第10行将在其视觉位置具有行号1.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorAreaIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -181,7 +181,7 @@
 </code></div>
 
 <a name="section-4" class="elem-anchor"></a>
-<h2>2.5。<a href="#section-4" class="anchor-link"><span></span></a></h2>
+<h2>2.5.<a href="#section-4" class="anchor-link"><span></span></a></h2>
 <p>抵消</p>
 
 <p>通过<code class="code highlight language-text">CaretModel</code>也可以访问给定插入位置的绝对偏移量:</p>
@@ -203,12 +203,12 @@
 </code></div>
 
 <a name="section-5" class="elem-anchor"></a>
-<h2>2.6。<a href="#section-5" class="anchor-link"><span></span></a></h2>
+<h2>2.6.<a href="#section-5" class="anchor-link"><span></span></a></h2>
 <p>显示位置值</p>
 
 <p>要显示逻辑和视觉位置的实际值，我们添加一个</p>
 
-<p><code class="code highlight language-text">Messages.showInfoMessage()</code>调用将在执行操作后以通知的形式显示它们。</p>
+<p><code class="code highlight language-text">Messages.showInfoMessage()</code>调用将在执行操作后以通知的形式显示它们.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorAreaIllustration</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -237,7 +237,7 @@
 
 <p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/editor_basics/src/org/jetbrains/tutorials/editor/basics/EditorAreaIllustration.java" data-bypass="yes" target="_blank"><span>EditorAreaIllustration</span></a></p>
 
-<p>动作，并看看逻辑和视觉位置如何依赖于折叠。</p>
+<p>动作，并看看逻辑和视觉位置如何依赖于折叠.</p>
 
 <p>在上下文菜单中找到该操作:</p>
 

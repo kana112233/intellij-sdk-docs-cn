@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/user_interface_components/lists_and_trees.html">List and Tree Controls</a>
                         <a class="navigation-links__next" href="/reference_guide/work_with_icons_and_images.html">Working with Icons and Images</a>
                     </div>
-                    
+
 
                     <h1>Miscellaneous Swing Components</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -89,21 +89,21 @@
 
 <p>该<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/Messages.java" data-bypass="yes" target="_blank"><span>邮件</span></a></p>
 
-<p>class提供了一种显示简单消息框，输入对话框(带文本字段的模态对话框)和选择器对话框(带组合框的模态对话框)的方法。</p>
+<p>class提供了一种显示简单消息框，输入对话框(带文本字段的模态对话框)和选择器对话框(带组合框的模态对话框)的方法.</p>
 
-<p>从名称中可以清楚地了解不同类别方法的功能。</p>
+<p>从名称中可以清楚地了解不同类别方法的功能.</p>
 
 <p>在macOS上运行时，显示的消息框</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/Messages.java" data-bypass="yes" target="_blank"><span>邮件</span></a></p>
 
-<p>class使用本机UI。</p>
+<p>class使用本机UI.</p>
 
-<p><code class="code highlight language-text">showCheckboxMessageDialog()</code>函数提供了一种简单的方法来实现消息上的<code class="code highlight language-text">Do not show this again</code>复选框。</p>
+<p><code class="code highlight language-text">showCheckboxMessageDialog()</code>函数提供了一种简单的方法来实现消息上的<code class="code highlight language-text">Do not show this again</code>复选框.</p>
 
-<p>请注意，建议在适当的时候使用非模态通知而不是模态消息框。</p>
+<p>请注意，建议在适当的时候使用非模态通知而不是模态消息框.</p>
 
-<p>有关更多信息，请参阅<a href="notifications.html"><span>通知</span></a>主题。</p>
+<p>有关更多信息，请参阅<a href="notifications.html"><span>通知</span></a>主题.</p>
 
 <a name="jbsplitter" class="elem-anchor"></a>
 <h3>JBSplitter<a href="#jbsplitter" class="anchor-link"><span></span></a></h3>
@@ -111,25 +111,25 @@
 <p>该<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/JBSplitter.java" data-bypass="yes" target="_blank"><span>JBSplitter</span></a>
 class是JetBrains的标准替代品
 <a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSplitPane.html" data-bypass="yes" target="_blank"><span>调整JSplitPane</span></a>
-类。</p>
+类.</p>
 
-<p>与其他一些JetBrains增强的Swing组件不同，它不是替代品，而是具有不同的API。
+<p>与其他一些JetBrains增强的Swing组件不同，它不是替代品，而是具有不同的API.
 但是，为了获得一致的用户体验，建议使用
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/JBSplitter.java" data-bypass="yes" target="_blank"><span>JBSplitter</span></a>
 而不是标准<a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSplitPane.html" data-bypass="yes" target="_blank"><span>调整JSplitPane</span></a>
-在你的插件中。</p>
+在你的插件中.</p>
 
-<p>要将组件添加到拆分器，请调用<code class="code highlight language-text">setFirstComponent()</code>和<code class="code highlight language-text">setSecondComponent()</code>方法。
+<p>要将组件添加到拆分器，请调用<code class="code highlight language-text">setFirstComponent()</code>和<code class="code highlight language-text">setSecondComponent()</code>方法.
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/JBSplitter.java" data-bypass="yes" target="_blank"><span>JBSplitter</span></a>
-支持自动记忆拆分比例。
-为了启用它，调用<code class="code highlight language-text">setSplitterProportionKey()</code>方法并传递将存储比例的ID。</p>
+支持自动记忆拆分比例.
+为了启用它，调用<code class="code highlight language-text">setSplitterProportionKey()</code>方法并传递将存储比例的ID.</p>
 
 <a name="jbtabs" class="elem-anchor"></a>
 <h3>JBTabs<a href="#jbtabs" class="anchor-link"><span></span></a></h3>
 
 <p>该<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/tabs/JBTabs.java" data-bypass="yes" target="_blank"><span>JBTabs</span></a>
-class是JetBrains实现的选项卡控件，用于编辑器选项卡和一些其他组件。
-与标准Swing选项卡相比，它具有明显不同的外观和感觉，并且在macOS平台上看起来不那么原生，因此您可以选择哪个选项卡控件更适合您的插件。</p>
+class是JetBrains实现的选项卡控件，用于编辑器选项卡和一些其他组件.
+与标准Swing选项卡相比，它具有明显不同的外观和感觉，并且在macOS平台上看起来不那么原生，因此您可以选择哪个选项卡控件更适合您的插件.</p>
 
 
 

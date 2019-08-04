@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,36 +78,36 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/writing_tests_for_plugins/parsing_test.html">2. Parsing Test</a>
                     </div>
-                    
+
 
                     <h1>1. Tests Prerequisites</h1>
                     <a name="section" class="elem-anchor"></a>
-<h3>1.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>1.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>为测试创建一个文件夹</p>
 
-<p>使用插件打开项目并创建一个单独的文件夹“tests”。</p>
+<p>使用插件打开项目并创建一个单独的文件夹“tests”.</p>
 
-<p>通过上下文菜单“Mark Directory As”＆rarr将文件夹标记为测试源根目录; 
-`测试源根。</p>
+<p>通过上下文菜单“Mark Directory As”＆rarr将文件夹标记为测试源根目录;
+`测试源根.</p>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>1.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>1.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>为测试数据创建一个文件夹</p>
 
-<p>在我们的测试中，我们将使用测试数据，因此我们需要一个文件夹<em>“testData”</em>来存储这些文件。</p>
+<p>在我们的测试中，我们将使用测试数据，因此我们需要一个文件夹<em>“testData”</em>来存储这些文件.</p>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>1.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>1.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>运行配置参数</p>
 
-<p>由于我们的一些测试将使用Java文件作为测试数据，因此我们需要模拟项目SDK。</p>
+<p>由于我们的一些测试将使用Java文件作为测试数据，因此我们需要模拟项目SDK.</p>
 
 <p>当我们使用特殊实用程序类时，IntelliJ IDEA会自动执行所有操作</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/testFramework/src/com/intellij/testFramework/fixtures/LightCodeInsightFixtureTestCase.java" data-bypass="yes" target="_blank"><span>LightCodeInsightFixtureTestCase</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/testFramework/src/com/intellij/testFramework/fixtures/LightCodeInsightFixtureTestCase.java" data-bypass="yes" target="_blank"><span>LightCodeInsightFixtureTestCase</span></a>.</p>
 
 <p>我们需要做的就是将运行配置工作目录指向IntelliJ IDEA Community Edition源的根目录，并启用以下VM选项:</p>
 
@@ -121,13 +121,13 @@
   
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/testFramework/src/com/intellij/testFramework/fixtures/LightCodeInsightFixtureTestCase.java" data-bypass="yes" target="_blank"><span>LightCodeInsightFixtureTestCase</span></a>
   
-将使用IntelliJ IDEA Community Edition的_source root_的相对路径。</p>
+将使用IntelliJ IDEA Community Edition的_source root_的相对路径.</p>
 </aside>
 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/writing_tests_for_plugins/parsing_test.html">2. Parsing Test</a>
                     </div>
                     <div class="last-modified">

@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,19 +78,19 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/action_system/grouping_action.html">2. Grouping Actions</a>
                     </div>
-                    
+
 
                     <h1>1. Registering an Action</h1>
                     <p>一个动作在技术上是一个类，派生自</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction</span></a></p>
 
-<p>类。</p>
+<p>类.</p>
 
-<p>要更新操作的状态，IntelliJ Platform框架将调用方法<code class="code highlight language-text">AnAction.update(AnActionEvent)</code>。</p>
+<p>要更新操作的状态，IntelliJ Platform框架将调用方法<code class="code highlight language-text">AnAction.update(AnActionEvent)</code>.</p>
 
 <p>类型的对象</p>
 
@@ -98,43 +98,43 @@
 
 <p>传递给此方法携带有关操作的当前上下文的信息，</p>
 
-<p>特别是需要更新的具体表述。</p>
+<p>特别是需要更新的具体表述.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>1.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>1.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>创建动作</p>
 
 <p>要创建一个新的动作，我们需要扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction</span></a></p>
 
-<p>类。
-作为一个例子，我们将在<code class="code highlight language-text">register_actions</code>代码示例中的<code class="code highlight language-text">SimplePopDialogAction</code>类中执行此操作。</p>
+<p>类.
+作为一个例子，我们将在<code class="code highlight language-text">register_actions</code>代码示例中的<code class="code highlight language-text">SimplePopDialogAction</code>类中执行此操作.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimplePopDialogAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
 <span class="o">}</span>
 </code></div>
 
-<p><strong>注意</strong><code class="code highlight language-text">SimplePopDialogAction</code>没有任何类的类字段。
+<p><strong>注意</strong><code class="code highlight language-text">SimplePopDialogAction</code>没有任何类的类字段.
 这是因为<code class="code highlight language-text">AnAction</code>类的一个实例</p>
 
-<p>存在于应用程序的整个生命周期中。
+<p>存在于应用程序的整个生命周期中.
 如果<code class="code highlight language-text">AnAction</code>类使用字段来存储更短的数据</p>
 
-<p>生命周期，并没有及时清除这些数据，数据将被泄露。
+<p>生命周期，并没有及时清除这些数据，数据将被泄露.
 例如，存在任何“AnAction”数据</p>
 
-<p>只有在<code class="code highlight language-text">Project</code>的上下文中才会导致<code class="code highlight language-text">Project</code>在用户关闭之后保存在内存中。</p>
+<p>只有在<code class="code highlight language-text">Project</code>的上下文中才会导致<code class="code highlight language-text">Project</code>在用户关闭之后保存在内存中.</p>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>1.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>1.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>覆盖actionPerformed()</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction</span></a></p>
 
-<p>class是抽象的，扩展它的类必须覆盖<code class="code highlight language-text">AnAction.actionPerformed(AnActionEvent)</code>方法。</p>
+<p>class是抽象的，扩展它的类必须覆盖<code class="code highlight language-text">AnAction.actionPerformed(AnActionEvent)</code>方法.</p>
 
-<p>此方法应包含在调用操作时要执行的代码。</p>
+<p>此方法应包含在调用操作时要执行的代码.</p>
 
-<p>在这种情况下，<code class="code highlight language-text">SimplePopDialogAction.actionPerformed(AnActionEvent)</code>还没有做任何事情。</p>
+<p>在这种情况下，<code class="code highlight language-text">SimplePopDialogAction.actionPerformed(AnActionEvent)</code>还没有做任何事情.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimplePopDialogAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
   <span class="nd">@Override</span>
@@ -145,25 +145,25 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>1.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>1.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>注册行动</p>
 
 <p>要注册新创建的操作，应将“<action>”属性添加到插件配置文件的`<actions>`部分</actions></action></p>
 
-<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>。</p>
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>.</p>
 
-<p>IntelliJ IDEA具有嵌入式检查功能，可以发现未注册的操作。
+<p>IntelliJ IDEA具有嵌入式检查功能，可以发现未注册的操作.
 以下是使用<code class="code highlight language-text">SimplePopDialogAction</code>类的示例:</p>
 
 <p><img src="img/action_never_used.png" alt="“动作从未使用过”检查" /></p>
 
-<p>要注册<code class="code highlight language-text">SimplePopDialogAction</code>并设置其属性，请将插入符号放在操作声明上时按<em>** Alt + Enter **</em>。</p>
+<p>要注册<code class="code highlight language-text">SimplePopDialogAction</code>并设置其属性，请将插入符号放在操作声明上时按<em>** Alt + Enter **</em>.</p>
 
 <p>然后填写** New Action **表单以设置<code class="code highlight language-text">SimplePopDialogAction</code>的参数，例如:动作的名称和描述，</p>
 
-<p>动作绑定的UI组件，动作绑定的菜单项的可视位置，以及调用动作的快捷方式。</p>
+<p>动作绑定的UI组件，动作绑定的菜单项的可视位置，以及调用动作的快捷方式.</p>
 
-<p>在这种情况下，<code class="code highlight language-text">SimplePopDialogAction</code>将在<strong>工具菜单</strong>中可用，它将被置于顶部，并且没有快捷方式。</p>
+<p>在这种情况下，<code class="code highlight language-text">SimplePopDialogAction</code>将在<strong>工具菜单</strong>中可用，它将被置于顶部，并且没有快捷方式.</p>
 
 <p><img src="img/new_action.png" alt="新动作" /></p>
 
@@ -183,20 +183,20 @@
 <p>This declaration is adequate, but as we’ll see in the next section there are more elements that can be added to the declaration.</p>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>1.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>1.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>手动设置属性</p>
 
-<p>您可以通过将操作添加到** New Action **表单或在plugin.xml文件中编辑其注册来配置操作的其他属性。</p>
+<p>您可以通过将操作添加到** New Action **表单或在plugin.xml文件中编辑其注册来配置操作的其他属性.</p>
 
 <p>有关完整列表，请参阅<a href="../../basics/action_system.html#registrationing-actions"><span>操作系统文档</span></a></p>
 
-<p>支持的属性。</p>
+<p>支持的属性.</p>
 
 <p>register_actions中<code class="code highlight language-text">SimplePopDialogAction</code>的<code class="code highlight language-text">&lt;action&gt;</code>声明</p>
 
 <p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a></p>
 
-<p>file实际上包含<code class="code highlight language-text">&lt;keyboard-shortcut&gt;</code>和<code class="code highlight language-text">&lt;mouse-shortcut&gt;</code>的元素。
+<p>file实际上包含<code class="code highlight language-text">&lt;keyboard-shortcut&gt;</code>和<code class="code highlight language-text">&lt;mouse-shortcut&gt;</code>的元素.
 完整的声明是:</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;action</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.SimpleAction"</span> <span class="na">class=</span><span class="s">"org.jetbrains.tutorials.actions.SimplePopDialogAction"</span>
@@ -206,7 +206,7 @@
   <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">"ToolsMenu"</span> <span class="na">anchor=</span><span class="s">"first"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/action&gt;</span>
 </code></div>
-<p>The <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a> 
+<p>The <a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a>
 file contains copious comments about the declaration.</p>
 
 <p>执行上述步骤后，我们需要编译并运行插件到新创建的操作，作为工具菜单项:</p>
@@ -214,22 +214,22 @@ file contains copious comments about the declaration.</p>
 <p><img src="img/tools_menu_item_action.png" alt="“注册动作”快速修复" /></p>
 
 <a name="section-4" class="elem-anchor"></a>
-<h3>1.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<h3>1.5.<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>执行一个动作</p>
 
-<p>为了使动作做一些事情，我们需要在<code class="code highlight language-text">SimplePopDialoigAction.actionPerformed(AnActionEvent)</code>方法中添加代码。</p>
+<p>为了使动作做一些事情，我们需要在<code class="code highlight language-text">SimplePopDialoigAction.actionPerformed(AnActionEvent)</code>方法中添加代码.</p>
 
-<p>以下代码从<code class="code highlight language-text">anActionEvent</code>输入参数获取信息，并构造一个简单的消息对话框。</p>
+<p>以下代码从<code class="code highlight language-text">anActionEvent</code>输入参数获取信息，并构造一个简单的消息对话框.</p>
 
-<p>将显示一个通用图标，以及调用菜单操作中的<code class="code highlight language-text">description</code>和<code class="code highlight language-text">text</code>属性。</p>
+<p>将显示一个通用图标，以及调用菜单操作中的<code class="code highlight language-text">description</code>和<code class="code highlight language-text">text</code>属性.</p>
 
 <p>出于演示目的，<code class="code highlight language-text">AnActionEvent.getData()</code>方法测试是否<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/pom/Navigatable.java" data-bypass="yes" target="_blank"><span>Navigatable</span></a></p>
 
 <p>对象是可用的，意味着例如
-已在编辑器中选择了一个元素。
+已在编辑器中选择了一个元素.
 如果是这样，有关的信息</p>
 
-<p>将所选元素机会性地添加到对话框中。</p>
+<p>将所选元素机会性地添加到对话框中.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AnActionEvent</span> <span class="n">anActionEvent</span><span class="o">)</span> <span class="o">{</span>
@@ -247,18 +247,18 @@ file contains copious comments about the declaration.</p>
 </code></div>
 
 <a name="section-5" class="elem-anchor"></a>
-<h3>1.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<h3>1.6.<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>设置操作的可见性和可用性</p>
 
-<p>要控制操作的可见性和可用性，我们需要覆盖<code class="code highlight language-text">AnAction.update(AnActionEvent)</code>方法。</p>
+<p>要控制操作的可见性和可用性，我们需要覆盖<code class="code highlight language-text">AnAction.update(AnActionEvent)</code>方法.</p>
 
-<p>此方法的默认实现不执行任何操作，这意味着始终禁用操作。</p>
+<p>此方法的默认实现不执行任何操作，这意味着始终禁用操作.</p>
 
-<p>重写此方法以提供根据上下文动态更改操作的状态和(或)显示的功能。</p>
+<p>重写此方法以提供根据上下文动态更改操作的状态和(或)显示的功能.</p>
 
 <p>在这个例子中，<code class="code highlight language-text">SimplePopDialogAction.actionPerformed(AnActionEvent)</code>方法依赖于<code class="code highlight language-text">Project</code></p>
 
-<p>对象可用。
+<p>对象可用.
 因此<code class="code highlight language-text">SimplePopDialogAction.update(AnActionEvent)</code>方法禁用</p>
 
 <p>对于没有定义<code class="code highlight language-text">Project</code>对象的上下文的操作:</p>
@@ -271,26 +271,26 @@ file contains copious comments about the declaration.</p>
 <span class="o">}</span>
 </code></div>
 
-<p>参数<code class="code highlight language-text">anActionEvent</code>包含有关调用位置和可用数据的信息。
+<p>参数<code class="code highlight language-text">anActionEvent</code>包含有关调用位置和可用数据的信息.
 注意<code class="code highlight language-text">update()</code>方法</p>
 
 <p>不检查<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/pom/Navigatable.java" data-bypass="yes" target="_blank"><span>Navigatable</span></a>对象是否可用</p>
 
-<p>在启用<code class="code highlight language-text">SimplePopDialogAction</code>之前。
-这是为了演示代码的目的。</p>
+<p>在启用<code class="code highlight language-text">SimplePopDialogAction</code>之前.
+这是为了演示代码的目的.</p>
 
-<p><strong>注意</strong>可以经常调用此方法:例如，如果将某个操作添加到工具栏，它将每秒更新两次。</p>
+<p><strong>注意</strong>可以经常调用此方法:例如，如果将某个操作添加到工具栏，它将每秒更新两次.</p>
 
 <p>这意味着这个方法应该_work fast_;
-在这个阶段不应该做真正的工作。</p>
+在这个阶段不应该做真正的工作.</p>
 
-<p>例如，检查树或列表中的选择被认为是有效的，但是不使用文件系统。</p>
+<p>例如，检查树或列表中的选择被认为是有效的，但是不使用文件系统.</p>
 
 <p>如果你无法快速了解行动的状态，你应该在</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnActionEvent.java" data-bypass="yes" target="_blank"><span>AnActionEvent</span></a></p>
 
-<p>如果是这种情况，则通知用户该操作无法执行。</p>
+<p>如果是这种情况，则通知用户该操作无法执行.</p>
 
 <p>编译并运行插件项目并调用操作后，将弹出对话框:</p>
 
@@ -299,7 +299,7 @@ file contains copious comments about the declaration.</p>
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/action_system/grouping_action.html">2. Grouping Actions</a>
                     </div>
                     <div class="last-modified">

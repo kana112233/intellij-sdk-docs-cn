@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,14 +81,14 @@
                         <a class="navigation-links__prev" href="/tutorials/custom_language_support/prerequisites.html">1. Prerequisites</a>
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/grammar_and_parser.html">3. Grammar and Parser</a>
                     </div>
-                    
+
 
                     <h1>2. Language and File Type</h1>
                     <a name="section" class="elem-anchor"></a>
-<h3>2.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>2.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义一种语言</p>
 
-<p>注意语言名称的情况 - “简单”。</p>
+<p>注意语言名称的情况 - “简单”.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
 
@@ -104,14 +104,14 @@
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>2.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>2.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>定义一个图标</p>
 
 <p>复制</p>
 
 <p><a href="https://raw.githubusercontent.com/JetBrains/intellij-sdk-docs/master/code_samples/simple_language_plugin/src/com/simpleplugin/icons/jar-gray.png" data-bypass="yes" target="_blank"><span>ICON</span></a></p>
 
-<p>到** com.simpleplugin.icons **包。</p>
+<p>到** com.simpleplugin.icons **包.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
 
@@ -125,7 +125,7 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>2.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>2.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>定义文件类型</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -169,7 +169,7 @@
 </code></div>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>2.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>2.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>定义文件类型工厂</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -187,7 +187,7 @@
 </code></div>
 
 <a name="section-4" class="elem-anchor"></a>
-<h3>2.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<h3>2.5.<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>注册文件类型工厂</p>
 
 <p>在plugin.xml中添加:</p>
@@ -198,12 +198,12 @@
 </code></div>
 
 <a name="section-5" class="elem-anchor"></a>
-<h3>2.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<h3>2.6.<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>运行该项目</p>
 
 <p>创建扩展名为* .simple *的文件</p>
 
-<p>和IntelliJ IDEA会自动将其与我们的语言相关联。</p>
+<p>和IntelliJ IDEA会自动将其与我们的语言相关联.</p>
 
 <p><img src="img/file_type_factory.png" alt="文件类型工厂" /></p>
 

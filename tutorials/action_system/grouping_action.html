@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,34 +79,34 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/action_system/working_with_custom_actions.html">1. Registering an Action</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>2. Grouping Actions</h1>
-                    <p>如果某个实现需要多个操作，或者只有太多操作会使菜单超载，则可以将它们组合成组。</p>
+                    <p>如果某个实现需要多个操作，或者只有太多操作会使菜单超载，则可以将它们组合成组.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>2.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>2.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>简单的行动小组</p>
 
-<p>在第一个示例中，操作组将作为顶级菜单项提供，操作将表示为下拉菜单项。</p>
+<p>在第一个示例中，操作组将作为顶级菜单项提供，操作将表示为下拉菜单项.</p>
 
 <a name="section-1" class="elem-anchor"></a>
-<h4>2.1.1。</h4>
+<h4>2.1.1.</h4>
 <p>创建简单的操作组</p>
 
 <p>可以通过在<code class="code highlight language-text">&lt;actions&gt;</code>部分中添加<code class="code highlight language-text">&lt;group&gt;</code>元素来完成分组</p>
 
-<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>。</p>
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>.</p>
 
 <p>注意这个例子在<code class="code highlight language-text">&lt;group&gt;</code>元素中没有<code class="code highlight language-text">class</code>属性，因为我们需要IntelliJ Platform框架</p>
 
-<p>为组提供默认实现类。 
-2.2节讨论了使用专门的实现。 
+<p>为组提供默认实现类.
+2.2节讨论了使用专门的实现.
 <code class="code highlight language-text">id</code>属性</p>
 
-<p>必须是唯一的，因此鼓励使用插件ID或包名称。</p>
+<p>必须是唯一的，因此鼓励使用插件ID或包名称.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
     <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.GroupedActions"</span> <span class="na">text=</span><span class="s">"Example Grouped Actions"</span> <span class="na">popup=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -115,17 +115,17 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h4>2.1.2。</h4>
+<h4>2.1.2.</h4>
 <p>将操作组绑定到UI组件</p>
 
 <p>以下示例显示如何使用<code class="code highlight language-text">&lt;add-to-group&gt;</code>元素放置相对于的自定义操作组</p>
 
-<p><strong>工具</strong>菜单中的条目。
-注意，“relative-to-action”属性引用了<code class="code highlight language-text">SimpleAction</code>的动作<code class="code highlight language-text">id</code>，它不是原生的IntelliJ菜单条目。</p>
+<p><strong>工具</strong>菜单中的条目.
+注意，“relative-to-action”属性引用了<code class="code highlight language-text">SimpleAction</code>的动作<code class="code highlight language-text">id</code>，它不是原生的IntelliJ菜单条目.</p>
 
 <p>相反，<code class="code highlight language-text">SimpleAction</code>定义相同</p>
 
-<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a>文件。</p>
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml</span></a>文件.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
      <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.GroupedActions"</span> <span class="na">text=</span><span class="s">"Example Grouped Actions"</span> <span class="na">popup=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -135,36 +135,36 @@
 </code></div>
 
 <a name="section-3" class="elem-anchor"></a>
-<h4>2.1.3。</h4>
+<h4>2.1.3.</h4>
 <p>为简单操作组创建操作</p>
 
 <p>要创建一个动作，我们需要扩展</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction.java</span></a></p>
 
-<p>类。
+<p>类.
 这个例子使用了<code class="code highlight language-text">SimplePopDialogAction</code>类，它弹出一个对话框，在给出用户反馈时</p>
 
-<p>菜单项被选中。
+<p>菜单项被选中.
 请参阅<a href="working_with_custom_actions.html"><span>注册操作</span></a></p>
 
 <p>有关此课程的更多信息，请参见此页</p>
 
 <a name="section-4" class="elem-anchor"></a>
-<h4>2.1.4。</h4>
+<h4>2.1.4.</h4>
 <p>向简单操作组添加操作</p>
 
-<p>现在需要在新创建的组中注册<code class="code highlight language-text">SimplePopDialogAction</code>。
+<p>现在需要在新创建的组中注册<code class="code highlight language-text">SimplePopDialogAction</code>.
 注意<code class="code highlight language-text">id</code>属性设置为</p>
 
-<p>与<group>`元素中的完全限定的`class`属性不同的东西。
+<p>与<group>`元素中的完全限定的`class`属性不同的东西.
 一个独特的`id`支持重用</group></p>
 
-<p>多个菜单或组中的操作类。</p>
+<p>多个菜单或组中的操作类.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.GroupedActions"</span> <span class="na">text=</span><span class="s">"Example Grouped Actions"</span> <span class="na">popup=</span><span class="s">"true"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">"ToolsMenu"</span> <span class="na">anchor=</span><span class="s">"after"</span> <span class="na">relative-to-action=</span><span class="s">"org.jetbrains.tutorials.actions.SimpleAction"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;action</span> <span class="na">class=</span><span class="s">"org.jetbrains.tutorials.actions.SimplePopDialogAction"</span> 
+  <span class="nt">&lt;action</span> <span class="na">class=</span><span class="s">"org.jetbrains.tutorials.actions.SimplePopDialogAction"</span>
     <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.SimpleGroupedAction"</span> <span class="na">text=</span><span class="s">"A Grouped Action"</span> <span class="na">description=</span><span class="s">"Grouped Action Demo"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/action&gt;</span>
 <span class="nt">&lt;/group&gt;</span>
@@ -177,20 +177,20 @@
   </p>
 
 <a name="section-5" class="elem-anchor"></a>
-<h3>2.2。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<h3>2.2.<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>实现自定义操作组类</p>
 
-<p>在某些情况下，我们需要根据上下文实现一组操作的某些特定行为。</p>
+<p>在某些情况下，我们需要根据上下文实现一组操作的某些特定行为.</p>
 
-<p>以下步骤显示了如果满足某些条件，如何使一组操作可用且可见。</p>
+<p>以下步骤显示了如果满足某些条件，如何使一组操作可用且可见.</p>
 
-<p>在这种情况下，条件是有一个编辑器的实例可用。
+<p>在这种情况下，条件是有一个编辑器的实例可用.
 这个条件是需要的，因为习惯</p>
 
-<p>操作组将添加到仅允许编辑的IntelliJ菜单中。</p>
+<p>操作组将添加到仅允许编辑的IntelliJ菜单中.</p>
 
 <a name="section-6" class="elem-anchor"></a>
-<h4>2.2.1。</h4>
+<h4>2.2.1.</h4>
 <p>扩展DefaultActionGroup</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java" data-bypass="yes" target="_blank"><span>DefaultActionGroup.java</span></a></p>
@@ -199,11 +199,11 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/actionSystem/DefaultActionGroup.java" data-bypass="yes" target="_blank"><span>DefaultActionGroup.java</span></a></p>
 
-<p><code class="code highlight language-text">DefaultActionGroup</code>类用于将子动作和分隔符添加到组中。</p>
+<p><code class="code highlight language-text">DefaultActionGroup</code>类用于将子动作和分隔符添加到组中.</p>
 
-<p>如果属于该组的一组操作在运行时未更改，则使用此类，这是所有情况中的大多数。</p>
+<p>如果属于该组的一组操作在运行时未更改，则使用此类，这是所有情况中的大多数.</p>
 
-<p>(有关在运行时具有可变子操作的组，请参见第2.3节。)</p>
+<p>(有关在运行时具有可变子操作的组，请参见第2.3节.)</p>
 
 <p>作为一个例子，我们将扩展</p>
 
@@ -221,24 +221,24 @@
 </code></div>
 
 <a name="section-7" class="elem-anchor"></a>
-<h4>2.2.2。</h4>
+<h4>2.2.2.</h4>
 <p>注册自定义操作组</p>
 
-<p>与简单动作组的情况一样，动作<code class="code highlight language-text">&lt;group&gt;</code>应该在<em><code class="code highlight language-text">&lt;actions&gt;</code></em>部分声明。</p>
+<p>与简单动作组的情况一样，动作<code class="code highlight language-text">&lt;group&gt;</code>应该在<em><code class="code highlight language-text">&lt;actions&gt;</code></em>部分声明.</p>
 
 <p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a></p>
 
-<p>文件。
+<p>文件.
 注意:
   
 *<code class="code highlight language-text">group&gt;元素中存在</code>class<code class="code highlight language-text">属性，它告诉IntelliJ Platform框架
   
-使用</code>CustomDefaultActionGroup<code class="code highlight language-text">而不是默认实现。
+使用</code>CustomDefaultActionGroup<code class="code highlight language-text">而不是默认实现.
   
-*</code>add-to-group&gt;<code class="code highlight language-text">元素指定在现有</code>EditorPopupMenu`的第一个位置添加组。</p>
+*</code>add-to-group&gt;<code class="code highlight language-text">元素指定在现有</code>EditorPopupMenu`的第一个位置添加组.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
-    <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.ExampleCustomDefaultActionGroup"</span> 
+    <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.ExampleCustomDefaultActionGroup"</span>
         <span class="na">class=</span><span class="s">"org.jetbrains.tutorials.actions.CustomDefaultActionGroup"</span> <span class="na">popup=</span><span class="s">"true"</span>
         <span class="na">text=</span><span class="s">"Example Custom DefaultActionGroup"</span> <span class="na">description=</span><span class="s">"Custom DefaultActionGroup Demo"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">"EditorPopupMenu"</span> <span class="na">anchor=</span><span class="s">"first"</span><span class="nt">/&gt;</span>
@@ -247,13 +247,13 @@
 </code></div>
 
 <a name="section-8" class="elem-anchor"></a>
-<h4>2.2.3。</h4>
+<h4>2.2.3.</h4>
 <p>创建一个动作</p>
 
-<p>为简单起见，将重用<code class="code highlight language-text">SimplePopDialogAction</code>动作类。</p>
+<p>为简单起见，将重用<code class="code highlight language-text">SimplePopDialogAction</code>动作类.</p>
 
 <a name="section-9" class="elem-anchor"></a>
-<h4>2.2.4。</h4>
+<h4>2.2.4.</h4>
 <p>向组添加操作</p>
 
 <p>As in Section 2.1.4, the <code class="code highlight language-text">SimplePopDialogAction</code> action is
@@ -264,7 +264,7 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 </ul>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;actions&gt;</span>
-    <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.ExampleCustomDefaultActionGroup"</span> 
+    <span class="nt">&lt;group</span> <span class="na">id=</span><span class="s">"org.jetbrains.tutorials.actions.ExampleCustomDefaultActionGroup"</span>
         <span class="na">class=</span><span class="s">"org.jetbrains.tutorials.actions.CustomDefaultActionGroup"</span> <span class="na">popup=</span><span class="s">"true"</span>
         <span class="na">text=</span><span class="s">"Example Custom DefaultActionGroup"</span> <span class="na">description=</span><span class="s">"Custom DefaultActionGroup Demo"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">"EditorPopupMenu"</span> <span class="na">anchor=</span><span class="s">"first"</span><span class="nt">/&gt;</span>
@@ -275,12 +275,12 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 </code></div>
 
 <a name="section-10" class="elem-anchor"></a>
-<h4>2.2.5。</h4>
+<h4>2.2.5.</h4>
 <p>为组提供特定行为</p>
 
 <p>在这种情况下，我们覆盖<code class="code highlight language-text">DefaultActionGroup.update(AnActionEvent event)</code>方法，使组仅可见</p>
 
-<p>如果有可用的编辑器实例。
+<p>如果有可用的编辑器实例.
 还设置了自定义图标:</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomDefaultActionGroup</span> <span class="kd">extends</span> <span class="n">DefaultActionGroup</span> <span class="o">{</span>
@@ -299,7 +299,7 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 
 <p>编译并运行上面的代码示例后，在编辑器中打开文件并右键单击，</p>
 
-<p>将弹出** Editing **菜单，其中包含第一个位置的新动作组。
+<p>将弹出** Editing **菜单，其中包含第一个位置的新动作组.
 新组</p>
 
 <p>还会有一个图标:</p>
@@ -307,17 +307,17 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 <p><img src="img/editor_popup_menu.png" alt="默认操作组" /></p>
 
 <a name="section-11" class="elem-anchor"></a>
-<h3>2.3。<a href="#section-11" class="anchor-link"><span></span></a></h3>
+<h3>2.3.<a href="#section-11" class="anchor-link"><span></span></a></h3>
 <p>具有可变操作集的操作组</p>
 
 <p>如果属于自定义操作组的一组操作将根据上下文而有所不同，则该组必须扩展</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java" data-bypass="yes" target="_blank"><span>ActionGroup.java</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/ActionGroup.java" data-bypass="yes" target="_blank"><span>ActionGroup.java</span></a>.</p>
 
-<p>在这种情况下，要分组的动作集是动态定义的。</p>
+<p>在这种情况下，要分组的动作集是动态定义的.</p>
 
 <a name="section-12" class="elem-anchor"></a>
-<h4>2.3.1。</h4>
+<h4>2.3.1</h4>
 <p>创建变量操作组</p>
 
 <p>使用我们扩展的可变数量的操作创建一组操作</p>
@@ -329,12 +329,12 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 </code></div>
 
 <a name="section-13" class="elem-anchor"></a>
-<h4>2.3.2。</h4>
+<h4>2.3.2.</h4>
 <p>注册可变操作组</p>
 
 <p>要注册动态菜单组，需要在<code class="code highlight language-text">&lt;actions&gt;</code>部分中放置一个<code class="code highlight language-text">&lt;group&gt;</code>属性</p>
 
-<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>。</p>
+<p><a href="https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/register_actions/resources/META-INF/plugin.xml" data-bypass="yes" target="_blank"><span>plugin.xml中</span></a>.</p>
 
 <p>请注意，启用此组后，它将显示为<strong>工具</strong>菜单中的最后一个条目:</p>
 
@@ -349,15 +349,15 @@ added as an <code class="code highlight language-text">&lt;action&gt;</code> ele
 will throw an exception. For a statically defined group of actions use <code class="code highlight language-text">DefaultActionGroup.java</code>.</p>
 
 <a name="section-14" class="elem-anchor"></a>
-<h4>2.3.3。</h4>
+<h4>2.3.3.</h4>
 <p>将子操作添加到组中</p>
 
 <p>向<code class="code highlight language-text">DynamicActionGroup</code>添加动作，非空数组</p>
 
-<p><code class="code highlight language-text">AnAction</code>实例应该从<code class="code highlight language-text">DynamicActionGroup.getChildren(AnActionEvent)</code>方法返回。
+<p><code class="code highlight language-text">AnAction</code>实例应该从<code class="code highlight language-text">DynamicActionGroup.getChildren(AnActionEvent)</code>方法返回.
 在这里我们再次重用</p>
 
-<p><code class="code highlight language-text">SimplePopDialogAction</code>动作类。</p>
+<p><code class="code highlight language-text">SimplePopDialogAction</code>动作类.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamicActionGroup</span> <span class="kd">extends</span> <span class="n">ActionGroup</span> <span class="o">{</span>
   <span class="nd">@NotNull</span>
@@ -378,7 +378,7 @@ will throw an exception. For a statically defined group of actions use <code cla
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/action_system/working_with_custom_actions.html">1. Registering an Action</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019

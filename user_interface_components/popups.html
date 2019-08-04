@@ -87,17 +87,17 @@
                     <a name="section" class="elem-anchor"></a>
 <h1>弹出窗口<a href="#section" class="anchor-link"><span></span></a></h1>
 
-<p><em>IntelliJ Platform</em> 用户界面广泛使用弹出窗口 - 没有镶边的半模式窗口(显式关闭按钮)，并在焦点丢失时自动消失。</p>
+<p><em>IntelliJ Platform</em> 用户界面广泛使用弹出窗口 - 没有镶边的半模式窗口(显式关闭按钮)，并在焦点丢失时自动消失.</p>
 
-<p>在插件中使用这些控件可确保插件与IDE其余部分之间的一致用户体验。</p>
+<p>在插件中使用这些控件可确保插件与IDE其余部分之间的一致用户体验.</p>
 
-<p>弹出窗口可以选择显示标题，可选择移动和调整大小(并支持记住它们的大小)，并且可以嵌套(在选择项目时显示另一个弹出窗口)。</p>
+<p>弹出窗口可以选择显示标题，可选择移动和调整大小(并支持记住它们的大小)，并且可以嵌套(在选择项目时显示另一个弹出窗口).</p>
 
 <p>该</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java" data-bypass="yes" target="_blank"><span>JBPopupFactory</span></a></p>
 
-<p>界面允许您创建显示不同类型组件的弹出窗口，具体取决于您的特定需求。</p>
+<p>界面允许您创建显示不同类型组件的弹出窗口，具体取决于您的特定需求.</p>
 
 <p>最常用的方法是:</p>
 
@@ -107,33 +107,33 @@
 
 <p><a href="https://docs.oracle.com/javase/tutorial/uiswing/start/index.html" data-bypass="yes" target="_blank"><span>摇摆</span></a></p>
 
-<p>弹出窗口中的组件。</p>
+<p>弹出窗口中的组件.</p>
 
 <ul>
   <li>
     <p><code class="code highlight language-text">createListPopupBuilder()</code>创建一个弹出窗口，用于从a中选择一个或多个项目
     
-<a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html" data-bypass="yes" target="_blank"><span>Swing JList</span></a>。</p>
+<a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JList.html" data-bypass="yes" target="_blank"><span>Swing JList</span></a>.</p>
   </li>
   <li>
-    <p><code class="code highlight language-text">createConfirmation()</code>创建一个弹出窗口，用于在两个选项之间进行选择，并根据选择的选项执行不同的操作。</p>
+    <p><code class="code highlight language-text">createConfirmation()</code>创建一个弹出窗口，用于在两个选项之间进行选择，并根据选择的选项执行不同的操作.</p>
   </li>
   <li>
-    <p><code class="code highlight language-text">createActionGroupPopup()</code>创建一个弹出窗口，显示操作组中的操作并执行用户选择的操作。</p>
+    <p><code class="code highlight language-text">createActionGroupPopup()</code>创建一个弹出窗口，显示操作组中的操作并执行用户选择的操作.</p>
   </li>
 </ul>
 
-<p>除了普通箭头键之外，操作组弹出窗口支持从键盘选择操作的不同方法。</p>
+<p>除了普通箭头键之外，操作组弹出窗口支持从键盘选择操作的不同方法.</p>
 
 <p>通过传递其中一个常量</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java" data-bypass="yes" target="_blank"><span>ActionSelectionAid</span></a></p>
 
-<p>枚举，您可以选择是否可以通过按下与其序列号对应的键，键入其文本的一部分(速度搜索)或按下助记符来选择操作。</p>
+<p>枚举，您可以选择是否可以通过按下与其序列号对应的键，键入其文本的一部分(速度搜索)或按下助记符来选择操作.</p>
 
 <p>对于具有固定项目集的弹出窗口，推荐的选择方法是顺序编号;</p>
 
-<p>对于具有可变和可能大量项目的弹出窗口，速度搜索通常效果最佳。</p>
+<p>对于具有可变和可能大量项目的弹出窗口，速度搜索通常效果最佳.</p>
 
 <p>如果你需要创建一个类似于列表的弹出窗口，它比简单的弹出窗口更灵活</p>
 
@@ -147,32 +147,32 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/popup/JBPopupFactory.java" data-bypass="yes" target="_blank"><span>JBPopupFactory.createListPopup()</span></a></p>
 
-<p>方法。</p>
+<p>方法.</p>
 
 <p>通常您不需要实现整个界面;
 相反，你可以从中得到</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/popup/util/BaseListPopupStep.java" data-bypass="yes" target="_blank"><span>BaseListPopupStep</span></a></p>
 
-<p>类。</p>
+<p>类.</p>
 
-<p>要覆盖的关键方法是<code class="code highlight language-text">getTextFor()</code>(返回显示项目的文本)和<code class="code highlight language-text">onChosen()</code>(当选择项时调用)。</p>
+<p>要覆盖的关键方法是<code class="code highlight language-text">getTextFor()</code>(返回显示项目的文本)和<code class="code highlight language-text">onChosen()</code>(当选择项时调用).</p>
 
-<p>通过从<code class="code highlight language-text">onChosen()</code>方法返回一个新的弹出步骤，您可以实现分层(嵌套)弹出窗口。</p>
+<p>通过从<code class="code highlight language-text">onChosen()</code>方法返回一个新的弹出步骤，您可以实现分层(嵌套)弹出窗口.</p>
 
-<p>一旦你创建了弹出窗口，你需要通过调用一个<code class="code highlight language-text">show()</code>方法来显示它。</p>
+<p>一旦你创建了弹出窗口，你需要通过调用一个<code class="code highlight language-text">show()</code>方法来显示它.</p>
 
-<p>你可以让IntelliJ平台根据上下文自动选择位置，调用<code class="code highlight language-text">showInBestPositionFor()</code>，或者通过<code class="code highlight language-text">showUnderneathOf()</code>和<code class="code highlight language-text">showInCenterOf()</code>等方法显式指定位置。</p>
+<p>你可以让IntelliJ平台根据上下文自动选择位置，调用<code class="code highlight language-text">showInBestPositionFor()</code>，或者通过<code class="code highlight language-text">showUnderneathOf()</code>和<code class="code highlight language-text">showInCenterOf()</code>等方法显式指定位置.</p>
 
 <aside class="注意:">
-  <p><code class="code highlight language-text">show()</code>方法立即返回，不要等待弹出窗口关闭。</p>
+  <p><code class="code highlight language-text">show()</code>方法立即返回，不要等待弹出窗口关闭.</p>
 </aside>
 
 <p>如果你需要在弹出窗口关闭时执行一些操作，你可以使用<code class="code highlight language-text">addListener()</code>方法附加一个监听器，覆盖弹出内容的方法，如</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/popup/PopupStep.java" data-bypass="yes" target="_blank"><span>PopupStep.onChosen()</span></a>，</p>
 
-<p>或者在弹出窗口中将事件处理程序附加到您自己的组件。</p>
+<p>或者在弹出窗口中将事件处理程序附加到您自己的组件.</p>
 
 
 

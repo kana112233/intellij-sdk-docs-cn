@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,18 +78,18 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/build_system/deployment.html">Publishing Plugins with Gradle</a>
                     </div>
-                    
+
 
                     <h1>Getting Started with Gradle</h1>
-                    <p>向IntelliJ平台插件添加Gradle构建支持需要最近分发Gradle构建系统和IntelliJ IDEA(社区或旗舰版)。</p>
+                    <p>向IntelliJ平台插件添加Gradle构建支持需要最近分发Gradle构建系统和IntelliJ IDEA(社区或旗舰版).</p>
 
 <a name="intellij-idea" class="elem-anchor"></a>
 <h3>1.0下载并安装IntelliJ IDEA<a href="#intellij-idea" class="anchor-link"><span></span></a></h3>
 
-<p>下载并安装IntelliJ IDEA Ultimate或IntelliJ IDEA Community Edition。</p>
+<p>下载并安装IntelliJ IDEA Ultimate或IntelliJ IDEA Community Edition.</p>
 
 <a name="gradleplugin-devkit" class="elem-anchor"></a>
 <h3>1.1确保启用“Gradle”和“Plugin DevKit”插件<a href="#gradleplugin-devkit" class="anchor-link"><span></span></a></h3>
@@ -101,24 +101,24 @@
 <a name="scratch" class="elem-anchor"></a>
 <h3>1.2从Scratch创建一个插件项目<a href="#scratch" class="anchor-link"><span></span></a></h3>
 
-<p>IntelliJ IDEA支持使用Gradle自动创建新的插件项目，并自动执行所有必需的<code class="code highlight language-text">build.gradle</code>设置。</p>
+<p>IntelliJ IDEA支持使用Gradle自动创建新的插件项目，并自动执行所有必需的<code class="code highlight language-text">build.gradle</code>设置.</p>
 
-<p>如果Gradle无法转换现有项目，这也可用于将现有插件转换为Gradle  - 在这种情况下，您需要将源复制到新项目。</p>
+<p>如果Gradle无法转换现有项目，这也可用于将现有插件转换为Gradle  - 在这种情况下，您需要将源复制到新项目.</p>
 
-<p>To do so, create a new project in IntelliJ IDEA by opening <strong>File | New… | Project</strong>, and select Gradle from the dialog box. 
+<p>To do so, create a new project in IntelliJ IDEA by opening <strong>File | New… | Project</strong>, and select Gradle from the dialog box.
 In the “Additional Libraries and Frameworks” page, check “IntelliJ Platform Plugin”.</p>
 
 <p><img src="img/step1_new_gradle_project.png" alt="在项目创建向导中选择Gradle构面" /></p>
 
-<p>项目创建向导现在将指导您完成Gradle项目创建过程。</p>
+<p>项目创建向导现在将指导您完成Gradle项目创建过程.</p>
 
 <p>您需要指定组ID，工件ID和版本:</p>
 
 <p><img src="img/step2_group_artifact_version.png" alt="指定组，工件和版本ID" /></p>
 
-<p>建议选择“使用默认gradle包装器”选项，这样IntelliJ IDEA将安装运行Gradle任务所需的一切。</p>
+<p>建议选择“使用默认gradle包装器”选项，这样IntelliJ IDEA将安装运行Gradle任务所需的一切.</p>
 
-<p>Finally, specify a JVM Gradle will use, it can be the Project JDK. 
+<p>Finally, specify a JVM Gradle will use, it can be the Project JDK.
 You also configure this path once the project is created via <strong>Settings | Build, Execution, Deployment | Build Tools | Gradle</strong>.</p>
 
 <p><img src="img/step3_gradle_config.png" alt="验证JVM的版本是否正确" /></p>
@@ -126,14 +126,14 @@ You also configure this path once the project is created via <strong>Settings | 
 <a name="gradle" class="elem-anchor"></a>
 <h3>1.3配置Gradle插件项目<a href="#gradle" class="anchor-link"><span></span></a></h3>
 
-<p>IntelliJ平台<code class="code highlight language-text">gradle-intellij-plugin</code>提供对基于Gradle的插件项目的支持。</p>
+<p>IntelliJ平台<code class="code highlight language-text">gradle-intellij-plugin</code>提供对基于Gradle的插件项目的支持.</p>
 
 <aside class="注意">
-  <p>请确保始终升级到最新版本的<code class="code highlight language-text">gradle-intellij-plugin</code>插件，关注[GitHub]上的版本(https://github.com/JetBrains/gradle-intellij-plugin/releases) 
-。</p>
+  <p>请确保始终升级到最新版本的<code class="code highlight language-text">gradle-intellij-plugin</code>插件，关注[GitHub]上的版本(https://github.com/JetBrains/gradle-intellij-plugin/releases)
+.</p>
 </aside>
 
-<p>See the <a href="https://github.com/JetBrains/gradle-intellij-plugin/blob/master/README.md#gradle" data-bypass="yes" target="_blank"><span>Gradle plugin README</span></a> for more information. 
+<p>See the <a href="https://github.com/JetBrains/gradle-intellij-plugin/blob/master/README.md#gradle" data-bypass="yes" target="_blank"><span>Gradle plugin README</span></a> for more information.
 For example, to configure the <strong>Sandbox Home</strong> directory’s location include the following in the project’s <code class="code highlight language-text">build.gradle</code> file:</p>
 <div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">intellij</span> <span class="o">{</span>
   <span class="n">sandboxDirectory</span> <span class="o">=</span> <span class="s2">"$project.buildDir/myCustom-sandbox"</span>
@@ -175,16 +175,16 @@ For example, to configure the <strong>Sandbox Home</strong> directory’s locati
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">gradle cleanIdea idea
 </code></div>
 
-<p>This will clean any existing IntelliJ IDEA configuration files and generate a new Gradle build configuration recognized by IntelliJ IDEA. 
-Once your project refreshes, you should be able to view the Gradle tool window displayed under <strong>View | Tool Windows | Gradle</strong>. 
+<p>This will clean any existing IntelliJ IDEA configuration files and generate a new Gradle build configuration recognized by IntelliJ IDEA.
+Once your project refreshes, you should be able to view the Gradle tool window displayed under <strong>View | Tool Windows | Gradle</strong>.
 This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
 
 <a name="section" class="elem-anchor"></a>
 <h3>1.5运行一个简单的插件<a href="#section" class="anchor-link"><span></span></a></h3>
 
-<p>现在在Java文件夹中添加一个新的HelloAction<code class="code highlight language-text">类，在</code>META-INF<code class="code highlight language-text">文件夹中添加</code>plugin.xml<code class="code highlight language-text">和</code>pluginIcon.svg`文件。</p>
+<p>现在在Java文件夹中添加一个新的HelloAction<code class="code highlight language-text">类，在</code>META-INF<code class="code highlight language-text">文件夹中添加</code>plugin.xml<code class="code highlight language-text">和</code>pluginIcon.svg`文件.</p>
 
-<p>有关<code class="code highlight language-text">pluginIcon.svg</code>文件的更多信息，请参阅<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_icon_file.html"><span>插件图标</span></a>页面。</p>
+<p>有关<code class="code highlight language-text">pluginIcon.svg</code>文件的更多信息，请参阅<a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_icon_file.html"><span>插件图标</span></a>页面.</p>
 
 <p><img src="img/gradle_directory_structure.png" alt="Gradle目录结构" /></p>
 
@@ -225,11 +225,11 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
 <span class="o">&lt;/</span><span class="n">idea</span><span class="o">-</span><span class="n">plugin</span><span class="o">&gt;</span>
 </code></div>
 
-<p>打开Gradle工具窗口并搜索<code class="code highlight language-text">runIde</code>任务。</p>
+<p>打开Gradle工具窗口并搜索<code class="code highlight language-text">runIde</code>任务.</p>
 
-<p>如果它不在列表中，请点击顶部的“刷新”按钮。</p>
+<p>如果它不在列表中，请点击顶部的“刷新”按钮.</p>
 
-<p>双击它以运行它。</p>
+<p>双击它以运行它.</p>
 
 <p><img src="img/gradle_tasks_in_tool_window.png" alt="Gradle Tool Window" /></p>
 
@@ -237,20 +237,20 @@ This indicates that IntelliJ IDEA recognizes the Gradle facet.</p>
 
 <p><img src="img/gradle_run_config.png" alt="Gradle Run配置" /></p>
 
-<p>启动新的Gradle运行配置。</p>
+<p>启动新的Gradle运行配置.</p>
 
-<p>在“运行”窗口中，应显示以下输出。</p>
+<p>在“运行”窗口中，应显示以下输出.</p>
 
 <p><img src="img/launch.png" alt="Gradle task output" /></p>
 
-<p>最后，当IDE启动时，** Help **菜单右侧应该有一个新菜单。</p>
+<p>最后，当IDE启动时，** Help **菜单右侧应该有一个新菜单.</p>
 
-<p>您的插件现在已在Gradle上配置。</p>
+<p>您的插件现在已在Gradle上配置.</p>
 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/build_system/deployment.html">Publishing Plugins with Gradle</a>
                     </div>
                     <div class="last-modified">

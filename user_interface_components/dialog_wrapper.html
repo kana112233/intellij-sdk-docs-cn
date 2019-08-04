@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/user_interface_components/tool_windows.html">Tool Windows</a>
                         <a class="navigation-links__next" href="/user_interface_components/popups.html">Popups</a>
                     </div>
-                    
+
 
                     <h1>DialogWrapper</h1>
                     <a name="dialogwrapper" class="elem-anchor"></a>
@@ -91,7 +91,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java" data-bypass="yes" target="_blank"><span>DialogWrapper</span></a></p>
 
-<p>是基本类，它应该用于 <em>IntelliJ Platform</em> 插件中显示的所有模态对话框(以及一些非模态对话框)。</p>
+<p>是基本类，它应该用于 <em>IntelliJ Platform</em> 插件中显示的所有模态对话框(以及一些非模态对话框).</p>
 
 <p>它提供以下功能:</p>
 
@@ -131,7 +131,7 @@
 
 <ul>
   <li>
-    <p>调用基类构造函数，并在框架中提供将显示对话框的项目，或者提供对话框的父组件。</p>
+    <p>调用基类构造函数，并在框架中提供将显示对话框的项目，或者提供对话框的父组件.</p>
   </li>
   <li>
     <p>从对话框类的构造函数中调用<code class="code highlight language-text">init()</code>方法</p>
@@ -140,58 +140,58 @@
     <p>调用<code class="code highlight language-text">setTitle()</code>方法设置对话框的标题</p>
   </li>
   <li>
-    <p>实现<code class="code highlight language-text">createCenterPanel()</code>方法以返回包含对话框主要内容的组件。</p>
+    <p>实现<code class="code highlight language-text">createCenterPanel()</code>方法以返回包含对话框主要内容的组件.</p>
   </li>
   <li>
     <ul>
-      <li>可选* :覆盖<code class="code highlight language-text">getPreferredFocusedComponent()</code>方法并返回首次显示对话框时应该聚焦的组件。</li>
+      <li>可选* :覆盖<code class="code highlight language-text">getPreferredFocusedComponent()</code>方法并返回首次显示对话框时应该聚焦的组件.</li>
     </ul>
   </li>
   <li>
-    <p><em>可选</em>:重写<code class="code highlight language-text">getDimensionServiceKey()</code>方法以返回将用于持久化对话框维度的标识符。</p>
+    <p><em>可选</em>:重写<code class="code highlight language-text">getDimensionServiceKey()</code>方法以返回将用于持久化对话框维度的标识符.</p>
   </li>
-  <li><em>可选</em>:重写<code class="code highlight language-text">getHelpId()</code>方法以返回与对话框关联的上下文帮助主题。</li>
+  <li><em>可选</em>:重写<code class="code highlight language-text">getHelpId()</code>方法以返回与对话框关联的上下文帮助主题.</li>
 </ul>
 
 <p>该</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java" data-bypass="yes" target="_blank"><span>DialogWrapper</span></a></p>
 
-<p>class通常与UI Designer表单一起使用。</p>
+<p>class通常与UI Designer表单一起使用.</p>
 
 <p>在这种情况下，您将UI Designer表单绑定到您的类扩展</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java" data-bypass="yes" target="_blank"><span>DialogWrapper</span></a>，</p>
 
-<p>将窗体的顶级面板绑定到一个字段，并从<code class="code highlight language-text">createCenterPanel()</code>方法返回该字段。</p>
+<p>将窗体的顶级面板绑定到一个字段，并从<code class="code highlight language-text">createCenterPanel()</code>方法返回该字段.</p>
 
-<p>要显示对话框，可以调用<code class="code highlight language-text">show()</code>方法，然后使用<code class="code highlight language-text">getExitCode()</code>方法检查对话框的关闭方式。</p>
+<p>要显示对话框，可以调用<code class="code highlight language-text">show()</code>方法，然后使用<code class="code highlight language-text">getExitCode()</code>方法检查对话框的关闭方式.</p>
 
-<p>要自定义对话框中显示的按钮(替换标准的“OK/Cancel/Help”按钮组)，您可以覆盖<code class="code highlight language-text">createActions()</code>或<code class="code highlight language-text">createLeftActions()</code>方法。</p>
+<p>要自定义对话框中显示的按钮(替换标准的“OK/Cancel/Help”按钮组)，您可以覆盖<code class="code highlight language-text">createActions()</code>或<code class="code highlight language-text">createLeftActions()</code>方法.</p>
 
-<p>这两个方法都返回一个Swing Action对象数组。</p>
+<p>这两个方法都返回一个Swing Action对象数组.</p>
 
 <p>如果您要添加的按钮关闭对话框，则可以使用</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java" data-bypass="yes" target="_blank"><span>DialogWrapperExitAction</span></a>，</p>
 
-<p>作为您行动的基类。</p>
+<p>作为您行动的基类.</p>
 
-<p>使用<code class="code highlight language-text">action.putValue(DialogWrapper.DEFAULT_ACTION，true)</code>来设置默认按钮。</p>
+<p>使用<code class="code highlight language-text">action.putValue(DialogWrapper.DEFAULT_ACTION，true)</code>来设置默认按钮.</p>
 
-<p>要验证输入到对话框中的数据，可以覆盖<code class="code highlight language-text">doValidate()</code>方法。</p>
+<p>要验证输入到对话框中的数据，可以覆盖<code class="code highlight language-text">doValidate()</code>方法.</p>
 
-<p>该方法将由计时器自动调用。</p>
+<p>该方法将由计时器自动调用.</p>
 
-<p>如果当前输入的数据有效，则需要从实现中返回“null”。</p>
+<p>如果当前输入的数据有效，则需要从实现中返回“null”.</p>
 
 <p>否则，你需要返回一个</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/ValidationInfo.java" data-bypass="yes" target="_blank"><span>ValidationInfo</span></a></p>
 
-<p>封装错误消息的类和与无效数据关联的可选组件。</p>
+<p>封装错误消息的类和与无效数据关联的可选组件.</p>
 
-<p>如果指定一个组件，它旁边会显示一个错误图标，当用户尝试调用“OK”操作时它将被聚焦。</p>
+<p>如果指定一个组件，它旁边会显示一个错误图标，当用户尝试调用“OK”操作时它将被聚焦.</p>
 
 <a name="section" class="elem-anchor"></a>
 <h2>示例<a href="#section" class="anchor-link"><span></span></a></h2>

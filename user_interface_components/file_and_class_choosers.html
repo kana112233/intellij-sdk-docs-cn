@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/user_interface_components/notifications.html">Notifications</a>
                         <a class="navigation-links__next" href="/user_interface_components/editor_components.html">Editor Components</a>
                     </div>
-                    
+
 
                     <h1>File and Class Choosers</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -91,43 +91,43 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooser.java" data-bypass="yes" target="_blank"><span>FileChooser.chooseFiles()</span></a></p>
 
-<p>方法。</p>
+<p>方法.</p>
 
-<p>此方法具有多个重载。</p>
+<p>此方法具有多个重载.</p>
 
-<p>使用的最佳方法是返回void并将接收所选文件列表作为参数的回调。</p>
+<p>使用的最佳方法是返回void并将接收所选文件列表作为参数的回调.</p>
 
-<p>这是唯一会在macOS上显示本机文件打开对话框的重载。</p>
+<p>这是唯一会在macOS上显示本机文件打开对话框的重载.</p>
 
 <p>该</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java" data-bypass="yes" target="_blank"><span>FileChooserDescriptor</span></a></p>
 
-<p>class允许您控制可以选择的文件。</p>
+<p>class允许您控制可以选择的文件.</p>
 
-<p>构造函数参数指定是否可以选择文件和/或目录，以及是否允许多个选择。</p>
+<p>构造函数参数指定是否可以选择文件和/或目录，以及是否允许多个选择.</p>
 
-<p>要对允许的选择进行更细粒度的控制，可以重载<code class="code highlight language-text">isFileSelectable()</code>方法。</p>
+<p>要对允许的选择进行更细粒度的控制，可以重载<code class="code highlight language-text">isFileSelectable()</code>方法.</p>
 
-<p>您还可以通过重载<code class="code highlight language-text">getIcon()</code>，<code class="code highlight language-text">getName()</code>和<code class="code highlight language-text">getComment()</code>方法来自定义文件的表示。</p>
+<p>您还可以通过重载<code class="code highlight language-text">getIcon()</code>，<code class="code highlight language-text">getName()</code>和<code class="code highlight language-text">getComment()</code>方法来自定义文件的表示.</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java" data-bypass="yes" target="_blank"><span>FileChooserDescriptor</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileChooser/FileChooserDescriptor.java" data-bypass="yes" target="_blank"><span>FileChooserDescriptor</span></a>.</p>
 
-<p>请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用<code class="code highlight language-text">chooseFiles()</code>的重载来显示标准的 <em>IntelliJ Platform</em> 对话框。</p>
+<p>请注意，本机Mac OS X文件选择器不支持大多数自定义，因此如果您依赖它们，则需要使用<code class="code highlight language-text">chooseFiles()</code>的重载来显示标准的 <em>IntelliJ Platform</em> 对话框.</p>
 
-<p>使用文件选择器的一种非常常见的方法是使用文本字段输入带有省略号按钮(“…”)的路径以显示文件选择器。</p>
+<p>使用文件选择器的一种非常常见的方法是使用文本字段输入带有省略号按钮(“…”)的路径以显示文件选择器.</p>
 
 <p>要创建这样的控件，请使用</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/ui/TextFieldWithBrowseButton.java" data-bypass="yes" target="_blank"><span>TextFieldWithBrowseButton</span></a></p>
 
-<p>组件并在其上调用<code class="code highlight language-text">addBrowseFolderListener()</code>方法来设置文件选择器。</p>
+<p>组件并在其上调用<code class="code highlight language-text">addBrowseFolderListener()</code>方法来设置文件选择器.</p>
 
-<p>作为额外的好处，这将在文本框中输入路径时启用文件名完成。</p>
+<p>作为额外的好处，这将在文本框中输入路径时启用文件名完成.</p>
 
 <p>用于选择文件的替代UI，通过键入其名称来选择文件的最常用方式时效果最佳，可通过以下方式获得</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/TreeFileChooserFactory.java" data-bypass="yes" target="_blank"><span>TreeFileChooserFactory</span></a>类。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/TreeFileChooserFactory.java" data-bypass="yes" target="_blank"><span>TreeFileChooserFactory</span></a>类.</p>
 
 <p>此API显示的对话框有两个选项卡:</p>
 
@@ -136,11 +136,11 @@
     <p>一个显示项目结构</p>
   </li>
   <li>
-    <p>Another显示的文件列表类似于<code class="code highlight language-text">Goto File</code>弹出窗口所使用的文件。</p>
+    <p>Another显示的文件列表类似于<code class="code highlight language-text">Goto File</code>弹出窗口所使用的文件.</p>
   </li>
 </ul>
 
-<p>要显示对话框，请在<code class="code highlight language-text">createFileChooser()</code>返回的选择器上调用<code class="code highlight language-text">showDialog()</code>，然后调用<code class="code highlight language-text">getSelectedFile</code>来检索用户的选择。</p>
+<p>要显示对话框，请在<code class="code highlight language-text">createFileChooser()</code>返回的选择器上调用<code class="code highlight language-text">showDialog()</code>，然后调用<code class="code highlight language-text">getSelectedFile</code>来检索用户的选择.</p>
 
 <a name="section-1" class="elem-anchor"></a>
 <h2>类和包选择器<a href="#section-1" class="anchor-link"><span></span></a></h2>
@@ -149,15 +149,15 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/openapi/src/com/intellij/ide/util/TreeClassChooserFactory.java" data-bypass="yes" target="_blank"><span>TreeClassChooserFactory</span></a></p>
 
-<p>类。</p>
+<p>类.</p>
 
-<p>它的不同方法允许您指定从中获取类的范围，将选择限制为特定类的后代或接口的实现，以及从列表中包含或排除内部类。</p>
+<p>它的不同方法允许您指定从中获取类的范围，将选择限制为特定类的后代或接口的实现，以及从列表中包含或排除内部类.</p>
 
 <p>要选择Java包，可以使用</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-impl/src/com/intellij/ide/util/PackageChooserDialog.java" data-bypass="yes" target="_blank"><span>PackageChooserDialog</span></a></p>
 
-<p>类。</p>
+<p>类.</p>
 
 
 

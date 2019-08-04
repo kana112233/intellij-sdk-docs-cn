@@ -1,10 +1,10 @@
 简单文件（0,492）
   
-PsiComment（SimpleTokenType.COMMENT）（'# 您正在阅读“.properties”条目。'）（0,42）
+PsiComment（SimpleTokenType.COMMENT）（'# 您正在阅读“.properties”条目.'）（0,42）
   
 PsiWhiteSpace（ '\ n'）（42,43）
   
-PsiComment（SimpleTokenType.COMMENT）（'!感叹号也可以将文本标记为注释。'）（43,47）
+PsiComment（SimpleTokenType.COMMENT）（'!感叹号也可以将文本标记为注释.'）（43,47）
   
 PsiWhiteSpace（ '\ n'）（97,98）
   
@@ -40,7 +40,7 @@ PsiComment（SimpleTokenType.COMMENT）（'# 下面的反斜杠告诉应用程�
   
 PsiWhiteSpace（ '\ n'）（216217）
   
-PsiComment（SimpleTokenType.COMMENT）（'# 下一行的值。'）（217,248）
+PsiComment（SimpleTokenType.COMMENT）（'# 下一行的值.'）（217,248）
   
 PsiWhiteSpace（ '\ n'）（248249）
   
@@ -72,7 +72,7 @@ PsiElement（SimpleTokenType.SEPARATOR）（ '='）（335336）
     
 PsiWhiteSpace（''）（336,337）
     
-PsiElement（SimpleTokenType.VALUE）（'这是可以使用键“key with space”查找的值。'）（337,410）
+PsiElement（SimpleTokenType.VALUE）（'这是可以使用键“key with space”查找的值.'）（337,410）
   
 PsiWhiteSpace（ '\ n'）（410411）
   

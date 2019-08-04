@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,18 +81,18 @@
                         <a class="navigation-links__prev" href="/tutorials/custom_language_support/psi_helper_and_utilities.html">6. PSI Helpers and Utilities</a>
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/line_marker_provider.html">8. Line Marker Provider</a>
                     </div>
-                    
+
 
                     <h1>7. Annotator</h1>
-                    <p>注释器有助于根据特定规则突出显示和注释任何代码。</p>
+                    <p>注释器有助于根据特定规则突出显示和注释任何代码.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>7.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>7.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义注释器</p>
 
-<p>在本教程中，我们将在Java代码中注释我们的属性的用法。</p>
+<p>在本教程中，我们将在Java代码中注释我们的属性的用法.</p>
 
-<p>让我们考虑一个以<em>“simple:”</em>开头的文字作为我们财产的用法。</p>
+<p>让我们考虑一个以<em>“simple:”</em>开头的文字作为我们财产的用法.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
 
@@ -134,17 +134,17 @@
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>7.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>7.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>注册注释器</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;annotator</span> <span class="na">language=</span><span class="s">"JAVA"</span> <span class="na">implementationClass=</span><span class="s">"com.simpleplugin.SimpleAnnotator"</span><span class="nt">/&gt;</span>
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>7.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>7.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>运行该项目</p>
 
-<p>让我们定义以下Java文件并检查IDE是否解析了属性。</p>
+<p>让我们定义以下Java文件并检查IDE是否解析了属性.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -155,7 +155,7 @@
 
 <p>![注释器(IMG/annotator.png)</p>
 
-<p>如果我们键入未定义的属性名称，它将使用错误注释代码。</p>
+<p>如果我们键入未定义的属性名称，它将使用错误注释代码.</p>
 
 <p><img src="img/unresolved_property.png" alt="未解决的属性" /></p>
 

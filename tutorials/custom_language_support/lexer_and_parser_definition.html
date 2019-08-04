@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,18 +81,18 @@
                         <a class="navigation-links__prev" href="/tutorials/custom_language_support/grammar_and_parser.html">3. Grammar and Parser</a>
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/syntax_highlighter_and_color_settings_page.html">5. Syntax Highlighter and Color Settings Page</a>
                     </div>
-                    
+
 
                     <h1>4. Lexer and Parser Definition</h1>
-                    <p>词法分析器定义文件内容如何分解为令牌。</p>
+                    <p>词法分析器定义文件内容如何分解为令牌.</p>
 
 <p>创建词法分析器的最简单方法是使用<a href="https://jflex.de/" data-bypass="yes" target="_blank"><span>JFlex</span></a></p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>4.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>4.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义词法分析器</p>
 
-<p>使用我们词法分析器的规则定义*/com/simpleplugin/Simple.flex *文件。</p>
+<p>使用我们词法分析器的规则定义*/com/simpleplugin/Simple.flex *文件.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
 
@@ -142,21 +142,21 @@
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>4.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>4.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>生成词法分类器</p>
 
-<p>现在我们可以从<code class="code highlight language-text">Simple.flex</code>文件的上下文菜单中通过* JFlex Generator *生成一个词法分析器类。</p>
+<p>现在我们可以从<code class="code highlight language-text">Simple.flex</code>文件的上下文菜单中通过* JFlex Generator *生成一个词法分析器类.</p>
 
-<p>Grammar-Kit插件使用JFlex lexer生成。</p>
+<p>Grammar-Kit插件使用JFlex lexer生成.</p>
 
-<p>如果您是第一次运行它，它会让您选择一个文件夹来下载JFlex库和骨架。</p>
+<p>如果您是第一次运行它，它会让您选择一个文件夹来下载JFlex库和骨架.</p>
 
-<p>选择项目根目录。</p>
+<p>选择项目根目录.</p>
 
-<p>之后，IDE生成词法分析器:* com.simpleplugin.SimpleLexer *。</p>
+<p>之后，IDE生成词法分析器:* com.simpleplugin.SimpleLexer *.</p>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>4.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>4.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>定义适配器</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -174,10 +174,10 @@
 </code></div>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>4.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>4.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>定义根文件</p>
 
-<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>命名空间中创建类。</p>
+<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>命名空间中创建类.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">.</span><span class="na">psi</span><span class="o">;</span>
 
@@ -213,7 +213,7 @@
 </code></div>
 
 <a name="section-4" class="elem-anchor"></a>
-<h3>4.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<h3>4.5.<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>定义解析器定义</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -280,14 +280,14 @@
 </code></div>
 
 <a name="section-5" class="elem-anchor"></a>
-<h3>4.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<h3>4.6.<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>注册解析器定义</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;lang.parserDefinition</span> <span class="na">language=</span><span class="s">"Simple"</span> <span class="na">implementationClass=</span><span class="s">"com.simpleplugin.SimpleParserDefinition"</span><span class="nt">/&gt;</span>
 </code></div>
 
 <a name="section-6" class="elem-anchor"></a>
-<h3>4.7。<a href="#section-6" class="anchor-link"><span></span></a></h3>
+<h3>4.7.<a href="#section-6" class="anchor-link"><span></span></a></h3>
 <p>运行该项目</p>
 
 <p>使用以下内容创建属性文件:</p>
@@ -306,7 +306,7 @@ key\ with\ spaces = This is the value that could be looked up with the key "key 
 tab : \u0009
 </code></div>
 
-<p>现在打开* PsiViewer *工具窗口，检查词法分析器如何将文件内容分解为标记，解析器将标记解析为PSI元素。</p>
+<p>现在打开* PsiViewer *工具窗口，检查词法分析器如何将文件内容分解为标记，解析器将标记解析为PSI元素.</p>
 
 <p><img src="img/psi_elements.png" alt="PSI Elements" /></p>
 

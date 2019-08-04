@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,15 +81,15 @@
                         <a class="navigation-links__prev" href="/tutorials/custom_language_support/formatter.html">15. Formatter</a>
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/commenter.html">17. Commenter</a>
                     </div>
-                    
+
 
                     <h1>16. Code Style Setting</h1>
-                    <p>代码样式设置允许定义格式选项。
-代码样式设置提供程序将创建设置的实例，还可以创建选项页面以进行编辑。
-在此示例中，我们将创建一个页面，该页面使用由语言代码样式设置提供程序自定义的默认语言代码样式设置。</p>
+                    <p>代码样式设置允许定义格式选项.
+代码样式设置提供程序将创建设置的实例，还可以创建选项页面以进行编辑.
+在此示例中，我们将创建一个页面，该页面使用由语言代码样式设置提供程序自定义的默认语言代码样式设置.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>16.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>16.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义代码样式设置</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -104,7 +104,7 @@
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>16.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>16.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>定义代码样式设置提供程序</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -126,7 +126,7 @@
     <span class="k">return</span> <span class="s">"Simple"</span><span class="o">;</span>
   <span class="o">}</span>
 
-  
+
   <span class="nd">@NotNull</span>
   <span class="kd">public</span> <span class="n">CodeStyleConfigurable</span> <span class="nf">createConfigurable</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">,</span> <span class="nd">@NotNull</span> <span class="n">CodeStyleSettings</span> <span class="n">modelSettings</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nf">CodeStyleAbstractConfigurable</span><span class="o">(</span><span class="n">settings</span><span class="o">,</span> <span class="n">modelSettings</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getConfigurableDisplayName</span><span class="o">())</span> <span class="o">{</span>
@@ -136,7 +136,7 @@
       <span class="o">}</span>
     <span class="o">};</span>
   <span class="o">}</span>
-  
+
   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SimpleCodeStyleMainPanel</span> <span class="kd">extends</span> <span class="n">TabbedLanguageCodeStylePanel</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="nf">SimpleCodeStyleMainPanel</span><span class="o">(</span><span class="n">CodeStyleSettings</span> <span class="n">currentSettings</span><span class="o">,</span> <span class="n">CodeStyleSettings</span> <span class="n">settings</span><span class="o">)</span> <span class="o">{</span>
       <span class="kd">super</span><span class="o">(</span><span class="n">SimpleLanguage</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">,</span> <span class="n">currentSettings</span><span class="o">,</span> <span class="n">settings</span><span class="o">);</span>
@@ -146,14 +146,14 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>16.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>16.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>注册代码样式设置提供程序</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;codeStyleSettingsProvider</span> <span class="na">implementation=</span><span class="s">"com.simpleplugin.SimpleCodeStyleSettingsProvider"</span><span class="nt">/&gt;</span>
 </code></div>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>16.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>16.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>定义语言代码样式设置提供者</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -202,14 +202,14 @@
 </code></div>
 
 <a name="section-4" class="elem-anchor"></a>
-<h3>16.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<h3>16.5.<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>注册语言代码样式设置提供程序</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;langCodeStyleSettingsProvider</span> <span class="na">implementation=</span><span class="s">"com.simpleplugin.SimpleLanguageCodeStyleSettingsProvider"</span><span class="nt">/&gt;</span>
 </code></div>
 
 <a name="section-5" class="elem-anchor"></a>
-<h3>16.6。<a href="#section-5" class="anchor-link"><span></span></a></h3>
+<h3>16.6.<a href="#section-5" class="anchor-link"><span></span></a></h3>
 <p>运行该项目</p>
 
 <p><img src="img/code_style_settings.png" alt="代码样式设置" /></p>

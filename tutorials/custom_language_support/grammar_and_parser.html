@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,14 +81,14 @@
                         <a class="navigation-links__prev" href="/tutorials/custom_language_support/language_and_filetype.html">2. Language and File Type</a>
                         <a class="navigation-links__next" href="/tutorials/custom_language_support/lexer_and_parser_definition.html">4. Lexer and Parser Definition</a>
                     </div>
-                    
+
 
                     <h1>3. Grammar and Parser</h1>
                     <a name="section" class="elem-anchor"></a>
-<h3>3.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>3.1<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义令牌类型</p>
 
-<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>包中创建一个文件。</p>
+<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>包中创建一个文件.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">.</span><span class="na">psi</span><span class="o">;</span>
 
@@ -109,10 +109,10 @@
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>3.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>3.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>定义元素类型</p>
 
-<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>包中创建一个文件。</p>
+<p>在<code class="code highlight language-text">com.simpleplugin.psi</code>包中创建一个文件.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">.</span><span class="na">psi</span><span class="o">;</span>
 
@@ -128,10 +128,10 @@
 </code></div>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>3.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>3.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>定义语法</p>
 
-<p>使用*/com/simpleplugin/Simple.bnf *文件为属性语言定义语法。</p>
+<p>使用*/com/simpleplugin/Simple.bnf *文件为属性语言定义语法.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="o">{</span>
   <span class="n">parserClass</span><span class="o">=</span><span class="s">"com.simpleplugin.parser.SimpleParser"</span>
@@ -155,25 +155,25 @@
 <span class="n">property</span> <span class="o">::=</span> <span class="o">(</span><span class="n">KEY</span><span class="o">?</span> <span class="n">SEPARATOR</span> <span class="n">VALUE</span><span class="o">?)</span> <span class="o">|</span> <span class="n">KEY</span>
 </code></div>
 
-<p>如您所见，属性文件可以包含属性，注释和换行符。</p>
+<p>如您所见，属性文件可以包含属性，注释和换行符.</p>
 
-<p>语法定义了对语言的支持的灵活性。</p>
+<p>语法定义了对语言的支持的灵活性.</p>
 
-<p>我们指定某个属性可能具有或不具有密钥和值。</p>
+<p>我们指定某个属性可能具有或不具有密钥和值.</p>
 
-<p>这使IDE仍然可以识别错误定义的属性，并提供相应的代码分析和快速修复。</p>
+<p>这使IDE仍然可以识别错误定义的属性，并提供相应的代码分析和快速修复.</p>
 
-<p>请注意，上面<code class="code highlight language-text">elementTypeHolderClass</code>字段中的<code class="code highlight language-text">SimpleTypes</code>类指定了从语法生成的类的名称，此时它不存在。</p>
+<p>请注意，上面<code class="code highlight language-text">elementTypeHolderClass</code>字段中的<code class="code highlight language-text">SimpleTypes</code>类指定了从语法生成的类的名称，此时它不存在.</p>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>3.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>3.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>生成解析器</p>
 
-<p>现在，当定义语法时，我们可以通过* Simple.bnf <em>文件中的上下文菜单中的</em> Generate Parser Code *生成带有PSI类的解析器。</p>
+<p>现在，当定义语法时，我们可以通过* Simple.bnf <em>文件中的上下文菜单中的</em> Generate Parser Code *生成带有PSI类的解析器.</p>
 
-<p>这将在* gen *文件夹中生成解析器和PSI元素。</p>
+<p>这将在* gen *文件夹中生成解析器和PSI元素.</p>
 
-<p>将此文件夹标记为* Generated Sources Root *并确保编译所有内容都没有错误。</p>
+<p>将此文件夹标记为* Generated Sources Root *并确保编译所有内容都没有错误.</p>
 
 <p><img src="IMG/generated_pa​​rser.png" alt="分析器" /></p>
 

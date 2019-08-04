@@ -85,33 +85,33 @@
 
                     <h1>Code Intentions</h1>
                     <p>本主题描述了<a href="https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/conditional_operator_intention" data-bypass="yes" target="_blank"><span>conditional_operator_intention</span></a>，这是一个添加新[意图行动]的示例插件(https://www
-.jetbrains.com/help/idea/intention-actions.html)到IntelliJ平台意图列表。</p>
+.jetbrains.com/help/idea/intention-actions.html)到IntelliJ平台意图列表.</p>
 
-<p>此外，示例插件包含基于JUnit的测试。</p>
+<p>此外，示例插件包含基于JUnit的测试.</p>
 
 <h2>关于意向行动</h2>
 
-<p>** IntelliJ平台**分析您的代码并帮助处理可能导致错误的情况。</p>
+<p>** IntelliJ平台**分析您的代码并帮助处理可能导致错误的情况.</p>
 
-<p>当怀疑存在可能的问题时，IDE会建议适当的意图操作，用特殊图标表示。</p>
+<p>当怀疑存在可能的问题时，IDE会建议适当的意图操作，用特殊图标表示.</p>
 
-<p>有关更多信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/intention-actions.html" data-bypass="yes" target="_blank"><span>意图操作</span></a>。</p>
+<p>有关更多信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/intention-actions.html" data-bypass="yes" target="_blank"><span>意图操作</span></a>.</p>
 
-<p>您可以使用IDE提供的<a href="https://www.jetbrains.com/help/idea/intention-actions.html#intention-settings" data-bypass="yes" target="_blank"><span>注意列表</span></a>查看所有可用意图操作的列表。</p>
+<p>您可以使用IDE提供的<a href="https://www.jetbrains.com/help/idea/intention-actions.html#intention-settings" data-bypass="yes" target="_blank"><span>注意列表</span></a>查看所有可用意图操作的列表.</p>
 
 <p><strong>显示意向清单</strong></p>
 
-<p>1.打开<strong>设置</strong>对话框。</p>
+<p>1.打开<strong>设置</strong>对话框.</p>
 
-<p>2.在** IDE Settings <strong>下，单击</strong> Intentions <strong>。
-这将显示</strong> IntelliJ IDEA **中当前可用的所有意图操作的列表。</p>
+<p>2.在** IDE Settings <strong>下，单击</strong> Intentions <strong>.
+这将显示</strong> IntelliJ IDEA **中当前可用的所有意图操作的列表.</p>
 
 <ul>
   <li>
-    <p>意图行动根据其使用区域分组。</p>
+    <p>意图行动根据其使用区域分组.</p>
   </li>
   <li>
-    <p>要启用/禁用意图操作，请选中/取消选中其左侧的复选框。</p>
+    <p>要启用/禁用意图操作，请选中/取消选中其左侧的复选框.</p>
   </li>
 </ul>
 
@@ -121,22 +121,22 @@
 
 <ul>
   <li>
-    <p>如何分析<a href="/intellij-sdk-docs-cn/basics/architectural_overview/psi_files.html"><span>PSI树</span></a>。</p>
+    <p>如何分析<a href="/intellij-sdk-docs-cn/basics/architectural_overview/psi_files.html"><span>PSI树</span></a>.</p>
   </li>
   <li>
-    <p>如何在PSI树中查找感兴趣的Java令牌。</p>
+    <p>如何在PSI树中查找感兴趣的Java令牌.</p>
   </li>
   <li>
-    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/intention/PsiElementBaseIntentionAction.java" data-bypass="yes" target="_blank"><span>PsiElementBaseIntentionAction</span></a>类为游标下的标记元素调用快速修复操作。</p>
+    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/codeInsight/intention/PsiElementBaseIntentionAction.java" data-bypass="yes" target="_blank"><span>PsiElementBaseIntentionAction</span></a>类为游标下的标记元素调用快速修复操作.</p>
   </li>
   <li>
-    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java" data-bypass="yes" target="_blank"><span>IdeaTestFixtureFactory</span></a>类为此插件创建JUnit测试。</p>
+    <p>如何使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java" data-bypass="yes" target="_blank"><span>IdeaTestFixtureFactory</span></a>类为此插件创建JUnit测试.</p>
   </li>
 </ul>
 
 <h2>示例插件</h2>
 
-<p>** ConditionalOperatorConverter **示例插件位于<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中。</p>
+<p>** ConditionalOperatorConverter **示例插件位于<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中.</p>
 
 <p>启动时，此插件将<strong>转换三元运算符if语句</strong>项添加到IDEA意图列表中的<strong>条件运算符</strong>节点:</p>
 
@@ -146,17 +146,17 @@
 
 <p><strong>运行示例插件</strong></p>
 
-<p>1.启动** IntelliJ IDEA <strong>并打开保存在<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中的</strong> conditionalOperatorConvertor **插件项目。</p>
+<p>1.启动** IntelliJ IDEA <strong>并打开保存在<code class="code highlight language-text">&lt;％IntelliJ SDK Docs project％&gt;/code_samples/conditional_operator_intention</code>目录中的</strong> conditionalOperatorConvertor **插件项目.</p>
 
-<p>2.打开<a href="https://www.jetbrains.com/help/idea/project-structure-dialog.html" data-bypass="yes" target="_blank"><span>项目结构</span></a>对话框，确保项目设置对您的环境有效。</p>
+<p>2.打开<a href="https://www.jetbrains.com/help/idea/project-structure-dialog.html" data-bypass="yes" target="_blank"><span>项目结构</span></a>对话框，确保项目设置对您的环境有效.</p>
 
 <p>3.如有必要，修改<a href="https://www.jetbrains.com/idea/webhelp/run-debug-configuration-plugin.html" data-bypass="yes" target="_blank"><span>运行/调试配置</span></a>并选择** Run **运行插件
-在主菜单上。</p>
+在主菜单上.</p>
 
 <a name="section" class="elem-anchor"></a>
 <h4>它是如何工作的？</h4>
 
-<p>该插件分析在IDEA编辑器中打开的代码中光标下的符号。</p>
+<p>该插件分析在IDEA编辑器中打开的代码中光标下的符号.</p>
 
 <p>如果光标位于“？”
 条件运算符，** IntelliJ IDEA **建议用“if-then-else”语句替换此条件(三元)运算符:</p>
@@ -180,11 +180,11 @@
 <a name="section-1" class="elem-anchor"></a>
 <h5>测试插件</h5>
 
-<p>示例插件包含<code class="code highlight language-text">testSource/testPlugin /</code>包中的<code class="code highlight language-text">YourTest</code> Java类和<code class="code highlight language-text">testData /</code>目录中的测试数据。</p>
+<p>示例插件包含<code class="code highlight language-text">testSource/testPlugin /</code>包中的<code class="code highlight language-text">YourTest</code> Java类和<code class="code highlight language-text">testData /</code>目录中的测试数据.</p>
 
-<p>要执行插件测试，请运行<code class="code highlight language-text">YourTest.test()</code>方法。</p>
+<p>要执行插件测试，请运行<code class="code highlight language-text">YourTest.test()</code>方法.</p>
 
-<p>有关测试和所有相关过程的详细信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/performing-tests.html" data-bypass="yes" target="_blank"><span>测试</span></a>。</p>
+<p>有关测试和所有相关过程的详细信息，请参阅** IntelliJ IDEA ** Web帮助中的<a href="https://www.jetbrains.com/help/idea/performing-tests.html" data-bypass="yes" target="_blank"><span>测试</span></a>.</p>
 
 
 

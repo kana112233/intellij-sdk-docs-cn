@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,32 +79,32 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/build_system/prerequisites.html">Getting Started with Gradle</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Publishing Plugins with Gradle</h1>
-                    <p>配置Gradle支持后，您可以自动构建插件并将其部署到<a href="https://plugins.jetbrains.com" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>。</p>
+                    <p>配置Gradle支持后，您可以自动构建插件并将其部署到<a href="https://plugins.jetbrains.com" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>.</p>
 
-<p>为此，您需要已将插件发布到插件存储库。</p>
+<p>为此，您需要已将插件发布到插件存储库.</p>
 
-<p>有关详细信息，请参阅[发布插件]指南(../../basics/getting_started/publishing_plugin.md)。</p>
+<p>有关详细信息，请参阅[发布插件]指南(../../basics/getting_started/publishing_plugin.md).</p>
 
 <a name="section" class="elem-anchor"></a>
 <h3>2.0添加您的帐户凭据<a href="#section" class="anchor-link"><span></span></a></h3>
 
-<p>要将插件部署到插件存储库，您首先需要提供JetBrains帐户凭据。</p>
+<p>要将插件部署到插件存储库，您首先需要提供JetBrains帐户凭据.</p>
 
-<p>我们将描述三个选项:仅使用Gradle属性，使用环境变量并使用Gradle任务的参数。</p>
+<p>我们将描述三个选项:仅使用Gradle属性，使用环境变量并使用Gradle任务的参数.</p>
 
 <a name="gradle" class="elem-anchor"></a>
 <h4>使用Gradle属性文件</h4>
 
-<p>您可以将凭据存储在<a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties" data-bypass="yes" target="_blank"><span>Gradle属性</span></a>中。</p>
+<p>您可以将凭据存储在<a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties" data-bypass="yes" target="_blank"><span>Gradle属性</span></a>中.</p>
 
-<p>至关重要的是，不要将这些凭据检入源代码管理中。</p>
+<p>至关重要的是，不要将这些凭据检入源代码管理中.</p>
 
-<p>为此，请将以下信息放在项目根目录下的<code class="code highlight language-text">gradle.properties</code>文件中，或者放在<code class="code highlight language-text">GRADLE_HOME/gradle.properties</code>中。</p>
+<p>为此，请将以下信息放在项目根目录下的<code class="code highlight language-text">gradle.properties</code>文件中，或者放在<code class="code highlight language-text">GRADLE_HOME/gradle.properties</code>中.</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">intellijPublishUsername=YOUR_USERNAME_HERE
 intellijPublishPassword=YOUR_PASSWORD_HERE
@@ -118,7 +118,7 @@ intellijPublishPassword=YOUR_PASSWORD_HERE
 <span class="o">}</span>
 </code></div>
 
-<p>如果在项目的根目录中放置<code class="code highlight language-text">gradle.properties</code>文件，请确保版本控制工具忽略此文件。</p>
+<p>如果在项目的根目录中放置<code class="code highlight language-text">gradle.properties</code>文件，请确保版本控制工具忽略此文件.</p>
 
 <p>例如在Git中，您可以将以下行添加到<code class="code highlight language-text">.gitignore</code>文件中:</p>
 
@@ -128,35 +128,35 @@ intellijPublishPassword=YOUR_PASSWORD_HERE
 <a name="section-1" class="elem-anchor"></a>
 <h4>使用环境变量</h4>
 
-<p>或者，可能稍微安全一些，因为您不会意外地将您的凭据提交给git，您可以通过环境变量“ORG_GRADLE_PROJECT_intellijPublishUsername”和“ORG_GRADLE_PROJECT_intellijPublishPassword”提供您的凭据。</p>
+<p>或者，可能稍微安全一些，因为您不会意外地将您的凭据提交给git，您可以通过环境变量“ORG_GRADLE_PROJECT_intellijPublishUsername”和“ORG_GRADLE_PROJECT_intellijPublishPassword”提供您的凭据.</p>
 
-<p>例如，您可以通过在运行配置中提供它们来本地运行<code class="code highlight language-text">publishPlugin</code>任务。</p>
+<p>例如，您可以通过在运行配置中提供它们来本地运行<code class="code highlight language-text">publishPlugin</code>任务.</p>
 
-<p>为此，创建一个Gradle运行配置(如果尚未完成)，选择Gradle项目，指定<code class="code highlight language-text">publishPlugin</code>任务，然后添加提到的环境变量。</p>
+<p>为此，创建一个Gradle运行配置(如果尚未完成)，选择Gradle项目，指定<code class="code highlight language-text">publishPlugin</code>任务，然后添加提到的环境变量.</p>
 
-<p>请注意，您仍需要在Gradle属性中放置一些默认值(可以为空)，否则您将收到编译错误。</p>
+<p>请注意，您仍需要在Gradle属性中放置一些默认值(可以为空)，否则您将收到编译错误.</p>
 
 <a name="gradle-1" class="elem-anchor"></a>
 <h4>为Gradle任务提供参数</h4>
 
-<p>与使用环境变量类似，您也可以将凭证作为参数传递给Gradle任务。</p>
+<p>与使用环境变量类似，您也可以将凭证作为参数传递给Gradle任务.</p>
 
-<p>您需要提供参数<code class="code highlight language-text">-Dorg.gradle.project.intellijPublishUsername = myusername -Dorg.gradle.project.intellijPublishPassword = mypassword</code>，例如通过命令行或将其放入运行配置的参数中。</p>
+<p>您需要提供参数<code class="code highlight language-text">-Dorg.gradle.project.intellijPublishUsername = myusername -Dorg.gradle.project.intellijPublishPassword = mypassword</code>，例如通过命令行或将其放入运行配置的参数中.</p>
 
-<p>请注意，在这种情况下，您仍需要在Gradle属性中添加一些默认值。</p>
+<p>请注意，在这种情况下，您仍需要在Gradle属性中添加一些默认值.</p>
 
 <a name="section-2" class="elem-anchor"></a>
 <h3>2.1配置你的插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
-<p>gradle-intellij-plugin提供了许多<a href="https://github.com/JetBrains/gradle-intellij-plugin#configuration" data-bypass="yes" target="_blank"><span>配置选项</span></a>，用于自定义Gradle如何构建插件。</p>
+<p>gradle-intellij-plugin提供了许多<a href="https://github.com/JetBrains/gradle-intellij-plugin#configuration" data-bypass="yes" target="_blank"><span>配置选项</span></a>，用于自定义Gradle如何构建插件.</p>
 
-<p>其中最重要的是<code class="code highlight language-text">版本</code>。</p>
+<p>其中最重要的是<code class="code highlight language-text">版本</code>.</p>
 
-<p>默认情况下，如果在构建脚本中修改<code class="code highlight language-text">version</code>，Gradle插件将自动更新<code class="code highlight language-text">plugin.xml</code>文件中的<code class="code highlight language-text">&lt;version&gt;</code>。
+<p>默认情况下，如果在构建脚本中修改<code class="code highlight language-text">version</code>，Gradle插件将自动更新<code class="code highlight language-text">plugin.xml</code>文件中的<code class="code highlight language-text">&lt;version&gt;</code>.
  
  
 Gradle插件还将更新<code class="code highlight language-text">plugin.xml</code>文件中的<code class="code highlight language-text">&lt;idea-version since-build = ... /&gt;</code>值以匹配<code class="code highlight language-text">intellij.version</code>，有效直到当前主要版本的最后一个版本
-但是，您可以通过将<code class="code highlight language-text">intellij.updateSinceUntilBuild</code>选项设置为<code class="code highlight language-text">false</code>来禁用此功能。</p>
+但是，您可以通过将<code class="code highlight language-text">intellij.updateSinceUntilBuild</code>选项设置为<code class="code highlight language-text">false</code>来禁用此功能.</p>
 
 <div class="code-block" data-lang="groovy"><code class="code-block__wrapper"><span class="n">plugins</span> <span class="o">{</span>
     <span class="c1">// Make sure to check for the latest version at https://plugins.gradle.org/plugin/org.jetbrains.intellij</span>
@@ -174,28 +174,28 @@ Gradle插件还将更新<code class="code highlight language-text">plugin.xml</c
 <span class="n">version</span> <span class="s1">'1.2'</span> <span class="c1">// Update me!</span>
 </code></div>
 
-<p>使用包含上述代码段的构建脚本运行<code class="code highlight language-text">gradle runIde</code>时，Gradle将从<a href="https://www.jetbrains.com/intellij-repository/snapshots" data-bypass="yes" target="_blank"><span>Snapshot</span></a>下载相应版本的IntelliJ IDEA(时间) 
-(基于)或<a href="https://www.jetbrains.com/intellij-repository/releases" data-bypass="yes" target="_blank"><span>发布</span></a>(基于版本)存储库，配置插件沙箱，安装插件，并启动IDE的新实例。</p>
+<p>使用包含上述代码段的构建脚本运行<code class="code highlight language-text">gradle runIde</code>时，Gradle将从<a href="https://www.jetbrains.com/intellij-repository/snapshots" data-bypass="yes" target="_blank"><span>Snapshot</span></a>下载相应版本的IntelliJ IDEA(时间)
+(基于)或<a href="https://www.jetbrains.com/intellij-repository/releases" data-bypass="yes" target="_blank"><span>发布</span></a>(基于版本)存储库，配置插件沙箱，安装插件，并启动IDE的新实例.</p>
 
-<p>此任务可以直接从命令行运行，无需任何先前的工具帮助。</p>
+<p>此任务可以直接从命令行运行，无需任何先前的工具帮助.</p>
 
 <a name="section-3" class="elem-anchor"></a>
 <h3>2.3部署插件<a href="#section-3" class="anchor-link"><span></span></a></h3>
 
-<p>部署插件的第一步是确认它是否正常工作。</p>
+<p>部署插件的第一步是确认它是否正常工作.</p>
 
-<p>您可能希望通过<a href="https://www.jetbrains.com/help/idea/managing-plugins.html" data-bypass="yes" target="_blank"><span>从磁盘安装插件</span></a>在目标IDE的新实例上验证这一点。
-一旦您确信插件按预期工作，请确保插件版本已更新，因为JetBrains插件存储库不会接受具有相同版本的多个工件。
+<p>您可能希望通过<a href="https://www.jetbrains.com/help/idea/managing-plugins.html" data-bypass="yes" target="_blank"><span>从磁盘安装插件</span></a>在目标IDE的新实例上验证这一点.
+一旦您确信插件按预期工作，请确保插件版本已更新，因为JetBrains插件存储库不会接受具有相同版本的多个工件.
 要将新版本的插件部署到JetBrains插件存储库，请执行以下Gradle命令:</p>
 
 <div class="code-block" data-lang="bash"><code class="code-block__wrapper">gradle publishPlugin
 </code></div>
 
-<p>现在检查插件的最新版本是否出现在<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>Plugin Repository</span></a>上。</p>
+<p>现在检查插件的最新版本是否出现在<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>Plugin Repository</span></a>上.</p>
 
-<p>如果已成功部署，则当前在符合条件的IntelliJ平台版本上安装了插件的任何用户将在下次重新启动时收到可用的新更新通知。</p>
+<p>如果已成功部署，则当前在符合条件的IntelliJ平台版本上安装了插件的任何用户将在下次重新启动时收到可用的新更新通知.</p>
 
-<p>您还可以通过配置<code class="code highlight language-text">publishPlugin.channels</code>属性将插件部署到您选择的发布通道。</p>
+<p>您还可以通过配置<code class="code highlight language-text">publishPlugin.channels</code>属性将插件部署到您选择的发布通道.</p>
 
 <p>例如:</p>
 
@@ -204,15 +204,15 @@ Gradle插件还将更新<code class="code highlight language-text">plugin.xml</c
 <span class="o">}</span>
 </code></div>
 
-<p>当为空时，这将使用默认的插件存储库，可供所有<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>用户使用。</p>
+<p>当为空时，这将使用默认的插件存储库，可供所有<a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>用户使用.</p>
 
-<p>但是，您可以发布到任意命名的频道。</p>
+<p>但是，您可以发布到任意命名的频道.</p>
 
-<p>这些非默认发布通道被视为单独的存储库，用于所有意图和目的。</p>
+<p>这些非默认发布通道被视为单独的存储库，用于所有意图和目的.</p>
 
-<p>使用非默认发布渠道时，用户需要添加新的<a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>自定义插件存储库</span></a>来安装插件。</p>
+<p>使用非默认发布渠道时，用户需要添加新的<a href="https://www.jetbrains.com/help/idea/managing-plugins.html#repos" data-bypass="yes" target="_blank"><span>自定义插件存储库</span></a>来安装插件.</p>
 
-<p>例如，如果指定<code class="code highlight language-text">publishPlugin.channels'canary'</code>，则用户需要添加<code class="code highlight language-text">https://plugins.jetbrains.com/plugins/canary/list</code>存储库来安装插件并接收更新。</p>
+<p>例如，如果指定<code class="code highlight language-text">publishPlugin.channels'canary'</code>，则用户需要添加<code class="code highlight language-text">https://plugins.jetbrains.com/plugins/canary/list</code>存储库来安装插件并接收更新.</p>
 
 <p>热门频道名称包括:</p>
 
@@ -222,13 +222,13 @@ Gradle插件还将更新<code class="code highlight language-text">plugin.xml</c
 
 <p>*<code class="code highlight language-text">eap</code>:https://plugins.jetbrains.com/plugins/eap/list</p>
 
-<p>有关可用配置选项的更多信息，请参见<a href="https://github.com/JetBrains/gradle-intellij-plugin/blob/master/README.md#publishing-dsl" data-bypass="yes" target="_blank"><span>intellij gradle插件的文档</span></a>。</p>
+<p>有关可用配置选项的更多信息，请参见<a href="https://github.com/JetBrains/gradle-intellij-plugin/blob/master/README.md#publishing-dsl" data-bypass="yes" target="_blank"><span>intellij gradle插件的文档</span></a>.</p>
 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/build_system/prerequisites.html">Getting Started with Gradle</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019

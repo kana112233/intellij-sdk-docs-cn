@@ -87,23 +87,23 @@
                     <a name="windows" class="elem-anchor"></a>
 <h2>工具Windows<a href="#windows" class="anchor-link"><span></span></a></h2>
 
-<p><em>Tool windows_是用于显示信息的IDE的子窗口。
-这些窗口通常在主窗口的外边缘有自己的工具栏(称为_tool窗口栏</em>)，其中包含一个或多个_tool窗口按钮_，它们激活显示在主IDE窗口左侧，底部和右侧的面板。
-有关工具窗口的详细信息，请参阅<a href="https://www.jetbrains.com/idea/help/tool-windows.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA Web帮助</span></a>。</p>
+<p><em>Tool windows_是用于显示信息的IDE的子窗口.
+这些窗口通常在主窗口的外边缘有自己的工具栏(称为_tool窗口栏</em>)，其中包含一个或多个_tool窗口按钮_，它们激活显示在主IDE窗口左侧，底部和右侧的面板.
+有关工具窗口的详细信息，请参阅<a href="https://www.jetbrains.com/idea/help/tool-windows.html" data-bypass="yes" target="_blank"><span>IntelliJ IDEA Web帮助</span></a>.</p>
 
-<p>每一侧包含两个工具窗口组，主要和次要工具窗口组，每个组中只有一个工具窗口可以一次处于活动状态。</p>
+<p>每一侧包含两个工具窗口组，主要和次要工具窗口组，每个组中只有一个工具窗口可以一次处于活动状态.</p>
 
-<p>每个工具窗口都可以显示多个选项卡(或“内容”，因为它们在API中调用)。</p>
+<p>每个工具窗口都可以显示多个选项卡(或“内容”，因为它们在API中调用).</p>
 
-<p>例如，“运行”工具窗口显示每个活动运行配置的选项卡，“更改”工具窗口显示一组固定的选项卡，具体取决于项目中使用的版本控制系统。</p>
+<p>例如，“运行”工具窗口显示每个活动运行配置的选项卡，“更改”工具窗口显示一组固定的选项卡，具体取决于项目中使用的版本控制系统.</p>
 
-<p>在插件中使用工具窗口有两种主要方案。</p>
+<p>在插件中使用工具窗口有两种主要方案.</p>
 
-<p>在第一个场景中(例如，Ant和Commander插件使用)，工具窗口按钮始终可见，用户可以随时激活它并与插件功能交互。</p>
+<p>在第一个场景中(例如，Ant和Commander插件使用)，工具窗口按钮始终可见，用户可以随时激活它并与插件功能交互.</p>
 
-<p>在第二个场景中(例如，“Analyze Dependencies”操作使用)，创建工具窗口以显示特定操作的结果，并且可以在操作完成后由用户关闭。</p>
+<p>在第二个场景中(例如，“Analyze Dependencies”操作使用)，创建工具窗口以显示特定操作的结果，并且可以在操作完成后由用户关闭.</p>
 
-<p>在第一个场景中，工具窗口使用<code class="code highlight language-text">&lt;toolWindow&gt;</code>扩展点在* plugin.xml *中注册。</p>
+<p>在第一个场景中，工具窗口使用<code class="code highlight language-text">&lt;toolWindow&gt;</code>扩展点在* plugin.xml *中注册.</p>
 
 <p>扩展点属性指定显示工具窗口按钮所需的所有数据:</p>
 
@@ -126,43 +126,43 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java" data-bypass="yes" target="_blank"><span>ToolWindowFactory</span></a></p>
 
-<p>接口。</p>
+<p>接口.</p>
 
-<p>当用户单击工具窗口按钮时，将调用工厂类的<code class="code highlight language-text">createToolWindowContent()</code>方法，并初始化工具窗口的UI。</p>
+<p>当用户单击工具窗口按钮时，将调用工厂类的<code class="code highlight language-text">createToolWindowContent()</code>方法，并初始化工具窗口的UI.</p>
 
-<p>此过程可确保未使用的工具窗口不会导致启动时间或内存使用的任何开销:如果用户未与插件的工具窗口交互，则不会加载或执行插件代码。</p>
+<p>此过程可确保未使用的工具窗口不会导致启动时间或内存使用的任何开销:如果用户未与插件的工具窗口交互，则不会加载或执行插件代码.</p>
 
 <p>如果不需要为所有项目显示插件的工具窗口，还可以指定* conditionClass *属性 - 实现该类的类的限定名称</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util-rt/src/com/intellij/openapi/util/Condition.java" data-bypass="yes" target="_blank"><span>条件\ &lt;项目&gt;</span></a></p>
 
-<p>interface(这可以是与工具窗口工厂实现相同的类)。</p>
+<p>interface(这可以是与工具窗口工厂实现相同的类).</p>
 
-<p>如果条件返回“false”，则不会显示工具窗口。</p>
+<p>如果条件返回“false”，则不会显示工具窗口.</p>
 
 <p>请注意，在加载项目时仅评估条件一次;</p>
 
-<p>如果您想在用户使用项目时动态显示和隐藏工具窗口，则需要使用第二种方法进行工具窗口注册。</p>
+<p>如果您想在用户使用项目时动态显示和隐藏工具窗口，则需要使用第二种方法进行工具窗口注册.</p>
 
 <p>第二种方法涉及简单地调用</p>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowManager.java" data-bypass="yes" target="_blank"><span>ToolWindowManager.registerToolWindow()</span></a></p>
 
-<p>从你的插件代码。</p>
+<p>从你的插件代码.</p>
 
-<p>该方法具有多个重载，可根据您的任务使用。</p>
+<p>该方法具有多个重载，可根据您的任务使用.</p>
 
-<p>如果使用带有组件的重载，则组件将成为工具窗口中显示的第一个内容(选项卡)。</p>
+<p>如果使用带有组件的重载，则组件将成为工具窗口中显示的第一个内容(选项卡).</p>
 
-<p>显示许多工具窗口的内容需要访问索引。</p>
+<p>显示许多工具窗口的内容需要访问索引.</p>
 
-<p>因此，工具窗口通常在构建索引时被禁用，除非您将<code class="code highlight language-text">canWorkInDumbMode</code>的值传递给<code class="code highlight language-text">registerToolWindow()</code>函数。</p>
+<p>因此，工具窗口通常在构建索引时被禁用，除非您将<code class="code highlight language-text">canWorkInDumbMode</code>的值传递给<code class="code highlight language-text">registerToolWindow()</code>函数.</p>
 
-<p>如前所述，工具窗口可以包含多个选项卡或内容。</p>
+<p>如前所述，工具窗口可以包含多个选项卡或内容.</p>
 
 <p>要管理工具窗口的内容，您可以调用</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindow.java" data-bypass="yes" target="_blank"><span>ToolWindow.getContentManager()</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindow.java" data-bypass="yes" target="_blank"><span>ToolWindow.getContentManager()</span></a>.</p>
 
 <p>要添加选项卡(内容)，首先需要通过调用来创建它</p>
 
@@ -170,60 +170,60 @@
 
 <p>然后使用将其添加到工具窗口</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/content/ContentManager.java" data-bypass="yes" target="_blank"><span>ContentManager.addContent()</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/content/ContentManager.java" data-bypass="yes" target="_blank"><span>ContentManager.addContent()</span></a>.</p>
 
-<p>您可以控制是否允许用户全局或基于每个选项卡关闭选项卡。</p>
+<p>您可以控制是否允许用户全局或基于每个选项卡关闭选项卡.</p>
 
 <p>前者是通过将<code class="code highlight language-text">canCloseContents</code>参数传递给<code class="code highlight language-text">registerToolWindow()</code>函数，或者通过指定</p>
 
 <ul>
-  <li>canClose中的<code class="code highlight language-text">canCloseContents =“true”</code>*。
+  <li>canClose中的<code class="code highlight language-text">canCloseContents =“true”</code>*.
 默认值为“false”;
-除非明确设置<code class="code highlight language-text">canCloseContents</code>，否则将忽略对ContentManager内容调用setClosable(true)。</li>
+除非明确设置<code class="code highlight language-text">canCloseContents</code>，否则将忽略对ContentManager内容调用setClosable(true).</li>
 </ul>
 
 <p>如果通常启用了关闭选项卡，则可以通过调用禁用特定选项卡的关闭</p>
 
-<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/content/Content.java" data-bypass="yes" target="_blank"><span>Content.setCloseable(假)</span></a>。</p>
+<p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/ui/content/Content.java" data-bypass="yes" target="_blank"><span>Content.setCloseable(假)</span></a>.</p>
 
 <a name="section" class="elem-anchor"></a>
 <h2>如何创建工具窗口？<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>IntelliJ平台提供_toolWindow_ <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_extensions_and_extension_points.html"><span>扩展点</span></a>，您可以使用它来创建和配置自定义工具窗口。
-使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowEP.java" data-bypass="yes" target="_blank"><span>ToolWindowEP</span></a>bean类声明此扩展点。</p>
+<p>IntelliJ平台提供_toolWindow_ <a href="/intellij-sdk-docs-cn/basics/plugin_structure/plugin_extensions_and_extension_points.html"><span>扩展点</span></a>，您可以使用它来创建和配置自定义工具窗口.
+使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowEP.java" data-bypass="yes" target="_blank"><span>ToolWindowEP</span></a>bean类声明此扩展点.</p>
 
-<p>要创建工具窗口，首先声明_toolWindow_扩展点的扩展名。</p>
+<p>要创建工具窗口，首先声明_toolWindow_扩展点的扩展名.</p>
 
 <a name="section-1" class="elem-anchor"></a>
 <h3>创建插件<a href="#section-1" class="anchor-link"><span></span></a></h3>
 
 <p>要创建显示自定义工具窗口的插件，请执行以下步骤:</p>
 
-<p>1.在插件项目中，创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java" data-bypass="yes" target="_blank"><span>ToolWindowFactory</span></a>接口的Java类。</p>
+<p>1.在插件项目中，创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/wm/ToolWindowFactory.java" data-bypass="yes" target="_blank"><span>ToolWindowFactory</span></a>接口的Java类.</p>
 
-<p>2.在这个类中，重写<code class="code highlight language-text">createToolWindowContent</code>方法。
-此方法指定工具窗口的内容。</p>
+<p>2.在这个类中，重写<code class="code highlight language-text">createToolWindowContent</code>方法.
+此方法指定工具窗口的内容.</p>
 
-<p>3.在插件配置文件plugin.xml中，创建<code class="code highlight language-text">&lt;extensions defaultExtensionNs =“com.intellij”&gt; ... &lt;/extensions&gt;</code>部分。</p>
+<p>3.在插件配置文件plugin.xml中，创建<code class="code highlight language-text">&lt;extensions defaultExtensionNs =“com.intellij”&gt; ... &lt;/extensions&gt;</code>部分.</p>
 
 <p>4.在本节中，添加<code class="code highlight language-text">&lt;toolWindow&gt;</code>元素，对于此元素，设置ToolWindowEP bean类中声明的以下属性:
     </p>
 <ul>
-  <li><strong>id</strong>(必填):指定工具窗口标题。
+  <li><strong>id</strong>(必填):指定工具窗口标题.
     </li>
-  <li><strong> anchor </strong>(必需):指定将显示工具窗口按钮的工具窗口栏。
-可能的值:“left”，“right”，“top”，“bottom”。
+  <li><strong> anchor </strong>(必需):指定将显示工具窗口按钮的工具窗口栏.
+可能的值:“left”，“right”，“top”，“bottom”.
     </li>
-  <li><strong> secondary </strong>(可选):当为true时，工具窗口按钮将显示在工具窗口栏的下部。
-默认值为false。
+  <li><strong> secondary </strong>(可选):当为true时，工具窗口按钮将显示在工具窗口栏的下部.
+默认值为false.
     </li>
-  <li><strong> factoryClass </strong>(必需):指定实现ToolWindowFactory接口的Java类(参见步骤1)。
+  <li><strong> factoryClass </strong>(必需):指定实现ToolWindowFactory接口的Java类(参见步骤1).
     </li>
-  <li><strong> icon </strong>(可选):指定标识工具窗口的图标的路径(如果有)。
+  <li><strong> icon </strong>(可选):指定标识工具窗口的图标的路径(如果有).
     </li>
-  <li><strong> conditionClass </strong>(可选):指定实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util-rt/src/com/intellij/openapi/util/Condition.java" data-bypass="yes" target="_blank"><span>Condition</span></a>接口的Java类。
-使用此类，您可以定义要显示工具窗口按钮的条件。
-在Condition类中，您应该覆盖value方法:如果此方法返回false，则工具窗口栏上不会显示工具窗口按钮。</li>
+  <li><strong> conditionClass </strong>(可选):指定实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util-rt/src/com/intellij/openapi/util/Condition.java" data-bypass="yes" target="_blank"><span>Condition</span></a>接口的Java类.
+使用此类，您可以定义要显示工具窗口按钮的条件.
+在Condition类中，您应该覆盖value方法:如果此方法返回false，则工具窗口栏上不会显示工具窗口按钮.</li>
 </ul>
 
 <p>为了阐明上述过程，请考虑以下<code class="code highlight language-text">plugin.xml</code>文件的片段:</p>
@@ -237,8 +237,8 @@
 <h3>示例插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
 <p>为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow <strong>示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/)
-SDK文档的目录。
-此插件创建</strong> Sample Calendar **工具窗口，显示系统日期，时间和时区。</p>
+SDK文档的目录.
+此插件创建</strong> Sample Calendar **工具窗口，显示系统日期，时间和时区.</p>
 
 <p><strong>运行toolWindow插件</strong></p>
 
@@ -250,7 +250,7 @@ To view or modify the project settings, you can open the <a href="https://www.j
 If necessary, change the <a href="https://www.jetbrains.com/help/idea/run-debug-configuration-plugin.html" data-bypass="yes" target="_blank"><span>Run/Debug Configurations</span></a>.</li>
 </ol>
 
-<p>该插件创建** Sample Calendar **工具窗口。
+<p>该插件创建** Sample Calendar **工具窗口.
 打开时，此工具窗口类似于以下屏幕:</p>
 
 <p><img src="img/sample_calendar.png" alt="样本日历" /></p>

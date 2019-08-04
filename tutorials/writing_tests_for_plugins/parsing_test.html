@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-08T23:56:58+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/tutorials/writing_tests_for_plugins/tests_prerequisites.html">1. Tests Prerequisites</a>
                         <a class="navigation-links__next" href="/tutorials/writing_tests_for_plugins/completion_test.html">3. Completion Test</a>
                     </div>
-                    
+
 
                     <h1>2. Parsing Test</h1>
                     <p>第一个测试将检查解析器是否实现了</p>
@@ -92,13 +92,13 @@
 
 <p><a href="/intellij-sdk-docs-cn/tutorials/custom_language_support_tutorial.html"><span>自定义语言支持教程</span></a></p>
 
-<p>像我们期望的那样工作。</p>
+<p>像我们期望的那样工作.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h3>2.1。<a href="#section" class="anchor-link"><span></span></a></h3>
+<h3>2.1.<a href="#section" class="anchor-link"><span></span></a></h3>
 <p>定义输入测试数据</p>
 
-<p>在* testData <em>文件夹中创建文件</em> ParsingTestData.simple *。</p>
+<p>在* testData <em>文件夹中创建文件</em> ParsingTestData.simple *.</p>
 
 <div class="code-block" data-lang="bash"><code class="code-block__wrapper"><span class="c"># You are reading the ".properties" entry.</span>
 <span class="o">!</span> The exclamation mark can also mark text as comments.
@@ -116,23 +116,23 @@ tab : <span class="se">\u</span>0009
 </code></div>
 
 <a name="section-1" class="elem-anchor"></a>
-<h3>2.2。<a href="#section-1" class="anchor-link"><span></span></a></h3>
+<h3>2.2.<a href="#section-1" class="anchor-link"><span></span></a></h3>
 <p>复制预期的PSI树</p>
 
-<p>获得任何文件的预期PSI结构的最简单方法是使用PSI Viewer。</p>
+<p>获得任何文件的预期PSI结构的最简单方法是使用PSI Viewer.</p>
 
-<p>运行项目并调用<code class="code highlight language-text">Tools</code>＆rarr; 
-<code class="code highlight language-text">查看PSI结构</code>。</p>
+<p>运行项目并调用<code class="code highlight language-text">Tools</code>＆rarr;
+<code class="code highlight language-text">查看PSI结构</code>.</p>
 
 <p><img src="img/plugin_copy_psi.png" alt="PSI树复制" /></p>
 
-<p>使用“复制PSI”按钮将预期的PSI结构复制到剪贴板。</p>
+<p>使用“复制PSI”按钮将预期的PSI结构复制到剪贴板.</p>
 
 <a name="section-2" class="elem-anchor"></a>
-<h3>2.3。<a href="#section-2" class="anchor-link"><span></span></a></h3>
+<h3>2.3.<a href="#section-2" class="anchor-link"><span></span></a></h3>
 <p>定义输出测试数据</p>
 
-<p>使用复制的PSI树创建文件* ParsingTestData.txt *。</p>
+<p>使用复制的PSI树创建文件* ParsingTestData.txt *.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">Simple</span> <span class="nf">File</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">433</span><span class="o">)</span>
   <span class="n">PsiComment</span><span class="o">(</span><span class="n">SimpleTokenType</span><span class="o">.</span><span class="na">COMMENT</span><span class="o">)(</span><span class="err">'#</span> <span class="n">You</span> <span class="n">are</span> <span class="n">reading</span> <span class="n">the</span> <span class="s">".properties"</span> <span class="n">entry</span><span class="o">.</span><span class="err">'</span><span class="o">)(</span><span class="mi">0</span><span class="o">,</span><span class="mi">42</span><span class="o">)</span>
@@ -185,7 +185,7 @@ tab : <span class="se">\u</span>0009
 </code></div>
 
 <a name="section-3" class="elem-anchor"></a>
-<h3>2.4。<a href="#section-3" class="anchor-link"><span></span></a></h3>
+<h3>2.4.<a href="#section-3" class="anchor-link"><span></span></a></h3>
 <p>定义解析测试</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">simpleplugin</span><span class="o">;</span>
@@ -220,10 +220,10 @@ tab : <span class="se">\u</span>0009
 </code></div>
 
 <a name="section-4" class="elem-anchor"></a>
-<h3>2.5。<a href="#section-4" class="anchor-link"><span></span></a></h3>
+<h3>2.5.<a href="#section-4" class="anchor-link"><span></span></a></h3>
 <p>运行测试</p>
 
-<p>运行测试并确保它是绿色的。</p>
+<p>运行测试并确保它是绿色的.</p>
 
 
 

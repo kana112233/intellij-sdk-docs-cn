@@ -84,9 +84,9 @@
 
 
                     <h1>Supporting Module Types</h1>
-                    <p><em>IntelliJ Platform</em> 提供了一组可以选择的标准模块类型，但是，您可能需要创建一个尚不支持的类型的模块。</p>
+                    <p><em>IntelliJ Platform</em> 提供了一组可以选择的标准模块类型，但是，您可能需要创建一个尚不支持的类型的模块.</p>
 
-<p>本教程介绍如何注册新模块类型并将其链接到项目创建过程和UI。</p>
+<p>本教程介绍如何注册新模块类型并将其链接到项目创建过程和UI.</p>
 
 <h2>预先要求</h2>
 
@@ -94,9 +94,9 @@
 
 <p>看到</p>
 
-<p><a href="/intellij-sdk-docs-cn/basics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>。</p>
+<p><a href="/intellij-sdk-docs-cn/basics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a>.</p>
 
-<p><strong>注意:用于选择模块类型的UI和通过项目向导创建模块的UI是IntelliJ特定的。</strong></p>
+<p><strong>注意:用于选择模块类型的UI和通过项目向导创建模块的UI是IntelliJ特定的.</strong></p>
 
 <a name="section" class="elem-anchor"></a>
 <h2>1.注册新模块类型<a href="#section" class="anchor-link"><span></span></a></h2>
@@ -105,7 +105,7 @@
 
 <p><code class="code highlight language-text">plugin.xml</code></p>
 
-<p>配置文件。</p>
+<p>配置文件.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;moduleType</span> <span class="na">id=</span><span class="s">"DEMO_MODULE_TYPE"</span> <span class="na">implementationClass=</span><span class="s">"com.intellij.tutorials.module.DemoModuleType"</span><span class="nt">/&gt;</span>
@@ -183,7 +183,7 @@
 <a name="section-2" class="elem-anchor"></a>
 <h2>4.提供自定义向导步骤<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
-<p>为项目创建阶段提供UI组件的实现。</p>
+<p>为项目创建阶段提供UI组件的实现.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoModuleWizardStep</span> <span class="kd">extends</span> <span class="n">ModuleWizardStep</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -201,9 +201,9 @@
 <a name="section-3" class="elem-anchor"></a>
 <h2>5.创建新类型的模块<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
-<p>编译并运行插件后，使用* IntelliJ IDEA *的源编译实例创建一个新项目。</p>
+<p>编译并运行插件后，使用* IntelliJ IDEA *的源编译实例创建一个新项目.</p>
 
-<p>您将在“项目向导”中看到新的模块类型及其设置面板。</p>
+<p>您将在“项目向导”中看到新的模块类型及其设置面板.</p>
 
 <p><img src="module_types/img/new_module_type.png" alt="新模块类型" /></p>
 

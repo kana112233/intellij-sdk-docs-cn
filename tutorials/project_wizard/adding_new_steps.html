@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,31 +78,31 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/project_wizard/module_types.html">Supporting Module Types</a>
                     </div>
-                    
+
 
                     <h1>Adding New Steps to Project Wizard</h1>
-                    <p>本教程介绍如何向项目向导添加额外步骤以提供其他项目配置设置。</p>
+                    <p>本教程介绍如何向项目向导添加额外步骤以提供其他项目配置设置.</p>
 
 <a name="section" class="elem-anchor"></a>
 <h2>预先要求<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>创建一个空的插件项目。</p>
+<p>创建一个空的插件项目.</p>
 
 <p>看到</p>
 
 <p><a href="/intellij-sdk-docs-cn/basics/getting_started/creating_plugin_project.html"><span>创建插件项目</span></a></p>
 
-<p>知道怎么做。</p>
+<p>知道怎么做.</p>
 
 <a name="section-1" class="elem-anchor"></a>
 <h2>1.注册模块构建器<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
-<p>项目配置设置取决于项目的模块类型。</p>
+<p>项目配置设置取决于项目的模块类型.</p>
 
-<p>在<code class="code highlight language-text">plugin.xml</code>配置文件中注册一个新的* moduleBuilder *扩展点。</p>
+<p>在<code class="code highlight language-text">plugin.xml</code>配置文件中注册一个新的* moduleBuilder *扩展点.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;moduleBuilder</span> <span class="na">builderClass=</span><span class="s">"org.jetbrains.tutorials.project.wizard.DemoModuleWizardStep"</span> <span class="na">id=</span><span class="s">"DEMO_STEP"</span> <span class="na">order=</span><span class="s">"first"</span><span class="nt">/&gt;</span>
@@ -112,7 +112,7 @@
 <a name="section-2" class="elem-anchor"></a>
 <h2>2.创建自定义模块构建器<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
-<p>扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleBuilder</code></span></a>类以提供自定义配置。</p>
+<p>扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/ide/util/projectWizard/ModuleBuilder.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">ModuleBuilder</code></span></a>类以提供自定义配置.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoModuleWizardStep</span> <span class="kd">extends</span> <span class="n">ModuleBuilder</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setupRootModel</span><span class="o">(</span><span class="n">ModifiableRootModel</span> <span class="n">modifiableRootModel</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConfigurationException</span> <span class="o">{</span>
@@ -128,8 +128,8 @@
 <a name="section-3" class="elem-anchor"></a>
 <h2>3.定义模块类型<a href="#section-3" class="anchor-link"><span></span></a></h2>
 
-<p>设置要为其提供额外向导步骤的模块类型。
-在此示例中，我们选择一个空模块类型。</p>
+<p>设置要为其提供额外向导步骤的模块类型.
+在此示例中，我们选择一个空模块类型.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoModuleWizardStep</span> <span class="kd">extends</span> <span class="n">ModuleBuilder</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setupRootModel</span><span class="o">(</span><span class="n">ModifiableRootModel</span> <span class="n">modifiableRootModel</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConfigurationException</span> <span class="o">{</span>
@@ -145,9 +145,9 @@
 <a name="section-4" class="elem-anchor"></a>
 <h2>4.设计和实现向导步骤<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
-<p>提供要添加到向导的自定义UI组件的实现。</p>
+<p>提供要添加到向导的自定义UI组件的实现.</p>
 
-<p>在这种情况下，我们将其留作标签。</p>
+<p>在这种情况下，我们将其留作标签.</p>
 
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoModuleWizardStep</span> <span class="kd">extends</span> <span class="n">ModuleBuilder</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setupRootModel</span><span class="o">(</span><span class="n">ModifiableRootModel</span> <span class="n">modifiableRootModel</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConfigurationException</span> <span class="o">{</span>
@@ -155,7 +155,7 @@
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="n">ModuleType</span> <span class="nf">getModuleType</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">ModuleType</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">;</span> 
+        <span class="k">return</span> <span class="n">ModuleType</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
@@ -178,21 +178,21 @@
 <a name="ui" class="elem-anchor"></a>
 <h2>5.检查UI外观<a href="#ui" class="anchor-link"><span></span></a></h2>
 
-<p>编译并运行插件后，使用* IntelliJ IDEA *的源编译实例创建一个新项目。</p>
+<p>编译并运行插件后，使用* IntelliJ IDEA *的源编译实例创建一个新项目.</p>
 
 <p><img src="img/empty_project.png" alt="新项目" /></p>
 
-<p>选择<em>空模块</em>类型，单击下一步，即可进入刚刚添加的额外步骤。
+<p>选择<em>空模块</em>类型，单击下一步，即可进入刚刚添加的额外步骤.
  </p>
 
 <p><img src="img/extra_step.png" alt="额外步骤" /></p>
 
-<p>根据您的要求修改和调整UI组件。</p>
+<p>根据您的要求修改和调整UI组件.</p>
 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/project_wizard/module_types.html">Supporting Module Types</a>
                     </div>
                     <div class="last-modified">
