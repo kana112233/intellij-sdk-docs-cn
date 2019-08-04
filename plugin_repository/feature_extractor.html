@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/plugin_repository/api/api_reference.html">Plugin Repository API Reference</a>
                         <a class="navigation-links__next" href="/plugin_repository/custom_channels.html">Custom Release Channels</a>
                     </div>
-                    
+
 
                     <h1>Plugin Recommendations</h1>
                     <p>IntelliJ平台IDE将推荐一个插件,以便在以下某种情况下进行安装:</p>
@@ -96,7 +96,7 @@
 使用插件配置的设置(模块,构面,工件或运行配置).</li>
 </ul>
 
-<p>IntelliJ Platform IDE仅在适当的上下文中显示插件建议,因此它们对用户有意义.</p>
+<p>IntelliJ Platform IDE仅在适当的上下文中显示插件推荐,因此它们对用户有意义.</p>
 
 <p><a href="https://github.com/JetBrains/intellij-plugin-verifier/tree/master/intellij-feature-extractor/" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">feature extractor</code></span></a>工具</p>
 
@@ -119,7 +119,7 @@
 
 <p>你应该扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij/openapi/fileTypes/FileTypeFactory.java" data-bypass="yes" target="_blank"><span>FileTypeFactory</span></a></p>
 
-<p>并在<code class="code highlight language-text">createFileTypes(FileTypeConsumer)</code>中提供支持的文件扩展名. 
+<p>并在<code class="code highlight language-text">createFileTypes(FileTypeConsumer)</code>中提供支持的文件扩展名.
 <code class="code highlight language-text">FileTypeConsumer</code>的值由<code class="code highlight language-text">feature extractor</code>分析.</p>
 
 <p>建议安装支持_ \ * .d_扩展类型的插件:</p>
@@ -135,7 +135,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/execution/configurations/ConfigurationType.java" data-bypass="yes" target="_blank"><span>ConfigurationType</span></a></p>
 
-<p>并实现<code class="code highlight language-text">getId()</code>方法. 
+<p>并实现<code class="code highlight language-text">getId()</code>方法.
 <code class="code highlight language-text">feature extractor</code>分析<code class="code highlight language-text">getId()</code>的值.</p>
 
 <p>建议安装支持* Run D App *配置类型的插件:</p>
@@ -149,7 +149,7 @@
 
 <p>要支持Facet Type功能,您应该扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/facet/FacetType.java" data-bypass="yes" target="_blank"><span>FacetType</span></a>,</p>
 
-<p>并将<code class="code highlight language-text">stringId</code>传递给它的构造函数. 
+<p>并将<code class="code highlight language-text">stringId</code>传递给它的构造函数.
 <code class="code highlight language-text">stringId</code>参数的值将由`feature extractor’分析.</p>
 
 <p>安装支持* jangaroo * Facet类型的插件的通知:</p>
@@ -165,7 +165,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/lang-api/src/com/intellij/openapi/module/ModuleType.java" data-bypass="yes" target="_blank"><span>ModuleType</span></a></p>
 
-<p>并将Module Type的<code class="code highlight language-text">id</code>参数传递给它的构造函数. 
+<p>并将Module Type的<code class="code highlight language-text">id</code>参数传递给它的构造函数.
 <code class="code highlight language-text">feature extractor</code>将评估<code class="code highlight language-text">id</code>的值.</p>
 
 <p>参见<a href="/intellij-sdk-docs-cn/reference_guide/project_model/module.html"><span>Module</span></a>和<a href="/intellij-sdk-docs-cn/tutorials/project_wizard/module_types.html"><span>Supporting Module Types</span></a></p>
@@ -177,7 +177,7 @@
 
 <p>要支持特定的工件类型,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/compiler/openapi/src/com/intellij/packaging/artifacts/ArtifactType.java" data-bypass="yes" target="_blank"><span>ArtifactType</span></a>,</p>
 
-<p>并将<code class="code highlight language-text">id</code>参数传递给它的构造函数. 
+<p>并将<code class="code highlight language-text">id</code>参数传递给它的构造函数.
 <code class="code highlight language-text">id</code>参数的值由`feature extractor’分析.</p>
 
 <p>启用支持* dm.bundle *插件类型的插件的示例建议:</p>
