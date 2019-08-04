@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,10 +78,10 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/user_interface_components/dialog_wrapper.html">DialogWrapper</a>
                     </div>
-                    
+
 
                     <h1>Tool Windows</h1>
                     <a name="windows" class="elem-anchor"></a>
@@ -209,19 +209,19 @@
 <p>4.在本节中，添加<code class="code highlight language-text">&lt;toolWindow&gt;</code>元素，对于此元素，设置ToolWindowEP bean类中声明的以下属性:
     </p>
 <ul>
-  <li>** id **(必填):指定工具窗口标题。
+  <li><strong>id</strong>(必填):指定工具窗口标题。
     </li>
-  <li>** anchor **(必需):指定将显示工具窗口按钮的工具窗口栏。
+  <li><strong> anchor </strong>(必需):指定将显示工具窗口按钮的工具窗口栏。
 可能的值:“left”，“right”，“top”，“bottom”。
     </li>
-  <li>** secondary **(可选):当为true时，工具窗口按钮将显示在工具窗口栏的下部。
+  <li><strong> secondary </strong>(可选):当为true时，工具窗口按钮将显示在工具窗口栏的下部。
 默认值为false。
     </li>
-  <li>** factoryClass **(必需):指定实现ToolWindowFactory接口的Java类(参见步骤1)。
+  <li><strong> factoryClass </strong>(必需):指定实现ToolWindowFactory接口的Java类(参见步骤1)。
     </li>
-  <li>** icon **(可选):指定标识工具窗口的图标的路径(如果有)。
+  <li><strong> icon </strong>(可选):指定标识工具窗口的图标的路径(如果有)。
     </li>
-  <li>** conditionClass **(可选):指定实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util-rt/src/com/intellij/openapi/util/Condition.java" data-bypass="yes" target="_blank"><span>Condition</span></a>接口的Java类。
+  <li><strong> conditionClass </strong>(可选):指定实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util-rt/src/com/intellij/openapi/util/Condition.java" data-bypass="yes" target="_blank"><span>Condition</span></a>接口的Java类。
 使用此类，您可以定义要显示工具窗口按钮的条件。
 在Condition类中，您应该覆盖value方法:如果此方法返回false，则工具窗口栏上不会显示工具窗口按钮。</li>
 </ul>
@@ -236,7 +236,7 @@
 <a name="section-2" class="elem-anchor"></a>
 <h3>示例插件<a href="#section-2" class="anchor-link"><span></span></a></h3>
 
-<p>为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow <strong>示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/) 
+<p>为了阐明如何开发创建工具窗口的插件，请考虑[code_samples]中提供的** toolWindow <strong>示例插件(https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/)
 SDK文档的目录。
 此插件创建</strong> Sample Calendar **工具窗口，显示系统日期，时间和时区。</p>
 
@@ -258,7 +258,7 @@ If necessary, change the <a href="https://www.jetbrains.com/help/idea/run-debug
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/user_interface_components/dialog_wrapper.html">DialogWrapper</a>
                     </div>
                     <div class="last-modified">

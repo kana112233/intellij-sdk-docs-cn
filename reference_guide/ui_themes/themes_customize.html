@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes.html">Creating Custom UI Themes</a>
                         <a class="navigation-links__next" href="/reference_guide/ui_themes/themes_extras.html">UI Themes - Editor Schemes and Background Images</a>
                     </div>
-                    
+
 
                     <h1>Customizing UI Themes - Icons and UI Controls</h1>
                     <p>A UI Theme is customized by adding information to the UI Theme description file that overrides the base (<em>Light</em> or <em>Darcula</em>) UI Theme.</p>
@@ -106,13 +106,13 @@
 
 <p>例如,请参阅IntelliJ IDEA _High Contrast_主题的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/themes/HighContrast.theme.json" data-bypass="yes" target="_blank"><span>主题描述文件</span></a>.</p>
 
-<p>##自定义图标</p>
+<h2>自定义图标</h2>
 
 <p>UI主题可以自定义默认IntelliJ IDEA UI图标的颜色,或者将默认图标替换为默认图标.</p>
 
 <p>通过在主题描述文件中添加一个“图标”:{}`部分来完成定制.</p>
 
-<p>###覆盖图标的全局颜色</p>
+<h3>覆盖图标的全局颜色</h3>
 
 <p>通过将键值对添加到“ColorPalette”:{}`部分来自定义默认的全局图标颜色.</p>
 
@@ -135,11 +135,11 @@
 </span></code></div>
 <p>This color substitution is applied throughout the IDE UI.</p>
 
-<p>###自定义图标调色板颜色</p>
+<h3>自定义图标调色板颜色</h3>
 
 <p>图标选项板是预定义的UI主题颜色键,每个颜色键描述“操作”或“对象”上下文中的单个颜色.</p>
 
-<p>####“动作”和“对象”上下文中的图标颜色</p>
+<h4>“动作”和“对象”上下文中的图标颜色</h4>
 
 <p>IntelliJ IDEA具有为“Actions”和“Objects”上下文定义的默认图标颜色.</p>
 
@@ -153,7 +153,7 @@
 
 <p>请注意,本文档将“对象”键称为“名词图标”.</p>
 
-<p>####自定义“动作”和“对象”图标颜色</p>
+<h4>自定义“动作”和“对象”图标颜色</h4>
 
 <p>通过向主题描述文件中的“ColorPalette”:{}`部分添加“Actions”或“Objects”键和自定义颜色“值”来定制图标调色板颜色.</p>
 
@@ -170,10 +170,10 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></div>
-<p>This more specific change to the <code class="code highlight language-text">Actions.Blue</code> color overrides the default definition. 
+<p>This more specific change to the <code class="code highlight language-text">Actions.Blue</code> color overrides the default definition.
 It will also, in the narrower context of blue <code class="code highlight language-text">Actions</code> icons, supersede any global color overrides of the default blue icon color.</p>
 
-<p>###自定义图标</p>
+<h3>自定义图标</h3>
 
 <p>默认的IntelliJ IDEA UI图标可以由自定义图标替换.</p>
 
@@ -189,8 +189,8 @@ It will also, in the narrower context of blue <code class="code highlight langua
 
 <p>此路径来自[AllIcons.[Group].[IconName]`[UI Inspector]报告的图标部分中的路径(/reference_guide/internal_actions/internal_uii.md).</p>
 
-<p>For example, the <em>Build</em> (hammer) icon in the toolbar has the path <code class="code highlight language-text">Allcons.Actions.Compile</code> as reported by the UI Inspector. 
-Therefore the <code class="code highlight language-text">key</code> for the <em>Build</em> icon is <code class="code highlight language-text">/actions/compile.svg</code>. 
+<p>For example, the <em>Build</em> (hammer) icon in the toolbar has the path <code class="code highlight language-text">Allcons.Actions.Compile</code> as reported by the UI Inspector.
+Therefore the <code class="code highlight language-text">key</code> for the <em>Build</em> icon is <code class="code highlight language-text">/actions/compile.svg</code>.
 The <code class="code highlight language-text">value</code> is the file name of the replacement icon, located in the <code class="code highlight language-text">resources</code> folder of the UI Theme plugin project:</p>
 <div class="code-block" data-lang="json"><code class="code-block__wrapper"><span class="p">{</span><span class="w">
   </span><span class="s2">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -200,13 +200,13 @@ The <code class="code highlight language-text">value</code> is the file name of 
 </span></code></div>
 <p>The color of a replaced icon takes precedence over any <code class="code highlight language-text">ColorPalette</code> overrides.</p>
 
-<p>##自定义UI控件</p>
+<h2>##自定义UI控件</h2>
 
 <p>UI主题可以更改IntelliJ IDEA UI中更多常规控件的外观.</p>
 
 <p>这些控件的示例包括标签,按钮,复选框,树,列表和菜单.</p>
 
-<p>###自定义UI控件颜色</p>
+<h3>自定义UI控件颜色</h3>
 
 <p>通过将键值对添加到主题描述文件的“ui”:{}`部分来指定UI控件的自定义颜色.</p>
 
@@ -225,7 +225,7 @@ The <code class="code highlight language-text">value</code> is the file name of 
 
 <p>查找UI控件键的方法在<a href="#finding-attribute-keys-for-ui-controls"><span>查找UI控件的属性键</span></a>部分中.</p>
 
-<p>####使用相同属性自定义所有UI控件颜色</p>
+<h4>使用相同属性自定义所有UI控件颜色</h4>
 
 <p>所有具有相同“属性”部分键的UI控件都可以设置为相同的颜色.</p>
 
@@ -248,7 +248,7 @@ The <code class="code highlight language-text">value</code> is the file name of 
 
 <a name="customizing-the-color-of-specific-ui-control-types" class="elem-anchor"></a>
 <h4>Customizing the Color of Specific UI Control Types</h4>
-<p>The color of a specific UI control types are changed by adding a key-value pair to the <code class="code highlight language-text">"ui": {}</code> section of a Theme description file. 
+<p>The color of a specific UI control types are changed by adding a key-value pair to the <code class="code highlight language-text">"ui": {}</code> section of a Theme description file.
 The <code class="code highlight language-text">key</code> is the full <code class="code highlight language-text">element.property</code> format and the <code class="code highlight language-text">value</code> is the custom color.</p>
 
 <p>The following example sets the background color for all labels to the color #F6E9C9</p>
@@ -263,7 +263,7 @@ The <code class="code highlight language-text">key</code> is the full <code clas
 </span></code></div>
 <p>The <code class="code highlight language-text">Label.background</code> entry supersedes, in the narrower context of label backgrounds, any default color as well as any wildcard color assigned to backgrounds.</p>
 
-<p>###自定义UI控件的边框</p>
+<h3>自定义UI控件的边框</h3>
 
 <p>UI控件中使用的边框的颜色和几何形状可以通过主题描述文件中的键值对进行自定义.</p>
 
@@ -275,7 +275,7 @@ The <code class="code highlight language-text">key</code> is the full <code clas
   
 *<code class="code highlight language-text">border</code>是指定为顶部,左侧,底部和右侧宽度的边框宽度(以像素为单位).
   
-边界颜色也(可选地)被指定为十六进制RGB,例如, 
+边界颜色也(可选地)被指定为十六进制RGB,例如,
 “E6E6E6”没有“#”字符.
   
 *<code class="code highlight language-text">borderInsets</code>是从<code class="code highlight language-text">element</code>边缘到边框的插入距离(以像素为单位).
@@ -284,7 +284,7 @@ The <code class="code highlight language-text">key</code> is the full <code clas
 
 <p>用于识别UI控制键的方法在<a href="#finding-attribute-keys-for-ui-controls"><span>查找UI控件的属性键</span></a>部分中.</p>
 
-<p>####自定义特定UI控件的边框外观</p>
+<h4>自定义特定UI控件的边框外观</h4>
 
 <p>通过向主题描述文件的“ui”:{}`部分添加键值对来自定义特定UI控件类型的边框外观.</p>
 
@@ -295,7 +295,7 @@ The <code class="code highlight language-text">key</code> is the full <code clas
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></div>
-<p>In this example the customized border supersedes the default definition and 
+<p>In this example the customized border supersedes the default definition and
 any global color override.</p>
 
 <p>##查找UI控件的属性键</p>
@@ -306,7 +306,7 @@ any global color override.</p>
 
 <p>对于常规搜索,这里有一些用于定位UI控件键的建议方法.</p>
 
-<p>###在编辑器中使用代码完成查找UI控件键</p>
+<h3>在编辑器中使用代码完成查找UI控件键</h3>
 
 <p>查找UI控件键的首选方法是使用IntelliJ IDEA编辑器中的代码完成功能.</p>
 
@@ -316,7 +316,7 @@ any global color override.</p>
 
 <p><img src="img/uit_control_complete.png" alt="UI控制密钥代码完成" /></p>
 
-<p>###使用Laf Defaults UI查找UI控件键</p>
+<h3>使用Laf Defaults UI查找UI控件键</h3>
 
 <p>使用<a href="/intellij-sdk-docs-cn/reference_guide/internal_actions/internal_ui_lafd.html"><span>Laf Defaults</span></a>检查器,输入键的“element”部分.</p>
 

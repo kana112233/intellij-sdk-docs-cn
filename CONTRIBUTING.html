@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T19:40:58+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/intro/key_topics.html">Key Topics</a>
                         <a class="navigation-links__next" href="/CODE_OF_CONDUCT.html">Code of Conduct</a>
                     </div>
-                    
+
 
                     <h1>Contributing to the IntelliJ Platform SDK</h1>
                     <p>本文档描述了我们对开源IntelliJ Platform SDK文档和示例代码的贡献指南.
@@ -129,7 +129,7 @@
 有关详细信息,请参阅<a href="https://acaird.github.io/computers/2014/11/16/docker-virtualbox-host-networking" data-bypass="yes" target="_blank"><span>博客文章</span></a>.
  
     
-*挂载当前目录(<code class="code highlight language-text">$ PWD</code>是Unix样式的环境变量.您可以在Windows上使用<code class="code highlight language-text">％CD％</code>,或指定完整路径)作为docker容器内的<code class="code highlight language-text">/usr/src/app</code>. 
+*挂载当前目录(<code class="code highlight language-text">$ PWD</code>是Unix样式的环境变量.您可以在Windows上使用<code class="code highlight language-text">％CD％</code>,或指定完整路径)作为docker容器内的<code class="code highlight language-text">/usr/src/app</code>.
 docker镜像将<code class="code highlight language-text">intellij-sdk-docs</code> repo视为文件夹<code class="code highlight language-text">/usr/src/app</code>.</p>
 </aside>
 
@@ -143,7 +143,7 @@ docker镜像将<code class="code highlight language-text">intellij-sdk-docs</cod
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">*运行Dockerfile的`CMD`指令中的命令来执行:   *`rake bootstrap`,确保安装所有先决条件,   *`rake preview`,它构建网站并开始托管它. *最后,您可以访问[http://localhost:4000/intellij/sdk/docs/](http://localhost:4000/intellij/sdk/docs/)或使用IP访问新创建的站点docker客户端虚拟机的地址(请参阅上面的注释).
 </code></div>
 
-<p>###在本地开发文档</p>
+<h3>在本地开发文档</h3>
 
 <p>要构建文档站点,您需要:</p>
 

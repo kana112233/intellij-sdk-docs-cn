@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/project_model/sdk.html">SDK</a>
                         <a class="navigation-links__next" href="/reference_guide/project_model/facet.html">Facet</a>
                     </div>
-                    
+
 
                     <h1>Library</h1>
                     <p>库是模块所依赖的已编译代码(例如JAR文件)的存档.</p>
@@ -113,7 +113,7 @@
 
 <p>提供使用项目库和jar的功能.</p>
 
-<p>###如何获取模块所依赖的库列表？</p>
+<h3>如何获取模块所依赖的库列表？</h3>
 
 <p>要获取模块所依赖的库列表,请使用“OrderEnumerator.forEachLibrary”方法.</p>
 
@@ -129,7 +129,7 @@
 
 <p>此示例代码输出<code class="code highlight language-text">module</code>模块所依赖的库列表.</p>
 
-<p>###如何获取所有库的列表？</p>
+<h3>如何获取所有库的列表？</h3>
 
 <p>要管理应用程序和项目库的列表,<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/libraries/LibraryTable.java" data-bypass="yes" target="_blank"><span>LibraryTable</span></a></p>
 
@@ -144,7 +144,7 @@
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">OrderEntryUtil</span><span class="o">.</span><span class="na">getModuleLibraries</span><span class="o">(</span><span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">));</span>
 </code></div>
 
-<p>###如何获取图书馆内容？</p>
+<h3>如何获取图书馆内容？</h3>
 
 <p><code class="code highlight language-text">Library</code>类提供了<code class="code highlight language-text">getUrls</code>方法,您可以使用它来获取库包含的源根和类的列表.
 为了澄清,请考虑以下代码段:</p>
@@ -163,7 +163,7 @@
 
 <p>在此示例代码中,<code class="code highlight language-text">lib</code>是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/libraries/Library.java" data-bypass="yes" target="_blank"><span>Library</span></a>类型.</p>
 
-<p>###如何创建库？</p>
+<h3>如何创建库？</h3>
 
 <p>要创建库,您需要执行以下步骤:</p>
 
@@ -191,7 +191,7 @@
 您可以在[示例插件]中找到使用这些API的示例(https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/project_model/src/com/intellij/tutorials/project/
 模型/ModificationAction.java).</p>
 
-<p>###如何将内容添加到库或修改它？</p>
+<h3>如何将内容添加到库或修改它？</h3>
 
 <p>要添加或更改库的根,您需要执行以下步骤:</p>
 
@@ -204,11 +204,11 @@
 *使用<code class="code highlight language-text">Library.ModifiableModel.commit()</code>提交模型.
   </p>
 
-<p>###如何向模块添加库依赖项？</p>
+<h3>如何向模块添加库依赖项？</h3>
 
 <p>在写入操作下使用<code class="code highlight language-text">ModuleRootModificationUtil.addDependency(module,library)</code>.</p>
 
-<p>###检查属于图书馆</p>
+<h3>检查属于图书馆</h3>
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ProjectFileIndex.java" data-bypass="yes" target="_blank"><span>ProjectFileIndex</span></a>接口实现了许多方法,可用于检查指定的文件是否属于项目库
 课程或图书馆资源.</p>

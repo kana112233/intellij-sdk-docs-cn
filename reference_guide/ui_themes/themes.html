@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,25 +78,25 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/reference_guide/ui_themes/themes_customize.html">Customizing UI Themes - Icons and UI Controls</a>
                     </div>
-                    
+
 
                     <h1>Creating Custom UI Themes</h1>
                     <p>创建自定义UI主题是选择基本IDE主题(<em>Light_或_Darcula</em>)然后更改基本主题定义的各个方面的过程.</p>
 
 <p>自定义UI主题可以:</p>
 
-<p>*替换图标,</p>
+<p>替换图标,</p>
 
-<p>*更改图标和UI控件的颜色,</p>
+<p>更改图标和UI控件的颜色,</p>
 
-<p>*改变UI控件的边框和插图,</p>
+<p>改变UI控件的边框和插图,</p>
 
-<p>*提供自定义编辑器方案,</p>
+<p>提供自定义编辑器方案,</p>
 
-<p>*添加背景图片.</p>
+<p>添加背景图片.</p>
 
 <a name="ui" class="elem-anchor"></a>
 <h2>UI主题的结构<a href="#ui" class="anchor-link"><span></span></a></h2>
@@ -109,17 +109,17 @@
 
 <p>UI主题有几个组成部分:</p>
 
-<p>*插件项目的<code class="code highlight language-text">resources</code>文件夹中的必需主题描述(JSON)文件.</p>
+<p>插件项目的<code class="code highlight language-text">resources</code>文件夹中的必需主题描述(JSON)文件.</p>
 
-<p>*插件的<code class="code highlight language-text">plugin.xml</code>文件中需要的<code class="code highlight language-text">themeProvider</code>声明,位于插件项目的<code class="code highlight language-text">META-INF</code>文件夹中.</p>
+<p>插件的<code class="code highlight language-text">plugin.xml</code>文件中需要的<code class="code highlight language-text">themeProvider</code>声明,位于插件项目的<code class="code highlight language-text">META-INF</code>文件夹中.</p>
 
-<p>*从导出的IDE编辑器方案派生的可选编辑器方案描述(XML)文件.
+<p>从导出的IDE编辑器方案派生的可选编辑器方案描述(XML)文件.
   
 该文件位于插件项目的<code class="code highlight language-text">resources</code>文件夹中.</p>
 
-<p>*一个可选的背景图像文件,位于插件项目的<code class="code highlight language-text">resources</code>文件夹中.</p>
+<p>一个可选的背景图像文件,位于插件项目的<code class="code highlight language-text">resources</code>文件夹中.</p>
 
-<p>*可选的图标图像文件,位于插件项目的<code class="code highlight language-text">resources</code>文件夹中.</p>
+<p>可选的图标图像文件,位于插件项目的<code class="code highlight language-text">resources</code>文件夹中.</p>
 
 <p><img src="img/theme_components.png" alt="UI主题组件" /></p>
 
@@ -151,11 +151,11 @@
   </li>
 </ul>
 
-<p>##创建自定义UI主题</p>
+<h2>创建自定义UI主题</h2>
 
 <p>使用DevKit UI主题向导将UI主题添加到IntelliJ平台插件.</p>
 
-<p>###使用DevKit主题向导创建UI主题</p>
+<h3>使用DevKit主题向导创建UI主题</h3>
 
 <p>DevKit向导是DevKit插件的一部分,该插件与IntelliJ IDEA捆绑在一起.</p>
 
@@ -182,8 +182,8 @@ From the main menu, select the <em><strong>New | Plugin DevKit | Theme</strong><
 
 <p>对于SDK代码示例<code class="code highlight language-text">theme_basics</code>,该框是_unchecked_.</p>
 
-<p>Clicking the <em>OK</em> button creates a default Theme description file named <code class="code highlight language-text">[themeName].theme.json</code> in the plugin project’s <code class="code highlight language-text">resources</code> folder. 
-In this example, the file is named <code class="code highlight language-text">theme_basics.theme.json</code>. 
+<p>Clicking the <em>OK</em> button creates a default Theme description file named <code class="code highlight language-text">[themeName].theme.json</code> in the plugin project’s <code class="code highlight language-text">resources</code> folder.
+In this example, the file is named <code class="code highlight language-text">theme_basics.theme.json</code>.
 The content of the default file is a short set of key–value pairs:</p>
 <div class="code-block" data-lang="json"><code class="code-block__wrapper"><span class="p">{</span><span class="w">
  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"theme_basics"</span><span class="p">,</span><span class="w">
@@ -205,7 +205,7 @@ The content of the default file is a short set of key–value pairs:</p>
 
 <p><code class="code highlight language-text">ui</code>部分将在<a href="themes_customize.html#customizing-ui-controls"><span>Customizing UI Control Colors</span></a>中解决.</p>
 
-<p>The Wizard also creates a <code class="code highlight language-text">themeProvider</code> declaration in the <code class="code highlight language-text">&lt;extensions&gt;</code> section of the plugin’s <code class="code highlight language-text">plugin.xml</code> file. 
+<p>The Wizard also creates a <code class="code highlight language-text">themeProvider</code> declaration in the <code class="code highlight language-text">&lt;extensions&gt;</code> section of the plugin’s <code class="code highlight language-text">plugin.xml</code> file.
 This declaration binds the Theme description file to a theme provider extension using a generated unique <code class="code highlight language-text">id</code>.</p>
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;themeProvider</span> <span class="na">id=</span><span class="s">"eb9b7461-397b-4b98-a422-224fc0a74564"</span> <span class="na">path=</span><span class="s">"/theme_basics.theme.json"</span><span class="nt">/&gt;</span>
@@ -217,12 +217,12 @@ This declaration binds the Theme description file to a theme provider extension 
 
 <p>此时,UI主题<code class="code highlight language-text">theme_basics</code>是一个有效的UI主题.</p>
 
-<p>它的插件可以在基于IntelliJ平台的IDE中构建和测试,让用户有机会在<a href="https://www.jetbrains.com/help/idea/settings-appearance.html" data-bypass="yes" target="_blank"><span>主题</span></a><em>Preferences_下拉列表中选择_theme_basics</em> 
+<p>它的插件可以在基于IntelliJ平台的IDE中构建和测试,让用户有机会在<a href="https://www.jetbrains.com/help/idea/settings-appearance.html" data-bypass="yes" target="_blank"><span>主题</span></a><em>Preferences_下拉列表中选择_theme_basics</em>
 .</p>
 
 <p>自定义主题看起来与IntelliJ IDEA默认的<code class="code highlight language-text">Light</code>主题完全相同,但它是一个有效的自定义主题.</p>
 
-<p>###完成默认UI主题描述文件</p>
+<h3>完成默认UI主题描述文件</h3>
 
 <p>如果需要,可以直接编辑默认UI主题定义以添加或更改默认键的某些值:</p>
 
@@ -237,7 +237,7 @@ This declaration binds the Theme description file to a theme provider extension 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/reference_guide/ui_themes/themes_customize.html">Customizing UI Themes - Icons and UI Controls</a>
                     </div>
                     <div class="last-modified">

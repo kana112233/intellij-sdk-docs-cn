@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:46:04+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,9 +79,9 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/editor_basics.html">Basics of working with the Editor</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Supporting multiple carets</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -100,7 +100,7 @@
 
 <p>目前,最新的插入符号被认为是主要的插入符号.</p>
 
-<p>##核心功能</p>
+<h2>核心功能</h2>
 
 <p>可以通过以下方式获得与多插入符号实现相关的核心逻辑,例如访问当前存在的插入符号,添加和删除插入符号</p>
 
@@ -145,7 +145,7 @@
 <p>如果处理程序需要实现多插入符功能,它可以在重写的<code class="code highlight language-text">doExecute</code>方法中显式地执行,但是如果它只需要为每个插入符号调用该方法,则将参数传递给<code class="code highlight language-text">EditorActionHandler</code>构造函数就足够了
 在没有特定插入符上下文的情况下调用处理程序时,<code class="code highlight language-text">doExecute</code>为每个插入符号调用.</p>
 
-<p>###编辑动作代表</p>
+<h3>编辑动作代表</h3>
 
 <p>以下代表可用:</p>
 
@@ -167,7 +167,7 @@
 
 <p>目前,无需对处理程序进行任何更改以支持多个插入符号 - 它们已针对每个插入符号进行调用.</p>
 
-<p>##打字行动</p>
+<h2>打字行动</h2>
 
 <a name="typedactionhandlertypedhandlerdelegate" class="elem-anchor"></a>
 <h3>TypedActionHandler,TypedHandlerDelegate<a href="#typedactionhandlertypedhandlerdelegate" class="anchor-link"><span></span></a></h3>
@@ -207,7 +207,7 @@ needs to be provided instead.</p>
 
 <hr />
 
-<p>##代码洞察行动</p>
+<h2>代码洞察行动</h2>
 
 <p>继承自的现有操作</p>
 
@@ -225,7 +225,7 @@ needs to be provided instead.</p>
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/tutorials/editor_basics.html">Basics of working with the Editor</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019

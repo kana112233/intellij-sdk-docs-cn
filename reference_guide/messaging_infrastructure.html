@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:46:04+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,9 +79,9 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/architectural_overview/general_threading_rules.html">General Threading Rules</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Messaging infrastructure</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -129,14 +129,14 @@
 <p>订阅者在消息传递基础结构处注册此接口的实现,并且发布者可以稍后检索符合(IS-A)的对象并调用其中定义的任何方法.
 消息传递基础结构负责将该调度发送给该主题的所有订阅者,即,将在注册的回调上调用具有相同参数的相同方法;</p>
 
-<p>##消息总线</p>
+<h2>消息总线</h2>
 
 <p>是消息传递系统的核心.
 用于以下场景:</p>
 
 <p><img src="IMG/bus.png" alt="公交" /></p>
 
-<p>##连接</p>
+<h2>连接</h2>
 
 <p>管理特定总线内特定客户端的所有订阅.</p>
 
@@ -160,7 +160,7 @@
 
 <p>);</p>
 
-<p>##完全放弃</p>
+<h2>完全放弃</h2>
 
 <p><em>定义业务接口和主题</em></p>
 
@@ -333,9 +333,9 @@
   </li>
 </ul>
 
-<p>#Tips’n’tricks</p>
+<h1>Tips n tricks</h1>
 
-<p>##救济听众管理</p>
+<h2>救济听众管理</h2>
 
 <p>消息传递基础设施非常轻量级,因此,可以在本地子系统中重复使用它以减轻负担</p>
 
@@ -410,7 +410,7 @@
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/architectural_overview/general_threading_rules.html">General Threading Rules</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019

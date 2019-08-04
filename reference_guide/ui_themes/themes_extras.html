@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_customize.html">Customizing UI Themes - Icons and UI Controls</a>
                         <a class="navigation-links__next" href="/reference_guide/ui_themes/themes_metadata.html">Exposing Theme Metadata</a>
                     </div>
-                    
+
 
                     <h1>UI Themes - Editor Schemes and Background Images</h1>
                     <p>UI主题还可以提供自定义颜色和字体设置,以及在IntelliJ IDEA应用程序窗口中显示的自定义图像.
@@ -93,7 +93,7 @@
 
 <p>这些自定义颜色和字体设置称为_Editor Color Schemes_.</p>
 
-<p>###使用设置/首选项创建自定义编辑器方案</p>
+<h3>使用设置/首选项创建自定义编辑器方案</h3>
 
 <p>可以使用IDE _Settings/Preferences_对话框指定和导出自定义编辑器颜色方案.</p>
 
@@ -113,7 +113,7 @@
 
 <p>*请参阅<a href="#customizeizing-editor-scroll-bar-colors"><span>自定义编辑器滚动条颜色</span></a>以更改编辑器滚动条的颜色.</p>
 
-<p>###在自定义UI主题中包含编辑器颜色方案</p>
+<h3>在自定义UI主题中包含编辑器颜色方案</h3>
 
 <p>下一步是将颜色方案添加到UI Theme插件项目:</p>
 
@@ -164,7 +164,7 @@ For example, customized VCS colors for a subset of file statuses will appear in 
 </code></div>
 <p>For additional examples of <code class="code highlight language-text">FILESTATUS</code> color <code class="code highlight language-text">name</code> attributes, see the editor color scheme XML file for the <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/themes/highContrastScheme.xml" data-bypass="yes" target="_blank"><span>High Contrast editor scheme</span></a>.</p>
 
-<p>###自定义编辑器滚动条颜色</p>
+<h3>自定义编辑器滚动条颜色</h3>
 
 <p>编辑器滚动条颜色应与之协调,并与编辑器颜色方案一起切换.</p>
 
@@ -178,7 +178,7 @@ For example, customized VCS colors for a subset of file statuses will appear in 
 
 <p>此时,没有用于更改自定义颜色编辑器方案XML文件的代码完成功能,因此<code class="code highlight language-text">name</code>属性如下所述.</p>
 
-<p>####编辑器滚动条属性名称格式</p>
+<h4>编辑器滚动条属性名称格式</h4>
 
 <p>滚动条<code class="code highlight language-text">name</code>属性的典型格式是<code class="code highlight language-text">ScrollBar.usage</code>,其中<code class="code highlight language-text">usage</code>描述了颜色的应用位置.</p>
 
@@ -193,7 +193,7 @@ For example, customized VCS colors for a subset of file statuses will appear in 
 <span class="nt">&lt;/color&gt;</span>
 </code></div>
 
-<p>####编辑器滚动条属性名称</p>
+<h4>编辑器滚动条属性名称</h4>
 
 <p>滚动条“名称”属性列表位于<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-resources/src/themes/highContrastScheme.xml" data-bypass="yes" target="_blank"><span>高对比度编辑器方案</span></a>文件中.</p>
 

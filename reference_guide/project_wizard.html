@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,10 +78,10 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/project_wizard.html">Project Wizard</a>
                     </div>
-                    
+
 
                     <h1>Project Wizard. Adding Support for Creating New Project Types.</h1>
                     <p>##项目向导</p>
@@ -116,7 +116,7 @@
 
 <p>*初始环境配置</p>
 
-<p>###模块类型</p>
+<h3>模块类型</h3>
 
 <p>创建新模块类型和扩展名</p>
 
@@ -132,7 +132,7 @@ The following
 <a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java" data-bypass="yes" target="_blank"><span>module type implementation</span></a>
 of a custom module type show how this instance can be registered and implemented.</p>
 
-<p>###实现Module Builder</p>
+<h3>实现Module Builder</h3>
 
 <p>设置新模块环境</p>
 
@@ -182,7 +182,7 @@ of a custom module type show how this instance can be registered and implemented
 
 <p>可以派生出来.</p>
 
-<p>###实现Module Builder Listener</p>
+<h3>实现Module Builder Listener</h3>
 
 <p>模块构建器侦听器对新模块创建做出反应,这可以作为项目创建过程的一部分来完成,</p>
 
@@ -202,7 +202,7 @@ For more details please see the following
 <a href="https://github.com/bulenkov/RedlineSmalltalk/blob/master/src/st/redline/smalltalk/module/RsModuleType.java" data-bypass="yes" target="_blank"><span>SmallTalk custom module type</span></a>
 implementation.</p>
 
-<p>###添加新向导步骤</p>
+<h3>添加新向导步骤</h3>
 
 <p>可以通过覆盖模块向导来添加新步骤</p>
 
@@ -245,7 +245,7 @@ which has two methods to be overridden:</p>
 
 <p>##实现项目结构检测器</p>
 
-<p>要在从现有源导入项目时支持模块的创建,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/idea-ui/src/com/intellij/ide/util/projectWizard/importSources/ProjectStructureDetector.java" data-bypass="yes" target="_blank"><span>ProjectStructureDetector</span></a> 
+<p>要在从现有源导入项目时支持模块的创建,请扩展<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/idea-ui/src/com/intellij/ide/util/projectWizard/importSources/ProjectStructureDetector.java" data-bypass="yes" target="_blank"><span>ProjectStructureDetector</span></a>
 .</p>
 
 <p>要检测文件,模块支持实现</p>
@@ -282,7 +282,7 @@ which has two methods to be overridden:</p>
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/tutorials/project_wizard.html">Project Wizard</a>
                     </div>
                     <div class="last-modified">

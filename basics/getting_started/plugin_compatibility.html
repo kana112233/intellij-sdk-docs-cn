@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,12 +81,12 @@
                         <a class="navigation-links__prev" href="/tutorials/writing_tests_for_plugins.html">Writing Tests For Plugins</a>
                         <a class="navigation-links__next" href="/basics/getting_started/build_number_ranges.html">Build Number Ranges</a>
                     </div>
-                    
+
 
                     <h1>Plugin Compatibility with IntelliJ Platform Products</h1>
                     <!--  TODO链接到sample_plugin文件 -->
 
-<p>所有基于_IntelliJ Platform_的产品,如IntelliJ IDEA,RubyMine,WebStorm等,都针对相同的底层平台API,一些产品共享在平台之上构建的功能,例如Java支持(IntelliJ IDEA)</p>
+<p>所有基于IntelliJ Platform的产品,如IntelliJ IDEA,RubyMine,WebStorm等,都针对相同的底层平台API,一些产品共享在平台之上构建的功能,例如Java支持(IntelliJ IDEA)</p>
 
 <p>和Android Studio)或数据库支持(IntelliJ IDEA Ultimate,DataGrip,PhpStorm等).</p>
 
@@ -226,7 +226,7 @@
 </code></div>
 
 <p>在将插件标记为与所有产品兼容之前,您应该验证它不使用任何特定于IntelliJ IDEA的API.
-为此,创建一个指向RubyMine,PyCharm等安装的_IntelliJ Platform_ SDK,针对该SDK编译插件,并验证所有内容是否已编译.
+为此,创建一个指向RubyMine,PyCharm等安装的IntelliJ Platform SDK,针对该SDK编译插件,并验证所有内容是否已编译.
 访问<a href="https://www.jetbrains.com/buy/opensource/" data-bypass="yes" target="_blank"><span>开源许可页面</span></a>,检查您的项目是否有资格获得JetBrains产品的免费开源许可.</p>
 
 <p><a href="https://plugins.jetbrains.com/" data-bypass="yes" target="_blank"><span>JetBrains插件存储库</span></a>根据上述规则自动检测与插件兼容的产品,并将其提供给这些产品的用户.</p>
@@ -234,7 +234,7 @@
 <a name="section-2" class="elem-anchor"></a>
 <h2>平台兼容性<a href="#section-2" class="anchor-link"><span></span></a></h2>
 
-<p>_IntelliJ Platform_和捆绑插件的API可以在发行版之间更改.
+<p>IntelliJ Platform和捆绑插件的API可以在发行版之间更改.
 可能会破坏插件的主要更改列在<a href="/intellij-sdk-docs-cn/reference_guide/api_changes_list.html"><span>IntelliJ平台和插件API中的不兼容更改</span></a>页面上.</p>
 
 <p>为了确保您的插件能够在您的目标平台上运行,您应该使用与您所定位的IntelliJ平台相同的开发版本.</p>

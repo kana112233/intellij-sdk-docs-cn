@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/project_model/project.html">Project</a>
                         <a class="navigation-links__next" href="/reference_guide/project_model/sdk.html">SDK</a>
                     </div>
-                    
+
 
                     <h1>Module</h1>
                     <p>_module_是一个独立的功能单元,可以独立运行,测试和调试.
@@ -138,11 +138,11 @@
 
 <p>本节讨论如何完成与模块管理相关的一些常见任务.</p>
 
-<p>###如何获得项目包含的模块列表？</p>
+<h3>如何获得项目包含的模块列表？</h3>
 
 <p>使用<code class="code highlight language-text">ModuleManager.getModules()</code>方法.</p>
 
-<p>###如何获取模块的依赖关系和类路径？</p>
+<h3>如何获取模块的依赖关系和类路径？</h3>
 
 <p>_Order entries_包括模块使用的SDK,库和其他模块.
 使用* IntelliJ IDEA * UI,您可以在* Project Structure *对话框的<a href="https://www.jetbrains.com/help/idea/dependencies-tab.html" data-bypass="yes" target="_blank"><span>Dependencies</span></a>选项卡上查看模块的订单条目
@@ -155,7 +155,7 @@
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span><span class="o">[]</span> <span class="n">roots</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">).</span><span class="na">orderEntries</span><span class="o">().</span><span class="na">classes</span><span class="o">().</span><span class="na">getRoots</span><span class="o">();</span>
 </code></div>
 
-<p>###如何获取模块使用的SDK？</p>
+<h3>如何获取模块使用的SDK？</h3>
 
 <p>使用<code class="code highlight language-text">ModuleRootManager.getSdk()</code>方法.
 此方法返回<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/projectRoots/Sdk.java" data-bypass="yes" target="_blank"><span>Sdk</span></a>类型的值.</p>
@@ -168,7 +168,7 @@
                  <span class="o">+</span> <span class="n">SDK</span><span class="o">.</span><span class="na">getVersionString</span><span class="o">()</span> <span class="o">+</span> <span class="s">" SDK home directory: "</span> <span class="o">+</span> <span class="n">SDK</span><span class="o">.</span><span class="na">getHomePath</span><span class="o">();</span>
 </code></div>
 
-<p>###如何获得该模块直接依赖的模块列表？</p>
+<h3>如何获得该模块直接依赖的模块列表？</h3>
 
 <p>使用<code class="code highlight language-text">ModuleRootManager.getDependencies()</code>方法获取<code class="code highlight language-text">Module</code>类型值的数组或<code class="code highlight language-text">ModuleRootManager.getDependencyModuleNames()</code>以获取模块名称数组.
 为了澄清,请考虑以下代码段:</p>
@@ -178,7 +178,7 @@
 <span class="n">String</span><span class="o">[]</span> <span class="n">dependentModulesNames</span> <span class="o">=</span> <span class="n">moduleRootManager</span><span class="o">.</span><span class="na">getDependencyModuleNames</span><span class="o">();</span>
 </code></div>
 
-<p>###如何获取依赖于该模块的模块列表？</p>
+<h3>如何获取依赖于该模块的模块列表？</h3>
 
 <p>使用<code class="code highlight language-text">ModuleManager.getModuleDependentModules(module)</code>方法.</p>
 
@@ -187,7 +187,7 @@
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="kt">boolean</span> <span class="n">isDependent</span> <span class="o">=</span> <span class="n">ModuleManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">project</span><span class="o">).</span><span class="na">isModuleDependent</span><span class="o">(</span><span class="n">module1</span><span class="o">,</span><span class="n">module2</span><span class="o">);</span>
 </code></div>
 
-<p>###如何获取指定文件或PSI元素所属的模块？</p>
+<h3>如何获取指定文件或PSI元素所属的模块？</h3>
 
 <p>*要获取指定文件所属的项目模块,请使用<code class="code highlight language-text">ModuleUtil.findModuleForFile()</code>静态方法.</p>
 
@@ -201,7 +201,7 @@
 
 <p>*要获取指定的<a href="../../basics/architectural_overview/psi_elements.html"><span>PSI元素</span></a>所属的项目模块,请使用<code class="code highlight language-text">ModuleUtil.findModuleForPsiElement(psiElement)</code>方法.</p>
 
-<p>###访问模块根目录</p>
+<h3>访问模块根目录</h3>
 
 <p>可以通过类<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java" data-bypass="yes" target="_blank"><span>ModuleRootManager.java</span></a>访问有关模块根的信息.</p>
 
@@ -210,7 +210,7 @@
 <div class="code-block" data-lang="java"><code class="code-block__wrapper"><span class="n">VirtualFile</span><span class="o">[]</span> <span class="n">contentRoots</span> <span class="o">=</span> <span class="n">ModuleRootManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">module</span><span class="o">).</span><span class="na">getContentRoots</span><span class="o">();</span>
 </code></div>
 
-<p>###检查属于模块源根目录</p>
+<h3>检查属于模块源根目录</h3>
 
 <p>要检查虚拟文件或目录是否属于模块源根目录,请使用<code class="code highlight language-text">ProjectFileIndex.getSourceRootForFile</code>方法.
 如果文件或目录不属于项目中任何模块的源根,则此方法返回null.</p>

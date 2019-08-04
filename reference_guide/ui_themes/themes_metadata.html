@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,9 +79,9 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_extras.html">UI Themes - Editor Schemes and Background Images</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Exposing Theme Metadata</h1>
                     <style>
@@ -101,11 +101,11 @@
 <p>以下最小示例演示了在公开插件UI的UI自定义键时所需的所有详细信息.</p>
 
 <p><code class="code highlight language-text">/resources/META-INF/plugin.xml</code>:</p>
-<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span> 
+<div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="nt">&lt;idea-plugin&gt;</span>
   [...]
   <span class="nt">&lt;extensions</span> <span class="na">defaultExtensionNs=</span><span class="s">"com.intellij"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;themeMetadataProvider</span> <span class="na">path=</span><span class="s">"/META-INF/MyPlugin.themeMetadata.json"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/extensions&gt;</span>    
+  <span class="nt">&lt;/extensions&gt;</span>
   [...]
 <span class="nt">&lt;/idea-plugin&gt;</span>
 
@@ -354,7 +354,7 @@
   </li>
 </ul>
 
-<p>####资本化</p>
+<h5>资本化</h5>
 
 <p>大写对象和子对象.
 使用lowerCamelCase作为属性.</p>
@@ -389,7 +389,7 @@
   </tbody>
 </table>
 
-<p>####摆动遗产</p>
+<h4>摆动遗产</h4>
 
 <p>某些颜色键未根据上述规则命名.
 此类密钥继承自Java Swing,并且出于兼容性原因无法重命名.</p>
@@ -436,7 +436,7 @@
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_extras.html">UI Themes - Editor Schemes and Background Images</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 9 May 2019

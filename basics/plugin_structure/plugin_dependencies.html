@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -79,9 +79,9 @@
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_icon_file.html">Plugin Icon</a>
-                        
+
                     </div>
-                    
+
 
                     <h1>Plugin Dependencies</h1>
                     <p>您的插件可能依赖于其他插件的类,无论是捆绑,第三方还是您自己的插件.
@@ -111,13 +111,15 @@
 <span class="o">}</span>
 </code></div>
 <ul>
-  <li>If you aren’t using Gradle, add the jars of the plugin you’re depending on to the classpath of your <em>IntelliJ Platform SDK</em>.
-In order to do that, open the Project Structure dialog, select the SDK you’re using, press the + button in the Classpath tab, and
-select the plugin jar file or files.
+  <li>如果您不使用Gradle，请将您所依赖的插件的jar添加到<em>IntelliJ Platform SDK</em>的类路径中 .
+    为此，打开“项目结构”对话框，选择您正在使用的SDK，按“类路径”选项卡中的+按钮，然后选择插件jar文件。
     <ul>
-      <li>For bundled plugins, the plugin jar files are located in <code class="code highlight language-text">plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">plugins/&lt;pluginname&gt;/lib</code> under the main installation directory.
-If you’re not sure which jar to add, you can add all of them.</li>
-      <li>For non-bundled plugins, the plugin jar files are located in <code class="code highlight language-text">config/plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">config/plugins/&lt;pluginname&gt;/lib</code> under the directory specified as “Sandbox Home” in the IntelliJ Platform Plugin SDK settings.</li>
+      <li>
+        对于捆绑插件，插件jar文件位于主安装目录下的 <code class="code highlight language-text">plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">plugins/&lt;pluginname&gt;/lib</code>中。
+.</li>
+      <li>
+        如果您不确定要添加哪个jar，可以添加所有jar。对于非捆绑插件，插件jar文件位于IntelliJ Platform Plugin SDK设置中指定为“Sandbox Home”的目录下的<code class="code highlight language-text">config/plugins/&lt;pluginname&gt;</code> or <code class="code highlight language-text">config/plugins/&lt;pluginname&gt;/lib</code>中。
+      </li>
     </ul>
   </li>
 </ul>
@@ -186,7 +188,7 @@ If you’re not sure which jar to add, you can add all of them.</li>
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
                         <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_icon_file.html">Plugin Icon</a>
-                        
+
                     </div>
                     <div class="last-modified">
                         Last modified: 11 May 2019
