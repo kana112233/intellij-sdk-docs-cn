@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/ui_themes/themes_intro.html">Custom UI Themes</a>
                         <a class="navigation-links__next" href="/basics/architectural_overview/files.html">Files</a>
                     </div>
-                    
+
 
                     <h1>Action System</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -123,13 +123,13 @@ For example, one of the action classes is responsible for the <strong>File | Ope
 <a name="pluginxml" class="elem-anchor"></a>
 <h3>在plugin.xml中注册操作<a href="#pluginxml" class="anchor-link"><span></span></a></h3>
 
-<p>以下示例演示了在<code class="code highlight language-text">plugin.xml</code>中注册操作. 
+<p>以下示例演示了在<code class="code highlight language-text">plugin.xml</code>中注册操作.
 <code class="code highlight language-text">plugin.xml</code>的示例部分演示了可以在<code class="code highlight language-text">&lt;actions&gt;</code>部分中使用的所有元素,并描述了每个元素的含义.</p>
 
 <div class="code-block" data-lang="xml"><code class="code-block__wrapper"><span class="c">&lt;!-- Actions --&gt;</span>
 <span class="nt">&lt;actions&gt;</span>
   <span class="c">&lt;!-- The &lt;action&gt; element defines an action to register.
-       The mandatory "id" attribute specifies an unique 
+       The mandatory "id" attribute specifies an unique
        identifier for the action.
        The mandatory "class" attribute specifies the
        full-qualified name of the class implementing the action.
@@ -163,12 +163,12 @@ For example, one of the action classes is responsible for the <strong>File | Ope
            keystroke of the action.
            The mandatory "keymap" attribute specifies the keymap for which
            the action is active. IDs of the standard keymaps are defined as
-           constants in the com.intellij.openapi.keymap.KeymapManager class. 
+           constants in the com.intellij.openapi.keymap.KeymapManager class.
            The optional "remove" attribute in the second &lt;keyboard-shortcut&gt;
-           element below means the specified shortcut should be removed from 
+           element below means the specified shortcut should be removed from
            the specified action.
            The optional "replace-all" attribute in the third &lt;keyboard-shortcut&gt;
-           element below means remove all keyboard and mouse shortcuts from the specified 
+           element below means remove all keyboard and mouse shortcuts from the specified
            action before adding the specified shortcut.  --&gt;</span>
     <span class="c">&lt;!-- Add the first and second keystrokes to all keymaps  --&gt;</span>
     <span class="nt">&lt;keyboard-shortcut</span> <span class="na">keymap=</span><span class="s">"$default"</span> <span class="na">first-keystroke=</span><span class="s">"control alt G"</span> <span class="na">second-keystroke=</span><span class="s">"C"</span><span class="nt">/&gt;</span>
@@ -180,7 +180,7 @@ For example, one of the action classes is responsible for the <strong>File | Ope
            action. An action can have several mouse shortcuts.
            The mandatory "keystroke" attribute specifies the clicks and
            modifiers for the action. It is defined as a sequence of words
-           separated by spaces: 
+           separated by spaces:
            "button1", "button2", "button3" for the mouse buttons;
            "shift", "control", "meta", "alt", "altGraph" for the modifier keys;
            "doubleClick" if the action is activated by a double-click of the button.
@@ -191,7 +191,7 @@ For example, one of the action classes is responsible for the <strong>File | Ope
            a &lt;mouse-shortcut&gt; element. See &lt;keyboard-shortcut&gt; for documentation.  --&gt;</span>
     <span class="nt">&lt;mouse-shortcut</span> <span class="na">keymap=</span><span class="s">"$default"</span> <span class="na">keystroke=</span><span class="s">"control button3 doubleClick"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/action&gt;</span>
-  <span class="c">&lt;!-- The &lt;group&gt; element defines an action group. &lt;action&gt;, &lt;group&gt; and 
+  <span class="c">&lt;!-- The &lt;group&gt; element defines an action group. &lt;action&gt;, &lt;group&gt; and
        &lt;separator&gt; elements defined within it are automatically included in the group.
        The mandatory "id" attribute specifies an unique identifier for the action.
        The optional "class" attribute specifies the full-qualified name of
@@ -221,7 +221,7 @@ For example, one of the action classes is responsible for the <strong>File | Ope
 <span class="nt">&lt;/actions&gt;</span>
 </code></div>
 
-<p>##从代码注册操作</p>
+<p>从代码注册操作</p>
 
 <p>要从代码注册操作,需要两个步骤.</p>
 
@@ -232,7 +232,7 @@ For example, one of the action classes is responsible for the <strong>File | Ope
   </li>
   <li>
     <p>其次,需要将操作添加到一个或多个组中.
-要按ID获取操作组的实例,必须调用<code class="code highlight language-text">ActionManager.getAction()</code>并将返回的值强制转换为<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij" data-bypass="yes" target="_blank"><span>DefaultActionGroup</span></a> 
+要按ID获取操作组的实例,必须调用<code class="code highlight language-text">ActionManager.getAction()</code>并将返回的值强制转换为<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/platform-api/src/com/intellij" data-bypass="yes" target="_blank"><span>DefaultActionGroup</span></a>
 /openapi/actionSystem/DefaultActionGroup.java)类.</p>
   </li>
 </ul>

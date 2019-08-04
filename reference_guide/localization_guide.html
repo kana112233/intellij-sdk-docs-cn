@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,12 +81,12 @@
                         <a class="navigation-links__prev" href="/reference_guide/vcs_integration_for_plugins.html">VCS Integration Plugins</a>
                         <a class="navigation-links__next" href="/basics/project_structure.html">Project Structure</a>
                     </div>
-                    
+
 
                     <h1>Localization Guide</h1>
                     <p>本文档的目的是描述创建IDEA本地化版本所需的步骤.</p>
 
-<p>##应用程序包布局</p>
+<h2>应用程序包布局</h2>
 
 <p>关于本地化目的,需要翻译的所有资源(英文)都位于调用的jar文件中</p>
 
@@ -113,7 +113,7 @@
 
 <p>对于每个这样的文件,本地化jar应该包含翻译版本,该版本放置在相对于jar根目录的完全相同的路径上,并且与原始文件和区域设置标识符具有完全相同的名称.</p>
 
-<p>例如来自<strong>* resources_en.jar **<em>的</em></strong>消息/ActionsBundle.properties <strong><em>文件应该在</em></strong> resources_ja.jar中有其翻译版<strong><em>消息/ActionsBundle_ja.properties **</em>文件</strong> 
+<p>例如来自<strong>* resources_en.jar **<em>的</em></strong>消息/ActionsBundle.properties <strong><em>文件应该在</em></strong> resources_ja.jar中有其翻译版<strong><em>消息/ActionsBundle_ja.properties **</em>文件</strong>
 *.</p>
 
 <p>所有属性文件都应使用* \ uXXXX *序列进行ASCII编码,这些序列用于在ASCII范围内没有表示的字符.</p>
@@ -127,14 +127,14 @@
 <p>属性值主要遵循MessageFormat规则.</p>
 
 <aside class="注意">
-  <p>由于历史原因,主菜单,工具栏,弹出菜单和其他操作的助记符字符以<code class="code highlight language-text">\ _</code>(下划线)字符为前缀,而所有其他助记符(如复选框,按钮等)使用<code class="code highlight language-text">＆</code> 
+  <p>由于历史原因,主菜单,工具栏,弹出菜单和其他操作的助记符字符以<code class="code highlight language-text">\ _</code>(下划线)字符为前缀,而所有其他助记符(如复选框,按钮等)使用<code class="code highlight language-text">＆</code>
 (＆符号)签署相同的目的.
 此外,在某些地方可能会遇到<code class="code highlight language-text">&amp;&amp;</code>(双＆符号),它表示在MacOS X下使用的替代助记符(映射到’U<code class="code highlight language-text">,</code>I<code class="code highlight language-text">,</code>O<code class="code highlight language-text">,</code>N`字符的助记符在那里不起作用
 ).
 通常,使用原始属性值中使用的相同助记符表示,一切都会正常.</p>
 </aside>
 
-<p>##组件位置</p>
+<h2>组件位置</h2>
 
 <ul>
   <li>

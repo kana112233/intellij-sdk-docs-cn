@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,10 +78,10 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
-                        
+
+
                     </div>
-                    
+
 
                     <h1>External Builder API and Plugins</h1>
                     <p>###外部构建流程工作流程</p>
@@ -97,7 +97,7 @@
 
 <p>*生成外部构建过程(或重用现有构建过程后台进程).</p>
 
-<p>*外部构建过程加载项目模型(.idea,.iml文件等),由[<code class="code highlight language-text">JpsModel</code>]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model 
+<p>*外部构建过程加载项目模型(.idea,.iml文件等),由[<code class="code highlight language-text">JpsModel</code>]表示(upsource:///jps/model-api/src/org/jetbrains/jps/model
 /JpsModel.java)实例.</p>
 
 <p>*根据要编译的每个构建目标的依赖关系,计算要构建的完整目标树.</p>
@@ -128,12 +128,12 @@
 它通过调用<code class="code highlight language-text">BuildOutputConsumer.registerOutputFile()</code>和<code class="code highlight language-text">ModuleLevelBuilder.OutputConsumer.registerOutputFile()</code>来填充.</p>
   </li>
   <li>
-    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/storage/Timestamps.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Timestamps</code></span></a>记录每个源文件在每个构建目标编译时的时间戳. 
+    <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/incremental/storage/Timestamps.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Timestamps</code></span></a>记录每个源文件在每个构建目标编译时的时间戳.
 (如果使用不同的范围多次调用编译并且同时更改了文件,则不同构建目标的最后编译时间戳可能会有所不同.)它由JPS自动更新.</p>
   </li>
 </ul>
 
-<p>IDE监视项目内容的更改,并使用这些缓存中的信息为每个编译生成一组脏文件和已删除文件. 
+<p>IDE监视项目内容的更改,并使用这些缓存中的信息为每个编译生成一组脏文件和已删除文件.
 (需要重新编译脏文件,删除的文件需要删除其输出).
 构建器还可以将其他文件报告为脏(例如,如果删除方法,构建器可以使用此方法将类报告为脏.)模块级构建器可以将一些文件添加到脏范围;
 如果发生这种情况,并且构建器从其<code class="code highlight language-text">build()</code>方法返回<code class="code highlight language-text">ADDITIONAL_PASS_REQUIRED</code>,则将使用新的脏范围启动针对同一模块块的另一轮构建器执行.</p>
@@ -186,7 +186,7 @@
 <p>构建过程具有内置的自我分析功能.
 要启用它们,请执行以下操作:</p>
 
-<p>1.将<code class="code highlight language-text">&lt;ide-home&gt;/lib/yjp-controller-api-redist.jar</code>和<code class="code highlight language-text">&lt;ide-home&gt;/bin/yjpagent.*</code>文件复制到<code class="code highlight language-text">&lt;ide-system-dir&gt;/compile-server 
+<p>1.将<code class="code highlight language-text">&lt;ide-home&gt;/lib/yjp-controller-api-redist.jar</code>和<code class="code highlight language-text">&lt;ide-home&gt;/bin/yjpagent.*</code>文件复制到<code class="code highlight language-text">&lt;ide-system-dir&gt;/compile-server
 </code></p>
 
 <ol>
@@ -236,7 +236,7 @@
 
 <p><a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/model-serialization/src/org/jetbrains/jps/model/serialization/JpsModelSerializerExtension.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">JpsModelSerializerExtension</code></span></a>从项目文件加载配置.</p>
 
-<p>####实施构建器</p>
+<h4>实施构建器</h4>
 
 <p>如果您的编译器不参与编译现有的<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/jps/jps-builders/src/org/jetbrains/jps/builders/BuildTarget.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">BuildTarget</code></span></a>,您需要创建一个新的实现
 <code class="code highlight language-text">BuildTarget</code>和<code class="code highlight language-text">BuildTargetType</code>.
@@ -247,8 +247,8 @@
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
-                        
+
+
                     </div>
                     <div class="last-modified">
                         Last modified: 9 May 2019

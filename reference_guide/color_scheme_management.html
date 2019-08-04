@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:46:04+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/work_with_icons_and_images.html">Working with Icons and Images</a>
                         <a class="navigation-links__next" href="/user_interface_components/kotlin_ui_dsl.html">Kotlin UI DSL</a>
                     </div>
-                    
+
 
                     <h1>Color Scheme Management in IntelliJ IDEA 12.1+</h1>
                     <a name="section" class="elem-anchor"></a>
@@ -98,7 +98,7 @@
 <a name="section-1" class="elem-anchor"></a>
 <h1>插件开发人员<a href="#section-1" class="anchor-link"><span></span></a></h1>
 
-<p>##文本属性键依赖项</p>
+<h2>文本属性键依赖项</h2>
 
 <p>指定突出显示文本属性的最简单和最佳方法是指定对* DefaultLanguageHighlighterColors *类中定义的标准键之一的依赖关系.</p>
 
@@ -130,7 +130,7 @@
 
 <p>如果方案设计者没有语言插件,他根本无法解决这个问题.</p>
 
-<p>##为特定方案提供属性</p>
+<h2>为特定方案提供属性</h2>
 
 <p>语言插件可以为“默认”和“Darcula”捆绑方案提供默认文本属性,或者如果方案名称已知则基本上为任何其他方案提供默认文本属性.</p>
 
@@ -174,9 +174,9 @@
 
 <p>无论如何,如果可能的话,尝试坚持使用简单的密钥依赖(注意它也适用于“Darcula”),只有在真正需要时才提供显式属性.</p>
 
-<p>#Program Designers</p>
+<h1>Program Designers</h1>
 
-<p>##新方案创建的典型工作流程</p>
+<h2>新方案创建的典型工作流程</h2>
 
 <p>*选择将用作基础的方案,例如“默认”</p>
 
@@ -198,7 +198,7 @@
     
 第一种方式是优选的,因为稍后需要更少的努力来改变配色方案.</p>
 
-<p>##文本属性继承</p>
+<h2>文本属性继承</h2>
 
 <p>对于没有任何值的许多语言文本属性,将有一行指示属性是从某个部分/属性继承的,例如:“关键字(语言默认值)”.</p>
 

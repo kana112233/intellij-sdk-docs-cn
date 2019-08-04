@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -70,7 +70,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +81,7 @@
                         <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_components.html">Plugin Components</a>
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_actions.html">Plugin Actions</a>
                     </div>
-                    
+
 
                     <h1>Plugin Extensions and Extension Points</h1>
                     <p><em>IntelliJ Platform</em> 提供了_extensions_和_extension points_的概念,允许插件与其他插件或IDE本身进行交互.</p>
@@ -104,7 +104,7 @@
 
 <p><strong>申报延期点</strong></p>
 
-<p>在<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分中,插入一个子元素<code class="code highlight language-text">&lt;extensionPoint&gt;</code>,它定义了扩展点名称和bean类的名称,或者允许在<code class="code highlight language-text">name</code>中扩展插件功能的接口,<code class="code highlight language-text">beanClass 
+<p>在<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分中,插入一个子元素<code class="code highlight language-text">&lt;extensionPoint&gt;</code>,它定义了扩展点名称和bean类的名称,或者允许在<code class="code highlight language-text">name</code>中扩展插件功能的接口,<code class="code highlight language-text">beanClass
 </code>和<code class="code highlight language-text">interface</code>属性.</p>
 
 <p>要澄清此过程,请考虑plugin.xml文件的以下示例部分:</p>
@@ -196,7 +196,7 @@
   <li><code class="code highlight language-text">os</code> - allows to restrict extension to given OS, e.g., <code class="code highlight language-text">os="windows"</code> registers the extension on Windows only</li>
 </ul>
 
-<p>##如何获得扩展点列表？</p>
+<h2>如何获得扩展点列表？</h2>
 
 <p>要获取 <em>IntelliJ Platform</em> 核心中可用的扩展点列表,请参阅以下XML配置文件的<code class="code highlight language-text">&lt;extensionPoints&gt;</code>部分:</p>
 
