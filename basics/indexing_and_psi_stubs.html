@@ -95,20 +95,20 @@
 
 <ul>
   <li>
-    <p><a href="/intellij-sdk-docs-cn/basics/indexing_and_psi_stubs/file_based_indexes.html"><span>基于文件的索引</span></a></p>
+    <p><a href="/intellij-sdk-docs-cn/basics/indexing_and_psi_stubs/file_based_indexes.html"><span>File-based Indexes</span></a></p>
   </li>
   <li>
-    <p><a href="/intellij-sdk-docs-cn/basics/indexing_and_psi_stubs/stub_indexes.html"><span>存根索引</span></a></p>
+    <p><a href="/intellij-sdk-docs-cn/basics/indexing_and_psi_stubs/stub_indexes.html"><span>Stub Indexes</span></a></p>
   </li>
 </ul>
 
-<p>基于文件的索引直接构建在文件内容上.
-存根索引是在序列化的<em>存根树</em>上构建的.
+<p>File-based Indexes直接构建在文件内容上.
+Stub Indexes是在序列化的<em>存根树</em>上构建的.
 源文件的存根树是其PSI树的子集,其仅包含外部可见的声明,并以紧凑的二进制格式序列化.</p>
 
-<p>查询基于文件的索引可以获得符合特定条件的文件集.
-查询存根索引可以获得匹配的PSI元素集.
-因此,自定义语言插件开发人员通常应在其插件实现中使用存根索引.</p>
+<p>查询File-based Indexes可以获得符合特定条件的文件集.
+查询Stub Indexes可以获得匹配的PSI元素集.
+因此,自定义语言插件开发人员通常应在其插件实现中使用Stub Indexes.</p>
 
 <a name="section-1" class="elem-anchor"></a>
 <h2>哑模式<a href="#section-1" class="anchor-link"><span></span></a></h2>
@@ -127,7 +127,7 @@
 
 <ul>
   <li>
-    <p>不需要基于文件的索引的聚合功能.
+    <p>不需要File-based Indexes的聚合功能.
 只需要根据特定文件的内容计算一些数据,并将其缓存在磁盘上</p>
   </li>
   <li>
@@ -138,7 +138,7 @@
   </li>
 </ul>
 
-<p>在这种情况下,可以使用基于文件的索引,但文件列表提供了一种懒惰地执行数据计算,在磁盘上缓存以及更轻量级API的方法.
+<p>在这种情况下,可以使用File-based Indexes,但文件列表提供了一种懒惰地执行数据计算,在磁盘上缓存以及更轻量级API的方法.
 请参阅<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/VirtualFileGist.java" data-bypass="yes" target="_blank"><span>VirtualFileGist</span></a>和<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/gist/PsiFileGist.java" data-bypass="yes" target="_blank"><span>PsiFileGist</span></a>文档.</p>
 
 

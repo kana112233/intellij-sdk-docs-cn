@@ -84,7 +84,7 @@
                     
 
                     <h1>File-based Indexes</h1>
-                    <p>基于文件的索引基于Map/Reduce架构.
+                    <p>File-based Indexes基于Map/Reduce架构.
 每个索引都有某种类型的键和某种类型的值.</p>
 
 <p>关键是后来用于从索引中检索数据的内容.</p>
@@ -102,15 +102,15 @@
 <p>当您访问索引时,指定您感兴趣的密钥并返回密钥出现的文件列表以及与每个文件关联的值.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h2>实现基于文件的索引<a href="#section" class="anchor-link"><span></span></a></h2>
+<h2>实现File-based Indexes<a href="#section" class="anchor-link"><span></span></a></h2>
 
-<p>一个相当简单的基于文件的索引实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java" data-bypass="yes" target="_blank"><span>UI Designer绑定表单索引</span></a>.
+<p>一个相当简单的File-based Indexes实现是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/plugins/ui-designer/src/com/intellij/uiDesigner/binding/FormClassIndex.java" data-bypass="yes" target="_blank"><span>UI Designer绑定表单索引</span></a>.
 请参考它作为一个例子来更好地理解这个主题.</p>
 
 <p>每个特定的索引实现都是一个扩展[FileBasedIndexExtension]的类(upsource:///platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndexExtension.java).
-基于文件的索引应该在<code class="code highlight language-text">&lt;fileBasedIndex&gt;</code>扩展点中注册.</p>
+File-based Indexes应该在<code class="code highlight language-text">&lt;fileBasedIndex&gt;</code>扩展点中注册.</p>
 
-<p>基于文件的索引的实现包括以下主要部分:</p>
+<p>File-based Indexes的实现包括以下主要部分:</p>
 
 <p>*<code class="code highlight language-text">getIndexer()</code>返回实际负责根据文件内容构建一组键/值对的索引器类.</p>
 
@@ -137,9 +137,9 @@
 </aside>
 
 <a name="section-1" class="elem-anchor"></a>
-<h2>访问基于文件的索引<a href="#section-1" class="anchor-link"><span></span></a></h2>
+<h2>访问File-based Indexes<a href="#section-1" class="anchor-link"><span></span></a></h2>
 
-<p>通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java" data-bypass="yes" target="_blank"><span>FileBasedIndex</span></a>类访问基于文件的索引.</p>
+<p>通过<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/util/indexing/FileBasedIndex.java" data-bypass="yes" target="_blank"><span>FileBasedIndex</span></a>类访问File-based Indexes.</p>
 
 <p>支持以下主要操作:</p>
 

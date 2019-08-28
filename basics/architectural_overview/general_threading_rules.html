@@ -130,7 +130,7 @@
   </li>
 </ul>
 
-<p>如果您的UI线程活动需要访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围PSI分析,解析引用等),请使用<code class="code highlight language-text">DumbService#smartInvokeLater</code>.
+<p>如果您的UI线程活动需要访问<a href="../indexing_and_psi_stubs.html"><span>File-based Indexes</span></a>(例如,它正在进行任何类型的项目范围PSI分析,解析引用等),请使用<code class="code highlight language-text">DumbService#smartInvokeLater</code>.
 这样,您的活动将在所有可能的索引过程完成后运行.</p>
 
 <a name="processcanceledexception" class="elem-anchor"></a>
@@ -201,7 +201,7 @@ PSI内部</p>
 <p>在这两种方法中,您应始终检查每个读取操作的开始,如果您正在使用的对象仍然有效,并且整个操作仍然有意义(即未被用户取消,则项目未关闭
 等)</p>
 
-<p>如果您正在进行的活动必须访问<a href="../indexing_and_psi_stubs.html"><span>基于文件的索引</span></a>(例如,它正在进行任何类型的项目范围的PSI分析,解析引用等),您应该重写<code class="code highlight language-text">ReadTask#runBackgroundProcess 
+<p>如果您正在进行的活动必须访问<a href="../indexing_and_psi_stubs.html"><span>File-based Indexes</span></a>(例如,它正在进行任何类型的项目范围的PSI分析,解析引用等),您应该重写<code class="code highlight language-text">ReadTask#runBackgroundProcess
 </code>并在那里使用“智能模式”读取操作:<code class="code highlight language-text">DumbService.getInstance(project).runReadActionInSmartMode(() --&gt; performInReadAction(indicator))</code></p>
 
 
