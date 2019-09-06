@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/plugin_structure/plugin_components">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_class_loaders.html">Plugin Class Loaders</a>
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_extensions_and_extension_points.html">Plugin Extensions and Extension Points</a>
                     </div>
-                    
+
 
                     <h1>Plugin Components</h1>
                     <p>组件是插件集成的基本概念.
@@ -93,11 +102,11 @@
 可以使用<code class="code highlight language-text">getComponent(Class)</code>方法从<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/application/Application.java" data-bypass="yes" target="_blank"><span>Application</span></a>实例中获取它们.</p>
   </li>
   <li>
-    <p><strong>为IDE中的每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>实例创建项目级组件</strong>. 
+    <p><strong>为IDE中的每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Project</code></span></a>实例创建项目级组件</strong>.
 (请注意,即使未打开的项目也可以创建组件.)可以使用<code class="code highlight language-text">getComponent(Class)</code>方法从<code class="code highlight language-text">Project</code>实例获取它们.</p>
   </li>
   <li>
-    <p><strong>在IDE中加载的每个项目中为每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Module</code></span></a>创建模块级组件</strong> 
+    <p><strong>在IDE中加载的每个项目中为每个<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/module/Module.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">Module</code></span></a>创建模块级组件</strong>
 .</p>
   </li>
 </ul>
@@ -125,7 +134,7 @@
 <p>可选地,应用程序级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ApplicationComponent.java" data-bypass="yes" target="_blank"><span>ApplicationComponent</span></a>接口.</p>
 
 <p>没有依赖项的应用程序组件应该有一个没有参数的构造函数,它将用于实例化.
-如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数. 
+如果应用程序组件依赖于其他应用程序组件,则它可以将这些组件指定为构造函数参数.
  <em>IntelliJ Platform</em> 将确保以正确的顺序实例化组件以满足依赖性.</p>
 
 <p>应用程序级组件必须在plugin.xml文件的<code class="code highlight language-text">&lt;application-components&gt;</code>部分中注册(请参阅<a href="plugin_configuration_file.html"><span>插件配置文件</span></a>).</p>
@@ -135,7 +144,7 @@
 
 <p>可选地,项目级组件的实现类可以实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/components/ProjectComponent.java" data-bypass="yes" target="_blank"><span>ProjectComponent</span></a>接口.</p>
 
-<p>如果需要项目实例,项目级组件的构造函数可以具有<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span>Project</span></a>类型的参数. 
+<p>如果需要项目实例,项目级组件的构造函数可以具有<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/openapi/project/Project.java" data-bypass="yes" target="_blank"><span>Project</span></a>类型的参数.
 .
 如果依赖于这些组件,它还可以将其他应用程序级或项目级组件指定为参数.</p>
 
@@ -154,7 +163,7 @@
 <a name="section-4" class="elem-anchor"></a>
 <h2>持久化组件的状态<a href="#section-4" class="anchor-link"><span></span></a></h2>
 
-<p>如果组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>(不建议使用)或[PersistentStateComponent],则会自动保存和加载每个组件的状态. 
+<p>如果组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/util/src/com/intellij/openapi/util/JDOMExternalizable.java" data-bypass="yes" target="_blank"><span>JDOMExternalizable</span></a>(不建议使用)或[PersistentStateComponent],则会自动保存和加载每个组件的状态.
 ](upsource:///platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java)界面.</p>
 
 <p>当组件的类实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/projectModel-api/src/com/intellij/openapi/components/PersistentStateComponent.java" data-bypass="yes" target="_blank"><span>PersistentStateComponent</span></a>接口时,组件状态将保存在您可以指定的XML文件中
@@ -175,7 +184,7 @@
 <h2>默认值<a href="#section-5" class="anchor-link"><span></span></a></h2>
 
 <p>默认值(组件的预定义设置)应放在<code class="code highlight language-text">&lt;component_name&gt; .xml</code>文件中.
-将此文件放在与默认包对应的文件夹中的插件的类路径中. 
+将此文件放在与默认包对应的文件夹中的插件的类路径中.
 <code class="code highlight language-text">readExternal()</code>方法将在<code class="code highlight language-text">&lt;component&gt;</code>root标签上调用.</p>
 
 <p>如果组件有默认值,则会调用<code class="code highlight language-text">readExternal()</code>方法两次:</p>

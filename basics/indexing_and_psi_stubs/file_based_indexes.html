@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/indexing_and_psi_stubs/file_based_indexes">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,10 +87,10 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/basics/indexing_and_psi_stubs/stub_indexes.html">Stub Indexes</a>
                     </div>
-                    
+
 
                     <h1>File-based Indexes</h1>
                     <p>基于文件的索引基于Map/Reduce架构.
@@ -173,13 +182,13 @@
 <p>通常,应使用<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/psi/search/PsiSearchHelper.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">PsiSearchHelper</code></span></a>类的辅助方法间接访问单词索引.</p>
 
 <p>第二个索引是<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FilenameIndex.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">FilenameIndex</code></span></a>.
-它提供了一种快速查找与特定文件名匹配的文件的方法. 
+它提供了一种快速查找与特定文件名匹配的文件的方法.
 <a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-impl/src/com/intellij/psi/search/FileTypeIndex.java" data-bypass="yes" target="_blank"><span><code class="code highlight language-text">FileTypeIndex</code></span></a>提供了类似的目标:它允许快速查找某种文件类型的所有文件.</p>
 
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/basics/indexing_and_psi_stubs/stub_indexes.html">Stub Indexes</a>
                     </div>
                     <div class="last-modified">

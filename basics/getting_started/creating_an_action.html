@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/getting_started/creating_an_action">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,10 +90,10 @@
                         <a class="navigation-links__prev" href="/basics/getting_started/creating_plugin_project.html">Creating a Plugin Project</a>
                         <a class="navigation-links__next" href="/basics/getting_started/running_and_debugging_a_plugin.html">Running and Debugging a Plugin</a>
                     </div>
-                    
+
 
                     <h1>Creating an action</h1>
-                    <p>您的插件可以通过向菜单和工具栏添加新项来自定义IntelliJ Platform UI. 
+                    <p>您的插件可以通过向菜单和工具栏添加新项来自定义IntelliJ Platform UI.
 IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/editor-ui-api/src/com/intellij/openapi/actionSystem/AnAction.java" data-bypass="yes" target="_blank"><span>AnAction</span></a>,每次选择时都会调用其<code class="code highlight language-text">actionPerformed</code>方法
 菜单项或单击工具栏按钮.</p>
 
@@ -114,7 +123,7 @@ IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea
         <span class="c1">// Set the menu item name, description and icon.</span>
         <span class="c1">// super("Text _Boxes","Item description",IconLoader.getIcon("/Mypackage/icon.png"));</span>
     <span class="o">}</span>
- 
+
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">PlatformDataKeys</span><span class="o">.</span><span class="na">PROJECT</span><span class="o">);</span>
         <span class="n">String</span> <span class="n">txt</span><span class="o">=</span> <span class="n">Messages</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="s">"What is your name?"</span><span class="o">,</span> <span class="s">"Input your name"</span><span class="o">,</span> <span class="n">Messages</span><span class="o">.</span><span class="na">getQuestionIcon</span><span class="o">());</span>
@@ -195,7 +204,7 @@ IntelliJ平台提供类<a href="https://upsource.jetbrains.com/idea-ce/file/idea
     <p><strong>名称</strong>:输入与操作相关联的工具栏按钮的菜单项或工具提示的名称.</p>
   </li>
   <li>
-    <p><strong>说明</strong>:可选择输入操作说明. 
+    <p><strong>说明</strong>:可选择输入操作说明.
 IDEA状态栏在聚焦动作时指示此描述.</p>
   </li>
 </ul>

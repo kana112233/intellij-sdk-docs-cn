@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="reference_guide/custom_language_support/references_and_resolve">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,14 +90,14 @@
                         <a class="navigation-links__prev" href="/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.html">Syntax Highlighting and Error Highlighting</a>
                         <a class="navigation-links__next" href="/reference_guide/custom_language_support/code_completion.html">Code Completion</a>
                     </div>
-                    
+
 
                     <h1>References and Resolve</h1>
                     <p>实现自定义语言PSI最重要和最棘手的部分之一是解析引用.</p>
 
 <p>解析引用使用户能够从PSI元素用法(访问变量,调用方法等)导航到该元素的声明(变量的定义,方法声明等).</p>
 
-<p>需要此功能才能支持** Ctrl-B <strong>和</strong> Ctrl-Click **调用的“Go to Declaration”操作,这是实现<code class="code highlight language-text">Find Usages</code>操作的先决条件,<code class="code highlight language-text">Rename 
+<p>需要此功能才能支持** Ctrl-B <strong>和</strong> Ctrl-Click **调用的“Go to Declaration”操作,这是实现<code class="code highlight language-text">Find Usages</code>操作的先决条件,<code class="code highlight language-text">Rename
 </code>重构和代码完成.</p>
 
 <p>所有作为参考的PSI元素(适用于“Go to Declaration”操作)都需要实现</p>
@@ -125,17 +134,17 @@
 
 <aside class="注意">
   <p>虽然引用元素和引用元素都有一个名称,但只有<strong>引入</strong>名称的元素(例如定义<code class="code highlight language-text">int x = 42</code>)需要实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNamedElement.java" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>界面.
-使用时的引用元素(例如表达式“x + 1”中的<code class="code highlight language-text">x</code>)不必实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a> 
+使用时的引用元素(例如表达式“x + 1”中的<code class="code highlight language-text">x</code>)不必实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij" data-bypass="yes" target="_blank"><span>PsiNamedElement</span></a>
 /psi/PsiNamedElement.java).</p>
 </aside>
 
 <aside class="提示">
-  <p>为了启用更高级的IntelliJ功能,更喜欢在[PsiNamedElement]上实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java" data-bypass="yes" target="_blank"><span>PsiNameIdentifierOwner</span></a>(upsource 
+  <p>为了启用更高级的IntelliJ功能,更喜欢在[PsiNamedElement]上实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/PsiNameIdentifierOwner.java" data-bypass="yes" target="_blank"><span>PsiNameIdentifierOwner</span></a>(upsource
 :///platform/core-api/src/com/intellij/psi/PsiNamedElement.java)尽可能.</p>
 </aside>
 
 <p><code class="code highlight language-text">resolve()</code>方法的对应部分是<code class="code highlight language-text">isReferenceTo()</code>,它检查引用是否解析为指定的元素.
-后一种方法可以通过调用<code class="code highlight language-text">resolve()</code>并将结果与​​传递的PSI元素进行比较来实现,但是可以进行额外的优化(例如,仅当元素文本等于引用的文本时才执行树遍历) 
+后一种方法可以通过调用<code class="code highlight language-text">resolve()</code>并将结果与​​传递的PSI元素进行比较来实现,但是可以进行额外的优化(例如,仅当元素文本等于引用的文本时才执行树遍历)
 .</p>
 
 <p><strong>例</strong>:</p>

@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="plugin_repository/api/plugin_upload">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -78,10 +87,10 @@
             <div class="container">
                 <article class="article" data-shortcut-switcher="false">
                     <div class="navigation-links _top" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/plugin_repository/api/plugins_list.html">Plugins List API</a>
                     </div>
-                    
+
 
                     <h1>Upload Plugin API</h1>
                     <p>Please note that maximum allowed plugin size is <em>200 MB</em>.</p>
@@ -97,12 +106,12 @@ users/me？tab = authentification)并在Scope中指定插件存储库.</p>
   <li>
     <p>** pluginId <em>*是插件的数字ID,可以从插件存储库URL中检索.
 例如
-<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala</span></a>插件ID为</em> 1347 <em>. 
+<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala</span></a>插件ID为</em> 1347 <em>.
 (</em>可以使用* pluginXmlId *)</p>
   </li>
   <li>
     <p>** pluginXmlId **是plugin.xml中指定为<id>的插件的唯一标识符.
-可以在插件的单个更新页面右侧和plugin.xml中找到* Plugin XML ID *参数. 
+可以在插件的单个更新页面右侧和plugin.xml中找到* Plugin XML ID *参数.
 (*可以使用* pluginId *代替)</id></p>
   </li>
   <li>
@@ -176,8 +185,8 @@ nuget config -set defaultPushSource=https://plugins.jetbrains.com/
 # Push if the key and the default source are set
 nuget push angularjs.1.9.0.nupkg
 </code></div>
-<p>In addition to the fact that you can change NuGet’s default configuration, 
-you can apply your own configuration file using <code class="code highlight language-text">ConfigFile</code> option in <em>push</em> command. 
+<p>In addition to the fact that you can change NuGet’s default configuration,
+you can apply your own configuration file using <code class="code highlight language-text">ConfigFile</code> option in <em>push</em> command.
 For example:</p>
 
 <div class="code-block" data-lang="text"><code class="code-block__wrapper">nuget push angularjs.1.9.0.nupkg -ConfigFile ~/my.Config
@@ -188,7 +197,7 @@ For example:</p>
 
 
                     <div class="navigation-links _bottom" data-swiftype-index="false">
-                        
+
                         <a class="navigation-links__next" href="/plugin_repository/api/plugins_list.html">Plugins List API</a>
                     </div>
                     <div class="last-modified">

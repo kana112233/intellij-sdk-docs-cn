@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="plugin_repository/api/plugin_download_update">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/plugin_repository/api/plugin_details.html">Plugin Details API</a>
                         <a class="navigation-links__next" href="/plugin_repository/api/maven_interface.html">Plugin Repository Maven Interface</a>
                     </div>
-                    
+
 
                     <h1>Download Plugin Update API</h1>
                     <p>有两种方法可以编程方式下载插件版本:</p>
@@ -108,7 +117,7 @@
 </ul>
 
 <p>例如
-<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala插件</span></a>(<code class="code highlight language-text">pluginXmlId = org.intellij.scala</code>)＆IntelliJ IDEA 2017.1(<code class="code highlight language-text">productCode = IU</code>,<code class="code highlight language-text">buildNumber = 171.3780.107 
+<a href="https://plugins.jetbrains.com/plugin/1347-scala" data-bypass="yes" target="_blank"><span>Scala插件</span></a>(<code class="code highlight language-text">pluginXmlId = org.intellij.scala</code>)＆IntelliJ IDEA 2017.1(<code class="code highlight language-text">productCode = IU</code>,<code class="code highlight language-text">buildNumber = 171.3780.107
 </code>):</p>
 
 <p><code class="code highlight language-text">的https://plugins.jetbrains.com/pluginManager行动=下载＆ID = org.intellij.scala及建立= IU-171.3780.107</code></p>

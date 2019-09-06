@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/testing_plugins/light_and_heavy_tests">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/basics/testing_plugins/tests_and_fixtures.html">Tests and Fixtures</a>
                         <a class="navigation-links__next" href="/basics/testing_plugins/test_project_and_testdata_directories.html">Test Project and Testdata Directories</a>
                     </div>
-                    
+
 
                     <h1>Light and Heavy Tests</h1>
                     <p>插件测试在真实的,而不是模拟的 <em>IntelliJ Platform</em> 环境中运行,并使用大多数应用程序和项目组件的实际实现.</p>
@@ -116,7 +125,7 @@
   </li>
 </ul>
 
-<p>编写光测试时,您可以指定测试中需要的项目要求,例如模块类型,配置的SDK,构面,库等.您可以通过扩展[<code class="code highlight language-text">LightProjectDescriptor</code>]来实现( 
+<p>编写光测试时,您可以指定测试中需要的项目要求,例如模块类型,配置的SDK,构面,库等.您可以通过扩展[<code class="code highlight language-text">LightProjectDescriptor</code>]来实现(
 upsource:///platform/testFramework/src/com/intellij/testFramework/LightProjectDescriptor.java)类并从`LightCodeInsightFixtureTestCase.getProjectDescriptor()返回项目描述符.
 在执行每个测试之前,如果测试用例返回与前一个项目描述符相同的项目描述符,则将重用该项目,或者如果描述符不同,则重新创建项目描述符.</p>
 

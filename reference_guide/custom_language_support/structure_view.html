@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:46:04+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="reference_guide/custom_language_support/structure_view">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/reference_guide/custom_language_support/code_inspections_and_intentions.html">Code Inspections and Intentions</a>
                         <a class="navigation-links__next" href="/reference_guide/custom_language_support/surround_with.html">Surround With</a>
                     </div>
-                    
+
 
                     <h1>Structure View</h1>
                     <p>用于特定文件类型的Structure View实现可以在许多级别上进行自定义.</p>
@@ -160,7 +169,7 @@
 
 <p><code class="code highlight language-text">StructureViewTreeElement.getChildren()</code>的实现需要与<code class="code highlight language-text">TextEditorBasedStructureViewModel.getSuitableClasses()</code>匹配.</p>
 
-<p>后一个方法返回一个’PsiElement<code class="code highlight language-text"> \ -derived类的数组,它们可以显示为结构视图元素,并用于在首次打开结构视图或从源代码“自动滚动”时选择与光标位置匹配的结构视图项. 
+<p>后一个方法返回一个’PsiElement<code class="code highlight language-text"> \ -derived类的数组,它们可以显示为结构视图元素,并用于在首次打开结构视图或从源代码“自动滚动”时选择与光标位置匹配的结构视图项.
 </code>选项被使用.</p>
 
 <p><strong>例:</strong></p>

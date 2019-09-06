@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/architectural_overview/file_view_providers">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/basics/architectural_overview/psi_files.html">PSI Files</a>
                         <a class="navigation-links__next" href="/basics/architectural_overview/psi_elements.html">PSI Elements</a>
                     </div>
-                    
+
 
                     <h1>File View Providers</h1>
                     <ul>
@@ -89,7 +98,7 @@
 其主要目的是管理单个文件中对多个PSI树的访问.</li>
 </ul>
 
-<p>例如,一个JSPX页面有一个单独的PSI树,用于其中的Java代码(<code class="code highlight language-text">PsiJavaFile</code>),一个单独的XML代码树(<code class="code highlight language-text">XmlFile</code>),以及一个单独的JSP for JSP <a href="upsource"><span>JspFile</span></a> 
+<p>例如,一个JSPX页面有一个单独的PSI树,用于其中的Java代码(<code class="code highlight language-text">PsiJavaFile</code>),一个单独的XML代码树(<code class="code highlight language-text">XmlFile</code>),以及一个单独的JSP for JSP <a href="upsource"><span>JspFile</span></a>
 :///java/jsp-openapi/src/com/intellij/psi/jsp/JspFile.java)).</p>
 
 <p>每个PSI树都覆盖了文件的全部内容,并且在可以找到不同语言的内容的地方包含特殊的“外部语言元素”.</p>
@@ -129,7 +138,7 @@ intellij/lang/Language.java)在<a href="https://upsource.jetbrains.com/idea-ce/f
 此扩展点使用[FileTypeExtensionPoint]声明(upsource:///platform/core-api/src/com/intellij/openapi/fileTypes/FileTypeExtensionPoint.java)
 豆类.</p>
 
-<p>要访问此扩展点,请创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java" data-bypass="yes" target="_blank"><span>FileViewProviderFactory</span></a>接口的Java类,并在此类中覆盖<code class="code highlight language-text"> 
+<p>要访问此扩展点,请创建一个实现<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/core-api/src/com/intellij/psi/FileViewProviderFactory.java" data-bypass="yes" target="_blank"><span>FileViewProviderFactory</span></a>接口的Java类,并在此类中覆盖<code class="code highlight language-text">
 createFileViewProvider</code>方法.</p>
 
 <p>要声明<code class="code highlight language-text">fileType.fileViewProviderFactory</code>扩展点的扩展,请将以下语法添加到<code class="code highlight language-text">plugin.xml</code>文件的<code class="code highlight language-text">&lt;extensions&gt;</code>部分:</p>

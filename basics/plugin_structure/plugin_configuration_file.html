@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-09T23:57:17+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/plugin_structure/plugin_configuration_file">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,7 +90,7 @@
                         <a class="navigation-links__prev" href="/basics/plugin_structure/plugin_services.html">Plugin Services</a>
                         <a class="navigation-links__next" href="/basics/plugin_structure/plugin_icon_file.html">Plugin Icon</a>
                     </div>
-                    
+
 
                     <h1>Plugin Configuration File - plugin.xml</h1>
                     <p>以下是示例插件配置文件.
@@ -193,7 +202,7 @@
   <span class="c">&lt;!-- Extensions which the plugin adds to extension points
        defined by the IntelliJ Platform or by other plugins.
        The "defaultExtensionNs " attribute must be set to the
-       ID of the plugin defining the extension point, or to 
+       ID of the plugin defining the extension point, or to
        "com.intellij" if the extension point is defined by the
        IntelliJ Platform. The name of the tag within the &lt;extensions&gt;
        tag matches the name of the extension point, and the

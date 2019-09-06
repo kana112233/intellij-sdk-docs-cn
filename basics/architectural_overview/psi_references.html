@@ -32,7 +32,7 @@
     <meta property="og:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta property="og:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta property="article:modified_time" content="2019-05-11T20:37:03+08:00" />
-    <!-- <meta property="article:section" content="" /> 
+    <!-- <meta property="article:section" content="" />
     <meta property="article:tag" content="" /> -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@JBPlatform" />
@@ -40,7 +40,16 @@
     <meta name="twitter:description" content="Documentation for working with and extending the IntelliJ Platform SDK" />
     <meta name="twitter:image" content="https://kana112233.github.io/intellij-sdk-docs-cn/jetbrains.png" />
     <meta class="swiftype" name="product" data-type="string" content="/intellij-sdk-docs-cn/"></meta>
-<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"></head>
+<link  rel="stylesheet" href="/intellij-sdk-docs-cn/app/styles.css"><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?394835d134cdba7ae5b9ae1684dd1bd4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
 <body data-id="basics/architectural_overview/psi_references">
 <div class="wrapper">
     <section class="panel _nav">
@@ -70,7 +79,7 @@
         <header class="panel__header">
             <div class="container">
                 <h3>IntelliJ Platform SDK DevGuide</h3>
-                
+
                 <div class="panel-trigger"></div>
             </div>
         </header>
@@ -81,12 +90,12 @@
                         <a class="navigation-links__prev" href="/basics/architectural_overview/navigating_psi.html">Navigating the PSI</a>
                         <a class="navigation-links__next" href="/basics/architectural_overview/modifying_psi.html">Modifying the PSI</a>
                     </div>
-                    
+
 
                     <h1>PSI References</h1>
                     <p>PSI树中的* reference <em>是一个对象,表示代码中某个元素的</em> usage *的链接</p>
 
-<p>到相应的<em>声明</em>. 
+<p>到相应的<em>声明</em>.
 <em>解析</em>引用意味着找到特定用法的声明</p>
 
 <p>指.</p>
@@ -194,7 +203,7 @@
 <p>这样的引用从<code class="code highlight language-text">PsiReference.isSoft()</code>方法返回<code class="code highlight language-text">true</code>.</p>
 
 <p>第二种情况是<em>多变量引用</em>.
-考虑一下JavaScript程序的情况. 
+考虑一下JavaScript程序的情况.
 JavaScript是动态的</p>
 
 <p>键入的语言,因此IDE无法始终精确地确定在特定位置调用哪个方法.</p>
