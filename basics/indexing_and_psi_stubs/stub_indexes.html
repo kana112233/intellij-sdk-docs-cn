@@ -145,7 +145,7 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
 
 <p>如果您需要更改存根的存储二进制格式(例如,如果您想存储一些其他数据或一些新元素),请确保提升从您的语言<code class="code highlight language-text">IStubFileElementType.getStubVersion()</code>返回的存根版本
 .
-这将导致重建存根和存根索引,并避免存储的数据格式与尝试加载它的代码之间的不匹配.</p>
+这将导致重建存根和Stub Indexes,并避免存储的数据格式与尝试加载它的代码之间的不匹配.</p>
 
 <p>默认情况下,如果PSI元素扩展了“StubBasedPsiElement”,则该类型的所有元素都将存储在存根树中.
 如果您需要更精确地控制存储哪些元素,请覆盖<code class="code highlight language-text">IStubElementType.shouldCreateStub()</code>并为不应包含在存根树中的元素返回<code class="code highlight language-text">false</code>.</p>
@@ -158,17 +158,17 @@ interface(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b
 否则,当外部依赖关系发生更改时,将不会重建存根树,并且存根树中将存在过时且不正确的数据.</p>
 
 <a name="section" class="elem-anchor"></a>
-<h2>存根索引<a href="#section" class="anchor-link"><span></span></a></h2>
+<h2>Stub Indexes<a href="#section" class="anchor-link"><span></span></a></h2>
 
 <p>构建存根树时,您可以同时将关于存根元素的一些数据放入多个索引中,然后可以使用相应的键来查找PSI元素.
-与基于文件的索引不同,存根索引不支持将自定义数据存储为值;
+与File-based Indexes不同,Stub Indexes不支持将自定义数据存储为值;
 该值始终是PSI元素.
-存根索引中的键通常是字符串(例如类名);
+Stub Indexes中的键通常是字符串(例如类名);
 如果需要,还支持其他数据类型.</p>
 
-<p>存根索引是扩展[<code class="code highlight language-text">AbstractStubIndex</code>]的类(upsource:///platform/indexing-api/src/com/intellij/psi/stubs/AbstractStubIndex.java).
+<p>Stub Indexes是扩展[<code class="code highlight language-text">AbstractStubIndex</code>]的类(upsource:///platform/indexing-api/src/com/intellij/psi/stubs/AbstractStubIndex.java).
 在最常见的情况下,当键类型为<code class="code highlight language-text">String</code>时,使用更具体的基类,即<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/platform/indexing-api/src/com/intellij/psi/stubs/StringStubIndexExtension.java" data-bypass="yes" target="_blank"><span>StringStubIndexExtension</span></a>.
-存根索引实现类在<code class="code highlight language-text">&lt;stubIndex&gt;</code>扩展点中注册.</p>
+Stub Indexes实现类在<code class="code highlight language-text">&lt;stubIndex&gt;</code>扩展点中注册.</p>
 
 <p>要将数据放入索引,请实现方法<code class="code highlight language-text">IStubElementType.indexStub()</code>(<a href="https://upsource.jetbrains.com/idea-ce/file/idea-ce-4f9b5f89b2a19ce700b1373a465c16b28ed8ad52/java/java-psi-impl/src/com/intellij/psi/impl/java/stubs/JavaClassElementType.java" data-bypass="yes" target="_blank"><span>example:JavaClassElementType.indexStub()</span></a><!--#L189  -->).
 此方法接受<code class="code highlight language-text">IndexSink</code>作为参数,并为应存储元素的每个索引放入索引ID和键.</p>
